@@ -1,0 +1,275 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Application: Dont' Starve\n"
+"POT Version: 2.0\n"
+"X-Generator: Poedit 3.0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. STRINGS.NAMES.DARKAMULET
+msgctxt "STRINGS.NAMES.DARKAMULET"
+msgid "Dark Amulet"
+msgstr "黑暗护符"
+
+#. STRINGS.NAMES.DARKLOTUS
+msgctxt "STRINGS.NAMES.DARKLOTUS"
+msgid "Dark Lotus"
+msgstr "暗之莲"
+
+#. STRINGS.NAMES.LIGHTGEM
+msgctxt "STRINGS.NAMES.LIGHTGEM"
+msgid "Light Gem"
+msgstr "白宝石"
+
+#. STRINGS.NAMES.DARKGEM
+msgctxt "STRINGS.NAMES.DARKGEM"
+msgid "Dark Gem"
+msgstr "黑宝石"
+
+#. STRINGS.NAMES.LIGHTAMULET
+msgctxt "STRINGS.NAMES.LIGHTAMULET"
+msgid "Light Amulet"
+msgstr "光明护符"
+
+#. STRINGS.NAMES.NIGHTPACK
+msgctxt "STRINGS.NAMES.NIGHTPACK"
+msgid "Night Backpack"
+msgstr "影背包"
+
+#. STRINGS.NAMES.BLACKLOTUS
+msgctxt "STRINGS.NAMES.BLACKLOTUS"
+msgid "Black Lotus"
+msgstr "暗之莲"
+
+#. STRINGS.CHARACTER_NAMES.civi
+msgctxt "STRINGS.CHARACTER_NAMES.civi"
+msgid "Civi"
+msgstr ""
+
+#. STRINGS.CHARACTER_DESCRIPTIONS.civi
+msgctxt "STRINGS.CHARACTER_DESCRIPTIONS.civi"
+msgid "Civi"
+msgstr ""
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.BLACKLOTUS
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.BLACKLOTUS"
+msgid "Is it real?"
+msgstr "这是真实存在的吗？"
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKLOTUS
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKLOTUS"
+msgid "Is it real?"
+msgstr "这是真实存在的吗？"
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKGEM
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKGEM"
+msgid "Get closer to dark!"
+msgstr "使你更接近黑暗！"
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTGEM
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTGEM"
+msgid "Get closer to light!"
+msgstr "使你更接近光明！"
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTAMULET
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTAMULET"
+msgid "I can feel the darkness away."
+msgstr "黑 暗 退 散."
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTLOTUS
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTLOTUS"
+msgid "Is it real?"
+msgstr "这是真实存在的吗？"
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.NIGHTPACK
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.NIGHTPACK"
+msgid "It seems to need some glowing materials."
+msgstr ""
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKAMULET
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKAMULET"
+msgid "I can feel the darkness coming."
+msgstr "我能感受到黑暗来临。"
+
+#. STRINGS.CHARACTERS.CIVI.ANNOUNCE_CRAFTING_FAIL
+msgctxt "STRINGS.CHARACTERS.CIVI.ANNOUNCE_CRAFTING_FAIL"
+msgid "Nope, missing ingredients."
+msgstr ""
+
+#. STRINGS.CHARACTERS.CIVI.ANNOUNCE_ADVENTUREFAIL
+msgctxt "STRINGS.CHARACTERS.CIVI.ANNOUNCE_ADVENTUREFAIL"
+msgid "I shall try again"
+msgstr ""
+
+#. STRINGS.CHARACTERS.CIVI.ANNOUNCE_QUAKE
+msgctxt "STRINGS.CHARACTERS.CIVI.ANNOUNCE_QUAKE"
+msgid "Ahhh! Something bad is happening."
+msgstr ""
+
+#. STRINGS.CHARACTERS.CIVI.ACTIONFAIL.FILL_OCEAN.UNSUITABLE_FOR_PLANTS
+msgctxt "STRINGS.CHARACTERS.CIVI.ACTIONFAIL.FILL_OCEAN.UNSUITABLE_FOR_PLANTS"
+msgid "Nope, plants hate salt water."
+msgstr ""
+
+#. STRINGS.CHARACTERS.CIVI.ACTIONFAIL.ACTIVATE.LOCKED_GATE
+msgctxt "STRINGS.CHARACTERS.CIVI.ACTIONFAIL.ACTIVATE.LOCKED_GATE"
+msgid "Nope, it's locked."
+msgstr ""
+
+#. STRINGS.CHARACTERS.CIVI.ACTIONFAIL.ROW_FAIL.BAD_TIMING0
+msgctxt "STRINGS.CHARACTERS.CIVI.ACTIONFAIL.ROW_FAIL.BAD_TIMING0"
+msgid "Tooooo fast!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.CIVI.ACTIONFAIL.ROW_FAIL.BAD_TIMING2
+msgctxt "STRINGS.CHARACTERS.CIVI.ACTIONFAIL.ROW_FAIL.BAD_TIMING2"
+msgid "Nope again!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.CIVI.ACTIONFAIL_GENERIC
+msgctxt "STRINGS.CHARACTERS.CIVI.ACTIONFAIL_GENERIC"
+msgid "nope"
+msgstr ""
+
+#. STRINGS.CHARACTERS.CIVI.DESCRIBE.MOSSLING
+msgctxt "STRINGS.CHARACTERS.CIVI.DESCRIBE.MOSSLING"
+msgid "󰂡"
+msgstr ""
+
+#. STRINGS.CHARACTERS.CIVI.DESCRIBE.MOOSE
+msgctxt "STRINGS.CHARACTERS.CIVI.DESCRIBE.MOOSE"
+msgid "󰂡"
+msgstr ""
+
+#. STRINGS.CHARACTER_BIOS.civi.1.title
+msgctxt "STRINGS.CHARACTER_BIOS.civi.1.title"
+msgid "Birthday"
+msgstr "生日"
+
+#. STRINGS.CHARACTER_BIOS.civi.1.desc
+msgctxt "STRINGS.CHARACTER_BIOS.civi.1.desc"
+msgid "Feb 25"
+msgstr "2月25日"
+
+#. STRINGS.CHARACTER_BIOS.civi.2.title
+msgctxt "STRINGS.CHARACTER_BIOS.civi.2.title"
+msgid "Favorite Food"
+msgstr "最喜欢的食物"
+
+#. STRINGS.CHARACTER_BIOS.civi.2.desc
+msgctxt "STRINGS.CHARACTER_BIOS.civi.2.desc"
+msgid "Lv.0 - Bone Bouillon\\nLv.1 - Meatballs\\nLv.2 - Volt Goat Chaud-Froid"
+msgstr ""
+
+#. STRINGS.RECIPE_DESC.BLACKLOTUS
+msgctxt "STRINGS.RECIPE_DESC.BLACKLOTUS"
+msgid "Shine in the darkness."
+msgstr "在黑暗中绽放光芒."
+
+#. STRINGS.RECIPE_DESC.LIGHTAMULET
+msgctxt "STRINGS.RECIPE_DESC.LIGHTAMULET"
+msgid "Keep away from dark things."
+msgstr "远离黑暗."
+
+#. STRINGS.RECIPE_DESC.DARKGEM
+msgctxt "STRINGS.RECIPE_DESC.DARKGEM"
+msgid "Upgrades!"
+msgstr "升级！升级！"
+
+#. STRINGS.RECIPE_DESC.LIGHTGEM
+msgctxt "STRINGS.RECIPE_DESC.LIGHTGEM"
+msgid "Degrades!"
+msgstr "降级！降级！"
+
+#. STRINGS.RECIPE_DESC.DARKAMULET
+msgctxt "STRINGS.RECIPE_DESC.DARKAMULET"
+msgid "Powerful but dark."
+msgstr "深邃而充满力量。"
+
+#. STRINGS.RECIPE_DESC.REDGEM
+msgctxt "STRINGS.RECIPE_DESC.REDGEM"
+msgid "Change ice into fire."
+msgstr "用噩梦扭曲冰冻."
+
+#. STRINGS.RECIPE_DESC.NIGHTPACK
+msgctxt "STRINGS.RECIPE_DESC.NIGHTPACK"
+msgid "Dark away."
+msgstr "驱散黑暗."
+
+#. STRINGS.RECIPE_DESC.BLUEGEM
+msgctxt "STRINGS.RECIPE_DESC.BLUEGEM"
+msgid "Change fire into ice."
+msgstr "用噩梦扭曲火焰."
+
+#. STRINGS.CHARACTER_QUOTES.civi
+msgctxt "STRINGS.CHARACTER_QUOTES.civi"
+msgid "Civi"
+msgstr ""
+
+#. STRINGS.SKIN_DESCRIPTIONS.civi_none
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.civi_none"
+msgid ""
+"Civi can control magic, turning lights into darks, or turning darks into "
+"lights."
+msgstr "控制光与暗的魔法使, 拥有超强的适应能力和战斗能力."
+
+#. STRINGS.CHARACTER_TITLES.civi
+msgctxt "STRINGS.CHARACTER_TITLES.civi"
+msgid "Civi"
+msgstr ""
+
+#. STRINGS.CHARACTER_ABOUTME.civi
+msgctxt "STRINGS.CHARACTER_ABOUTME.civi"
+msgid "Civi"
+msgstr ""
+
+#. STRINGS.CIVI_GEMS.ALREADY_LIGHT
+msgctxt "STRINGS.CIVI_GEMS.ALREADY_LIGHT"
+msgid "I've already in the light."
+msgstr "我已经沐浴在光明中."
+
+#. STRINGS.CIVI_GEMS.FEEL_LIGHT
+msgctxt "STRINGS.CIVI_GEMS.FEEL_LIGHT"
+msgid "I felt the light."
+msgstr "我感受到了光明."
+
+#. STRINGS.CIVI_GEMS.ALREADY_DARK
+msgctxt "STRINGS.CIVI_GEMS.ALREADY_DARK"
+msgid "I've already in the dark."
+msgstr "我已经深陷黑暗中."
+
+#. STRINGS.CIVI_GEMS.FEEL_DARK
+msgctxt "STRINGS.CIVI_GEMS.FEEL_DARK"
+msgid "I felt the dark."
+msgstr "我感受到了黑暗"
+
+#. STRINGS.SKIN_NAMES.armorskeleton_none
+msgctxt "STRINGS.SKIN_NAMES.armorskeleton_none"
+msgid "Emperor's Formal"
+msgstr "皇帝的新衣"
+
+#. STRINGS.SKIN_NAMES.civi_none
+msgctxt "STRINGS.SKIN_NAMES.civi_none"
+msgid "Civi"
+msgstr ""
+
+#. STRINGS.SKIN_NAMES.skeletonhat_glass
+msgctxt "STRINGS.SKIN_NAMES.skeletonhat_glass"
+msgid "Crystal Skull"
+msgstr "水晶头骨"
+
+#~ msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.NIGHTPACK"
+#~ msgid "It seems able to socket gems!"
+#~ msgstr "可以镶嵌宝石！"
+
+#~ msgctxt "STRINGS.CHARACTER_BIOS.civi.2.desc"
+#~ msgid "Lv.0 - Bone Bouillo"
+#~ msgstr "等级 0 - 骨头汤"

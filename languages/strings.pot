@@ -1,0 +1,255 @@
+msgid ""
+msgstr ""
+"Application: Dont' Starve\n"
+"POT Version: 2.0\n"
+
+#. STRINGS.NAMES.DARKAMULET
+msgctxt "STRINGS.NAMES.DARKAMULET"
+msgid "Dark Amulet"
+msgstr ""
+
+#. STRINGS.NAMES.DARKLOTUS
+msgctxt "STRINGS.NAMES.DARKLOTUS"
+msgid "Dark Lotus"
+msgstr ""
+
+#. STRINGS.NAMES.LIGHTGEM
+msgctxt "STRINGS.NAMES.LIGHTGEM"
+msgid "Light Gem"
+msgstr ""
+
+#. STRINGS.NAMES.DARKGEM
+msgctxt "STRINGS.NAMES.DARKGEM"
+msgid "Dark Gem"
+msgstr ""
+
+#. STRINGS.NAMES.LIGHTAMULET
+msgctxt "STRINGS.NAMES.LIGHTAMULET"
+msgid "Light Amulet"
+msgstr ""
+
+#. STRINGS.NAMES.NIGHTPACK
+msgctxt "STRINGS.NAMES.NIGHTPACK"
+msgid "Night Backpack"
+msgstr ""
+
+#. STRINGS.NAMES.BLACKLOTUS
+msgctxt "STRINGS.NAMES.BLACKLOTUS"
+msgid "Black Lotus"
+msgstr ""
+
+#. STRINGS.CHARACTER_NAMES.civi
+msgctxt "STRINGS.CHARACTER_NAMES.civi"
+msgid "Civi"
+msgstr ""
+
+#. STRINGS.CHARACTER_DESCRIPTIONS.civi
+msgctxt "STRINGS.CHARACTER_DESCRIPTIONS.civi"
+msgid "Civi"
+msgstr ""
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.BLACKLOTUS
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.BLACKLOTUS"
+msgid "Is it real?"
+msgstr ""
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKLOTUS
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKLOTUS"
+msgid "Is it real?"
+msgstr ""
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKGEM
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKGEM"
+msgid "Get closer to dark!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTGEM
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTGEM"
+msgid "Get closer to light!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTAMULET
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTAMULET"
+msgid "I can feel the darkness away."
+msgstr ""
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTLOTUS
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTLOTUS"
+msgid "Is it real?"
+msgstr ""
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.NIGHTPACK
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.NIGHTPACK"
+msgid "It seems to need some glowing materials."
+msgstr ""
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKAMULET
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKAMULET"
+msgid "I can feel the darkness coming."
+msgstr ""
+
+#. STRINGS.CHARACTERS.CIVI.ANNOUNCE_CRAFTING_FAIL
+msgctxt "STRINGS.CHARACTERS.CIVI.ANNOUNCE_CRAFTING_FAIL"
+msgid "Nope, missing ingredients."
+msgstr ""
+
+#. STRINGS.CHARACTERS.CIVI.ANNOUNCE_ADVENTUREFAIL
+msgctxt "STRINGS.CHARACTERS.CIVI.ANNOUNCE_ADVENTUREFAIL"
+msgid "I shall try again"
+msgstr ""
+
+#. STRINGS.CHARACTERS.CIVI.ANNOUNCE_QUAKE
+msgctxt "STRINGS.CHARACTERS.CIVI.ANNOUNCE_QUAKE"
+msgid "Ahhh! Something bad is happening."
+msgstr ""
+
+#. STRINGS.CHARACTERS.CIVI.ACTIONFAIL.FILL_OCEAN.UNSUITABLE_FOR_PLANTS
+msgctxt "STRINGS.CHARACTERS.CIVI.ACTIONFAIL.FILL_OCEAN.UNSUITABLE_FOR_PLANTS"
+msgid "Nope, plants hate salt water."
+msgstr ""
+
+#. STRINGS.CHARACTERS.CIVI.ACTIONFAIL.ACTIVATE.LOCKED_GATE
+msgctxt "STRINGS.CHARACTERS.CIVI.ACTIONFAIL.ACTIVATE.LOCKED_GATE"
+msgid "Nope, it's locked."
+msgstr ""
+
+#. STRINGS.CHARACTERS.CIVI.ACTIONFAIL.ROW_FAIL.BAD_TIMING0
+msgctxt "STRINGS.CHARACTERS.CIVI.ACTIONFAIL.ROW_FAIL.BAD_TIMING0"
+msgid "Tooooo fast!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.CIVI.ACTIONFAIL.ROW_FAIL.BAD_TIMING2
+msgctxt "STRINGS.CHARACTERS.CIVI.ACTIONFAIL.ROW_FAIL.BAD_TIMING2"
+msgid "Nope again!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.CIVI.ACTIONFAIL_GENERIC
+msgctxt "STRINGS.CHARACTERS.CIVI.ACTIONFAIL_GENERIC"
+msgid "nope"
+msgstr ""
+
+#. STRINGS.CHARACTERS.CIVI.DESCRIBE.MOSSLING
+msgctxt "STRINGS.CHARACTERS.CIVI.DESCRIBE.MOSSLING"
+msgid "󰂡"
+msgstr ""
+
+#. STRINGS.CHARACTERS.CIVI.DESCRIBE.MOOSE
+msgctxt "STRINGS.CHARACTERS.CIVI.DESCRIBE.MOOSE"
+msgid "󰂡"
+msgstr ""
+
+#. STRINGS.CHARACTER_BIOS.civi.1.title
+msgctxt "STRINGS.CHARACTER_BIOS.civi.1.title"
+msgid "Birthday"
+msgstr ""
+
+#. STRINGS.CHARACTER_BIOS.civi.1.desc
+msgctxt "STRINGS.CHARACTER_BIOS.civi.1.desc"
+msgid "Feb 25"
+msgstr ""
+
+#. STRINGS.CHARACTER_BIOS.civi.2.title
+msgctxt "STRINGS.CHARACTER_BIOS.civi.2.title"
+msgid "Favorite Food"
+msgstr ""
+
+#. STRINGS.CHARACTER_BIOS.civi.2.desc
+msgctxt "STRINGS.CHARACTER_BIOS.civi.2.desc"
+msgid "Lv.0 - Bone Bouillon\\nLv.1 - Meatballs\\nLv.2 - Volt Goat Chaud-Froid"
+msgstr ""
+
+#. STRINGS.RECIPE_DESC.BLACKLOTUS
+msgctxt "STRINGS.RECIPE_DESC.BLACKLOTUS"
+msgid "Shine in the darkness."
+msgstr ""
+
+#. STRINGS.RECIPE_DESC.LIGHTAMULET
+msgctxt "STRINGS.RECIPE_DESC.LIGHTAMULET"
+msgid "Keep away from dark things."
+msgstr ""
+
+#. STRINGS.RECIPE_DESC.DARKGEM
+msgctxt "STRINGS.RECIPE_DESC.DARKGEM"
+msgid "Upgrades!"
+msgstr ""
+
+#. STRINGS.RECIPE_DESC.LIGHTGEM
+msgctxt "STRINGS.RECIPE_DESC.LIGHTGEM"
+msgid "Degrades!"
+msgstr ""
+
+#. STRINGS.RECIPE_DESC.DARKAMULET
+msgctxt "STRINGS.RECIPE_DESC.DARKAMULET"
+msgid "Powerful but dark."
+msgstr ""
+
+#. STRINGS.RECIPE_DESC.REDGEM
+msgctxt "STRINGS.RECIPE_DESC.REDGEM"
+msgid "Change ice into fire."
+msgstr ""
+
+#. STRINGS.RECIPE_DESC.NIGHTPACK
+msgctxt "STRINGS.RECIPE_DESC.NIGHTPACK"
+msgid "Dark away."
+msgstr ""
+
+#. STRINGS.RECIPE_DESC.BLUEGEM
+msgctxt "STRINGS.RECIPE_DESC.BLUEGEM"
+msgid "Change fire into ice."
+msgstr ""
+
+#. STRINGS.CHARACTER_QUOTES.civi
+msgctxt "STRINGS.CHARACTER_QUOTES.civi"
+msgid "Civi"
+msgstr ""
+
+#. STRINGS.SKIN_DESCRIPTIONS.civi_none
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.civi_none"
+msgid "Civi can control magic, turning lights into darks, or turning darks into lights."
+msgstr ""
+
+#. STRINGS.CHARACTER_TITLES.civi
+msgctxt "STRINGS.CHARACTER_TITLES.civi"
+msgid "Civi"
+msgstr ""
+
+#. STRINGS.CHARACTER_ABOUTME.civi
+msgctxt "STRINGS.CHARACTER_ABOUTME.civi"
+msgid "Civi"
+msgstr ""
+
+#. STRINGS.CIVI_GEMS.ALREADY_LIGHT
+msgctxt "STRINGS.CIVI_GEMS.ALREADY_LIGHT"
+msgid "I've already in the light."
+msgstr ""
+
+#. STRINGS.CIVI_GEMS.FEEL_LIGHT
+msgctxt "STRINGS.CIVI_GEMS.FEEL_LIGHT"
+msgid "I felt the light."
+msgstr ""
+
+#. STRINGS.CIVI_GEMS.ALREADY_DARK
+msgctxt "STRINGS.CIVI_GEMS.ALREADY_DARK"
+msgid "I've already in the dark."
+msgstr ""
+
+#. STRINGS.CIVI_GEMS.FEEL_DARK
+msgctxt "STRINGS.CIVI_GEMS.FEEL_DARK"
+msgid "I felt the dark."
+msgstr ""
+
+#. STRINGS.SKIN_NAMES.armorskeleton_none
+msgctxt "STRINGS.SKIN_NAMES.armorskeleton_none"
+msgid "Emperor's Formal"
+msgstr ""
+
+#. STRINGS.SKIN_NAMES.civi_none
+msgctxt "STRINGS.SKIN_NAMES.civi_none"
+msgid "Civi"
+msgstr ""
+
+#. STRINGS.SKIN_NAMES.skeletonhat_glass
+msgctxt "STRINGS.SKIN_NAMES.skeletonhat_glass"
+msgid "Crystal Skull"
+msgstr ""
+
