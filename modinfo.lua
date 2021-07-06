@@ -1,19 +1,21 @@
-version = "1.0.2"
+version = "1.0.3"
 -- basic info --
 name = locale == "zh" and "暗夜故事集(角色篇)" or "Characters of Night Stories"
 author = locale == "zh" and "丁香女子学校" or "Civi, Tony, Lssss, kengyou_lei"
 description = locale == "zh" and "[版本: "..version..[[]
 
 更新内容: 
-- 合并了一些文件
+- 修复小地图图标显示错误的问题
 
+- 合并了一些文件
 - 修改了影背包的交互代码
 - 合并自以下三个创意工坊MOD: 848543526, 1105844780, 1840586628
 ]] or "[Version: "..version..[[]
 
 Changelog: 
-- Mixed inventoryimages tex
+- Fixed issue where minimap icons are wrong.
 
+- Mixed inventoryimages tex
 - Changed part of Night Backpack's interaction.
 - From these workshop items: 848543526, 1105844780, 1840586628
 ]]
