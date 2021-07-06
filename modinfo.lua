@@ -1,20 +1,22 @@
-version = "1.0.3"
+version = "1.1"
 -- basic info --
 name = locale == "zh" and "暗夜故事集(角色篇)" or "Characters of Night Stories"
 author = locale == "zh" and "丁香女子学校" or "Civi, Tony, Lssss, kengyou_lei"
 description = locale == "zh" and "[版本: "..version..[[]
 
 更新内容: 
-- 修复小地图图标显示错误的问题
+- 给插了宝石的影刀添加小图标
 
+- 修复小地图图标显示错误的问题
 - 合并了一些文件
 - 修改了影背包的交互代码
 - 合并自以下三个创意工坊MOD: 848543526, 1105844780, 1840586628
 ]] or "[Version: "..version..[[]
 
 Changelog: 
-- Fixed issue where minimap icons are wrong.
+- Added overlay icons for gem-socketed Dark Sword.
 
+- Fixed issue where minimap icons are wrong.
 - Mixed inventoryimages tex
 - Changed part of Night Backpack's interaction.
 - From these workshop items: 848543526, 1105844780, 1840586628
