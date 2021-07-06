@@ -48,11 +48,28 @@ ENV.AddComponentAction("INVENTORY", "nightgem", function(inst, doer, actions, ri
     end
 end)
 
+local GEM_NAMES = {
+    "darkgem",
+    "lightgem"
+}
+local GEM_IDS = table.invert(GEM_NAMES)
+
 local function InitContainer(inst)
     inst:AddTag("nogemsocket")
     inst:AddComponent("container")
     inst.components.container:WidgetSetup("nightsword")
     inst.components.container.canbeopened = false
+end
+
+local function GetImageBG(base_name)
+    if not base_name then return end
+    local name = base_name.."_over.tex"
+    return { image = name, atlas = GetInventoryItemAtlas(name) }
+end
+
+local function OnGemDirty(inst)
+    inst.inv_image_bg = GetImageBG(GEM_NAMES[inst.gem_id:value()])
+    inst:PushEvent("imagechange")
 end
 
 local function on_add_container(inst)
@@ -102,6 +119,8 @@ local function onitemget(inst, data)
         inst.components.weapon.attackwearmultipliers:SetModifier("nightgem", 0.8)
         inst.components.equippable.dapperness = 0
     end
+    inst.gem_id:set(GEM_IDS[data.item.prefab])
+    OnGemDirty(inst)
 end
 
 local function onitemlose(inst)
@@ -120,14 +139,18 @@ local function onitemlose(inst)
             inst.remove_container_task = nil
         end
     end)
+    inst.gem_id:set(0)
+    OnGemDirty(inst)
 end
 
 ENV.AddPrefabPostInit("nightsword", function(inst)
 
+    inst.gem_id = net_tinybyte(inst.GUID, "nightsword.gem_id", "gemdirty")
     inst.add_container_event = net_event(inst.GUID, "add_container")
     inst:AddTag("__container")
 
     if not TheWorld.ismastersim then
+        inst:ListenForEvent("gemdirty", OnGemDirty)
         inst:ListenForEvent("add_container", on_add_container)
         return
     end
@@ -201,4 +224,14 @@ ENV.AddPrefabPostInit("nightsword", function(inst)
         return on_preload(inst, data, ...)
     end
 
+end)
+
+ENV.AddClassPostConstruct("widgets/itemtile", function(self)
+    if self.item.prefab == "nightsword" and self.imagebg == nil then
+        self.imagebg = self:AddChild(Image(nil, nil, "default.tex"))
+        self.imagebg:SetClickable(false)
+        if GetGameModeProperty("icons_use_cc") then
+            self.imagebg:SetEffect("shaders/ui_cc.ksh")
+        end
+    end
 end)
