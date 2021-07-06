@@ -16,17 +16,12 @@ PrefabFiles = {
 }
 
 GlassicAPI.InitCharacterAssets("miotan", "FEMALE", Assets)
-GlassicAPI.InitMinimapAtlas("miotan_minimap", Assets)
-GlassicAPI.RegisterItemAtlas("miotan_inventoryimages", Assets)
-
 GlassicAPI.InitCharacterAssets("dummy", "FEMALE", Assets)
-GlassicAPI.InitMinimapAtlas("dummy_minimap", Assets)
-GlassicAPI.RegisterItemAtlas("dummy_inventoryimages", Assets)
-GlassicAPI.RegisterItemAtlas("hud/nightmaretab", Assets)
-
 GlassicAPI.InitCharacterAssets("civi", "MALE", Assets)
-GlassicAPI.InitMinimapAtlas("civi_minimap", Assets)
-GlassicAPI.RegisterItemAtlas("civi_inventoryimages", Assets)
+
+GlassicAPI.InitMinimapAtlas("ns_minimap", Assets)
+GlassicAPI.RegisterItemAtlas("ns_inventoryimages", Assets)
+GlassicAPI.RegisterItemAtlas("hud/nightmaretab", Assets)
 
 local main_files = {
     "tuning",
