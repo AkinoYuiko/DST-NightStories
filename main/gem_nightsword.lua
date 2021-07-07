@@ -68,8 +68,17 @@ local function GetImageBG(base_name)
 end
 
 local function OnGemDirty(inst)
-    inst.inv_image_bg = GetImageBG(GEM_NAMES[inst.gem_id:value()])
+    if inst.components.container and inst.components.container:IsOpenedBy(ThePlayer) then
+        inst.inv_image_bg = nil
+    else
+        inst.inv_image_bg = GetImageBG(GEM_NAMES[inst.gem_id:value()])
+    end
     inst:PushEvent("imagechange")
+end
+
+local function SetGemBG(inst, override)
+    inst.gem_id:set(override or GEM_IDS[inst.socketed_gem] or 0)
+    OnGemDirty(inst)
 end
 
 local function on_add_container(inst)
@@ -96,12 +105,14 @@ end
 local function onequipfn(inst, data)
     if inst.components.container then
         inst.components.container:Open(data.owner)
+        inst:SetGemBG(0)
     end
 end
 
 local function onunequipfn(inst)
     if inst.components.container then
         inst.components.container:Close()
+        inst:SetGemBG()
     end
 end
 
@@ -111,19 +122,21 @@ local function onitemget(inst, data)
         inst.remove_container_task = nil
     end
     if data.item.prefab == "darkgem" then
+        inst.socketed_gem = "darkgem"
         inst.components.weapon:SetDamage(TUNING.NIGHTSWORD_DAMAGE * 1.125)
         inst.components.weapon.attackwearmultipliers:SetModifier("nightgem", 1.25)
         inst.components.equippable.dapperness = TUNING.CRAZINESS_MED * 1.5
     elseif data.item.prefab == "lightgem" then
+        inst.socketed_gem = "lightgem"
         inst.components.weapon:SetDamage(TUNING.NIGHTSWORD_DAMAGE)
         inst.components.weapon.attackwearmultipliers:SetModifier("nightgem", 0.8)
         inst.components.equippable.dapperness = 0
     end
-    inst.gem_id:set(GEM_IDS[data.item.prefab])
-    OnGemDirty(inst)
+    inst:SetGemBG()
 end
 
 local function onitemlose(inst)
+    inst.socketed_gem = nil
     inst.components.weapon:SetDamage(TUNING.NIGHTSWORD_DAMAGE)
     inst.components.weapon.attackwearmultipliers:RemoveModifier("nightgem")
     inst.components.equippable.dapperness = TUNING.CRAZINESS_MED
@@ -139,8 +152,7 @@ local function onitemlose(inst)
             inst.remove_container_task = nil
         end
     end)
-    inst.gem_id:set(0)
-    OnGemDirty(inst)
+    inst:SetGemBG(0)
 end
 
 ENV.AddPrefabPostInit("nightsword", function(inst)
@@ -158,6 +170,8 @@ ENV.AddPrefabPostInit("nightsword", function(inst)
     inst:RemoveTag("__container")
     inst:PrereplicateComponent("container")
     inst.InitContainer = InitContainer
+
+    inst.SetGemBG = SetGemBG
 
     local onfinished = inst.components.finiteuses.onfinished or function() end
     inst.components.finiteuses:SetOnFinished(function(inst, ...)
