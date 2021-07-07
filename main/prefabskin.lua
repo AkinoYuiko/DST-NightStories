@@ -79,28 +79,11 @@ end
 
 -- yellowamulet 
 if not rawget(_G, "yellowamulet_clear_fn") then
-    yellowamulet_init_fn = function(inst, skin_name, override_build_name)
-        if not TheWorld.ismastersim then return end
-
-        local function onequipfn(inst, data)
-            data.owner.AnimState:OverrideSymbol("swap_body", (override_build_name or skin_name), "swap_body")
-        end
-
-        inst.skinname = skin_name
-        inst.AnimState:SetBuild(override_build_name or skin_name)
-        if inst.components.inventoryitem then
-            inst.components.inventoryitem:ChangeImageName(inst:GetSkinName())
-        end
-        inst:ListenForEvent("equipped", onequipfn)
-        inst.OnSkinChange = function(inst) 
-            inst:RemoveEventCallback("equipped", onequipfn)
-        end
+    yellowamulet_init_fn = function(inst, skinname, override_build)
+        GlassicAPI.BasicInitFn(inst, skinname, override_build or skinname, override_build or skinname)
+        GlassicAPI.BasicOnequipFn(inst, "body", override_build or skinname)
     end
-    yellowamulet_clear_fn = function(inst)
-        inst.AnimState:SetBuild("amulets")
-        if not TheWorld.ismastersim then return end
-        inst.components.inventoryitem:ChangeImageName()
-    end
+    yellowamulet_clear_fn = function(inst) basic_clear_fn(inst, "amulets") end
 end
 
 -- lantern_mio
@@ -137,38 +120,22 @@ lantern_mio_init_fn = function(inst, build)
 end
 
 -- Dummy
-local function common_body_init_fn(inst, build)
-    local function onequipfn(inst, data)
-        data.owner.AnimState:OverrideSymbol("swap_body", build, "swap_body")
-    end
-
-    if not TheWorld.ismastersim then return end
-    
-    inst.skinname = build
-    inst.AnimState:SetBuild(build)
-    if inst.components.inventoryitem then
-        inst.components.inventoryitem:ChangeImageName(inst:GetSkinName())
-    end
-
-    inst:ListenForEvent("equipped", onequipfn)
-    inst.OnSkinChange = function(inst) 
-        inst:RemoveEventCallback("equipped", onequipfn)
-    end
-end
 
 -- Green Amulet
 if not rawget(_G, "greenamulet_clear_fn") then
-    greenamulet_init_fn = function(inst, build) common_body_init_fn(inst, build) end
-    greenamulet_clear_fn = function(inst)
-        inst.AnimState:SetBuild("amulets")
-        if not TheWorld.ismastersim then return end
-        inst.components.inventoryitem:ChangeImageName()
+    greenamulet_init_fn = function(inst, skinname, override_build)
+        GlassicAPI.BasicInitFn(inst, skinname, override_build or skinname, override_build or skinname)
+        GlassicAPI.BasicOnequipFn(inst, "body", override_build or skinname)
     end
+    greenamulet_clear_fn = function(inst) basic_clear_fn(inst, "amulets") end
 end
 
 -- Raincoat
 if not rawget(_G, "raincoat_clear_fn") then
-    raincoat_init_fn = function(inst ,build) common_body_init_fn(inst, build) end
+    raincoat_init_fn = function(inst, skinname, override_build)
+        GlassicAPI.BasicInitFn(inst, skinname, override_build or skinname, override_build or skinname)
+        GlassicAPI.BasicOnequipFn(inst, "body", override_build or skinname)
+    end
     raincoat_clear_fn = function(inst)
         inst.AnimState:SetBuild("torso_rain")
         if not TheWorld.ismastersim then return end
