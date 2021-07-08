@@ -33,6 +33,11 @@ msgctxt "STRINGS.NAMES.NIGHTPACK"
 msgid "Night Backpack"
 msgstr ""
 
+#. STRINGS.NAMES.NIGHTBACK
+msgctxt "STRINGS.NAMES.NIGHTBACK"
+msgid "Night Backpack"
+msgstr ""
+
 #. STRINGS.NAMES.BLACKLOTUS
 msgctxt "STRINGS.NAMES.BLACKLOTUS"
 msgid "Black Lotus"

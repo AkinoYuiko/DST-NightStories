@@ -6,6 +6,7 @@ local strings = {
         LIGHTAMULET = "Light Amulet",
         DARKAMULET = "Dark Amulet",
         NIGHTPACK = "Night Backpack",
+        NIGHTBACK = "Night Backpack",
         DARKGEM = "Dark Gem",
         LIGHTGEM = "Light Gem",
 
