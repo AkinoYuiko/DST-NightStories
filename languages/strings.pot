@@ -8,11 +8,6 @@ msgctxt "STRINGS.NAMES.DARKAMULET"
 msgid "Dark Amulet"
 msgstr ""
 
-#. STRINGS.NAMES.DARKLOTUS
-msgctxt "STRINGS.NAMES.DARKLOTUS"
-msgid "Dark Lotus"
-msgstr ""
-
 #. STRINGS.NAMES.LIGHTGEM
 msgctxt "STRINGS.NAMES.LIGHTGEM"
 msgid "Light Gem"
@@ -31,16 +26,6 @@ msgstr ""
 #. STRINGS.NAMES.NIGHTPACK
 msgctxt "STRINGS.NAMES.NIGHTPACK"
 msgid "Night Backpack"
-msgstr ""
-
-#. STRINGS.NAMES.NIGHTBACK
-msgctxt "STRINGS.NAMES.NIGHTBACK"
-msgid "Night Backpack"
-msgstr ""
-
-#. STRINGS.NAMES.BLACKLOTUS
-msgctxt "STRINGS.NAMES.BLACKLOTUS"
-msgid "Black Lotus"
 msgstr ""
 
 #. STRINGS.CHARACTER_NAMES.civi
