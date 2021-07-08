@@ -340,14 +340,16 @@ local GEM_DURATIONS = {
     opal    = 12  * days,
 }
 
-local function OnGemTrade(inst, gemtype, isdummy, no_open)
+local function OnGemTrade(inst, gemtype, isdummy, from_renew)
     local owner = inst.components.inventoryitem.owner
-    if inst._state ~= nil and inst._state ~= gemtype then
-        inst:RenewState(gemtype, isdummy)
-        return
-    elseif not no_open and owner and inst.components.container:IsOpen() then
-        inst.components.container:Close()
-        inst.components.container:Open(owner)
+    if not from_renew then
+        if inst._state ~= gemtype then
+            inst:RenewState(gemtype, isdummy)
+            return
+        elseif owner and inst.components.container:IsOpen() then
+            inst.components.container:Close()
+            inst.components.container:Open(owner)
+        end
     end
 
     local fx = SpawnPrefab("pandorachest_reset")
