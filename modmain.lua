@@ -3,7 +3,7 @@ PrefabFiles = {
 	"civi",
     "civi_amulets",
     "civi_gems",
-    "nightpack_copy",
+    "nightpack",
 
     "miotan",
     
