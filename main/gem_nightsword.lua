@@ -68,11 +68,7 @@ local function GetImageBG(base_name)
 end
 
 local function OnGemDirty(inst)
-    if inst.components.container and inst.components.container:IsOpenedBy(ThePlayer) then
-        inst.inv_image_bg = nil
-    else
-        inst.inv_image_bg = GetImageBG(GEM_NAMES[inst.gem_id:value()])
-    end
+    inst.inv_image_bg = GetImageBG(GEM_NAMES[inst.gem_id:value()])
     inst:PushEvent("imagechange")
 end
 
@@ -105,15 +101,21 @@ end
 local function onequipfn(inst, data)
     if inst.components.container then
         inst.components.container:Open(data.owner)
-        inst:SetGemBG(0)
     end
 end
 
 local function onunequipfn(inst)
     if inst.components.container then
         inst.components.container:Close()
-        inst:SetGemBG()
     end
+end
+
+local function onopen(inst)
+    inst:SetGemBG(0)
+end
+
+local function onclose(inst)
+    inst:SetGemBG()
 end
 
 local function onitemget(inst, data)
@@ -132,7 +134,7 @@ local function onitemget(inst, data)
         inst.components.weapon.attackwearmultipliers:SetModifier("nightgem", 0.8)
         inst.components.equippable.dapperness = 0
     end
-    inst:SetGemBG()
+    inst:SetGemBG(inst.components.container:IsOpen() and 0)
 end
 
 local function onitemlose(inst)
@@ -152,7 +154,7 @@ local function onitemlose(inst)
             inst.remove_container_task = nil
         end
     end)
-    inst:SetGemBG(0)
+    inst:SetGemBG()
 end
 
 ENV.AddPrefabPostInit("nightsword", function(inst)
@@ -217,6 +219,9 @@ ENV.AddPrefabPostInit("nightsword", function(inst)
 
     inst:ListenForEvent("equipped", onequipfn)
     inst:ListenForEvent("unequipped", onunequipfn)
+
+    inst:ListenForEvent("onopen", onopen)
+    inst:ListenForEvent("onclose", onclose)
 
     inst:ListenForEvent("itemget", onitemget)
     inst:ListenForEvent("itemlose", onitemlose)

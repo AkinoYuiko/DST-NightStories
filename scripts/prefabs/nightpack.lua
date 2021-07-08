@@ -224,7 +224,7 @@ local function ApplyState(inst, state)
         end,
 
         green = function()
-            if inst.prefab == "nightpack" then
+            if not inst.is_greenpack then
                 local slots = inst.components.container and inst.components.container.slots
                 local isopen = inst.components.container and inst.components.container:IsOpen()
                 local eslot = inst.components.equippable and inst.components.equippable.equipslot
@@ -468,7 +468,8 @@ local function common_fn(is_green)
     inst.entity:SetPristine()
 
     if is_green then
-        inst:SetPrefabNameOverride("nightpack")
+        inst.is_greenpack = true
+        inst:SetPrefabName("nightpack")
     end
 
     if not TheWorld.ismastersim then
