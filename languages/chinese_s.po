@@ -19,11 +19,6 @@ msgctxt "STRINGS.NAMES.DARKAMULET"
 msgid "Dark Amulet"
 msgstr "黑暗护符"
 
-#. STRINGS.NAMES.DARKLOTUS
-msgctxt "STRINGS.NAMES.DARKLOTUS"
-msgid "Dark Lotus"
-msgstr "暗之莲"
-
 #. STRINGS.NAMES.LIGHTGEM
 msgctxt "STRINGS.NAMES.LIGHTGEM"
 msgid "Light Gem"
@@ -43,16 +38,6 @@ msgstr "光明护符"
 msgctxt "STRINGS.NAMES.NIGHTPACK"
 msgid "Night Backpack"
 msgstr "影背包"
-
-#. STRINGS.NAMES.NIGHTBACK
-msgctxt "STRINGS.NAMES.NIGHTBACK"
-msgid "Night Backpack"
-msgstr "影背包"
-
-#. STRINGS.NAMES.BLACKLOTUS
-msgctxt "STRINGS.NAMES.BLACKLOTUS"
-msgid "Black Lotus"
-msgstr "暗之莲"
 
 #. STRINGS.CHARACTER_NAMES.civi
 msgctxt "STRINGS.CHARACTER_NAMES.civi"
