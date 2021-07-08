@@ -300,7 +300,7 @@ local StateFns = {
 
 local function ApplyState(inst, override_state)
     local state = override_state or inst._state
-    if not state then print("error: trying to apply nil state on", inst) return end
+    if not state or type(state) ~= "string" then print("error: trying to apply nil state on", inst) return end
     inst.components.inventoryitem:ChangeImageName("nightpack_"..state)
     inst.MiniMapEntity:SetIcon("nightpack_"..state..".tex")
     inst.AnimState:PlayAnimation(state)
@@ -439,7 +439,7 @@ local function OnPreLoad(inst, data)
 end
 
 local function OnSave(inst, data)
-    data._state = inst._state
+    data._state = type(inst._state) == "string" and inst._state
 end
 
 local function OnRemove(inst)
