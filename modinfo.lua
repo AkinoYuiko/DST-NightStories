@@ -1,20 +1,20 @@
-version = "1.2.2"
+version = "1.2.3"
 -- basic info --
 name = locale == "zh" and "暗夜故事集(角色篇)" or "Characters of Night Stories"
 author = locale == "zh" and "丁香女子学校" or "Civi, Tony, Lssss, kengyou_lei"
 description = locale == "zh" and "[版本: "..version..[[]
 
 更新内容: 
-- 优化黑白宝石影刀的图片显示.
+- 修复影背包图片显示问题.
 
 - 更新适配新版本 Glassic API.
 
 ]] or "[Version: "..version..[[]
 
 Changelog: 
-- Rework inventory images for Dark Sword with gems.
+- Fixed display issue with Night Backpack.
 
-- Update for new version of Glassic API.
+- Updated for new version of Glassic API.
 
 ]]
 
