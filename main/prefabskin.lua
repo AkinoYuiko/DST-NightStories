@@ -178,4 +178,5 @@ GlassicAPI.SkinHandler.AddModSkins({
     raincoat = { 
         {name = "raincoat_peggy", test_fn = GlassicAPI.SetExclusiveToPlayer("dummy") }
     },
+    dragonflychest = { "dragonflychest_gingerbread" },
 })

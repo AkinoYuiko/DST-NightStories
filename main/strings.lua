@@ -50,6 +50,8 @@ local strings = {
         dummy_none = "Dummy",
         greenamulet_heart = "Green Heart",
         raincoat_peggy = "Peggy's Raincoat",
+
+        dragonflychest_gingerbread = STRINGS.SKIN_NAMES.treasurechest_gingerbread,
     },
     SKIN_DESCRIPTIONS = 
     {

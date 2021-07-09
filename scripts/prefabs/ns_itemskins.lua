@@ -81,4 +81,17 @@ table.insert(prefabs, CreatePrefabSkin("raincoat_peggy", {
 	skin_tags = { "RAINCOAT" },
 }))
 
+table.insert(prefabs, CreatePrefabSkin("dragonflychest_gingerbread", {
+	base_prefab = "dragonflychest",
+	type = "item",
+    rarity = "Glassic",
+    build_name_override = "dragonflychest_gingerbread",
+    assets = {
+        Asset( "DYNAMIC_ANIM", "anim/dynamic/dragonflychest_gingerbread.zip"),
+        Asset( "PKGREF", "anim/dynamic/dragonflychest_gingerbread.dyn"),
+    },
+    init_fn = function(inst) GlassicAPI.BasicInitFn(inst, "dragonflychest_gingerbread") end,
+	skin_tags = { "DRAGONFLYCHEST" },
+}))
+
 return unpack(prefabs)
