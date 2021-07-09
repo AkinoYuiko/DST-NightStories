@@ -57,6 +57,9 @@ local GEM_IDS = table.invert(GEM_NAMES)
 local function InitContainer(inst)
     inst:AddTag("nogemsocket")
     inst:AddComponent("container")
+	if inst.SoundEmitter then
+		inst.SoundEmitter:PlaySound("dontstarve/common/telebase_gemplace")
+	end
     inst.components.container:WidgetSetup("nightsword")
     inst.components.container.canbeopened = false
 end
