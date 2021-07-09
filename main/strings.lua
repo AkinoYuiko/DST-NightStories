@@ -17,7 +17,7 @@ local strings = {
         BOOK_TOGGLEDOWNFALL = "Love of Rain",
         NIGHTMARE_SPEAR = "Nightmare Spear",
 
-        PROPSIGN = "Prop Sign"
+        -- PROPSIGN = "Prop Sign"
     },
     RECIPE_DESC =
     {
@@ -33,7 +33,7 @@ local strings = {
         BOOK_HARVEST = "Should help you harvest!",
         BOOK_TOGGLEDOWNFALL = "/toggledownfall",
         NIGHTMARE_SPEAR = "Disappear in a moment.",
-        PROPSIGN = STRINGS.CHARACTERS.GENERIC.DESCRIBE.HOMESIGN.GENERIC
+        -- PROPSIGN = STRINGS.CHARACTERS.GENERIC.DESCRIBE.HOMESIGN.GENERIC
 
     },
     SKIN_NAMES = 
