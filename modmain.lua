@@ -42,6 +42,7 @@ local main_files = {
 
 	"only_dazui",
 	"staff_action",
+    "tools_mutable",
 }
 
 for _, v in ipairs(main_files) do

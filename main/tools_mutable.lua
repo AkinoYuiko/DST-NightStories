@@ -1,0 +1,27 @@
+local MUTABLE_TARGETS = {
+	goldenaxe 		= "moonglassaxe",
+	goldenpickaxe 	= "moonglasspickaxe",
+	hammer 			= "moonglasshammer",
+}
+
+local function onmutatefn(inst, target)
+	if inst.skinname ~= nil then
+		local target_skins = GLOBAL.PREFAB_SKINS[target.prefab]
+		if target_skins then
+			local skin = target.prefab .. inst.skinname:gsub(inst.prefab, "")
+			if table.contains(target_skins, skin) then
+				TheSim:ReskinEntity(target.GUID, nil, skin)
+			end
+		end
+	end
+end
+
+for base, target in pairs(MUTABLE_TARGETS) do
+	AddPrefabPostInit(base, function(inst)
+		inst:AddTag("halloweenmoonmutable")
+		if not GLOBAL.TheWorld.ismastersim then return end
+		inst:AddComponent("halloweenmoonmutable")
+		inst.components.halloweenmoonmutable:SetPrefabMutated(target)
+		inst.components.halloweenmoonmutable:SetOnMutateFn(onmutatefn)
+	end)
+end
