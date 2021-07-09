@@ -106,13 +106,13 @@ local function blackhole()
     inst.AnimState:SetBank("staffs")
     inst.AnimState:SetBuild("blackholestaff")
     --inst.AnimState:OverrideSymbol("grass", "swap_nightcane", "grass")
-    inst.AnimState:PlayAnimation("redstaff")
+    inst.AnimState:PlayAnimation("blackholestaff")
     -- inst.AnimState:SetManualBB(15,-75,100,225)
 
     inst:AddTag("nopunch")
 	inst:AddTag("allow_action_on_impassable")
 
-    local swap_data = {sym_build = "blackholestaff", sym_name = "swap_blackholestaff", bank = "staffs", anim = "redstaff"}
+    local swap_data = {sym_build = "blackholestaff", sym_name = "swap_blackholestaff", bank = "staffs", anim = "blackholestaff"}
     MakeInventoryFloatable(inst, "med", 0.1, {0.9, 0.4, 0.9}, true, -13, swap_data)
 
 		-- inst.drawatlasoverride = "images/inventoryimages/blackholestaff.xml"

@@ -9,13 +9,15 @@ local strings = {
         DARKGEM = "Dark Gem",
         LIGHTGEM = "Light Gem",
 
-	MIOTAN = "Mio",
+        MIOTAN = "Mio",
 
-	DUMMY = "Dummy",
-	BLACKHOLESTAFF = "Blackhole Staff",
-	BOOK_HARVEST = "Season of Harvest",
-	BOOK_TOGGLEDOWNFALL = "Love of Rain",
-	NIGHTMARE_SPEAR = "Nightmare Spear",
+        DUMMY = "Dummy",
+        BLACKHOLESTAFF = "Blackhole Staff",
+        BOOK_HARVEST = "Season of Harvest",
+        BOOK_TOGGLEDOWNFALL = "Love of Rain",
+        NIGHTMARE_SPEAR = "Nightmare Spear",
+
+        PROPSIGN = "Prop Sign"
     },
     RECIPE_DESC =
     {
@@ -27,32 +29,34 @@ local strings = {
         DARKGEM = "Upgrades!",
         LIGHTGEM = "Degrades!",
 
-	BLACKHOLESTAFF = "Absorb everything!",
-	BOOK_HARVEST = "Should help you harvest!",
-	BOOK_TOGGLEDOWNFALL = "/toggledownfall",
-	NIGHTMARE_SPEAR = "Disappear in a moment.",
+        BLACKHOLESTAFF = "Absorb everything!",
+        BOOK_HARVEST = "Should help you harvest!",
+        BOOK_TOGGLEDOWNFALL = "/toggledownfall",
+        NIGHTMARE_SPEAR = "Disappear in a moment.",
+        PROPSIGN = STRINGS.CHARACTERS.GENERIC.DESCRIBE.HOMESIGN.GENERIC
+
     },
     SKIN_NAMES = 
     {
         civi_none = "Civi",
         armorskeleton_none = "Emperor's Formal",
-	skeletonhat_glass = "Crystal Skull",
+	    skeletonhat_glass = "Crystal Skull",
 
-	lantern_mio = "Camping Lamp",
-	miotan_classic = "Classic",
-	miotan_none = "Mio",
-	yellowamulet_heart = "Glowing Heart",
+        lantern_mio = "Camping Lamp",
+        miotan_classic = "Classic",
+        miotan_none = "Mio",
+        yellowamulet_heart = "Glowing Heart",
 
-	dummy_none = "Dummy",
-	greenamulet_heart = "Green Heart",
-	raincoat_peggy = "Peggy's Raincoat",
+        dummy_none = "Dummy",
+        greenamulet_heart = "Green Heart",
+        raincoat_peggy = "Peggy's Raincoat",
     },
     SKIN_DESCRIPTIONS = 
     {
         civi_none = "Civi can control magic, turning lights into darks, or turning darks into lights.",
-	miotan_classic = "Mio's V1 skin!",
-	miotan_none = "Mio cames from another world, where nightmare is everywhere.",
-	dummy_none = "Another girl comes from nightmare's world.",
+        miotan_classic = "Mio's V1 skin!",
+        miotan_none = "Mio cames from another world, where nightmare is everywhere.",
+        dummy_none = "Another girl comes from nightmare's world.",
 
     },
 	TABS = 
@@ -78,46 +82,46 @@ local strings = {
                 DARKGEM = "Get closer to dark!",
                 LIGHTGEM = "Get closer to light!",
                 
-		BLACKHOLESTAFF = "???",
-		BOOK_HARVEST = "H-A-R-V-E-S-T!",
-		BOOKTOGGLE_DOWNFALL = "/toggledownfall",
-		NIGHTMARE_SPEAR = "It looks like breaking.",
+                BLACKHOLESTAFF = "???",
+                BOOK_HARVEST = "H-A-R-V-E-S-T!",
+                BOOKTOGGLE_DOWNFALL = "/toggledownfall",
+                NIGHTMARE_SPEAR = "It looks like breaking.",
             }
         },
         CIVI = require("speech_civi"),
-	MIOTAN = require("speech_miotan"),
+	    MIOTAN = require("speech_miotan"),
         -- MIOTAN = require("speech_miotan")
     },
     -- character
     CHARACTER_NAMES = 
     {
         civi = "Civi",
-	miotan = "Mio",
-	dummy = "Dummy",
+        miotan = "Mio",
+        dummy = "Dummy",
     },
     CHARACTER_TITLES = 
     {
         civi = "Mogician of Light and Dark",
-	miotan = "The Nightmare Eater",
-	dummy = "The Nightmare Breaker",
+        miotan = "The Nightmare Eater",
+        dummy = "The Nightmare Breaker",
     },
     CHARACTER_ABOUTME = 
     {
         civi = "Civi can control magic, turning lights into darks, or turning darks into lights.",
-	miotan = "Mio cames from another world, where nightmare is everywhere.",
-	dummy = "Dummy also comes from the nightmare world. She is Mio's sister.",
+        miotan = "Mio cames from another world, where nightmare is everywhere.",
+        dummy = "Dummy also comes from the nightmare world. She is Mio's sister.",
     },
     CHARACTER_DESCRIPTIONS = 
     {
         civi = "*Travel between light and dark.\n*Can control nightmare.",
-	miotan = "*World treats her differently.\n*Friend of nightmare.",
-	dummy = "* Unfriendly to people.\n* Friend of nightmare.\n* Forgive.",
+        miotan = "*World treats her differently.\n*Friend of nightmare.",
+        dummy = "* Unfriendly to people.\n* Friend of nightmare.\n* Forgive.",
     },
     CHARACTER_QUOTES = 
     {
         civi = "\"Get close to Nightmare!\"",
-	miotan = "\"If I could eat nightmare!\"",
-	dummy = "\"No one plays with me...\"",
+        miotan = "\"If I could eat nightmare!\"",
+        dummy = "\"No one plays with me...\"",
     },
     CHARACTER_BIOS = 
     {
@@ -129,7 +133,7 @@ local strings = {
 		miotan =
 		{
 			{ title = "Birthday", desc = "July 17" },
-	    	{ title = "Favorite Food", desc = "None" }
+	    	{ title = "Favorite Food", desc = "None" },
 	    },
 		dummy = {
 			{ title = "Birthday", desc = "July 17" },

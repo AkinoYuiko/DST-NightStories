@@ -22,18 +22,11 @@ AddRecipe("civi_redgem",
 RECIPETABS.CELESTIAL, TECH.CELESTIAL_ONE, nil, nil, true,nil, "nightmaregem", nil, "redgem.tex", nil, "redgem")
 STRINGS.NAMES.CIVI_REDGEM = STRINGS.NAMES.REDGEM
 
-
 -- 蓝宝石 --
 AddRecipe("civi_bluegem",
 {Ingredient("redgem", 1),Ingredient("nightmarefuel", 1)},
 RECIPETABS.CELESTIAL, TECH.CELESTIAL_ONE, nil, nil, true,nil, "nightmaregem", nil, "bluegem.tex",nil, "bluegem" )
 STRINGS.NAMES.CIVI_BLUEGEM = STRINGS.NAMES.BLUEGEM
-
--- 影背包, 黑白护符 --
-AddRecipe("nightpack",
--- AddRecipe("glowingbackpack",
-{Ingredient("darkgem", 1), Ingredient("lightgem",1),Ingredient("nightmarefuel", 5)},
-RECIPETABS.CELESTIAL, TECH.CELESTIAL_ONE, nil, nil, true, nil, "nightmaregem")
 
 -- 黑暗护符 --
 AddRecipe("civi_darkamulet",
@@ -45,6 +38,7 @@ AddRecipe("darkamulet",
 {Ingredient("thulecite", 2), Ingredient("nightmarefuel", 3), Ingredient("darkgem",1)},
 RECIPETABS.ANCIENT, TECH.ANCIENT_TWO,  nil, nil, true)
 AllRecipes["darkamulet"].sortkey = AllRecipes["greenamulet"].sortkey + 0.1
+
 -- 光明护符 --
 AddRecipe("civi_lightamulet",
 {Ingredient("moonrocknugget", 3), Ingredient("nightmarefuel", 3), Ingredient("lightgem",1)},
@@ -56,7 +50,13 @@ AddRecipe("lightamulet",
 RECIPETABS.ANCIENT, TECH.ANCIENT_TWO,  nil, nil, true)
 AllRecipes["lightamulet"].sortkey = AllRecipes["darkamulet"].sortkey + 0.1
 
+-- 影背包 --
+AddRecipe("nightpack",
+-- AddRecipe("glowingbackpack",
+{Ingredient("darkgem", 1), Ingredient("lightgem",1),Ingredient("nightmarefuel", 5)},
+RECIPETABS.CELESTIAL, TECH.CELESTIAL_ONE, nil, nil, true, nil, "nightmaregem")
 
+-- Dummy Tab --
 local dummytab = AddRecipeTab("nightmaretab", 100, "images/hud/nightmaretab.xml", "nightmaretab.tex", "nm_breaker")
 STRINGS.TABS["nightmaretab"] = STRINGS.TABS["dummytab"]
 
@@ -100,4 +100,9 @@ ENV.AddStategraphPostInit("wilson", function(sg)
     end
 end)
 
+
+-- non-exclusive recipes --
+AddRecipe("propsign", 
+{Ingredient("log", 1), Ingredient("twigs", 1)}, 
+RECIPETABS.MAGIC, TECH.MAGIC_THREE)
 
