@@ -12,6 +12,7 @@ NIGHTSWORDGEM.fn = function(act)
         local item = doer.components.inventory:RemoveItem(act.invobject)
 
         target:InitContainer()
+		target.SoundEmitter:PlaySound("dontstarve/common/telebase_gemplace")
 
         if doer.components.inventory:IsItemEquipped(target) then
             if target.components.container then
@@ -57,9 +58,6 @@ local GEM_IDS = table.invert(GEM_NAMES)
 local function InitContainer(inst)
     inst:AddTag("nogemsocket")
     inst:AddComponent("container")
-	if inst.SoundEmitter then
-		inst.SoundEmitter:PlaySound("dontstarve/common/telebase_gemplace")
-	end
     inst.components.container:WidgetSetup("nightsword")
     inst.components.container.canbeopened = false
 end
@@ -161,6 +159,7 @@ local function onitemlose(inst)
 end
 
 ENV.AddPrefabPostInit("nightsword", function(inst)
+	inst.entity:AddSoundEmitter()
 
     inst.gem_id = net_tinybyte(inst.GUID, "nightsword.gem_id", "gemdirty")
     inst.add_container_event = net_event(inst.GUID, "add_container")

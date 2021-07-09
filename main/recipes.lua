@@ -99,10 +99,3 @@ ENV.AddStategraphPostInit("wilson", function(sg)
         -- end
     end
 end)
-
-
--- non-exclusive recipes --
---AddRecipe("propsign", 
---{Ingredient("log", 1), Ingredient("twigs", 1)}, 
---RECIPETABS.MAGIC, TECH.MAGIC_THREE)
-
