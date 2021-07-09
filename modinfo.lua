@@ -1,12 +1,13 @@
-version = "1.3.3"
+version = "1.3.4"
 -- basic info --
 name = locale == "zh" and "暗夜故事集" or "Night Stories"
 author = locale == "zh" and "丁香女子学校" or "Civi, Tony, Lssss, kengyou_lei"
 description = locale == "zh" and "[版本: "..version..[[]
 
 更新内容: 
-- 调整影背包切换状态的代码.
+- 修复一个可能导致崩溃的情况.
 
+- 调整影背包切换状态的代码.
 - 月岛药可以把金质工具变为玻璃工具.
 - 重做黑洞法杖的图标和动画.
 - 影背包代码重写.
@@ -14,8 +15,9 @@ description = locale == "zh" and "[版本: "..version..[[]
 ]] or "[Version: "..version..[[]
 
 Changelog: 
-- Update nightpack's code on switching states.
+- Fixed issue where nightsword miss SoundEmitter.
 
+- Update nightpack's code on switching states.
 - Mutatable golden tools.
 - Reworked blackholestaff's anim and image.
 - Reworked nightpack's code.
