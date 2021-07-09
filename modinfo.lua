@@ -1,15 +1,19 @@
-version = "1.4"
+version = "1.4.1"
 -- basic info --
 name = locale == "zh" and "暗夜故事集" or "Night Stories"
 author = locale == "zh" and "丁香女子学校" or "Civi, Tony, Lssss, kengyou_lei"
 description = locale == "zh" and "[版本: "..version..[[]
 
 更新内容: 
+- 修复一个显示问题
+
 - 偷偷新增一个皮肤.
 
 ]] or "[Version: "..version..[[]
 
-Changelog: 
+Changelog:
+- Fixed issue where the new skin misses keyhole.
+
 - Added a new skin.
 
 ]]
