@@ -172,6 +172,13 @@ local function nofuel(inst)
     inst:RenewState()
 end
 
+local function try_reopen(inst, owner)
+    if owner and inst.components.container:IsOpen() then
+        inst.components.container:Close()
+        inst.components.container:Open(owner)
+    end
+end
+
 local StateFns = {
 
     red = function(inst, owner)
@@ -210,6 +217,9 @@ local StateFns = {
     green = function(inst, owner)
         inst.is_greenpack:set(true)
         inst.components.container:WidgetSetup("krampus_sack")
+        if owner and not TheNet:IsDedicated() then  -- For client host
+            try_reopen(inst, owner)
+        end
     end,
 
     opal = function(inst, owner)
@@ -303,12 +313,16 @@ local function RenewState(inst, gemtype, isdummy)
     end
 
     local slots = inst.components.container.slots
-    local new_numslots = #newpack.components.container.slots
+    local need_compress = newpack.components.container:GetNumSlots() < inst.components.container:GetNumSlots()
     for slot, item in orderedPairs(slots) do
-        if not newpack.components.container:IsFull() or owner == nil then
-            newpack.components.container:GiveItem(item)
+        if need_compress then
+            if not newpack.components.container:IsFull() or owner == nil then
+                newpack.components.container:GiveItem(item)
+            else
+                owner.components.inventory:GiveItem(item, nil, owner:GetPosition())
+            end
         else
-            owner.components.inventory:GiveItem(item, nil, owner:GetPosition())
+            newpack.components.container:GiveItem(item, slot)
         end
     end
     inst:Remove()
@@ -346,9 +360,8 @@ local function OnGemTrade(inst, gemtype, isdummy, from_renew)
         if inst._state ~= gemtype then
             inst:RenewState(gemtype, isdummy)
             return
-        elseif owner and inst.components.container:IsOpen() then
-            inst.components.container:Close()
-            inst.components.container:Open(owner)
+        else
+            try_reopen(inst, owner)
         end
     end
 
