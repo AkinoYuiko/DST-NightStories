@@ -143,6 +143,13 @@ if not rawget(_G, "raincoat_clear_fn") then
     end
 end
 
+-- Meat Rack --
+local _meatrack_clear_fn = meatrack_clear_fn
+meatrack_clear_fn = function(inst)
+    inst.AnimState:SetBank("meat_rack")
+    return _meatrack_clear_fn(inst)
+end
+
 GlassicAPI.SkinHandler.AddModSkins({
     -- Civi
     civi = { 
@@ -179,4 +186,5 @@ GlassicAPI.SkinHandler.AddModSkins({
         {name = "raincoat_peggy", test_fn = GlassicAPI.SetExclusiveToPlayer("dummy") }
     },
     dragonflychest = { "dragonflychest_gingerbread" },
+    meatrack = { "meatrack_rice" },
 })

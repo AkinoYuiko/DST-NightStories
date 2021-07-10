@@ -94,4 +94,20 @@ table.insert(prefabs, CreatePrefabSkin("dragonflychest_gingerbread", {
 	skin_tags = { "DRAGONFLYCHEST" },
 }))
 
+table.insert(prefabs, CreatePrefabSkin("meatrack_rice", {
+	base_prefab = "meatrack",
+	type = "item",
+    rarity = "Glassic",
+    build_name_override = "meatrack_hermit",
+    assets = {
+        -- Asset( "DYNAMIC_ANIM", "anim/dynamic/dragonflychest_gingerbread.zip"),
+        -- Asset( "PKGREF", "anim/dynamic/dragonflychest_gingerbread.dyn"),
+    },
+    init_fn = function(inst)
+        inst.AnimState:SetBank("meatrack_hermit")
+        GlassicAPI.BasicInitFn(inst, "meatrack_rice", "meatrack_hermit")
+    end,
+	skin_tags = { "DRAGONFLYCHEST" },
+}))
+
 return unpack(prefabs)
