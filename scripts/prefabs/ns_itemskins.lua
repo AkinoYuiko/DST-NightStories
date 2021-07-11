@@ -24,22 +24,35 @@ table.insert(prefabs, CreatePrefabSkin("skeletonhat_glass", {
 	skin_tags = { "SKELETONHAT" },
 }))
 
-table.insert(prefabs, CreatePrefabSkin("lantern_mio", {
-    base_prefab = "lantern",
-    type = "item",
-    rarity = "Reward",
-    build_name_override = "lantern_mio",
+-- table.insert(prefabs, CreatePrefabSkin("lantern_mio", {
+--     base_prefab = "lantern",
+--     type = "item",
+--     rarity = "Reward",
+--     build_name_override = "lantern_mio",
+--     assets = {
+--         Asset( "ANIM", "anim/lantern_mio.zip" ),
+--         Asset( "ANIM", "anim/swap_lantern_mio.zip" ),
+--         Asset( "INV_IMAGE", "lantern_mio_lit" ),
+--         Asset( "INV_IMAGE", "lantern_mio" ),
+--     },
+--     init_fn = function(inst) lantern_mio_init_fn(inst, "lantern_mio") end,
+--     skin_tags = { "LANTERN" },
+--     -- prefabs = { "lantern_crystal_fx_held", "lantern_crystal_fx_ground", },
+--     -- fx_prefab = { "lantern_crystal_fx_held", "lantern_crystal_fx_ground", },
+--     -- release_group = 95,
+-- }))
+
+table.insert(prefabs, CreatePrefabSkin("nightstick_crystal", {
+	base_prefab = "nightstick",
+	type = "item",
+    rarity = "Glassic",
+    build_name_override = "nightstick",
     assets = {
-        Asset( "ANIM", "anim/lantern_mio.zip" ),
-        Asset( "ANIM", "anim/swap_lantern_mio.zip" ),
-        Asset( "INV_IMAGE", "lantern_mio_lit" ),
-        Asset( "INV_IMAGE", "lantern_mio" ),
+        Asset( "DYNAMIC_ANIM", "anim/dynamic/nightstick_crystal.zip" ),
+        Asset( "PKGREF", "anim/dynamic/nightstick_crystal.dyn" ),
     },
-    init_fn = function(inst) lantern_mio_init_fn(inst, "lantern_mio") end,
-    skin_tags = { "LANTERN" },
-    -- prefabs = { "lantern_crystal_fx_held", "lantern_crystal_fx_ground", },
-    -- fx_prefab = { "lantern_crystal_fx_held", "lantern_crystal_fx_ground", },
-    -- release_group = 95,
+    init_fn = function(inst) nightstick_init_fn(inst, "nightstick_crystal") end,
+	skin_tags = { "NIGHTSTICK"},
 }))
 
 table.insert(prefabs, CreatePrefabSkin("yellowamulet_heart", {

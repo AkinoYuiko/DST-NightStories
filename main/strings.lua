@@ -42,9 +42,10 @@ local strings = {
         armorskeleton_none = "Emperor's Formal",
 	    skeletonhat_glass = "Crystal Skull",
 
-        lantern_mio = "Camping Lamp",
         miotan_classic = "Classic",
         miotan_none = "Mio",
+        nightstick_crystal = "Mahou Shoujo Star",
+        lantern_mio = "Camping Lamp",
         yellowamulet_heart = "Glowing Heart",
 
         dummy_none = "Dummy",

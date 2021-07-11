@@ -77,6 +77,15 @@ lantern_init_fn = function(inst, ...)
     return unpack(rt_lantern_init)
 end
 
+-- nightstick 
+if not rawget(_G, "nightstick_clear_fn") then
+    nightstick_init_fn = function(inst, skinname, override_build)
+        GlassicAPI.BasicInitFn(inst, skinname, override_build or skinname, override_build or skinname)
+        GlassicAPI.BasicOnequipFn(inst, "hand", override_build or skinname, "swap_nightstick")
+    end
+    nightstick_clear_fn = function(inst) basic_clear_fn(inst, "nightstick") end
+end
+
 -- yellowamulet 
 if not rawget(_G, "yellowamulet_clear_fn") then
     yellowamulet_init_fn = function(inst, skinname, override_build)
@@ -168,8 +177,8 @@ GlassicAPI.SkinHandler.AddModSkins({
         "miotan_none",
         "miotan_classic"
     },
-    lantern = {
-        { name = "lantern_mio", test_fn = GlassicAPI.SetExclusiveToPlayer("miotan") }
+    nightstick = {
+        { name = "nightstick_crystal", test_fn = GlassicAPI.SetExclusiveToPlayer("miotan") }
     },
     yellowamulet = {
         { name = "yellowamulet_heart", test_fn = GlassicAPI.SetExclusiveToPlayer("miotan") }
