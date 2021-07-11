@@ -32,9 +32,9 @@ Assets = {
     Asset( "ATLAS", "images/saveslot_portraits/dummy.xml" ),
 }
 
-AddModCharacter("civi", "MALE")
 AddModCharacter("miotan", "FEMALE")
 AddModCharacter("dummy", "FEMALE")
+AddModCharacter("civi", "MALE")
 
 modimport("main/tuning.lua")
 modimport("main/strings.lua")

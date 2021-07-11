@@ -1,16 +1,20 @@
-version = "1.5.1"
+version = "1.5.2"
 -- basic info --
 name = locale == "zh" and "暗夜故事集" or "Night Stories"
 author = locale == "zh" and "丁香女子学校" or "Civi, Tony, Lssss, kengyou_lei"
 description = locale == "zh" and "[版本: "..version..[[]
 
 更新内容: 
+- 尝试移除角色动画包里的anim.bin
+
 - 修复一个图标缺失问题.
 - 新增一个肉架皮肤.
 
 ]] or "[Version: "..version..[[]
 
 Changelog:
+- Try to remove anim.bin from characters' anim pack.
+
 - Fixed an issue about icons missing.
 - Added a new skin for Meat Rack.
 
