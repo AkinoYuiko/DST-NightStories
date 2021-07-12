@@ -302,7 +302,7 @@ return {
 	-- ANNOUNCE_BOOMERANG = "Hyuyu!",
 	-- ANNOUNCE_NODANGERSLEEP = "Who could sleep when there's fun to be had?",
 	-- QUAGMIRE_ANNOUNCE_WIN = "Must be off now!",
-	-- ACTIONFAIL_GENERIC = "No, no, no.",
+	ACTIONFAIL_GENERIC = "Attempt to call a nil value.",
 	-- ANNOUNCE_ACCOMPLISHMENT_DONE = "I've done the thing!",
 	-- ANNOUNCE_DUSK = "The night soon approaches. Hyuyu!",
 	ANNOUNCE_ANTLION_SINKHOLE =
