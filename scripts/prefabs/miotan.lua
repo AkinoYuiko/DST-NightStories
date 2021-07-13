@@ -24,11 +24,18 @@ local function set_moisture(table)
 	end
 end
 
+local function find_nightmarefuel(item) return item.prefab == "nightmarefuel" end
 local function dryequipment(inst)
-	local inv = inst.components.inventory and inst.components.inventory.itemslots
-	if inv then set_moisture(inv) end
+	local inv = inst.components.inventory
+	if not inv then return end
 
-	local eslots = inst.components.inventory and inst.components.inventory.equipslots
+	for _, item in ipairs(inv:FindItems(find_nightmarefuel)) do
+		if item.components.inventoryitem and item.components.inventoryitem:IsWet() then
+			item.components.inventoryitemmoisture:SetMoisture(0)
+		end
+	end
+
+	local eslots = inv.equipslots
 	if eslots then set_moisture(eslots) end
 
 	local boat = inst.components.sailor and inst.components.sailor:GetBoat()
