@@ -80,10 +80,14 @@ end
 -- nightstick 
 if not rawget(_G, "nightstick_clear_fn") then
     nightstick_init_fn = function(inst, skinname, override_build)
+		GlassicAPI.SetFloatData(inst, { sym_build = override_build or skinname, sym_name = "swap_nightstick" })
         GlassicAPI.BasicInitFn(inst, skinname, override_build or skinname, override_build or skinname)
         GlassicAPI.BasicOnequipFn(inst, "hand", override_build or skinname, "swap_nightstick")
     end
-    nightstick_clear_fn = function(inst) basic_clear_fn(inst, "nightstick") end
+    nightstick_clear_fn = function(inst)
+		GlassicAPI.SetFloatData(inst, { sym_build = "swap_nightstick"})
+		basic_clear_fn(inst, "nightstick")
+	end
 end
 
 -- yellowamulet 
