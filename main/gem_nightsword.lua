@@ -186,7 +186,7 @@ ENV.AddPrefabPostInit("nightsword", function(inst)
             local item = container:RemoveItemBySlot(1)
             if item then
                 inst.components.finiteuses:SetPercent(1)
-                if inv and owner.prefab == "civi" then
+                if inv and ( owner.prefab == "civi" or ( owner.prefab == "miotan" and owner.boosted_task ) ) then
                     local gem = inv:FindItem(function(new_item) return new_item.prefab == item.prefab end)
                     if gem then
                         local slot_widget
