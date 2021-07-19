@@ -54,7 +54,8 @@ local strings = {
 
         dragonflychest_gingerbread = STRINGS.SKIN_NAMES.treasurechest_gingerbread,
         meatrack_rice = "Hermit's Meat Rack",
-        hivehat_pig_crwon = "Royal Crown",
+        hivehat_pigcrown = "Royal Crown",
+        hivehat_pigcrown_willow = "Dark Crown",
     },
     SKIN_DESCRIPTIONS = 
     {

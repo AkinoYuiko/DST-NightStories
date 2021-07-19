@@ -123,16 +123,29 @@ table.insert(prefabs, CreatePrefabSkin("meatrack_rice", {
 	skin_tags = { "MEATRACK" },
 }))
 
-table.insert(prefabs, CreatePrefabSkin("hivehat_pig_crown", {
+table.insert(prefabs, CreatePrefabSkin("hivehat_pigcrown", {
 	base_prefab = "hivehat",
 	type = "item",
     rarity = "Glassic",
-    build_name_override = "hivehat_pig_crown",
+    build_name_override = "hivehat_pigcrown",
     assets = {
-        Asset( "DYNAMIC_ANIM", "anim/dynamic/hivehat_pig_crown.zip"),
-        Asset( "PKGREF", "anim/dynamic/hivehat_pig_crown.dyn"),
+        Asset( "DYNAMIC_ANIM", "anim/dynamic/hivehat_pigcrown.zip"),
+        Asset( "PKGREF", "anim/dynamic/hivehat_pigcrown.dyn"),
     },
-    init_fn = function(inst) hivehat_init_fn(inst, "hivehat_pig_crown") end,
+    init_fn = function(inst) hivehat_init_fn(inst, "hivehat_pigcrown") end,
+	skin_tags = { "HIVEHAT" },
+}))
+
+table.insert(prefabs, CreatePrefabSkin("hivehat_pigcrown_willow", {
+	base_prefab = "hivehat",
+	type = "item",
+    rarity = "Glassic",
+    build_name_override = "hivehat_pigcrown",
+    assets = {
+        Asset( "DYNAMIC_ANIM", "anim/dynamic/hivehat_pigcrown_willow.zip"),
+        Asset( "PKGREF", "anim/dynamic/hivehat_pigcrown_willow.dyn"),
+    },
+    init_fn = function(inst) hivehat_init_fn(inst, "hivehat_pigcrown_willow") end,
 	skin_tags = { "HIVEHAT" },
 }))
 

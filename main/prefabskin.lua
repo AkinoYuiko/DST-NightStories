@@ -213,5 +213,5 @@ GlassicAPI.SkinHandler.AddModSkins({
     },
     dragonflychest = { "dragonflychest_gingerbread" },
     meatrack = { "meatrack_rice" },
-    hivehat = { "hivehat_pig_crown" },
+    hivehat = { "hivehat_pigcrown", "hivehat_pigcrown_willow" },
 })
