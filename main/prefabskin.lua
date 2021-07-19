@@ -178,8 +178,7 @@ end
 
 GlassicAPI.SkinHandler.AddModSkins({
     -- Civi
-    civi = { 
-        is_char = true,
+    civi = {
         "civi_none"
     },
     armorskeleton = {
@@ -190,7 +189,6 @@ GlassicAPI.SkinHandler.AddModSkins({
 	},
     -- Mio
     miotan = {
-        is_char = true,
         "miotan_none",
         "miotan_classic"
     },
@@ -202,7 +200,6 @@ GlassicAPI.SkinHandler.AddModSkins({
     },
     -- Dummy
     dummy = {
-        is_char = true,
         "dummy_none"
     },
     greenamulet = {
