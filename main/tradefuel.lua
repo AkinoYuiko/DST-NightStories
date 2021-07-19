@@ -73,8 +73,8 @@ end
 
 local function fn(inst)
     if not TheWorld.ismastersim then return end
-    inst.launchitem = UpvalueHacker.GetUpvalue(inst.components.trader.onaccept, "ontradeforgold", "launchitem")
-    UpvalueHacker.SetUpvalue(inst.components.trader.onaccept, new_ontradeforgold, "ontradeforgold")
+    inst.launchitem = UpvalueHacker.GetUpvalue(inst.components.trader.onaccept, "ontradeforgold.launchitem")
+    UpvalueHacker.SetUpvalue(inst.components.trader.onaccept, "ontradeforgold", new_ontradeforgold)
 end
 
 ENV.AddPrefabPostInit("pigking", fn)
