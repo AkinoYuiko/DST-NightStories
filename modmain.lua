@@ -48,17 +48,3 @@ local main_files = {
 for _, v in ipairs(main_files) do
     modimport("main/"..v)
 end
-
--- temp code for fish farm in IA
-AddPrefabPostInit("fish_farm", function(inst)
-
-    inst.current_volume = GLOBAL.net_tinybyte(inst.GUID, "current_volume")
-
-    if not GLOBAL.TheWorld.ismastersim then return end
-
-    inst.current_volume:set(inst.components.breeder.volume)
-    inst:ListenForEvent("vischange", function(inst)
-        inst.current_volume:set(inst.components.breeder.volume)
-    end)
-
-end)

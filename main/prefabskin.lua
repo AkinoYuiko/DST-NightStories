@@ -163,6 +163,19 @@ meatrack_clear_fn = function(inst)
     return _meatrack_clear_fn(inst)
 end
 
+
+if not rawget(_G, "hivehat_clear_fn") then
+    hivehat_init_fn = function(inst, skinname, override_build)
+        GlassicAPI.BasicInitFn(inst, skinname, override_build or skinname, override_build or skinname)
+        GlassicAPI.BasicOnequipFn(inst, "hat", override_build or skinname)
+    end
+    hivehat_clear_fn = function(inst)
+        inst.AnimState:SetBuild("hat_hive")
+        if not TheWorld.ismastersim then return end
+        inst.components.inventoryitem:ChangeImageName()
+    end
+end
+
 GlassicAPI.SkinHandler.AddModSkins({
     -- Civi
     civi = { 
@@ -200,4 +213,5 @@ GlassicAPI.SkinHandler.AddModSkins({
     },
     dragonflychest = { "dragonflychest_gingerbread" },
     meatrack = { "meatrack_rice" },
+    hivehat = { "hivehat_pig_crown" },
 })

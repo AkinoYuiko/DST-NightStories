@@ -120,7 +120,20 @@ table.insert(prefabs, CreatePrefabSkin("meatrack_rice", {
         inst.AnimState:SetBank("meatrack_hermit")
         GlassicAPI.BasicInitFn(inst, "meatrack_rice", "meatrack_hermit")
     end,
-	skin_tags = { "DRAGONFLYCHEST" },
+	skin_tags = { "MEATRACK" },
+}))
+
+table.insert(prefabs, CreatePrefabSkin("hivehat_pig_crown", {
+	base_prefab = "hivehat",
+	type = "item",
+    rarity = "Glassic",
+    build_name_override = "hivehat_pig_crown",
+    assets = {
+        Asset( "DYNAMIC_ANIM", "anim/dynamic/hivehat_pig_crown.zip"),
+        Asset( "PKGREF", "anim/dynamic/hivehat_pig_crown.dyn"),
+    },
+    init_fn = function(inst) hivehat_init_fn(inst, "hivehat_pig_crown") end,
+	skin_tags = { "HIVEHAT" },
 }))
 
 return unpack(prefabs)
