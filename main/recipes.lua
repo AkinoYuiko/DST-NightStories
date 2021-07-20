@@ -57,7 +57,7 @@ AddRecipe("nightpack",
 RECIPETABS.CELESTIAL, TECH.CELESTIAL_ONE, nil, nil, true, nil, "nightmaregem")
 
 -- Dummy Tab --
-local dummytab = AddRecipeTab("nightmaretab", 100, "images/hud/nightmaretab.xml", "nightmaretab.tex", "nm_breaker")
+local dummytab = AddRecipeTab("nightmaretab", 999, "images/hud/nightmaretab.xml", "nightmaretab.tex", "nm_breaker")
 STRINGS.TABS["nightmaretab"] = STRINGS.TABS["dummytab"]
 
 -- 灵魂剥离 --
