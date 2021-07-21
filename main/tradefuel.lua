@@ -71,14 +71,8 @@ local function new_ontradeforgold(inst, item, giver)
     end
 end
 
-local function fn(inst)
+ENV.AddPrefabPostInit("pigking", function(inst)
     if not TheWorld.ismastersim then return end
     inst.launchitem = UpvalueHacker.GetUpvalue(inst.components.trader.onaccept, "ontradeforgold.launchitem")
     UpvalueHacker.SetUpvalue(inst.components.trader.onaccept, "ontradeforgold", new_ontradeforgold)
-end
-
-ENV.AddPrefabPostInit("pigking", fn)
-
-if KnownModIndex:IsModEnabled("workshop-1754437018") then
-    ENV.AddPrefabPostInit("wildboreking", fn)
-end
+end)
