@@ -209,6 +209,6 @@ GlassicAPI.SkinHandler.AddModSkins({
         {name = "raincoat_peggy", test_fn = GlassicAPI.SetExclusiveToPlayer("dummy") }
     },
     dragonflychest = { "dragonflychest_gingerbread" },
-    meatrack = { "meatrack_rice" },
+    meatrack = { "meatrack_hermit_red", "meatrack_hermit_white" },
     hivehat = { "hivehat_pigcrown", "hivehat_pigcrown_willow" },
 })

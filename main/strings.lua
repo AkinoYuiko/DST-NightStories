@@ -53,7 +53,8 @@ local strings = {
         raincoat_peggy = "Peggy's Raincoat",
 
         dragonflychest_gingerbread = STRINGS.SKIN_NAMES.treasurechest_gingerbread,
-        meatrack_rice = "Hermit's Meat Rack",
+        meatrack_hermit_red = "Hermit's Meat Rack",
+        meatrack_hermit_white = "Hermit's Meat Rack",
         hivehat_pigcrown = "Royal Crown",
         hivehat_pigcrown_willow = "Dark Crown",
     },

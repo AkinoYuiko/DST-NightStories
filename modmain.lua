@@ -12,7 +12,7 @@ PrefabFiles = {
     "blackholestaff",
     "nightmare_spear",
 
-    "ns_itemskins",
+    "ns_skins",
 }
 -- ThePlayer.AnimState:OverrideSymbol("swap_object","nightstick_crystal","swap_nightstick")
 GlassicAPI.InitCharacterAssets("miotan", "FEMALE", Assets)
