@@ -1,7 +1,7 @@
 version = "1.8"
 -- basic info --
 name = locale == "zh" and "暗夜故事集" or "Night Stories"
-author = locale == "zh" and "丁香女子学校" or "Civi, Tony, Lssss, kengyou_lei"
+author = "丁香女子学校"
 description = locale == "zh" and "[版本: "..version..[[]
 
 更新内容:
