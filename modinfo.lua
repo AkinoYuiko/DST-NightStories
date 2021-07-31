@@ -1,16 +1,16 @@
-version = "1.8"
+version = "1.9"
 -- basic info --
 name = locale == "zh" and "暗夜故事集" or "Night Stories"
 author = "丁香女子学校"
 description = locale == "zh" and "[版本: "..version..[[]
 
 更新内容:
-- 肉架皮肤配色及高清化.
+- 重做野营灯皮肤(澪专属).
 
 ]] or "[Version: "..version..[[]
 
 Changelog:
-- HD Skin "Hermit's Meat Rack".
+- HD Skin "Camping Lamp".
 
 ]]
 

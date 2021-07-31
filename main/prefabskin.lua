@@ -103,8 +103,8 @@ end
 lantern_mio_init_fn = function(inst, build)
     local function onequipfn(inst, data)
         local owner = data.owner
-        owner.AnimState:OverrideSymbol("swap_object", "swap_"..build, "swap_lantern")
-        owner.AnimState:OverrideSymbol("lantern_overlay", "swap_"..build, "lantern_overlay")
+        owner.AnimState:OverrideSymbol("swap_object", build, "swap_lantern")
+        owner.AnimState:OverrideSymbol("lantern_overlay", build, "lantern_overlay")
     end
     
     local function lantern_on(inst)
@@ -118,7 +118,7 @@ lantern_mio_init_fn = function(inst, build)
     inst.skinname = build
     inst.components.inventoryitem:ChangeImageName(inst:GetSkinName())
     -- inst.components.inventoryitem.atlasname = GetInventoryItemAtlas(inst:GetSkinName())
-    inst.AnimState:SetBank(build)
+    -- inst.AnimState:SetBank(build)
     inst.AnimState:SetBuild(build)
 
     inst:ListenForEvent("equipped", onequipfn)
@@ -191,6 +191,9 @@ GlassicAPI.SkinHandler.AddModSkins({
     miotan = {
         "miotan_none",
         "miotan_classic"
+    },
+    lantern = {
+        { name = "lantern_mio", test_fn = GlassicAPI.SetExclusiveToPlayer("miotan") }
     },
     nightstick = {
         { name = "nightstick_crystal", test_fn = GlassicAPI.SetExclusiveToPlayer("miotan") }
