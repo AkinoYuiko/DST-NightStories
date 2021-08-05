@@ -1,16 +1,16 @@
-version = "1.10"
+version = "1.11"
 -- basic info --
 name = locale == "zh" and "暗夜故事集" or "Night Stories"
 author = "丁香女子学校"
 description = locale == "zh" and "[版本: "..version..[[]
 
 更新内容:
-- 更新精简人物动画包.
+- 给野营灯皮肤新增粒子特效.
 
 ]] or "[Version: "..version..[[]
 
 Changelog:
-- Update characters' anim pack.
+- Added FX for Camping Lamp.
 
 ]]
 

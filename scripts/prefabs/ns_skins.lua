@@ -27,17 +27,21 @@ table.insert(prefabs, CreatePrefabSkin("skeletonhat_glass", {
 table.insert(prefabs, CreatePrefabSkin("lantern_mio", {
     base_prefab = "lantern",
     type = "item",
-    rarity = "Reward",
     build_name_override = "lantern_mio",
+    rarity = "Reward",
     assets = {
         -- Asset( "ANIM", "anim/lantern_mio.zip" ),
         Asset( "DYNAMIC_ANIM", "anim/dynamic/lantern_mio.zip" ),
         Asset( "PKGREF", "anim/dynamic/lantern_mio.dyn" ),
     },
-    init_fn = function(inst) lantern_mio_init_fn(inst, "lantern_mio") end,
+    prefabs = { "lantern_mio_fx_held", "lantern_mio_fx_ground", },
+    init_fn = function(inst) ns_lantern_init_fn(inst, "lantern_mio", { "firefly" }, Vector3(67, -7, 0), {195 / 255, 190 / 255, 120 / 255}) end,
     skin_tags = { "LANTERN" },
-    -- prefabs = { "lantern_crystal_fx_held", "lantern_crystal_fx_ground", },
-    -- fx_prefab = { "lantern_crystal_fx_held", "lantern_crystal_fx_ground", },
+    fx_prefab = { "lantern_mio_fx_held", "lantern_mio_fx_ground", },
+	-- prefabs = { "lantern_winter_fx_held", "lantern_winter_fx_ground", },
+    -- init_fn = function(inst) ns_lantern_init_fn(inst, "lantern_mio", { "snowflake" }, Vector3(67, -7, 0), {195 / 255, 190 / 255, 120 / 255}) end,
+    -- skin_tags = { "LANTERN" },
+	-- fx_prefab = { "lantern_winter_fx_held", "lantern_winter_fx_ground", },
     -- release_group = 95,
 }))
 

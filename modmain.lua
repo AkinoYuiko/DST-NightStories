@@ -6,6 +6,7 @@ PrefabFiles = {
     "nightpack",
 
     "miotan",
+    "lantern_mio_fx",
     
     "dummy",
     "dummy_books",
