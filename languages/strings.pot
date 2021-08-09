@@ -8,14 +8,9 @@ msgctxt "STRINGS.NAMES.DARKAMULET"
 msgid "Dark Amulet"
 msgstr ""
 
-#. STRINGS.NAMES.LIGHTGEM
-msgctxt "STRINGS.NAMES.LIGHTGEM"
-msgid "Light Gem"
-msgstr ""
-
-#. STRINGS.NAMES.DARKGEM
-msgctxt "STRINGS.NAMES.DARKGEM"
-msgid "Dark Gem"
+#. STRINGS.NAMES.BOOK_HARVEST
+msgctxt "STRINGS.NAMES.BOOK_HARVEST"
+msgid "Season of Harvest"
 msgstr ""
 
 #. STRINGS.NAMES.LIGHTAMULET
@@ -23,9 +18,54 @@ msgctxt "STRINGS.NAMES.LIGHTAMULET"
 msgid "Light Amulet"
 msgstr ""
 
+#. STRINGS.NAMES.MIOTAN
+msgctxt "STRINGS.NAMES.MIOTAN"
+msgid "Mio"
+msgstr ""
+
+#. STRINGS.NAMES.NIGHTMARE_SPEAR
+msgctxt "STRINGS.NAMES.NIGHTMARE_SPEAR"
+msgid "Nightmare Spear"
+msgstr ""
+
+#. STRINGS.NAMES.BOOK_TOGGLEDOWNFALL
+msgctxt "STRINGS.NAMES.BOOK_TOGGLEDOWNFALL"
+msgid "Love of Rain"
+msgstr ""
+
+#. STRINGS.NAMES.DUMMY
+msgctxt "STRINGS.NAMES.DUMMY"
+msgid "Dummy"
+msgstr ""
+
+#. STRINGS.NAMES.CIVI
+msgctxt "STRINGS.NAMES.CIVI"
+msgid "Civi"
+msgstr ""
+
+#. STRINGS.NAMES.BLACKHOLESTAFF
+msgctxt "STRINGS.NAMES.BLACKHOLESTAFF"
+msgid "Blackhole Staff"
+msgstr ""
+
+#. STRINGS.NAMES.LIGHTGEM
+msgctxt "STRINGS.NAMES.LIGHTGEM"
+msgid "Light Gem"
+msgstr ""
+
 #. STRINGS.NAMES.NIGHTPACK
 msgctxt "STRINGS.NAMES.NIGHTPACK"
 msgid "Night Backpack"
+msgstr ""
+
+#. STRINGS.NAMES.DARKGEM
+msgctxt "STRINGS.NAMES.DARKGEM"
+msgid "Dark Gem"
+msgstr ""
+
+#. STRINGS.CHARACTER_NAMES.dummy
+msgctxt "STRINGS.CHARACTER_NAMES.dummy"
+msgid "Dummy"
 msgstr ""
 
 #. STRINGS.CHARACTER_NAMES.civi
@@ -33,29 +73,34 @@ msgctxt "STRINGS.CHARACTER_NAMES.civi"
 msgid "Civi"
 msgstr ""
 
+#. STRINGS.CHARACTER_NAMES.miotan
+msgctxt "STRINGS.CHARACTER_NAMES.miotan"
+msgid "Mio"
+msgstr ""
+
+#. STRINGS.CHARACTER_DESCRIPTIONS.dummy
+msgctxt "STRINGS.CHARACTER_DESCRIPTIONS.dummy"
+msgid "* Unfriendly to people.\\n* Friend of nightmare.\\n* Forgive."
+msgstr ""
+
 #. STRINGS.CHARACTER_DESCRIPTIONS.civi
 msgctxt "STRINGS.CHARACTER_DESCRIPTIONS.civi"
-msgid "Civi"
+msgid "*Travel between light and dark.\\n*Can control nightmare."
 msgstr ""
 
-#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.BLACKLOTUS
-msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.BLACKLOTUS"
-msgid "Is it real?"
+#. STRINGS.CHARACTER_DESCRIPTIONS.miotan
+msgctxt "STRINGS.CHARACTER_DESCRIPTIONS.miotan"
+msgid "*World treats her differently.\\n*Friend of nightmare."
 msgstr ""
 
-#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKLOTUS
-msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKLOTUS"
-msgid "Is it real?"
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKAMULET
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKAMULET"
+msgid "I can feel the darkness coming."
 msgstr ""
 
-#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKGEM
-msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKGEM"
-msgid "Get closer to dark!"
-msgstr ""
-
-#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTGEM
-msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTGEM"
-msgid "Get closer to light!"
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.BOOK_HARVEST
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.BOOK_HARVEST"
+msgid "H-A-R-V-E-S-T!"
 msgstr ""
 
 #. STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTAMULET
@@ -63,9 +108,24 @@ msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTAMULET"
 msgid "I can feel the darkness away."
 msgstr ""
 
-#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTLOTUS
-msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTLOTUS"
-msgid "Is it real?"
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.NIGHTMARE_SPEAR
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.NIGHTMARE_SPEAR"
+msgid "It looks like breaking."
+msgstr ""
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTGEM
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTGEM"
+msgid "Get closer to light!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.BOOKTOGGLE_DOWNFALL
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.BOOKTOGGLE_DOWNFALL"
+msgid "/toggledownfall"
+msgstr ""
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.BLACKHOLESTAFF
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.BLACKHOLESTAFF"
+msgid "???"
 msgstr ""
 
 #. STRINGS.CHARACTERS.GENERIC.DESCRIBE.NIGHTPACK
@@ -73,9 +133,149 @@ msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.NIGHTPACK"
 msgid "It seems to need some glowing materials."
 msgstr ""
 
-#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKAMULET
-msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKAMULET"
-msgid "I can feel the darkness coming."
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKGEM
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKGEM"
+msgid "Get closer to dark!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_WAYTOOMANYBIRDS
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_WAYTOOMANYBIRDS"
+msgid "I can't see any birds in the sky!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_DETACH_BUFF_ELECTRICATTACK
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_DETACH_BUFF_ELECTRICATTACK"
+msgid "Another zappy dish?"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_HOUNDS
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_HOUNDS"
+msgid "Watch out, hounds're coming!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_DESPAWN
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_DESPAWN"
+msgid "Switch? Switch?! Switch!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_INV_FULL
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_INV_FULL"
+msgid "Anyone want some free stuffs?"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL_GENERIC
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL_GENERIC"
+msgid "Attempt to call a nil value."
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.LUREPLANT
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.LUREPLANT"
+msgid "Trash can, or maybe a harvester."
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.NIGHTMAREFUEL
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.NIGHTMAREFUEL"
+msgid "How I LOVE it!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.PANFLUTE
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.PANFLUTE"
+msgid "Sleepy time!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.MIOTAN.GHOST
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.MIOTAN.GHOST"
+msgid "Well, maybe you should switch to WX-78 next time XD."
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.PLAYER.GENERIC
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.PLAYER.GENERIC"
+msgid "It's %s!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.PLAYER.MURDERER
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.PLAYER.MURDERER"
+msgid "I'm not deliciouse, don't eat me!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.PLAYER.FIRESTARTER
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.PLAYER.FIRESTARTER"
+msgid "c_kick()!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.PLAYER.ATTACKER
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.PLAYER.ATTACKER"
+msgid "I'm not deliciouse, don't eat me!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.PLAYER.REVIVER
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.PLAYER.REVIVER"
+msgid "Please don't, we want life giving amulets!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.PLAYER.GHOST
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.PLAYER.GHOST"
+msgid "Maybe I can write a 正 on your face, haha."
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.HOMESIGN.GENERIC
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.HOMESIGN.GENERIC"
+msgid "Ha! :blpp:"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.HOMESIGN.UNWRITTEN
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.HOMESIGN.UNWRITTEN"
+msgid "There's no way we don't have a :blpp: here."
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.HOMESIGN.BURNT
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.HOMESIGN.BURNT"
+msgid "My :blpp:! Noooo!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.MOLEHAT
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.MOLEHAT"
+msgid "It lets me see how other people get hit by charlie!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_ENTER_DARK
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_ENTER_DARK"
+msgid "Woo, cool!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_TALK_TO_PLANTS.5
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_TALK_TO_PLANTS.5"
+msgid "You know what? We have a EMOJI system mod!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_TOOMANYBIRDS
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_TOOMANYBIRDS"
+msgid "I don't think it's smart to read it now."
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_ATTACH_BUFF_ELECTRICATTACK
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_ATTACH_BUFF_ELECTRICATTACK"
+msgid "I want some goat!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_EAT.STALE
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_EAT.STALE"
+msgid "Don't do that!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_ENTER_LIGHT
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_ENTER_LIGHT"
+msgid "Noo! I still wanna play!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_COLD
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_COLD"
+msgid "Help, I need some nightmare fuels!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE_TOODARK
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE_TOODARK"
+msgid "What is that?"
 msgstr ""
 
 #. STRINGS.CHARACTERS.CIVI.ANNOUNCE_CRAFTING_FAIL
@@ -128,6 +328,41 @@ msgctxt "STRINGS.CHARACTERS.CIVI.DESCRIBE.MOOSE"
 msgid "󰂡"
 msgstr ""
 
+#. STRINGS.CHARACTER_SURVIVABILITY.dummy
+msgctxt "STRINGS.CHARACTER_SURVIVABILITY.dummy"
+msgid "None"
+msgstr ""
+
+#. STRINGS.CHARACTER_SURVIVABILITY.civi
+msgctxt "STRINGS.CHARACTER_SURVIVABILITY.civi"
+msgid "Slim"
+msgstr ""
+
+#. STRINGS.CHARACTER_SURVIVABILITY.miotan
+msgctxt "STRINGS.CHARACTER_SURVIVABILITY.miotan"
+msgid "Grim"
+msgstr ""
+
+#. STRINGS.CHARACTER_BIOS.dummy.1.title
+msgctxt "STRINGS.CHARACTER_BIOS.dummy.1.title"
+msgid "Birthday"
+msgstr ""
+
+#. STRINGS.CHARACTER_BIOS.dummy.1.desc
+msgctxt "STRINGS.CHARACTER_BIOS.dummy.1.desc"
+msgid "July 17"
+msgstr ""
+
+#. STRINGS.CHARACTER_BIOS.dummy.2.title
+msgctxt "STRINGS.CHARACTER_BIOS.dummy.2.title"
+msgid "Favorite Food"
+msgstr ""
+
+#. STRINGS.CHARACTER_BIOS.dummy.2.desc
+msgctxt "STRINGS.CHARACTER_BIOS.dummy.2.desc"
+msgid "Grim Galette"
+msgstr ""
+
 #. STRINGS.CHARACTER_BIOS.civi.1.title
 msgctxt "STRINGS.CHARACTER_BIOS.civi.1.title"
 msgid "Birthday"
@@ -148,9 +383,49 @@ msgctxt "STRINGS.CHARACTER_BIOS.civi.2.desc"
 msgid "Lv.0 - Bone Bouillon\\nLv.1 - Meatballs\\nLv.2 - Volt Goat Chaud-Froid"
 msgstr ""
 
-#. STRINGS.RECIPE_DESC.BLACKLOTUS
-msgctxt "STRINGS.RECIPE_DESC.BLACKLOTUS"
-msgid "Shine in the darkness."
+#. STRINGS.CHARACTER_BIOS.miotan.1.title
+msgctxt "STRINGS.CHARACTER_BIOS.miotan.1.title"
+msgid "Birthday"
+msgstr ""
+
+#. STRINGS.CHARACTER_BIOS.miotan.1.desc
+msgctxt "STRINGS.CHARACTER_BIOS.miotan.1.desc"
+msgid "July 17"
+msgstr ""
+
+#. STRINGS.CHARACTER_BIOS.miotan.2.title
+msgctxt "STRINGS.CHARACTER_BIOS.miotan.2.title"
+msgid "Favorite Food"
+msgstr ""
+
+#. STRINGS.CHARACTER_BIOS.miotan.2.desc
+msgctxt "STRINGS.CHARACTER_BIOS.miotan.2.desc"
+msgid "None"
+msgstr ""
+
+#. STRINGS.CHARACTER_QUOTES.dummy
+msgctxt "STRINGS.CHARACTER_QUOTES.dummy"
+msgid "\\"No one plays with me...\\""
+msgstr ""
+
+#. STRINGS.CHARACTER_QUOTES.civi
+msgctxt "STRINGS.CHARACTER_QUOTES.civi"
+msgid "\\"Get close to Nightmare!\\""
+msgstr ""
+
+#. STRINGS.CHARACTER_QUOTES.miotan
+msgctxt "STRINGS.CHARACTER_QUOTES.miotan"
+msgid "\\"If I could eat nightmare!\\""
+msgstr ""
+
+#. STRINGS.RECIPE_DESC.DARKAMULET
+msgctxt "STRINGS.RECIPE_DESC.DARKAMULET"
+msgid "Powerful but dark."
+msgstr ""
+
+#. STRINGS.RECIPE_DESC.BOOK_HARVEST
+msgctxt "STRINGS.RECIPE_DESC.BOOK_HARVEST"
+msgid "Should help you harvest!"
 msgstr ""
 
 #. STRINGS.RECIPE_DESC.LIGHTAMULET
@@ -158,9 +433,19 @@ msgctxt "STRINGS.RECIPE_DESC.LIGHTAMULET"
 msgid "Keep away from dark things."
 msgstr ""
 
-#. STRINGS.RECIPE_DESC.DARKGEM
-msgctxt "STRINGS.RECIPE_DESC.DARKGEM"
-msgid "Upgrades!"
+#. STRINGS.RECIPE_DESC.NIGHTMARE_SPEAR
+msgctxt "STRINGS.RECIPE_DESC.NIGHTMARE_SPEAR"
+msgid "Disappear in a moment."
+msgstr ""
+
+#. STRINGS.RECIPE_DESC.BLACKHOLESTAFF
+msgctxt "STRINGS.RECIPE_DESC.BLACKHOLESTAFF"
+msgid "Absorb everything!"
+msgstr ""
+
+#. STRINGS.RECIPE_DESC.BOOK_TOGGLEDOWNFALL
+msgctxt "STRINGS.RECIPE_DESC.BOOK_TOGGLEDOWNFALL"
+msgid "/toggledownfall"
 msgstr ""
 
 #. STRINGS.RECIPE_DESC.LIGHTGEM
@@ -168,9 +453,9 @@ msgctxt "STRINGS.RECIPE_DESC.LIGHTGEM"
 msgid "Degrades!"
 msgstr ""
 
-#. STRINGS.RECIPE_DESC.DARKAMULET
-msgctxt "STRINGS.RECIPE_DESC.DARKAMULET"
-msgid "Powerful but dark."
+#. STRINGS.RECIPE_DESC.DARKGEM
+msgctxt "STRINGS.RECIPE_DESC.DARKGEM"
+msgid "Upgrades!"
 msgstr ""
 
 #. STRINGS.RECIPE_DESC.REDGEM
@@ -188,9 +473,24 @@ msgctxt "STRINGS.RECIPE_DESC.BLUEGEM"
 msgid "Change fire into ice."
 msgstr ""
 
-#. STRINGS.CHARACTER_QUOTES.civi
-msgctxt "STRINGS.CHARACTER_QUOTES.civi"
-msgid "Civi"
+#. STRINGS.CHARACTER_ABOUTME.dummy
+msgctxt "STRINGS.CHARACTER_ABOUTME.dummy"
+msgid "Dummy also comes from the nightmare world. She is Mio's sister."
+msgstr ""
+
+#. STRINGS.CHARACTER_ABOUTME.civi
+msgctxt "STRINGS.CHARACTER_ABOUTME.civi"
+msgid "Civi can control magic, turning lights into darks, or turning darks into lights."
+msgstr ""
+
+#. STRINGS.CHARACTER_ABOUTME.miotan
+msgctxt "STRINGS.CHARACTER_ABOUTME.miotan"
+msgid "Mio cames from another world, where nightmare is everywhere."
+msgstr ""
+
+#. STRINGS.SKIN_DESCRIPTIONS.dummy_none
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.dummy_none"
+msgid "Another girl comes from nightmare's world."
 msgstr ""
 
 #. STRINGS.SKIN_DESCRIPTIONS.civi_none
@@ -198,14 +498,29 @@ msgctxt "STRINGS.SKIN_DESCRIPTIONS.civi_none"
 msgid "Civi can control magic, turning lights into darks, or turning darks into lights."
 msgstr ""
 
-#. STRINGS.CHARACTER_TITLES.civi
-msgctxt "STRINGS.CHARACTER_TITLES.civi"
-msgid "Civi"
+#. STRINGS.SKIN_DESCRIPTIONS.miotan_classic
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.miotan_classic"
+msgid "Mio's V1 skin!"
 msgstr ""
 
-#. STRINGS.CHARACTER_ABOUTME.civi
-msgctxt "STRINGS.CHARACTER_ABOUTME.civi"
-msgid "Civi"
+#. STRINGS.SKIN_DESCRIPTIONS.miotan_none
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.miotan_none"
+msgid "Mio cames from another world, where nightmare is everywhere."
+msgstr ""
+
+#. STRINGS.CHARACTER_TITLES.dummy
+msgctxt "STRINGS.CHARACTER_TITLES.dummy"
+msgid "The Nightmare Breaker"
+msgstr ""
+
+#. STRINGS.CHARACTER_TITLES.civi
+msgctxt "STRINGS.CHARACTER_TITLES.civi"
+msgid "Mogician of Light and Dark"
+msgstr ""
+
+#. STRINGS.CHARACTER_TITLES.miotan
+msgctxt "STRINGS.CHARACTER_TITLES.miotan"
+msgid "The Nightmare Eater"
 msgstr ""
 
 #. STRINGS.CIVI_GEMS.ALREADY_LIGHT
@@ -228,9 +543,74 @@ msgctxt "STRINGS.CIVI_GEMS.FEEL_DARK"
 msgid "I felt the dark."
 msgstr ""
 
+#. STRINGS.TABS.dummytab
+msgctxt "STRINGS.TABS.dummytab"
+msgid "Nightmare"
+msgstr ""
+
+#. STRINGS.SKIN_NAMES.yellowamulet_heart
+msgctxt "STRINGS.SKIN_NAMES.yellowamulet_heart"
+msgid "Glowing Heart"
+msgstr ""
+
+#. STRINGS.SKIN_NAMES.meatrack_hermit_white
+msgctxt "STRINGS.SKIN_NAMES.meatrack_hermit_white"
+msgid "Hermit's Meat Rack"
+msgstr ""
+
+#. STRINGS.SKIN_NAMES.hivehat_pigcrown_willow
+msgctxt "STRINGS.SKIN_NAMES.hivehat_pigcrown_willow"
+msgid "Dark Crown"
+msgstr ""
+
+#. STRINGS.SKIN_NAMES.meatrack_hermit_red
+msgctxt "STRINGS.SKIN_NAMES.meatrack_hermit_red"
+msgid "Hermit's Meat Rack"
+msgstr ""
+
 #. STRINGS.SKIN_NAMES.armorskeleton_none
 msgctxt "STRINGS.SKIN_NAMES.armorskeleton_none"
 msgid "Emperor's Formal"
+msgstr ""
+
+#. STRINGS.SKIN_NAMES.dummy_none
+msgctxt "STRINGS.SKIN_NAMES.dummy_none"
+msgid "Dummy"
+msgstr ""
+
+#. STRINGS.SKIN_NAMES.hivehat_pigcrown
+msgctxt "STRINGS.SKIN_NAMES.hivehat_pigcrown"
+msgid "Royal Crown"
+msgstr ""
+
+#. STRINGS.SKIN_NAMES.lantern_mio
+msgctxt "STRINGS.SKIN_NAMES.lantern_mio"
+msgid "Camping Lamp"
+msgstr ""
+
+#. STRINGS.SKIN_NAMES.greenamulet_heart
+msgctxt "STRINGS.SKIN_NAMES.greenamulet_heart"
+msgid "Green Heart"
+msgstr ""
+
+#. STRINGS.SKIN_NAMES.dragonflychest_gingerbread
+msgctxt "STRINGS.SKIN_NAMES.dragonflychest_gingerbread"
+msgid "Gingerbread Chest"
+msgstr ""
+
+#. STRINGS.SKIN_NAMES.raincoat_peggy
+msgctxt "STRINGS.SKIN_NAMES.raincoat_peggy"
+msgid "Peggy's Raincoat"
+msgstr ""
+
+#. STRINGS.SKIN_NAMES.miotan_classic
+msgctxt "STRINGS.SKIN_NAMES.miotan_classic"
+msgid "Classic"
+msgstr ""
+
+#. STRINGS.SKIN_NAMES.nightstick_crystal
+msgctxt "STRINGS.SKIN_NAMES.nightstick_crystal"
+msgid "Mahou Shoujo Star"
 msgstr ""
 
 #. STRINGS.SKIN_NAMES.civi_none
@@ -241,5 +621,10 @@ msgstr ""
 #. STRINGS.SKIN_NAMES.skeletonhat_glass
 msgctxt "STRINGS.SKIN_NAMES.skeletonhat_glass"
 msgid "Crystal Skull"
+msgstr ""
+
+#. STRINGS.SKIN_NAMES.miotan_none
+msgctxt "STRINGS.SKIN_NAMES.miotan_none"
+msgid "Mio"
 msgstr ""
 
