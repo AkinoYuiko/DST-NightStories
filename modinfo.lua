@@ -1,16 +1,16 @@
-version = "1.12"
+version = "1.13"
 -- basic info --
 name = locale == "zh" and "暗夜故事集" or "Night Stories"
 author = "丁香女子学校"
 description = locale == "zh" and "[版本: "..version..[[]
 
 更新内容:
-- 更新语言文本.
+- 新增皮肤: 佩奇眼球伞 (达米专属).
 
 ]] or "[Version: "..version..[[]
 
 Changelog:
-- Update strings.
+- New item skin: Peggy's Eyebrella (exclusive to Dummy).
 
 ]]
 

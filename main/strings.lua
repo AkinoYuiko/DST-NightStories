@@ -57,6 +57,8 @@ local strings = {
         meatrack_hermit_white = "Hermit's Meat Rack",
         hivehat_pigcrown = "Royal Crown",
         hivehat_pigcrown_willow = "Dark Crown",
+
+        eyebrellahat_peggy = "Peggy's Eyebrella",
     },
     SKIN_DESCRIPTIONS = 
     {

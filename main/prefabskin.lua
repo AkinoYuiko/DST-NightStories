@@ -292,6 +292,11 @@ if not rawget(_G, "hivehat_clear_fn") then
     end
 end
 
+ns_eyebrella_init_fn = function(inst, skinname, override_build)
+    GlassicAPI.BasicInitFn(inst, skinname, override_build or skinname, override_build or skinname)
+    GlassicAPI.BasicOnequipFn(inst, "hat", override_build or skinname)
+end
+
 GlassicAPI.SkinHandler.AddModSkins({
     -- Civi
     civi = {
@@ -325,8 +330,12 @@ GlassicAPI.SkinHandler.AddModSkins({
         { name = "greenamulet_heart", test_fn = GlassicAPI.SetExclusiveToPlayer("dummy") }
     },
     raincoat = {
-        {name = "raincoat_peggy", test_fn = GlassicAPI.SetExclusiveToPlayer("dummy") }
+        { name = "raincoat_peggy", test_fn = GlassicAPI.SetExclusiveToPlayer("dummy") }
     },
+    eyebrellahat = {
+        { name = "eyebrellahat_peggy", test_fn = GlassicAPI.SetExclusiveToPlayer("dummy") }
+    },
+    -- Common
     dragonflychest = { "dragonflychest_gingerbread" },
     meatrack = { "meatrack_hermit_red", "meatrack_hermit_white" },
     hivehat = { "hivehat_pigcrown", "hivehat_pigcrown_willow" },
