@@ -303,10 +303,10 @@ GlassicAPI.SkinHandler.AddModSkins({
         "civi_none"
     },
     armorskeleton = {
-        { name = "armorskeleton_none", test_fn = GlassicAPI.SetExclusiveToPlayer("civi") },
+        { name = "armorskeleton_none", exclusive_char = "civi" },
     },
 	skeletonhat = {
-		{ name = "skeletonhat_glass", test_fn = GlassicAPI.SetExclusiveToPlayer("civi") },
+		{ name = "skeletonhat_glass", exclusive_char = "civi" },
 	},
     -- Mio
     miotan = {
@@ -314,26 +314,26 @@ GlassicAPI.SkinHandler.AddModSkins({
         "miotan_classic"
     },
     lantern = {
-        { name = "lantern_mio", test_fn = GlassicAPI.SetExclusiveToPlayer("miotan") }
+        { name = "lantern_mio", exclusive_char = "miotan" }
     },
     nightstick = {
-        { name = "nightstick_crystal", test_fn = GlassicAPI.SetExclusiveToPlayer("miotan") }
+        { name = "nightstick_crystal", exclusive_char = "miotan" }
     },
     yellowamulet = {
-        { name = "yellowamulet_heart", test_fn = GlassicAPI.SetExclusiveToPlayer("miotan") }
+        { name = "yellowamulet_heart", exclusive_char = "miotan" }
     },
     -- Dummy
     dummy = {
         "dummy_none"
     },
     greenamulet = {
-        { name = "greenamulet_heart", test_fn = GlassicAPI.SetExclusiveToPlayer("dummy") }
+        { name = "greenamulet_heart", exclusive_char = "dummy" }
     },
     raincoat = {
-        { name = "raincoat_peggy", test_fn = GlassicAPI.SetExclusiveToPlayer("dummy") }
+        { name = "raincoat_peggy", exclusive_char = "dummy" }
     },
     eyebrellahat = {
-        { name = "eyebrellahat_peggy", test_fn = GlassicAPI.SetExclusiveToPlayer("dummy") }
+        { name = "eyebrellahat_peggy", exclusive_char = "dummy" }
     },
     -- Common
     dragonflychest = { "dragonflychest_gingerbread" },
