@@ -645,6 +645,11 @@ msgctxt "STRINGS.SKIN_NAMES.raincoat_peggy"
 msgid "Peggy's Raincoat"
 msgstr "佩奇的雨衣"
 
+#. STRINGS.SKIN_NAMES.eyebrellahat_peggy
+msgctxt "STRINGS.SKIN_NAMES.eyebrellahat_peggy"
+msgid "Peggy's Eyebrella"
+msgstr "佩奇的伞帽"
+
 #. STRINGS.SKIN_NAMES.miotan_classic
 msgctxt "STRINGS.SKIN_NAMES.miotan_classic"
 msgid "Classic"

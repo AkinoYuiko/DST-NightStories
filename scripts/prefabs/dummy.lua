@@ -6,6 +6,7 @@ local assets = {
 }
 
 local start_inv = {}
+local prefabs = {}
 for k, v in pairs(TUNING.GAMEMODE_STARTING_ITEMS) do
 	start_inv[string.lower(k)] = v.DUMMY
 end
@@ -87,6 +88,7 @@ end
 
 -- This initializes for the host only
 local master_postinit = function(inst)
+	inst.starting_inventory = start_inv[TheNet:GetServerGameMode()] or start_inv.default
 
 	inst.customidleanim = "idle_wortox"
 

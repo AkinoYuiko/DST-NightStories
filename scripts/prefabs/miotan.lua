@@ -221,7 +221,7 @@ end
 
 -- This initializes for the host only
 local master_postinit = function(inst)
-  inst.starting_inventory = start_inv[TheNet:GetServerGameMode()] or start_inv.default
+	inst.starting_inventory = start_inv[TheNet:GetServerGameMode()] or start_inv.default
 
 	inst.boost_time = 0
 	inst.boosted_task = nil
