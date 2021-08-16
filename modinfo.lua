@@ -1,22 +1,16 @@
-version = "1.13.2"
+version = "1.14"
 -- basic info --
 name = locale == "zh" and "暗夜故事集" or "Night Stories"
 author = "丁香女子学校"
 description = locale == "zh" and "[版本: "..version..[[]
 
 更新内容:
-- 更新适配 Glassic API.
-
-- 修复一个小问题.
-- 新增皮肤: 佩奇眼球伞 (达米专属).
+- 更新澪填燃料的动作.
 
 ]] or "[Version: "..version..[[]
 
 Changelog:
-- Update for Glassic API.
-
-- Fixed an issue.
-- New item skin: Peggy's Eyebrella (exclusive to Dummy).
+- Update Mio's fuel action.
 
 ]]
 
