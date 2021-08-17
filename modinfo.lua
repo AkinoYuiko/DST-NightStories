@@ -1,15 +1,21 @@
-version = "1.14"
+version = "1.14.1"
 -- basic info --
 name = locale == "zh" and "暗夜故事集" or "Night Stories"
 author = "丁香女子学校"
 description = locale == "zh" and "[版本: "..version..[[]
 
 更新内容:
+- 修复部分皮肤在水上换皮肤丢失模型的问题.
+- 重写了部分皮肤代码.
+
 - 更新澪填燃料的动作.
 
 ]] or "[Version: "..version..[[]
 
 Changelog:
+- Fixed issue where body items missing floating anims on reskinned.
+- Rework "prefabskin.lua".
+
 - Update Mio's fuel action.
 
 ]]

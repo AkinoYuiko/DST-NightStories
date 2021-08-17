@@ -20,7 +20,7 @@ table.insert(prefabs, CreatePrefabSkin("skeletonhat_glass", {
 		Asset( "DYNAMIC_ANIM", "anim/dynamic/skeletonhat_glass.zip" ),
 		Asset( "PKGREF", "anim/dynamic/skeletonhat_glass.dyn" ),
 	},
-	init_fn = function(inst) skeletonhat_init_fn(inst, "skeletonhat_glass") end,
+	init_fn = function(inst) ns_equipment_init_fn(inst, "hat", "skeletonhat_glass") end,
 	skin_tags = { "SKELETONHAT" },
 }))
 
@@ -67,7 +67,7 @@ table.insert(prefabs, CreatePrefabSkin("yellowamulet_heart", {
         Asset( "DYNAMIC_ANIM", "anim/dynamic/yellowamulet_heart.zip" ),
         Asset( "PKGREF", "anim/dynamic/yellowamulet_heart.dyn" ),
     },
-    init_fn = function(inst) yellowamulet_init_fn(inst, "yellowamulet_heart") end,
+    init_fn = function(inst) ns_equipment_init_fn(inst, "body", "yellowamulet_heart", nil, { bank = "amulets", anim = "yellowamulet" }) end,
 	skin_tags = { "YELLOWAMULET"},
 }))
 
@@ -80,7 +80,7 @@ table.insert(prefabs, CreatePrefabSkin("greenamulet_heart", {
         Asset( "DYNAMIC_ANIM", "anim/dynamic/greenamulet_heart.zip"),
         Asset( "PKGREF", "anim/dynamic/greenamulet_heart.dyn"),
     },
-    init_fn = function(inst) greenamulet_init_fn(inst, "greenamulet_heart") end,
+    init_fn = function(inst) ns_equipment_init_fn(inst, "body", "greenamulet_heart", nil, { bank = "amulets", anim = "greenamulet" }) end,
 	skin_tags = { "GREENAMULET" },
 }))
 
@@ -93,7 +93,7 @@ table.insert(prefabs, CreatePrefabSkin("raincoat_peggy", {
         Asset( "DYNAMIC_ANIM", "anim/dynamic/raincoat_peggy.zip"),
         Asset( "PKGREF", "anim/dynamic/raincoat_peggy.dyn"),
     },
-    init_fn = function(inst) raincoat_init_fn(inst, "raincoat_peggy") end,
+    init_fn = function(inst) ns_equipment_init_fn(inst, "body", "raincoat_peggy", nil, { bank = "torso_rain", anim = "anim" }) end,
 	skin_tags = { "RAINCOAT" },
 }))
 
@@ -151,7 +151,7 @@ table.insert(prefabs, CreatePrefabSkin("hivehat_pigcrown", {
         Asset( "DYNAMIC_ANIM", "anim/dynamic/hivehat_pigcrown.zip"),
         Asset( "PKGREF", "anim/dynamic/hivehat_pigcrown.dyn"),
     },
-    init_fn = function(inst) hivehat_init_fn(inst, "hivehat_pigcrown") end,
+    init_fn = function(inst) ns_equipment_init_fn(inst, "hat", "hivehat_pigcrown") end,
 	skin_tags = { "HIVEHAT" },
 }))
 
@@ -164,7 +164,7 @@ table.insert(prefabs, CreatePrefabSkin("hivehat_pigcrown_willow", {
         Asset( "DYNAMIC_ANIM", "anim/dynamic/hivehat_pigcrown_willow.zip"),
         Asset( "PKGREF", "anim/dynamic/hivehat_pigcrown_willow.dyn"),
     },
-    init_fn = function(inst) hivehat_init_fn(inst, "hivehat_pigcrown_willow") end,
+    init_fn = function(inst) ns_equipment_init_fn(inst, "hat", "hivehat_pigcrown_willow") end,
 	skin_tags = { "HIVEHAT" },
 }))
 
@@ -177,7 +177,7 @@ table.insert(prefabs, CreatePrefabSkin("eyebrellahat_peggy", {
         Asset( "DYNAMIC_ANIM", "anim/dynamic/eyebrellahat_peggy.zip"),
         Asset( "PKGREF", "anim/dynamic/eyebrellahat_peggy.dyn"),
     },
-    init_fn = function(inst) ns_eyebrella_init_fn(inst, "eyebrellahat_peggy") end,
+    init_fn = function(inst) ns_equipment_init_fn(inst, "hat", "eyebrellahat_peggy") end,
 	skin_tags = { "EYEBRELLAHAT" },
 }))
 

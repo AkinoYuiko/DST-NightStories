@@ -1,4 +1,12 @@
 GLOBAL.setfenv(1, GLOBAL)
+ns_equipment_init_fn = function(inst, slot, skinname, override_build, swap_data)
+    if swap_data then
+        GlassicAPI.SetFloatData(inst, swap_data)
+    end
+    GlassicAPI.BasicInitFn(inst, skinname, override_build or skinname, override_build or skinname)
+    GlassicAPI.BasicOnequipFn(inst, slot, override_build or skinname)
+end
+
 -- Civi
 if not rawget(_G, "armorskeleton_clear_fn") then
     armorskeleton_init_fn = function(inst, build)
@@ -7,6 +15,7 @@ if not rawget(_G, "armorskeleton_clear_fn") then
             data.owner.AnimState:ClearOverrideSymbol("swap_body")
         end
 
+        GlassicAPI.SetFloatData(inst, { bank = "armor_skeleton", anim = "anim"})
 
         if not TheWorld.ismastersim then return end
 
@@ -23,32 +32,33 @@ if not rawget(_G, "armorskeleton_clear_fn") then
     end
     armorskeleton_clear_fn = function(inst)
         inst.AnimState:SetBuild("armor_skeleton")
+        GlassicAPI.SetFloatData(inst, { bank = "armor_skeleton", anim = "anim"})
         if not TheWorld.ismastersim then return end
     	inst.components.inventoryitem:ChangeImageName()
     end
 end
 
 if not rawget(_G, "skeletonhat_clear_fn") then
-	skeletonhat_init_fn = function(inst, build)
+	-- skeletonhat_init_fn = function(inst, build)
 
-		local function onequipfn(inst, data)
-			data.owner.AnimState:OverrideSymbol("swap_hat", build, "swap_hat")
-		--	data.owner.AnimState:ClearOverrideSymbol("swap_body")
-		end
+	-- 	local function onequipfn(inst, data)
+	-- 		data.owner.AnimState:OverrideSymbol("swap_hat", build, "swap_hat")
+	-- 	--	data.owner.AnimState:ClearOverrideSymbol("swap_body")
+	-- 	end
 
-		if not TheWorld.ismastersim then return end
+	-- 	if not TheWorld.ismastersim then return end
 
-		inst.skinname = build
-		inst.AnimState:SetBuild(build)
-		if inst.components.inventoryitem then
-			inst.components.inventoryitem:ChangeImageName(inst:GetSkinName())
-		end
+	-- 	inst.skinname = build
+	-- 	inst.AnimState:SetBuild(build)
+	-- 	if inst.components.inventoryitem then
+	-- 		inst.components.inventoryitem:ChangeImageName(inst:GetSkinName())
+	-- 	end
 
-		inst:ListenForEvent("equipped", onequipfn)
-		inst.OnSkinChange = function(isnt)
-			inst:RemoveEventCallback("equipped", onequipfn)
-		end
-	end
+	-- 	inst:ListenForEvent("equipped", onequipfn)
+	-- 	inst.OnSkinChange = function(inst)
+	-- 		inst:RemoveEventCallback("equipped", onequipfn)
+	-- 	end
+	-- end
 
 	skeletonhat_clear_fn = function(inst)
 		inst.AnimState:SetBuild("hat_skeleton")
@@ -92,14 +102,14 @@ end
 
 -- yellowamulet
 if not rawget(_G, "yellowamulet_clear_fn") then
-    local swap_data = { bank = "amulets", anim = "yellowamulet" }
-    yellowamulet_init_fn = function(inst, skinname, override_build)
-        GlassicAPI.SetFloatData(inst, swap_data)
-        GlassicAPI.BasicInitFn(inst, skinname, override_build or skinname, override_build or skinname)
-        GlassicAPI.BasicOnequipFn(inst, "body", override_build or skinname)
-    end
+    -- local swap_data = { bank = "amulets", anim = "yellowamulet" }
+    -- yellowamulet_init_fn = function(inst, skinname, override_build)
+    --     GlassicAPI.SetFloatData(inst, swap_data)
+    --     GlassicAPI.BasicInitFn(inst, skinname, override_build or skinname, override_build or skinname)
+    --     GlassicAPI.BasicOnequipFn(inst, "body", override_build or skinname)
+    -- end
     yellowamulet_clear_fn = function(inst)
-        GlassicAPI.SetFloatData(inst, swap_data)
+        GlassicAPI.SetFloatData(inst, { bank = "amulets", anim = "yellowamulet" })
         basic_clear_fn(inst, "amulets")
     end
 end
@@ -255,23 +265,26 @@ end
 
 -- Green Amulet
 if not rawget(_G, "greenamulet_clear_fn") then
-    greenamulet_init_fn = function(inst, skinname, override_build)
-        GlassicAPI.BasicInitFn(inst, skinname, override_build or skinname, override_build or skinname)
-        GlassicAPI.BasicOnequipFn(inst, "body", override_build or skinname)
+    -- greenamulet_init_fn = function(inst, skinname, override_build)
+    --     GlassicAPI.BasicInitFn(inst, skinname, override_build or skinname, override_build or skinname)
+    --     GlassicAPI.BasicOnequipFn(inst, "body", override_build or skinname)
+    -- end
+    greenamulet_clear_fn = function(inst)
+        GlassicAPI.SetFloatData(inst, { bank = "amulets", anim = "greenamulet" })
+        basic_clear_fn(inst, "amulets")
     end
-    greenamulet_clear_fn = function(inst) basic_clear_fn(inst, "amulets") end
 end
 
 -- Raincoat
 if not rawget(_G, "raincoat_clear_fn") then
-    local swap_data = { bank = "torso_rain", anim = "anim" }
-    raincoat_init_fn = function(inst, skinname, override_build)
-        GlassicAPI.SetFloatData(inst, swap_data)
-        GlassicAPI.BasicInitFn(inst, skinname, override_build or skinname, override_build or skinname)
-        GlassicAPI.BasicOnequipFn(inst, "body", override_build or skinname)
-    end
+    -- local swap_data = { bank = "torso_rain", anim = "anim" }
+    -- raincoat_init_fn = function(inst, skinname, override_build)
+    --     GlassicAPI.SetFloatData(inst, swap_data)
+    --     GlassicAPI.BasicInitFn(inst, skinname, override_build or skinname, override_build or skinname)
+    --     GlassicAPI.BasicOnequipFn(inst, "body", override_build or skinname)
+    -- end
     raincoat_clear_fn = function(inst)
-        GlassicAPI.SetFloatData(inst, swap_data)
+        GlassicAPI.SetFloatData(inst, { bank = "torso_rain", anim = "anim" })
         basic_clear_fn(inst, "torso_rain")
     end
 end
@@ -285,10 +298,10 @@ end
 
 
 if not rawget(_G, "hivehat_clear_fn") then
-    hivehat_init_fn = function(inst, skinname, override_build)
-        GlassicAPI.BasicInitFn(inst, skinname, override_build or skinname, override_build or skinname)
-        GlassicAPI.BasicOnequipFn(inst, "hat", override_build or skinname)
-    end
+    -- hivehat_init_fn = function(inst, skinname, override_build)
+    --     GlassicAPI.BasicInitFn(inst, skinname, override_build or skinname, override_build or skinname)
+    --     GlassicAPI.BasicOnequipFn(inst, "hat", override_build or skinname)
+    -- end
     hivehat_clear_fn = function(inst)
         inst.AnimState:SetBuild("hat_hive")
         if not TheWorld.ismastersim then return end
@@ -296,10 +309,10 @@ if not rawget(_G, "hivehat_clear_fn") then
     end
 end
 
-ns_eyebrella_init_fn = function(inst, skinname, override_build)
-    GlassicAPI.BasicInitFn(inst, skinname, override_build or skinname, override_build or skinname)
-    GlassicAPI.BasicOnequipFn(inst, "hat", override_build or skinname)
-end
+-- ns_eyebrella_init_fn = function(inst, skinname, override_build)
+--     GlassicAPI.BasicInitFn(inst, skinname, override_build or skinname, override_build or skinname)
+--     GlassicAPI.BasicOnequipFn(inst, "hat", override_build or skinname)
+-- end
 
 GlassicAPI.SkinHandler.AddModSkins({
     -- Civi
