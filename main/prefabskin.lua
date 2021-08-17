@@ -61,7 +61,6 @@ end
 -- fix lantern reskin in inventory
 local old_lantern_init_fn = lantern_init_fn
 lantern_init_fn = function(inst, ...)
-    print("lantern_init_fn called")
     local rt_lantern_init = {old_lantern_init_fn(inst, ...)}
     if inst.components.inventoryitem then
         inst.components.inventoryitem:ChangeImageName(inst:GetSkinName())
@@ -71,7 +70,6 @@ end
 
 local old_lantern_clear_fn = lantern_clear_fn
 lantern_clear_fn = function(inst, ...)
-    print("lantern_clear_fn called")
     local rt_lantern_clear = {old_lantern_clear_fn(inst, ...)}
     if inst.components.inventoryitem then
         inst.components.inventoryitem:ChangeImageName()
@@ -94,11 +92,16 @@ end
 
 -- yellowamulet
 if not rawget(_G, "yellowamulet_clear_fn") then
+    local swap_data = { bank = "amulets", anim = "yellowamulet" }
     yellowamulet_init_fn = function(inst, skinname, override_build)
+        GlassicAPI.SetFloatData(inst, swap_data)
         GlassicAPI.BasicInitFn(inst, skinname, override_build or skinname, override_build or skinname)
         GlassicAPI.BasicOnequipFn(inst, "body", override_build or skinname)
     end
-    yellowamulet_clear_fn = function(inst) basic_clear_fn(inst, "amulets") end
+    yellowamulet_clear_fn = function(inst)
+        GlassicAPI.SetFloatData(inst, swap_data)
+        basic_clear_fn(inst, "amulets")
+    end
 end
 
 -- lantern
@@ -261,14 +264,15 @@ end
 
 -- Raincoat
 if not rawget(_G, "raincoat_clear_fn") then
+    local swap_data = { bank = "torso_rain", anim = "anim" }
     raincoat_init_fn = function(inst, skinname, override_build)
+        GlassicAPI.SetFloatData(inst, swap_data)
         GlassicAPI.BasicInitFn(inst, skinname, override_build or skinname, override_build or skinname)
         GlassicAPI.BasicOnequipFn(inst, "body", override_build or skinname)
     end
     raincoat_clear_fn = function(inst)
-        inst.AnimState:SetBuild("torso_rain")
-        if not TheWorld.ismastersim then return end
-        inst.components.inventoryitem:ChangeImageName()
+        GlassicAPI.SetFloatData(inst, swap_data)
+        basic_clear_fn(inst, "torso_rain")
     end
 end
 
