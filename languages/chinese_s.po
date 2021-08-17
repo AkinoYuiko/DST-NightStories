@@ -22,7 +22,7 @@ msgstr "黑暗护符"
 #. STRINGS.NAMES.BOOK_HARVEST
 msgctxt "STRINGS.NAMES.BOOK_HARVEST"
 msgid "Season of Harvest"
-msgstr "《收获的季节》"
+msgstr "收获的季节"
 
 #. STRINGS.NAMES.LIGHTAMULET
 msgctxt "STRINGS.NAMES.LIGHTAMULET"
@@ -42,7 +42,7 @@ msgstr "暗影破碎枪"
 #. STRINGS.NAMES.BOOK_TOGGLEDOWNFALL
 msgctxt "STRINGS.NAMES.BOOK_TOGGLEDOWNFALL"
 msgid "Love of Rain"
-msgstr "《雨神的眷恋》"
+msgstr "雨神的眷恋"
 
 #. STRINGS.NAMES.DUMMY
 msgctxt "STRINGS.NAMES.DUMMY"
@@ -91,7 +91,10 @@ msgstr "澪"
 
 #. STRINGS.CHARACTER_DESCRIPTIONS.dummy
 msgctxt "STRINGS.CHARACTER_DESCRIPTIONS.dummy"
-msgid "* Unfriendly to people.\n* Friend of nightmare.\n* Forgive."
+msgid ""
+"* Unfriendly to people.\n"
+"* Friend of nightmare.\n"
+"* Forgive."
 msgstr ""
 "* 对人类不友好.\n"
 "* 梦魇的伙伴.\n"
@@ -99,14 +102,18 @@ msgstr ""
 
 #. STRINGS.CHARACTER_DESCRIPTIONS.civi
 msgctxt "STRINGS.CHARACTER_DESCRIPTIONS.civi"
-msgid "*Travel between light and dark.\n*Can control nightmare."
+msgid ""
+"*Travel between light and dark.\n"
+"*Can control nightmare."
 msgstr ""
 "* 在光暗之中穿梭.\n"
 "* 可以控制梦魇."
 
 #. STRINGS.CHARACTER_DESCRIPTIONS.miotan
 msgctxt "STRINGS.CHARACTER_DESCRIPTIONS.miotan"
-msgid "*World treats her differently.\n*Friend of nightmare."
+msgid ""
+"*World treats her differently.\n"
+"*Friend of nightmare."
 msgstr ""
 "* 世界对她不友好.\n"
 "* 梦魇的伙伴."
@@ -349,22 +356,19 @@ msgstr ""
 #. STRINGS.CHARACTER_SURVIVABILITY.dummy
 msgctxt "STRINGS.CHARACTER_SURVIVABILITY.dummy"
 msgid "None"
-msgstr "无"
+msgstr ""
 
 #. STRINGS.CHARACTER_SURVIVABILITY.civi
 msgctxt "STRINGS.CHARACTER_SURVIVABILITY.civi"
 msgid "Slim"
-msgstr "渺茫"
+msgstr ""
 
 #. STRINGS.CHARACTER_SURVIVABILITY.miotan
 msgctxt "STRINGS.CHARACTER_SURVIVABILITY.miotan"
 msgid "Grim"
-msgstr "严峻"
+msgstr ""
 
 #. STRINGS.CHARACTER_BIOS.dummy.1.title
-#, fuzzy
-#| msgctxt "STRINGS.CHARACTER_BIOS.civi.1.title"
-#| msgid "Birthday"
 msgctxt "STRINGS.CHARACTER_BIOS.dummy.1.title"
 msgid "Birthday"
 msgstr "生日"
@@ -375,9 +379,6 @@ msgid "July 17"
 msgstr "7月17日"
 
 #. STRINGS.CHARACTER_BIOS.dummy.2.title
-#, fuzzy
-#| msgctxt "STRINGS.CHARACTER_BIOS.civi.2.title"
-#| msgid "Favorite Food"
 msgctxt "STRINGS.CHARACTER_BIOS.dummy.2.title"
 msgid "Favorite Food"
 msgstr "最喜欢的食物"
@@ -404,16 +405,16 @@ msgstr "最喜欢的食物"
 
 #. STRINGS.CHARACTER_BIOS.civi.2.desc
 msgctxt "STRINGS.CHARACTER_BIOS.civi.2.desc"
-msgid "Lv.0 - Bone Bouillon\nLv.1 - Meatballs\nLv.2 - Volt Goat Chaud-Froid"
+msgid ""
+"Lv.0 - Bone Bouillon\n"
+"Lv.1 - Meatballs\n"
+"Lv.2 - Volt Goat Chaud-Froid"
 msgstr ""
 "Lv.0 - 骨头汤\n"
 "Lv.1 - 肉丸\n"
 "Lv.2 - 电羊冻"
 
 #. STRINGS.CHARACTER_BIOS.miotan.1.title
-#, fuzzy
-#| msgctxt "STRINGS.CHARACTER_BIOS.civi.1.title"
-#| msgid "Birthday"
 msgctxt "STRINGS.CHARACTER_BIOS.miotan.1.title"
 msgid "Birthday"
 msgstr "生日"
@@ -424,9 +425,6 @@ msgid "July 17"
 msgstr "7月17日"
 
 #. STRINGS.CHARACTER_BIOS.miotan.2.title
-#, fuzzy
-#| msgctxt "STRINGS.CHARACTER_BIOS.civi.2.title"
-#| msgid "Favorite Food"
 msgctxt "STRINGS.CHARACTER_BIOS.miotan.2.title"
 msgid "Favorite Food"
 msgstr "最喜欢的食物"
@@ -512,11 +510,6 @@ msgid "Dummy also comes from the nightmare world. She is Mio's sister."
 msgstr "达米是澪的妹妹，同样来自异世界."
 
 #. STRINGS.CHARACTER_ABOUTME.civi
-#, fuzzy
-#| msgctxt "STRINGS.SKIN_DESCRIPTIONS.civi_none"
-#| msgid ""
-#| "Civi can control magic, turning lights into darks, or turning darks into "
-#| "lights."
 msgctxt "STRINGS.CHARACTER_ABOUTME.civi"
 msgid ""
 "Civi can control magic, turning lights into darks, or turning darks into "
@@ -605,11 +598,6 @@ msgctxt "STRINGS.SKIN_NAMES.hivehat_pigcrown_willow"
 msgid "Dark Crown"
 msgstr "黑暗皇冠"
 
-#. STRINGS.SKIN_NAMES.meatrack_hermit_red
-msgctxt "STRINGS.SKIN_NAMES.meatrack_hermit_red"
-msgid "Hermit's Meat Rack"
-msgstr "隐士肉架（红）"
-
 #. STRINGS.SKIN_NAMES.armorskeleton_none
 msgctxt "STRINGS.SKIN_NAMES.armorskeleton_none"
 msgid "Emperor's Formal"
@@ -620,11 +608,6 @@ msgctxt "STRINGS.SKIN_NAMES.dummy_none"
 msgid "Dummy"
 msgstr "达米"
 
-#. STRINGS.SKIN_NAMES.hivehat_pigcrown
-msgctxt "STRINGS.SKIN_NAMES.hivehat_pigcrown"
-msgid "Royal Crown"
-msgstr "皇家头冠"
-
 #. STRINGS.SKIN_NAMES.lantern_mio
 msgctxt "STRINGS.SKIN_NAMES.lantern_mio"
 msgid "Camping Lamp"
@@ -634,26 +617,6 @@ msgstr "露营灯"
 msgctxt "STRINGS.SKIN_NAMES.greenamulet_heart"
 msgid "Green Heart"
 msgstr "绿色的心"
-
-#. STRINGS.SKIN_NAMES.dragonflychest_gingerbread
-msgctxt "STRINGS.SKIN_NAMES.dragonflychest_gingerbread"
-msgid "Gingerbread Chest"
-msgstr "姜饼龙鳞箱子"
-
-#. STRINGS.SKIN_NAMES.raincoat_peggy
-msgctxt "STRINGS.SKIN_NAMES.raincoat_peggy"
-msgid "Peggy's Raincoat"
-msgstr "佩奇的雨衣"
-
-#. STRINGS.SKIN_NAMES.eyebrellahat_peggy
-msgctxt "STRINGS.SKIN_NAMES.eyebrellahat_peggy"
-msgid "Peggy's Eyebrella"
-msgstr "佩奇的伞帽"
-
-#. STRINGS.SKIN_NAMES.miotan_classic
-msgctxt "STRINGS.SKIN_NAMES.miotan_classic"
-msgid "Classic"
-msgstr "经典"
 
 #. STRINGS.SKIN_NAMES.nightstick_crystal
 msgctxt "STRINGS.SKIN_NAMES.nightstick_crystal"
@@ -669,6 +632,36 @@ msgstr ""
 msgctxt "STRINGS.SKIN_NAMES.skeletonhat_glass"
 msgid "Crystal Skull"
 msgstr "水晶头骨"
+
+#. STRINGS.SKIN_NAMES.meatrack_hermit_red
+msgctxt "STRINGS.SKIN_NAMES.meatrack_hermit_red"
+msgid "Hermit's Meat Rack"
+msgstr "隐士肉架（红）"
+
+#. STRINGS.SKIN_NAMES.eyebrellahat_peggy
+msgctxt "STRINGS.SKIN_NAMES.eyebrellahat_peggy"
+msgid "Peggy's Eyebrella"
+msgstr "佩奇的伞帽"
+
+#. STRINGS.SKIN_NAMES.dragonflychest_gingerbread
+msgctxt "STRINGS.SKIN_NAMES.dragonflychest_gingerbread"
+msgid "Gingerbread Chest"
+msgstr "姜饼龙鳞箱子"
+
+#. STRINGS.SKIN_NAMES.hivehat_pigcrown
+msgctxt "STRINGS.SKIN_NAMES.hivehat_pigcrown"
+msgid "Royal Crown"
+msgstr "皇家头冠"
+
+#. STRINGS.SKIN_NAMES.raincoat_peggy
+msgctxt "STRINGS.SKIN_NAMES.raincoat_peggy"
+msgid "Peggy's Raincoat"
+msgstr "佩奇的雨衣"
+
+#. STRINGS.SKIN_NAMES.miotan_classic
+msgctxt "STRINGS.SKIN_NAMES.miotan_classic"
+msgid "Classic"
+msgstr ""
 
 #. STRINGS.SKIN_NAMES.miotan_none
 msgctxt "STRINGS.SKIN_NAMES.miotan_none"
