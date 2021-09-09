@@ -1,12 +1,13 @@
-version = "1.14.4"
+version = "1.14.5"
 -- basic info --
 name = locale == "zh" and "暗夜故事集" or "Night Stories"
 author = "丁香女子学校"
 description = locale == "zh" and "[版本: "..version..[[]
 
 更新内容:
-- 达米捡花/恶魔花不会影响精神值.
+- 更新Sanity组件.
 
+- 达米捡花/恶魔花不会影响精神值.
 - 更新了部分语言文本.
 - 修复部分皮肤在水上换皮肤丢失模型的问题.
 - 重写了部分皮肤代码.
@@ -15,8 +16,9 @@ description = locale == "zh" and "[版本: "..version..[[]
 ]] or "[Version: "..version..[[]
 
 Changelog:
-- Dummy's sanity will no longer be affected by picking flowers or evil flowers.
+- Update Sanity component.
 
+- Dummy's sanity will no longer be affected by picking flowers or evil flowers.
 - Update some strings.
 - Fixed issue where body items missing floating anims on reskinned.
 - Rework "prefabskin.lua".

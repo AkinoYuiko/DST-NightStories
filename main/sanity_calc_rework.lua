@@ -20,30 +20,32 @@ local LIGHT_SANITY_DRAINS =
 	},
 }
 
-
 ENV.AddComponentPostInit("sanity", function(self)
     local SANITYRECALC_MUST_TAGS = { "sanityaura" }
     local SANITYRECALC_CANT_TAGS = { "FX", "NOCLICK", "DECOR","INLIMBO" }
+    
     function self:Recalc(dt)
         local dapper_delta = 0
         if self.dapperness_mult ~= 0 then
             local total_dapperness = self.dapperness
             for k, v in pairs(self.inst.components.inventory.equipslots) do
                 local equippable = v.components.equippable
-                if equippable ~= nil and (not self.only_magic_dapperness or equippable.is_magic_dapperness) then
-                    total_dapperness = total_dapperness + equippable:GetDapperness(self.inst, self.no_moisture_penalty)
+                
+                if equippable ~= nil then
+                    local item_dapperness = self.get_equippable_dappernessfn ~= nil and self.get_equippable_dappernessfn(self.inst, equippable) or equippable:GetDapperness(self.inst, self.no_moisture_penalty)
+                    total_dapperness = total_dapperness + item_dapperness
                 end
             end
-    
+
             total_dapperness = total_dapperness * self.dapperness_mult
             dapper_delta = total_dapperness * TUNING.SANITY_DAPPERNESS
         end
-    
+
         local moisture_delta = self.no_moisture_penalty and 0 or easing.inSine(self.inst.components.moisture:GetMoisture(), 0, TUNING.MOISTURE_SANITY_PENALTY_MAX, self.inst.components.moisture:GetMaxMoisture())
-    
+
         local light_sanity_drain = LIGHT_SANITY_DRAINS[self.mode]
         local light_delta = 0
-    
+
         if not self.light_drain_immune then
             if TheWorld.state.isday and not TheWorld:HasTag("cave") then
                 light_delta = light_sanity_drain.DAY
@@ -56,7 +58,7 @@ ENV.AddComponentPostInit("sanity", function(self)
                     ) * self.night_drain_mult
             end
         end
-    
+
         local aura_delta = 0
         if not self.sanity_aura_immune then
             local x, y, z = self.inst.Transform:GetWorldPosition()
@@ -72,7 +74,7 @@ ENV.AddComponentPostInit("sanity", function(self)
                             end
                         end
                     end
-    
+
                     if not is_aura_immune then
                         local aura_val = v.components.sanityaura:GetAura(self.inst)
                         aura_val = (aura_val < 0 and (self.neg_aura_absorb > 0 and self.neg_aura_absorb * -aura_val or aura_val) * self:GetAuraMultipliers() or aura_val)
@@ -86,7 +88,7 @@ ENV.AddComponentPostInit("sanity", function(self)
                 end
             end
         end
-    
+
         local mount = self.inst.components.rider:IsRiding() and self.inst.components.rider:GetMount() or nil
         if mount ~= nil and mount.components.sanityaura ~= nil then
             local aura_val = mount.components.sanityaura:GetAura(self.inst)
@@ -98,18 +100,18 @@ ENV.AddComponentPostInit("sanity", function(self)
             -- changed part end --
             aura_delta = aura_delta + ((aura_val < 0 and self.neg_aura_immune) and 0 or aura_val)
         end
-    
+
         self:RecalcGhostDrain()
         local ghost_delta = TUNING.SANITY_GHOST_PLAYER_DRAIN * self.ghost_drain_mult
-    
+
         self.rate = dapper_delta + moisture_delta + light_delta + aura_delta + ghost_delta + self.externalmodifiers:Get()
-    
+
         if self.custom_rate_fn ~= nil then
             --NOTE: dt param was added for wormwood's custom rate function
             --      dt shouldn't have been applied to the return value yet
             self.rate = self.rate + self.custom_rate_fn(self.inst, dt)
         end
-    
+
         self.rate = self.rate * self.rate_modifier
         self.ratescale =
             (self.rate > .2 and RATE_SCALE.INCREASE_HIGH) or
@@ -119,7 +121,7 @@ ENV.AddComponentPostInit("sanity", function(self)
             (self.rate < -.1 and RATE_SCALE.DECREASE_MED) or
             (self.rate < -.02 and RATE_SCALE.DECREASE_LOW) or
             RATE_SCALE.NEUTRAL
-    
+
         --print (string.format("dapper: %2.2f light: %2.2f TOTAL: %2.2f", dapper_delta, light_delta, self.rate*dt))
         self:DoDelta(self.rate * dt, true)
     end
