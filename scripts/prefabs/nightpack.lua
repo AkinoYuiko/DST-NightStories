@@ -10,6 +10,29 @@ local prefabs = {
     "pandorachest_reset"
 }
 
+local STATE_NAMES = {
+    "red",
+    "blue",
+    "purple",
+    "yellow",
+    "orange",
+    "green",
+    "opal",
+    "dark",     -- Deprecated
+    "light",    -- Deprecated
+    "fuel",
+}
+local STATE_IDS = table.invert(STATE_NAMES)
+
+local function SetState(inst, state)
+    inst._state:set(STATE_IDS[state] or 0)
+end
+
+local function GetState(inst)
+    local id = inst._state:value()
+    return id ~= 0 and STATE_NAMES[id] or nil
+end
+
 -- function RED --
 local function IsValidVictim(victim)
     return not (victim:HasTag("veggie") or
@@ -215,7 +238,6 @@ local StateFns = {
     end,
 
     green = function(inst, owner)
-        inst.is_greenpack:set(true)
         inst.components.container:WidgetSetup("krampus_sack")
         if owner and not TheNet:IsDedicated() then  -- For client host
             try_reopen(inst, owner)
@@ -270,7 +292,7 @@ local StateFns = {
 }
 
 local function ApplyState(inst, override_state)
-    local state = override_state or inst._state
+    local state = override_state or inst:GetState()
     if not state then print("error: trying to apply nil state on", inst) return end
     inst.components.inventoryitem:ChangeImageName("nightpack_"..state)
     inst.MiniMapEntity:SetIcon("nightpack_"..state..".tex")
@@ -333,7 +355,7 @@ local function RenewState(inst, gemtype, isdummy)
 end
 
 local function OnChangeState(inst, state, duration)
-    inst._state = state
+    inst:SetState(state)
     inst.components.timer:StopTimer("state_change")
     if duration then
         inst.components.timer:StartTimer("state_change", duration)
@@ -357,7 +379,7 @@ local GEM_DURATIONS = {
 local function OnGemTrade(inst, gemtype, isdummy, from_renew)
     local owner = inst.components.inventoryitem.owner
     if not from_renew then
-        if inst._state ~= gemtype then
+        if inst:GetState() ~= gemtype then
             inst:RenewState(gemtype, isdummy)
             return
         else
@@ -381,7 +403,7 @@ local function onequip(inst, owner)
     if inst.components.container ~= nil then
         inst.components.container:Open(owner)
     end
-    if inst._state then
+    if inst:GetState() then
         inst:ApplyState()
     end
 end
@@ -408,13 +430,13 @@ end
 
 local function OnPreLoad(inst, data)
     if data and type(data._state) == "string" then  -- for old buggy codes...
-        inst._state = data._state
+        inst:SetState(data._state)
         inst:ApplyState()
     end
 end
 
 local function OnSave(inst, data)
-    data._state = inst._state
+    data._state = inst:GetState()
 end
 
 local function OnRemove(inst)
@@ -431,10 +453,21 @@ local function OnEntityReplicated(inst)
     inst.replica.container:WidgetSetup("backpack")
 end
 
-local function ongreenpack(inst)
-    if inst.is_greenpack:value() then
-        inst.replica.container:WidgetSetup("krampus_sack")
+local function OnStateDirty(inst)
+    if inst:GetState() == "green" then
+        if not inst.is_greenpack then
+            inst.replica.container:WidgetSetup("krampus_sack")
+            inst.is_greenpack = true
+        end
+    elseif inst.is_greenpack then
+        inst.replica.container:WidgetSetup("backpack")
+        inst.is_greenpack = false
     end
+end
+
+local function DisplayNameFn(inst)
+    local state = inst:GetState()
+    return state and STRINGS.NAMES["NIGHTPACK_"..state:upper()] or STRINGS.NAMES.NIGHTPACK
 end
 
 local function fn()
@@ -457,7 +490,11 @@ local function fn()
     inst:AddTag("backpack")
     inst:AddTag("waterproofer")
 
-    inst.is_greenpack = net_bool(inst.GUID, "nightpack.is_greenpack", "ongreenpack")
+    inst.displaynamefn = DisplayNameFn
+
+    inst._state = net_smallbyte(inst.GUID, "nightpack._state", "statedirty")
+
+    inst.GetState = GetState
 
     inst.foleysound = "dontstarve/movement/foley/backpack"
 
@@ -466,8 +503,9 @@ local function fn()
     inst.entity:SetPristine()
 
     if not TheWorld.ismastersim then
+        inst.is_greenpack = false
         inst.OnEntityReplicated = OnEntityReplicated
-        inst:ListenForEvent("ongreenpack", ongreenpack)
+        inst:ListenForEvent("statedirty", OnStateDirty)
         return inst
     end
 
@@ -492,6 +530,7 @@ local function fn()
 
     MakeHauntableLaunchAndDropFirstItem(inst)
 
+    inst.SetState = SetState
     inst.OnGemTrade = OnGemTrade
     inst.ApplyState = ApplyState
     inst.RenewState = RenewState
