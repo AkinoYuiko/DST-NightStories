@@ -6,11 +6,13 @@ description = locale == "zh" and "[版本: "..version..[[]
 
 更新内容:
 - 影背包 (黄) 基础持续时间提升到3.6天.
+- 影背包插上不同宝石后显示不同的名字以区分.
 
 ]] or "[Version: "..version..[[]
 
 Changelog:
-- Night Backpack (Yellow) lasts from 2.4 to 3.6 days.
+- Night Pack (Yellow) lasts from 2.4 to 3.6 days.
+- Gem-socked Night Pack shows different names.
 
 ]]
 
