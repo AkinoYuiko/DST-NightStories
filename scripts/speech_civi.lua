@@ -1542,7 +1542,7 @@ return {
 		-- CAVE_BANANA = "It's mushy.",
 		-- NIGHTMARE_SPEAR = "It looks like breaking.",
 		-- BLACKHOLESTAFF = "???",
-		-- BOOKTOGGLE_DOWNFALL = "/toggledownfall",
+		-- BOOK_TOGGLEDOWNFALL = "/toggledownfall",
 		-- OCEANFISHINGLURE_SPOON_BLUE = "Some smaller fish might find this a-luring!",
 		-- BOOK_HARVEST = "H-A-R-V-E-S-T!",
 		-- BOARRIOR = "You sure are big!",

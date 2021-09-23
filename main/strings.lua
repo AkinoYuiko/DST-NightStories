@@ -103,7 +103,7 @@ local strings = {
                 
                 BLACKHOLESTAFF = "???",
                 BOOK_HARVEST = "H-A-R-V-E-S-T!",
-                BOOKTOGGLE_DOWNFALL = "/toggledownfall",
+                BOOK_TOGGLEDOWNFALL = "/toggledownfall",
                 NIGHTMARE_SPEAR = "It looks like breaking.",
             }
         },
