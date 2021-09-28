@@ -233,7 +233,7 @@ local StateFns = {
             inst.pickup_task = nil
         end
         if owner then
-            inst.pickup_task = inst:DoPeriodicTask(TUNING.ORANGEAMULET_ICD, pickup, nil, owner)
+            inst.pickup_task = inst:DoPeriodicTask(0.2, pickup, nil, owner)
         end
     end,
 

@@ -1,16 +1,20 @@
-version = "1.15"
+version = "1.15.1"
 -- basic info --
 name = locale == "zh" and "暗夜故事集" or "Night Stories"
 author = "丁香女子学校"
 description = locale == "zh" and "[版本: "..version..[[]
 
 更新内容:
+- 调整影背包（橙）的拾取速度.
+
 - 影背包 (黄) 基础持续时间提升到3.6天.
 - 影背包插上不同宝石后显示不同的名字以区分.
 
 ]] or "[Version: "..version..[[]
 
 Changelog:
+- Adjusted pick-up speed for Night Pack (Orange).
+
 - Night Pack (Yellow) lasts from 2.4 to 3.6 days.
 - Gem-socked Night Pack shows different names.
 
