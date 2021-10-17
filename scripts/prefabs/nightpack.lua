@@ -498,7 +498,7 @@ local function fn()
 
     inst.foleysound = "dontstarve/movement/foley/backpack"
 
-    MakeInventoryFloatable(inst, "small", 0.3, 0.7)
+    MakeInventoryFloatable(inst, "small", 0.1, 0.7)
 
     inst.entity:SetPristine()
 
