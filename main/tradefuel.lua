@@ -23,7 +23,7 @@ local function new_ontradeforgold(inst, item, giver)
     end
 
     -- MODIFIED PART --
-    if giver.prefab == "miotan" then
+    if giver and giver.prefab == "miotan" then
         for k = 1, math.min(2, item.components.tradable.goldvalue) do
             local nug = SpawnPrefab("nightmarefuel")
             nug.Transform:SetPosition(x, y, z)
@@ -38,7 +38,7 @@ local function new_ontradeforgold(inst, item, giver)
     end
     -- end --
 
-    if item.components.tradable.tradefor ~= nil then
+    if item and item.components.tradable.tradefor ~= nil then
         for _, v in pairs(item.components.tradable.tradefor) do
             local item = SpawnPrefab(v)
             if item ~= nil then
