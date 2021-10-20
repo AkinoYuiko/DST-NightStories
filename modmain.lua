@@ -13,6 +13,8 @@ PrefabFiles = {
     "blackholestaff",
     "nightmare_spear",
 
+    "ns_spices",
+    
     "ns_skins",
 }
 -- ThePlayer.AnimState:OverrideSymbol("swap_object","nightstick_crystal","swap_nightstick")
@@ -44,6 +46,8 @@ local main_files = {
 	"only_dazui",
 	"staff_action",
     "tools_mutable",
+
+    "spices",
 }
 
 for _, v in ipairs(main_files) do

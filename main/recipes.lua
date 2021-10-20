@@ -99,3 +99,8 @@ ENV.AddStategraphPostInit("wilson", function(sg)
         -- end
     end
 end)
+
+-- 仙人掌粉 --
+AddRecipe("spice_cactus",
+{Ingredient("cactus_meat", 2), Ingredient("cactus_flower", 1)},
+RECIPETABS.FOODPROCESSING, TECH.FOODPROCESSING_ONE, nil, nil, true, 2, "professionalchef")

@@ -27,6 +27,8 @@ local strings = {
         BOOK_TOGGLEDOWNFALL = "Love of Rain",
         NIGHTMARE_SPEAR = "Nightmare Spear",
 
+        SPICE_CACTUS = "Cactus Powder",
+        SPICE_CACTUS_FOOD = "Cactus {food}",
         -- PROPSIGN = "Prop Sign"
     },
     RECIPE_DESC =
@@ -43,6 +45,8 @@ local strings = {
         BOOK_HARVEST = "Should help you harvest!",
         BOOK_TOGGLEDOWNFALL = "/toggledownfall",
         NIGHTMARE_SPEAR = "Disappear in a moment.",
+
+        SPICE_CACTUS = "Make sanity great again.",
         -- PROPSIGN = STRINGS.CHARACTERS.GENERIC.DESCRIBE.HOMESIGN.GENERIC
 
     },
@@ -105,6 +109,9 @@ local strings = {
                 BOOK_HARVEST = "H-A-R-V-E-S-T!",
                 BOOK_TOGGLEDOWNFALL = "/toggledownfall",
                 NIGHTMARE_SPEAR = "It looks like breaking.",
+
+                SPICE_CACTUS = "Make sanity great again.",
+
             }
         },
         CIVI = require("speech_civi"),

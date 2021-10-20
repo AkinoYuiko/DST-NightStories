@@ -1,27 +1,16 @@
-version = "1.15.3"
+version = "1.16"
 -- basic info --
 name = locale == "zh" and "暗夜故事集" or "Night Stories"
 author = "丁香女子学校"
 description = locale == "zh" and "[版本: "..version..[[]
 
 更新内容:
-- 修复澪与猪王交易时可能导致崩溃的一个问题.
-
-- 修复水面上的影背包显示位置不正确的问题.
-- 调整影背包（橙）的拾取速度.
-- 影背包 (黄) 基础持续时间提升到3.6天.
-- 影背包插上不同宝石后显示不同的名字以区分.
+- 新道具: 仙人掌粉 (大厨专属)
 
 ]] or "[Version: "..version..[[]
 
 Changelog:
-- Fix a crash when Mio trading with Pig King.
-
-- Fix an issue about anim of floating Night Pack.
-- Adjust pick-up speed for Night Pack (Orange).
-- Night Pack (Yellow) lasts from 2.4 to 3.6 days.
-- Gem-socked Night Pack shows different names.
-
+- New item: Cactus powder (exclusive to Warly).
 ]]
 
 forumthread = ""
