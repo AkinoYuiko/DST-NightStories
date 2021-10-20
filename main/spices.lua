@@ -24,7 +24,9 @@ end
 
 ------------------------------------------------
 
+local first_time = true
 ENV.AddPrefabPostInitAny(function(inst)
+    if not first_time then return end
     local AnimState = inst.AnimState and getmetatable(inst.AnimState).__index -- :angri:
     if not AnimState then return end
     local OverrideSymbol = AnimState.OverrideSymbol
@@ -34,4 +36,5 @@ ENV.AddPrefabPostInitAny(function(inst)
         end
         return OverrideSymbol(self, symbol, override_build, override_symbol, ...)
     end
+    first_time = false
 end)
