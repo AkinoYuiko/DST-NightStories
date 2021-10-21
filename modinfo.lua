@@ -1,20 +1,22 @@
-version = "1.16.2"
+version = "1.16.3"
 -- basic info --
 name = locale == "zh" and "暗夜故事集" or "Night Stories"
 author = "丁香女子学校"
 description = locale == "zh" and "[版本: "..version..[[]
 
 更新内容:
-- 优化代码写法.
+- 优化仙人掌粉的贴图.
 
+- 优化代码写法.
 - 修复仙人掌粉引起卡顿的问题.
 - 新道具: 仙人掌粉 (大厨专属)
 
 ]] or "[Version: "..version..[[]
 
 Changelog:
-- Update due to stupid tuni.
+- Rework texture of spice_cactus.
 
+- Update due to stupid tuni.
 - Fix an isuue that cactus powder causing lag.
 - New item: Cactus powder (exclusive to Warly).
 ]]

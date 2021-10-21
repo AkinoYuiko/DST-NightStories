@@ -14,6 +14,16 @@ msgstr ""
 "X-Generator: Poedit 3.0\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+#. STRINGS.NAMES.SPICE_CACTUS
+msgctxt "STRINGS.NAMES.SPICE_CACTUS"
+msgid "Cactus Powder"
+msgstr "仙人掌粉"
+
+#. STRINGS.NAMES.SPICE_CACTUS_FOOD
+msgctxt "STRINGS.NAMES.SPICE_CACTUS_FOOD"
+msgid "Cactus {food}"
+msgstr "仙人掌味{food}"
+
 #. STRINGS.NAMES.DARKAMULET
 msgctxt "STRINGS.NAMES.DARKAMULET"
 msgid "Dark Amulet"
@@ -117,6 +127,11 @@ msgid ""
 msgstr ""
 "* 世界对她不友好.\n"
 "* 梦魇的伙伴."
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.SPICE_CACTUS
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.SPICE_CACTUS"
+msgid "Make sanity great again."
+msgstr "让精神再次伟大!"
 
 #. STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKAMULET
 msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKAMULET"
@@ -453,6 +468,11 @@ msgstr "\"假如我可以吞噬梦魇.\""
 msgctxt "STRINGS.RECIPE_DESC.DARKAMULET"
 msgid "Powerful but dark."
 msgstr "深邃而充满力量。"
+
+#. STRINGS.RECIPE_DESC.SPICE_CACTUS
+msgctxt "STRINGS.RECIPE_DESC.SPICE_CACTUS"
+msgid "Make sanity great again."
+msgstr "让精神再次伟大!"
 
 #. STRINGS.RECIPE_DESC.BOOK_HARVEST
 msgctxt "STRINGS.RECIPE_DESC.BOOK_HARVEST"
