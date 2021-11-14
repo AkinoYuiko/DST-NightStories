@@ -53,8 +53,7 @@ local book_defs =
                 if v.components.pickable and not
                 (v.prefab == "flower" or
                  v.prefab == "flower_evil" or
-                 v.prefab == "gemsocket" or
-                 v.prefab == "nightmare_gemlight") then
+                 v.prefab == "gemsocket") then
                     v.components.pickable:Pick(reader)
                 end
                 if v.components.crop then v.components.crop:Harvest(reader) end

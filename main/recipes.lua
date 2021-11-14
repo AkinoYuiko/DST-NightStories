@@ -50,6 +50,21 @@ AddRecipe("lightamulet",
 RECIPETABS.ANCIENT, TECH.ANCIENT_TWO,  nil, nil, true)
 AllRecipes["lightamulet"].sortkey = AllRecipes["darkamulet"].sortkey + 0.1
 
+
+-- 黑勾玉 --
+AddRecipe("civi_darkmagatama",
+{Ingredient("darkgem", 1),Ingredient("nightmarefuel", 1)},
+RECIPETABS.CELESTIAL, TECH.CELESTIAL_ONE, nil, nil, true, nil,"nightmaregem", nil, "darkmagatama.tex",nil,"darkmagatama")
+-- AllRecipes["civi_darkmagatama"].sortkey = AllRecipes["purplegem"].sortkey + 0.1
+STRINGS.NAMES.CIVI_DARKMAGATAMA = STRINGS.NAMES.DARKMAGATAMA
+
+-- 白勾玉 --
+AddRecipe("civi_lightmagatama",
+{Ingredient("lightgem", 1),Ingredient("nightmarefuel", 1)},
+RECIPETABS.CELESTIAL, TECH.CELESTIAL_ONE, nil, nil, true, nil,"nightmaregem", nil, "lightmagatama.tex",nil,"lightmagatama")
+-- AllRecipes["civi_lightmagatama"].sortkey = AllRecipes["civi_darkmagatama"].sortkey + 0.1
+STRINGS.NAMES.CIVI_LIGHTMAGATAMA = STRINGS.NAMES.LIGHTMAGATAMA
+
 -- 影背包 --
 AddRecipe("nightpack",
 -- AddRecipe("glowingbackpack",

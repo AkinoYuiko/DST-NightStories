@@ -1,24 +1,22 @@
-version = "1.16.3"
+version = "1.17"
 -- basic info --
 name = locale == "zh" and "暗夜故事集" or "Night Stories"
 author = "丁香女子学校"
 description = locale == "zh" and "[版本: "..version..[[]
 
 更新内容:
-- 优化仙人掌粉的贴图.
-
-- 优化代码写法.
-- 修复仙人掌粉引起卡顿的问题.
-- 新道具: 仙人掌粉 (大厨专属)
+- 新增黑/白勾玉 (天体科技制作).
+- 黑/白勾玉的堆叠数量为 8.
+- 黑/白勾玉代替原先的黑白宝石插入影刀.
+- 黑/白宝石移除可插入影刀的功能.
 
 ]] or "[Version: "..version..[[]
 
 Changelog:
-- Rework texture of spice_cactus.
-
-- Update due to stupid tuni.
-- Fix an isuue that cactus powder causing lag.
-- New item: Cactus powder (exclusive to Warly).
+- Add Dark & Light Magatamas (Under Celestial Techs.).
+- Dark & Light Magatamas' max stack size is 8.
+- Dark & Light Magatamas can be socketed into Dark Sword.
+- Dark & Light Gems can nolonger be socketed into Dark Sword.
 ]]
 
 forumthread = ""

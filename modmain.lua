@@ -3,6 +3,7 @@ PrefabFiles = {
 	"civi",
     "civi_amulets",
     "civi_gems",
+    "civi_magatamas",
     "nightpack",
 
     "miotan",
@@ -30,8 +31,10 @@ local main_files = {
     "tuning",
     "strings",
 
+    "add_stack_size",
+
     "gem_nightsword",
-    "gem_socket",
+    "gem_pack",
     "night_switch",
     "prefabskin",
     "recipes",

@@ -74,6 +74,11 @@ msgctxt "STRINGS.NAMES.LIGHTGEM"
 msgid "Light Gem"
 msgstr "白宝石"
 
+#. STRINGS.NAMES.LIGHTMAGATAMA
+msgctxt "STRINGS.NAMES.LIGHTMAGATAMA"
+msgid "Light Magatama"
+msgstr "白勾玉"
+
 #. STRINGS.NAMES.NIGHTPACK
 msgctxt "STRINGS.NAMES.NIGHTPACK"
 msgid "Night Backpack"
@@ -83,6 +88,11 @@ msgstr "影背包"
 msgctxt "STRINGS.NAMES.DARKGEM"
 msgid "Dark Gem"
 msgstr "黑宝石"
+
+#. STRINGS.NAMES.DARKMAGATAMA
+msgctxt "STRINGS.NAMES.DARKMAGATAMA"
+msgid "Dark Magatama"
+msgstr "黑勾玉"
 
 #. STRINGS.CHARACTER_NAMES.dummy
 msgctxt "STRINGS.CHARACTER_NAMES.dummy"
@@ -158,6 +168,11 @@ msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTGEM"
 msgid "Get closer to light!"
 msgstr "使你更接近光明！"
 
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTMAGATAMA
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTMAGATAMA"
+msgid "Make THE sword to the light."
+msgstr "让那把刀接近光明."
+
 #. STRINGS.CHARACTERS.GENERIC.DESCRIBE.BOOK_TOGGLEDOWNFALL
 msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.BOOK_TOGGLEDOWNFALL"
 msgid "/toggledownfall"
@@ -177,6 +192,11 @@ msgstr "它似乎需要某种东西来发光."
 msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKGEM"
 msgid "Get closer to dark!"
 msgstr "使你更接近黑暗！"
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKMAGATAMA
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKMAGATAMA"
+msgid "Make THE sword to the dark."
+msgstr "让那把刀接近黑暗."
 
 #. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_WAYTOOMANYBIRDS
 msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_WAYTOOMANYBIRDS"
@@ -508,6 +528,16 @@ msgstr "降级！降级！"
 msgctxt "STRINGS.RECIPE_DESC.DARKGEM"
 msgid "Upgrades!"
 msgstr "升级！升级！"
+
+#. STRINGS.RECIPE_DESC.LIGHTMAGATAMA
+msgctxt "STRINGS.RECIPE_DESC.LIGHTMAGATAMA"
+msgid "Into Light!"
+msgstr "嵌入光明"
+
+#. STRINGS.RECIPE_DESC.DARKMAGATAMA
+msgctxt "STRINGS.RECIPE_DESC.DARKMAGATAMA"
+msgid "Into Dark!"
+msgstr "嵌入黑暗"
 
 #. STRINGS.RECIPE_DESC.REDGEM
 msgctxt "STRINGS.RECIPE_DESC.REDGEM"

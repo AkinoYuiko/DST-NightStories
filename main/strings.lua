@@ -18,6 +18,8 @@ local strings = {
         NIGHTPACK_FUEL = "Night Pack",
         DARKGEM = "Dark Gem",
         LIGHTGEM = "Light Gem",
+        DARKMAGATAMA = "Dark Magatama",
+        LIGHTMAGATAMA = "Light Magatama",
 
         MIOTAN = "Mio",
 
@@ -40,6 +42,9 @@ local strings = {
         LIGHTAMULET = "Keep away from dark things.",
         DARKGEM = "Upgrades!",
         LIGHTGEM = "Degrades!",
+
+        DARKMAGATAMA = "Into Dark!",
+        LIGHTMAGATAMA = "Into Light!",
 
         BLACKHOLESTAFF = "Absorb everything!",
         BOOK_HARVEST = "Should help you harvest!",
@@ -105,6 +110,9 @@ local strings = {
                 DARKGEM = "Get closer to dark!",
                 LIGHTGEM = "Get closer to light!",
                 
+                DARKMAGATAMA = "Make THE sword to the dark.",
+                LIGHTMAGATAMA = "Make THE sword to the light.",
+
                 BLACKHOLESTAFF = "???",
                 BOOK_HARVEST = "H-A-R-V-E-S-T!",
                 BOOK_TOGGLEDOWNFALL = "/toggledownfall",

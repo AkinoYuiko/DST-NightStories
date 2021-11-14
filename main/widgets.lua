@@ -20,5 +20,5 @@ params.nightsword =
 }
 
 function params.nightsword.itemtestfn(container, item, slot)
-    return item:HasTag("civigem")
+    return item:HasTag("civimagatama")
 end
