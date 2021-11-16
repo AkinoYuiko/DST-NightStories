@@ -1,10 +1,12 @@
-version = "1.17"
+version = "1.17.2"
 -- basic info --
 name = locale == "zh" and "暗夜故事集" or "Night Stories"
 author = "丁香女子学校"
 description = locale == "zh" and "[版本: "..version..[[]
 
 更新内容:
+- 调整了黑/白勾玉的制作条件.
+
 - 新增黑/白勾玉 (天体科技制作).
 - 黑/白勾玉的堆叠数量为 8.
 - 黑/白勾玉代替原先的黑白宝石插入影刀.
@@ -13,6 +15,8 @@ description = locale == "zh" and "[版本: "..version..[[]
 ]] or "[Version: "..version..[[]
 
 Changelog:
+- Change recipe conditions for Dark & Light Magatamas.
+
 - Add Dark & Light Magatamas (Under Celestial Techs.).
 - Dark & Light Magatamas' max stack size is 8.
 - Dark & Light Magatamas can be socketed into Dark Sword.
