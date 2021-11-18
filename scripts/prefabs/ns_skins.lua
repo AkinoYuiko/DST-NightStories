@@ -8,7 +8,7 @@ table.insert(prefabs, CreatePrefabSkin("armorskeleton_none", {
         Asset( "DYNAMIC_ANIM", "anim/dynamic/armorskeleton_none.zip" ),
         Asset( "PKGREF", "anim/dynamic/armorskeleton_none.dyn" ),
     },
-    init_fn = function(inst) armorskeleton_init_fn(inst, "armorskeleton_none") end,
+    init_fn = function(inst) ns_armorskeleton_init_fn(inst, "armorskeleton_none") end,
 	skin_tags = { "ARMORSKELETON" },
 }))
 

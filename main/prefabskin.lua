@@ -8,35 +8,33 @@ ns_equipment_init_fn = function(inst, slot, skinname, override_build, swap_data)
 end
 
 -- Civi
-if not rawget(_G, "armorskeleton_clear_fn") then
-    armorskeleton_init_fn = function(inst, build)
+ns_armorskeleton_init_fn = function(inst, build)
 
-        local function onequipfn(inst, data)
-            data.owner.AnimState:ClearOverrideSymbol("swap_body")
-        end
-
-        GlassicAPI.SetFloatData(inst, { bank = "armor_skeleton", anim = "anim"})
-
-        if not TheWorld.ismastersim then return end
-
-        inst.skinname = build
-        inst.AnimState:SetBuild(build)
-        if inst.components.inventoryitem then
-            inst.components.inventoryitem:ChangeImageName(inst:GetSkinName())
-        end
-
-        inst:ListenForEvent("equipped", onequipfn)
-        inst.OnSkinChange = function(inst)
-            inst:RemoveEventCallback("equipped", onequipfn)
-        end
+    local function onequipfn(inst, data)
+        data.owner.AnimState:ClearOverrideSymbol("swap_body")
     end
-    armorskeleton_clear_fn = function(inst)
-        inst.AnimState:SetBuild("armor_skeleton")
-        GlassicAPI.SetFloatData(inst, { bank = "armor_skeleton", anim = "anim"})
-        if not TheWorld.ismastersim then return end
-    	inst.components.inventoryitem:ChangeImageName()
+
+    GlassicAPI.SetFloatData(inst, { bank = "armor_skeleton", anim = "anim"})
+
+    if not TheWorld.ismastersim then return end
+
+    inst.skinname = build
+    inst.AnimState:SetBuild(build)
+    if inst.components.inventoryitem then
+        inst.components.inventoryitem:ChangeImageName(inst:GetSkinName())
+    end
+
+    inst:ListenForEvent("equipped", onequipfn)
+    inst.OnSkinChange = function(inst)
+        inst:RemoveEventCallback("equipped", onequipfn)
     end
 end
+--     armorskeleton_clear_fn = function(inst)
+--         inst.AnimState:SetBuild("armor_skeleton")
+--         GlassicAPI.SetFloatData(inst, { bank = "armor_skeleton", anim = "anim"})
+--         if not TheWorld.ismastersim then return end
+--     	inst.components.inventoryitem:ChangeImageName()
+--     end
 
 if not rawget(_G, "skeletonhat_clear_fn") then
 	-- skeletonhat_init_fn = function(inst, build)
