@@ -2,7 +2,6 @@ local Action = GLOBAL.Action
 local ACTIONS = GLOBAL.ACTIONS
 local ActionHandler = GLOBAL.ActionHandler
 local STRINGS = GLOBAL.STRINGS
-local TUNING = GLOBAL.TUNING
 
 local GEMTRADE = Action({mount_valid=true})
 

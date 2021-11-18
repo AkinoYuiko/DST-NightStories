@@ -1,4 +1,3 @@
-local ENV = env
 GLOBAL.setfenv(1, GLOBAL)
 
 NS_SPICES = {

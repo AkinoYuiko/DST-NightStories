@@ -50,7 +50,6 @@ local function pickup(staff, target, pos)
 
     	        local fx = SpawnPrefab("shadow_puff")
 				if fx then fx.Transform:SetPosition(v.Transform:GetWorldPosition()) fx.Transform:SetScale(0.7,0.7,0.7) end
-    	        local v_pos = v:GetPosition()
     	        if v.components.stackable ~= nil then
 					local num = caster.components.inventory:CanAcceptCount(v,40)
     	            v = v.components.stackable:Get(num)

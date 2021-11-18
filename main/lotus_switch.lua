@@ -3,7 +3,6 @@ local Action = _G.Action
 local ACTIONS = _G.ACTIONS
 local ActionHandler = _G.ActionHandler
 local STRINGS = _G.STRINGS
-local TUNING = _G.TUNING
 
 local LOTUSSWITCH = Action({priority=-1})
 
