@@ -1,6 +1,6 @@
 local assets=
 {
-    Asset("ANIM", "anim/nightmare_gems.zip"),
+    Asset("ANIM", "anim/civi_gems.zip"),
 }
 local function buildgem(colour)
 	local function fn()
@@ -13,15 +13,12 @@ local function buildgem(colour)
 
 	    MakeInventoryPhysics(inst)
 
-	    inst.AnimState:SetBank("nightmare_gems")
-	    inst.AnimState:SetBuild("nightmare_gems")
+	    inst.AnimState:SetBank("civi_gems")
+	    inst.AnimState:SetBuild("civi_gems")
 	    inst.AnimState:PlayAnimation(colour.."gem_idle")
 
 	    inst:AddTag("molebait")
 	    inst:AddTag("quakedebris")
-		
-		-- inst:AddTag("civigem")
-		-- inst:AddTag("reloaditem_ammo")
 
 	    MakeInventoryFloatable(inst, "small", 0.10, 0.80)
 
