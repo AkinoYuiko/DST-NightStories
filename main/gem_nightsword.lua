@@ -38,10 +38,10 @@ ENV.AddStategraphActionHandler("wilson", ActionHandler(NIGHTSWORDMAGATAMA, "dosh
 ENV.AddStategraphActionHandler("wilson_client", ActionHandler(NIGHTSWORDMAGATAMA, "doshortaction"))
 
 ENV.AddComponentAction("INVENTORY", "nightmagatama", function(inst, doer, actions, right)
-    if doer.replica.inventory ~= nil and not doer.replica.inventory:IsHeavyLifting() then
+    if doer.replica.inventory and not doer.replica.inventory:IsHeavyLifting() then
         local sword = doer.replica.inventory:GetEquippedItem(EQUIPSLOTS.HANDS)
         if sword and sword.prefab == "nightsword"
-            and sword.replica.container ~= nil and sword.replica.container:IsOpenedBy(doer)
+            and sword.replica.container and sword.replica.container:IsOpenedBy(doer)
             and sword.replica.container:CanTakeItemInSlot(inst) then
 
             table.insert(actions, ACTIONS.CHANGE_TACKLE)
@@ -83,14 +83,14 @@ local function on_add_container(inst)
         inst:AddTag("_container")
     end
     local container = inst.replica.container
-    if container ~= nil then
-        if container.classified == nil and inst.container_classified ~= nil then
+    if container then
+        if container.classified == nil and inst.container_classified then
             container.classified = inst.container_classified
             inst.container_classified.OnRemoveEntity = nil
             inst.container_classified = nil
             container:AttachClassified(container.classified)
         end
-        if container.opener == nil and inst.container_opener ~= nil then
+        if container.opener == nil and inst.container_opener then
             container.opener = inst.container_opener
             inst.container_opener.OnRemoveEntity = nil
             inst.container_opener = nil
@@ -120,7 +120,7 @@ local function onclose(inst)
 end
 
 local function onitemget(inst, data)
-    if inst.remove_container_task ~= nil then
+    if inst.remove_container_task then
         inst.remove_container_task:Cancel()
         inst.remove_container_task = nil
     end
@@ -143,7 +143,7 @@ local function onitemlose(inst)
     inst.components.weapon:SetDamage(TUNING.NIGHTSWORD_DAMAGE)
     inst.components.weapon.attackwearmultipliers:RemoveModifier("nightmagatama")
     inst.components.equippable.dapperness = TUNING.CRAZINESS_MED
-    if inst.remove_container_task ~= nil then
+    if inst.remove_container_task then
         inst.remove_container_task:Cancel()
         inst.remove_container_task = nil
     end

@@ -50,14 +50,14 @@ end)
 local function new_onpickedfn(inst, picker)
     local pos = inst:GetPosition()
 
-    if picker ~= nil then
-        if picker.components.sanity ~= nil and not picker:HasTag("plantkin") and not picker:HasTag("nm_breaker") then -- changed part from original fn
+    if picker then
+        if picker.components.sanity and not picker:HasTag("plantkin") and not picker:HasTag("nm_breaker") then -- changed part from original fn
             picker.components.sanity:DoDelta(TUNING.SANITY_TINY)
         end
 
         if inst.animname == ROSE_NAME and
-            picker.components.combat ~= nil and
-            not (picker.components.inventory ~= nil and picker.components.inventory:EquipHasTag("bramble_resistant")) then
+            picker.components.combat and
+            not (picker.components.inventory and picker.components.inventory:EquipHasTag("bramble_resistant")) then
             picker.components.combat:GetAttacked(inst, TUNING.ROSE_DAMAGE)
             picker:PushEvent("thorns")
         end

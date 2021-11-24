@@ -6,7 +6,7 @@ local MIOFUEL = Action({mount_valid=true})
 MIOFUEL.id = "MIOFUEL"
 
 MIOFUEL.stroverridefn = function(act)
-	if act.invobject ~= nil then
+	if act.invobject then
 		return act.invobject:GetIsWet() and STRINGS.ACTIONS.ADDWETFUEL or STRINGS.ACTIONS.ADDFUEL
 	end
 end
@@ -17,7 +17,7 @@ local function UseFuel(item, target, doer)
 	if fueled then
 		fueled:DoDelta(item.components.fuel.fuelvalue * fueled.bonusmult * wetmult, doer)
 		-- _d.SoundEmitter:PlaySound("dontstarve/common/nightmareAddFuel")
-		if fueled.ontakefuelfn ~= nil then
+		if fueled.ontakefuelfn then
 			fueled.ontakefuelfn(target)
 		end
 		return true
@@ -61,8 +61,8 @@ ENV.AddComponentAction("USEITEM", "fuel", function(inst, doer, target, actions, 
 	if doer.prefab == "miotan" and inst.prefab == "nightmarefuel" then
 		if CheckAvailable(target)
 			and (
-				not (doer.replica.rider ~= nil and doer.replica.rider:IsRiding())
-				or (target.replica.inventoryitem ~= nil and target.replica.inventoryitem:IsGrandOwner(doer))
+				not (doer.replica.rider and doer.replica.rider:IsRiding())
+				or (target.replica.inventoryitem and target.replica.inventoryitem:IsGrandOwner(doer))
 			) then
 
 			table.insert(actions, ACTIONS.MIOFUEL)

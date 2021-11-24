@@ -1,4 +1,4 @@
-local STRINGS = GLOBAL.STRINGS
+local STRINGS, io = GLOBAL.STRINGS, GLOBAL.io
 local strings = {
     NAMES = 
     {
@@ -216,7 +216,7 @@ GlassicAPI.MergeTranslationFromPO(MODROOT.."languages")
 -- end
 
 local function MergeCharacterSpeech(char)
-    local file, errormsg = GLOBAL.io.open(MODROOT .. "scripts/speech_"..char..".lua", "w")
+    local file, errormsg = io.open(MODROOT .. "scripts/speech_"..char..".lua", "w")
     if not file then print("Can't update " .. MODROOT .. "scripts/speech_"..char..".lua", "\n", tostring(errormsg)) return end
     GlassicAPI.MergeSpeechFile(require("speech_"..char), file)
 end
@@ -225,7 +225,7 @@ GLOBAL.UpdateNsStrings = function()
     MergeCharacterSpeech("miotan")
     -- MergeCharacterSpeech("dummy")
     MergeCharacterSpeech("civi")
-    local file, errormsg = GLOBAL.io.open(MODROOT .. "languages/strings.pot", "w")
+    local file, errormsg = io.open(MODROOT .. "languages/strings.pot", "w")
     if not file then print("Can't generate " .. MODROOT .. "languages/strings.pot", "\n", tostring(errormsg)) return end
     GlassicAPI.MakePOTFromStrings(file, strings)
 end

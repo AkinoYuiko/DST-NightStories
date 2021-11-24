@@ -31,8 +31,8 @@ ENV.AddComponentPostInit("sanity", function(self)
             for k, v in pairs(self.inst.components.inventory.equipslots) do
                 local equippable = v.components.equippable
                 
-                if equippable ~= nil then
-                    local item_dapperness = self.get_equippable_dappernessfn ~= nil and self.get_equippable_dappernessfn(self.inst, equippable) or equippable:GetDapperness(self.inst, self.no_moisture_penalty)
+                if equippable then
+                    local item_dapperness = self.get_equippable_dappernessfn and self.get_equippable_dappernessfn(self.inst, equippable) or equippable:GetDapperness(self.inst, self.no_moisture_penalty)
                     total_dapperness = total_dapperness + item_dapperness
                 end
             end
@@ -64,9 +64,9 @@ ENV.AddComponentPostInit("sanity", function(self)
             local x, y, z = self.inst.Transform:GetWorldPosition()
             local ents = TheSim:FindEntities(x, y, z, TUNING.SANITY_AURA_SEACH_RANGE, SANITYRECALC_MUST_TAGS, SANITYRECALC_CANT_TAGS)
             for i, v in ipairs(ents) do
-                if v.components.sanityaura ~= nil and v ~= self.inst then
+                if v.components.sanityaura and v ~= self.inst then
                     local is_aura_immune = false
-                    if self.sanity_aura_immunities ~= nil then
+                    if self.sanity_aura_immunities then
                         for tag, _ in pairs(self.sanity_aura_immunities) do
                             if v:HasTag(tag) then
                                 is_aura_immune = true
@@ -80,7 +80,7 @@ ENV.AddComponentPostInit("sanity", function(self)
                         aura_val = (aura_val < 0 and (self.neg_aura_absorb > 0 and self.neg_aura_absorb * -aura_val or aura_val) * self:GetAuraMultipliers() or aura_val)
                         -- changed part begin --
                         local _inv = self.inst.components.inventory and self.inst.components.inventory:GetEquippedItem(_G.EQUIPSLOTS.BODY)
-                        local aura_amulet_mult = _inv ~= nil and (_inv.prefab == "lightamulet" and (aura_val < 0 and 0.5 or 2)) or 1
+                        local aura_amulet_mult = _inv and (_inv.prefab == "lightamulet" and (aura_val < 0 and 0.5 or 2)) or 1
                         aura_val = aura_val * aura_amulet_mult
                         -- changed part end --
                         aura_delta = aura_delta + ((aura_val < 0 and self.neg_aura_immune) and 0 or aura_val)
@@ -90,12 +90,12 @@ ENV.AddComponentPostInit("sanity", function(self)
         end
 
         local mount = self.inst.components.rider:IsRiding() and self.inst.components.rider:GetMount() or nil
-        if mount ~= nil and mount.components.sanityaura ~= nil then
+        if mount and mount.components.sanityaura then
             local aura_val = mount.components.sanityaura:GetAura(self.inst)
             aura_val = (aura_val < 0 and (self.neg_aura_absorb > 0 and self.neg_aura_absorb * -aura_val or aura_val) * self:GetAuraMultipliers() or aura_val)
             -- changed part begin --
             local _inv = self.inst.components.inventory and self.inst.components.inventory:GetEquippedItem(_G.EQUIPSLOTS.BODY)
-            local aura_amulet_mult = _inv ~= nil and (_inv.prefab == "lightamulet" and (aura_val < 0 and 0.5 or 2)) or 1
+            local aura_amulet_mult = _inv and (_inv.prefab == "lightamulet" and (aura_val < 0 and 0.5 or 2)) or 1
             aura_val = aura_val * aura_amulet_mult
             -- changed part end --
             aura_delta = aura_delta + ((aura_val < 0 and self.neg_aura_immune) and 0 or aura_val)
@@ -106,7 +106,7 @@ ENV.AddComponentPostInit("sanity", function(self)
 
         self.rate = dapper_delta + moisture_delta + light_delta + aura_delta + ghost_delta + self.externalmodifiers:Get()
 
-        if self.custom_rate_fn ~= nil then
+        if self.custom_rate_fn then
             --NOTE: dt param was added for wormwood's custom rate function
             --      dt shouldn't have been applied to the return value yet
             self.rate = self.rate + self.custom_rate_fn(self.inst, dt)

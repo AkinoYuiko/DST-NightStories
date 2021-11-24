@@ -14,7 +14,7 @@ local function new_ontradeforgold(inst, item, giver)
     y = 4.5
 
     local angle
-    if giver ~= nil and giver:IsValid() then
+    if giver and giver:IsValid() then
         angle = 180 - giver:GetAngleToPoint(x, 0, z)
     else
         local down = TheCamera:GetDownVec()
@@ -38,10 +38,10 @@ local function new_ontradeforgold(inst, item, giver)
     end
     -- end --
 
-    if item and item.components.tradable.tradefor ~= nil then
+    if item and item.components.tradable.tradefor then
         for _, v in pairs(item.components.tradable.tradefor) do
             local item = SpawnPrefab(v)
-            if item ~= nil then
+            if item then
                 item.Transform:SetPosition(x, y, z)
                 launchitem(item, angle)
             end
@@ -54,7 +54,7 @@ local function new_ontradeforgold(inst, item, giver)
         local numcandies = (item.components.tradable.halloweencandyvalue or 1) + math.random(2) + 2
 
         -- only people in costumes get a good amount of candy!
-        if giver ~= nil and giver.components.skinner ~= nil then
+        if giver and giver.components.skinner then
             for _, item in pairs(giver.components.skinner:GetClothing()) do
                 if DoesItemHaveTag(item, "COSTUME") or DoesItemHaveTag(item, "HALLOWED") then
                     numcandies = numcandies + math.random(4) + 2

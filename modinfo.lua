@@ -1,12 +1,14 @@
-version = "1.17.4"
+version = "1.17.5"
 -- basic info --
 name = locale == "zh" and "暗夜故事集" or "Night Stories"
 author = "丁香女子学校"
 description = locale == "zh" and "[版本: " .. version .. [[]
 
 更新内容:
-- 更新黑/白宝石的贴图.
+- 优化模块代码格式.
+- 修复吃燃料模块潜在的问题.
 
+- 更新黑/白宝石的贴图.
 - 修复骨甲皮肤不能换的问题.
 - 移除部分无用代码.
 - 调整了黑/白勾玉的制作条件.
@@ -18,8 +20,10 @@ description = locale == "zh" and "[版本: " .. version .. [[]
 ]] or "[Version: " .. version .. [[]
 
 Changelog:
-- Update texture for Dark & Light Gems.
+- Improve code performance.
+- Fix a potential issue about edible nightmare fuel.
 
+- Update texture for Dark & Light Gems.
 - Fix skin issue for Skeleton Armor.
 - Remove some unused code.
 - Change recipe conditions for Dark & Light Magatamas.

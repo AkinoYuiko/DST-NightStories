@@ -1,3 +1,6 @@
+local ENV = env
+GLOBAL.setfenv(1, GLOBAL)
+
 local MUTABLE_TARGETS = {
 	goldenaxe 		= "moonglassaxe",
 	goldenpickaxe 	= "moonglasspickaxe",
@@ -5,8 +8,8 @@ local MUTABLE_TARGETS = {
 }
 
 local function onmutatefn(inst, target)
-	if inst.skinname ~= nil then
-		local target_skins = GLOBAL.PREFAB_SKINS[target.prefab]
+	if inst.skinname then
+		local target_skins = PREFAB_SKINS[target.prefab]
 		if target_skins then
 			local skin = target.prefab .. inst.skinname:gsub(inst.prefab, "")
 			if table.contains(target_skins, skin) then
@@ -17,9 +20,9 @@ local function onmutatefn(inst, target)
 end
 
 for base, target in pairs(MUTABLE_TARGETS) do
-	AddPrefabPostInit(base, function(inst)
+	ENV.AddPrefabPostInit(base, function(inst)
 		inst:AddTag("halloweenmoonmutable")
-		if not GLOBAL.TheWorld.ismastersim then return end
+		if not TheWorld.ismastersim then return end
 		inst:AddComponent("halloweenmoonmutable")
 		inst.components.halloweenmoonmutable:SetPrefabMutated(target)
 		inst.components.halloweenmoonmutable:SetOnMutateFn(onmutatefn)
