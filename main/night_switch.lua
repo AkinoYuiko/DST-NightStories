@@ -1,4 +1,7 @@
-local ENV = env
+local AddAction = AddAction
+local AddComponentAction = AddComponentAction
+local AddPrefabPostInit = AddPrefabPostInit
+local AddStategraphActionHandler = AddStategraphActionHandle
 GLOBAL.setfenv(1, GLOBAL)
 
 local NIGHTSWITCH = Action({mount_valid=true, priority = 1})
@@ -35,17 +38,16 @@ NIGHTSWITCH.fn = function(act)
     end
 end
 
-ENV.AddAction(NIGHTSWITCH)
-
-ENV.AddComponentAction("INVENTORY", "nightswitch", function(inst, doer, actions, right)
+AddAction(NIGHTSWITCH)
+AddComponentAction("INVENTORY", "nightswitch", function(inst, doer, actions, right)
     if doer.prefab ~= "civi" then return end
     if doer.replica.inventory:GetActiveItem() == inst then return end
-    if inst.prefab=="darkgem" and doer:HasTag("civi_canupgrade") then
+    if inst.prefab == "darkgem" and doer:HasTag("civi_canupgrade") then
         table.insert(actions, ACTIONS.NIGHTSWITCH)
-    elseif inst.prefab=="lightgem" and doer:HasTag("civi_candegrade") then
+    elseif inst.prefab == "lightgem" and doer:HasTag("civi_candegrade") then
         table.insert(actions, ACTIONS.NIGHTSWITCH)
     end
 end)
-
-ENV.AddStategraphActionHandler("wilson", ActionHandler(NIGHTSWITCH, "domediumaction"))
-ENV.AddStategraphActionHandler("wilson_client", ActionHandler(NIGHTSWITCH, "domediumaction"))
+for _, stage in ipairs({"wilson", "wilson_client"}) do
+    AddStategraphActionHandler(stage, ActionHandler(NIGHTSWITCH, "domediumaction"))
+end

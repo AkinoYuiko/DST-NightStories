@@ -1,4 +1,4 @@
-local ENV = env
+local AddComponentPostInit = AddComponentPostInit
 GLOBAL.setfenv(1, GLOBAL)
 
 local easing = require("easing")
@@ -20,7 +20,7 @@ local LIGHT_SANITY_DRAINS =
 	},
 }
 
-ENV.AddComponentPostInit("sanity", function(self)
+AddComponentPostInit("sanity", function(self)
     local SANITYRECALC_MUST_TAGS = { "sanityaura" }
     local SANITYRECALC_CANT_TAGS = { "FX", "NOCLICK", "DECOR","INLIMBO" }
     

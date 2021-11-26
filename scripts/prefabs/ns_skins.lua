@@ -54,7 +54,7 @@ table.insert(prefabs, CreatePrefabSkin("nightstick_crystal", {
         Asset( "DYNAMIC_ANIM", "anim/dynamic/nightstick_crystal.zip" ),
         Asset( "PKGREF", "anim/dynamic/nightstick_crystal.dyn" ),
     },
-    init_fn = function(inst) nightstick_init_fn(inst, "nightstick_crystal") end,
+    init_fn = function(inst) ns_nightstick_init_fn(inst, "nightstick_crystal") end,
 	skin_tags = { "NIGHTSTICK"},
 }))
 

@@ -1,4 +1,8 @@
-local ENV = env
+local AddAction = AddAction
+local AddClassPostConstruct = AddClassPostConstruct
+local AddComponentAction = AddComponentAction
+local AddPrefabPostInit = AddPrefabPostInit
+local AddStategraphActionHandler = AddStategraphActionHandle
 GLOBAL.setfenv(1, GLOBAL)
 
 local NIGHTSWORDMAGATAMA = Action({ mount_valid = true, priority = 2 })
@@ -27,17 +31,13 @@ NIGHTSWORDMAGATAMA.fn = function(act)
     end
 end
 
-ENV.AddAction(NIGHTSWORDMAGATAMA)
-ENV.AddComponentAction("USEITEM", "nightmagatama", function(inst, doer, target, actions, right)
+AddAction(NIGHTSWORDMAGATAMA)
+AddComponentAction("USEITEM", "nightmagatama", function(inst, doer, target, actions, right)
     if right and target.prefab == "nightsword" and not target:HasTag("nomagatamasocket") then
         table.insert(actions, ACTIONS.NIGHTSWORDMAGATAMA)
     end
 end)
-
-ENV.AddStategraphActionHandler("wilson", ActionHandler(NIGHTSWORDMAGATAMA, "doshortaction"))
-ENV.AddStategraphActionHandler("wilson_client", ActionHandler(NIGHTSWORDMAGATAMA, "doshortaction"))
-
-ENV.AddComponentAction("INVENTORY", "nightmagatama", function(inst, doer, actions, right)
+AddComponentAction("INVENTORY", "nightmagatama", function(inst, doer, actions, right)
     if doer.replica.inventory and not doer.replica.inventory:IsHeavyLifting() then
         local sword = doer.replica.inventory:GetEquippedItem(EQUIPSLOTS.HANDS)
         if sword and sword.prefab == "nightsword"
@@ -48,6 +48,9 @@ ENV.AddComponentAction("INVENTORY", "nightmagatama", function(inst, doer, action
         end
     end
 end)
+for _, stage in ipairs({"wilson", "wilson_client"}) do
+    AddStategraphActionHandler(stage, ActionHandler(NIGHTSWORDMAGATAMA, "doshortaction"))
+end
 
 local MAGATAMA_NAMES = {
     "darkmagatama",
@@ -158,7 +161,7 @@ local function onitemlose(inst)
     inst:SetMagatamaBG()
 end
 
-ENV.AddPrefabPostInit("nightsword", function(inst)
+AddPrefabPostInit("nightsword", function(inst)
 	inst.entity:AddSoundEmitter()
 
     inst.magatama_id = net_tinybyte(inst.GUID, "nightsword.magatama_id", "magatamadirty")
@@ -244,7 +247,7 @@ ENV.AddPrefabPostInit("nightsword", function(inst)
 
 end)
 
-ENV.AddClassPostConstruct("widgets/itemtile", function(self)
+AddClassPostConstruct("widgets/itemtile", function(self)
     if self.item.prefab == "nightsword" and self.imagebg == nil then
         self.imagebg = self:AddChild(Image(nil, nil, "default.tex"))
         self.imagebg:SetClickable(false)

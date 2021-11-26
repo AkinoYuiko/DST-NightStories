@@ -1,51 +1,33 @@
-local ENV = env
+local AddPrefabPostInit = AddPrefabPostInit
 GLOBAL.setfenv(1, GLOBAL)
 
-local AddPrefabPostInit = ENV.AddPrefabPostInit
-local rewardtable = {
+local ROSE_NAME = "rose"
+local rewardtable =
+{
     "miotan", 
     "dummy"
 }
-local ROSE_NAME = "rose"
+local nightmare_prefabs =
+{
+    "crawlinghorror",
+    "terrorbeak",
+    "swimminghorror",
+}
 
-AddPrefabPostInit("crawlinghorror", function(inst)
-	if not TheWorld.ismastersim then return end
+for _, prefab in ipairs(nightmare_prefabs) do
+    AddPrefabPostInit(prefab, function(inst)
+        if not TheWorld.ismastersim then return end
 
-	local oldOnKilledByOther = inst.components.combat.onkilledbyother
-	inst.components.combat.onkilledbyother = function(inst, attacker)
-		if attacker and table.contains(rewardtable, attacker.prefab) and attacker.components.sanity then
-        	attacker.components.sanity:DoDelta((inst.sanityreward or TUNING.SANITY_SMALL) * 0.5)
-        else
-        	oldOnKilledByOther(inst, attacker)
+        local oldOnKilledByOther = inst.components.combat.onkilledbyother
+        inst.components.combat.onkilledbyother = function(inst, attacker)
+            if attacker and table.contains(rewardtable, attacker.prefab) and attacker.components.sanity then
+                attacker.components.sanity:DoDelta((inst.sanityreward or TUNING.SANITY_SMALL) * 0.5)
+            else
+                oldOnKilledByOther(inst, attacker)
+            end
         end
-    end
-end)
-
-AddPrefabPostInit("terrorbeak", function(inst)
-	if not TheWorld.ismastersim then return end
-
-	local oldOnKilledByOther = inst.components.combat.onkilledbyother
-	inst.components.combat.onkilledbyother = function(inst, attacker)
-		if attacker and table.contains(rewardtable, attacker.prefab) and attacker.components.sanity then
-        	attacker.components.sanity:DoDelta((inst.sanityreward or TUNING.SANITY_SMALL) * 0.5)
-        else
-        	oldOnKilledByOther(inst, attacker)
-        end
-    end
-end)
-
-AddPrefabPostInit("swimminghorror", function(inst)
-    if not TheWorld.ismastersim then return end
-
-    local oldOnKilledByOther = inst.components.combat.onkilledbyother
-    inst.components.combat.onkilledbyother = function(inst, attacker)
-        if attacker and table.contains(rewardtable, attacker.prefab) and attacker.components.sanity then
-            attacker.components.sanity:DoDelta((inst.sanityreward or TUNING.SANITY_SMALL) * 0.5)
-        else
-            oldOnKilledByOther(inst, attacker)
-        end
-    end
-end)
+    end)
+end
 
 local function new_onpickedfn(inst, picker)
     local pos = inst:GetPosition()

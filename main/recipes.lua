@@ -1,7 +1,7 @@
-local ENV = env
+local AddRecipe = AddRecipe
+local AddRecipeTab = AddRecipeTab
+local AddStategraphPostInit = AddStategraphPostInit
 GLOBAL.setfenv(1, GLOBAL)
-local AddRecipe = ENV.AddRecipe
-local AddRecipeTab = ENV.AddRecipeTab
 -- 黑宝石 --
 AddRecipe("civi_darkgem",
 {Ingredient("purplegem", 1), Ingredient("nightmarefuel", 4)},
@@ -113,7 +113,7 @@ AddRecipe("book_toggledownfall",
 {Ingredient("papyrus", 2), Ingredient(CHARACTER_INGREDIENT.SANITY, 30)},
 dummytab, TECH.MAGIC_THREE, nil, nil, nil, nil, "nm_breaker", nil, "book_toggledownfall.tex")
 
-ENV.AddStategraphPostInit("wilson", function(sg)
+AddStategraphPostInit("wilson", function(sg)
     local old_handler = sg.actionhandlers[ACTIONS.BUILD].deststate
     sg.actionhandlers[ACTIONS.BUILD].deststate = function(inst, action)
         -- if not inst.sg:HasStateTag("busy") then

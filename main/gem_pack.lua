@@ -1,4 +1,7 @@
-local ENV = env
+local AddAction = AddAction
+local AddComponentAction = AddComponentAction
+local AddPrefabPostInit = AddPrefabPostInit
+local AddStategraphActionHandler = AddStategraphActionHandle
 GLOBAL.setfenv(1, GLOBAL)
 
 local GEMTRADE = Action({mount_valid=true})
@@ -26,22 +29,17 @@ GEMTRADE.fn = function(act)
     end
 end
 
-ENV.AddAction(GEMTRADE)
-local pack_table = {
-    "nightpack", 
-    "nightback"
-}
-
-ENV.AddComponentAction("USEITEM", "inventoryitem", function(inst, doer, target, actions, right)
+AddAction(GEMTRADE)
+AddComponentAction("USEITEM", "inventoryitem", function(inst, doer, target, actions, right)
     if target.prefab == "nightpack" and target:HasTag("nofuelsocket") and inst.prefab == "nightmarefuel" then return end
-    if doer.replica.rider:IsRiding() and table.contains(pack_table, target.prefab) and target.components.inventoryitem and target.components.inventoryitem.owner ~= doer then return end 
-    if right and inst:HasTag("nightpackgem")  and table.contains(pack_table, target.prefab) then
+    if doer.replica.rider:IsRiding() and target.prefab == "nightpack" and target.components.inventoryitem and target.components.inventoryitem.owner ~= doer then return end 
+    if right and inst:HasTag("nightpackgem")  and target.prefab == "nightpack" then
         table.insert(actions, 1, ACTIONS.GEMTRADE)
     end
 end)
-
-ENV.AddStategraphActionHandler("wilson", ActionHandler(GEMTRADE, "doshortaction"))
-ENV.AddStategraphActionHandler("wilson_client", ActionHandler(GEMTRADE, "doshortaction"))
+for _, stage in ipairs({"wilson", "wilson_client"}) do
+    AddStategraphActionHandler(stage, ActionHandler(GEMTRADE, "doshortaction"))
+end
 
 local nightpack_gems = {
     "nightmarefuel",
@@ -53,7 +51,6 @@ local nightpack_gems = {
     "greengem",
     "opalpreciousgem",
 }
-
-for _, v in ipairs(nightpack_gems) do
-    ENV.AddPrefabPostInit(v, function(inst) inst:AddTag("nightpackgem") end)
+for _, prefab in ipairs(nightpack_gems) do
+    AddPrefabPostInit(prefab, function(inst) inst:AddTag("nightpackgem") end)
 end

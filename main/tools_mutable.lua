@@ -1,4 +1,4 @@
-local ENV = env
+local AddPrefabPostInit = AddPrefabPostInit
 GLOBAL.setfenv(1, GLOBAL)
 
 local MUTABLE_TARGETS = {
@@ -20,7 +20,7 @@ local function onmutatefn(inst, target)
 end
 
 for base, target in pairs(MUTABLE_TARGETS) do
-	ENV.AddPrefabPostInit(base, function(inst)
+	AddPrefabPostInit(base, function(inst)
 		inst:AddTag("halloweenmoonmutable")
 		if not TheWorld.ismastersim then return end
 		inst:AddComponent("halloweenmoonmutable")

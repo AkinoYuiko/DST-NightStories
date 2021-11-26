@@ -1,4 +1,4 @@
-local ENV = env
+local AddPrefabPostInit = AddPrefabPostInit
 GLOBAL.setfenv(1, GLOBAL)
 
 local UpvalueHacker = require("upvaluehacker")
@@ -71,7 +71,7 @@ local function new_ontradeforgold(inst, item, giver)
     end
 end
 
-ENV.AddPrefabPostInit("pigking", function(inst)
+AddPrefabPostInit("pigking", function(inst)
     if not TheWorld.ismastersim then return end
     inst.launchitem = UpvalueHacker.GetUpvalue(inst.components.trader.onaccept, "ontradeforgold.launchitem")
     UpvalueHacker.SetUpvalue(inst.components.trader.onaccept, "ontradeforgold", new_ontradeforgold)

@@ -1,4 +1,7 @@
-function BlackHoleOnTarget(inst, doer, target, actions, right)
+local AddComponentAction = AddComponentAction
+GLOBAL.setfenv(1, GLOBAL)
+
+local function BlackHoleOnTarget(inst, doer, target, actions, right)
     if inst.prefab ~= "blackholestaff" then return end
     if right then
         if target and target == doer or ( target:HasTag("_inventoryitem") and
@@ -11,7 +14,7 @@ function BlackHoleOnTarget(inst, doer, target, actions, right)
           target:HasTag("mineactive") or
           target:HasTag("smallcreature")
         )) then
-        	table.insert(actions, GLOBAL.ACTIONS.CASTSPELL)
+        	table.insert(actions, ACTIONS.CASTSPELL)
         end
     end
 end

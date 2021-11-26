@@ -1,15 +1,7 @@
-local ENV = env
+local AddAction = AddAction
+local AddComponentAction = AddComponentAction
+local AddStategraphActionHandler = AddStategraphActionHandler
 GLOBAL.setfenv(1, GLOBAL)
-
-local MIOFUEL = Action({mount_valid=true})
-
-MIOFUEL.id = "MIOFUEL"
-
-MIOFUEL.stroverridefn = function(act)
-	if act.invobject then
-		return act.invobject:GetIsWet() and STRINGS.ACTIONS.ADDWETFUEL or STRINGS.ACTIONS.ADDFUEL
-	end
-end
 
 local function UseFuel(item, target, doer)
 	local wetmult = item:GetIsWet() and TUNING.WET_FUEL_PENALTY or 1
@@ -29,6 +21,26 @@ local function UseFuel(item, target, doer)
 	end
 end
 
+local function CheckAvailable(target)
+	return target:HasTag("CAVE_fueled") or
+		target:HasTag("BURNABLE_fueled") or
+		target:HasTag("WORMLIGHT_fueled") or
+		target:HasTag("TAR_fueled") or -- IA Sea Yard
+		target.prefab == "torch" or -- BURNABLE, not accepting
+		target.prefab == "lighter" or -- BURNABLE, not accepting
+        target.prefab == "pumpkin_lantern" or -- BURNABLE, not accepting
+		target.prefab == "ironwind" or -- Volcano Biome MOD
+		target.prefab == "purpleamulet" 
+end
+
+local MIOFUEL = Action({mount_valid=true})
+
+MIOFUEL.id = "MIOFUEL"
+MIOFUEL.stroverridefn = function(act)
+	if act.invobject then
+		return act.invobject:GetIsWet() and STRINGS.ACTIONS.ADDWETFUEL or STRINGS.ACTIONS.ADDFUEL
+	end
+end
 MIOFUEL.fn = function(act)
 	if act.doer.components.inventory then
     	local fuel = act.doer.components.inventory:RemoveItem(act.invobject)
@@ -43,21 +55,8 @@ MIOFUEL.fn = function(act)
 	end
 end
 
-ENV.AddAction(MIOFUEL)
-
-local function CheckAvailable(target)
-	return target:HasTag("CAVE_fueled") or
-		target:HasTag("BURNABLE_fueled") or
-		target:HasTag("WORMLIGHT_fueled") or
-		target:HasTag("TAR_fueled") or -- IA Sea Yard
-		target.prefab == "torch" or -- BURNABLE, not accepting
-		target.prefab == "lighter" or -- BURNABLE, not accepting
-        target.prefab == "pumpkin_lantern" or -- BURNABLE, not accepting
-		target.prefab == "ironwind" or -- Volcano Biome MOD
-		target.prefab == "purpleamulet" 
-end
-
-ENV.AddComponentAction("USEITEM", "fuel", function(inst, doer, target, actions, right)
+AddAction(MIOFUEL)
+AddComponentAction("USEITEM", "fuel", function(inst, doer, target, actions, right)
 	if doer.prefab == "miotan" and inst.prefab == "nightmarefuel" then
 		if CheckAvailable(target)
 			and (
@@ -69,7 +68,6 @@ ENV.AddComponentAction("USEITEM", "fuel", function(inst, doer, target, actions, 
 		end
 	end
 end)
-
-local handler = ActionHandler(ACTIONS.MIOFUEL, "doshortaction")
-ENV.AddStategraphActionHandler("wilson", handler)
-ENV.AddStategraphActionHandler("wilson_client", handler)
+for _, stage in ipairs({"wilson", "wilson_client"}) do
+	AddStategraphActionHandler(stage, ActionHandler(ACTIONS.MIOFUEL, "doshortaction"))
+end

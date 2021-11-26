@@ -1,4 +1,4 @@
-local ENV = env
+local AddPrefabPostInit = AddPrefabPostInit
 GLOBAL.setfenv(1, GLOBAL)
 
 FOODTYPE.NIGHTFUEL = "NIGHTFUEL"
@@ -11,7 +11,7 @@ eater.SetCanEatNightmareFuel = function(self)
 	end
 end
 
-ENV.AddPrefabPostInit("nightmarefuel", function(inst)
+AddPrefabPostInit("nightmarefuel", function(inst)
 	if not TheWorld.ismastersim then return end
 	inst:AddComponent("edible")
 	inst.components.edible.healthvalue = 10

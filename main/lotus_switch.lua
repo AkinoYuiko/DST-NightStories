@@ -1,4 +1,7 @@
-local ENV = env
+local AddAction = AddAction
+local AddComponentAction = AddComponentAction
+local AddPrefabPostInit = AddPrefabPostInit
+local AddStategraphActionHandler = AddStategraphActionHandle
 GLOBAL.setfenv(1, GLOBAL)
 
 local LOTUSSWITCH = Action({priority=-1})
@@ -39,17 +42,16 @@ LOTUSSWITCH.fn = function(act)
     end
 end
 
-ENV.AddAction(LOTUSSWITCH)
-
-ENV.AddComponentAction("USEITEM", "nightswitch", function(inst, doer, target, actions, right)
+AddAction(LOTUSSWITCH)
+AddComponentAction("USEITEM", "nightswitch", function(inst, doer, target, actions, right)
     if not (target.prefab == "nightsword" or target.prefab == "darklotus" or target.prefab == "lightlotus" )then return end
     table.insert(actions, ACTIONS.LOTUSSWITCH)
 end)
+for _, stage in ipairs({"wilson", "wilson_client"}) do
+    AddStategraphActionHandler(stage, ActionHandler(LOTUSSWITCH, "domediumaction"))
+end
 
-ENV.AddStategraphActionHandler("wilson", ActionHandler(LOTUSSWITCH, "domediumaction"))
-ENV.AddStategraphActionHandler("wilson_client", ActionHandler(LOTUSSWITCH, "domediumaction"))
-
-ENV.AddPrefabPostInit("nightsword", function(inst)
+AddPrefabPostInit("nightsword", function(inst)
     if not TheWorld.ismastersim then return inst end
     if not inst.components.halloweenmoonmutable then
         inst:AddComponent("halloweenmoonmutable")

@@ -52,15 +52,15 @@ end
 
 -- nightstick
 if not rawget(_G, "nightstick_clear_fn") then
-    nightstick_init_fn = function(inst, skinname, override_build)
-		GlassicAPI.SetFloatData(inst, { sym_build = override_build or skinname, sym_name = "swap_nightstick" })
-        GlassicAPI.BasicInitFn(inst, skinname, override_build or skinname, override_build or skinname)
-        GlassicAPI.BasicOnequipFn(inst, "hand", override_build or skinname, "swap_nightstick")
-    end
     nightstick_clear_fn = function(inst)
 		GlassicAPI.SetFloatData(inst, { sym_build = "swap_nightstick"})
 		basic_clear_fn(inst, "nightstick")
 	end
+end
+ns_nightstick_init_fn = function(inst, skinname, override_build)
+    GlassicAPI.SetFloatData(inst, { sym_build = override_build or skinname, sym_name = "swap_nightstick" })
+    GlassicAPI.BasicInitFn(inst, skinname, override_build or skinname, override_build or skinname)
+    GlassicAPI.BasicOnequipFn(inst, "hand", override_build or skinname, "swap_nightstick")
 end
 
 -- yellowamulet
@@ -222,10 +222,6 @@ end
 
 -- Green Amulet
 if not rawget(_G, "greenamulet_clear_fn") then
-    -- greenamulet_init_fn = function(inst, skinname, override_build)
-    --     GlassicAPI.BasicInitFn(inst, skinname, override_build or skinname, override_build or skinname)
-    --     GlassicAPI.BasicOnequipFn(inst, "body", override_build or skinname)
-    -- end
     greenamulet_clear_fn = function(inst)
         GlassicAPI.SetFloatData(inst, { bank = "amulets", anim = "greenamulet" })
         basic_clear_fn(inst, "amulets")
@@ -234,12 +230,6 @@ end
 
 -- Raincoat
 if not rawget(_G, "raincoat_clear_fn") then
-    -- local swap_data = { bank = "torso_rain", anim = "anim" }
-    -- raincoat_init_fn = function(inst, skinname, override_build)
-    --     GlassicAPI.SetFloatData(inst, swap_data)
-    --     GlassicAPI.BasicInitFn(inst, skinname, override_build or skinname, override_build or skinname)
-    --     GlassicAPI.BasicOnequipFn(inst, "body", override_build or skinname)
-    -- end
     raincoat_clear_fn = function(inst)
         GlassicAPI.SetFloatData(inst, { bank = "torso_rain", anim = "anim" })
         basic_clear_fn(inst, "torso_rain")
@@ -255,21 +245,12 @@ end
 
 
 if not rawget(_G, "hivehat_clear_fn") then
-    -- hivehat_init_fn = function(inst, skinname, override_build)
-    --     GlassicAPI.BasicInitFn(inst, skinname, override_build or skinname, override_build or skinname)
-    --     GlassicAPI.BasicOnequipFn(inst, "hat", override_build or skinname)
-    -- end
     hivehat_clear_fn = function(inst)
         inst.AnimState:SetBuild("hat_hive")
         if not TheWorld.ismastersim then return end
         inst.components.inventoryitem:ChangeImageName()
     end
 end
-
--- ns_eyebrella_init_fn = function(inst, skinname, override_build)
---     GlassicAPI.BasicInitFn(inst, skinname, override_build or skinname, override_build or skinname)
---     GlassicAPI.BasicOnequipFn(inst, "hat", override_build or skinname)
--- end
 
 GlassicAPI.SkinHandler.AddModSkins({
     -- Civi
