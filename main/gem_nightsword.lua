@@ -2,7 +2,7 @@ local AddAction = AddAction
 local AddClassPostConstruct = AddClassPostConstruct
 local AddComponentAction = AddComponentAction
 local AddPrefabPostInit = AddPrefabPostInit
-local AddStategraphActionHandler = AddStategraphActionHandle
+local AddStategraphActionHandler = AddStategraphActionHandler
 GLOBAL.setfenv(1, GLOBAL)
 
 local NIGHTSWORDMAGATAMA = Action({ mount_valid = true, priority = 2 })

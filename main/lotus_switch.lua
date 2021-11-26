@@ -1,7 +1,7 @@
 local AddAction = AddAction
 local AddComponentAction = AddComponentAction
 local AddPrefabPostInit = AddPrefabPostInit
-local AddStategraphActionHandler = AddStategraphActionHandle
+local AddStategraphActionHandler = AddStategraphActionHandler
 GLOBAL.setfenv(1, GLOBAL)
 
 local LOTUSSWITCH = Action({priority=-1})
