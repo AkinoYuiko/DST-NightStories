@@ -150,7 +150,7 @@ local function onitemlose(inst)
         inst.remove_container_task:Cancel()
         inst.remove_container_task = nil
     end
-    inst.remove_container_task = inst:DoTaskInTime(1, function(inst)
+    inst.remove_container_task = inst:DoTaskInTime(2, function(inst)
         if inst.components.container and inst.components.container:IsEmpty() then
             inst.components.container:Close()
             inst:RemoveComponent("container")

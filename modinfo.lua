@@ -1,26 +1,20 @@
-version = "1.18"
+version = "1.18.1"
 -- basic info --
 name = locale == "zh" and "暗夜故事集" or "Night Stories"
 author = "丁香女子学校"
 description = locale == "zh" and "[版本: " .. version .. [[]
 
 更新内容:
+- 影刀移除容器属性的等待时间增加至2s.
+
 - 优化模块代码格式.
 
 ]] or "[Version: " .. version .. [[]
 
 Changelog:
-- Improve code performance.
-- Fix a potential issue about edible nightmare fuel.
+- Increase time to remove "container" for Dark Sword to 2s (Orig is 1s).
 
-- Update texture for Dark & Light Gems.
-- Fix skin issue for Skeleton Armor.
-- Remove some unused code.
-- Change recipe conditions for Dark & Light Magatamas.
-- Add Dark & Light Magatamas (Under Celestial Techs.).
-- Dark & Light Magatamas' max stack size is 8.
-- Dark & Light Magatamas can be socketed into Dark Sword.
-- Dark & Light Gems can nolonger be socketed into Dark Sword.
+- Improve code performance.
 ]]
 
 forumthread = ""
