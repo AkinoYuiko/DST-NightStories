@@ -1,6 +1,6 @@
 local STRINGS, io = GLOBAL.STRINGS, GLOBAL.io
 local strings = {
-    NAMES = 
+    NAMES =
     {
         CIVI = "Civi",
         LIGHTAMULET = "Light Amulet",
@@ -55,7 +55,7 @@ local strings = {
         -- PROPSIGN = STRINGS.CHARACTERS.GENERIC.DESCRIBE.HOMESIGN.GENERIC
 
     },
-    SKIN_NAMES = 
+    SKIN_NAMES =
     {
         civi_none = "Civi",
         armorskeleton_none = "Emperor's Formal",
@@ -79,7 +79,7 @@ local strings = {
 
         eyebrellahat_peggy = "Peggy's Eyebrella",
     },
-    SKIN_DESCRIPTIONS = 
+    SKIN_DESCRIPTIONS =
     {
         civi_none = "Civi can control magic, turning lights into darks, or turning darks into lights.",
         miotan_classic = "Mio's V1 skin!",
@@ -87,11 +87,11 @@ local strings = {
         dummy_none = "Another girl comes from nightmare's world.",
 
     },
-	TABS = 
+	TABS =
 	{
 		["dummytab"] = "Nightmare"
 	},
-    CIVI_GEMS = 
+    CIVI_GEMS =
     {
         FEEL_DARK = "I felt the dark.",
         ALREADY_DARK = "I've already in the dark.",
@@ -109,7 +109,7 @@ local strings = {
                 LIGHTAMULET = "I can feel the darkness away.",
                 DARKGEM = "Get closer to dark!",
                 LIGHTGEM = "Get closer to light!",
-                
+
                 DARKMAGATAMA = "Make THE sword to the dark.",
                 LIGHTMAGATAMA = "Make THE sword to the light.",
 
@@ -127,37 +127,37 @@ local strings = {
         -- MIOTAN = require("speech_miotan")
     },
     -- character
-    CHARACTER_NAMES = 
+    CHARACTER_NAMES =
     {
         civi = "Civi",
         miotan = "Mio",
         dummy = "Dummy",
     },
-    CHARACTER_TITLES = 
+    CHARACTER_TITLES =
     {
         civi = "Mogician of Light and Dark",
         miotan = "The Nightmare Eater",
         dummy = "The Nightmare Breaker",
     },
-    CHARACTER_ABOUTME = 
+    CHARACTER_ABOUTME =
     {
         civi = "Civi can control magic, turning lights into darks, or turning darks into lights.",
         miotan = "Mio cames from another world, where nightmare is everywhere.",
         dummy = "Dummy also comes from the nightmare world. She is Mio's sister.",
     },
-    CHARACTER_DESCRIPTIONS = 
+    CHARACTER_DESCRIPTIONS =
     {
         civi = "*Travel between light and dark.\n*Can control nightmare.",
         miotan = "*World treats her differently.\n*Friend of nightmare.",
         dummy = "* Unfriendly to people.\n* Friend of nightmare.\n* Forgive.",
     },
-    CHARACTER_QUOTES = 
+    CHARACTER_QUOTES =
     {
         civi = "\"Get close to Nightmare!\"",
         miotan = "\"If I could eat nightmare!\"",
         dummy = "\"No one plays with me...\"",
     },
-    CHARACTER_BIOS = 
+    CHARACTER_BIOS =
     {
         civi = {
             { title = "Birthday", desc = "Feb 25" },
@@ -174,7 +174,7 @@ local strings = {
 			{ title = "Favorite Food", desc = STRINGS.NAMES.NIGHTMAREPIE },
 		},
     },
-    CHARACTER_SURVIVABILITY = 
+    CHARACTER_SURVIVABILITY =
     {
         civi = STRINGS.CHARACTER_SURVIVABILITY.wilson,
         miotan = STRINGS.CHARACTER_SURVIVABILITY.wortox,
@@ -217,7 +217,7 @@ GlassicAPI.MergeTranslationFromPO(MODROOT.."languages")
 
 local function MergeCharacterSpeech(char)
     local file, errormsg = io.open(MODROOT .. "scripts/speech_"..char..".lua", "w")
-    if not file then print("Can't update " .. MODROOT .. "scripts/speech_"..char..".lua", "\n", tostring(errormsg)) return end
+    if not file then print("Can't update " .. MODROOT .. "scripts/speech_" .. char .. ".lua" .. "\n" .. tostring(errormsg)) return end
     GlassicAPI.MergeSpeechFile(require("speech_"..char), file)
 end
 
@@ -226,6 +226,6 @@ GLOBAL.UpdateNsStrings = function()
     -- MergeCharacterSpeech("dummy")
     MergeCharacterSpeech("civi")
     local file, errormsg = io.open(MODROOT .. "languages/strings.pot", "w")
-    if not file then print("Can't generate " .. MODROOT .. "languages/strings.pot", "\n", tostring(errormsg)) return end
+    if not file then print("Can't generate " .. MODROOT .. "languages/strings.pot" .. "\n" .. tostring(errormsg)) return end
     GlassicAPI.MakePOTFromStrings(file, strings)
 end

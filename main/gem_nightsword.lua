@@ -1,56 +1,6 @@
-local AddAction = AddAction
 local AddClassPostConstruct = AddClassPostConstruct
-local AddComponentAction = AddComponentAction
 local AddPrefabPostInit = AddPrefabPostInit
-local AddStategraphActionHandler = AddStategraphActionHandler
 GLOBAL.setfenv(1, GLOBAL)
-
-local NIGHTSWORDMAGATAMA = Action({ mount_valid = true, priority = 2 })
-
-NIGHTSWORDMAGATAMA.id = "NIGHTSWORDMAGATAMA"
-NIGHTSWORDMAGATAMA.str = STRINGS.ACTIONS.GIVE.SOCKET
-NIGHTSWORDMAGATAMA.fn = function(act)
-    local doer = act.doer
-    local target = act.target
-    if doer.components.inventory then
-        local item = doer.components.inventory:RemoveItem(act.invobject)
-
-        target:InitContainer()
-		target.SoundEmitter:PlaySound("dontstarve/common/telebase_gemplace")
-
-        if doer.components.inventory:IsItemEquipped(target) then
-            if target.components.container then
-                target.components.container:Open(doer)
-                target.add_container_event:push()
-            end
-        end
-
-        target.components.container:GiveItem(item)
-
-        return true
-    end
-end
-
-AddAction(NIGHTSWORDMAGATAMA)
-AddComponentAction("USEITEM", "nightmagatama", function(inst, doer, target, actions, right)
-    if right and target.prefab == "nightsword" and not target:HasTag("nomagatamasocket") then
-        table.insert(actions, ACTIONS.NIGHTSWORDMAGATAMA)
-    end
-end)
-AddComponentAction("INVENTORY", "nightmagatama", function(inst, doer, actions, right)
-    if doer.replica.inventory and not doer.replica.inventory:IsHeavyLifting() then
-        local sword = doer.replica.inventory:GetEquippedItem(EQUIPSLOTS.HANDS)
-        if sword and sword.prefab == "nightsword"
-            and sword.replica.container and sword.replica.container:IsOpenedBy(doer)
-            and sword.replica.container:CanTakeItemInSlot(inst) then
-
-            table.insert(actions, ACTIONS.CHANGE_TACKLE)
-        end
-    end
-end)
-for _, stage in ipairs({"wilson", "wilson_client"}) do
-    AddStategraphActionHandler(stage, ActionHandler(NIGHTSWORDMAGATAMA, "doshortaction"))
-end
 
 local MAGATAMA_NAMES = {
     "darkmagatama",

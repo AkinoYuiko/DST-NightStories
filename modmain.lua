@@ -8,14 +8,14 @@ PrefabFiles = {
 
     "miotan",
     "lantern_mio_fx",
-    
+
     "dummy",
     "dummy_books",
     "blackholestaff",
     "nightmare_spear",
 
     "ns_spices",
-    
+
     "ns_skins",
 }
 -- ThePlayer.AnimState:OverrideSymbol("swap_object","nightstick_crystal","swap_nightstick")
@@ -28,6 +28,7 @@ GlassicAPI.RegisterItemAtlas("ns_inventoryimages", Assets)
 GlassicAPI.RegisterItemAtlas("hud/nightmaretab", Assets)
 
 local main_files = {
+    'actions',
     "tuning",
     "strings",
 
@@ -35,14 +36,12 @@ local main_files = {
 
     "gem_nightsword",
     "gem_pack",
-    "night_switch",
     "prefabskin",
     "recipes",
     "sanity_calc_rework",
     "widgets",
 
 	"eatfuel",
-	"fuelactions",
 	"sanity_reward",
 	"tradefuel",
 
