@@ -1,20 +1,20 @@
-version = "1.18.1"
+version = "1.18.2"
 -- basic info --
 name = locale == "zh" and "暗夜故事集" or "Night Stories"
 author = "丁香女子学校"
 description = locale == "zh" and "[版本: " .. version .. [[]
 
 更新内容:
-- 影刀移除容器属性的等待时间增加至2s.
+- 澪交换燃料采用新的兼容性写法.
 
-- 优化模块代码格式.
+- 影刀移除容器属性的等待时间增加至2s.
 
 ]] or "[Version: " .. version .. [[]
 
 Changelog:
-- Increase time to remove "container" for Dark Sword to 2s (Orig is 1s).
+- Tweak "tradefuel" to improve compatibility.
 
-- Improve code performance.
+- Increase time to remove "container" for Dark Sword to 2s (Orig is 1s).
 ]]
 
 forumthread = ""
