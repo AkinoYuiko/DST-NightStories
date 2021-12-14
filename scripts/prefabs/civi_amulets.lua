@@ -6,9 +6,6 @@ local assets =
 
 local function onequip_light(inst, owner)
     owner.AnimState:OverrideSymbol("swap_body", "torso_civiamulets", "blueamulet")
-    -- if owner.components.combat ~= nil then
-    --     owner.components.combat.externaldamagemultipliers:SetModifier(inst,1.2,"darkamulet")
-    -- end
     if inst.components.fueled then
         inst.components.fueled:StartConsuming()
     end
@@ -16,9 +13,6 @@ end
 
 local function onunequip_light(inst, owner)
     owner.AnimState:ClearOverrideSymbol("swap_body")
-    -- if owner.components.combat ~= nil then
-    --     owner.components.combat.externaldamagemultipliers:RemoveModifier(inst,"darkamulet")
-    -- end
     if inst.components.fueled then
         inst.components.fueled:StopConsuming()
     end
@@ -44,12 +38,17 @@ local function onunequip_dark(inst, owner)
     end
 end
 
+local function ontakefuel(inst)
+    inst.SoundEmitter:PlaySound("dontstarve/common/nightmareAddFuel")
+end
+
 local function fn_dark()
     local inst = CreateEntity()
 
     inst.entity:AddTransform()
     inst.entity:AddAnimState()
     inst.entity:AddNetwork()
+	inst.entity:AddSoundEmitter()
 
     MakeInventoryPhysics(inst)
 
@@ -81,14 +80,11 @@ local function fn_dark()
     inst.components.fueled.fueltype = FUELTYPE.NIGHTMARE
     inst.components.fueled:InitializeFuelLevel(360)
     inst.components.fueled:SetDepletedFn(inst.Remove)
+	inst.components.fueled:SetTakeFuelFn(ontakefuel)
     inst.components.fueled:SetFirstPeriod(TUNING.TURNON_FUELED_CONSUMPTION, TUNING.TURNON_FULL_FUELED_CONSUMPTION)
     inst.components.fueled.accepting = true
 
     inst:AddComponent("inventoryitem")
-    -- inst.components.inventoryitem.imagename = "darkamulet"
-    -- inst.components.inventoryitem.atlasname = resolvefilepath("images/inventoryimages/civi_amulets.xml")
-
-    -- if TUNING.GEARPLAN ~= 2 then inst:DoTaskInTime(0, inst.Remove) end
 
     return inst
 end
@@ -122,7 +118,6 @@ local function fn_light()
 
     inst:AddComponent("equippable")
     inst.components.equippable.equipslot = EQUIPSLOTS.BODY
-    -- inst.components.equippable.dapperness = -TUNING.DAPPERNESS_MED
     inst.components.equippable:SetOnEquip(onequip_light)
     inst.components.equippable:SetOnUnequip(onunequip_light)
 
@@ -134,8 +129,6 @@ local function fn_light()
     inst.components.fueled.accepting = false
 
     inst:AddComponent("inventoryitem")
-
-    -- if TUNING.GEARPLAN ~= 2 then inst:DoTaskInTime(0, inst.Remove) end
 
     return inst
 end
