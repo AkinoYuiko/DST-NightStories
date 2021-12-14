@@ -8,13 +8,11 @@ NS_ACTIONS = {
     MIOFUEL = Action({mount_valid = true}),
     NIGHTSWITCH = Action({mount_valid = true, priority = 1}),
     NIGHTSWORDMAGATAMA = Action({mount_valid = true, priority = 2}),
-    -- LOTUSSWITCH = Action({priority = -1})
 }
 
 NS_ACTIONS.GEMTRADE.str = STRINGS.ACTIONS.GIVE.SOCKET
 NS_ACTIONS.NIGHTSWITCH.str = STRINGS.ACTIONS.USEITEM
 NS_ACTIONS.NIGHTSWORDMAGATAMA.str = STRINGS.ACTIONS.GIVE.SOCKET
--- NS_ACTIONS.LOTUSSWITCH.str = STRINGS.ACTIONS.USEITEM
 
 NS_ACTIONS.MIOFUEL.stroverridefn = function(act)
 	if act.invobject then
@@ -83,7 +81,6 @@ local function UseFuel(item, target, doer)
 	local fueled = target.components.fueled
 	if fueled then
 		fueled:DoDelta(item.components.fuel.fuelvalue * fueled.bonusmult * wetmult, doer)
-		-- doer.SoundEmitter:PlaySound("dontstarve/common/nightmareAddFuel")
 		if fueled.ontakefuelfn then
 			fueled.ontakefuelfn(target)
 		end
@@ -131,48 +128,6 @@ NS_ACTIONS.NIGHTSWORDMAGATAMA.fn = function(act)
         return true
     end
 end
-
--- NS_ACTIONS.LOTUSSWITCH.fn = function(act)
---     local doer = act.doer
---     local target = act.target
---     if doer.components.inventory then
---         local item = doer.components.inventory:RemoveItem(act.invobject)
-
---         -- Add fx
---         local entity = target.components.inventoryitem and target.components.inventoryitem.owner or target
---         if entity then
---             local fx = SpawnPrefab("explode_reskin")
---             fx.Transform:SetPosition(entity.Transform:GetWorldPosition())
---             fx.scale_override = 1.7 * entity:GetPhysicsRadius(0.5)
---         end
-
---         -- Do mutate or repair
---         if item.prefab == "darkgem" then
---             if target.prefab == "darklotus" then
---                 if target.components.finiteuses then
---                     target.components.finiteuses:SetPercent(1)
---                 end
---             else
---                 if target.components.halloweenmoonmutable then
---                     target.components.halloweenmoonmutable:Mutate("darklotus")
---                 end
---             end
---         elseif item.prefab == "lightgem" then
---             if target.prefab == "lightlotus" then
---                 if target.components.finiteuses then
---                     target.components.finiteuses:SetPercent(1)
---                 end
---             else
---                 if target.components.halloweenmoonmutable then
---                     target.components.halloweenmoonmutable:Mutate("lightlotus")
---                 end
---             end
---         end
-
---         item:Remove()
---         return true
---     end
--- end
 
 for k, v in orderedPairs(NS_ACTIONS) do
     v.id = k
@@ -233,12 +188,6 @@ AddComponentAction("USEITEM", "inventoryitem", function(inst, doer, target, acti
     end
 end)
 
--- AddComponentAction("USEITEM", "nightswitch", function(inst, doer, target, actions, right)
---     if target.prefab == "nightsword" or target.prefab == "darklotus" or target.prefab == "lightlotus" then
---         table.insert(actions, NS_ACTIONS.LOTUSSWITCH)
---     end
--- end)
-
 AddComponentAction("INVENTORY", "nightswitch", function(inst, doer, actions, right)
     if doer.prefab ~= "civi" then return end
     if doer.replica.inventory:GetActiveItem() == inst then return end
@@ -254,5 +203,4 @@ for _, sg in ipairs({"wilson", "wilson_client"}) do
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.GEMTRADE, "doshortaction"))
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.NIGHTSWORDMAGATAMA, "doshortaction"))
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.NIGHTSWITCH, "domediumaction"))
-    -- AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.LOTUSSWITCH, "domediumaction"))
 end
