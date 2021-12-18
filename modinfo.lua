@@ -1,30 +1,18 @@
-version = "1.18.5"
+version = "1.19"
 -- basic info --
 name = locale == "zh" and "暗夜故事集" or "Night Stories"
 author = "丁香女子学校"
 description = locale == "zh" and "[版本: " .. version .. [[]
 
 更新内容:
-- 修复未加载文件的问题.
-- 更新"Sanity.Recalc".
-- 影灯附近如果有达米则强制刷新大嘴.
-
-- 所有动作合并到一个文件.
-- 修复黑暗护符充能时声音缺失的问题.
-- 澪交换燃料采用新的兼容性写法.
-- 影刀移除容器属性的等待时间增加至2s.
+- 重写达米相关代码.
+- 达米现在血量和精神值合并，上限为250.
 
 ]] or "[Version: " .. version .. [[]
 
 Changelog:
-- Fix missing file loading.
-- Update "Sanity.Recalc".
-- Force Nightmare Fissures and Lights to spawn Nightmarebeak if Dummy is nearby.
-
-- All actions in one file.
-- Fix missing sound on fueling Dark Amulet.
-- Tweak "tradefuel" to improve compatibility.
-- Increase time to remove "container" for Dark Sword to 2s (Orig is 1s).
+- Rework Dummy.
+- Dummy now uses her Sanity as Health, and has a new max to 250.
 ]]
 
 forumthread = ""
