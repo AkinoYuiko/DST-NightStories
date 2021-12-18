@@ -1,4 +1,9 @@
+local AddPrefabPostInit = AddPrefabPostInit
 GLOBAL.setfenv(1, GLOBAL)
+
+AddPrefabPostInit("player_classified", function(inst)
+    inst.sanityrate = net_float(inst.GUID, "sanity.rate")
+end)
 
 local easing = require("easing")
 local SourceModifierList = require("util/sourcemodifierlist")
@@ -111,6 +116,8 @@ Sanity.Recalc = function(self, dt)
     end
 
     self.rate = self.rate * self.rate_modifier
+    self.inst.replica.sanity:SetRate(self.rate)
+
     self.ratescale =
         (self.rate > .2 and RATE_SCALE.INCREASE_HIGH) or
         (self.rate > .1 and RATE_SCALE.INCREASE_MED) or
