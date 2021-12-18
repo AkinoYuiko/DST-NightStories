@@ -1,10 +1,11 @@
-version = "1.18.4"
+version = "1.18.5"
 -- basic info --
 name = locale == "zh" and "暗夜故事集" or "Night Stories"
 author = "丁香女子学校"
 description = locale == "zh" and "[版本: " .. version .. [[]
 
 更新内容:
+- 修复未加载文件的问题.
 - 更新"Sanity.Recalc".
 - 影灯附近如果有达米则强制刷新大嘴.
 
@@ -16,6 +17,7 @@ description = locale == "zh" and "[版本: " .. version .. [[]
 ]] or "[Version: " .. version .. [[]
 
 Changelog:
+- Fix missing file loading.
 - Update "Sanity.Recalc".
 - Force Nightmare Fissures and Lights to spawn Nightmarebeak if Dummy is nearby.
 
