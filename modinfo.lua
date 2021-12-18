@@ -1,16 +1,20 @@
-version = "1.19"
+version = "1.19.1"
 -- basic info --
 name = locale == "zh" and "暗夜故事集" or "Night Stories"
 author = "丁香女子学校"
 description = locale == "zh" and "[版本: " .. version .. [[]
 
 更新内容:
+- 修复客户端没有隐藏SanityBadge的问题.
+
 - 重写达米相关代码.
 - 达米现在血量和精神值合并，上限为250.
 
 ]] or "[Version: " .. version .. [[]
 
 Changelog:
+- Fix SanityBadge not hidden on client side.
+
 - Rework Dummy.
 - Dummy now uses her Sanity as Health, and has a new max to 250.
 ]]
