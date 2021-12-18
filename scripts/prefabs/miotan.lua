@@ -228,9 +228,9 @@ local master_postinit = function(inst)
 
 	inst:AddComponent("reader")
 
-	inst.components.health:SetMaxHealth(100)
-	inst.components.hunger:SetMax(100)
-	inst.components.sanity:SetMax(100)
+	inst.components.health:SetMaxHealth(TUNING.MIOTAN_HEALTH)
+	inst.components.hunger:SetMax(TUNING.MIOTAN_HUNGER)
+	inst.components.sanity:SetMax(TUNING.MIOTAN_SANITY)
 
 	inst.components.sanity.dapperness = -1/18
 	inst.components.sanity.night_drain_mult = -TUNING.WENDY_SANITY_MULT
