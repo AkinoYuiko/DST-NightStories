@@ -123,3 +123,24 @@ Sanity.Recalc = function(self, dt)
     --print (string.format("dapper: %2.2f light: %2.2f TOTAL: %2.2f", dapper_delta, light_delta, self.rate*dt))
     self:DoDelta(self.rate * dt, true)
 end
+
+Sanity.GetRate = function(self)
+    return self.rate
+end
+
+local SanityReplica = require("components/sanity_replica")
+SanityReplica.GetRate = function(self)
+    if self.inst.components.sanity ~= nil then
+        return self.inst.components.sanity:GetRate()
+    elseif self.classified ~= nil then
+        return self.classified.sanityrate:value()
+    else
+        return 0
+    end
+end
+
+SanityReplica.SetRate = function(self, rate)
+    if self.classified ~= nil then
+        self.classified.sanityrate:set(rate)
+    end
+end

@@ -232,47 +232,36 @@ local RATE_SCALE_ANIM =
     [RATE_SCALE.NEUTRAL] = "neutral",
 }
 
-
-local last_update_dt = 0
-local current_dt = 0
-
--- local hunger_rate = - TUNING.WILSON_HEALTH / TUNING.STARVE_KILL_TIME * FRAMES
--- local temperature_rate = - TUNING.WILSON_HEALTH / TUNING.FREEZING_KILL_TIME
+local hunger_rate = - TUNING.WILSON_HEALTH / TUNING.STARVE_KILL_TIME
+local temperature_rate = - TUNING.WILSON_HEALTH / TUNING.FREEZING_KILL_TIME
 
 function DummyBadge:OnUpdate(dt)
     if TheNet:IsServerPaused() then return end
 
-    self.overtime_delta = 0
-    
-    local time = GetTime() - 1
-
-    local t = self.overtime_delta_history
-    local j = 1
-
-    for i = 1, #t do
-        local val = t[i]
-        if val.time < time then
-            t[i] = nil
-        else
-            self.overtime_delta = self.overtime_delta + val.delta
-            if i ~= j then
-                t[j] = val
-                t[i] = nil
-            end
-            j = j + 1
-        end
-    end
+    local sanity = self.owner.replica.sanity
+    local sanity_rate = sanity and sanity:GetRate()
+    local health_rate = sanity_rate +
+            ((self.owner.IsFreezing ~= nil and self.owner:IsFreezing()) and temperature_rate or 0) +
+            ((self.owner.replica.hunger ~= nil and self.owner.replica.hunger:IsStarving()) and hunger_rate or 0) +
+            ((self.owner.IsOverheating ~= nil and self.owner:IsOverheating()) and temperature_rate or 0)
 
     local anim = RATE_SCALE_ANIM[
-        (self.overtime_delta > .2 and RATE_SCALE.INCREASE_HIGH) or
-        (self.overtime_delta > .1 and RATE_SCALE.INCREASE_MED) or
-        (self.overtime_delta > .01 and RATE_SCALE.INCREASE_LOW) or
-        (self.overtime_delta < -.3 and RATE_SCALE.DECREASE_HIGH) or
-        (self.overtime_delta < -.1 and RATE_SCALE.DECREASE_MED) or
-        (self.overtime_delta < -.02 and RATE_SCALE.DECREASE_LOW) or
-        RATE_SCALE.NEUTRAL
-    ]
+    (health_rate > .2 and RATE_SCALE.INCREASE_HIGH) or
+    (health_rate > .1 and RATE_SCALE.INCREASE_MED) or
+    (health_rate > .01 and RATE_SCALE.INCREASE_LOW) or
+    (health_rate < -.3 and RATE_SCALE.DECREASE_HIGH) or
+    (health_rate < -.1 and RATE_SCALE.DECREASE_MED) or
+    (health_rate < -.02 and RATE_SCALE.DECREASE_LOW) or
+    RATE_SCALE.NEUTRAL]
 
+    if self.owner.replica.health:GetPercent() == 1 then anim = "neutral" end
+
+    -- local anim =
+    --     (down ~= nil and ("arrow_loop_decrease"..down)) or
+    --     (not up and "neutral") or
+    --     (next(self.hots) ~= nil and "arrow_loop_increase_most") or
+    --     "arrow_loop_increase"
+    
     if self.arrowdir ~= anim then
         self.arrowdir = anim
         self.sanityarrow:GetAnimState():PlayAnimation(anim, true)
