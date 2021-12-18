@@ -121,7 +121,6 @@ end
 local function onbecamehuman(inst, data)
 	-- inst:ListenForEvent("sanitydelta", onsanitychange)
 	inst:ListenForEvent("healthdelta", onhealthsanitysync)
-	if inst.HUD then inst.HUD.controls.status:HideDummyBrain() end
 end
 
 local function onbecameghost(inst)

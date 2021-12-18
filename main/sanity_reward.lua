@@ -81,8 +81,16 @@ end)
 
 AddClassPostConstruct("widgets/statusdisplays", function(self)
     self.HideDummyBrain = function(self)
-        if self.brain then
+        if self.owner and self.owner.prefab == "dummy" and self.brain then
             self.brain:Hide()
         end
     end
+    self:HideDummyBrain()
+
+    local SetGhostMode = self.SetGhostMode
+    self.SetGhostMode = function(self, ghostmode)
+        SetGhostMode(self, ghostmode)
+        self:HideDummyBrain()
+    end
+
 end)
