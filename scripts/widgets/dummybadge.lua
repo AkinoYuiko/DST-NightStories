@@ -239,7 +239,7 @@ function DummyBadge:OnUpdate(dt)
     if TheNet:IsServerPaused() then return end
 
     local sanity = self.owner.replica.sanity
-    local sanity_rate = sanity and sanity:GetRate()
+    local sanity_rate = sanity and sanity:GetRate() or 0
     local health_rate = sanity_rate +
             ((self.owner.IsFreezing ~= nil and self.owner:IsFreezing()) and temperature_rate or 0) +
             ((self.owner.replica.hunger ~= nil and self.owner.replica.hunger:IsStarving()) and hunger_rate or 0) +
