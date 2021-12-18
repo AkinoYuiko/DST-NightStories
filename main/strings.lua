@@ -24,6 +24,7 @@ local strings = {
         MIOTAN = "Mio",
 
         DUMMY = "Dummy",
+        LOSE_SANITY = "lost of sanity",
         BLACKHOLESTAFF = "Blackhole Staff",
         BOOK_HARVEST = "Season of Harvest",
         BOOK_TOGGLEDOWNFALL = "Love of Rain",
