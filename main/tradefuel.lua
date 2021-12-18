@@ -4,7 +4,7 @@ GLOBAL.setfenv(1, GLOBAL)
 
 local function mio_ontradeforgold(inst, item, giver, ...)
     if not (giver and giver.prefab == "miotan") then
-        return inst.last_ontradeforgold_fns["miotan"](inst, item, giver, ...)
+        return inst.ontradeforgold_prefns["miotan"](inst, item, giver, ...)
     end
     local launchitem = inst.launchitem_fn or function() end
 
@@ -67,8 +67,8 @@ end
 
 AddPrefabPostInit("pigking", function(inst)
     if not TheWorld.ismastersim then return end
-    inst.last_ontradeforgold_fns = inst.last_ontradeforgold_fns or {}
+    inst.ontradeforgold_prefns = inst.ontradeforgold_prefns or {}
     inst.launchitem_fn = inst.launchitem_fn or UpvalueHacker.GetUpvalue(inst.components.trader.onaccept, "ontradeforgold.launchitem")
-    inst.last_ontradeforgold_fns["miotan"] = UpvalueHacker.GetUpvalue(inst.components.trader.onaccept, "ontradeforgold")
+    inst.ontradeforgold_prefns["miotan"] = UpvalueHacker.GetUpvalue(inst.components.trader.onaccept, "ontradeforgold")
     UpvalueHacker.SetUpvalue(inst.components.trader.onaccept, "ontradeforgold", mio_ontradeforgold)
 end)

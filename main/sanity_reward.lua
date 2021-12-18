@@ -98,21 +98,27 @@ local function new_onequip(inst, owner, ...)
 	inst.onequip_prefns["dummy"](inst, owner, ...)
     if owner.prefab == "dummy" then
         inst:ListenForEvent("healthdelta", inst._onsanitydelta, owner)
+        if inst._hide_on_deactive then
+            inst:ListenForEvent("healthdelta", inst._hide_on_deactive, owner)
+        end
     end
 end
 
 local function new_onunequip(inst, owner, ...)
 	inst.onunequip_prefns["dummy"](inst, owner, ...)
 	inst:RemoveEventCallback("healthdelta", inst.new_spawngestalt_fn, owner)
+    if inst._hide_on_deactive then
+        inst:RemoveEventCallback("healthdelta", inst._hide_on_deactive, owner)
+    end
 end
 
 AddPrefabPostInit("alterguardianhat", function(inst)
     if not TheWorld.ismastersim then return end
+    inst.onequip_prefns = inst.onequip_prefns or {}
+    inst.onunequip_prefns = inst.onunequip_prefns or {}
     if inst.components.equippable then
-		inst.onequip_prefns = inst.onequip_prefns or {}
-		inst.onunequip_prefns = inst.onunequip_prefns or {}
         inst.onequip_prefns["dummy"] = inst.components.equippable.onequipfn
-		inst.onequip_prefns["dummy"] = inst.components.equippable.onunequipfn
+		inst.onunequip_prefns["dummy"] = inst.components.equippable.onunequipfn
 		inst.components.equippable:SetOnEquip(new_onequip)
 		inst.components.equippable:SetOnUnequip(new_onunequip)
 	end
