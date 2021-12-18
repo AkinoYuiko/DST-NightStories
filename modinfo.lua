@@ -1,12 +1,13 @@
-version = "1.19.3"
+version = "1.19.4"
 -- basic info --
 name = locale == "zh" and "暗夜故事集" or "Night Stories"
 author = "丁香女子学校"
 description = locale == "zh" and "[版本: " .. version .. [[]
 
 更新内容:
-- 提高兼容性.
+- 补全达米因精神清空的死亡讯息.
 
+- 提高兼容性.
 - 修复达米使用启迪之冠的激活问题.
 - 修复客户端没有隐藏SanityBadge的问题.
 - 重写达米相关代码, 达米现在血量和精神值合并, 上限为250.
@@ -14,8 +15,9 @@ description = locale == "zh" and "[版本: " .. version .. [[]
 ]] or "[Version: " .. version .. [[]
 
 Changelog:
-- Improve compatibility with DST-Fixed.
+- Fix missing death message for losing sanity.
 
+- Improve compatibility with DST-Fixed.
 - Fix Enlightened Crown not deactive on losing sanity for Dummy.
 - Fix SanityBadge not hidden on client side.
 - Rework Dummy. She now uses her Sanity as Health, and has a new max to 250.
