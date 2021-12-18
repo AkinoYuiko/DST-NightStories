@@ -95,22 +95,24 @@ AddClassPostConstruct("widgets/statusdisplays", function(self)
 end)
 
 local function new_onequip(inst, owner, ...)
-	inst.old_equip(inst, owner, ...)
+	inst.onequip_prefns["dummy"](inst, owner, ...)
     if owner.prefab == "dummy" then
         inst:ListenForEvent("healthdelta", inst._onsanitydelta, owner)
     end
 end
 
 local function new_onunequip(inst, owner, ...)
-	inst.old_unequip(inst, owner, ...)
+	inst.onunequip_prefns["dummy"](inst, owner, ...)
 	inst:RemoveEventCallback("healthdelta", inst.new_spawngestalt_fn, owner)
 end
 
 AddPrefabPostInit("alterguardianhat", function(inst)
     if not TheWorld.ismastersim then return end
     if inst.components.equippable then
-		inst.old_equip = inst.components.equippable.onequipfn
-		inst.old_unequip = inst.components.equippable.onunequipfn
+		inst.onequip_prefns = inst.onequip_prefns or {}
+		inst.onunequip_prefns = inst.onunequip_prefns or {}
+        inst.onequip_prefns["dummy"] = inst.components.equippable.onequipfn
+		inst.onequip_prefns["dummy"] = inst.components.equippable.onunequipfn
 		inst.components.equippable:SetOnEquip(new_onequip)
 		inst.components.equippable:SetOnUnequip(new_onunequip)
 	end
