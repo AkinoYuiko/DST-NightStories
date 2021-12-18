@@ -108,7 +108,10 @@ end
 
 local function onhealthsanitysync(inst)
 	if inst.components.sanity and inst.components.health then
-		inst.components.sanity.current = inst.components.health.currenthealth
+		local sanity = inst.components.sanity
+		sanity.current = inst.components.health.currenthealth
+		sanity.inst:PushEvent("sanitydelta", { oldpercent = sanity._oldpercent, newpercent = sanity:GetPercent(), overtime = false, sanitymode = sanity.mode})
+		sanity._oldpercent = sanity:GetPercent()
 	end
 	onsanitychange(inst)
 	CheckInsanity(inst)
@@ -119,12 +122,10 @@ local function redirect_to_health(inst, amount, overtime, ...)
 end
 
 local function onbecamehuman(inst, data)
-	-- inst:ListenForEvent("sanitydelta", onsanitychange)
 	inst:ListenForEvent("healthdelta", onhealthsanitysync)
 end
 
 local function onbecameghost(inst)
-	-- inst:RemoveEventCallback("sanitydelta", onsanitychange)
 	inst:RemoveEventCallback("healthdelta", onhealthsanitysync)
 end
 
