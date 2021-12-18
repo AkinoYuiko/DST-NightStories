@@ -1,4 +1,3 @@
-local AddComponentPostInit = AddComponentPostInit
 GLOBAL.setfenv(1, GLOBAL)
 
 local easing = require("easing")
