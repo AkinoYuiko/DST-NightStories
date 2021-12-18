@@ -1,5 +1,6 @@
 local UpvalueHacker = require("upvaluehacker")
 local AddComponentPostInit = AddComponentPostInit
+local AddPrefabPostInit = AddPrefabPostInit
 GLOBAL.setfenv(1, GLOBAL)
 AddComponentPostInit("shadowcreaturespawner", function(self, inst)
     for _, fn in ipairs(inst.event_listeners["ms_playerjoined"][inst]) do
@@ -20,3 +21,14 @@ AddComponentPostInit("shadowcreaturespawner", function(self, inst)
         end
     end
 end)
+
+local nightmarecreature_table = {
+    "nightmarefissure",
+    "nightmarelight",
+}
+for _, prefab in ipairs(nightmarecreature_table) do
+    AddPrefabPostInit(prefab, function(inst)
+        if not TheWorld.ismastersim then return end
+        inst.components.childspawner.childname = "nightmarecreature_checker"
+    end)
+end
