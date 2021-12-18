@@ -13,6 +13,7 @@ PrefabFiles = {
     "dummy_books",
     "blackholestaff",
     "nightmare_spear",
+    "nightmarecreature_checker",
 
     "ns_spices",
 
