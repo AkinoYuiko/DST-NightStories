@@ -52,6 +52,7 @@ local function fn()
     -- inst:AddTag("shadow")
     inst:AddTag("sharp")
     inst:AddTag("weapon")
+    inst:AddTag("shadow_item")
 
     local swap_data = {sym_build = "nightmare_spear", sym_name = "swap_nightmare_spear"}
     MakeInventoryFloatable(inst, "med", 0.05, {1.1, 0.4, 1.1}, true, -9, swap_data)

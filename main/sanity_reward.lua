@@ -1,4 +1,5 @@
 local AddPrefabPostInit = AddPrefabPostInit
+local AddClassPostConstruct = AddClassPostConstruct
 GLOBAL.setfenv(1, GLOBAL)
 
 local ROSE_NAME = "rose"
@@ -75,5 +76,13 @@ AddPrefabPostInit("flower_evil", function(inst)
 
     if inst.components.pickable then
         inst.components.pickable.onpickedfn = new_onpickedfn_evil
+    end
+end)
+
+AddClassPostConstruct("widgets/statusdisplays", function(self)
+    self.HideDummyBrain = function(self)
+        if self.brain then
+            self.brain:Hide()
+        end
     end
 end)
