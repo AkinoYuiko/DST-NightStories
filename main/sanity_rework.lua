@@ -1,7 +1,5 @@
 local AddPrefabPostInit = AddPrefabPostInit
 local AddClassPostConstruct = AddClassPostConstruct
-local easing = require("easing")
-local SourceModifierList = require("util/sourcemodifierlist")
 GLOBAL.setfenv(1, GLOBAL)
 
 AddPrefabPostInit("player_classified", function(inst)
@@ -44,6 +42,8 @@ local LIGHT_SANITY_DRAINS =
 local SANITYRECALC_MUST_TAGS = { "sanityaura" }
 local SANITYRECALC_CANT_TAGS = { "FX", "NOCLICK", "DECOR","INLIMBO" }
 
+local easing = require("easing")
+local SourceModifierList = require("util/sourcemodifierlist")
 -- Sanity Component --
 local Sanity = require("components/sanity")
 Sanity.Recalc = function(self, dt)
