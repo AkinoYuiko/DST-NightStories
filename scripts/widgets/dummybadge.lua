@@ -111,14 +111,6 @@ local DummyBadge = Class(Badge, function(self, owner)
         end
     end, owner)
 
-    -- self.overtime_delta_history = {}
-    -- self.inst:ListenForEvent("healthdelta", function(owner, data)
-    --     if data and data.overtime then
-    --         local delta = ( data.newpercent - data.oldpercent ) * TUNING.DUMMY_HEALTH
-    --         table.insert(self.overtime_delta_history, {delta = delta, time = GetTime()})
-    --     end
-    -- end, owner)
-
     self:StartUpdating()
 end)
 
@@ -220,12 +212,6 @@ function DummyBadge:SetPercent(val, max, penaltypercent)
 
     self.penaltypercent = penaltypercent or 0
     self.topperanim:GetAnimState():SetPercent("anim", 1 - self.penaltypercent)
-
-	local sanity = self.owner.replica.sanity
-
-	if sanity:GetSanityMode() ~= self.sanitymode then
-		DoTransitionTask(self)
-    end
 end
 
 function DummyBadge:PulseGreen()
@@ -263,10 +249,12 @@ function DummyBadge:OnUpdate(dt)
 
     local sanity = self.owner.replica.sanity
 
-    -- Induced Transition --
+    -- Lunacy or Induced Insanity Transition --
     local get_is_induced_insanity = sanity:GetIsInducedInsanity()
     if self.inducedinsanity ~= get_is_induced_insanity then
         self.inducedinsanity = get_is_induced_insanity
+        DoTransitionTask(self)
+    elseif sanity:GetSanityMode() ~= self.sanitymode then
         DoTransitionTask(self)
     end
 
