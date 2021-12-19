@@ -61,8 +61,8 @@ msgstr "达米"
 
 #. STRINGS.NAMES.LOSE_SANITY
 msgctxt "STRINGS.NAMES.LOSE_SANITY"
-msgid "lost of sanity"
-msgstr "没有精神"
+msgid "the lost of sanity"
+msgstr "没有灵魂"
 
 #. STRINGS.NAMES.CIVI
 msgctxt "STRINGS.NAMES.CIVI"
