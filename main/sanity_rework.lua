@@ -40,6 +40,7 @@ AddPrefabPostInit("player_classified", function(inst)
     inst.sanityrate = net_float(inst.GUID, "sanity.rate")
     inst.inducedinsanity = net_bool(inst.GUID, "sanity.inducedinsanity")
 end)
+
 -- Sanity Component --
 local SANITYRECALC_MUST_TAGS = { "sanityaura" }
 local SANITYRECALC_CANT_TAGS = { "FX", "NOCLICK", "DECOR","INLIMBO" }

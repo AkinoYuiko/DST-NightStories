@@ -3,6 +3,8 @@ local AddComponentAction = AddComponentAction
 local AddStategraphActionHandler = AddStategraphActionHandler
 GLOBAL.setfenv(1, GLOBAL)
 
+local UpvalueHacker = require("upvaluehacker")
+
 NS_ACTIONS = {
     GEMTRADE = Action({mount_valid = true}),
     MIOFUEL = Action({mount_valid = true}),
@@ -171,10 +173,10 @@ end)
 AddComponentAction("INVENTORY", "nightmagatama", function(inst, doer, actions, right)
     if doer.replica.inventory and not doer.replica.inventory:IsHeavyLifting() then
         local sword = doer.replica.inventory:GetEquippedItem(EQUIPSLOTS.HANDS)
-        if sword and sword.prefab == "nightsword"
-            and sword.replica.container and sword.replica.container:IsOpenedBy(doer)
-            and sword.replica.container:CanTakeItemInSlot(inst) then
-
+        if sword and sword.prefab == "nightsword" and
+            sword.replica.container and sword.replica.container:IsOpenedBy(doer) and
+            sword.replica.container:CanTakeItemInSlot(inst)
+        then
             table.insert(actions, ACTIONS.CHANGE_TACKLE)
         end
     end
@@ -182,8 +184,8 @@ end)
 
 AddComponentAction("USEITEM", "inventoryitem", function(inst, doer, target, actions, right)
     if right and target.prefab == "nightpack" and inst:HasTag("nightpackgem") and not doer.replica.rider:IsRiding()
-        and not (target:HasTag("nofuelsocket") and inst.prefab == "nightmarefuel") then
-
+    and not (target:HasTag("nofuelsocket") and inst.prefab == "nightmarefuel")
+    then
         table.insert(actions, 1, NS_ACTIONS.GEMTRADE)
     end
 end)
@@ -197,6 +199,19 @@ AddComponentAction("INVENTORY", "nightswitch", function(inst, doer, actions, rig
         table.insert(actions, NS_ACTIONS.NIGHTSWITCH)
     end
 end)
+
+local COMPONENT_ACTIONS = UpvalueHacker.GetUpvalue(EntityScript.CollectActions, "COMPONENT_ACTIONS")
+local SCENE = COMPONENT_ACTIONS.SCENE
+
+local scene_hauntable = SCENE.hauntable
+function SCENE.hauntable(inst, doer, actions, ...)
+    if doer.prefab == "dummy" and inst:HasTag("nightmare_twins")
+            and not (inst:HasTag("haunted") or inst:HasTag("catchable")) then
+        table.insert(actions, ACTIONS.HAUNT)
+    else
+        return scene_hauntable(inst, doer, actions, ...)
+    end
+end
 
 for _, sg in ipairs({"wilson", "wilson_client"}) do
 	AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.MIOFUEL, "doshortaction"))

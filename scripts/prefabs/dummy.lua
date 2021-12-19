@@ -103,7 +103,6 @@ local function onsanitychange(inst)
 			inst:RemoveComponent("sanityaura")
 		end
 	end
-
 end
 
 local function onhealthsanitysync(inst)
@@ -121,24 +120,36 @@ local function redirect_to_health(inst, amount, overtime, ...)
 	return inst.components.health ~= nil and inst.components.health:DoDelta(amount, overtime, "lose_sanity")
 end
 
-local function onbecamehuman(inst, data)
-	inst:ListenForEvent("healthdelta", onhealthsanitysync)
-end
-
-local function onbecameghost(inst)
-	inst:RemoveEventCallback("healthdelta", onhealthsanitysync)
-end
-
-local function onload(inst)
-	inst:ListenForEvent("ms_respawnedfromghost", onbecamehuman)
-	inst:ListenForEvent("ms_becameghost", onbecameghost)
-
-	if inst:HasTag("playerghost") then
-		onbecameghost(inst)
-	else
-		onbecamehuman(inst)
+local function OnRespawnFromGhost(inst, data)
+	if data and data.source then
+		print("OnRespawnFromGhost", data.source)
+		local reviver_sanity = data.source.components.sanity
+		if reviver_sanity then
+			inst.components.health:SetCurrentHealth(reviver_sanity.current)
+			-- inst.components.sanity:DoDelta(reviver_sanity.current - inst.components.sanity.current)
+			reviver_sanity:DoDelta(-reviver_sanity.current)
+		end
 	end
 end
+
+-- local function onbecamehuman(inst, data)
+-- 	inst:ListenForEvent("healthdelta", onhealthsanitysync)
+-- end
+
+-- local function onbecameghost(inst)
+-- 	inst:RemoveEventCallback("healthdelta", onhealthsanitysync)
+-- end
+
+-- local function onload(inst)
+	-- inst:ListenForEvent("ms_respawnedfromghost", onbecamehuman)
+	-- inst:ListenForEvent("ms_becameghost", onbecameghost)
+
+	-- if inst:HasTag("playerghost") then
+	-- 	onbecameghost(inst)
+	-- else
+	-- 	onbecamehuman(inst)
+	-- end
+-- end
 
 local common_postinit = function(inst)
 	inst.soundsname = "willow"
@@ -147,6 +158,7 @@ local common_postinit = function(inst)
 	inst:AddTag("reader")
   	inst:AddTag("mime")
 	inst:AddTag("nightmarer")
+	inst:AddTag("nightmare_twins")
 	-- Minimap icon
 	inst.MiniMapEntity:SetIcon("dummy.tex")
 
@@ -166,6 +178,10 @@ local master_postinit = function(inst)
 	inst.customidleanim = "idle_wortox"
 
 	inst:AddComponent("reader")
+
+	inst:AddComponent("hauntable")
+	inst.components.hauntable.hauntvalue = TUNING.HAUNT_INSTANT_REZ
+	inst.components.hauntable.no_wipe_value = true
 
 	inst.components.health:SetMaxHealth(TUNING.DUMMY_HEALTH)
 	inst.components.hunger:SetMax(TUNING.DUMMY_HUNGER)
@@ -191,8 +207,13 @@ local master_postinit = function(inst)
 	end
     inst.components.foodaffinity:AddPrefabAffinity("nightmarepie", TUNING.AFFINITY_15_CALORIES_MED)
 
-	inst.OnLoad = onload
-	inst.OnNewSpawn = onload
+	inst:ListenForEvent("respawnfromghost", OnRespawnFromGhost)
+	inst:ListenForEvent("healthdelta", onhealthsanitysync)
+
+	-- inst.OnLoad = onload
+	-- inst.OnNewSpawn = onload
+
+	inst.skeleton_prefab = nil
 
 end
 

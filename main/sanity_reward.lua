@@ -1,11 +1,6 @@
 local AddPrefabPostInit = AddPrefabPostInit
 GLOBAL.setfenv(1, GLOBAL)
 
-local rewardtable =
-{
-    "miotan", 
-    "dummy"
-}
 local nightmare_prefabs =
 {
     "crawlinghorror",
@@ -19,7 +14,7 @@ for _, prefab in ipairs(nightmare_prefabs) do
 
         local oldOnKilledByOther = inst.components.combat.onkilledbyother
         inst.components.combat.onkilledbyother = function(inst, attacker)
-            if attacker and table.contains(rewardtable, attacker.prefab) and attacker.components.sanity then
+        if attacker and attacker:HasTag("nightmare_twins") and attacker.components.sanity then
                 attacker.components.sanity:DoDelta((inst.sanityreward or TUNING.SANITY_SMALL) * 0.5)
             else
                 oldOnKilledByOther(inst, attacker)

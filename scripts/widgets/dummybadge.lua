@@ -101,16 +101,6 @@ local DummyBadge = Class(Badge, function(self, owner)
         end
     end, owner)
 
-    self.do_induced_transition = false
-    self.inst:ListenForEvent("inducedinsanity", function(owner, data)
-        print("induced insanity val", self.inducedinsanity, data)
-        if self.inducedinsanity ~= data then
-            self.inducedinsanity = data
-            self.do_induced_transition = true
-            self:SetPercent(self.val, self.max)
-        end
-    end, owner)
-
     self:StartUpdating()
 end)
 
@@ -230,17 +220,6 @@ function DummyBadge:PulseRed()
 	end
 end
 
-local RATE_SCALE_ANIM =
-{
-    [RATE_SCALE.INCREASE_HIGH] = "arrow_loop_increase_most",
-    [RATE_SCALE.INCREASE_MED] = "arrow_loop_increase_more",
-    [RATE_SCALE.INCREASE_LOW] = "arrow_loop_increase",
-    [RATE_SCALE.DECREASE_HIGH] = "arrow_loop_decrease_most",
-    [RATE_SCALE.DECREASE_MED] = "arrow_loop_decrease_more",
-    [RATE_SCALE.DECREASE_LOW] = "arrow_loop_decrease",
-    [RATE_SCALE.NEUTRAL] = "neutral",
-}
-
 local hunger_rate = - TUNING.WILSON_HEALTH / TUNING.STARVE_KILL_TIME
 local temperature_rate = - TUNING.WILSON_HEALTH / TUNING.FREEZING_KILL_TIME
 
@@ -250,9 +229,9 @@ function DummyBadge:OnUpdate(dt)
     local sanity = self.owner.replica.sanity
 
     -- Lunacy or Induced Insanity Transition --
-    local get_is_induced_insanity = sanity:GetIsInducedInsanity()
-    if self.inducedinsanity ~= get_is_induced_insanity then
-        self.inducedinsanity = get_is_induced_insanity
+    if self.inducedinsanity ~= sanity:GetIsInducedInsanity() then
+        print("Induced Insanity Transition")
+        self.inducedinsanity = sanity:GetIsInducedInsanity()
         DoTransitionTask(self)
     elseif sanity:GetSanityMode() ~= self.sanitymode then
         DoTransitionTask(self)
@@ -272,7 +251,6 @@ function DummyBadge:OnUpdate(dt)
                 (health_rate < -.022 and "arrow_loop_decrease") or
                 "neutral"
     
-
     if self.owner.replica.health:GetPercent() >= 1 then anim = "neutral" end
 
     -- local anim =

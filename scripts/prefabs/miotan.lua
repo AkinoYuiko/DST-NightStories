@@ -1,6 +1,8 @@
 local MakePlayerCharacter = require "prefabs/player_common"
 
 local assets = {
+    Asset( "SCRIPT", "scripts/prefabs/player_common.lua" ),
+
     Asset( "ANIM", "anim/miotan.zip" ), 
     Asset( "ANIM", "anim/ghost_miotan_build.zip" ), 
 }
@@ -99,9 +101,9 @@ local function autorefuel(inst)
 		for _, target in pairs(eslots) do
 			if table.contains(fueledtable[source], target.prefab) then
 				local fueled = target.components.fueled
-				if fueled and fueled:GetPercent() + TUNING.LARGE_FUEL / fueled.maxfuel * fueled.bonusmult <= 1
-				  and CheckHasItem(inst, "nightmarefuel")
-				  then
+				if fueled and fueled:GetPercent() + TUNING.LARGE_FUEL / fueled.maxfuel * fueled.bonusmult <= 1 and
+					CheckHasItem(inst, "nightmarefuel")
+				then
 					is_fx_true = true
 					fueled:DoDelta(TUNING.LARGE_FUEL * fueled.bonusmult)
 					ConsumeItem(inst, "nightmarefuel")
@@ -110,26 +112,6 @@ local function autorefuel(inst)
 			end
 		end
 	end
-
-
-	-- if boat_container then
-	-- 	local sailslots = boat_container.boatequipslots or nil
-	-- 	if sailslots then
-	-- 		for _, target in pairs(sailslots) do
-	-- 			if table.contains(boat_fueledtable, target.prefab) then
-	-- 				local fueled = target.components.fueled
-	-- 				if fueled and fueled:GetPercent() + TUNING.LARGE_FUEL / fueled.maxfuel * fueled.bonusmult <= 1
-	-- 			  	and CheckHasItem(inst, "nightmarefuel")
-	-- 				  then
-	-- 					is_fx_true = true
-	-- 					fueled:DoDelta(TUNING.LARGE_FUEL * fueled.bonusmult)
-	-- 					ConsumeItem(inst, "nightmarefuel")
-	-- 					if fueled.ontakefuelfn then fueled.ontakefuelfn(v) end
-	-- 				end
-	-- 			end
-	-- 		end
-	-- 	end
-	-- end
 
 	if is_fx_true then
 		SpawnPrefab("pandorachest_reset").entity:SetParent(inst.entity)
@@ -182,7 +164,8 @@ local function startboost(inst, duration)
 		inst.boosted_task = inst:DoPeriodicTask(1, onupdate, nil, 1)
 		inst:DoTaskInTime(0, function(inst) onupdate(inst, 0) end) -- Prevent autorefuel function consumes nightmarefuels before actually "eated"
 		onboost(inst)
-end end
+	end
+end
 
 local function onload(inst, data)
 	if data ~= nil and data.boost_time ~= nil then startboost(inst, data.boost_time) end
@@ -202,19 +185,22 @@ local function oneat(inst, food, eater)
 		end
 		inst.SoundEmitter:PlaySound("dontstarve/common/nightmareAddFuel")
 		startboost(inst, 180)
-end end
+	end
+end
 
 local function onbecameghost(inst)
 	if inst.boosted_task ~= nil then
 		inst.boosted_task:Cancel()
 		inst.boosted_task = nil
 		inst.boost_time = 0
-end	end
+	end
+end
 
 local common_postinit = function(inst)
 	inst.soundsname = "willow"
 	inst:AddTag("reader")
 	inst:AddTag("nightmarer")
+	inst:AddTag("nightmare_twins")
 	-- Minimap icon
 	inst.MiniMapEntity:SetIcon("miotan.tex")
 end
@@ -228,15 +214,19 @@ local master_postinit = function(inst)
 
 	inst:AddComponent("reader")
 
-	inst.components.health:SetMaxHealth(TUNING.MIOTAN_HEALTH)
-	inst.components.hunger:SetMax(TUNING.MIOTAN_HUNGER)
-	inst.components.sanity:SetMax(TUNING.MIOTAN_SANITY)
+	inst:AddComponent("hauntable")
+	inst.components.hauntable.hauntvalue = TUNING.HAUNT_INSTANT_REZ
+	inst.components.hauntable.no_wipe_value = true
 
-	inst.components.sanity.dapperness = -1/18
-	inst.components.sanity.night_drain_mult = -TUNING.WENDY_SANITY_MULT
-	inst.components.sanity.neg_aura_mult = TUNING.WENDY_SANITY_MULT
+	inst.components.health:SetMaxHealth(TUNING.MIOTAN_STATUS)
+	inst.components.hunger:SetMax(TUNING.MIOTAN_STATUS)
+	inst.components.sanity:SetMax(TUNING.MIOTAN_STATUS)
 
-	if inst.components.eater ~= nil then
+	inst.components.sanity.dapperness = TUNING.MIOTAN_SANITY_DAPPERNESS
+	inst.components.sanity.night_drain_mult = TUNING.MIOTAN_SANITY_MULT
+	inst.components.sanity.neg_aura_mult = TUNING.MIOTAN_SANITY_MULT
+
+	if inst.components.eater then
 		inst.components.eater:SetCanEatNightmareFuel()
 		inst.components.eater:SetOnEatFn(oneat)
 		inst.components.eater.stale_hunger = -0.5
@@ -249,6 +239,9 @@ local master_postinit = function(inst)
 	inst.OnLongUpdate = onlongupdate
 	inst.OnSave = onsave
 	inst.OnLoad = onload
+
+	-- inst.skeleton_prefab = nil
+
 end
 
 return MakePlayerCharacter("miotan", prefabs, assets, common_postinit, master_postinit), 
