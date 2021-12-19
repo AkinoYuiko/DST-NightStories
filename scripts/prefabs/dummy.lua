@@ -169,7 +169,7 @@ local master_postinit = function(inst)
 
 	inst.components.health:SetMaxHealth(TUNING.DUMMY_HEALTH)
 	inst.components.hunger:SetMax(TUNING.DUMMY_HUNGER)
-	inst.components.sanity:SetMax(TUNING.DUMMY_SANITY)
+	inst.components.sanity:SetMax(TUNING.DUMMY_HEALTH)
 
 	inst.components.sanity.dapperness = TUNING.DAPPERNESS_LARGE
 	inst.components.sanity.night_drain_mult = 0
