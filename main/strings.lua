@@ -124,10 +124,6 @@ local strings = {
         },
         CIVI = require("speech_civi"),
 	    MIOTAN = require("speech_miotan"),
-        DUMMY = {
-            ANNOUNCE_TOOMANYBIRDS = STRINGS.CHARACTERS.WICKERBOTTOM.ANNOUNCE_TOOMANYBIRDS,
-            ANNOUNCE_WAYTOOMANYBIRDS = STRINGS.CHARACTERS.WICKERBOTTOM.ANNOUNCE_WAYTOOMANYBIRDS,
-        },
         -- MIOTAN = require("speech_miotan")
     },
     -- character

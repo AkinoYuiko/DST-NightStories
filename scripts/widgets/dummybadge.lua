@@ -230,7 +230,7 @@ function DummyBadge:OnUpdate(dt)
 
     -- Lunacy or Induced Insanity Transition --
     if self.inducedinsanity ~= sanity:GetIsInducedInsanity() then
-        print("Induced Insanity Transition")
+        -- print("Induced Insanity Transition")
         self.inducedinsanity = sanity:GetIsInducedInsanity()
         DoTransitionTask(self)
     elseif sanity:GetSanityMode() ~= self.sanitymode then
@@ -250,7 +250,7 @@ function DummyBadge:OnUpdate(dt)
                 (health_rate < -.11 and "arrow_loop_decrease_more") or
                 (health_rate < -.022 and "arrow_loop_decrease") or
                 "neutral"
-    
+
     if self.owner.replica.health:GetPercent() >= 1 then anim = "neutral" end
 
     -- local anim =
@@ -258,7 +258,7 @@ function DummyBadge:OnUpdate(dt)
     --     (not up and "neutral") or
     --     (next(self.hots) ~= nil and "arrow_loop_increase_most") or
     --     "arrow_loop_increase"
-    
+
     if self.arrowdir ~= anim then
         self.arrowdir = anim
         self.sanityarrow:GetAnimState():PlayAnimation(anim, true)

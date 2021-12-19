@@ -3,8 +3,8 @@ local MakePlayerCharacter = require "prefabs/player_common"
 local assets = {
     Asset( "SCRIPT", "scripts/prefabs/player_common.lua" ),
 
-    Asset( "ANIM", "anim/miotan.zip" ), 
-    Asset( "ANIM", "anim/ghost_miotan_build.zip" ), 
+    Asset( "ANIM", "anim/miotan.zip" ),
+    Asset( "ANIM", "anim/ghost_miotan_build.zip" ),
 }
 local prefabs = {}
 local start_inv = {}
@@ -196,6 +196,10 @@ local function onbecameghost(inst)
 	end
 end
 
+local function onhaunt(inst, doer)
+	return not (inst.components.sanity and inst.components.sanity.current == 0)
+end
+
 local common_postinit = function(inst)
 	inst.soundsname = "willow"
 	inst:AddTag("reader")
@@ -215,6 +219,7 @@ local master_postinit = function(inst)
 	inst:AddComponent("reader")
 
 	inst:AddComponent("hauntable")
+	inst.components.hauntable.onhaunt = onhaunt
 	inst.components.hauntable.hauntvalue = TUNING.HAUNT_INSTANT_REZ
 	inst.components.hauntable.no_wipe_value = true
 
@@ -234,7 +239,7 @@ local master_postinit = function(inst)
 		inst.components.eater.spoiled_hunger = -1
 		inst.components.eater.spoiled_health = -0.5
 	end
-	
+
 	inst:ListenForEvent("ms_becameghost", onbecameghost)
 	inst.OnLongUpdate = onlongupdate
 	inst.OnSave = onsave
@@ -244,28 +249,28 @@ local master_postinit = function(inst)
 
 end
 
-return MakePlayerCharacter("miotan", prefabs, assets, common_postinit, master_postinit), 
+return MakePlayerCharacter("miotan", prefabs, assets, common_postinit, master_postinit),
 	CreatePrefabSkin("miotan_none", {
-		base_prefab = "miotan", 
-		type = "base", 
-		assets = assets, 
-		skins = { normal_skin = "miotan", ghost_skin = "ghost_miotan_build" }, 
-		bigportrait = { build = "bigportrait/miotan_none.xml", symbol = "miotan_none_oval.tex"}, 
-		skin_tags = { "MIOTAN", "BASE"}, 
-		build_name_override = "miotan", 
-		rarity = "Character", 
-	}), 
+		base_prefab = "miotan",
+		type = "base",
+		assets = assets,
+		skins = { normal_skin = "miotan", ghost_skin = "ghost_miotan_build" },
+		bigportrait = { build = "bigportrait/miotan_none.xml", symbol = "miotan_none_oval.tex"},
+		skin_tags = { "MIOTAN", "BASE"},
+		build_name_override = "miotan",
+		rarity = "Character",
+	}),
 	CreatePrefabSkin("miotan_classic", {
-		base_prefab = "miotan", 
-		type = "base", 
+		base_prefab = "miotan",
+		type = "base",
 		assets = {
-			Asset( "ANIM", "anim/miotan_classic.zip" ), 
-			Asset( "ANIM", "anim/ghost_miotan_classic_build.zip" ), 
+			Asset( "ANIM", "anim/miotan_classic.zip" ),
+			Asset( "ANIM", "anim/ghost_miotan_classic_build.zip" ),
 			Asset( "ATLAS", "bigportraits/miotan_classic.xml")
-		}, 
-		skins = { normal_skin = "miotan_classic", ghost_skin = "ghost_miotan_classic_build" }, 
-		bigportrait = { build = "bigportrait/miotan_classic.xml", symbol = "miotan_classic_oval.tex"}, 
-		skin_tags = { "MIOTAN", "BASE"}, 
-		build_name_override = "miotan_classic", 
-		rarity = "Glassic", 
+		},
+		skins = { normal_skin = "miotan_classic", ghost_skin = "ghost_miotan_classic_build" },
+		bigportrait = { build = "bigportrait/miotan_classic.xml", symbol = "miotan_classic_oval.tex"},
+		skin_tags = { "MIOTAN", "BASE"},
+		build_name_override = "miotan_classic",
+		rarity = "Glassic",
 	})

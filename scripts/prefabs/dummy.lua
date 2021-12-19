@@ -120,9 +120,12 @@ local function redirect_to_health(inst, amount, overtime, ...)
 	return inst.components.health ~= nil and inst.components.health:DoDelta(amount, overtime, "lose_sanity")
 end
 
+local function onhaunt(inst, doer)
+	return not (inst.components.sanity and inst.components.sanity.current == 0)
+end
+
 local function OnRespawnFromGhost(inst, data)
 	if data and data.source then
-		print("OnRespawnFromGhost", data.source)
 		local reviver_sanity = data.source.components.sanity
 		if reviver_sanity then
 			inst.components.health:SetCurrentHealth(reviver_sanity.current)
@@ -131,25 +134,6 @@ local function OnRespawnFromGhost(inst, data)
 		end
 	end
 end
-
--- local function onbecamehuman(inst, data)
--- 	inst:ListenForEvent("healthdelta", onhealthsanitysync)
--- end
-
--- local function onbecameghost(inst)
--- 	inst:RemoveEventCallback("healthdelta", onhealthsanitysync)
--- end
-
--- local function onload(inst)
-	-- inst:ListenForEvent("ms_respawnedfromghost", onbecamehuman)
-	-- inst:ListenForEvent("ms_becameghost", onbecameghost)
-
-	-- if inst:HasTag("playerghost") then
-	-- 	onbecameghost(inst)
-	-- else
-	-- 	onbecamehuman(inst)
-	-- end
--- end
 
 local common_postinit = function(inst)
 	inst.soundsname = "willow"
@@ -180,6 +164,7 @@ local master_postinit = function(inst)
 	inst:AddComponent("reader")
 
 	inst:AddComponent("hauntable")
+	inst.components.hauntable.onhaunt = onhaunt
 	inst.components.hauntable.hauntvalue = TUNING.HAUNT_INSTANT_REZ
 	inst.components.hauntable.no_wipe_value = true
 
@@ -210,19 +195,16 @@ local master_postinit = function(inst)
 	inst:ListenForEvent("respawnfromghost", OnRespawnFromGhost)
 	inst:ListenForEvent("healthdelta", onhealthsanitysync)
 
-	-- inst.OnLoad = onload
-	-- inst.OnNewSpawn = onload
-
 	inst.skeleton_prefab = nil
 
 end
 
-return MakePlayerCharacter("dummy", prefabs, assets, common_postinit, master_postinit), 
+return MakePlayerCharacter("dummy", prefabs, assets, common_postinit, master_postinit),
 	CreatePrefabSkin("dummy_none", {
 		base_prefab = "dummy",
 		type = "base",
 		assets = assets,
-		skins = { normal_skin = "dummy", ghost_skin = "ghost_dummy_build" }, 
+		skins = { normal_skin = "dummy", ghost_skin = "ghost_dummy_build" },
 		skin_tags = { "DUMMY", "BASE"},
 		bigportrait = { build = "bigportrait/dummy_none.xml", symbol = "dummy_none_oval.tex"},
 		build_name_override = "dummy",
