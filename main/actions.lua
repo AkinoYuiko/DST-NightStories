@@ -205,7 +205,7 @@ local SCENE = COMPONENT_ACTIONS.SCENE
 
 local scene_hauntable = SCENE.hauntable
 function SCENE.hauntable(inst, doer, actions, ...)
-    if doer.prefab == "dummy" and inst:HasTag("nightmare_twins")
+    if doer.prefab == "dummy" and inst:HasTag("nightmare_twins") and not inst:HasTag("playerghost")
             and not (inst:HasTag("haunted") or inst:HasTag("catchable")) then
         table.insert(actions, ACTIONS.HAUNT)
     else
