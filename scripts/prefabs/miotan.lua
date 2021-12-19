@@ -245,7 +245,12 @@ local master_postinit = function(inst)
 	inst.OnSave = onsave
 	inst.OnLoad = onload
 
-	-- inst.skeleton_prefab = nil
+	inst.skeleton_prefab = nil
+	inst:ListenForEvent("death", function(inst)
+		inst:DoTaskInTime(2, function(inst)
+			SpawnPrefab("nightmarefuel").Transform:SetPosition(inst:GetPosition():Get())
+		end)
+	end)
 
 end
 

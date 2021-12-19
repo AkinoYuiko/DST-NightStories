@@ -8,7 +8,9 @@ local assets = {
 	Asset( "ANIM", "anim/ghost_dummy_build.zip" ),
 }
 
-local prefabs = {}
+local prefabs = {
+	"nightmarefuel"
+}
 local start_inv = {}
 for k, v in pairs(TUNING.GAMEMODE_STARTING_ITEMS) do
 	start_inv[string.lower(k)] = v.DUMMY
@@ -196,6 +198,11 @@ local master_postinit = function(inst)
 	inst:ListenForEvent("healthdelta", onhealthsanitysync)
 
 	inst.skeleton_prefab = nil
+	inst:ListenForEvent("death", function(inst)
+		inst:DoTaskInTime(2, function(inst)
+			SpawnPrefab("nightmarefuel").Transform:SetPosition(inst:GetPosition():Get())
+		end)
+	end)
 
 end
 
