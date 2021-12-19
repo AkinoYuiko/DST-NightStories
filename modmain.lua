@@ -39,7 +39,7 @@ local main_files = {
     "gem_pack",
     "prefabskin",
     "recipes",
-    "sanity_recalc",
+    "sanity_rework",
     "widgets",
 
 	"eatfuel",

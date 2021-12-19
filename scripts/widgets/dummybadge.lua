@@ -101,6 +101,16 @@ local DummyBadge = Class(Badge, function(self, owner)
         end
     end, owner)
 
+    self.do_induced_transition = false
+    self.inst:ListenForEvent("inducedinsanity", function(owner, data)
+        print("induced insanity val", self.inducedinsanity, data)
+        if self.inducedinsanity ~= data then
+            self.inducedinsanity = data
+            self.do_induced_transition = true
+            self:SetPercent(self.val, self.max)
+        end
+    end, owner)
+
     -- self.overtime_delta_history = {}
     -- self.inst:ListenForEvent("healthdelta", function(owner, data)
     --     if data and data.overtime then
@@ -142,7 +152,7 @@ end
 
 function DummyBadge:DoTransition()
 	local new_sanity_mode = self.owner.replica.sanity:GetSanityMode()
-    local get_is_induced_insanity = self.owner.replica.sanity:GetIsInducedInsanity()
+    -- local get_is_induced_insanity = self.owner.replica.sanity:GetIsInducedInsanity()
     if self.sanitymode ~= new_sanity_mode then
 		self.sanitymode = new_sanity_mode
         if self.sanitymode == SANITY_MODE_INSANITY then
@@ -157,14 +167,9 @@ function DummyBadge:DoTransition()
 	    Badge.SetPercent(self, self.val, self.max) -- refresh the animation
 	end
 
-    if self.inducedinsanity ~= get_is_induced_insanity then
-        self.inducedinsanity = get_is_induced_insanity
-        if self.sanitymode == SANITY_MODE_INSANITY then
-            self.anim:GetAnimState():SetMultColour(unpack(self.inducedinsanity and INDUCEDINSANITY_TINT or SANITY_TINT))
-        else
-            self.anim:GetAnimState():SetMultColour(unpack(self.inducedinsanity and INDUCEDINSANITY_TINT or SANITY_TINT))
-        end
-	    Badge.SetPercent(self, self.val, self.max) -- refresh the animation
+    if self.transition_task then
+        self.anim:GetAnimState():SetMultColour(unpack(self.inducedinsanity and INDUCEDINSANITY_TINT or (self.sanitymode == SANITY_MODE_INSANITY and SANITY_TINT or LUNACY_TINT)))
+        Badge.SetPercent(self, self.val, self.max) -- refresh the animation
     end
 
 	self.transition_task = nil
@@ -187,6 +192,27 @@ function DummyBadge:SpawnTransitionFX(anim)
     end
 end
 
+local function DoTransitionTask(self)
+    if self.transition_task ~= nil then
+        self.transition_task:Cancel()
+        self.transition_task = nil
+        self:DoTransition()
+    end
+    if self:IsVisible() then
+        if self.sanitymode ~= SANITY_MODE_INSANITY then
+            self.circleframe2:GetAnimState():PlayAnimation("transition_sanity")
+            self:SpawnTransitionFX("transition_sanity")
+        else
+            self.circleframe2:GetAnimState():PlayAnimation("transition_lunacy")
+            self:SpawnTransitionFX("transition_lunacy")
+        end
+        self.circleframe2:GetAnimState():PushAnimation("frame", false)
+        self.transition_task = self.owner:DoTaskInTime(6 * FRAMES, function() self:DoTransition() end)
+    else
+        self:DoTransition()
+    end
+end
+
 function DummyBadge:SetPercent(val, max, penaltypercent)
     self.val = val
     self.max = max
@@ -197,25 +223,8 @@ function DummyBadge:SetPercent(val, max, penaltypercent)
 
 	local sanity = self.owner.replica.sanity
 
-	if sanity:GetSanityMode() ~= self.sanitymode or sanity:GetIsInducedInsanity() ~= self.inducedinsanity then
-		if self.transition_task ~= nil then
-			self.transition_task:Cancel()
-			self.transition_task = nil
-			self:DoTransition()
-		end
-		if self:IsVisible() then
-            if self.sanitymode ~= SANITY_MODE_INSANITY then
-                self.circleframe2:GetAnimState():PlayAnimation("transition_sanity")
-                self:SpawnTransitionFX("transition_sanity")
-            else
-                self.circleframe2:GetAnimState():PlayAnimation("transition_lunacy")
-                self:SpawnTransitionFX("transition_lunacy")
-            end
-			self.circleframe2:GetAnimState():PushAnimation("frame", false)
-			self.transition_task = self.owner:DoTaskInTime(6 * FRAMES, function() self:DoTransition() end)
-		else
-			self:DoTransition()
-		end
+	if sanity:GetSanityMode() ~= self.sanitymode then
+		DoTransitionTask(self)
     end
 end
 
@@ -253,6 +262,14 @@ function DummyBadge:OnUpdate(dt)
     if TheNet:IsServerPaused() then return end
 
     local sanity = self.owner.replica.sanity
+
+    -- Induced Transition --
+    local get_is_induced_insanity = sanity:GetIsInducedInsanity()
+    if self.inducedinsanity ~= get_is_induced_insanity then
+        self.inducedinsanity = get_is_induced_insanity
+        DoTransitionTask(self)
+    end
+
     local sanity_rate = sanity and sanity:GetRate() or 0
     local health_rate = sanity_rate +
             ((self.owner.IsFreezing ~= nil and self.owner:IsFreezing()) and temperature_rate or 0) +

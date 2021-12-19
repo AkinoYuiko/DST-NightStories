@@ -1,8 +1,6 @@
 local AddPrefabPostInit = AddPrefabPostInit
-local AddClassPostConstruct = AddClassPostConstruct
 GLOBAL.setfenv(1, GLOBAL)
 
-local ROSE_NAME = "rose"
 local rewardtable =
 {
     "miotan", 
@@ -38,7 +36,7 @@ local function new_onpickedfn(inst, picker)
             picker.components.sanity:DoDelta(TUNING.SANITY_TINY)
         end
 
-        if inst.animname == ROSE_NAME and
+        if inst.animname == "rose" and
             picker.components.combat and
             not (picker.components.inventory and picker.components.inventory:EquipHasTag("bramble_resistant")) then
             picker.components.combat:GetAttacked(inst, TUNING.ROSE_DAMAGE)
@@ -76,21 +74,5 @@ AddPrefabPostInit("flower_evil", function(inst)
 
     if inst.components.pickable then
         inst.components.pickable.onpickedfn = new_onpickedfn_evil
-    end
-end)
-
-AddClassPostConstruct("widgets/statusdisplays", function(self)
-    self.HideDummyBrain = function(self)
-        if self.owner and self.owner.prefab == "dummy" then
-            if self.brain then self.brain:Hide() end
-            if self.moisturemeter then self.moisturemeter:SetPosition(0, -40, 0) end
-        end
-    end
-    self:HideDummyBrain()
-
-    local SetGhostMode = self.SetGhostMode
-    self.SetGhostMode = function(self, ghostmode)
-        SetGhostMode(self, ghostmode)
-        self:HideDummyBrain()
     end
 end)
