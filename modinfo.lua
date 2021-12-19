@@ -5,8 +5,10 @@ author = "丁香女子学校"
 description = locale == "zh" and "[版本: " .. version .. [[]
 
 更新内容:
-- 调整达米吃食物回血的吸收量.
+- 达米的精神值调整为200.
+- 达米的精神槽增加佩戴紫护符/骨头盔的切换动画.
 
+- 调整达米吃食物回血的吸收量.
 - 修复netvar未设置的问题.
 - 调整了达米血量表盘的计算方式.
 - 修复达米使用启迪之冠的激活问题.
@@ -18,8 +20,10 @@ description = locale == "zh" and "[版本: " .. version .. [[]
 ]] or "[Version: " .. version .. [[]
 
 Changelog:
-- Tweak Dummy's absorption rate when eating foods.
+- Reset Dummy's max sanity to 200.
+- Add transition anim for DummyBadge on inducedsanity.
 
+- Tweak Dummy's absorption rate when eating foods.
 - Fix missing netvar setval.
 - Tweak DummyBadge.
 - Fix Enlightened Crown not deactive on losing sanity for Dummy.
