@@ -2,6 +2,7 @@ local Badge = require "widgets/badge"
 local UIAnim = require "widgets/uianim"
 
 local SANITY_TINT = { 174 / 255, 21 / 255, 21 / 255, 1 }
+local INDUCEDINSANITY_TINT = { 123 / 255, 0 / 255, 177 / 255, 1}
 local LUNACY_TINT = { 191 / 255, 232 / 255, 240, 255, 1 }
 
 local function OnGhostDeactivated(inst)
@@ -20,6 +21,7 @@ local DummyBadge = Class(Badge, function(self, owner)
     Badge._ctor(self, nil, owner, SANITY_TINT, "status_sanity", nil, nil, true)
 
     self.sanitymode = SANITY_MODE_INSANITY
+    self.inducedinsanity = false
 
     self.topperanim = self.underNumber:AddChild(UIAnim())
     self.topperanim:GetAnimState():SetBank("status_meter")
@@ -99,13 +101,13 @@ local DummyBadge = Class(Badge, function(self, owner)
         end
     end, owner)
 
-    self.overtime_delta_history = {}
-    self.inst:ListenForEvent("healthdelta", function(owner, data)
-        if data and data.overtime then
-            local delta = ( data.newpercent - data.oldpercent ) * TUNING.DUMMY_HEALTH
-            table.insert(self.overtime_delta_history, {delta = delta, time = GetTime()})
-        end
-    end, owner)
+    -- self.overtime_delta_history = {}
+    -- self.inst:ListenForEvent("healthdelta", function(owner, data)
+    --     if data and data.overtime then
+    --         local delta = ( data.newpercent - data.oldpercent ) * TUNING.DUMMY_HEALTH
+    --         table.insert(self.overtime_delta_history, {delta = delta, time = GetTime()})
+    --     end
+    -- end, owner)
 
     self:StartUpdating()
 end)
@@ -140,19 +142,31 @@ end
 
 function DummyBadge:DoTransition()
 	local new_sanity_mode = self.owner.replica.sanity:GetSanityMode()
-	if self.sanitymode ~= new_sanity_mode then
+    local get_is_induced_insanity = self.owner.replica.sanity:GetIsInducedInsanity()
+    if self.sanitymode ~= new_sanity_mode then
 		self.sanitymode = new_sanity_mode
         if self.sanitymode == SANITY_MODE_INSANITY then
             self.backing:GetAnimState():ClearOverrideSymbol("bg")
-            self.anim:GetAnimState():SetMultColour(unpack(SANITY_TINT))
+            self.anim:GetAnimState():SetMultColour(unpack(self.inducedinsanity and INDUCEDINSANITY_TINT or SANITY_TINT))
             self.circleframe:GetAnimState():OverrideSymbol("icon", "status_sanity", "icon")
         else
             self.backing:GetAnimState():OverrideSymbol("bg", "status_sanity", "lunacy_bg")
-            self.anim:GetAnimState():SetMultColour(unpack(LUNACY_TINT))
+            self.anim:GetAnimState():SetMultColour(unpack(self.inducedinsanity and INDUCEDINSANITY_TINT or LUNACY_TINT))
             self.circleframe:GetAnimState():OverrideSymbol("icon", "status_sanity", "lunacy_icon")
         end
 	    Badge.SetPercent(self, self.val, self.max) -- refresh the animation
 	end
+
+    if self.inducedinsanity ~= get_is_induced_insanity then
+        self.inducedinsanity = get_is_induced_insanity
+        if self.sanitymode == SANITY_MODE_INSANITY then
+            self.anim:GetAnimState():SetMultColour(unpack(self.inducedinsanity and INDUCEDINSANITY_TINT or SANITY_TINT))
+        else
+            self.anim:GetAnimState():SetMultColour(unpack(self.inducedinsanity and INDUCEDINSANITY_TINT or SANITY_TINT))
+        end
+	    Badge.SetPercent(self, self.val, self.max) -- refresh the animation
+    end
+
 	self.transition_task = nil
 end
 
@@ -183,7 +197,7 @@ function DummyBadge:SetPercent(val, max, penaltypercent)
 
 	local sanity = self.owner.replica.sanity
 
-	if sanity:GetSanityMode() ~= self.sanitymode then
+	if sanity:GetSanityMode() ~= self.sanitymode or sanity:GetIsInducedInsanity() ~= self.inducedinsanity then
 		if self.transition_task ~= nil then
 			self.transition_task:Cancel()
 			self.transition_task = nil
@@ -245,16 +259,16 @@ function DummyBadge:OnUpdate(dt)
             ((self.owner.replica.hunger ~= nil and self.owner.replica.hunger:IsStarving()) and hunger_rate or 0) +
             ((self.owner.IsOverheating ~= nil and self.owner:IsOverheating()) and temperature_rate or 0)
 
-    local anim = RATE_SCALE_ANIM[
-    (health_rate > .2 and RATE_SCALE.INCREASE_HIGH) or
-    (health_rate > .1 and RATE_SCALE.INCREASE_MED) or
-    (health_rate > .01 and RATE_SCALE.INCREASE_LOW) or
-    (health_rate < -.3 and RATE_SCALE.DECREASE_HIGH) or
-    (health_rate < -.1 and RATE_SCALE.DECREASE_MED) or
-    (health_rate < -.02 and RATE_SCALE.DECREASE_LOW) or
-    RATE_SCALE.NEUTRAL]
+    local anim = (health_rate > .22 and "arrow_loop_increase_most") or
+                (health_rate > .11 and "arrow_loop_increase_more") or
+                (health_rate > .011 and "arrow_loop_increase") or
+                (health_rate < -.33 and "arrow_loop_decrease_most") or
+                (health_rate < -.11 and "arrow_loop_decrease_more") or
+                (health_rate < -.022 and "arrow_loop_decrease") or
+                "neutral"
+    
 
-    if self.owner.replica.health:GetPercent() == 1 then anim = "neutral" end
+    if not self.owner.replica.health:GetPercent() < 1 then anim = "neutral" end
 
     -- local anim =
     --     (down ~= nil and ("arrow_loop_decrease"..down)) or

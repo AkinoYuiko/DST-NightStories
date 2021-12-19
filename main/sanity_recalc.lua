@@ -3,6 +3,7 @@ GLOBAL.setfenv(1, GLOBAL)
 
 AddPrefabPostInit("player_classified", function(inst)
     inst.sanityrate = net_float(inst.GUID, "sanity.rate")
+    inst.inducedinsanity = net_bool(inst.GUID, "sanity.inducedinsanity")
 end)
 
 local easing = require("easing")
@@ -26,6 +27,7 @@ local LIGHT_SANITY_DRAINS =
 
 local SANITYRECALC_MUST_TAGS = { "sanityaura" }
 local SANITYRECALC_CANT_TAGS = { "FX", "NOCLICK", "DECOR","INLIMBO" }
+
 local Sanity = require("components/sanity")
 Sanity.Recalc = function(self, dt)
     local dapper_delta = 0
@@ -135,7 +137,22 @@ Sanity.GetRate = function(self)
     return self.rate
 end
 
+local SetInducedInsanity = Sanity.SetInducedInsanity
+Sanity.SetInducedInsanity = function(self, src, val)
+    if self.inducedinsanity ~= val then
+        self.inst.replica.sanity:SetInducedInsanity(val)
+    end
+    SetInducedInsanity(self, src, val)
+end
+
+-- Sanity Replica --
 local SanityReplica = require("components/sanity_replica")
+SanityReplica.SetRate = function(self, rate)
+    if self.classified ~= nil then
+        self.classified.sanityrate:set(rate)
+    end
+end
+
 SanityReplica.GetRate = function(self)
     if self.inst.components.sanity ~= nil then
         return self.inst.components.sanity:GetRate()
@@ -146,8 +163,18 @@ SanityReplica.GetRate = function(self)
     end
 end
 
-SanityReplica.SetRate = function(self, rate)
+SanityReplica.SetInducedInsanity = function(self, val)
     if self.classified ~= nil then
-        self.classified.sanityrate:set(rate)
+        self.classified.inducedinsanity:set(val)
+    end
+end
+
+SanityReplica.GetIsInducedInsanity = function(self)
+    if self.inst.components.sanity ~= nil then
+        return self.inst.components.sanity.inducedinsanity
+    elseif self.classified ~= nil then
+        return self.classified.inducedinsanity:value()
+    else
+        return false
     end
 end
