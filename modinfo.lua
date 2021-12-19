@@ -1,10 +1,11 @@
-version = "1.19.9"
+version = "1.19.10"
 -- basic info --
 name = locale == "zh" and "暗夜故事集" or "Night Stories"
 author = "丁香女子学校"
 description = locale == "zh" and "[版本: " .. version .. [[]
 
 更新内容:
+- 修复一个比较值问题.
 - 达米的精神值调整为200.
 - 达米的精神槽增加佩戴紫护符/骨头盔的切换动画.
 
@@ -20,6 +21,7 @@ description = locale == "zh" and "[版本: " .. version .. [[]
 ]] or "[Version: " .. version .. [[]
 
 Changelog:
+- Fix issue that boolean is compared with number.
 - Reset Dummy's max sanity to 200.
 - Add transition anim for DummyBadge on inducedsanity.
 
