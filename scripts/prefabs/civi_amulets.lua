@@ -58,6 +58,8 @@ local function fn_dark()
 
     inst.foleysound = "dontstarve/movement/foley/jewlery"
 
+    inst:AddTag("shadow_item")
+
     -- local swap_data = {sym_build = "swap_realnightsword", sym_name = "swap_machete", bank = "realnightsword"}
 
     MakeInventoryFloatable(inst, "med", nil, 0.6)
