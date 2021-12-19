@@ -1,12 +1,13 @@
-version = "1.19.11"
+version = "1.19.12"
 -- basic info --
 name = locale == "zh" and "暗夜故事集" or "Night Stories"
 author = "丁香女子学校"
 description = locale == "zh" and "[版本: " .. version .. [[]
 
 更新内容:
-- 修复达米精神槽切换动画在客机不显示的问题.
+- 修复启迪切换的延迟问题.
 
+- 修复达米精神槽切换动画在客机不显示的问题.
 - 修复一个比较值问题.
 - 达米的精神值调整为200.
 - 达米的精神槽增加佩戴紫护符/骨头盔的切换动画.
@@ -22,8 +23,9 @@ description = locale == "zh" and "[版本: " .. version .. [[]
 ]] or "[Version: " .. version .. [[]
 
 Changelog:
-- Fix induced insanity transition not working on clients.
+- Fix lag on lunacy transition for DummyBadge.
 
+- Fix induced insanity transition not working on clients.
 - Fix issue that boolean is compared with number.
 - Reset Dummy's max sanity to 200.
 - Add transition anim for DummyBadge on inducedsanity.
