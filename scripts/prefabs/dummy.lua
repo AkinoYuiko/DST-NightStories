@@ -187,7 +187,7 @@ local master_postinit = function(inst)
 	end
 
 	if inst.components.eater ~= nil then
-		inst.components.eater:SetAbsorptionModifiers(1, 1, 0)
+		inst.components.eater:SetAbsorptionModifiers(0.5, 1, 0) -- Health, Hunger, Sanity
 	end
     inst.components.foodaffinity:AddPrefabAffinity("nightmarepie", TUNING.AFFINITY_15_CALORIES_MED)
 
