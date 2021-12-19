@@ -1,12 +1,13 @@
-version = "1.19.7"
+version = "1.19.8"
 -- basic info --
 name = locale == "zh" and "暗夜故事集" or "Night Stories"
 author = "丁香女子学校"
 description = locale == "zh" and "[版本: " .. version .. [[]
 
 更新内容:
-- 修复netvar未设置的问题.
+- 调整达米吃食物回血的吸收量.
 
+- 修复netvar未设置的问题.
 - 调整了达米血量表盘的计算方式.
 - 修复达米使用启迪之冠的激活问题.
 - 补全达米因精神清空的死亡讯息.
@@ -17,8 +18,9 @@ description = locale == "zh" and "[版本: " .. version .. [[]
 ]] or "[Version: " .. version .. [[]
 
 Changelog:
-- Fix missing netvar setval.
+- Tweak Dummy's absorption rate when eating foods.
 
+- Fix missing netvar setval.
 - Tweak DummyBadge.
 - Fix Enlightened Crown not deactive on losing sanity for Dummy.
 - Fix missing death message for losing sanity.
