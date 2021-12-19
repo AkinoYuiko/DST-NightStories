@@ -24,7 +24,7 @@ local strings = {
         MIOTAN = "Mio",
 
         DUMMY = "Dummy",
-        LOSE_SANITY = "lost of sanity",
+        LOSE_SANITY = "the lost of sanity",
         BLACKHOLESTAFF = "Blackhole Staff",
         BOOK_HARVEST = "Season of Harvest",
         BOOK_TOGGLEDOWNFALL = "Love of Rain",
@@ -125,6 +125,10 @@ local strings = {
         },
         CIVI = require("speech_civi"),
 	    MIOTAN = require("speech_miotan"),
+        DUMMY = {
+            ANNOUNCE_TOOMANYBIRDS = STRINGS.CHARACTERS.WICKERBOTTOM.ANNOUNCE_TOOMANYBIRDS,
+            ANNOUNCE_WAYTOOMANYBIRDS = STRINGS.CHARACTERS.WICKERBOTTOM.ANNOUNCE_WAYTOOMANYBIRDS,
+        },
         -- MIOTAN = require("speech_miotan")
     },
     -- character
