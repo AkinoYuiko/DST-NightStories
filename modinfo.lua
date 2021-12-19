@@ -1,20 +1,22 @@
-version = "1.20.2"
+version = "1.20.3"
 -- basic info --
 name = locale == "zh" and "暗夜故事集" or "Night Stories"
 author = "丁香女子学校"
 description = locale == "zh" and "[版本: " .. version .. [[]
 
 更新内容:
-- 澪和达米死亡时会留下一个噩梦燃料，而不是骨架.
+- 修复救赎之心救赎达米时没有触发效果的问题.
 
+- 澪和达米死亡时会留下一个噩梦燃料，而不是骨架.
 - 修复作祟相关的问题.
 - 达米现在可以作祟活着的澪或者达米.
 
 ]] or "[Version: " .. version .. [[]
 
 Changelog:
-- Mio and Dummy leaves a nightmarefuel instead of bone on death.
+- Fix issue on reviving Dummy.
 
+- Mio and Dummy leaves a nightmarefuel instead of bone on death.
 - Fix issues with haunt.
 - Dummy is now able to haunt Mio or Dummy.
 ]]
