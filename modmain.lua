@@ -27,6 +27,7 @@ GlassicAPI.InitCharacterAssets("civi", "MALE", Assets)
 GlassicAPI.InitMinimapAtlas("ns_minimap", Assets)
 GlassicAPI.RegisterItemAtlas("ns_inventoryimages", Assets)
 GlassicAPI.RegisterItemAtlas("hud/nightmaretab", Assets)
+GlassicAPI.RegisterItemAtlas("hud/dummy_status_health", Assets)
 
 local main_files = {
     'actions',
@@ -46,6 +47,7 @@ local main_files = {
 	"sanity_reward",
 	"tradefuel",
 
+    "hack_templates",
 	"only_dazui",
 	"staff_action",
     "tools_mutable",

@@ -30,6 +30,9 @@ Assets = {
     Asset( "ATLAS", "images/avatars/avatar_ghost_dummy.xml" ),
     Asset( "ATLAS", "images/avatars/self_inspect_dummy.xml" ),
     Asset( "ATLAS", "images/saveslot_portraits/dummy.xml" ),
+
+    Asset( "ATLAS", "images/hud/dummy_status_health.xml" ),
+
 }
 
 AddModCharacter("miotan", "FEMALE")
@@ -38,6 +41,7 @@ AddModCharacter("civi", "MALE")
 
 modimport("main/tuning.lua")
 modimport("main/strings.lua")
+modimport("main/hack_templates.lua")
 
 local SkinHandler = require("skinhandler")
 SkinHandler.AddModSkins({

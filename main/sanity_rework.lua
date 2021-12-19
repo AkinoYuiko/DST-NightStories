@@ -2,11 +2,7 @@ local AddPrefabPostInit = AddPrefabPostInit
 local AddClassPostConstruct = AddClassPostConstruct
 GLOBAL.setfenv(1, GLOBAL)
 
-AddPrefabPostInit("player_classified", function(inst)
-    inst.sanityrate = net_float(inst.GUID, "sanity.rate")
-    inst.inducedinsanity = net_bool(inst.GUID, "sanity.inducedinsanity")
-end)
-
+-- Dummy Badge --
 AddClassPostConstruct("widgets/statusdisplays", function(self)
     self.HideDummyBrain = function(self)
         if self.owner and self.owner.prefab == "dummy" then
@@ -39,12 +35,18 @@ local LIGHT_SANITY_DRAINS =
 	},
 }
 
+-- netvars --
+AddPrefabPostInit("player_classified", function(inst)
+    inst.sanityrate = net_float(inst.GUID, "sanity.rate")
+    inst.inducedinsanity = net_bool(inst.GUID, "sanity.inducedinsanity")
+end)
+-- Sanity Component --
 local SANITYRECALC_MUST_TAGS = { "sanityaura" }
 local SANITYRECALC_CANT_TAGS = { "FX", "NOCLICK", "DECOR","INLIMBO" }
 
 local easing = require("easing")
 local SourceModifierList = require("util/sourcemodifierlist")
--- Sanity Component --
+
 local Sanity = require("components/sanity")
 Sanity.Recalc = function(self, dt)
     local dapper_delta = 0

@@ -120,7 +120,6 @@ local strings = {
                 NIGHTMARE_SPEAR = "It looks like breaking.",
 
                 SPICE_CACTUS = "Make sanity great again.",
-
             }
         },
         CIVI = require("speech_civi"),
@@ -154,7 +153,7 @@ local strings = {
     {
         civi = "*Travel between light and dark.\n*Can control nightmare.",
         miotan = "*World treats her differently.\n*Friend of nightmare.",
-        dummy = "* Unfriendly to people.\n* Friend of nightmare.\n* Forgive.",
+        dummy = "*Unfriendly to people.\n*Friend of nightmare.\n*Forgive.",
     },
     CHARACTER_QUOTES =
     {
