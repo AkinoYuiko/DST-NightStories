@@ -129,7 +129,7 @@ end
 local function OnRespawnFromGhost(inst, data)
 	if data and data.source then
 		local target = (data.source.prefab == "reviver" and data.user)
-						or (data.source.prefab == "pocketwatch_revive" and data.source.prefab.components.inventoryitem.owner)
+						or (data.source.prefab == "pocketwatch_revive" and data.source.components.inventoryitem.owner)
 						or data.source
 		local reviver_sanity = target.components.sanity
 		if reviver_sanity then
