@@ -268,7 +268,7 @@ function DummyBadge:OnUpdate(dt)
                 "neutral"
     
 
-    if not self.owner.replica.health:GetPercent() < 1 then anim = "neutral" end
+    if self.owner.replica.health:GetPercent() >= 1 then anim = "neutral" end
 
     -- local anim =
     --     (down ~= nil and ("arrow_loop_decrease"..down)) or
