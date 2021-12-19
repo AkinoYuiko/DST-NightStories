@@ -1,15 +1,19 @@
-version = "1.20"
+version = "1.20.1"
 -- basic info --
 name = locale == "zh" and "暗夜故事集" or "Night Stories"
 author = "丁香女子学校"
 description = locale == "zh" and "[版本: " .. version .. [[]
 
 更新内容:
+- 修复作祟相关的问题.
+
 - 达米现在可以作祟活着的澪或者达米.
 
 ]] or "[Version: " .. version .. [[]
 
 Changelog:
+- Fix issues with haunt.
+
 - Dummy is now able to haunt Mio or Dummy.
 ]]
 
