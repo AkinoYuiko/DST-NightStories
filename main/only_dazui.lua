@@ -22,10 +22,10 @@ AddComponentPostInit("shadowcreaturespawner", function(self, inst)
     end
 end)
 
-local function get_nearby_dummy(inst)
-    if not inst then return end
+local function get_nearby_dummy(inst, disq)
+    if not inst or type(disq) ~= "number" then return end
     for _, v in ipairs(AllPlayers) do
-        if inst:GetDistanceSqToInst(v) < 3600 and v:HasTag("nightmarebreaker") then
+        if inst:GetDistanceSqToInst(v) < (disq * disq) and v:HasTag("nightmarebreaker") then
             return true
         end
     end
@@ -33,35 +33,21 @@ local function get_nearby_dummy(inst)
 end
 
 local function check_dummy_spawn_beak(inst)
-    if get_nearby_dummy(inst) then
+    if get_nearby_dummy(inst, 120) then
         return "nightmarebeak"
     else
         return "crawlingnightmare"
     end
 end
 
-local nightmarecreature_table = {
-    "nightmarefissure",
-    "nightmarelight",
-}
--- for _, prefab in ipairs(nightmarecreature_table) do
---     AddPrefabPostInit(prefab, function(inst)
---         if not TheWorld.ismastersim then return end
---         inst.components.childspawner.childname = check_dummy_spawn_beak(inst)
---     end)
--- end
 local ChildSpawner = require "components/childspawner"
 local DoSpawnChild = ChildSpawner.DoSpawnChild
-ChildSpawner.DoSpawnChild = function(self, ...)
-    local childname = self.childname
-    if table.contains(nightmarecreature_table, self.inst.prefab) and childname == "crawlingnightmare" then
-        self.childname = check_dummy_spawn_beak(self.inst)
+ChildSpawner.DoSpawnChild = function(self, target, prefab, ...)
+    if self.childname == "crawlingnightmare" then
+        return DoSpawnChild(self, target, check_dummy_spawn_beak(self.inst), ...)
     end
-    local rt = DoSpawnChild(self, ...)
-    self.childname = childname
-    return rt
+    return DoSpawnChild(self, target, prefab, ...)
 end
-
 
 local function OnWorkFinished(inst)
     inst.components.lootdropper:DropLoot(inst:GetPosition())
@@ -71,7 +57,7 @@ local function OnWorkFinished(inst)
 
     if TheWorld.state.isnightmarewild and math.random() <= .3 then
         -- Changed Part Start --
-        SpawnAt((get_nearby_dummy(inst) or math.random() < .5) and "nightmarebeak" or "crawlingnightmare", inst)
+        SpawnAt((get_nearby_dummy(inst, 30) or math.random() < .5) and "nightmarebeak" or "crawlingnightmare", inst)
         -- Changed Part End --
     end
 
