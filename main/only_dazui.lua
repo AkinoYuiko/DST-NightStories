@@ -22,16 +22,22 @@ AddComponentPostInit("shadowcreaturespawner", function(self, inst)
     end
 end)
 
-
-
 local function get_nearby_dummy(inst)
     if not inst then return end
     for _, v in ipairs(AllPlayers) do
         if inst:GetDistanceSqToInst(v) < 3600 and v:HasTag("nightmarebreaker") then
-            return "nightmarebeak"
+            return true
         end
     end
-    return "crawlingnightmare"
+    return
+end
+
+local function check_dummy_spawn_beak(inst)
+    if get_nearby_dummy(inst) then
+        return "nightmarebeak"
+    else
+        return "crawlingnightmare"
+    end
 end
 
 local nightmarecreature_table = {
@@ -41,6 +47,37 @@ local nightmarecreature_table = {
 for _, prefab in ipairs(nightmarecreature_table) do
     AddPrefabPostInit(prefab, function(inst)
         if not TheWorld.ismastersim then return end
-        inst.components.childspawner.childname = get_nearby_dummy
+        inst.components.childspawner.childname = check_dummy_spawn_beak 
+    end)
+end
+
+
+local function OnWorkFinished(inst)
+    inst.components.lootdropper:DropLoot(inst:GetPosition())
+
+    local fx = SpawnAt("collapse_small", inst)
+    fx:SetMaterial("rock")
+
+    if TheWorld.state.isnightmarewild and math.random() <= .3 then
+        -- Changed Part Start --
+        SpawnAt((get_nearby_dummy(inst) or math.random() < .5) and "nightmarebeak" or "crawlingnightmare", inst)
+        -- Changed Part End --
+    end
+
+    inst:Remove()
+end
+
+local statueruins = {
+    "ruins_statue_head",
+    "ruins_statue_head_nogem",
+    "ruins_statue_mage",
+    "ruins_statue_mage_nogem",
+}
+for _, prefab in ipairs(statueruins) do
+    AddPrefabPostInit(prefab, function(inst)
+        if not TheWorld.ismastersim then return end
+        if inst.components.workable then
+            inst.components.workable:SetOnFinishCallback(OnWorkFinished)
+        end
     end)
 end
