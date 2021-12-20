@@ -13,13 +13,11 @@ PrefabFiles = {
     "dummy_books",
     "blackholestaff",
     "nightmare_spear",
-    "nightmarecreature_checker",
 
     "ns_spices",
-
     "ns_skins",
 }
--- ThePlayer.AnimState:OverrideSymbol("swap_object","nightstick_crystal","swap_nightstick")
+
 GlassicAPI.InitCharacterAssets("miotan", "FEMALE", Assets)
 GlassicAPI.InitCharacterAssets("dummy", "FEMALE", Assets)
 GlassicAPI.InitCharacterAssets("civi", "MALE", Assets)
