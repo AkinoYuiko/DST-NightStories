@@ -203,7 +203,7 @@ end
 local common_postinit = function(inst)
 	inst.soundsname = "willow"
 	inst:AddTag("reader")
-	inst:AddTag("nightmarer")
+	inst:AddTag("nightstorychar")
 	inst:AddTag("nightmare_twins")
 	-- Minimap icon
 	inst.MiniMapEntity:SetIcon("miotan.tex")

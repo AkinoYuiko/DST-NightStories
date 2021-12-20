@@ -83,34 +83,34 @@ AddRecipe("nightpack",
 RECIPETABS.CELESTIAL, TECH.CELESTIAL_ONE, nil, nil, true, nil, "nightmaregem")
 
 -- Dummy Tab --
-local dummytab = AddRecipeTab("nightmaretab", 999, "images/hud/nightmaretab.xml", "nightmaretab.tex", "nm_breaker")
+local dummytab = AddRecipeTab("nightmaretab", 999, "images/hud/nightmaretab.xml", "nightmaretab.tex", "nightmarebreaker")
 STRINGS.TABS["nightmaretab"] = STRINGS.TABS["dummytab"]
 
 -- 灵魂剥离 --
 AddRecipe("dummy_nightmarefuel",
 {Ingredient(CHARACTER_INGREDIENT.SANITY, 20)},
-dummytab, TECH.NONE, nil, nil, nil, nil, "nm_breaker", nil, "nightmarefuel.tex", nil , "nightmarefuel")
+dummytab, TECH.NONE, nil, nil, nil, nil, "nightmarebreaker", nil, "nightmarefuel.tex", nil , "nightmarefuel")
 STRINGS.NAMES.DUMMY_NIGHTMAREFUEL = STRINGS.NAMES.NIGHTMAREFUEL
 
 -- 暗影破碎者 --
 AddRecipe("nightmare_spear",
 {Ingredient("nightmarefuel", 1)},
-dummytab, TECH.NONE, nil, nil, nil, nil, "nm_breaker", nil, "nightmare_spear.tex" )
+dummytab, TECH.NONE, nil, nil, nil, nil, "nightmarebreaker", nil, "nightmare_spear.tex" )
 
 -- 收获的季节 --
 AddRecipe("book_harvest",
 {Ingredient("papyrus", 2), Ingredient(CHARACTER_INGREDIENT.SANITY, 15)},
-dummytab, TECH.SCIENCE_TWO, nil, nil, nil, nil, "nm_breaker", nil, "book_harvest.tex")
+dummytab, TECH.SCIENCE_TWO, nil, nil, nil, nil, "nightmarebreaker", nil, "book_harvest.tex")
 
 -- 雨神的眷恋 --
 AddRecipe("book_toggledownfall",
 {Ingredient("papyrus", 2), Ingredient(CHARACTER_INGREDIENT.SANITY, 30)},
-dummytab, TECH.MAGIC_THREE, nil, nil, nil, nil, "nm_breaker", nil, "book_toggledownfall.tex")
+dummytab, TECH.MAGIC_THREE, nil, nil, nil, nil, "nightmarebreaker", nil, "book_toggledownfall.tex")
 
 -- 黑洞法杖 --
 AddRecipe("blackholestaff",
 {Ingredient("livinglog", 2), Ingredient("orangegem", 2), Ingredient("nightmarefuel", 4)},
-dummytab, TECH.ANCIENT_FOUR, nil, nil, true, nil, "nm_breaker", nil, "blackholestaff.tex" )
+dummytab, TECH.ANCIENT_FOUR, nil, nil, true, nil, "nightmarebreaker", nil, "blackholestaff.tex" )
 
 AddStategraphPostInit("wilson", function(sg)
     local old_handler = sg.actionhandlers[ACTIONS.BUILD].deststate

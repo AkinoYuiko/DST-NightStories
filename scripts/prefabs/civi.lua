@@ -94,7 +94,7 @@ end
 local common_postinit = function(inst)
 	-- choose which sounds this character will play
     inst.soundsname = "wendy"
-	inst:AddTag("nightmarer")
+	inst:AddTag("nightstorychar")
 	inst:AddTag("nightmaregem")
 
 	inst.MiniMapEntity:SetIcon( "civi.tex" )
