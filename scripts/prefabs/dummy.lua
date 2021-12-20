@@ -21,7 +21,7 @@ prefabs = FlattenTree({ prefabs, start_inv }, true)
 local function CalcSanityAura(inst, observer)
 	if observer.prefab == "dummy" then
 		return 0
-	elseif observer.prefab ~= "dummy" and observer:HasTag("nightmarer") then
+	elseif observer.prefab ~= "dummy" and observer:HasTag("nightstorychar") then
 		return inst.components.sanityaura.aura
 	else
 		return -inst.components.sanityaura.aura
@@ -134,6 +134,7 @@ local function OnRespawnFromGhost(inst, data)
 		local reviver_sanity = target.components.sanity
 		if reviver_sanity then
 			inst.components.health:SetCurrentHealth(reviver_sanity.current)
+			onhealthsanitysync(inst)
 			reviver_sanity:DoDelta(-reviver_sanity.current)
 		end
 	end
@@ -141,11 +142,11 @@ end
 
 local common_postinit = function(inst)
 	inst.soundsname = "willow"
-	inst:AddTag("nm_breaker")
+	inst:AddTag("nightmarebreaker")
   	inst:AddTag("insomniac")
 	inst:AddTag("reader")
   	inst:AddTag("mime")
-	inst:AddTag("nightmarer")
+	inst:AddTag("nightstorychar")
 	inst:AddTag("nightmare_twins")
 	-- Minimap icon
 	inst.MiniMapEntity:SetIcon("dummy.tex")
@@ -186,10 +187,7 @@ local master_postinit = function(inst)
 
 	inst.components.combat.damagemultiplier = 0.75
 
-	-- IA
-	inst.spawnlandshadow_fn = function(inst)
-		return "terrorbeak"
-	end
+	inst.spawnlandshadow_fn = function(inst) return "terrorbeak" end
 
 	if inst.components.eater ~= nil then
 		inst.components.eater:SetAbsorptionModifiers(0.5, 1, 0) -- Health, Hunger, Sanity
