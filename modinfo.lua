@@ -1,12 +1,14 @@
-version = "1.20.4"
+version = "1.20.5"
 -- basic info --
 name = locale == "zh" and "暗夜故事集" or "Night Stories"
 author = "丁香女子学校"
 description = locale == "zh" and "[版本: " .. version .. [[]
 
 更新内容:
-- 修复一个崩溃.
+- 修复若干问题.
+- 修复达米在附近时敲远古矿不是必出尖嘴的问题.
 
+- 修复一个崩溃.
 - 修复救赎之心救赎达米时没有触发效果的问题.
 - 澪和达米死亡时会留下一个噩梦燃料，而不是骨架.
 - 修复作祟相关的问题.
@@ -15,8 +17,10 @@ description = locale == "zh" and "[版本: " .. version .. [[]
 ]] or "[Version: " .. version .. [[]
 
 Changelog:
-- Fix crash on using pocketwatch_revive.
+- Fix several issues.
+- Fix not spawning nightmarebeak on statueruins finished when nearby Dummy.
 
+- Fix crash on using pocketwatch_revive.
 - Fix issue on reviving Dummy.
 - Mio and Dummy leaves a nightmarefuel instead of bone on death.
 - Fix issues with haunt.
