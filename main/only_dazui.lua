@@ -44,11 +44,22 @@ local nightmarecreature_table = {
     "nightmarefissure",
     "nightmarelight",
 }
-for _, prefab in ipairs(nightmarecreature_table) do
-    AddPrefabPostInit(prefab, function(inst)
-        if not TheWorld.ismastersim then return end
-        inst.components.childspawner.childname = check_dummy_spawn_beak 
-    end)
+-- for _, prefab in ipairs(nightmarecreature_table) do
+--     AddPrefabPostInit(prefab, function(inst)
+--         if not TheWorld.ismastersim then return end
+--         inst.components.childspawner.childname = check_dummy_spawn_beak(inst)
+--     end)
+-- end
+local ChildSpawner = require "components/childspawner"
+local DoSpawnChild = ChildSpawner.DoSpawnChild
+ChildSpawner.DoSpawnChild = function(self, ...)
+    local childname = self.childname
+    if table.contains(nightmarecreature_table, self.inst.prefab) and childname == "crawlingnightmare" then
+        self.childname = check_dummy_spawn_beak(self.inst)
+    end
+    local rt = DoSpawnChild(self, ...)
+    self.childname = childname
+    return rt
 end
 
 
