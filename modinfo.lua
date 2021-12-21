@@ -1,12 +1,13 @@
-version = "1.20.7"
+version = "1.20.8"
 -- basic info --
 name = locale == "zh" and "暗夜故事集" or "Night Stories"
 author = "丁香女子学校"
 description = locale == "zh" and "[版本: " .. version .. [[]
 
 更新内容:
-- 修复影灯附近有达米时不强制刷尖嘴的问题.
+- 更新了澪的一部分模型贴图.
 
+- 修复影灯附近有达米时不强制刷尖嘴的问题.
 - 修复一个崩溃.
 - 修复若干问题.
 - 修复达米在附近时敲远古矿不是必出尖嘴的问题.
@@ -18,8 +19,9 @@ description = locale == "zh" and "[版本: " .. version .. [[]
 ]] or "[Version: " .. version .. [[]
 
 Changelog:
-- Fix nightmare lights not spawning nightmarebeak when nearby Dummy.
+- Update Mio's anim tex.
 
+- Fix nightmare lights not spawning nightmarebeak when nearby Dummy.
 - Fix crash with only_dazui.
 - Fix several issues.
 - Fix not spawning nightmarebeak on statueruins finished when nearby Dummy.
