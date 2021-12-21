@@ -1,6 +1,6 @@
 GLOBAL.setfenv(1, GLOBAL)
 
-NS_SPICES = {
+local NS_SPICES = {
     SPICE_CACTUS = {}
 }
 
