@@ -119,7 +119,7 @@ local function onhealthsanitysync(inst)
 end
 
 local function redirect_to_health(inst, amount, overtime, ...)
-	return inst.components.health ~= nil and inst.components.health:DoDelta(amount, overtime, "lose_sanity", true)
+	return inst.components.health ~= nil and inst.components.health:DoDelta(amount, overtime, "lose_sanity", true, nil, true)
 end
 
 local function onhaunt(inst, doer)
