@@ -1,14 +1,16 @@
-version = "1.20.11"
+version = "1.20.12"
+version_compatible = "1.20.11"
 -- basic info --
 name = locale == "zh" and "暗夜故事集" or "Night Stories"
 author = "丁香女子学校"
 description = locale == "zh" and "[版本: " .. version .. [[]
 
 更新内容:
+- 调整了部分翻译文本.
+
 - 修复达米不能从其他玩家身上获取San的问题.
 - 调整了部分参数.
 - 优化代码格式.
-
 - 修复蒜粉可以降低达米精神消耗的问题.
 - 达米传送时的无敌不会保护掉San了.
 - 更新了澪的一部分模型贴图.
@@ -24,10 +26,11 @@ description = locale == "zh" and "[版本: " .. version .. [[]
 ]] or "[Version: " .. version .. [[]
 
 Changelog:
+- Update some transalte strings.
+
 - Fix issue that Dummy can not drain sanity from other players.
 - Tweak tuning.
 - Formating codes.
-
 - Fix Dummy's sanity change affecting by absorption.
 - Dummy will now lose sanity on teleporting.
 - Update Mio's anim tex.
