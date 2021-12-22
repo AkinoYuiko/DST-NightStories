@@ -17,9 +17,9 @@ NS_ACTIONS.NIGHTSWITCH.str = STRINGS.ACTIONS.USEITEM
 NS_ACTIONS.NIGHTSWORDMAGATAMA.str = STRINGS.ACTIONS.GIVE.SOCKET
 
 NS_ACTIONS.MIOFUEL.stroverridefn = function(act)
-	if act.invobject then
-		return act.invobject:GetIsWet() and STRINGS.ACTIONS.ADDWETFUEL or STRINGS.ACTIONS.ADDFUEL
-	end
+    if act.invobject then
+        return act.invobject:GetIsWet() and STRINGS.ACTIONS.ADDWETFUEL or STRINGS.ACTIONS.ADDFUEL
+    end
 end
 
 local GEM_MAP = {
@@ -79,34 +79,34 @@ NS_ACTIONS.NIGHTSWITCH.fn = function(act)
 end
 
 local function UseFuel(item, target, doer)
-	local wetmult = item:GetIsWet() and TUNING.WET_FUEL_PENALTY or 1
-	local fueled = target.components.fueled
-	if fueled then
-		fueled:DoDelta(item.components.fuel.fuelvalue * fueled.bonusmult * wetmult, doer)
-		if fueled.ontakefuelfn then
-			fueled.ontakefuelfn(target)
-		end
-		return true
+    local wetmult = item:GetIsWet() and TUNING.WET_FUEL_PENALTY or 1
+    local fueled = target.components.fueled
+    if fueled then
+        fueled:DoDelta(item.components.fuel.fuelvalue * fueled.bonusmult * wetmult, doer)
+        if fueled.ontakefuelfn then
+            fueled.ontakefuelfn(target)
+        end
+        return true
 
-	elseif target.components.perishable then
-		target.components.perishable:SetPercent( target.components.perishable:GetPercent() + item.components.fuel.fuelvalue / TUNING.LANTERN_LIGHTTIME * wetmult )
-		return true
+    elseif target.components.perishable then
+        target.components.perishable:SetPercent( target.components.perishable:GetPercent() + item.components.fuel.fuelvalue / TUNING.LANTERN_LIGHTTIME * wetmult )
+        return true
 
-	end
+    end
 end
 
 NS_ACTIONS.MIOFUEL.fn = function(act)
-	if act.doer.components.inventory then
-    	local fuel = act.doer.components.inventory:RemoveItem(act.invobject)
-		if fuel then
-			if UseFuel(fuel, act.target, act.doer) then
-				fuel:Remove()
-				return true
-			else
-				act.doer.components.inventory:GiveItem(fuel)
-			end
-		end
-	end
+    if act.doer.components.inventory then
+        local fuel = act.doer.components.inventory:RemoveItem(act.invobject)
+        if fuel then
+            if UseFuel(fuel, act.target, act.doer) then
+                fuel:Remove()
+                return true
+            else
+                act.doer.components.inventory:GiveItem(fuel)
+            end
+        end
+    end
 end
 
 NS_ACTIONS.NIGHTSWORDMAGATAMA.fn = function(act)
@@ -116,7 +116,7 @@ NS_ACTIONS.NIGHTSWORDMAGATAMA.fn = function(act)
         local item = doer.components.inventory:RemoveItem(act.invobject)
 
         target:InitContainer()
-		target.SoundEmitter:PlaySound("dontstarve/common/telebase_gemplace")
+        target.SoundEmitter:PlaySound("dontstarve/common/telebase_gemplace")
 
         if doer.components.inventory:IsItemEquipped(target) then
             if target.components.container then
@@ -141,28 +141,28 @@ end
 ---------------------------------------------------------------------
 
 local function CheckAvailable(target)
-	return target:HasTag("CAVE_fueled") or
-		target:HasTag("BURNABLE_fueled") or
-		target:HasTag("WORMLIGHT_fueled") or
-		target:HasTag("TAR_fueled") or -- IA Sea Yard
-		target.prefab == "torch" or -- BURNABLE, not accepting
-		target.prefab == "lighter" or -- BURNABLE, not accepting
+    return target:HasTag("CAVE_fueled") or
+        target:HasTag("BURNABLE_fueled") or
+        target:HasTag("WORMLIGHT_fueled") or
+        target:HasTag("TAR_fueled") or -- IA Sea Yard
+        target.prefab == "torch" or -- BURNABLE, not accepting
+        target.prefab == "lighter" or -- BURNABLE, not accepting
         target.prefab == "pumpkin_lantern" or -- BURNABLE, not accepting
-		target.prefab == "ironwind" or -- Volcano Biome MOD
-		target.prefab == "purpleamulet"
+        target.prefab == "ironwind" or -- Volcano Biome MOD
+        target.prefab == "purpleamulet"
 end
 
 AddComponentAction("USEITEM", "fuel", function(inst, doer, target, actions, right)
-	if doer.prefab == "miotan" and inst.prefab == "nightmarefuel" then
-		if CheckAvailable(target)
-			and (
-				not (doer.replica.rider and doer.replica.rider:IsRiding())
-				or (target.replica.inventoryitem and target.replica.inventoryitem:IsGrandOwner(doer))
-			) then
+    if doer.prefab == "miotan" and inst.prefab == "nightmarefuel" then
+        if CheckAvailable(target)
+            and (
+                not (doer.replica.rider and doer.replica.rider:IsRiding())
+                or (target.replica.inventoryitem and target.replica.inventoryitem:IsGrandOwner(doer))
+            ) then
 
-			table.insert(actions, NS_ACTIONS.MIOFUEL)
-		end
-	end
+            table.insert(actions, NS_ACTIONS.MIOFUEL)
+        end
+    end
 end)
 
 AddComponentAction("USEITEM", "nightmagatama", function(inst, doer, target, actions, right)
@@ -216,7 +216,7 @@ function SCENE.hauntable(inst, doer, actions, ...)
 end
 
 for _, sg in ipairs({"wilson", "wilson_client"}) do
-	AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.MIOFUEL, "doshortaction"))
+    AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.MIOFUEL, "doshortaction"))
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.GEMTRADE, "doshortaction"))
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.NIGHTSWORDMAGATAMA, "doshortaction"))
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.NIGHTSWITCH, "domediumaction"))

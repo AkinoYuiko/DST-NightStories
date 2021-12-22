@@ -4,7 +4,7 @@ local NS_SPICES = {
     SPICE_CACTUS = {}
 }
 
-require("cooking")
+require("cooking" )
 local spicedfoods = require("spicedfoods")
 local UpvalueHacker = require("upvaluehacker")
 

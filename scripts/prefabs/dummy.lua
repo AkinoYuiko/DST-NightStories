@@ -1,61 +1,61 @@
 local MakePlayerCharacter = require("prefabs/player_common")
-local DummyBadge = require "widgets/dummybadge"
+local DummyBadge = require("widgets/dummybadge")
 
 local assets = {
     Asset( "SCRIPT", "scripts/prefabs/player_common.lua" ),
 
-	Asset( "ANIM", "anim/dummy.zip" ),
-	Asset( "ANIM", "anim/ghost_dummy_build.zip" ),
+    Asset( "ANIM", "anim/dummy.zip" ),
+    Asset( "ANIM", "anim/ghost_dummy_build.zip" ),
 }
 
 local prefabs = {
-	"nightmarefuel"
+    "nightmarefuel"
 }
 local start_inv = {}
 for k, v in pairs(TUNING.GAMEMODE_STARTING_ITEMS) do
-	start_inv[string.lower(k)] = v.DUMMY
+    start_inv[string.lower(k)] = v.DUMMY
 end
 
 prefabs = FlattenTree({ prefabs, start_inv }, true)
 
 local function CalcSanityAura(inst, observer)
-	if observer.prefab == "dummy" then
-		return 0
-	elseif observer.prefab ~= "dummy" and observer:HasTag("nightstorychar") then
-		return inst.components.sanityaura.aura
-	else
-		return -inst.components.sanityaura.aura
-	end
+    if observer.prefab == "dummy" then
+        return 0
+    elseif observer.prefab ~= "dummy" and observer:HasTag("nightstorychar") then
+        return inst.components.sanityaura.aura
+    else
+        return -inst.components.sanityaura.aura
+    end
 end
 
 local function GetEquippableDapperness(owner, equippable)
     local dapperness = equippable:GetDapperness(owner, owner.components.sanity.no_moisture_penalty)
     if equippable.inst:HasTag("shadow_item") then
-		return 0
+        return 0
     end
     return dapperness
 end
 
 local function CheckInsanity(inst)
-	local sanity = inst.components.sanity
-	if not sanity then return end
+    local sanity = inst.components.sanity
+    if not sanity then return end
 
     local percent_ignoresinduced = sanity.current / sanity.max
-	if sanity.mode == SANITY_MODE_INSANITY then
-		if sanity.sane and percent_ignoresinduced <= TUNING.SANITY_BECOME_INSANE_THRESH then --30
-			sanity.sane = false
-		elseif not sanity.sane and percent_ignoresinduced >= TUNING.SANITY_BECOME_SANE_THRESH then --35
-			sanity.sane = true
-		end
-	else
-		if sanity.sane and percent_ignoresinduced >= TUNING.SANITY_BECOME_ENLIGHTENED_THRESH then
-			sanity.sane = false
-		elseif not sanity.sane and percent_ignoresinduced <= TUNING.SANITY_LOSE_ENLIGHTENMENT_THRESH then
-			sanity.sane = true
-		end
-	end
+    if sanity.mode == SANITY_MODE_INSANITY then
+        if sanity.sane and percent_ignoresinduced <= TUNING.SANITY_BECOME_INSANE_THRESH then --30
+            sanity.sane = false
+        elseif not sanity.sane and percent_ignoresinduced >= TUNING.SANITY_BECOME_SANE_THRESH then --35
+            sanity.sane = true
+        end
+    else
+        if sanity.sane and percent_ignoresinduced >= TUNING.SANITY_BECOME_ENLIGHTENED_THRESH then
+            sanity.sane = false
+        elseif not sanity.sane and percent_ignoresinduced <= TUNING.SANITY_LOSE_ENLIGHTENMENT_THRESH then
+            sanity.sane = true
+        end
+    end
 
-	if sanity:IsSane() ~= sanity._oldissane then
+    if sanity:IsSane() ~= sanity._oldissane then
         sanity._oldissane = sanity:IsSane()
         if sanity._oldissane then
             if sanity.onSane ~= nil then
@@ -64,156 +64,155 @@ local function CheckInsanity(inst)
             sanity.inst:PushEvent("gosane")
             ProfileStatsSet("went_sane", true)
         else
-			if sanity.mode == SANITY_MODE_INSANITY then
-				if sanity.onInsane ~= nil then
-					sanity.onInsane(sanity.inst)
-				end
-				sanity.inst:PushEvent("goinsane")
-				ProfileStatsSet("went_insane", true)
-			else --sanity.mode == SANITY_MODE_LUNACY
-				if sanity.onEnlightened ~= nil then
-					sanity.onEnlightened(sanity.inst)
-				end
-				sanity.inst:PushEvent("goenlightened")
-				ProfileStatsSet("went_enlightened", true)
-			end
+            if sanity.mode == SANITY_MODE_INSANITY then
+                if sanity.onInsane ~= nil then
+                    sanity.onInsane(sanity.inst)
+                end
+                sanity.inst:PushEvent("goinsane")
+                ProfileStatsSet("went_insane", true)
+            else --sanity.mode == SANITY_MODE_LUNACY
+                if sanity.onEnlightened ~= nil then
+                    sanity.onEnlightened(sanity.inst)
+                end
+                sanity.inst:PushEvent("goenlightened")
+                ProfileStatsSet("went_enlightened", true)
+            end
         end
     end
 end
 
 local function onsanitychange(inst)
-	if inst:HasTag("playerghost") or inst.components.health:IsDead() then
-		return
-	end
+    if inst:HasTag("playerghost") or inst.components.health:IsDead() then
+        return
+    end
 
-	local percent = math.max(0,(inst.components.sanity.current - (inst.components.sanity.max * 0.15)) / (inst.components.sanity.max * 0.85))
+    local percent = math.max(0,(inst.components.sanity.current - (inst.components.sanity.max * 0.15)) / (inst.components.sanity.max * 0.85))
 
-	if inst.components.sanity and not inst.components.sanity.inducedinsanity and inst.components.sanity.sane then
-		inst.components.hunger:SetRate( (1 + percent) * TUNING.WILSON_HUNGER_RATE)
-	    inst:AddTag("playermonster")
-    	inst:AddTag("monster")
-		if not inst.components.sanityaura then
-			inst:AddComponent("sanityaura")
-			inst.components.sanityaura.aurafn = CalcSanityAura
-			inst.components.sanityaura.aura = (TUNING.SANITY_SMALL * 0.075 * (1 + percent))
-		end
-	else
-		inst.components.hunger:SetRate(TUNING.WILSON_HUNGER_RATE)
-	    if inst:HasTag("playermonster") then inst:RemoveTag("playermonster") end
-	    if inst:HasTag("monster") then inst:RemoveTag("monster") end
-		if inst.components.sanityaura then
-			inst:RemoveComponent("sanityaura")
-		end
-	end
+    if inst.components.sanity and not inst.components.sanity.inducedinsanity and inst.components.sanity.sane then
+        inst.components.hunger:SetRate( (1 + percent) * TUNING.WILSON_HUNGER_RATE)
+        inst:AddTag("playermonster")
+        inst:AddTag("monster")
+        if not inst.components.sanityaura then
+            inst:AddComponent("sanityaura")
+            inst.components.sanityaura.aurafn = CalcSanityAura
+            inst.components.sanityaura.aura = (TUNING.SANITY_SMALL * 0.075 * (1 + percent))
+        end
+    else
+        inst.components.hunger:SetRate(TUNING.WILSON_HUNGER_RATE)
+        if inst:HasTag("playermonster") then inst:RemoveTag("playermonster") end
+        if inst:HasTag("monster") then inst:RemoveTag("monster") end
+        if inst.components.sanityaura then
+            inst:RemoveComponent("sanityaura")
+        end
+    end
 end
 
 local function onhealthsanitysync(inst)
-	if inst.components.sanity and inst.components.health then
-		local sanity = inst.components.sanity
-		sanity.current = inst.components.health.currenthealth
-		sanity.inst:PushEvent("sanitydelta", { oldpercent = sanity._oldpercent, newpercent = sanity:GetPercent(), overtime = true, sanitymode = sanity.mode})
-		sanity._oldpercent = sanity:GetPercent()
-	end
-	onsanitychange(inst)
-	CheckInsanity(inst)
+    if inst.components.sanity and inst.components.health then
+        local sanity = inst.components.sanity
+        sanity.current = inst.components.health.currenthealth
+        sanity.inst:PushEvent("sanitydelta", { oldpercent = sanity._oldpercent, newpercent = sanity:GetPercent(), overtime = true, sanitymode = sanity.mode})
+        sanity._oldpercent = sanity:GetPercent()
+    end
+    onsanitychange(inst)
+    CheckInsanity(inst)
 end
 
 local function redirect_to_health(inst, amount, overtime, ...)
-	return inst.components.health ~= nil and inst.components.health:DoDelta(amount, overtime, "lose_sanity", true, nil, true)
+    return inst.components.health ~= nil and inst.components.health:DoDelta(amount, overtime, "lose_sanity", true, nil, true)
 end
 
 local function onhaunt(inst, doer)
-	return not (inst.components.sanity and inst.components.sanity.current == 0)
+    return not (inst.components.sanity and inst.components.sanity.current == 0)
 end
 
 local function OnRespawnFromGhost(inst, data)
-	if data and data.source then
-		local target = (data.source.prefab == "reviver" and data.user)
-						or (data.source.prefab == "pocketwatch_revive" and data.source.components.inventoryitem.owner)
-						or data.source
-		local reviver_sanity = target.components.sanity
-		if reviver_sanity then
-			inst.components.health:SetCurrentHealth(reviver_sanity.current)
-			onhealthsanitysync(inst)
-			reviver_sanity:DoDelta(-reviver_sanity.current)
-		end
-	end
+    if data and data.source then
+        local target = (data.source.prefab == "reviver" and data.user)
+                        or (data.source.prefab == "pocketwatch_revive" and data.source.components.inventoryitem.owner)
+                        or data.source
+        local reviver_sanity = target.components.sanity
+        if reviver_sanity then
+            inst.components.health:SetCurrentHealth(reviver_sanity.current)
+            onhealthsanitysync(inst)
+            reviver_sanity:DoDelta(-reviver_sanity.current)
+        end
+    end
 end
 
 local common_postinit = function(inst)
-	inst.soundsname = "willow"
-	inst:AddTag("nightmarebreaker")
-  	inst:AddTag("insomniac")
-	inst:AddTag("reader")
-  	inst:AddTag("mime")
-	inst:AddTag("nightstorychar")
-	inst:AddTag("nightmare_twins")
-	-- Minimap icon
-	inst.MiniMapEntity:SetIcon("dummy.tex")
+    inst.soundsname = "willow"
+    inst:AddTag("nightmarebreaker")
+    inst:AddTag("insomniac")
+    inst:AddTag("reader")
+    inst:AddTag("mime")
+    inst:AddTag("nightstorychar")
+    inst:AddTag("nightmare_twins")
+    -- Minimap icon
+    inst.MiniMapEntity:SetIcon("dummy.tex")
 
     if TheNet:GetServerGameMode() == "lavaarena" then
     elseif TheNet:GetServerGameMode() == "quagmire" then
     else
-		if not TheNet:IsDedicated() then
-			inst.CreateHealthBadge = DummyBadge
-		end
-	end
+        if not TheNet:IsDedicated() then
+            inst.CreateHealthBadge = DummyBadge
+        end
+    end
 end
 
 -- This initializes for the host only
 local master_postinit = function(inst)
-	inst.starting_inventory = start_inv[TheNet:GetServerGameMode()] or start_inv.default
+    inst.starting_inventory = start_inv[TheNet:GetServerGameMode()] or start_inv.default
 
-	inst.customidleanim = "idle_wortox"
+    inst.customidleanim = "idle_wortox"
 
-	inst:AddComponent("reader")
+    inst:AddComponent("reader")
 
-	inst:AddComponent("hauntable")
-	inst.components.hauntable.onhaunt = onhaunt
-	inst.components.hauntable.hauntvalue = TUNING.HAUNT_INSTANT_REZ
-	inst.components.hauntable.no_wipe_value = true
+    inst:AddComponent("hauntable")
+    inst.components.hauntable.onhaunt = onhaunt
+    inst.components.hauntable.hauntvalue = TUNING.HAUNT_INSTANT_REZ
+    inst.components.hauntable.no_wipe_value = true
 
-	inst.components.health:SetMaxHealth(TUNING.DUMMY_HEALTH)
-	inst.components.hunger:SetMax(TUNING.DUMMY_HUNGER)
-	inst.components.sanity:SetMax(TUNING.DUMMY_HEALTH)
+    inst.components.health:SetMaxHealth(TUNING.DUMMY_HEALTH)
+    inst.components.hunger:SetMax(TUNING.DUMMY_HUNGER)
+    inst.components.sanity:SetMax(TUNING.DUMMY_HEALTH)
 
-	inst.components.sanity.dapperness = TUNING.DAPPERNESS_LARGE
-	inst.components.sanity.night_drain_mult = 0
-	inst.components.sanity.neg_aura_mult = 0.5
-	inst.components.sanity.redirect = redirect_to_health
+    inst.components.sanity.dapperness = TUNING.DAPPERNESS_MED
+    inst.components.sanity.night_drain_mult = TUNING.DUMMY_NIGHT_SANITY_MULT
+    inst.components.sanity.neg_aura_mult = TUNING.DUMMY_SANITY_MULT
+    inst.components.sanity.redirect = redirect_to_health
     inst.components.sanity.get_equippable_dappernessfn = GetEquippableDapperness
 
-	inst.components.health.disable_penalty = true
+    inst.components.health.disable_penalty = true
 
-	inst.components.combat.damagemultiplier = 0.75
+    inst.components.combat.damagemultiplier = TUNING.DUMMY_DAMAGE_MULT
 
-	inst.spawnlandshadow_fn = function(inst) return "terrorbeak" end
+    inst.spawnlandshadow_fn = function(inst) return "terrorbeak" end
 
-	if inst.components.eater ~= nil then
-		inst.components.eater:SetAbsorptionModifiers(0.5, 1, 0) -- Health, Hunger, Sanity
-	end
+    if inst.components.eater ~= nil then
+        inst.components.eater:SetAbsorptionModifiers(0.5, 1, 0) -- Health, Hunger, Sanity
+    end
     inst.components.foodaffinity:AddPrefabAffinity("nightmarepie", TUNING.AFFINITY_15_CALORIES_MED)
 
-	inst:ListenForEvent("respawnfromghost", OnRespawnFromGhost)
-	inst:ListenForEvent("healthdelta", onhealthsanitysync)
+    inst:ListenForEvent("respawnfromghost", OnRespawnFromGhost)
+    inst:ListenForEvent("healthdelta", onhealthsanitysync)
 
-	inst.skeleton_prefab = nil
-	inst:ListenForEvent("death", function(inst)
-		inst:DoTaskInTime(2, function(inst)
-			SpawnPrefab("nightmarefuel").Transform:SetPosition(inst:GetPosition():Get())
-		end)
-	end)
-
+    inst.skeleton_prefab = nil
+    inst:ListenForEvent("death", function(inst)
+        inst:DoTaskInTime(2, function(inst)
+            SpawnPrefab("nightmarefuel").Transform:SetPosition(inst:GetPosition():Get())
+        end)
+    end)
 end
 
 return MakePlayerCharacter("dummy", prefabs, assets, common_postinit, master_postinit),
-	CreatePrefabSkin("dummy_none", {
-		base_prefab = "dummy",
-		type = "base",
-		assets = assets,
-		skins = { normal_skin = "dummy", ghost_skin = "ghost_dummy_build" },
-		skin_tags = { "DUMMY", "BASE"},
-		bigportrait = { build = "bigportrait/dummy_none.xml", symbol = "dummy_none_oval.tex"},
-		build_name_override = "dummy",
-		rarity = "Character"
-	})
+    CreatePrefabSkin("dummy_none", {
+        base_prefab = "dummy",
+        type = "base",
+        assets = assets,
+        skins = { normal_skin = "dummy", ghost_skin = "ghost_dummy_build" },
+        skin_tags = { "DUMMY", "BASE"},
+        bigportrait = { build = "bigportrait/dummy_none.xml", symbol = "dummy_none_oval.tex"},
+        build_name_override = "dummy",
+        rarity = "Character"
+    })

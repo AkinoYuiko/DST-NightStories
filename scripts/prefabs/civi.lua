@@ -1,7 +1,8 @@
-local MakePlayerCharacter = require "prefabs/player_common"
+local MakePlayerCharacter = require("prefabs/player_common")
 
 local assets = {
-	-- Asset( "SCRIPT", "scripts/prefabs/player_common.lua"),
+	Asset( "SCRIPT", "scripts/prefabs/player_common.lua"),
+
     Asset( "ANIM", "anim/civi.zip" ),
     Asset( "ANIM", "anim/ghost_civi_build.zip" ),
 }
@@ -103,7 +104,7 @@ end
 -- This initializes for the host only
 local master_postinit = function(inst)
     inst.starting_inventory = start_inv[TheNet:GetServerGameMode()] or start_inv.default
-    
+
 	inst.level = 0
 
 	-- inst.components.eater:SetOnEatFn(oneat)
@@ -118,12 +119,12 @@ local master_postinit = function(inst)
     inst:ListenForEvent("ms_respawnedfromghost", onbecamehuman)
 end
 
-return MakePlayerCharacter("civi", prefabs, assets, common_postinit, master_postinit), 
+return MakePlayerCharacter("civi", prefabs, assets, common_postinit, master_postinit),
 CreatePrefabSkin("civi_none", {
     base_prefab = "civi",
     type = "base",
     assets = assets,
-    skins = { normal_skin = "civi", ghost_skin = "ghost_civi_build" }, 
+    skins = { normal_skin = "civi", ghost_skin = "ghost_civi_build" },
     bigportrait = { build = "bigportrait/civi_none.xml", symbol = "civi_none_oval.tex"},
     skin_tags = { "CIVI", "BASE"},
     build_name_override = "civi",

@@ -40,7 +40,7 @@ local function check_dummy_spawn_beak(inst)
     end
 end
 
-local ChildSpawner = require "components/childspawner"
+local ChildSpawner = require("components/childspawner")
 local DoSpawnChild = ChildSpawner.DoSpawnChild
 ChildSpawner.DoSpawnChild = function(self, target, prefab, ...)
     if self.childname == "crawlingnightmare" then

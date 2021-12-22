@@ -1,6 +1,6 @@
 GLOBAL.setfenv(1, GLOBAL)
 
-local TEMPLATES = require "widgets/redux/templates"
+local TEMPLATES = require("widgets/redux/templates")
 
 local MakeUIStatusBadge = TEMPLATES.MakeUIStatusBadge
 function TEMPLATES.MakeUIStatusBadge(_status_name, c, ...)

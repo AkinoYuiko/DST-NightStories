@@ -1,5 +1,5 @@
-local Badge = require "widgets/badge"
-local UIAnim = require "widgets/uianim"
+local Badge = require("widgets/badge")
+local UIAnim = require("widgets/uianim")
 
 local SANITY_TINT = { 174 / 255, 21 / 255, 21 / 255, 1 }
 local INDUCEDINSANITY_TINT = { 123 / 255, 0 / 255, 177 / 255, 1}
