@@ -210,23 +210,17 @@ for i, char in ipairs(char_list) do
 
             if not inst.components.sanityaura then
                 inst:AddComponent("sanityaura")
-                inst.components.sanityaura.aura = (TUNING.SANITY_SMALL * 0.15)
+                inst.components.sanityaura.aura = TUNING.DUMMY_SANITY_AURA
             end
 
-            if inst.components.sanityaura.aurafn then
-                inst.aurafn_prefns = inst.aurafn_prefns or {}
-                inst.aurafn_prefns["dummy"] = inst.components.sanityaura.aurafn
-            end
-
-            local function CalcSanityAura(inst, observer)
+            local aurafn = inst.components.sanityaura.aurafn or function(inst, observer) return 0 end
+            inst.components.sanityaura.aurafn = function(inst, observer)
                 if observer.prefab == "dummy" then
                     return inst.components.sanityaura.aura
                 else
-                    return inst.aurafn_prefns["dummy"](inst, observer)
+                    return aurafn(inst, observer)
                 end
             end
-
-            inst.components.sanityaura.aurafn = CalcSanityAura
         end)
     end
 end
