@@ -1,4 +1,5 @@
 local AddPrefabPostInit = AddPrefabPostInit
+local AddPlayerPostInit = AddPlayerPostInit
 GLOBAL.setfenv(1, GLOBAL)
 
 -- Dummy Badge --
@@ -200,8 +201,9 @@ SanityReplica.GetIsInducedInsanity = function(self)
 end
 
 -- Dummy restores sanity from others --
-local function post_init(inst)
+local function sanity_aura_post_init(inst)
     if not TheWorld.ismastersim then return end
+    if inst.prefab == "dummy" then return end
 
     if not inst.components.sanityaura then
         inst:AddComponent("sanityaura")
@@ -218,8 +220,4 @@ local function post_init(inst)
     end
 end
 
-for _, character in ipairs(GetActiveCharacterList()) do
-    if character ~= "dummy" then
-        AddPrefabPostInit(character, post_init)
-    end
-end
+AddPlayerPostInit(sanity_aura_post_init)
