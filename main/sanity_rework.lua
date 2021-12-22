@@ -200,27 +200,26 @@ SanityReplica.GetIsInducedInsanity = function(self)
 end
 
 -- Dummy restores sanity from others --
-local char_list = GetActiveCharacterList()
-for i, char in ipairs(char_list) do
-    if char == "dummy" then
-        char_list[i] = nil
-    else
-        AddPrefabPostInit(char, function(inst)
-            if not TheWorld.ismastersim then return end
+local function post_init(inst)
+    if not TheWorld.ismastersim then return end
 
-            if not inst.components.sanityaura then
-                inst:AddComponent("sanityaura")
-                inst.components.sanityaura.aura = TUNING.DUMMY_SANITY_AURA
-            end
+    if not inst.components.sanityaura then
+        inst:AddComponent("sanityaura")
+        inst.components.sanityaura.aura = TUNING.DUMMY_SANITY_AURA
+    end
 
-            local aurafn = inst.components.sanityaura.aurafn or function(inst, observer) return 0 end
-            inst.components.sanityaura.aurafn = function(inst, observer)
-                if observer.prefab == "dummy" then
-                    return inst.components.sanityaura.aura
-                else
-                    return aurafn(inst, observer)
-                end
-            end
-        end)
+    local aurafn = inst.components.sanityaura.aurafn or function(inst, observer) return 0 end
+    inst.components.sanityaura.aurafn = function(inst, observer, ...)
+        if observer.prefab == "dummy" then
+            return inst.components.sanityaura.aura
+        else
+            return aurafn(inst, observer, ...)
+        end
+    end
+end
+
+for _, character in ipairs(GetActiveCharacterList()) do
+    if character ~= "dummy" then
+        AddPrefabPostInit(character, post_init)
     end
 end
