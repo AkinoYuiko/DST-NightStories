@@ -133,10 +133,10 @@ function DummyBadge:HideEffigy()
 end
 
 function DummyBadge:DoTransition()
-	local new_sanity_mode = self.owner.replica.sanity:GetSanityMode()
+    local new_sanity_mode = self.owner.replica.sanity:GetSanityMode()
     -- local get_is_induced_insanity = self.owner.replica.sanity:GetIsInducedInsanity()
     if self.sanitymode ~= new_sanity_mode then
-		self.sanitymode = new_sanity_mode
+        self.sanitymode = new_sanity_mode
         if self.sanitymode == SANITY_MODE_INSANITY then
             self.backing:GetAnimState():ClearOverrideSymbol("bg")
             self.anim:GetAnimState():SetMultColour(unpack(self.inducedinsanity and INDUCEDINSANITY_TINT or SANITY_TINT))
@@ -146,15 +146,15 @@ function DummyBadge:DoTransition()
             self.anim:GetAnimState():SetMultColour(unpack(self.inducedinsanity and INDUCEDINSANITY_TINT or LUNACY_TINT))
             self.circleframe:GetAnimState():OverrideSymbol("icon", "status_sanity", "lunacy_icon")
         end
-	    Badge.SetPercent(self, self.val, self.max) -- refresh the animation
-	end
+        Badge.SetPercent(self, self.val, self.max) -- refresh the animation
+    end
 
     if self.transition_task then
         self.anim:GetAnimState():SetMultColour(unpack(self.inducedinsanity and INDUCEDINSANITY_TINT or (self.sanitymode == SANITY_MODE_INSANITY and SANITY_TINT or LUNACY_TINT)))
         Badge.SetPercent(self, self.val, self.max) -- refresh the animation
     end
 
-	self.transition_task = nil
+    self.transition_task = nil
 end
 
 local function RemoveFX(fxinst)
@@ -205,19 +205,19 @@ function DummyBadge:SetPercent(val, max, penaltypercent)
 end
 
 function DummyBadge:PulseGreen()
-	if self.sanitymode == SANITY_MODE_LUNACY then
-		Badge.PulseRed(self)
-	else
-		Badge.PulseGreen(self)
-	end
+    if self.sanitymode == SANITY_MODE_LUNACY then
+        Badge.PulseRed(self)
+    else
+        Badge.PulseGreen(self)
+    end
 end
 
 function DummyBadge:PulseRed()
-	if self.sanitymode == SANITY_MODE_LUNACY then
-		Badge.PulseGreen(self)
-	else
-		Badge.PulseRed(self)
-	end
+    if self.sanitymode == SANITY_MODE_LUNACY then
+        Badge.PulseGreen(self)
+    else
+        Badge.PulseRed(self)
+    end
 end
 
 local hunger_rate = - TUNING.WILSON_HEALTH / TUNING.STARVE_KILL_TIME
@@ -243,21 +243,15 @@ function DummyBadge:OnUpdate(dt)
             ((self.owner.replica.hunger ~= nil and self.owner.replica.hunger:IsStarving()) and hunger_rate or 0) +
             ((self.owner.IsOverheating ~= nil and self.owner:IsOverheating()) and temperature_rate or 0)
 
-    local anim = (health_rate > .22 and "arrow_loop_increase_most") or
-                (health_rate > .11 and "arrow_loop_increase_more") or
-                (health_rate > .011 and "arrow_loop_increase") or
-                (health_rate < -.33 and "arrow_loop_decrease_most") or
-                (health_rate < -.11 and "arrow_loop_decrease_more") or
-                (health_rate < -.022 and "arrow_loop_decrease") or
+    local anim = (health_rate > .3 and "arrow_loop_increase_most") or
+                (health_rate > .15 and "arrow_loop_increase_more") or
+                (health_rate > .015 and "arrow_loop_increase") or
+                (health_rate < -.45 and "arrow_loop_decrease_most") or
+                (health_rate < -.15 and "arrow_loop_decrease_more") or
+                (health_rate < -.03 and "arrow_loop_decrease") or
                 "neutral"
 
     if self.owner.replica.health:GetPercent() >= 1 then anim = "neutral" end
-
-    -- local anim =
-    --     (down ~= nil and ("arrow_loop_decrease"..down)) or
-    --     (not up and "neutral") or
-    --     (next(self.hots) ~= nil and "arrow_loop_increase_most") or
-    --     "arrow_loop_increase"
 
     if self.arrowdir ~= anim then
         self.arrowdir = anim

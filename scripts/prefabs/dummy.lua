@@ -95,7 +95,7 @@ local function onsanitychange(inst)
         if not inst.components.sanityaura then
             inst:AddComponent("sanityaura")
             inst.components.sanityaura.aurafn = CalcSanityAura
-            inst.components.sanityaura.aura = (TUNING.SANITY_SMALL * 0.075 * (1 + percent))
+            inst.components.sanityaura.aura = (TUNING.DUMMY_SANITY_AURA * (1 + percent) / 2)
         end
     else
         inst.components.hunger:SetRate(TUNING.WILSON_HUNGER_RATE)
