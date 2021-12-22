@@ -203,7 +203,7 @@ end
 local char_list = GetActiveCharacterList()
 for i, char in ipairs(char_list) do
     if char == "dummy" then
-        char[i] = nil
+        char_list[i] = nil
     else
         AddPrefabPostInit(char, function(inst)
             if not TheWorld.ismastersim then return end
