@@ -1,13 +1,13 @@
-version = "1.20.12"
-version_compatible = "1.20.11"
+version = "1.20.13"
 -- basic info --
 name = locale == "zh" and "暗夜故事集" or "Night Stories"
 author = "丁香女子学校"
 description = locale == "zh" and "[版本: " .. version .. [[]
 
 更新内容:
-- 调整了部分翻译文本.
+- 更新"sanity_rework".
 
+- 调整了部分翻译文本.
 - 修复达米不能从其他玩家身上获取San的问题.
 - 调整了部分参数.
 - 优化代码格式.
@@ -26,8 +26,9 @@ description = locale == "zh" and "[版本: " .. version .. [[]
 ]] or "[Version: " .. version .. [[]
 
 Changelog:
-- Update some transalte strings.
+- Update "sanity_rework".
 
+- Update some transalte strings.
 - Fix issue that Dummy can not drain sanity from other players.
 - Tweak tuning.
 - Formating codes.
