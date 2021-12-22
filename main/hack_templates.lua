@@ -20,7 +20,7 @@ function TEMPLATES.MakeUIStatusBadge(_status_name, c, ...)
         end
         self:Show()
         return ChangeCharacter(self, character, ...)
-	end
+    end
     if c ~= nil then
         status:ChangeCharacter(c)
     end

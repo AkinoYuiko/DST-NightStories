@@ -14,7 +14,7 @@ local function BlackHoleOnTarget(inst, doer, target, actions, right)
           target:HasTag("mineactive") or
           target:HasTag("smallcreature")
         )) then
-        	table.insert(actions, ACTIONS.CASTSPELL)
+            table.insert(actions, ACTIONS.CASTSPELL)
         end
     end
 end

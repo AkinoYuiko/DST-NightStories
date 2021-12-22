@@ -1,13 +1,13 @@
 local assets = {
-	Asset("ANIM", "anim/blackholestaff.zip"),
+    Asset("ANIM", "anim/blackholestaff.zip"),
 }
 
 local prefabs = {
 
-	blackhole = {
-		"shadow_puff",
-		"reticule",
-	},
+    blackhole = {
+        "shadow_puff",
+        "reticule",
+    },
 }
 
 ---------- BLACKHOLE STAFF ----------
@@ -39,35 +39,35 @@ local function pickup(staff, target, pos)
     local ents = TheSim:FindEntities(px, py, pz, prange,
                     { "_inventoryitem" },
                     { "INLIMBO", "NOCLICK", "catchable", "fire", "minesprung", "mineactive" })
-	--for i=1, #ents do
-		for i, v in ipairs(ents) do
-    	    if v.components.inventoryitem ~= nil and
-    	        v.components.inventoryitem.canbepickedup and
-    	        v.components.inventoryitem.cangoincontainer and
-    	        not v.components.inventoryitem:IsHeld() and ( t_prefab == nil or ( v.prefab == t_prefab ) ) then
-				--local num = v.components.stackable and v.components.stackable.stacksize or 1
-				if caster.components.inventory:CanAcceptCount(v, 40) > 0 then
+    --for i=1, #ents do
+        for i, v in ipairs(ents) do
+            if v.components.inventoryitem ~= nil and
+                v.components.inventoryitem.canbepickedup and
+                v.components.inventoryitem.cangoincontainer and
+                not v.components.inventoryitem:IsHeld() and ( t_prefab == nil or ( v.prefab == t_prefab ) ) then
+                --local num = v.components.stackable and v.components.stackable.stacksize or 1
+                if caster.components.inventory:CanAcceptCount(v, 40) > 0 then
 
-    	        local fx = SpawnPrefab("shadow_puff")
-				if fx then fx.Transform:SetPosition(v.Transform:GetWorldPosition()) fx.Transform:SetScale(0.7,0.7,0.7) end
-    	        if v.components.stackable ~= nil then
-					local num = caster.components.inventory:CanAcceptCount(v,40)
-    	            v = v.components.stackable:Get(num)
-				end
-    	        --end
+                local fx = SpawnPrefab("shadow_puff")
+                if fx then fx.Transform:SetPosition(v.Transform:GetWorldPosition()) fx.Transform:SetScale(0.7,0.7,0.7) end
+                if v.components.stackable ~= nil then
+                    local num = caster.components.inventory:CanAcceptCount(v,40)
+                    v = v.components.stackable:Get(num)
+                end
+                --end
 
-    	        if v.components.trap ~= nil and v.components.trap:IsSprung() then
-    	            v.components.trap:Harvest(caster)
-    	        else
-    	            caster.components.inventory:GiveItem(v, nil, v:GetPosition())
-    	        end
-    	        --return
-    	    end
-    	end
-	end
+                if v.components.trap ~= nil and v.components.trap:IsSprung() then
+                    v.components.trap:Harvest(caster)
+                else
+                    caster.components.inventory:GiveItem(v, nil, v:GetPosition())
+                end
+                --return
+            end
+        end
+    end
 
-	if caster.components.sanity ~= nil then caster.components.sanity:DoDelta(-30) end
-	staff.components.finiteuses:Use(1)
+    if caster.components.sanity ~= nil then caster.components.sanity:DoDelta(-30) end
+    staff.components.finiteuses:Use(1)
 
 end
 ---------Can Cast Fn---------
@@ -107,13 +107,13 @@ local function blackhole()
     -- inst.AnimState:SetManualBB(15,-75,100,225)
 
     inst:AddTag("nopunch")
-	inst:AddTag("allow_action_on_impassable")
+    inst:AddTag("allow_action_on_impassable")
 
     local swap_data = {sym_build = "blackholestaff", sym_name = "swap_blackholestaff", bank = "staffs", anim = "blackholestaff"}
     MakeInventoryFloatable(inst, "med", 0.1, {0.9, 0.4, 0.9}, true, -13, swap_data)
 
-		-- inst.drawatlasoverride = "images/inventoryimages/blackholestaff.xml"
-		-- inst.drawimageoverride = "blackholestaff"
+        -- inst.drawatlasoverride = "images/inventoryimages/blackholestaff.xml"
+        -- inst.drawimageoverride = "blackholestaff"
 
     inst.entity:SetPristine()
     if not TheWorld.ismastersim then return inst end

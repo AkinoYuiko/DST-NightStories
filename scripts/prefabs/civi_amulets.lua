@@ -30,7 +30,7 @@ end
 
 local function onunequip_dark(inst, owner)
     owner.AnimState:ClearOverrideSymbol("swap_body")
-	if owner.components.combat ~= nil then
+    if owner.components.combat ~= nil then
         owner.components.combat.externaldamagemultipliers:RemoveModifier(inst,"darkamulet")
     end
     if inst.components.fueled then
@@ -48,7 +48,7 @@ local function fn_dark()
     inst.entity:AddTransform()
     inst.entity:AddAnimState()
     inst.entity:AddNetwork()
-	inst.entity:AddSoundEmitter()
+    inst.entity:AddSoundEmitter()
 
     MakeInventoryPhysics(inst)
 
@@ -82,7 +82,7 @@ local function fn_dark()
     inst.components.fueled.fueltype = FUELTYPE.NIGHTMARE
     inst.components.fueled:InitializeFuelLevel(360)
     inst.components.fueled:SetDepletedFn(inst.Remove)
-	inst.components.fueled:SetTakeFuelFn(ontakefuel)
+    inst.components.fueled:SetTakeFuelFn(ontakefuel)
     inst.components.fueled:SetFirstPeriod(TUNING.TURNON_FUELED_CONSUMPTION, TUNING.TURNON_FULL_FUELED_CONSUMPTION)
     inst.components.fueled.accepting = true
 

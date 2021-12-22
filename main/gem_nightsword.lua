@@ -112,7 +112,7 @@ local function onitemlose(inst)
 end
 
 AddPrefabPostInit("nightsword", function(inst)
-	inst.entity:AddSoundEmitter()
+    inst.entity:AddSoundEmitter()
 
     inst.magatama_id = net_tinybyte(inst.GUID, "nightsword.magatama_id", "magatamadirty")
     inst.add_container_event = net_event(inst.GUID, "add_container")

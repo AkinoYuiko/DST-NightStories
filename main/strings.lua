@@ -60,7 +60,7 @@ local strings = {
     {
         civi_none = "Civi",
         armorskeleton_none = "Emperor's Formal",
-	    skeletonhat_glass = "Crystal Skull",
+        skeletonhat_glass = "Crystal Skull",
 
         miotan_classic = "Classic",
         miotan_none = "Mio",
@@ -88,10 +88,10 @@ local strings = {
         dummy_none = "Another girl comes from nightmare's world.",
 
     },
-	TABS =
-	{
-		["dummytab"] = "Nightmare"
-	},
+    TABS =
+    {
+        ["dummytab"] = "Nightmare"
+    },
     CIVI_GEMS =
     {
         FEEL_DARK = "I felt the dark.",
@@ -123,7 +123,7 @@ local strings = {
             }
         },
         CIVI = require("speech_civi"),
-	    MIOTAN = require("speech_miotan"),
+        MIOTAN = require("speech_miotan"),
         -- MIOTAN = require("speech_miotan")
     },
     -- character
@@ -164,15 +164,15 @@ local strings = {
             { title = "Favorite Food", desc = "Lv.0 - "..STRINGS.NAMES.BONESOUP.."\nLv.1 - "..STRINGS.NAMES.MEATBALLS.."\nLv.2 - "..STRINGS.NAMES.VOLTGOATJELLY },
             -- { title = "Secret Knowledge", desc = "While toiling away in his home laboratory late one night, Wilson was startled to hear a voice on the radio speaking directly to him. At first he feared he'd gone mad from too many late nights of experiments and accidentally-inhaled chemical fumes, but the voice assured him that it was no mere figment of the imagination. In fact, the voice had a proposition for him: if Wilson would build a machine according to their specifications, then he would be rewarded with secret knowledge, the likes of which no one had ever seen. Casting aside his better judgement (after all, what harm could come from making a vague bargain with a mysterious disembodied voice?) Wilson threw himself into constructing the machine. When at long last it was finally completed, the gentleman scientist had a moment of hesitation... a moment that might have saved him from his impending fate, had he been just a bit stronger of will. But at the voice's insistence, Wilson flipped the switch and activated his creation... and was never seen again.\nWell, at least not in this world." },
         },
-		miotan =
-		{
-			{ title = "Birthday", desc = "July 17" },
-	    	{ title = "Favorite Food", desc = "None" },
-	    },
-		dummy = {
-			{ title = "Birthday", desc = "July 17" },
-			{ title = "Favorite Food", desc = STRINGS.NAMES.NIGHTMAREPIE },
-		},
+        miotan =
+        {
+            { title = "Birthday", desc = "July 17" },
+            { title = "Favorite Food", desc = "None" },
+        },
+        dummy = {
+            { title = "Birthday", desc = "July 17" },
+            { title = "Favorite Food", desc = STRINGS.NAMES.NIGHTMAREPIE },
+        },
     },
     CHARACTER_SURVIVABILITY =
     {

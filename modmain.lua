@@ -1,6 +1,6 @@
 Assets = {}
 PrefabFiles = {
-	"civi",
+    "civi",
     "civi_amulets",
     "civi_gems",
     "civi_magatamas",
@@ -41,13 +41,13 @@ local main_files = {
     "sanity_rework",
     "widgets",
 
-	"eatfuel",
-	"sanity_reward",
-	"tradefuel",
+    "eatfuel",
+    "sanity_reward",
+    "tradefuel",
 
     "hack_templates",
-	"only_dazui",
-	"staff_action",
+    "only_dazui",
+    "staff_action",
     "tools_mutable",
 
     "spices",

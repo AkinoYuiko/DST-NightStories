@@ -53,9 +53,9 @@ end
 -- nightstick
 if not rawget(_G, "nightstick_clear_fn") then
     nightstick_clear_fn = function(inst)
-		GlassicAPI.SetFloatData(inst, { sym_build = "swap_nightstick"})
-		basic_clear_fn(inst, "nightstick")
-	end
+        GlassicAPI.SetFloatData(inst, { sym_build = "swap_nightstick"})
+        basic_clear_fn(inst, "nightstick")
+    end
 end
 ns_nightstick_init_fn = function(inst, skinname, override_build)
     GlassicAPI.SetFloatData(inst, { sym_build = override_build or skinname, sym_name = "swap_nightstick" })
@@ -260,9 +260,9 @@ GlassicAPI.SkinHandler.AddModSkins({
     armorskeleton = {
         { name = "armorskeleton_none", exclusive_char = "civi" },
     },
-	skeletonhat = {
-		{ name = "skeletonhat_glass", exclusive_char = "civi" },
-	},
+    skeletonhat = {
+        { name = "skeletonhat_glass", exclusive_char = "civi" },
+    },
     -- Mio
     miotan = {
         "miotan_none",
