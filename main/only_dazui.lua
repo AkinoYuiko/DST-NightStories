@@ -70,11 +70,12 @@ local statueruins = {
     "ruins_statue_mage",
     "ruins_statue_mage_nogem",
 }
+local function statueruins_post_init(inst)
+    if not TheWorld.ismastersim then return end
+    if inst.components.workable then
+        inst.components.workable:SetOnFinishCallback(OnWorkFinished)
+    end
+end
 for _, prefab in ipairs(statueruins) do
-    AddPrefabPostInit(prefab, function(inst)
-        if not TheWorld.ismastersim then return end
-        if inst.components.workable then
-            inst.components.workable:SetOnFinishCallback(OnWorkFinished)
-        end
-    end)
+    AddPrefabPostInit(prefab, statueruins_post_init)
 end
