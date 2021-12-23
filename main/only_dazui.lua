@@ -64,18 +64,18 @@ local function OnWorkFinished(inst)
     inst:Remove()
 end
 
-local statueruins = {
+local STATUERUINS = {
     "ruins_statue_head",
     "ruins_statue_head_nogem",
     "ruins_statue_mage",
     "ruins_statue_mage_nogem",
 }
-local function statueruins_post_init(inst)
+local function statueruins_postinit(inst)
     if not TheWorld.ismastersim then return end
     if inst.components.workable then
         inst.components.workable:SetOnFinishCallback(OnWorkFinished)
     end
 end
-for _, prefab in ipairs(statueruins) do
-    AddPrefabPostInit(prefab, statueruins_post_init)
+for _, prefab in ipairs(STATUERUINS) do
+    AddPrefabPostInit(prefab, statueruins_postinit)
 end

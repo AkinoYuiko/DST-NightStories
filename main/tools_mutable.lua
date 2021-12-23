@@ -2,9 +2,9 @@ local AddPrefabPostInit = AddPrefabPostInit
 GLOBAL.setfenv(1, GLOBAL)
 
 local MUTABLE_TARGETS = {
-    goldenaxe 		= "moonglassaxe",
-    goldenpickaxe 	= "moonglasspickaxe",
-    hammer 			= "moonglasshammer",
+    goldenaxe       = "moonglassaxe",
+    goldenpickaxe   = "moonglasspickaxe",
+    hammer          = "moonglasshammer",
 }
 
 local function onmutatefn(inst, target)
