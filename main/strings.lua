@@ -121,6 +121,8 @@ local strings = {
                 NIGHTMARE_SPEAR = "It looks like breaking.",
 
                 SPICE_CACTUS = "Make sanity great again.",
+                PORTABLE_WARDROBE_WRAP = "Dress up anywhere, and maybe anytime?",
+
             }
         },
         CIVI = require("speech_civi"),

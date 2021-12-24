@@ -14,6 +14,11 @@ msgstr ""
 "X-Generator: Poedit 3.0\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+#. STRINGS.NAMES.PORTABLE_WARDROBE_WRAP
+msgctxt "STRINGS.NAMES.PORTABLE_WARDROBE_WRAP"
+msgid "Magic Dress"
+msgstr "魔术礼装"
+
 #. STRINGS.NAMES.SPICE_CACTUS
 msgctxt "STRINGS.NAMES.SPICE_CACTUS"
 msgid "Cactus Powder"
@@ -121,9 +126,9 @@ msgid ""
 "*Friend of nightmare.\n"
 "*Forgive."
 msgstr ""
-"*对人类不友好.\n"
-"*梦魇的伙伴.\n"
-"*原谅."
+"*对人类不友好。\n"
+"*梦魇的伙伴。\n"
+"*原谅。"
 
 #. STRINGS.CHARACTER_DESCRIPTIONS.civi
 msgctxt "STRINGS.CHARACTER_DESCRIPTIONS.civi"
@@ -131,8 +136,8 @@ msgid ""
 "*Travel between light and dark.\n"
 "*Can control nightmare."
 msgstr ""
-"*在光暗之中穿梭.\n"
-"*可以控制梦魇."
+"*在光暗之中穿梭。\n"
+"*可以控制梦魇。"
 
 #. STRINGS.CHARACTER_DESCRIPTIONS.miotan
 msgctxt "STRINGS.CHARACTER_DESCRIPTIONS.miotan"
@@ -140,8 +145,13 @@ msgid ""
 "*World treats her differently.\n"
 "*Friend of nightmare."
 msgstr ""
-"*世界对她不友好.\n"
-"*梦魇的伙伴."
+"*世界对她不友好。\n"
+"*梦魇的伙伴。"
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.PORTABLE_WARDROBE_WRAP
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.PORTABLE_WARDROBE_WRAP"
+msgid "Dress up anywhere, and maybe anytime?"
+msgstr "有了它便可随地换装，以及随时?"
 
 #. STRINGS.CHARACTERS.GENERIC.DESCRIBE.SPICE_CACTUS
 msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.SPICE_CACTUS"
@@ -482,17 +492,22 @@ msgstr "\"无人肯同我玩…\""
 #. STRINGS.CHARACTER_QUOTES.civi
 msgctxt "STRINGS.CHARACTER_QUOTES.civi"
 msgid "\"Get close to Nightmare!\""
-msgstr "\"使你更接近光明！\""
+msgstr "\"使你更接近光明!\""
 
 #. STRINGS.CHARACTER_QUOTES.miotan
 msgctxt "STRINGS.CHARACTER_QUOTES.miotan"
 msgid "\"If I could eat nightmare!\""
-msgstr "\"假如我可以吞噬梦魇.\""
+msgstr "\"假如我可以吞噬梦魇。\""
 
 #. STRINGS.RECIPE_DESC.DARKAMULET
 msgctxt "STRINGS.RECIPE_DESC.DARKAMULET"
 msgid "Powerful but dark."
 msgstr "深邃而充满力量。"
+
+#. STRINGS.RECIPE_DESC.PORTABLE_WARDROBE_WRAP
+msgctxt "STRINGS.RECIPE_DESC.PORTABLE_WARDROBE_WRAP"
+msgid "Convenient for dressing up."
+msgstr "方便的换装道具。"
 
 #. STRINGS.RECIPE_DESC.SPICE_CACTUS
 msgctxt "STRINGS.RECIPE_DESC.SPICE_CACTUS"
