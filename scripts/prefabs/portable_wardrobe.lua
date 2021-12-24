@@ -26,7 +26,7 @@ local function Consume(inst)
     end
 end
 
-local function common_fn(anim)
+local function common_fn(anim, should_sink)
     local inst = CreateEntity()
 
     inst.entity:AddTransform()
@@ -38,6 +38,10 @@ local function common_fn(anim)
     inst.AnimState:SetBank(anim)
     inst.AnimState:SetBuild(anim)
     inst.AnimState:PlayAnimation("idle")
+
+    if not should_sink then
+        MakeInventoryFloatable(inst, "med", nil, 0.6)
+    end
 
     inst.entity:SetPristine()
 
@@ -54,6 +58,10 @@ local function common_fn(anim)
     end
 
     inst:AddComponent("inventoryitem")
+    if should_sink then
+        inst.components.inventoryitem:SetSinks(true)
+    end
+
     inst:AddComponent("inspectable")
 
     MakeSmallBurnable(inst)
@@ -65,7 +73,7 @@ local function common_fn(anim)
 end
 
 local function wrap_fn()
-    local inst = common_fn("portable_wardrobe_wrap")
+    local inst = common_fn("portable_wardrobe_wrap", true)
 
     if not TheWorld.ismastersim then
         return inst
