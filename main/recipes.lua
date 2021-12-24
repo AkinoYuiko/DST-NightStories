@@ -135,6 +135,6 @@ AddRecipe("portable_wardrobe_wrap",
 {Ingredient("giftwrap", 1), Ingredient("nightmarefuel",1)},
 RECIPETABS.MAGIC, TECH.MAGIC_THREE)
 
-AddRecipe("portable_wardrobe_item",
-{Ingredient("magic_wardrobe", 3), Ingredient("boards", 4)},
-RECIPETABS.MAGIC, TECH.MAGIC_THREE)
+-- AddRecipe("portable_wardrobe_item",
+-- {Ingredient("magic_wardrobe", 3), Ingredient("boards", 4)},
+-- RECIPETABS.MAGIC, TECH.MAGIC_THREE)

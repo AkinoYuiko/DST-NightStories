@@ -32,7 +32,8 @@ local strings = {
 
         SPICE_CACTUS = "Cactus Powder",
         SPICE_CACTUS_FOOD = "Cactus {food}",
-        -- PROPSIGN = "Prop Sign"
+
+        PORTABLE_WARDROBE_WRAP = "Magic Dress",
     },
     RECIPE_DESC =
     {
@@ -53,7 +54,7 @@ local strings = {
         NIGHTMARE_SPEAR = "Disappear in a moment.",
 
         SPICE_CACTUS = "Make sanity great again.",
-        -- PROPSIGN = STRINGS.CHARACTERS.GENERIC.DESCRIBE.HOMESIGN.GENERIC
+        PORTABLE_WARDROBE_WRAP = "Convenient for dressing up.",
 
     },
     SKIN_NAMES =
