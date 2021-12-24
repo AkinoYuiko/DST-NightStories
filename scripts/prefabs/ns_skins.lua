@@ -45,18 +45,18 @@ table.insert(prefabs, CreatePrefabSkin("lantern_mio", {
     -- release_group = 95,
 }))
 
-table.insert(prefabs, CreatePrefabSkin("nightstick_crystal", {
-    base_prefab = "nightstick",
-    type = "item",
-    rarity = "Glassic",
-    build_name_override = "nightstick",
-    assets = {
-        Asset( "DYNAMIC_ANIM", "anim/dynamic/nightstick_crystal.zip" ),
-        Asset( "PKGREF", "anim/dynamic/nightstick_crystal.dyn" ),
-    },
-    init_fn = function(inst) ns_nightstick_init_fn(inst, "nightstick_crystal") end,
-    skin_tags = { "NIGHTSTICK"},
-}))
+-- table.insert(prefabs, CreatePrefabSkin("nightstick_crystal", {
+--     base_prefab = "nightstick",
+--     type = "item",
+--     rarity = "Glassic",
+--     build_name_override = "nightstick",
+--     assets = {
+--         Asset( "DYNAMIC_ANIM", "anim/dynamic/nightstick_crystal.zip" ),
+--         Asset( "PKGREF", "anim/dynamic/nightstick_crystal.dyn" ),
+--     },
+--     init_fn = function(inst) ns_nightstick_init_fn(inst, "nightstick_crystal") end,
+--     skin_tags = { "NIGHTSTICK"},
+-- }))
 
 table.insert(prefabs, CreatePrefabSkin("yellowamulet_heart", {
     base_prefab = "yellowamulet",

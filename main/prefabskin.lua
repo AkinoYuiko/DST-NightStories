@@ -51,17 +51,17 @@ lantern_clear_fn = function(inst, ...)
 end
 
 -- nightstick
-if not rawget(_G, "nightstick_clear_fn") then
-    nightstick_clear_fn = function(inst)
-        GlassicAPI.SetFloatData(inst, { sym_build = "swap_nightstick"})
-        basic_clear_fn(inst, "nightstick")
-    end
-end
-ns_nightstick_init_fn = function(inst, skinname, override_build)
-    GlassicAPI.SetFloatData(inst, { sym_build = override_build or skinname, sym_name = "swap_nightstick" })
-    GlassicAPI.BasicInitFn(inst, skinname, override_build or skinname, override_build or skinname)
-    GlassicAPI.BasicOnequipFn(inst, "hand", override_build or skinname, "swap_nightstick")
-end
+-- if not rawget(_G, "nightstick_clear_fn") then
+--     nightstick_clear_fn = function(inst)
+--         GlassicAPI.SetFloatData(inst, { sym_build = "swap_nightstick"})
+--         basic_clear_fn(inst, "nightstick")
+--     end
+-- end
+-- ns_nightstick_init_fn = function(inst, skinname, override_build)
+--     GlassicAPI.SetFloatData(inst, { sym_build = override_build or skinname, sym_name = "swap_nightstick" })
+--     GlassicAPI.BasicInitFn(inst, skinname, override_build or skinname, override_build or skinname)
+--     GlassicAPI.BasicOnequipFn(inst, "hand", override_build or skinname, "swap_nightstick")
+-- end
 
 -- yellowamulet
 if not rawget(_G, "yellowamulet_clear_fn") then
@@ -283,9 +283,9 @@ GlassicAPI.SkinHandler.AddModSkins({
     lantern = {
         { name = "lantern_mio", exclusive_char = "miotan" }
     },
-    nightstick = {
-        { name = "nightstick_crystal", exclusive_char = "miotan" }
-    },
+    -- nightstick = {
+    --     { name = "nightstick_crystal", exclusive_char = "miotan" }
+    -- },
     yellowamulet = {
         { name = "yellowamulet_heart", exclusive_char = "miotan" }
     },

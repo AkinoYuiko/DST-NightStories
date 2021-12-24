@@ -65,7 +65,7 @@ local strings = {
 
         miotan_classic = "Classic",
         miotan_none = "Mio",
-        nightstick_crystal = "Mahou Shoujo Star",
+        -- nightstick_crystal = "Mahou Shoujo Star",
         lantern_mio = "Camping Lamp",
         yellowamulet_heart = "Glowing Heart",
 
