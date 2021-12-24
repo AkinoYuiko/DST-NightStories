@@ -166,7 +166,7 @@ msgstr "我能感受到黑暗来临。"
 #. STRINGS.CHARACTERS.GENERIC.DESCRIBE.BOOK_HARVEST
 msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.BOOK_HARVEST"
 msgid "H-A-R-V-E-S-T!"
-msgstr "收——获——！"
+msgstr "收——获——!"
 
 #. STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTAMULET
 msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTAMULET"
@@ -181,7 +181,7 @@ msgstr "它好像快坏了."
 #. STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTGEM
 msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTGEM"
 msgid "Get closer to light!"
-msgstr "使你更接近光明！"
+msgstr "使你更接近光明!"
 
 #. STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTMAGATAMA
 msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTMAGATAMA"
@@ -206,7 +206,7 @@ msgstr "它似乎需要某种东西来发光."
 #. STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKGEM
 msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKGEM"
 msgid "Get closer to dark!"
-msgstr "使你更接近黑暗！"
+msgstr "使你更接近黑暗!"
 
 #. STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKMAGATAMA
 msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKMAGATAMA"
@@ -226,7 +226,7 @@ msgstr ":zap:"
 #. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_HOUNDS
 msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_HOUNDS"
 msgid "Watch out, hounds're coming!"
-msgstr "来狗啦！"
+msgstr "来狗啦!"
 
 #. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_DESPAWN
 msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_DESPAWN"
@@ -517,7 +517,7 @@ msgstr "让精神再次伟大!"
 #. STRINGS.RECIPE_DESC.BOOK_HARVEST
 msgctxt "STRINGS.RECIPE_DESC.BOOK_HARVEST"
 msgid "Should help you harvest!"
-msgstr "快速收获！"
+msgstr "快速收获!"
 
 #. STRINGS.RECIPE_DESC.LIGHTAMULET
 msgctxt "STRINGS.RECIPE_DESC.LIGHTAMULET"
@@ -532,7 +532,7 @@ msgstr "转瞬即逝."
 #. STRINGS.RECIPE_DESC.BLACKHOLESTAFF
 msgctxt "STRINGS.RECIPE_DESC.BLACKHOLESTAFF"
 msgid "Absorb everything!"
-msgstr "吸收一切！"
+msgstr "吸收一切!"
 
 #. STRINGS.RECIPE_DESC.BOOK_TOGGLEDOWNFALL
 msgctxt "STRINGS.RECIPE_DESC.BOOK_TOGGLEDOWNFALL"
@@ -542,12 +542,12 @@ msgstr ""
 #. STRINGS.RECIPE_DESC.LIGHTGEM
 msgctxt "STRINGS.RECIPE_DESC.LIGHTGEM"
 msgid "Degrades!"
-msgstr "降级！降级！"
+msgstr "降级!降级!"
 
 #. STRINGS.RECIPE_DESC.DARKGEM
 msgctxt "STRINGS.RECIPE_DESC.DARKGEM"
 msgid "Upgrades!"
-msgstr "升级！升级！"
+msgstr "升级!升级!"
 
 #. STRINGS.RECIPE_DESC.LIGHTMAGATAMA
 msgctxt "STRINGS.RECIPE_DESC.LIGHTMAGATAMA"
@@ -756,7 +756,7 @@ msgstr "澪"
 
 #~ msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.NIGHTPACK"
 #~ msgid "It seems able to socket gems!"
-#~ msgstr "可以镶嵌宝石！"
+#~ msgstr "可以镶嵌宝石!"
 
 #~ msgctxt "STRINGS.CHARACTER_BIOS.civi.2.desc"
 #~ msgid "Lv.0 - Bone Bouillo"
