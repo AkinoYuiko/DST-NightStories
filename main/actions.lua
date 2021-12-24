@@ -131,6 +131,15 @@ NS_ACTIONS.NIGHTSWORDMAGATAMA.fn = function(act)
     end
 end
 
+-- For portable_wardrobe
+local changein_fn = ACTIONS.CHANGEIN.fn
+ACTIONS.CHANGEIN.fn = function(act, ...)
+    if not act.target then
+        act.target = act.invobject
+    end
+    return changein_fn(act, ...)
+end
+
 for k, v in orderedPairs(NS_ACTIONS) do
     v.id = k
     AddAction(v)
@@ -200,9 +209,9 @@ AddComponentAction("INVENTORY", "nightswitch", function(inst, doer, actions, rig
     end
 end)
 
+-- Hauntable for Dummy
 local COMPONENT_ACTIONS = UpvalueHacker.GetUpvalue(EntityScript.CollectActions, "COMPONENT_ACTIONS")
 local SCENE = COMPONENT_ACTIONS.SCENE
-
 local scene_hauntable = SCENE.hauntable
 function SCENE.hauntable(inst, doer, actions, ...)
     if doer.prefab == "dummy" and inst:HasTag("nightmare_twins") then
@@ -214,6 +223,13 @@ function SCENE.hauntable(inst, doer, actions, ...)
         return scene_hauntable(inst, doer, actions, ...)
     end
 end
+
+-- For portable_wardrobe
+AddComponentAction("INVENTORY", "wardrobe", function(inst, doer, actions, right)
+    if inst:HasTag("wardrobe") and not inst:HasTag("fire") and (right or not inst:HasTag("dressable")) then
+        table.insert(actions, ACTIONS.CHANGEIN)
+    end
+end)
 
 for _, sg in ipairs({"wilson", "wilson_client"}) do
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.MIOFUEL, "doshortaction"))

@@ -16,6 +16,8 @@ PrefabFiles = {
 
     "ns_spices",
     "ns_skins",
+
+    "portable_wardrobe",
 }
 
 GlassicAPI.InitCharacterAssets("miotan", "FEMALE", Assets)

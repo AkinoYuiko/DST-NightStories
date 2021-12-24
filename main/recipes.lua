@@ -129,3 +129,12 @@ end)
 AddRecipe("spice_cactus",
 {Ingredient("cactus_meat", 2), Ingredient("cactus_flower", 1)},
 RECIPETABS.FOODPROCESSING, TECH.FOODPROCESSING_ONE, nil, nil, true, 2, "professionalchef")
+
+-- 便携衣柜 & 魔法礼装 --
+AddRecipe("portable_wardrobe_wrap",
+{Ingredient("giftwrap", 1), Ingredient("nightmarefuel",1)},
+RECIPETABS.MAGIC, TECH.MAGIC_THREE)
+
+AddRecipe("portable_wardrobe_item",
+{Ingredient("magic_wardrobe", 3), Ingredient("boards", 4)},
+RECIPETABS.MAGIC, TECH.MAGIC_THREE)
