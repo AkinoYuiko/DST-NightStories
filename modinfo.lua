@@ -1,12 +1,13 @@
-version = "1.21.5"
+version = "1.21.6"
 -- basic info --
 name = locale == "zh" and "暗夜故事集" or "Night Stories"
 author = "丁香女子学校"
 description = locale == "zh" and "[版本: " .. version .. [[]
 
 更新内容:
-- 修复了生成pot时包含多余文本的问题.
+- 修复烧毁的便携式衣柜可回收的问题.
 
+- 修复了生成pot时包含多余文本的问题.
 - 更新了部分翻译文本.
 - 更新了便携式衣柜的放置间隔.
 - 更新了部分文本.
@@ -15,8 +16,9 @@ description = locale == "zh" and "[版本: " .. version .. [[]
 ]] or "[Version: " .. version .. [[]
 
 Changelog:
-- Fix issue when generating .POT files.
+- Fix issue that burnt portable wardrobe is disassemble.
 
+- Fix issue when generating .POT files.
 - Update translate strings.
 - Update deploy spacing for portable wardrobe.
 - Update strings.
