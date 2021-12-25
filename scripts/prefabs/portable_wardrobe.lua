@@ -239,6 +239,7 @@ local function wardrobe_item_fn()
 
     inst:AddComponent("deployable")
     inst.components.deployable.ondeploy = OnDeploy
+    inst.components.deployable:SetDeploySpacing(DEPLOYSPACING.PLACER_DEFAULT)
 
     return inst
 end
