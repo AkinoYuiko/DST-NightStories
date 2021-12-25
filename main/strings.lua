@@ -13,8 +13,8 @@ local strings = {
         NIGHTPACK_ORANGE = "Orange Night Pack",
         NIGHTPACK_GREEN = "Green Night Pack",
         NIGHTPACK_OPAL = "Opal Night Pack",
-        NIGHTPACK_DARK = "Dark Night Pack",
-        NIGHTPACK_LIGHT = "Light Night Pack",
+        -- NIGHTPACK_DARK = "Dark Night Pack",
+        -- NIGHTPACK_LIGHT = "Light Night Pack",
         NIGHTPACK_FUEL = "Night Pack",
         DARKGEM = "Dark Gem",
         LIGHTGEM = "Light Gem",
@@ -196,49 +196,23 @@ local strings = {
     },
 }
 
--- GlassicAPI.MergeStringsToGLOBAL(require("speech_wortox"), strings.CHARACTERS.MIOTAN, true)
-GlassicAPI.MergeStringsToGLOBAL(require("speech_wortox"), strings.CHARACTERS.MIOTAN, true)
 GlassicAPI.MergeStringsToGLOBAL(strings)
+GlassicAPI.MergeStringsToGLOBAL(require("speech_wortox"), STRINGS.CHARACTERS.MIOTAN, true)
 GlassicAPI.MergeTranslationFromPO(MODROOT.."languages")
-
--- GLOBAL.UpdateCiviStrings = function()
---     local file, errormsg = GLOBAL.io.open(MODROOT .. "scripts/speech_civi.lua", "w")
---     if not file then print("Can't update " .. MODROOT .. "scripts/speech_civi.lua", "\n", tostring(errormsg)) return end
---     GlassicAPI.MergeSpeechFile(require("speech_civi"), file)
---     local file, errormsg = GLOBAL.io.open(MODROOT .. "languages/strings.pot", "w")
---     if not file then print("Can't generate " .. MODROOT .. "languages/strings.pot", "\n", tostring(errormsg)) return end
---     GlassicAPI.MakePOTFromStrings(file, strings)
--- end
--- GLOBAL.UpdateCiviStrings()
-
--- GLOBAL.UpdateMioStrings = function()
---     local file, errormsg = GLOBAL.io.open(MODROOT .. "scripts/speech_miotan.lua", "w")
---     if not file then print("Can't update " .. MODROOT .. "scripts/speech_miotan.lua", "\n", tostring(errormsg)) return end
---     GlassicAPI.MergeSpeechFile(require("speech_miotan"), file, "speech_wortox")
---     local file, errormsg = GLOBAL.io.open(MODROOT .. "languages/strings.pot", "w")
---     if not file then print("Can't generate " .. MODROOT .. "languages/strings.pot", "\n", tostring(errormsg)) return end
---     GlassicAPI.MakePOTFromStrings(file, strings)
--- end
-
--- GLOBAL.UpdateDummyStrings = function()
---     -- local file, errormsg = GLOBAL.io.open(MODROOT .. "scripts/speech_dummy.lua", "w")
---     -- if not file then print("Can't update " .. MODROOT .. "scripts/speech_dummy.lua", "\n", tostring(errormsg)) return  end
---     -- GlassicAPI.MergeSpeechFile(require("speech_dummy"), file, "speech_wickerbottom")
---     local file, errormsg = GLOBAL.io.open(MODROOT .. "languages/strings.pot", "w")
---     if not file then print("Can't generate " .. MODROOT .. "languages/strings.pot", "\n", tostring(errormsg)) return end
---     GlassicAPI.MakePOTFromStrings(file, strings)
--- end
 
 local function MergeCharacterSpeech(char)
     local file, errormsg = io.open(MODROOT .. "scripts/speech_"..char..".lua", "w")
     if not file then print("Can't update " .. MODROOT .. "scripts/speech_" .. char .. ".lua" .. "\n" .. tostring(errormsg)) return end
-    GlassicAPI.MergeSpeechFile(require("speech_"..char), file)
+    -- GlassicAPI.MergeSpeechFile(require("speech_"..char), file)
+    GlassicAPI.MergeSpeechFile(STRINGS.CHARACTERS[string.upper(char)], file)
 end
 
-GLOBAL.UpdateNsStrings = function()
-    MergeCharacterSpeech("miotan")
-    -- MergeCharacterSpeech("dummy")
-    MergeCharacterSpeech("civi")
+GLOBAL.UpdateNsStrings = function(update_speech)
+    if update_speech then
+        MergeCharacterSpeech("miotan")
+        -- MergeCharacterSpeech("dummy")
+        MergeCharacterSpeech("civi")
+    end
     local file, errormsg = io.open(MODROOT .. "languages/strings.pot", "w")
     if not file then print("Can't generate " .. MODROOT .. "languages/strings.pot" .. "\n" .. tostring(errormsg)) return end
     GlassicAPI.MakePOTFromStrings(file, strings)
