@@ -3,31 +3,23 @@ local wrap_assets =
     Asset("ANIM", "anim/portable_wardrobe_wrap.zip"),
 }
 
+local wrap_prefabs = {}
+
 local wardrobe_assets =
 {
     Asset("ANIM", "anim/portable_wardrobe.zip"),
 }
 
-local wardrobe_item_assets =
-{
-    -- Asset("ANIM", "anim/nope_again.zip"),
-}
-
-local wrap_prefabs =
-{
-
-}
-
 local wardrobe_prefabs =
 {
     "portable_wardrobe_item",
-
+    "statue_transition",
+    "statue_transition_2",
 }
 
-local wardrobe_item_prefabs =
+local wardrobe_prefabs_item =
 {
     "portable_wardrobe",
-    -- "wardrobe",
 }
 
 local function SpawnFX(inst)
@@ -47,11 +39,9 @@ local function SpawnFX(inst)
 end
 
 local function OnAnimOver(inst)
-    -- if inst.AnimState:AnimDone() and inst.AnimState:IsCurrentAnimation("hit") then
-    if inst.AnimState:AnimDone() then
+    if inst.AnimState:AnimDone() and inst.AnimState:IsCurrentAnimation("closed") then
         local current_uses = inst.components.finiteuses:GetUses()
 
-        -- inst:Remove()
         SpawnFX(inst)
 
         local item = ReplacePrefab(inst, "portable_wardrobe_item")
@@ -61,15 +51,12 @@ local function OnAnimOver(inst)
 end
 
 local function ChangeToItem(inst)
-    -- inst:RemoveComponent("sleepingbag")
     inst:RemoveComponent("portablestructure")
     inst:RemoveComponent("workable")
 
     inst:AddTag("NOCLICK")
 
     inst.AnimState:PlayAnimation("closed", false)
-    -- inst.SoundEmitter:PlaySound("dontstarve/common/wardrobe_close")
-            -- inst.SoundEmitter:PlaySound("dontstarve/characters/walter/tent/close")
     inst:ListenForEvent("animover", OnAnimOver)
 end
 
@@ -125,51 +112,13 @@ end
 
 local function OnFinished(inst)
     if not inst:HasTag("burnt") then
-        -- StopSleepSound(inst)
         inst.AnimState:PlayAnimation("closed", false)
         inst:ListenForEvent("animover", function(inst)
             SpawnFX(inst)
             inst:Remove()
         end)
-        -- inst.SoundEmitter:PlaySound("dontstarve/common/tent_dis_pre")
-        inst.SoundEmitter:PlaySound("dontstarve/common/wardrobe_close")
+        -- inst.SoundEmitter:PlaySound("dontstarve/common/wardrobe_close")
         inst.persists = false
-    end
-end
-
-local PHYSICSGROW_BLOCKER_MUST_TAGS = { "character", "locomotor" }
-local PHYSICSGROW_BLOCKER_CANT_TAGS = { "INLIMBO" }
-local function OnUpdatePhysicsRadius(inst, data)
-    local x, y, z = inst.Transform:GetWorldPosition()
-    local mindist = math.huge
-    for i, v in ipairs(TheSim:FindEntities(x, y, z, 2, PHYSICSGROW_BLOCKER_MUST_TAGS, PHYSICSGROW_BLOCKER_CANT_TAGS)) do
-        if v.entity:IsVisible() then
-            local d = v:GetDistanceSqToPoint(x, y, z)
-            d = d > 0 and (v.Physics ~= nil and math.sqrt(d) - v.Physics:GetRadius() or math.sqrt(d)) or 0
-            if d < mindist then
-                if d <= 0 then
-                    mindist = 0
-                    break
-                end
-                mindist = d
-            end
-        end
-    end
-    local radius = math.clamp(mindist, 0, inst.physicsradiusoverride)
-    if radius > 0 then
-        if radius ~= data.radius then
-            data.radius = radius
-            inst.Physics:SetCapsule(radius, 2)
-            inst.Physics:Teleport(x, y, z)
-        end
-        if data.ischaracterpassthrough then
-            data.ischaracterpassthrough = false
-            inst.Physics:CollidesWith(COLLISION.CHARACTERS)
-        end
-        if radius >= inst.physicsradiusoverride then
-            inst._physicstask:Cancel()
-            inst._physicstask = nil
-        end
     end
 end
 
@@ -186,7 +135,6 @@ local function OnLoad(inst, data)
 end
 
 local function OnDeploy(inst, pt, deployer)
-    -- local wardrobe = SpawnPrefab("wardrobe")
     local wardrobe = SpawnPrefab("portable_wardrobe")
     if wardrobe ~= nil then
         wardrobe.Physics:SetCollides(false)
@@ -290,8 +238,8 @@ local function wardrobe_item_fn()
     inst.components.finiteuses:SetUses(TUNING.PORTABLE_WARDROBE_USES)
 
     inst:AddComponent("deployable")
-    --inst.components.deployable.restrictedtag = "pinetreepioneer"
     inst.components.deployable.ondeploy = OnDeploy
+
     return inst
 end
 
@@ -352,8 +300,6 @@ local function wardrobe_fn()
     MakeLargeBurnable(inst, nil, nil, true)
     MakeMediumPropagator(inst)
 
-    -- inst:ListenForEvent("onbuilt", onbuilt)
-
     inst.OnSave = OnSave
     inst.OnLoad = OnLoad
 
@@ -363,10 +309,8 @@ local function wardrobe_fn()
     return inst
 end
 
-
 return Prefab("portable_wardrobe_wrap", wrap_fn, wrap_assets, wrap_prefabs),
         --
         Prefab("portable_wardrobe", wardrobe_fn, wardrobe_assets, wardrobe_prefabs),
         MakePlacer("portable_wardrobe_item_placer", "portable_wardrobe", "portable_wardrobe", "closed"),
-        Prefab("portable_wardrobe_item", wardrobe_item_fn, wardrobe_item_assets, wardrobe_item_prefabs)
-        -- Prefab("portable_wardrobe_item", portable_fn, assets.portable, prefabs.portable)
+        Prefab("portable_wardrobe_item", wardrobe_item_fn, wardrobe_assets, wardrobe_prefabs_item)

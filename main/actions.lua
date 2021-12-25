@@ -134,7 +134,7 @@ end
 -- For portable_wardrobe
 local changein_fn = ACTIONS.CHANGEIN.fn
 ACTIONS.CHANGEIN.fn = function(act, ...)
-    if not act.target then
+    if not act.target and act.invobject then
         act.target = act.invobject
     end
     return changein_fn(act, ...)
