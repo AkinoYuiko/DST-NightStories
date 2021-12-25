@@ -34,6 +34,7 @@ local strings = {
         SPICE_CACTUS_FOOD = "Cactus {food}",
 
         PORTABLE_WARDROBE_WRAP = "Magic Dress",
+        PORTABLE_WARDROBE_ITEM = "Portable Wardrobe",
     },
     RECIPE_DESC =
     {
@@ -55,6 +56,7 @@ local strings = {
 
         SPICE_CACTUS = "Make sanity great again.",
         PORTABLE_WARDROBE_WRAP = "Convenient for dressing up.",
+        PORTABLE_WARDROBE_ITEM = "Convenient for dressing up a lot.",
 
     },
     SKIN_NAMES =
@@ -122,6 +124,7 @@ local strings = {
 
                 SPICE_CACTUS = "Make sanity great again.",
                 PORTABLE_WARDROBE_WRAP = "Dress up anywhere, and maybe anytime?",
+                PORTABLE_WARDROBE_ITEM = "Dress up anywhere, and maybe anytime?",
 
             }
         },

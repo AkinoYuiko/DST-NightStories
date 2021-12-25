@@ -19,6 +19,11 @@ msgctxt "STRINGS.NAMES.PORTABLE_WARDROBE_WRAP"
 msgid "Magic Dress"
 msgstr "魔术礼装"
 
+#. STRINGS.NAMES.PORTABLE_WARDROBE_ITEM
+msgctxt "STRINGS.NAMES.PORTABLE_WARDROBE_ITEM"
+msgid "Portable Wardrobe"
+msgstr "便携式衣柜"
+
 #. STRINGS.NAMES.SPICE_CACTUS
 msgctxt "STRINGS.NAMES.SPICE_CACTUS"
 msgid "Cactus Powder"
@@ -150,6 +155,11 @@ msgstr ""
 
 #. STRINGS.CHARACTERS.GENERIC.DESCRIBE.PORTABLE_WARDROBE_WRAP
 msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.PORTABLE_WARDROBE_WRAP"
+msgid "Dress up anywhere, and maybe anytime?"
+msgstr "有了它便可随地换装，以及随时?"
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.PORTABLE_WARDROBE_ITEM
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.PORTABLE_WARDROBE_ITEM"
 msgid "Dress up anywhere, and maybe anytime?"
 msgstr "有了它便可随地换装，以及随时?"
 
@@ -492,7 +502,7 @@ msgstr "\"无人肯同我玩…\""
 #. STRINGS.CHARACTER_QUOTES.civi
 msgctxt "STRINGS.CHARACTER_QUOTES.civi"
 msgid "\"Get close to Nightmare!\""
-msgstr "\"使你更接近光明!\""
+msgstr "\"使你更接近光明!\""
 
 #. STRINGS.CHARACTER_QUOTES.miotan
 msgctxt "STRINGS.CHARACTER_QUOTES.miotan"
@@ -508,6 +518,11 @@ msgstr "深邃而充满力量。"
 msgctxt "STRINGS.RECIPE_DESC.PORTABLE_WARDROBE_WRAP"
 msgid "Convenient for dressing up."
 msgstr "方便的换装道具。"
+
+#. STRINGS.RECIPE_DESC.PORTABLE_WARDROBE_ITEM
+msgctxt "STRINGS.RECIPE_DESC.PORTABLE_WARDROBE_ITEM"
+msgid "Convenient for dressing up a lot."
+msgstr "方便多次换装的道具。"
 
 #. STRINGS.RECIPE_DESC.SPICE_CACTUS
 msgctxt "STRINGS.RECIPE_DESC.SPICE_CACTUS"
