@@ -109,6 +109,14 @@ local strings = {
             DESCRIBE =
             {
                 NIGHTPACK = "It seems to need some glowing materials.",
+                NIGHTPACK_RED = "It shines red.",
+                NIGHTPACK_BLUE = "It shines blue.",
+                NIGHTPACK_PURPLE = "It shines purple.",
+                NIGHTPACK_YELLOW = "It shines yellow.",
+                NIGHTPACK_GREEN = "It shines green.",
+                NIGHTPACK_ORANGE = "It shines orange.",
+                NIGHTPACK_OPAL = "It shines!",
+                NIGHTPACK_FUEL = "It doesn't shine.",
                 DARKAMULET = "I can feel the darkness coming.",
                 LIGHTAMULET = "I can feel the darkness away.",
                 DARKGEM = "Get closer to dark!",

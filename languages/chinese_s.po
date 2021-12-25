@@ -14,6 +14,51 @@ msgstr ""
 "X-Generator: Poedit 3.0\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+#. STRINGS.NAMES.NIGHTPACK
+msgctxt "STRINGS.NAMES.NIGHTPACK"
+msgid "Night Pack"
+msgstr "影背包"
+
+#. STRINGS.NAMES.NIGHTPACK_RED
+msgctxt "STRINGS.NAMES.NIGHTPACK_RED"
+msgid "Red Night Pack"
+msgstr "红影背包"
+
+#. STRINGS.NAMES.NIGHTPACK_BLUE
+msgctxt "STRINGS.NAMES.NIGHTPACK_BLUE"
+msgid "Blue Night Pack"
+msgstr "蓝影背包"
+
+#. STRINGS.NAMES.NIGHTPACK_PURPLE
+msgctxt "STRINGS.NAMES.NIGHTPACK_PURPLE"
+msgid "Purple Night Pack"
+msgstr "紫影背包"
+
+#. STRINGS.NAMES.NIGHTPACK_YELLOW
+msgctxt "STRINGS.NAMES.NIGHTPACK_YELLOW"
+msgid "Yellow Night Pack"
+msgstr "黄影背包"
+
+#. STRINGS.NAMES.NIGHTPACK_ORANGE
+msgctxt "STRINGS.NAMES.NIGHTPACK_ORANGE"
+msgid "Orange Night Pack"
+msgstr "橙影背包"
+
+#. STRINGS.NAMES.NIGHTPACK_GREEN
+msgctxt "STRINGS.NAMES.NIGHTPACK_GREEN"
+msgid "Green Night Pack"
+msgstr "绿影背包"
+
+#. STRINGS.NAMES.NIGHTPACK_OPAL
+msgctxt "STRINGS.NAMES.NIGHTPACK_OPAL"
+msgid "Opal Night Pack"
+msgstr "闪亮影背包"
+
+#. STRINGS.NAMES.NIGHTPACK_FUEL
+msgctxt "STRINGS.NAMES.NIGHTPACK_FUEL"
+msgid "Night Pack"
+msgstr "影背包"
+
 #. STRINGS.NAMES.PORTABLE_WARDROBE_WRAP
 msgctxt "STRINGS.NAMES.PORTABLE_WARDROBE_WRAP"
 msgid "Magic Dress"
