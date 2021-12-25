@@ -1,20 +1,21 @@
-version = "1.21.1"
-version_compatible = "1.21"
+version = "1.21.2"
 -- basic info --
 name = locale == "zh" and "暗夜故事集" or "Night Stories"
 author = "丁香女子学校"
 description = locale == "zh" and "[版本: " .. version .. [[]
 
 更新内容:
-- 更新了部分文本.
+- 更新了便携式衣柜的放置间隔.
 
+- 更新了部分文本.
 - 新增道具【魔术礼装】(暗影操纵仪解锁).
 - 新增道具【便携式衣柜】(暗影操纵仪解锁).
 ]] or "[Version: " .. version .. [[]
 
 Changelog:
-- Update strings.
+- Update deploy spacing for portable wardrobe.
 
+- Update strings.
 - New item "Magic Dress".
 - New item "Portable Wardrobe".
 ]]
