@@ -244,6 +244,16 @@ local function wardrobe_item_fn()
     return inst
 end
 
+local function OnBurnt(inst)
+    DefaultBurntStructureFn(inst)
+    RemovePhysicsColliders(inst)
+
+    if inst.components.portablestructure ~= nil then
+        inst:RemoveComponent("portablestructure")
+    end
+
+end
+
 local function wardrobe_fn()
     local inst = CreateEntity()
 
@@ -299,6 +309,8 @@ local function wardrobe_fn()
     inst.components.workable:SetOnWorkCallback(OnHit)
 
     MakeLargeBurnable(inst, nil, nil, true)
+    inst.components.burnable:SetOnBurntFn(OnBurnt)
+
     MakeMediumPropagator(inst)
 
     inst.OnSave = OnSave
