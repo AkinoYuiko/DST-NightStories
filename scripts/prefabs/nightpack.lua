@@ -470,9 +470,9 @@ local function DisplayNameFn(inst)
     return state and STRINGS.NAMES["NIGHTPACK_"..state:upper()] or STRINGS.NAMES.NIGHTPACK
 end
 
-local function DescriptionFn(inst, viewer)
+local function getstatus(inst, viwer)
     local state = inst:GetState()
-    return GetString(viewer.prefab, "DESCRIBE", state and "NIGHTPACK_" .. state:upper() or "NIGHTPACK")
+    return state and state:upper()
 end
 
 local function fn()
@@ -515,7 +515,7 @@ local function fn()
     end
 
     inst:AddComponent("inspectable")
-    inst.components.inspectable.descriptionfn = DescriptionFn
+    inst.components.inspectable.getstatus = getstatus
 
     inst:AddComponent("inventoryitem")
     inst.components.inventoryitem.cangoincontainer = false
