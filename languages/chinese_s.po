@@ -9,150 +9,159 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "Application: Dont' Starve\n"
 "POT Version: 2.0\n"
-"X-Generator: Poedit 3.0\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-
-#. STRINGS.NAMES.NIGHTPACK
-msgctxt "STRINGS.NAMES.NIGHTPACK"
-msgid "Night Pack"
-msgstr "影背包"
-
-#. STRINGS.NAMES.NIGHTPACK_RED
-msgctxt "STRINGS.NAMES.NIGHTPACK_RED"
-msgid "Red Night Pack"
-msgstr "红影背包"
-
-#. STRINGS.NAMES.NIGHTPACK_BLUE
-msgctxt "STRINGS.NAMES.NIGHTPACK_BLUE"
-msgid "Blue Night Pack"
-msgstr "蓝影背包"
-
-#. STRINGS.NAMES.NIGHTPACK_PURPLE
-msgctxt "STRINGS.NAMES.NIGHTPACK_PURPLE"
-msgid "Purple Night Pack"
-msgstr "紫影背包"
-
-#. STRINGS.NAMES.NIGHTPACK_YELLOW
-msgctxt "STRINGS.NAMES.NIGHTPACK_YELLOW"
-msgid "Yellow Night Pack"
-msgstr "黄影背包"
-
-#. STRINGS.NAMES.NIGHTPACK_ORANGE
-msgctxt "STRINGS.NAMES.NIGHTPACK_ORANGE"
-msgid "Orange Night Pack"
-msgstr "橙影背包"
-
-#. STRINGS.NAMES.NIGHTPACK_GREEN
-msgctxt "STRINGS.NAMES.NIGHTPACK_GREEN"
-msgid "Green Night Pack"
-msgstr "绿影背包"
-
-#. STRINGS.NAMES.NIGHTPACK_OPAL
-msgctxt "STRINGS.NAMES.NIGHTPACK_OPAL"
-msgid "Opal Night Pack"
-msgstr "闪亮影背包"
-
-#. STRINGS.NAMES.NIGHTPACK_FUEL
-msgctxt "STRINGS.NAMES.NIGHTPACK_FUEL"
-msgid "Night Pack"
-msgstr "影背包"
-
-#. STRINGS.NAMES.PORTABLE_WARDROBE_WRAP
-msgctxt "STRINGS.NAMES.PORTABLE_WARDROBE_WRAP"
-msgid "Magic Dress"
-msgstr "魔术礼装"
-
-#. STRINGS.NAMES.PORTABLE_WARDROBE_ITEM
-msgctxt "STRINGS.NAMES.PORTABLE_WARDROBE_ITEM"
-msgid "Portable Wardrobe"
-msgstr "便携式衣柜"
-
-#. STRINGS.NAMES.SPICE_CACTUS
-msgctxt "STRINGS.NAMES.SPICE_CACTUS"
-msgid "Cactus Powder"
-msgstr "仙人掌粉"
-
-#. STRINGS.NAMES.SPICE_CACTUS_FOOD
-msgctxt "STRINGS.NAMES.SPICE_CACTUS_FOOD"
-msgid "Cactus {food}"
-msgstr "仙人掌味{food}"
+"X-Generator: Poedit 3.0.1\n"
 
 #. STRINGS.NAMES.DARKAMULET
 msgctxt "STRINGS.NAMES.DARKAMULET"
 msgid "Dark Amulet"
 msgstr "黑暗护符"
 
-#. STRINGS.NAMES.BOOK_HARVEST
-msgctxt "STRINGS.NAMES.BOOK_HARVEST"
-msgid "Season of Harvest"
-msgstr "收获的季节"
+#. STRINGS.NAMES.NIGHTPACK_GREEN
+msgctxt "STRINGS.NAMES.NIGHTPACK_GREEN"
+msgid "Green Night Pack"
+msgstr "绿影背包"
+
+#. STRINGS.NAMES.NIGHTPACK_YELLOW
+msgctxt "STRINGS.NAMES.NIGHTPACK_YELLOW"
+msgid "Yellow Night Pack"
+msgstr "黄影背包"
 
 #. STRINGS.NAMES.LIGHTAMULET
 msgctxt "STRINGS.NAMES.LIGHTAMULET"
 msgid "Light Amulet"
 msgstr "光明护符"
 
-#. STRINGS.NAMES.MIOTAN
-msgctxt "STRINGS.NAMES.MIOTAN"
-msgid "Mio"
-msgstr "澪"
+#. STRINGS.NAMES.NIGHTPACK_PURPLE
+msgctxt "STRINGS.NAMES.NIGHTPACK_PURPLE"
+msgid "Purple Night Pack"
+msgstr "紫影背包"
+
+#. STRINGS.NAMES.BOOK_HARVEST
+msgctxt "STRINGS.NAMES.BOOK_HARVEST"
+msgid "Season of Harvest"
+msgstr "收获的季节"
+
+#. STRINGS.NAMES.SPICE_CACTUS_FOOD
+msgctxt "STRINGS.NAMES.SPICE_CACTUS_FOOD"
+msgid "Cactus {food}"
+msgstr "仙人掌味{food}"
+
+#. STRINGS.NAMES.DARKMAGATAMA
+msgctxt "STRINGS.NAMES.DARKMAGATAMA"
+msgid "Dark Magatama"
+msgstr "黑勾玉"
+
+#. STRINGS.NAMES.PORTABLE_WARDROBE_WRAP
+msgctxt "STRINGS.NAMES.PORTABLE_WARDROBE_WRAP"
+msgid "Magic Dress"
+msgstr "魔术礼装"
+
+#. STRINGS.NAMES.SPICE_CACTUS
+msgctxt "STRINGS.NAMES.SPICE_CACTUS"
+msgid "Cactus Powder"
+msgstr "仙人掌粉"
 
 #. STRINGS.NAMES.NIGHTMARE_SPEAR
 msgctxt "STRINGS.NAMES.NIGHTMARE_SPEAR"
 msgid "Nightmare Spear"
 msgstr "暗影破碎枪"
 
+#. STRINGS.NAMES.NIGHTPACK
+msgctxt "STRINGS.NAMES.NIGHTPACK"
+msgid "Night Pack"
+msgstr "影背包"
+
 #. STRINGS.NAMES.BOOK_TOGGLEDOWNFALL
 msgctxt "STRINGS.NAMES.BOOK_TOGGLEDOWNFALL"
 msgid "Love of Rain"
 msgstr "雨神的眷恋"
 
-#. STRINGS.NAMES.DUMMY
-msgctxt "STRINGS.NAMES.DUMMY"
-msgid "Dummy"
-msgstr "达米"
-
-#. STRINGS.NAMES.LOSE_SANITY
-msgctxt "STRINGS.NAMES.LOSE_SANITY"
-msgid "the lost of sanity"
-msgstr "没有灵魂"
-
-#. STRINGS.NAMES.CIVI
-msgctxt "STRINGS.NAMES.CIVI"
-msgid "Civi"
-msgstr ""
+#. STRINGS.NAMES.PORTABLE_WARDROBE_ITEM
+msgctxt "STRINGS.NAMES.PORTABLE_WARDROBE_ITEM"
+msgid "Portable Wardrobe"
+msgstr "便携式衣柜"
 
 #. STRINGS.NAMES.BLACKHOLESTAFF
 msgctxt "STRINGS.NAMES.BLACKHOLESTAFF"
 msgid "Blackhole Staff"
 msgstr "黑洞法杖"
 
-#. STRINGS.NAMES.LIGHTGEM
-msgctxt "STRINGS.NAMES.LIGHTGEM"
-msgid "Light Gem"
-msgstr "白宝石"
+#. STRINGS.NAMES.DARKGEM
+msgctxt "STRINGS.NAMES.DARKGEM"
+msgid "Dark Gem"
+msgstr "黑宝石"
+
+#. STRINGS.NAMES.NIGHTPACK_RED
+msgctxt "STRINGS.NAMES.NIGHTPACK_RED"
+msgid "Red Night Pack"
+msgstr "红影背包"
+
+#. STRINGS.NAMES.LOSE_SANITY
+msgctxt "STRINGS.NAMES.LOSE_SANITY"
+msgid "the lost of sanity"
+msgstr "没有灵魂"
+
+#. STRINGS.NAMES.NIGHTPACK_ORANGE
+msgctxt "STRINGS.NAMES.NIGHTPACK_ORANGE"
+msgid "Orange Night Pack"
+msgstr "橙影背包"
+
+#. STRINGS.NAMES.NIGHTPACK_BLUE
+msgctxt "STRINGS.NAMES.NIGHTPACK_BLUE"
+msgid "Blue Night Pack"
+msgstr "蓝影背包"
+
+#. STRINGS.NAMES.MIOTAN
+msgctxt "STRINGS.NAMES.MIOTAN"
+msgid "Mio"
+msgstr "澪"
 
 #. STRINGS.NAMES.LIGHTMAGATAMA
 msgctxt "STRINGS.NAMES.LIGHTMAGATAMA"
 msgid "Light Magatama"
 msgstr "白勾玉"
 
-#. STRINGS.NAMES.NIGHTPACK
-msgctxt "STRINGS.NAMES.NIGHTPACK"
-msgid "Night Backpack"
+#. STRINGS.NAMES.LIGHTGEM
+msgctxt "STRINGS.NAMES.LIGHTGEM"
+msgid "Light Gem"
+msgstr "白宝石"
+
+#. STRINGS.NAMES.DUMMY
+msgctxt "STRINGS.NAMES.DUMMY"
+msgid "Dummy"
+msgstr "达米"
+
+#. STRINGS.NAMES.CIVI
+msgctxt "STRINGS.NAMES.CIVI"
+msgid "Civi"
+msgstr ""
+
+#. STRINGS.NAMES.NIGHTPACK_DARK
+#| msgctxt "STRINGS.NAMES.NIGHTPACK_OPAL"
+#| msgid "Opal Night Pack"
+msgctxt "STRINGS.NAMES.NIGHTPACK_DARK"
+msgid "Dark Night Pack"
+msgstr ""
+
+#. STRINGS.NAMES.NIGHTPACK_FUEL
+msgctxt "STRINGS.NAMES.NIGHTPACK_FUEL"
+msgid "Night Pack"
 msgstr "影背包"
 
-#. STRINGS.NAMES.DARKGEM
-msgctxt "STRINGS.NAMES.DARKGEM"
-msgid "Dark Gem"
-msgstr "黑宝石"
+#. STRINGS.NAMES.NIGHTPACK_LIGHT
+#| msgctxt "STRINGS.NAMES.NIGHTPACK"
+#| msgid "Night Pack"
+msgctxt "STRINGS.NAMES.NIGHTPACK_LIGHT"
+msgid "Light Night Pack"
+msgstr ""
 
-#. STRINGS.NAMES.DARKMAGATAMA
-msgctxt "STRINGS.NAMES.DARKMAGATAMA"
-msgid "Dark Magatama"
-msgstr "黑勾玉"
+#. STRINGS.NAMES.NIGHTPACK_OPAL
+msgctxt "STRINGS.NAMES.NIGHTPACK_OPAL"
+msgid "Opal Night Pack"
+msgstr "闪亮影背包"
 
 #. STRINGS.CHARACTER_NAMES.dummy
 msgctxt "STRINGS.CHARACTER_NAMES.dummy"
@@ -198,250 +207,155 @@ msgstr ""
 "*世界对她不友好。\n"
 "*梦魇的伙伴。"
 
-#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.PORTABLE_WARDROBE_WRAP
-msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.PORTABLE_WARDROBE_WRAP"
-msgid "Dress up anytime."
-msgstr "有了它便可随时换装。"
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.NIGHTPACK_OPAL
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.NIGHTPACK_OPAL"
+msgid "It shines!"
+msgstr "闪闪发亮!"
 
-#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.PORTABLE_WARDROBE_ITEM
-msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.PORTABLE_WARDROBE_ITEM"
-msgid "Dress up anywhere."
-msgstr "有了它便可随地换装。"
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.NIGHTPACK_GREEN
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.NIGHTPACK_GREEN"
+msgid "It shines green."
+msgstr "是绿色的。"
 
-#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.SPICE_CACTUS
-msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.SPICE_CACTUS"
-msgid "Make sanity great again."
-msgstr "让精神再次伟大!"
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.NIGHTPACK_YELLOW
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.NIGHTPACK_YELLOW"
+msgid "It shines yellow."
+msgstr "是黄色的。"
 
-#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKAMULET
-msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKAMULET"
-msgid "I can feel the darkness coming."
-msgstr "我能感受到黑暗来临。"
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.NIGHTPACK_FUEL
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.NIGHTPACK_FUEL"
+msgid "It doesn't shine."
+msgstr "好暗，但是还有光。"
 
-#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.BOOK_HARVEST
-msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.BOOK_HARVEST"
-msgid "H-A-R-V-E-S-T!"
-msgstr "收——获——!"
-
-#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTAMULET
-msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTAMULET"
-msgid "I can feel the darkness away."
-msgstr "黑 暗 退 散."
-
-#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.NIGHTMARE_SPEAR
-msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.NIGHTMARE_SPEAR"
-msgid "It looks like breaking."
-msgstr "它好像快坏了."
-
-#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTGEM
-msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTGEM"
-msgid "Get closer to light!"
-msgstr "使你更接近光明!"
-
-#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTMAGATAMA
-msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTMAGATAMA"
-msgid "Make THE sword to the light."
-msgstr "让那把刀接近光明."
-
-#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.BOOK_TOGGLEDOWNFALL
-msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.BOOK_TOGGLEDOWNFALL"
-msgid "/toggledownfall"
-msgstr ""
-
-#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.BLACKHOLESTAFF
-msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.BLACKHOLESTAFF"
-msgid "???"
-msgstr "什么奇怪的东西？"
-
-#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.NIGHTPACK
-msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.NIGHTPACK"
-msgid "It seems to need some glowing materials."
-msgstr "它似乎需要某种东西来发光."
-
-#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKGEM
-msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKGEM"
-msgid "Get closer to dark!"
-msgstr "使你更接近黑暗!"
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.NIGHTPACK_PURPLE
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.NIGHTPACK_PURPLE"
+msgid "It shines purple."
+msgstr "是紫色的。"
 
 #. STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKMAGATAMA
 msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKMAGATAMA"
 msgid "Make THE sword to the dark."
 msgstr "让那把刀接近黑暗."
 
-#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_WAYTOOMANYBIRDS
-msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_WAYTOOMANYBIRDS"
-msgid "I can't see any birds in the sky!"
-msgstr "鸟没了."
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.NIGHTPACK
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.NIGHTPACK"
+msgid "It seems to need some glowing materials."
+msgstr "它似乎需要某种东西来发光."
 
-#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_DETACH_BUFF_ELECTRICATTACK
-msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_DETACH_BUFF_ELECTRICATTACK"
-msgid "Another zappy dish?"
-msgstr ":zap:"
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.PORTABLE_WARDROBE_ITEM
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.PORTABLE_WARDROBE_ITEM"
+msgid "Dress up anywhere."
+msgstr "有了它便可随地换装。"
 
-#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_HOUNDS
-msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_HOUNDS"
-msgid "Watch out, hounds're coming!"
-msgstr "来狗啦!"
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.PORTABLE_WARDROBE_WRAP
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.PORTABLE_WARDROBE_WRAP"
+msgid "Dress up anytime."
+msgstr "有了它便可随时换装。"
 
-#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_DESPAWN
-msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_DESPAWN"
-msgid "Switch? Switch?! Switch!"
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.NIGHTPACK_RED
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.NIGHTPACK_RED"
+msgid "It shines red."
+msgstr "是红色的。"
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.BOOK_HARVEST
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.BOOK_HARVEST"
+msgid "H-A-R-V-E-S-T!"
+msgstr "收——获——!"
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.NIGHTPACK_ORANGE
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.NIGHTPACK_ORANGE"
+msgid "It shines orange."
+msgstr "是橙色的。"
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.NIGHTPACK_BLUE
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.NIGHTPACK_BLUE"
+msgid "It shines blue."
+msgstr "是蓝色的"
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.SPICE_CACTUS
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.SPICE_CACTUS"
+msgid "Make sanity great again."
+msgstr "让精神再次伟大。"
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTMAGATAMA
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTMAGATAMA"
+msgid "Make THE sword to the light."
+msgstr "让那把刀接近光明."
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.NIGHTMARE_SPEAR
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.NIGHTMARE_SPEAR"
+msgid "It looks like breaking."
+msgstr "它好像快坏了."
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.BOOK_TOGGLEDOWNFALL
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.BOOK_TOGGLEDOWNFALL"
+msgid "/toggledownfall"
 msgstr ""
 
-#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_INV_FULL
-msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_INV_FULL"
-msgid "Anyone want some free stuffs?"
-msgstr ""
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTGEM
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTGEM"
+msgid "Get closer to light!"
+msgstr "使你更接近光明!"
 
-#. STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL_GENERIC
-msgctxt "STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL_GENERIC"
-msgid "Attempt to call a nil value."
-msgstr ""
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.BLACKHOLESTAFF
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.BLACKHOLESTAFF"
+msgid "???"
+msgstr "什么奇怪的东西？"
 
-#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.LUREPLANT
-msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.LUREPLANT"
-msgid "Trash can, or maybe a harvester."
-msgstr ""
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKGEM
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKGEM"
+msgid "Get closer to dark!"
+msgstr "使你更接近黑暗!"
 
-#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.NIGHTMAREFUEL
-msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.NIGHTMAREFUEL"
-msgid "How I LOVE it!"
-msgstr ""
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTAMULET
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTAMULET"
+msgid "I can feel the darkness away."
+msgstr "黑 暗 退 散."
 
-#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.PANFLUTE
-msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.PANFLUTE"
-msgid "Sleepy time!"
-msgstr ""
-
-#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.MIOTAN.GHOST
-msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.MIOTAN.GHOST"
-msgid "Well, maybe you should switch to WX-78 next time XD."
-msgstr ""
-
-#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.PLAYER.GENERIC
-msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.PLAYER.GENERIC"
-msgid "It's %s!"
-msgstr ""
-
-#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.PLAYER.MURDERER
-msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.PLAYER.MURDERER"
-msgid "I'm not deliciouse, don't eat me!"
-msgstr ""
-
-#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.PLAYER.FIRESTARTER
-msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.PLAYER.FIRESTARTER"
-msgid "c_kick()!"
-msgstr ""
-
-#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.PLAYER.ATTACKER
-msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.PLAYER.ATTACKER"
-msgid "I'm not deliciouse, don't eat me!"
-msgstr ""
-
-#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.PLAYER.REVIVER
-msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.PLAYER.REVIVER"
-msgid "Please don't, we want life giving amulets!"
-msgstr ""
-
-#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.PLAYER.GHOST
-msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.PLAYER.GHOST"
-msgid "Maybe I can write a 正 on your face, haha."
-msgstr ""
-
-#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.HOMESIGN.GENERIC
-msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.HOMESIGN.GENERIC"
-msgid "Ha! :blpp:"
-msgstr ""
-
-#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.HOMESIGN.UNWRITTEN
-msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.HOMESIGN.UNWRITTEN"
-msgid "There's no way we don't have a :blpp: here."
-msgstr ""
-
-#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.HOMESIGN.BURNT
-msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.HOMESIGN.BURNT"
-msgid "My :blpp:! Noooo!"
-msgstr ""
-
-#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.MOLEHAT
-msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.MOLEHAT"
-msgid "It lets me see how other people get hit by charlie!"
-msgstr ""
-
-#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_ENTER_DARK
-msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_ENTER_DARK"
-msgid "Woo, cool!"
-msgstr ""
-
-#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_TALK_TO_PLANTS.5
-msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_TALK_TO_PLANTS.5"
-msgid "You know what? We have a EMOJI system mod!"
-msgstr ""
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKAMULET
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKAMULET"
+msgid "I can feel the darkness coming."
+msgstr "我能感受到黑暗来临。"
 
 #. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_TOOMANYBIRDS
 msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_TOOMANYBIRDS"
 msgid "I don't think it's smart to read it now."
-msgstr ""
-
-#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_ATTACH_BUFF_ELECTRICATTACK
-msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_ATTACH_BUFF_ELECTRICATTACK"
-msgid "I want some goat!"
-msgstr ""
-
-#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_EAT.STALE
-msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_EAT.STALE"
-msgid "Don't do that!"
-msgstr ""
-
-#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_ENTER_LIGHT
-msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_ENTER_LIGHT"
-msgid "Noo! I still wanna play!"
-msgstr ""
-
-#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_COLD
-msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_COLD"
-msgid "Help, I need some nightmare fuels!"
-msgstr ""
-
-#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE_TOODARK
-msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE_TOODARK"
-msgid "What is that?"
-msgstr ""
+msgstr "现在读这本书是不合适的。"
 
 #. STRINGS.CHARACTERS.CIVI.ANNOUNCE_CRAFTING_FAIL
 msgctxt "STRINGS.CHARACTERS.CIVI.ANNOUNCE_CRAFTING_FAIL"
 msgid "Nope, missing ingredients."
-msgstr ""
+msgstr "不行，材料不够。"
 
 #. STRINGS.CHARACTERS.CIVI.ANNOUNCE_ADVENTUREFAIL
 msgctxt "STRINGS.CHARACTERS.CIVI.ANNOUNCE_ADVENTUREFAIL"
 msgid "I shall try again"
-msgstr ""
+msgstr "我应该再试试的。"
 
 #. STRINGS.CHARACTERS.CIVI.ANNOUNCE_QUAKE
 msgctxt "STRINGS.CHARACTERS.CIVI.ANNOUNCE_QUAKE"
 msgid "Ahhh! Something bad is happening."
-msgstr ""
+msgstr "啊啊，有不好的事情要发生了。"
 
 #. STRINGS.CHARACTERS.CIVI.ACTIONFAIL.FILL_OCEAN.UNSUITABLE_FOR_PLANTS
 msgctxt "STRINGS.CHARACTERS.CIVI.ACTIONFAIL.FILL_OCEAN.UNSUITABLE_FOR_PLANTS"
 msgid "Nope, plants hate salt water."
-msgstr ""
+msgstr "咸水坏植物。"
 
 #. STRINGS.CHARACTERS.CIVI.ACTIONFAIL.ACTIVATE.LOCKED_GATE
 msgctxt "STRINGS.CHARACTERS.CIVI.ACTIONFAIL.ACTIVATE.LOCKED_GATE"
 msgid "Nope, it's locked."
-msgstr ""
+msgstr "不行，锁住了。"
 
 #. STRINGS.CHARACTERS.CIVI.ACTIONFAIL.ROW_FAIL.BAD_TIMING0
 msgctxt "STRINGS.CHARACTERS.CIVI.ACTIONFAIL.ROW_FAIL.BAD_TIMING0"
 msgid "Tooooo fast!"
-msgstr ""
+msgstr "太太太快辣!"
 
 #. STRINGS.CHARACTERS.CIVI.ACTIONFAIL.ROW_FAIL.BAD_TIMING2
 msgctxt "STRINGS.CHARACTERS.CIVI.ACTIONFAIL.ROW_FAIL.BAD_TIMING2"
 msgid "Nope again!"
-msgstr ""
+msgstr "不! 行!"
 
 #. STRINGS.CHARACTERS.CIVI.ACTIONFAIL_GENERIC
 msgctxt "STRINGS.CHARACTERS.CIVI.ACTIONFAIL_GENERIC"
@@ -460,17 +374,17 @@ msgstr ""
 
 #. STRINGS.CHARACTER_SURVIVABILITY.dummy
 msgctxt "STRINGS.CHARACTER_SURVIVABILITY.dummy"
-msgid "None"
+msgid "无"
 msgstr ""
 
 #. STRINGS.CHARACTER_SURVIVABILITY.civi
 msgctxt "STRINGS.CHARACTER_SURVIVABILITY.civi"
-msgid "Slim"
+msgid "渺茫"
 msgstr ""
 
 #. STRINGS.CHARACTER_SURVIVABILITY.miotan
 msgctxt "STRINGS.CHARACTER_SURVIVABILITY.miotan"
-msgid "Grim"
+msgid "严峻"
 msgstr ""
 
 #. STRINGS.CHARACTER_BIOS.dummy.1.title
@@ -490,8 +404,8 @@ msgstr "最喜欢的食物"
 
 #. STRINGS.CHARACTER_BIOS.dummy.2.desc
 msgctxt "STRINGS.CHARACTER_BIOS.dummy.2.desc"
-msgid "Grim Galette"
-msgstr "恐怖国王饼"
+msgid "恐怖国王饼"
+msgstr ""
 
 #. STRINGS.CHARACTER_BIOS.civi.1.title
 msgctxt "STRINGS.CHARACTER_BIOS.civi.1.title"
@@ -511,13 +425,10 @@ msgstr "最喜欢的食物"
 #. STRINGS.CHARACTER_BIOS.civi.2.desc
 msgctxt "STRINGS.CHARACTER_BIOS.civi.2.desc"
 msgid ""
-"Lv.0 - Bone Bouillon\n"
-"Lv.1 - Meatballs\n"
-"Lv.2 - Volt Goat Chaud-Froid"
-msgstr ""
 "Lv.0 - 骨头汤\n"
 "Lv.1 - 肉丸\n"
-"Lv.2 - 电羊冻"
+"Lv.2 - 伏特羊肉冻"
+msgstr ""
 
 #. STRINGS.CHARACTER_BIOS.miotan.1.title
 msgctxt "STRINGS.CHARACTER_BIOS.miotan.1.title"
@@ -559,11 +470,6 @@ msgctxt "STRINGS.RECIPE_DESC.DARKAMULET"
 msgid "Powerful but dark."
 msgstr "深邃而充满力量。"
 
-#. STRINGS.RECIPE_DESC.PORTABLE_WARDROBE_WRAP
-msgctxt "STRINGS.RECIPE_DESC.PORTABLE_WARDROBE_WRAP"
-msgid "Convenient for dressing up."
-msgstr "方便换装的道具。"
-
 #. STRINGS.RECIPE_DESC.PORTABLE_WARDROBE_ITEM
 msgctxt "STRINGS.RECIPE_DESC.PORTABLE_WARDROBE_ITEM"
 msgid "Convenient for dressing up a lot."
@@ -572,7 +478,12 @@ msgstr "方便多次换装的道具。"
 #. STRINGS.RECIPE_DESC.SPICE_CACTUS
 msgctxt "STRINGS.RECIPE_DESC.SPICE_CACTUS"
 msgid "Make sanity great again."
-msgstr "让精神再次伟大!"
+msgstr "让精神再次伟大。"
+
+#. STRINGS.RECIPE_DESC.PORTABLE_WARDROBE_WRAP
+msgctxt "STRINGS.RECIPE_DESC.PORTABLE_WARDROBE_WRAP"
+msgid "Convenient for dressing up."
+msgstr "方便换装的道具。"
 
 #. STRINGS.RECIPE_DESC.BOOK_HARVEST
 msgctxt "STRINGS.RECIPE_DESC.BOOK_HARVEST"
@@ -589,15 +500,25 @@ msgctxt "STRINGS.RECIPE_DESC.NIGHTMARE_SPEAR"
 msgid "Disappear in a moment."
 msgstr "转瞬即逝."
 
+#. STRINGS.RECIPE_DESC.BOOK_TOGGLEDOWNFALL
+msgctxt "STRINGS.RECIPE_DESC.BOOK_TOGGLEDOWNFALL"
+msgid "/toggledownfall"
+msgstr ""
+
+#. STRINGS.RECIPE_DESC.LIGHTMAGATAMA
+msgctxt "STRINGS.RECIPE_DESC.LIGHTMAGATAMA"
+msgid "Into Light!"
+msgstr "嵌入光明!"
+
 #. STRINGS.RECIPE_DESC.BLACKHOLESTAFF
 msgctxt "STRINGS.RECIPE_DESC.BLACKHOLESTAFF"
 msgid "Absorb everything!"
 msgstr "吸收一切!"
 
-#. STRINGS.RECIPE_DESC.BOOK_TOGGLEDOWNFALL
-msgctxt "STRINGS.RECIPE_DESC.BOOK_TOGGLEDOWNFALL"
-msgid "/toggledownfall"
-msgstr ""
+#. STRINGS.RECIPE_DESC.DARKMAGATAMA
+msgctxt "STRINGS.RECIPE_DESC.DARKMAGATAMA"
+msgid "Into Dark!"
+msgstr "嵌入黑暗!"
 
 #. STRINGS.RECIPE_DESC.LIGHTGEM
 msgctxt "STRINGS.RECIPE_DESC.LIGHTGEM"
@@ -608,16 +529,6 @@ msgstr "降级!降级!"
 msgctxt "STRINGS.RECIPE_DESC.DARKGEM"
 msgid "Upgrades!"
 msgstr "升级!升级!"
-
-#. STRINGS.RECIPE_DESC.LIGHTMAGATAMA
-msgctxt "STRINGS.RECIPE_DESC.LIGHTMAGATAMA"
-msgid "Into Light!"
-msgstr "嵌入光明"
-
-#. STRINGS.RECIPE_DESC.DARKMAGATAMA
-msgctxt "STRINGS.RECIPE_DESC.DARKMAGATAMA"
-msgid "Into Dark!"
-msgstr "嵌入黑暗"
 
 #. STRINGS.RECIPE_DESC.REDGEM
 msgctxt "STRINGS.RECIPE_DESC.REDGEM"
@@ -666,7 +577,7 @@ msgstr "控制光与暗的魔法使, 拥有超强的适应能力和战斗能力.
 #. STRINGS.SKIN_DESCRIPTIONS.miotan_classic
 msgctxt "STRINGS.SKIN_DESCRIPTIONS.miotan_classic"
 msgid "Mio's V1 skin!"
-msgstr "澪的初版角色形象."
+msgstr "澪的初版角色形象!"
 
 #. STRINGS.SKIN_DESCRIPTIONS.miotan_none
 msgctxt "STRINGS.SKIN_DESCRIPTIONS.miotan_none"
@@ -706,7 +617,7 @@ msgstr "我已经深陷黑暗中."
 #. STRINGS.CIVI_GEMS.FEEL_DARK
 msgctxt "STRINGS.CIVI_GEMS.FEEL_DARK"
 msgid "I felt the dark."
-msgstr "我感受到了黑暗"
+msgstr "我感受到了黑暗。"
 
 #. STRINGS.TABS.dummytab
 msgctxt "STRINGS.TABS.dummytab"
@@ -728,6 +639,11 @@ msgctxt "STRINGS.SKIN_NAMES.hivehat_pigcrown_willow"
 msgid "Dark Crown"
 msgstr "黑暗皇冠"
 
+#. STRINGS.SKIN_NAMES.meatrack_hermit_red
+msgctxt "STRINGS.SKIN_NAMES.meatrack_hermit_red"
+msgid "Hermit's Meat Rack"
+msgstr "隐士肉架（红）"
+
 #. STRINGS.SKIN_NAMES.armorskeleton_none
 msgctxt "STRINGS.SKIN_NAMES.armorskeleton_none"
 msgid "Emperor's Formal"
@@ -737,6 +653,11 @@ msgstr "皇帝的新衣"
 msgctxt "STRINGS.SKIN_NAMES.dummy_none"
 msgid "Dummy"
 msgstr "达米"
+
+#. STRINGS.SKIN_NAMES.eyebrellahat_peggy
+msgctxt "STRINGS.SKIN_NAMES.eyebrellahat_peggy"
+msgid "Peggy's Eyebrella"
+msgstr "佩奇的伞帽"
 
 #. STRINGS.SKIN_NAMES.lantern_mio
 msgctxt "STRINGS.SKIN_NAMES.lantern_mio"
@@ -748,35 +669,10 @@ msgctxt "STRINGS.SKIN_NAMES.greenamulet_heart"
 msgid "Green Heart"
 msgstr "绿色的心"
 
-#. STRINGS.SKIN_NAMES.nightstick_crystal
-msgctxt "STRINGS.SKIN_NAMES.nightstick_crystal"
-msgid "Mahou Shoujo Star"
-msgstr "魔法少女心"
-
-#. STRINGS.SKIN_NAMES.civi_none
-msgctxt "STRINGS.SKIN_NAMES.civi_none"
-msgid "Civi"
-msgstr ""
-
-#. STRINGS.SKIN_NAMES.skeletonhat_glass
-msgctxt "STRINGS.SKIN_NAMES.skeletonhat_glass"
-msgid "Crystal Skull"
-msgstr "水晶头骨"
-
-#. STRINGS.SKIN_NAMES.meatrack_hermit_red
-msgctxt "STRINGS.SKIN_NAMES.meatrack_hermit_red"
-msgid "Hermit's Meat Rack"
-msgstr "隐士肉架（红）"
-
-#. STRINGS.SKIN_NAMES.eyebrellahat_peggy
-msgctxt "STRINGS.SKIN_NAMES.eyebrellahat_peggy"
-msgid "Peggy's Eyebrella"
-msgstr "佩奇的伞帽"
-
 #. STRINGS.SKIN_NAMES.dragonflychest_gingerbread
 msgctxt "STRINGS.SKIN_NAMES.dragonflychest_gingerbread"
-msgid "Gingerbread Chest"
-msgstr "姜饼龙鳞箱子"
+msgid "姜饼箱子"
+msgstr ""
 
 #. STRINGS.SKIN_NAMES.hivehat_pigcrown
 msgctxt "STRINGS.SKIN_NAMES.hivehat_pigcrown"
@@ -793,10 +689,58 @@ msgctxt "STRINGS.SKIN_NAMES.miotan_classic"
 msgid "Classic"
 msgstr ""
 
+#. STRINGS.SKIN_NAMES.civi_none
+msgctxt "STRINGS.SKIN_NAMES.civi_none"
+msgid "Civi"
+msgstr ""
+
+#. STRINGS.SKIN_NAMES.skeletonhat_glass
+msgctxt "STRINGS.SKIN_NAMES.skeletonhat_glass"
+msgid "Crystal Skull"
+msgstr "水晶头骨"
+
 #. STRINGS.SKIN_NAMES.miotan_none
 msgctxt "STRINGS.SKIN_NAMES.miotan_none"
 msgid "Mio"
 msgstr "澪"
+
+#~ msgctxt "STRINGS.NAMES.NIGHTPACK"
+#~ msgid "Night Backpack"
+#~ msgstr "影背包"
+
+#~ msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_WAYTOOMANYBIRDS"
+#~ msgid "I can't see any birds in the sky!"
+#~ msgstr "鸟没了!"
+
+#~ msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_DETACH_BUFF_ELECTRICATTACK"
+#~ msgid "Another zappy dish?"
+#~ msgstr ":zap:"
+
+#~ msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_HOUNDS"
+#~ msgid "Watch out, hounds're coming!"
+#~ msgstr "来狗啦!"
+
+#~ msgctxt "STRINGS.CHARACTER_BIOS.dummy.2.desc"
+#~ msgid "Grim Galette"
+#~ msgstr "恐怖国王饼"
+
+#~ msgctxt "STRINGS.CHARACTER_BIOS.civi.2.desc"
+#~ msgid ""
+#~ "Lv.0 - Bone Bouillon\n"
+#~ "Lv.1 - Meatballs\n"
+#~ "Lv.2 - Volt Goat Chaud-Froid"
+#~ msgstr ""
+#~ "Lv.0 - 骨头汤\n"
+#~ "Lv.1 - 肉丸\n"
+#~ "Lv.2 - 电羊冻"
+
+#~ msgctxt "STRINGS.SKIN_NAMES.nightstick_crystal"
+#~ msgid "Mahou Shoujo Star"
+#~ msgstr "魔法少女心"
+
+#~ msgctxt "STRINGS.SKIN_NAMES.dragonflychest_gingerbread"
+#~ msgid "Gingerbread Chest"
+#~ msgstr "姜饼龙鳞箱子"
 
 #~ msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.BLACKLOTUS"
 #~ msgid "Is it real?"
