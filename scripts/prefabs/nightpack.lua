@@ -470,6 +470,10 @@ local function DisplayNameFn(inst)
     return state and STRINGS.NAMES["NIGHTPACK_"..state:upper()] or STRINGS.NAMES.NIGHTPACK
 end
 
+local function DescriptionFn(inst, viewer)
+    return GetString(viewer.prefab, "DESCRIBE", string.upper("nightpack" .. inst:GetState() ~= nil and "_" .. inst:GetState() or "" ))
+end
+
 local function fn()
     local inst = CreateEntity()
 
@@ -510,6 +514,7 @@ local function fn()
     end
 
     inst:AddComponent("inspectable")
+    inst.components.inspectable.descriptionfn = DescriptionFn
 
     inst:AddComponent("inventoryitem")
     inst.components.inventoryitem.cangoincontainer = false
