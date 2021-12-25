@@ -471,7 +471,8 @@ local function DisplayNameFn(inst)
 end
 
 local function DescriptionFn(inst, viewer)
-    return GetString(viewer.prefab, "DESCRIBE", string.upper("nightpack" .. inst:GetState() ~= nil and "_" .. inst:GetState() or "" ))
+    local state = inst:GetState()
+    return GetString(viewer.prefab, "DESCRIBE", state and "NIGHTPACK_" .. state:upper() or "NIGHTPACK")
 end
 
 local function fn()
