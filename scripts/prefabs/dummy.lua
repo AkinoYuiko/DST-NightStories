@@ -199,9 +199,13 @@ local master_postinit = function(inst)
 
     inst.skeleton_prefab = nil
     inst:ListenForEvent("death", function(inst)
-        inst:DoTaskInTime(2, function(inst)
-            SpawnPrefab("nightmarefuel").Transform:SetPosition(inst:GetPosition():Get())
-        end)
+        if inst.death_task == nil then
+            inst.death_task = inst:DoTaskInTime(2, function(inst)
+                SpawnPrefab("nightmarefuel").Transform:SetPosition(inst:GetPosition():Get())
+                inst.death_task:Cancel()
+                inst.death_task = nil
+            end)
+        end
     end)
 end
 
