@@ -2172,7 +2172,7 @@ return {
         -- LEAFYMEATBURGER = "Mortals seem to get quite irritated when you mess with their food.",
         -- TURF_FUNGUS_GREEN = "Floor or ceiling, depending on your perspective.",
         -- QUAGMIRE_RUBBLE_CARRIAGE = "Which squeaky wheel will get the grease?",
-        MOLEHAT = "It lets me see how other people get hit by charlie!",
+        MOLEHAT = "It lets me see how other people get hit by charlie.",
         -- OCEANFISH_SMALL_3 = "You took the bait, now suffer your fate!",
         -- TRUNKVEST_WINTER = "A puffy, poofy vest, oh yes.",
         -- BARNACLESTUFFEDFISHHEAD = "Hyuyu, no talking with your mouth full!",

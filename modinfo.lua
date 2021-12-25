@@ -1,4 +1,4 @@
-version = "1.21.9"
+version = "1.21.10"
 -- basic info --
 name = locale == "zh" and "暗夜故事集" or "Night Stories"
 author = "丁香女子学校"
