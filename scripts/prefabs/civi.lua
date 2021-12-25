@@ -42,15 +42,15 @@ local function applyupgrades(inst)
     local health_percent = inst.components.health:GetPercent()
     local sanity_percent = inst.components.sanity:GetPercent()
 
-    inst.components.hunger.max = ( 175 - inst.level * 50 ) -- max_level = 75
-    inst.components.sanity.max = ( 175 - inst.level * 50 ) -- max_level = 75
-    inst.components.health.maxhealth = ( 175 - inst.level * 50 ) -- max_level = 75
+    inst.components.hunger.max = ( TUNING.CIVI_BASE_STATUS - inst.level * 50 ) -- max_level = 75
+    inst.components.sanity.max = ( TUNING.CIVI_BASE_STATUS - inst.level * 50 ) -- max_level = 75
+    inst.components.health.maxhealth = ( TUNING.CIVI_BASE_STATUS - inst.level * 50 ) -- max_level = 75
 
     inst.components.locomotor.runspeed = ( TUNING.WILSON_RUN_SPEED * ( 1 + 0.25 * inst.level ) ) -- max_level = 9
 
     inst.components.combat.damagemultiplier = ( 1 + inst.level * 0.25 ) -- max_level = 1.5
-    inst.components.sanity.night_drain_mult = ( 0.75 + inst.level * 0.25 )
-    inst.components.sanity.neg_aura_mult = ( 0.75 + inst.level * 0.25 )
+    inst.components.sanity.night_drain_mult = ( TUNING.CIVI_BASE_SANITY_MULT + inst.level * 0.25 )
+    inst.components.sanity.neg_aura_mult = ( TUNING.CIVI_BASE_SANITY_MULT + inst.level * 0.25 )
 
     if inst.components.eater ~= nil then
         inst.components.eater:SetAbsorptionModifiers(( 1 - 0.25 * inst.level ), ( 1 - 0.25 * inst.level ), ( 1 - 0.25 * inst.level ))
@@ -70,9 +70,9 @@ local function onpreload(inst, data)
             if data.health and data.health.health then inst.components.health.currenthealth = data.health.health end
             if data.hunger and data.hunger.hunger then inst.components.hunger.current = data.hunger.hunger end
             if data.sanity and data.sanity.current then inst.components.sanity.current = data.sanity.current end
-            inst.components.health:DoDelta(0.01)
-            inst.components.hunger:DoDelta(0.01)
-            inst.components.sanity:DoDelta(0.01)
+            inst.components.health:DoDelta(0)
+            inst.components.hunger:DoDelta(0)
+            inst.components.sanity:DoDelta(0)
         end
     end
 end

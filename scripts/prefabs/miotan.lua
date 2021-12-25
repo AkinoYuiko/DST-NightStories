@@ -119,10 +119,10 @@ local function autorefuel(inst)
 end
 
 local function onboost(inst)
-    inst.components.locomotor.runspeed = TUNING.WILSON_RUN_SPEED * 1.25
-    inst.components.temperature.mintemp = 10
+    inst.components.locomotor.runspeed = TUNING.MIOTAN_RUN_SPEED
+    inst.components.temperature.mintemp = TUNING.MIOTAN_BOOST_MINTEMP
     if inst.components.eater ~= nil then
-        inst.components.eater:SetAbsorptionModifiers(0.6, 0.6, 0.6)
+        inst.components.eater:SetAbsorptionModifiers(TUNING.MIOTAN_BOOST_ABSORPTION, TUNING.MIOTAN_BOOST_ABSORPTION, TUNING.MIOTAN_BOOST_ABSORPTION)
     end
 end
 
@@ -234,10 +234,10 @@ local master_postinit = function(inst)
     if inst.components.eater then
         inst.components.eater:SetCanEatNightmareFuel()
         inst.components.eater:SetOnEatFn(oneat)
-        inst.components.eater.stale_hunger = -0.5
-        inst.components.eater.stale_health = 0
-        inst.components.eater.spoiled_hunger = -1
-        inst.components.eater.spoiled_health = -0.5
+        inst.components.eater.stale_hunger = TUNING.MIOTAN_STALE_HUNGER_RATE
+        inst.components.eater.stale_health = TUNING.MIOTAN_STALE_HEALTH_RATE
+        inst.components.eater.spoiled_hunger = TUNING.MIOTAN_SPOILED_HUNGER_RATE
+        inst.components.eater.spoiled_health = TUNING.MIOTAN_SPOILED_HUNGER_RATE
     end
 
     inst:ListenForEvent("ms_becameghost", onbecameghost)
