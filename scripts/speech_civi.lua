@@ -1,7 +1,7 @@
 return {
     -- DESCRIBE_PLANTHAPPY = "What a happy plant!",
     ANNOUNCE_CRAFTING_FAIL = "Nope, missing ingredients.",
-    ANNOUNCE_ADVENTUREFAIL = "I shall try again",
+    ANNOUNCE_ADVENTUREFAIL = "I shall try again.",
     -- ANNOUNCE_YOTB_LEARN_NEW_PATTERN = "My mind has been filled with beefalo styling inspiration!",
     ANNOUNCE_QUAKE = "Ahhh! Something bad is happening.",
     ACTIONFAIL =
