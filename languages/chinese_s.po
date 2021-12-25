@@ -155,13 +155,13 @@ msgstr ""
 
 #. STRINGS.CHARACTERS.GENERIC.DESCRIBE.PORTABLE_WARDROBE_WRAP
 msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.PORTABLE_WARDROBE_WRAP"
-msgid "Dress up anywhere, and maybe anytime?"
-msgstr "有了它便可随地换装，以及随时?"
+msgid "Dress up anytime."
+msgstr "有了它便可随时换装。"
 
 #. STRINGS.CHARACTERS.GENERIC.DESCRIBE.PORTABLE_WARDROBE_ITEM
 msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.PORTABLE_WARDROBE_ITEM"
-msgid "Dress up anywhere, and maybe anytime?"
-msgstr "有了它便可随地换装，以及随时?"
+msgid "Dress up anywhere."
+msgstr "有了它便可随地换装。"
 
 #. STRINGS.CHARACTERS.GENERIC.DESCRIBE.SPICE_CACTUS
 msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.SPICE_CACTUS"
@@ -517,7 +517,7 @@ msgstr "深邃而充满力量。"
 #. STRINGS.RECIPE_DESC.PORTABLE_WARDROBE_WRAP
 msgctxt "STRINGS.RECIPE_DESC.PORTABLE_WARDROBE_WRAP"
 msgid "Convenient for dressing up."
-msgstr "方便的换装道具。"
+msgstr "方便换装的道具。"
 
 #. STRINGS.RECIPE_DESC.PORTABLE_WARDROBE_ITEM
 msgctxt "STRINGS.RECIPE_DESC.PORTABLE_WARDROBE_ITEM"

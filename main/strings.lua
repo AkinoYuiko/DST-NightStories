@@ -123,8 +123,8 @@ local strings = {
                 NIGHTMARE_SPEAR = "It looks like breaking.",
 
                 SPICE_CACTUS = "Make sanity great again.",
-                PORTABLE_WARDROBE_WRAP = "Dress up anywhere, and maybe anytime?",
-                PORTABLE_WARDROBE_ITEM = "Dress up anywhere, and maybe anytime?",
+                PORTABLE_WARDROBE_WRAP = "Dress up anytime.",
+                PORTABLE_WARDROBE_ITEM = "Dress up anywhere.",
 
             }
         },
