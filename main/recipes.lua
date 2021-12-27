@@ -99,12 +99,12 @@ dummytab, TECH.NONE, nil, nil, nil, nil, "nightmarebreaker", nil, "nightmare_spe
 
 -- 收获的季节 --
 AddRecipe("book_harvest",
-{Ingredient("papyrus", 2), Ingredient(CHARACTER_INGREDIENT.SANITY, 15)},
+{Ingredient("papyrus", 2), Ingredient(CHARACTER_INGREDIENT.HEALTH, 15, nil, nil, "decrease_sanity.tex")},
 dummytab, TECH.SCIENCE_TWO, nil, nil, nil, nil, "nightmarebreaker", nil, "book_harvest.tex")
 
 -- 雨神的眷恋 --
 AddRecipe("book_toggledownfall",
-{Ingredient("papyrus", 2), Ingredient(CHARACTER_INGREDIENT.SANITY, 30)},
+{Ingredient("papyrus", 2), Ingredient(CHARACTER_INGREDIENT.HEALTH, 30, nil, nil, "decrease_sanity.tex")},
 dummytab, TECH.MAGIC_THREE, nil, nil, nil, nil, "nightmarebreaker", nil, "book_toggledownfall.tex")
 
 -- 黑洞法杖 --
