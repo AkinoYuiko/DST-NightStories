@@ -88,7 +88,7 @@ STRINGS.TABS["nightmaretab"] = STRINGS.TABS["dummytab"]
 
 -- 灵魂剥离 --
 AddRecipe("dummy_nightmarefuel",
-{Ingredient(CHARACTER_INGREDIENT.SANITY, 20)},
+{Ingredient(CHARACTER_INGREDIENT.HEALTH, 20, nil, nil, "decrease_sanity.tex")},
 dummytab, TECH.NONE, nil, nil, nil, nil, "nightmarebreaker", nil, "nightmarefuel.tex", nil , "nightmarefuel")
 STRINGS.NAMES.DUMMY_NIGHTMAREFUEL = STRINGS.NAMES.NIGHTMAREFUEL
 
