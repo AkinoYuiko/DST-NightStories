@@ -210,16 +210,23 @@ local master_postinit = function(inst)
 
     -- Hack Builder:RemoveIngredients so Dummy won't do anim when crafting costs Sanity-Health.
     if inst.components.builder then
+
         local remove_ingredients = inst.components.builder.RemoveIngredients
-        inst.components.builder.RemoveIngredients = function(self, ...)
-            local push_event = self.inst.PushEvent
-            self.inst.PushEvent = function(inst, event, ...)
-                if event ~= "consumehealthcost" then
-                    return push_event(inst, event, ...)
+        inst.components.builder.RemoveIngredients = function(self, ingredients, recname, ...)
+            local tab = AllRecipes[recname] and AllRecipes[recname].tab
+            if tab.str == "nightmaretab" then
+                local push_event = self.inst.PushEvent
+                self.inst.PushEvent = function(inst, event, ...)
+                    if event ~= "consumehealthcost" then
+                        return push_event(inst, event, ...)
+                    end
                 end
+                local ret = remove_ingredients(self, ingredients, recname, ...)
+                self.inst.PushEvent = push_event
+                return ret
+            else
+                return remove_ingredients(self, ingredients, recname, ...)
             end
-            remove_ingredients(self, ...)
-            self.inst.PushEvent = push_event
         end
     end
 end
