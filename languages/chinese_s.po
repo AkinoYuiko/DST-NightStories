@@ -92,7 +92,7 @@ msgstr "红影背包"
 #. STRINGS.NAMES.LOSE_SANITY
 msgctxt "STRINGS.NAMES.LOSE_SANITY"
 msgid "the lost of sanity"
-msgstr "没有灵魂"
+msgstr "没有精神"
 
 #. STRINGS.NAMES.NIGHTPACK_ORANGE
 msgctxt "STRINGS.NAMES.NIGHTPACK_ORANGE"
@@ -171,9 +171,9 @@ msgid ""
 "*Friend of nightmare.\n"
 "*Forgive."
 msgstr ""
-"*对人类不友好。\n"
-"*梦魇的伙伴。\n"
-"*原谅。"
+"*对人类不友好\n"
+"*梦魇的伙伴\n"
+"*原谅"
 
 #. STRINGS.CHARACTER_DESCRIPTIONS.civi
 msgctxt "STRINGS.CHARACTER_DESCRIPTIONS.civi"
@@ -181,8 +181,8 @@ msgid ""
 "*Travel between light and dark.\n"
 "*Can control nightmare."
 msgstr ""
-"*在光暗之中穿梭。\n"
-"*可以控制梦魇。"
+"*在光暗之中穿梭\n"
+"*可以控制梦魇"
 
 #. STRINGS.CHARACTER_DESCRIPTIONS.miotan
 msgctxt "STRINGS.CHARACTER_DESCRIPTIONS.miotan"
@@ -190,8 +190,8 @@ msgid ""
 "*World treats her differently.\n"
 "*Friend of nightmare."
 msgstr ""
-"*世界对她不友好。\n"
-"*梦魇的伙伴。"
+"*世界对她不友好\n"
+"*梦魇的伙伴"
 
 #. STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKAMULET
 msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKAMULET"
@@ -236,7 +236,7 @@ msgstr "它好像快坏了。"
 #. STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKMAGATAMA
 msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKMAGATAMA"
 msgid "Make THE sword to the dark."
-msgstr "让那把刀接近黑暗."
+msgstr "让那把刀接近黑暗。"
 
 #. STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTGEM
 msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTGEM"
@@ -321,7 +321,7 @@ msgstr "小心，来狗了！"
 #. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_DESPAWN
 msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_DESPAWN"
 msgid "Switch? Switch?! Switch!"
-msgstr "快换？快换？快换！"
+msgstr "快换？快换？！快换！"
 
 #. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_INV_FULL
 msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_INV_FULL"
@@ -471,12 +471,12 @@ msgstr "不行，锁住了。"
 #. STRINGS.CHARACTERS.CIVI.ACTIONFAIL.ROW_FAIL.BAD_TIMING0
 msgctxt "STRINGS.CHARACTERS.CIVI.ACTIONFAIL.ROW_FAIL.BAD_TIMING0"
 msgid "Tooooo fast!"
-msgstr "太太太快辣!"
+msgstr "太太太快辣！"
 
 #. STRINGS.CHARACTERS.CIVI.ACTIONFAIL.ROW_FAIL.BAD_TIMING2
 msgctxt "STRINGS.CHARACTERS.CIVI.ACTIONFAIL.ROW_FAIL.BAD_TIMING2"
 msgid "Nope again!"
-msgstr "不! 行!"
+msgstr "不! 行！"
 
 #. STRINGS.CHARACTERS.CIVI.ACTIONFAIL_GENERIC
 msgctxt "STRINGS.CHARACTERS.CIVI.ACTIONFAIL_GENERIC"
@@ -574,7 +574,7 @@ msgstr "无"
 #. STRINGS.CHARACTER_QUOTES.dummy
 msgctxt "STRINGS.CHARACTER_QUOTES.dummy"
 msgid "\"No one plays with me...\""
-msgstr "\"无人肯同我玩…\""
+msgstr "\"无人肯同我玩...\""
 
 #. STRINGS.CHARACTER_QUOTES.civi
 msgctxt "STRINGS.CHARACTER_QUOTES.civi"
@@ -609,17 +609,17 @@ msgstr "方便换装的道具。"
 #. STRINGS.RECIPE_DESC.BOOK_HARVEST
 msgctxt "STRINGS.RECIPE_DESC.BOOK_HARVEST"
 msgid "Should help you harvest!"
-msgstr "快速收获!"
+msgstr "快速收获！"
 
 #. STRINGS.RECIPE_DESC.LIGHTAMULET
 msgctxt "STRINGS.RECIPE_DESC.LIGHTAMULET"
 msgid "Keep away from dark things."
-msgstr "远离黑暗."
+msgstr "远离黑暗。"
 
 #. STRINGS.RECIPE_DESC.NIGHTMARE_SPEAR
 msgctxt "STRINGS.RECIPE_DESC.NIGHTMARE_SPEAR"
 msgid "Disappear in a moment."
-msgstr "转瞬即逝."
+msgstr "转瞬即逝。"
 
 #. STRINGS.RECIPE_DESC.BOOK_TOGGLEDOWNFALL
 msgctxt "STRINGS.RECIPE_DESC.BOOK_TOGGLEDOWNFALL"
@@ -629,71 +629,71 @@ msgstr ""
 #. STRINGS.RECIPE_DESC.LIGHTMAGATAMA
 msgctxt "STRINGS.RECIPE_DESC.LIGHTMAGATAMA"
 msgid "Into Light!"
-msgstr "嵌入光明!"
+msgstr "嵌入光明！"
 
 #. STRINGS.RECIPE_DESC.BLACKHOLESTAFF
 msgctxt "STRINGS.RECIPE_DESC.BLACKHOLESTAFF"
 msgid "Absorb everything!"
-msgstr "吸收一切!"
+msgstr "吸收一切！"
 
 #. STRINGS.RECIPE_DESC.DARKMAGATAMA
 msgctxt "STRINGS.RECIPE_DESC.DARKMAGATAMA"
 msgid "Into Dark!"
-msgstr "嵌入黑暗!"
+msgstr "嵌入黑暗！"
 
 #. STRINGS.RECIPE_DESC.LIGHTGEM
 msgctxt "STRINGS.RECIPE_DESC.LIGHTGEM"
 msgid "Degrades!"
-msgstr "降级!降级!"
+msgstr "降级！降级！"
 
 #. STRINGS.RECIPE_DESC.DARKGEM
 msgctxt "STRINGS.RECIPE_DESC.DARKGEM"
 msgid "Upgrades!"
-msgstr "升级!升级!"
+msgstr "升级！升级！"
 
 #. STRINGS.RECIPE_DESC.REDGEM
 msgctxt "STRINGS.RECIPE_DESC.REDGEM"
 msgid "Change ice into fire."
-msgstr "用噩梦扭曲冰冻."
+msgstr "用噩梦扭曲冰冻。"
 
 #. STRINGS.RECIPE_DESC.NIGHTPACK
 msgctxt "STRINGS.RECIPE_DESC.NIGHTPACK"
 msgid "Dark away."
-msgstr "驱散黑暗."
+msgstr "驱散黑暗。"
 
 #. STRINGS.RECIPE_DESC.BLUEGEM
 msgctxt "STRINGS.RECIPE_DESC.BLUEGEM"
 msgid "Change fire into ice."
-msgstr "用噩梦扭曲火焰."
+msgstr "用噩梦扭曲火焰。"
 
 #. STRINGS.CHARACTER_ABOUTME.dummy
 msgctxt "STRINGS.CHARACTER_ABOUTME.dummy"
 msgid "Dummy also comes from the nightmare world. She is Mio's sister."
-msgstr "达米是澪的妹妹，同样来自异世界."
+msgstr "达米是澪的妹妹，同样来自异世界。"
 
 #. STRINGS.CHARACTER_ABOUTME.civi
 msgctxt "STRINGS.CHARACTER_ABOUTME.civi"
 msgid ""
 "Civi can control magic, turning lights into darks, or turning darks into "
 "lights."
-msgstr "控制光与暗的魔法使, 拥有超强的适应能力和战斗能力."
+msgstr "控制光与暗的魔法使, 拥有超强的适应能力和战斗能力。"
 
 #. STRINGS.CHARACTER_ABOUTME.miotan
 msgctxt "STRINGS.CHARACTER_ABOUTME.miotan"
 msgid "Mio cames from another world, where nightmare is everywhere."
-msgstr "澪来自一个充满梦魇的异世界."
+msgstr "澪来自一个充满梦魇的异世界。"
 
 #. STRINGS.SKIN_DESCRIPTIONS.dummy_none
 msgctxt "STRINGS.SKIN_DESCRIPTIONS.dummy_none"
 msgid "Another girl comes from nightmare's world."
-msgstr "另一个来自梦魇异世界的女孩."
+msgstr "另一个来自梦魇异世界的女孩。"
 
 #. STRINGS.SKIN_DESCRIPTIONS.civi_none
 msgctxt "STRINGS.SKIN_DESCRIPTIONS.civi_none"
 msgid ""
 "Civi can control magic, turning lights into darks, or turning darks into "
 "lights."
-msgstr "控制光与暗的魔法使, 拥有超强的适应能力和战斗能力."
+msgstr "控制光与暗的魔法使, 拥有超强的适应能力和战斗能力。"
 
 #. STRINGS.SKIN_DESCRIPTIONS.miotan_classic
 msgctxt "STRINGS.SKIN_DESCRIPTIONS.miotan_classic"
@@ -703,12 +703,12 @@ msgstr "澪的初版角色形象!"
 #. STRINGS.SKIN_DESCRIPTIONS.miotan_none
 msgctxt "STRINGS.SKIN_DESCRIPTIONS.miotan_none"
 msgid "Mio cames from another world, where nightmare is everywhere."
-msgstr "澪来自一个充满梦魇的异世界."
+msgstr "澪来自一个充满梦魇的异世界。"
 
 #. STRINGS.CHARACTER_TITLES.dummy
 msgctxt "STRINGS.CHARACTER_TITLES.dummy"
 msgid "The Nightmare Breaker"
-msgstr "梦魇女孩"
+msgstr "梦魇少女"
 
 #. STRINGS.CHARACTER_TITLES.civi
 msgctxt "STRINGS.CHARACTER_TITLES.civi"
@@ -718,22 +718,22 @@ msgstr "光暗魔法使"
 #. STRINGS.CHARACTER_TITLES.miotan
 msgctxt "STRINGS.CHARACTER_TITLES.miotan"
 msgid "The Nightmare Eater"
-msgstr "梦魇女孩"
+msgstr "梦魇少女"
 
 #. STRINGS.CIVI_GEMS.ALREADY_LIGHT
 msgctxt "STRINGS.CIVI_GEMS.ALREADY_LIGHT"
 msgid "I've already in the light."
-msgstr "我已经沐浴在光明中."
+msgstr "我已经沐浴在光明中。"
 
 #. STRINGS.CIVI_GEMS.FEEL_LIGHT
 msgctxt "STRINGS.CIVI_GEMS.FEEL_LIGHT"
 msgid "I felt the light."
-msgstr "我感受到了光明."
+msgstr "我感受到了光明。"
 
 #. STRINGS.CIVI_GEMS.ALREADY_DARK
 msgctxt "STRINGS.CIVI_GEMS.ALREADY_DARK"
 msgid "I've already in the dark."
-msgstr "我已经深陷黑暗中."
+msgstr "我已经深陷黑暗中。"
 
 #. STRINGS.CIVI_GEMS.FEEL_DARK
 msgctxt "STRINGS.CIVI_GEMS.FEEL_DARK"
