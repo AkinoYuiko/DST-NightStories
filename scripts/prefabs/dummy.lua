@@ -193,6 +193,8 @@ local common_postinit = function(inst)
     -- Minimap icon
     inst.MiniMapEntity:SetIcon("dummy.tex")
 
+    inst._ontakenfiredamage_rate = net_byte(inst.GUID, "_ontakenfiredamage_rate", "_ontakenfiredamage_rate")
+
     if TheNet:GetServerGameMode() == "lavaarena" then
     elseif TheNet:GetServerGameMode() == "quagmire" then
     else
@@ -209,7 +211,6 @@ local master_postinit = function(inst)
     inst.customidleanim = "idle_wortox"
 
     inst._total_firedamage = 0
-    inst._ontakenfiredamage_rate = net_byte(inst.GUID, "_ontakenfiredamage_rate", "_ontakenfiredamage_rate")
     -- inst.ontakenfiredamage_rate:set(0)
 
     inst:AddComponent("reader")
