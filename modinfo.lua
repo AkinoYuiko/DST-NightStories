@@ -1,12 +1,13 @@
-version = "1.21.15"
+version = "1.21.16"
 -- basic info --
 name = locale == "zh" and "暗夜故事集" or "Night Stories"
 author = "丁香女子学校"
 description = locale == "zh" and "[版本: " .. version .. [[]
 
 更新内容:
-- 达米的"精神-生命"仪表盘现在可以显示回血buff影响下的箭头动画了。
+- 达米的"精神-生命"仪表盘现在可以部分统计火焰伤害了.
 
+- 达米的"精神-生命"仪表盘现在可以显示回血buff影响下的箭头动画了.
 - 达米合成需要精神的配方时不会出现受击动画.
 - 更新达米配方逻辑.
 - 更新了部分翻译文本.
@@ -17,8 +18,9 @@ description = locale == "zh" and "[版本: " .. version .. [[]
 ]] or "[Version: " .. version .. [[]
 
 Changelog:
-- Update DammuBadge for health & sanity regen buffs.
+- Update DammyBadge for fire damage.
 
+- Update DammyBadge for health & sanity regen buffs.
 - Hack Builder.RemoveIngredients for Dummy.
 - Update recipe logic for Dummy.
 - Update some translate strings.

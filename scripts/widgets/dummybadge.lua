@@ -239,13 +239,15 @@ function DummyBadge:OnUpdate(dt)
     end
 
     local sanity_rate = sanity and sanity:GetRate() or 0
-    local health_rate = sanity_rate +
+    local firedamage_rate = - self.owner._ontakenfiredamage_rate:value()
+    local health_rate = sanity_rate + firedamage_rate +
             ((self.owner.IsFreezing ~= nil and self.owner:IsFreezing()) and temperature_rate or 0) +
             ((self.owner.replica.hunger ~= nil and self.owner.replica.hunger:IsStarving()) and hunger_rate or 0) +
             ((self.owner.IsOverheating ~= nil and self.owner:IsOverheating()) and temperature_rate or 0) +
             (self.owner:HasTag("hasbuff_healthregenbuff") and healthregenbuff_rate or 0) +
             (self.owner:HasTag("hasbuff_halloweenpotion_health_buff") and halloweenpotionbuff_rate or 0) +
             (self.owner:HasTag("hasbuff_halloweenpotion_sanity_buff") and halloweenpotionbuff_rate or 0)
+
 
     local anim = (health_rate > 0.99 and "arrow_loop_increase_most") or
                 (health_rate > 0.49 and "arrow_loop_increase_more") or

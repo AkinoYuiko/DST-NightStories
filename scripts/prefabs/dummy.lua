@@ -107,7 +107,32 @@ local function onsanitychange(inst)
     end
 end
 
-local function onhealthsanitysync(inst)
+local function CalcFireDamageUpdate(inst)
+    inst._calc_firedamage_task_left = inst._calc_firedamage_task_left - 1
+    if inst._calc_firedamage_task_left <= 0 then
+        inst._calc_firedamage_task_left = 0
+        if inst._calc_firedamage_task ~= nil then
+            inst._calc_firedamage_task:Cancel()
+            inst._calc_firedamage_task = nil
+        end
+        inst._ontakenfiredamage_rate:set(0)
+    else
+        inst._ontakenfiredamage_rate:set(inst._total_firedamage / (GetTime() - inst._firedamage_task_starttime))
+    end
+end
+
+local function OnCalcFireDamage(inst, amount)
+    inst._calc_firedamage_task_left = 31
+    if inst._calc_firedamage_task == nil then
+        inst._total_firedamage = 0
+        inst._firedamage_task_starttime = GetTime()
+        inst._calc_firedamage_task = inst:DoPeriodicTask(0, CalcFireDamageUpdate)
+    else
+        inst._total_firedamage = inst._total_firedamage + amount
+    end
+end
+
+local function OnHealthSanityChange(inst, data)
     if inst.components.sanity and inst.components.health then
         local sanity = inst.components.sanity
         sanity.current = inst.components.health.currenthealth
@@ -116,6 +141,11 @@ local function onhealthsanitysync(inst)
     end
     onsanitychange(inst)
     CheckInsanity(inst)
+
+    if data and data.cause == "fire" then
+        local amount = data.amount and math.abs(data.amount) or 0
+        OnCalcFireDamage(inst, amount)
+    end
 end
 
 local function redirect_to_health(inst, amount, overtime, ...)
@@ -134,7 +164,7 @@ local function OnRespawnFromGhost(inst, data)
         local reviver_sanity = target.components.sanity
         if reviver_sanity then
             inst.components.health:SetCurrentHealth(reviver_sanity.current)
-            onhealthsanitysync(inst)
+            OnHealthSanityChange(inst)
             reviver_sanity:DoDelta(-reviver_sanity.current)
         end
     end
@@ -178,6 +208,10 @@ local master_postinit = function(inst)
 
     inst.customidleanim = "idle_wortox"
 
+    inst._total_firedamage = 0
+    inst._ontakenfiredamage_rate = net_byte(inst.GUID, "_ontakenfiredamage_rate", "_ontakenfiredamage_rate")
+    -- inst.ontakenfiredamage_rate:set(0)
+
     inst:AddComponent("reader")
 
     inst:AddComponent("hauntable")
@@ -212,7 +246,7 @@ local master_postinit = function(inst)
     end
 
     inst:ListenForEvent("respawnfromghost", OnRespawnFromGhost)
-    inst:ListenForEvent("healthdelta", onhealthsanitysync)
+    inst:ListenForEvent("healthdelta", OnHealthSanityChange)
 
     inst.skeleton_prefab = nil
     inst:ListenForEvent("death", function(inst)
