@@ -140,6 +140,18 @@ local function OnRespawnFromGhost(inst, data)
     end
 end
 
+local function OnDebuffRemoved(inst, name, ...)
+    if inst:HasTag("hasbuff_" .. name) then
+        inst:RemoveTag("hasbuff_" .. name)
+    end
+end
+
+local function OnDebuffAdded(inst, name, ...)
+    if not inst:HasTag("hasbuff_" .. name) then
+        inst:AddTag("hasbuff_" .. name)
+    end
+end
+
 local common_postinit = function(inst)
     inst.soundsname = "willow"
     inst:AddTag("nightmarebreaker")
@@ -189,10 +201,15 @@ local master_postinit = function(inst)
 
     inst.spawnlandshadow_fn = function(inst) return "terrorbeak" end
 
-    if inst.components.eater ~= nil then
+    if inst.components.eater then
         inst.components.eater:SetAbsorptionModifiers(0.5, 1, 0) -- Health, Hunger, Sanity
     end
     inst.components.foodaffinity:AddPrefabAffinity("nightmarepie", TUNING.AFFINITY_15_CALORIES_MED)
+
+    if inst.components.debuffable then
+        inst.components.debuffable.ondebuffremoved = OnDebuffRemoved
+        inst.components.debuffable.ondebuffadded = OnDebuffAdded
+    end
 
     inst:ListenForEvent("respawnfromghost", OnRespawnFromGhost)
     inst:ListenForEvent("healthdelta", onhealthsanitysync)

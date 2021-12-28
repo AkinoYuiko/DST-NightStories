@@ -222,7 +222,8 @@ end
 
 local hunger_rate = - TUNING.WILSON_HEALTH / TUNING.STARVE_KILL_TIME
 local temperature_rate = - TUNING.WILSON_HEALTH / TUNING.FREEZING_KILL_TIME
-
+local healthregenbuff_rate = TUNING.JELLYBEAN_TICK_VALUE / TUNING.JELLYBEAN_TICK_RATE
+local halloweenpotionbuff_rate = 1 / 2
 function DummyBadge:OnUpdate(dt)
     if TheNet:IsServerPaused() then return end
 
@@ -241,14 +242,17 @@ function DummyBadge:OnUpdate(dt)
     local health_rate = sanity_rate +
             ((self.owner.IsFreezing ~= nil and self.owner:IsFreezing()) and temperature_rate or 0) +
             ((self.owner.replica.hunger ~= nil and self.owner.replica.hunger:IsStarving()) and hunger_rate or 0) +
-            ((self.owner.IsOverheating ~= nil and self.owner:IsOverheating()) and temperature_rate or 0)
+            ((self.owner.IsOverheating ~= nil and self.owner:IsOverheating()) and temperature_rate or 0) +
+            (self.owner:HasTag("hasbuff_healthregenbuff") and healthregenbuff_rate or 0) +
+            (self.owner:HasTag("hasbuff_halloweenpotion_health_buff") and halloweenpotionbuff_rate or 0) +
+            (self.owner:HasTag("hasbuff_halloweenpotion_sanity_buff") and halloweenpotionbuff_rate or 0)
 
-    local anim = (health_rate > .3 and "arrow_loop_increase_most") or
-                (health_rate > .15 and "arrow_loop_increase_more") or
-                (health_rate > .015 and "arrow_loop_increase") or
-                (health_rate < -.45 and "arrow_loop_decrease_most") or
-                (health_rate < -.15 and "arrow_loop_decrease_more") or
-                (health_rate < -.03 and "arrow_loop_decrease") or
+    local anim = (health_rate > 0.99 and "arrow_loop_increase_most") or
+                (health_rate > 0.49 and "arrow_loop_increase_more") or
+                (health_rate > 0.02 and "arrow_loop_increase") or
+                (health_rate < -0.99 and "arrow_loop_decrease_most") or
+                (health_rate < -0.49 and "arrow_loop_decrease_more") or
+                (health_rate < -0.02 and "arrow_loop_decrease") or
                 "neutral"
 
     if self.owner.replica.health:GetPercent() >= 1 then anim = "neutral" end

@@ -1,12 +1,13 @@
-version = "1.21.14"
+version = "1.21.15"
 -- basic info --
 name = locale == "zh" and "暗夜故事集" or "Night Stories"
 author = "丁香女子学校"
 description = locale == "zh" and "[版本: " .. version .. [[]
 
 更新内容:
-- 达米合成需要精神的配方时不会出现受击动画.
+- 达米的"精神-生命"仪表盘现在可以显示回血buff影响下的箭头动画了。
 
+- 达米合成需要精神的配方时不会出现受击动画.
 - 更新达米配方逻辑.
 - 更新了部分翻译文本.
 - 修复影背包没有对应状态的检查文本的问题.
@@ -16,8 +17,9 @@ description = locale == "zh" and "[版本: " .. version .. [[]
 ]] or "[Version: " .. version .. [[]
 
 Changelog:
-- Hack Builder.RemoveIngredients for Dummy.
+- Update DammuBadge for health & sanity regen buffs.
 
+- Hack Builder.RemoveIngredients for Dummy.
 - Update recipe logic for Dummy.
 - Update some translate strings.
 - Fix Night Pack missing descriptionfn.
