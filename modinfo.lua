@@ -1,21 +1,22 @@
-version = "1.22.1"
-version_compatible = "1.22.0"
+version = "1.22.2"
 -- basic info --
 name = locale == "zh" and "暗夜故事集" or "Night Stories"
 author = "丁香女子学校"
 description = locale == "zh" and "[版本: " .. version .. [[]
 
 更新内容:
-- 修复modicon未显示的问题.
+- 麋鹿鹅的中文显示可以随机变化。
 
+- 修复modicon未显示的问题。
 - 更新适配纯净辅助。
 
 “黑夜将至，你准备好了吗？”
 ]] or "[Version: " .. version .. [[]
 
 Changelog:
-- Fix modicon not displayed.
+- Hack translate for Moose.
 
+- Fix modicon not displayed.
 - Update for DST-Fixed.
 
 "Night is coming, aren't you ready yet?"
