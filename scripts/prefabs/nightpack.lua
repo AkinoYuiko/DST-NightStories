@@ -302,6 +302,8 @@ local function ApplyState(inst, override_state)
     if state_fn then
         state_fn(inst, inst.components.inventoryitem.owner)
     end
+    inst.drawnameoverride = rawget(_G, "EncodeStrCode") and EncodeStrCode({content = state and "NAMES.NIGHTPACK_" .. state:upper() or "NAMES.NIGHTPACK" })
+
 end
 
 local function RenewState(inst, gemtype, isdummy)
@@ -545,6 +547,8 @@ local function fn()
     inst.OnSave = OnSave
     inst.OnPreLoad = OnPreLoad
     inst.OnRemoveEntity = OnRemove
+
+    inst.drawnameoverride = rawget(_G, "EncodeStrCode") and EncodeStrCode({content = "NAMES.NIGHTPACK"})
 
     return inst
 end

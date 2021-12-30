@@ -122,6 +122,10 @@ local function MakeBook(def)
         --MakeHauntableLaunchOrChangePrefab(inst, TUNING.HAUNT_CHANCE_OFTEN, TUNING.HAUNT_CHANCE_OCCASIONAL, nil, nil, morphlist)
         MakeHauntableLaunch(inst)
 
+        inst:DoTaskInTime(0, function(inst)
+            inst.drawnameoverride = rawget(_G, "EncodeStrCode") and EncodeStrCode({content = "NAMES." .. string.upper(inst.prefab)})
+        end)
+
         return inst
     end
 

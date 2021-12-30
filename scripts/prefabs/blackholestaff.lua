@@ -159,7 +159,11 @@ local function blackhole()
     inst.components.finiteuses:SetUses(5)
 
     MakeHauntableLaunch(inst)
-    --AddHauntableCustomReaction(inst, onhauntdark, true, false, true)
+
+    inst:DoTaskInTime(0, function(inst)
+        inst.drawnameoverride = rawget(_G, "EncodeStrCode") and EncodeStrCode({content = "NAMES." .. string.upper(inst.prefab)})
+    end)
+
     return inst
 end
 

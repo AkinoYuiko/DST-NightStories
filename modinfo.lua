@@ -1,35 +1,19 @@
-version = "1.21.17"
+version = "1.22.0"
 -- basic info --
 name = locale == "zh" and "暗夜故事集" or "Night Stories"
 author = "丁香女子学校"
 description = locale == "zh" and "[版本: " .. version .. [[]
 
 更新内容:
-- 修复了一处崩溃.
+- 更新适配纯净辅助。
 
-- 达米的"精神-生命"仪表盘现在可以部分统计火焰伤害了.
-- 达米的"精神-生命"仪表盘现在可以显示回血buff影响下的箭头动画了.
-- 达米合成需要精神的配方时不会出现受击动画.
-- 更新达米配方逻辑.
-- 更新了部分翻译文本.
-- 修复影背包没有对应状态的检查文本的问题.
-- <折叠了多个修复>
-- 新增道具【魔术礼装】(暗影操纵仪解锁).
-- 新增道具【便携式衣柜】(暗影操纵仪解锁).
+“黑夜将至，你准备好了吗？”
 ]] or "[Version: " .. version .. [[]
 
 Changelog:
-- Fix a crash.
+- Update for DST-Fixed.
 
-- Update DammyBadge for fire damage.
-- Update DammyBadge for health & sanity regen buffs.
-- Hack Builder.RemoveIngredients for Dummy.
-- Update recipe logic for Dummy.
-- Update some translate strings.
-- Fix Night Pack missing descriptionfn.
-- < include multi fixes >
-- New item "Magic Dress".
-- New item "Portable Wardrobe".
+"Night is coming, aren't you ready yet?"
 ]]
 
 forumthread = ""

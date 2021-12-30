@@ -40,6 +40,11 @@ local function buildmagatama(colour)
         inst:AddComponent("inspectable")
 
         inst:AddComponent("nightmagatama")
+
+        inst:DoTaskInTime(0, function(inst)
+            inst.drawnameoverride = rawget(_G, "EncodeStrCode") and EncodeStrCode({content = "NAMES." .. string.upper(inst.prefab)})
+        end)
+
         return inst
     end
 
