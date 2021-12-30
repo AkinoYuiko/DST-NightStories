@@ -1,4 +1,6 @@
-local STRINGS, io = GLOBAL.STRINGS, GLOBAL.io
+local MODROOT = MODROOT
+GLOBAL.setfenv(1, GLOBAL)
+
 local strings = {
     NAMES =
     {
@@ -199,6 +201,8 @@ local strings = {
     },
 }
 
+-- if not rawget(_G, "GlassicAPI") then return end
+
 GlassicAPI.MergeStringsToGLOBAL(strings)
 GlassicAPI.MergeStringsToGLOBAL(require("speech_wortox"), STRINGS.CHARACTERS.MIOTAN, true)
 GlassicAPI.MergeTranslationFromPO(MODROOT.."languages")
@@ -210,7 +214,7 @@ local function MergeCharacterSpeech(char)
     GlassicAPI.MergeSpeechFile(STRINGS.CHARACTERS[string.upper(char)], file)
 end
 
-GLOBAL.UpdateNsStrings = function(update_speech)
+UpdateNsStrings = function(update_speech)
     if update_speech then
         MergeCharacterSpeech("miotan")
         -- MergeCharacterSpeech("dummy")

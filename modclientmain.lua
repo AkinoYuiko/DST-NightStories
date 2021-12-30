@@ -1,4 +1,4 @@
-if GLOBAL.TheNet:GetIsClient() or GLOBAL.TheNet:GetIsServer() then return end
+if GLOBAL.inGamePlay or GLOBAL.TheNet:IsDedicated() or GLOBAL.TheNet:GetIsServer() or GLOBAL.TheNet:GetIsClient() then return end
 
 PrefabFiles = {
     "civi",
