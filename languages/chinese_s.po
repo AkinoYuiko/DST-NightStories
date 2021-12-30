@@ -824,3 +824,33 @@ msgstr "水晶头骨"
 msgctxt "STRINGS.SKIN_NAMES.miotan_none"
 msgid "Mio"
 msgstr "澪"
+
+#. STRINGS.NAMES.MOOSE1
+msgctxt "STRINGS.NAMES.MOOSE1"
+msgid "Moose"
+msgstr "麋鹿鸭"
+
+#. STRINGS.NAMES.MOOSE2
+msgctxt "STRINGS.NAMES.MOOSE2"
+msgid "Goose"
+msgstr "麋鹿鹅"
+
+#. STRINGS.NAMES.MOOSEEGG1
+msgctxt "STRINGS.NAMES.MOOSEEGG1"
+msgid "Moose Egg"
+msgstr "麋鹿鸭蛋"
+
+#. STRINGS.NAMES.MOOSEEGG2
+msgctxt "STRINGS.NAMES.MOOSEEGG2"
+msgid "Goose Egg"
+msgstr "麋鹿鹅蛋"
+
+#. STRINGS.NAMES.MOOSENEST1
+msgctxt "STRINGS.NAMES.MOOSENEST1"
+msgid "Moose Nest"
+msgstr "麋鹿鸭巢"
+
+#. STRINGS.NAMES.MOOSENEST2
+msgctxt "STRINGS.NAMES.MOOSENEST2"
+msgid "Goose Nest"
+msgstr "麋鹿鹅巢"
