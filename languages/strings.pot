@@ -38,9 +38,9 @@ msgctxt "STRINGS.NAMES.DARKMAGATAMA"
 msgid "Dark Magatama"
 msgstr ""
 
-#. STRINGS.NAMES.NIGHTMARE_SPEAR
-msgctxt "STRINGS.NAMES.NIGHTMARE_SPEAR"
-msgid "Nightmare Spear"
+#. STRINGS.NAMES.BOOK_TOGGLEDOWNFALL
+msgctxt "STRINGS.NAMES.BOOK_TOGGLEDOWNFALL"
+msgid "Love of Rain"
 msgstr ""
 
 #. STRINGS.NAMES.PORTABLE_WARDROBE_WRAP
@@ -48,14 +48,19 @@ msgctxt "STRINGS.NAMES.PORTABLE_WARDROBE_WRAP"
 msgid "Magic Dress"
 msgstr ""
 
+#. STRINGS.NAMES.SPICE_CACTUS
+msgctxt "STRINGS.NAMES.SPICE_CACTUS"
+msgid "Cactus Powder"
+msgstr ""
+
 #. STRINGS.NAMES.NIGHTPACK
 msgctxt "STRINGS.NAMES.NIGHTPACK"
 msgid "Night Pack"
 msgstr ""
 
-#. STRINGS.NAMES.SPICE_CACTUS
-msgctxt "STRINGS.NAMES.SPICE_CACTUS"
-msgid "Cactus Powder"
+#. STRINGS.NAMES.NIGHTMARE_SPEAR
+msgctxt "STRINGS.NAMES.NIGHTMARE_SPEAR"
+msgid "Nightmare Spear"
 msgstr ""
 
 #. STRINGS.NAMES.PORTABLE_WARDROBE_ITEM
@@ -63,14 +68,14 @@ msgctxt "STRINGS.NAMES.PORTABLE_WARDROBE_ITEM"
 msgid "Portable Wardrobe"
 msgstr ""
 
-#. STRINGS.NAMES.BOOK_TOGGLEDOWNFALL
-msgctxt "STRINGS.NAMES.BOOK_TOGGLEDOWNFALL"
-msgid "Love of Rain"
-msgstr ""
-
 #. STRINGS.NAMES.BOOK_HARVEST
 msgctxt "STRINGS.NAMES.BOOK_HARVEST"
 msgid "Season of Harvest"
+msgstr ""
+
+#. STRINGS.NAMES.BLACKHOLESTAFF
+msgctxt "STRINGS.NAMES.BLACKHOLESTAFF"
+msgid "Blackhole Staff"
 msgstr ""
 
 #. STRINGS.NAMES.NIGHTPACK_RED
@@ -78,9 +83,9 @@ msgctxt "STRINGS.NAMES.NIGHTPACK_RED"
 msgid "Red Night Pack"
 msgstr ""
 
-#. STRINGS.NAMES.LOSE_SANITY
-msgctxt "STRINGS.NAMES.LOSE_SANITY"
-msgid "the lost of sanity"
+#. STRINGS.NAMES.FUELPOCKETWATCH
+msgctxt "STRINGS.NAMES.FUELPOCKETWATCH"
+msgid "hacking Backtrek Watch"
 msgstr ""
 
 #. STRINGS.NAMES.NIGHTPACK_ORANGE
@@ -93,9 +98,9 @@ msgctxt "STRINGS.NAMES.NIGHTPACK_BLUE"
 msgid "Blue Night Pack"
 msgstr ""
 
-#. STRINGS.NAMES.BLACKHOLESTAFF
-msgctxt "STRINGS.NAMES.BLACKHOLESTAFF"
-msgid "Blackhole Staff"
+#. STRINGS.NAMES.LOSE_SANITY
+msgctxt "STRINGS.NAMES.LOSE_SANITY"
+msgid "the lost of sanity"
 msgstr ""
 
 #. STRINGS.NAMES.LIGHTMAGATAMA

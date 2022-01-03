@@ -24,6 +24,7 @@ local strings = {
         LIGHTMAGATAMA = "Light Magatama",
 
         MIOTAN = "Mio",
+        FUELPOCKETWATCH = "hacking Backtrek Watch",
 
         DUMMY = "Dummy",
         LOSE_SANITY = "the lost of sanity",

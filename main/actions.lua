@@ -1,5 +1,6 @@
 local AddAction = AddAction
 local AddComponentAction = AddComponentAction
+local AddPrefabPostInit = AddPrefabPostInit
 local AddStategraphActionHandler = AddStategraphActionHandler
 GLOBAL.setfenv(1, GLOBAL)
 
@@ -10,11 +11,13 @@ NS_ACTIONS = {
     MIOFUEL = Action({mount_valid = true}),
     NIGHTSWITCH = Action({mount_valid = true, priority = 1}),
     NIGHTSWORDMAGATAMA = Action({mount_valid = true, priority = 2}),
+    FUEL_POCKETWATCH = Action({ priority=-1, rmb=true, mount_valid=true }),
 }
 
 NS_ACTIONS.GEMTRADE.str = STRINGS.ACTIONS.GIVE.SOCKET
 NS_ACTIONS.NIGHTSWITCH.str = STRINGS.ACTIONS.USEITEM
 NS_ACTIONS.NIGHTSWORDMAGATAMA.str = STRINGS.ACTIONS.GIVE.SOCKET
+NS_ACTIONS.FUEL_POCKETWATCH.str = STRINGS.ACTIONS.ADDFUEL
 
 NS_ACTIONS.MIOFUEL.stroverridefn = function(act)
     if act.invobject then
@@ -145,6 +148,23 @@ for k, v in orderedPairs(NS_ACTIONS) do
     AddAction(v)
 end
 
+local function FuelPocketWatch(inst, caster)
+    print("FuelPocketWatch, GetActionPoint")
+    return inst.components.pocketwatch:CastSpell(caster)
+end
+NS_ACTIONS.FUEL_POCKETWATCH.fn = function(act)
+    local fuel = act.doer.components.inventory:RemoveItem(act.invobject)
+    if fuel then
+        if FuelPocketWatch(act.target, act.doer) then
+            fuel:Remove()
+            act.doer.components.health:DoDelta(TUNING.HEALTH_FUELPOCKETWATCH_COST, nil, "fuelpocketwatch", true, nil, true)
+            return true
+        else
+            act.doer.components.inventory:GiveItem(fuel)
+        end
+    end
+end
+
 ---------------------------------------------------------------------
 ----------------------- COMPONENT ACTIONS ---------------------------
 ---------------------------------------------------------------------
@@ -231,9 +251,26 @@ AddComponentAction("INVENTORY", "wardrobe", function(inst, doer, actions, right)
     end
 end)
 
+AddComponentAction("USEITEM", "fuelpocketwatch", function(inst, doer, target, actions, right)
+    if right and inst.prefab =="nightmarefuel" and doer:HasTag("nightmare_twins")
+    and target.prefab == "pocketwatch_recall" and target:HasTag("pocketwatch_inactive") and not target:HasTag("recall_unmarked")then
+        if not (doer.replica.rider ~= nil and doer.replica.rider:IsRiding()) or target:HasTag("pocketwatch_mountedcast") then
+            table.insert(actions, NS_ACTIONS.FUEL_POCKETWATCH)
+        end
+    end
+end)
+
 for _, sg in ipairs({"wilson", "wilson_client"}) do
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.MIOFUEL, "doshortaction"))
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.GEMTRADE, "doshortaction"))
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.NIGHTSWORDMAGATAMA, "doshortaction"))
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.NIGHTSWITCH, "domediumaction"))
+    AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.FUEL_POCKETWATCH, "pocketwatch_warpback_pre"))
 end
+
+AddPrefabPostInit("nightmarefuel", function(inst)
+    if not TheWorld.ismastersim then return end
+
+    inst:AddComponent("fuelpocketwatch")
+
+end)

@@ -824,3 +824,8 @@ msgstr "水晶头骨"
 msgctxt "STRINGS.SKIN_NAMES.miotan_none"
 msgid "Mio"
 msgstr "澪"
+
+#. STRINGS.NAMES.FUELPOCKETWATCH
+msgctxt "STRINGS.NAMES.FUELPOCKETWATCH"
+msgid "hacking Backtrek Watch"
+msgstr "入侵溯源表"

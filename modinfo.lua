@@ -1,23 +1,17 @@
-version = "1.22.2"
+version = "1.23"
 -- basic info --
 name = locale == "zh" and "暗夜故事集" or "Night Stories"
 author = "丁香女子学校"
 description = locale == "zh" and "[版本: " .. version .. [[]
 
 更新内容:
-- 麋鹿鹅的中文显示可以随机变化。
-
-- 修复modicon未显示的问题。
-- 更新适配纯净辅助。
+- 澪和达米现在可以使用噩梦燃料入侵溯源表。
 
 “黑夜将至，你准备好了吗？”
 ]] or "[Version: " .. version .. [[]
 
 Changelog:
-- Hack translate for Moose.
-
-- Fix modicon not displayed.
-- Update for DST-Fixed.
+- Mio and Dummy can hack Backtrek Watch with Nightmare Fuel.
 
 "Night is coming, aren't you ready yet?"
 ]]
