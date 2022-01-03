@@ -1,5 +1,5 @@
 version = "1.23.1"
-version_compatible = "1.23"
+-- version_compatible = "1.23"
 -- basic info --
 name = locale == "zh" and "暗夜故事集" or "Night Stories"
 author = "丁香女子学校"
