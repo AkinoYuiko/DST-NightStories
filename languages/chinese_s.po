@@ -829,3 +829,8 @@ msgstr "澪"
 msgctxt "STRINGS.NAMES.FUELPOCKETWATCH"
 msgid "hacking Backtrek Watch"
 msgstr "入侵溯源表"
+
+#. STRINGS.ACTIONS.FUELPOCKETWATCH
+msgctxt "STRINGS.ACTIONS.FUELPOCKETWATCH"
+msgid "Hack"
+msgstr "入侵"
