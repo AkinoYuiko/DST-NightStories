@@ -43,7 +43,7 @@ modimport("main/tuning.lua")
 modimport("main/strings.lua")
 modimport("main/hack_templates.lua")
 
-local SkinHandler = require("skinhandler")
+local SkinHandler = GlassicAPI.SkinHandler
 SkinHandler.AddModSkins({
     civi = {
         is_char = true,
