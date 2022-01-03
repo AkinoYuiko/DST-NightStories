@@ -11,7 +11,7 @@ NS_ACTIONS = {
     MIOFUEL = Action({mount_valid = true}),
     NIGHTSWITCH = Action({mount_valid = true, priority = 1}),
     NIGHTSWORDMAGATAMA = Action({mount_valid = true, priority = 2}),
-    FUELPOCKETWATCH = Action({ priority=-1, rmb=true, mount_valid=true }),
+    FUELPOCKETWATCH = Action({ priority=-1, rmb=true }),
 }
 
 NS_ACTIONS.GEMTRADE.str = STRINGS.ACTIONS.GIVE.SOCKET
@@ -248,6 +248,8 @@ function SCENE.hauntable(inst, doer, actions, ...)
                 and not (inst:HasTag("haunted") or inst:HasTag("catchable")) then
             table.insert(actions, ACTIONS.HAUNT)
         end
+    elseif inst:HasTag("nightmare_twins") and doer.prefab ~= "dummy" then
+        return
     else
         return scene_hauntable(inst, doer, actions, ...)
     end
@@ -262,10 +264,9 @@ end)
 
 AddComponentAction("USEITEM", "fuelpocketwatch", function(inst, doer, target, actions, right)
     if right and inst.prefab =="nightmarefuel" and doer:HasTag("nightmare_twins")
-    and target.prefab == "pocketwatch_recall" and target:HasTag("pocketwatch_inactive") and not target:HasTag("recall_unmarked")then
-        if not (doer.replica.rider ~= nil and doer.replica.rider:IsRiding()) or target:HasTag("pocketwatch_mountedcast") then
-            table.insert(actions, NS_ACTIONS.FUELPOCKETWATCH)
-        end
+    and target.prefab == "pocketwatch_recall" and target:HasTag("pocketwatch_inactive") and not target:HasTag("recall_unmarked")
+    then
+        table.insert(actions, NS_ACTIONS.FUELPOCKETWATCH)
     end
 end)
 
