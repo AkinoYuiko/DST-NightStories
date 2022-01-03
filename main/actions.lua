@@ -4,7 +4,7 @@ local AddPrefabPostInit = AddPrefabPostInit
 local AddStategraphActionHandler = AddStategraphActionHandler
 GLOBAL.setfenv(1, GLOBAL)
 
-local UpvalueHacker = require("upvaluehacker")
+local UpvalueHacker = require "upvaluehacker"
 
 NS_ACTIONS = {
     GEMTRADE = Action({mount_valid = true}),
@@ -80,6 +80,15 @@ NS_ACTIONS.NIGHTSWITCH.fn = function(act)
         return true
     end
 end
+
+scheduler:ExecuteInTime(0, function()
+    if rawget(_G, "STRCODE_TALKER") then
+        STRCODE_TALKER[STRINGS.CIVI_GEMS.FEEL_DARK] = "CIVI_GEMS.FEEL_DARK"
+        STRCODE_TALKER[STRINGS.CIVI_GEMS.ALREADY_DARK] = "CIVI_GEMS.ALREADY_DARK"
+        STRCODE_TALKER[STRINGS.CIVI_GEMS.FEEL_LIGHT] = "CIVI_GEMS.FEEL_LIGHT"
+        STRCODE_TALKER[STRINGS.CIVI_GEMS.ALREADY_LIGHT] = "CIVI_GEMS.ALREADY_LIGHT"
+    end
+end)
 
 local function UseFuel(item, target, doer)
     local wetmult = item:GetIsWet() and TUNING.WET_FUEL_PENALTY or 1
