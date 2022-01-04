@@ -4,7 +4,7 @@ GLOBAL.setfenv(1, GLOBAL)
 
 -- Dummy Badge --
 local StatusDisplays = require("widgets/statusdisplays")
-StatusDisplays.HideDummyBrain = function(self)
+function StatusDisplays:HideDummyBrain()
     if self.owner and self.owner.prefab == "dummy" then
         if self.brain then self.brain:Hide() end
         if self.moisturemeter then self.moisturemeter:SetPosition(0, -40, 0) end
@@ -13,7 +13,7 @@ end
 StatusDisplays:HideDummyBrain()
 
 local SetGhostMode = StatusDisplays.SetGhostMode
-StatusDisplays.SetGhostMode = function(self, ghostmode)
+function StatusDisplays:SetGhostMode(ghostmode)
     SetGhostMode(self, ghostmode)
     self:HideDummyBrain()
 end
@@ -48,7 +48,7 @@ local easing = require("easing")
 local SourceModifierList = require("util/sourcemodifierlist")
 
 local Sanity = require("components/sanity")
-Sanity.Recalc = function(self, dt)
+function Sanity:Recalc(dt)
     local dapper_delta = 0
     if self.dapperness_mult ~= 0 then
         local total_dapperness = self.dapperness
@@ -154,12 +154,12 @@ Sanity.Recalc = function(self, dt)
     self:DoDelta(self.rate * dt, true)
 end
 
-Sanity.GetRate = function(self)
+function Sanity:GetRate(self)
     return self.rate
 end
 
 local SetInducedInsanity = Sanity.SetInducedInsanity
-Sanity.SetInducedInsanity = function(self, src, val)
+function Sanity:SetInducedInsanity(src, val)
     if self.inducedinsanity ~= val then
         self.inst.replica.sanity:SetInducedInsanity(val)
     end
@@ -168,13 +168,13 @@ end
 
 -- Sanity Replica --
 local SanityReplica = require("components/sanity_replica")
-SanityReplica.SetRate = function(self, rate)
+function SanityReplica:SetRate(rate)
     if self.classified ~= nil then
         self.classified.sanityrate:set(rate)
     end
 end
 
-SanityReplica.GetRate = function(self)
+function SanityReplica:GetRate()
     if self.inst.components.sanity ~= nil then
         return self.inst.components.sanity:GetRate()
     elseif self.classified ~= nil then
@@ -184,13 +184,13 @@ SanityReplica.GetRate = function(self)
     end
 end
 
-SanityReplica.SetInducedInsanity = function(self, val)
+function SanityReplica:SetInducedInsanity(val)
     if self.classified ~= nil then
         self.classified.inducedinsanity:set(val)
     end
 end
 
-SanityReplica.GetIsInducedInsanity = function(self)
+function SanityReplica:GetIsInducedInsanity()
     if self.inst.components.sanity ~= nil then
         return self.inst.components.sanity.inducedinsanity
     elseif self.classified ~= nil then
