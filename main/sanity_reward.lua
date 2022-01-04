@@ -8,19 +8,21 @@ local nightmare_prefabs =
     "swimminghorror",
 }
 
-for _, prefab in ipairs(nightmare_prefabs) do
-    AddPrefabPostInit(prefab, function(inst)
-        if not TheWorld.ismastersim then return end
+local function sanity_reward_postinit(inst)
+    if not TheWorld.ismastersim then return end
 
-        local oldOnKilledByOther = inst.components.combat.onkilledbyother
-        inst.components.combat.onkilledbyother = function(inst, attacker)
+    local oldOnKilledByOther = inst.components.combat.onkilledbyother
+    inst.components.combat.onkilledbyother = function(inst, attacker)
         if attacker and attacker:HasTag("nightmare_twins") and attacker.components.sanity then
-                attacker.components.sanity:DoDelta((inst.sanityreward or TUNING.SANITY_SMALL) * 0.5)
-            else
-                oldOnKilledByOther(inst, attacker)
-            end
+            attacker.components.sanity:DoDelta((inst.sanityreward or TUNING.SANITY_SMALL) * 0.5)
+        else
+            oldOnKilledByOther(inst, attacker)
         end
-    end)
+    end
+end
+
+for _, prefab in ipairs(nightmare_prefabs) do
+    AddPrefabPostInit(prefab, sanity_reward_postinit)
 end
 
 local function new_onpickedfn(inst, picker)
