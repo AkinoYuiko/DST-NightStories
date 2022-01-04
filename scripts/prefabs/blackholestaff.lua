@@ -49,9 +49,9 @@ local function pickup(staff, target, pos)
                 if caster.components.inventory:CanAcceptCount(v, 40) > 0 then
 
                 local fx = SpawnPrefab("shadow_puff")
-                if fx then fx.Transform:SetPosition(v.Transform:GetWorldPosition()) fx.Transform:SetScale(0.7,0.7,0.7) end
+                if fx then fx.Transform:SetPosition(v.Transform:GetWorldPosition()) fx.Transform:SetScale(0.7, 0.7, 0.7) end
                 if v.components.stackable ~= nil then
-                    local num = caster.components.inventory:CanAcceptCount(v,40)
+                    local num = caster.components.inventory:CanAcceptCount(v, 40)
                     v = v.components.stackable:Get(num)
                 end
                 --end
@@ -71,9 +71,9 @@ local function pickup(staff, target, pos)
 
 end
 ---------Can Cast Fn---------
-local function can_cast_fn(doer, target, pos)
-    return target and target.components.inventoryitem or target:HasTag("player")
-end
+-- local function can_cast_fn(doer, target, pos)
+--     return target and target.components.inventoryitem or target:HasTag("player")
+-- end
 
 ---------COMMON FUNCTIONS---------
 local function onunequip(inst, owner)
@@ -104,7 +104,7 @@ local function blackhole()
     inst.AnimState:SetBuild("blackholestaff")
     --inst.AnimState:OverrideSymbol("grass", "swap_nightcane", "grass")
     inst.AnimState:PlayAnimation("blackholestaff")
-    -- inst.AnimState:SetManualBB(15,-75,100,225)
+    -- inst.AnimState:SetManualBB(15, -75, 100, 225)
 
     inst:AddTag("nopunch")
     inst:AddTag("allow_action_on_impassable")
@@ -143,20 +143,20 @@ local function blackhole()
     inst.components.equippable:SetOnUnequip(onunequip)
 
 
-    inst.fxcolour = {1/255,1/255,1/255}
+    inst.fxcolour = {1/255, 1/255, 1/255}
 
     -- inst.spellfn = pickup
     inst:AddComponent("spellcaster")
     inst.components.spellcaster.canuseonpoint = true
     inst.components.spellcaster.canuseonpoint_water = true
-    inst.components.spellcaster.canuseontargets = true
+    inst.components.spellcaster.canuseontargets = false
     inst.components.spellcaster.canusefrominventory = true
     inst.components.spellcaster:SetSpellFn(pickup)
-    inst.components.spellcaster:SetCanCastFn(can_cast_fn)
+    -- inst.components.spellcaster:SetCanCastFn(can_cast_fn)
 
 
-    inst.components.finiteuses:SetMaxUses(5)
-    inst.components.finiteuses:SetUses(5)
+    inst.components.finiteuses:SetMaxUses(TUNING.BLACKHOLESTAFF_USES)
+    inst.components.finiteuses:SetUses(TUNING.BLACKHOLESTAFF_USES)
 
     MakeHauntableLaunch(inst)
 
@@ -168,6 +168,6 @@ local function blackhole()
 end
 
 
--- return Prefab("blackholestaff",blackhole,assets,prefabs.blackhole),
---     Prefab("nightmarestaff",nightmare,assets,prefabs.nightmare)
-return Prefab("blackholestaff",blackhole,assets,prefabs.blackhole)
+-- return Prefab("blackholestaff", blackhole, assets, prefabs.blackhole),
+--     Prefab("nightmarestaff", nightmare, assets, prefabs.nightmare)
+return Prefab("blackholestaff", blackhole, assets, prefabs.blackhole)
