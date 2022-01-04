@@ -12,9 +12,9 @@ function StatusDisplays:HideDummyBrain()
 end
 StatusDisplays:HideDummyBrain()
 
-local SetGhostMode = StatusDisplays.SetGhostMode
+local set_ghost_mode = StatusDisplays.SetGhostMode
 function StatusDisplays:SetGhostMode(ghostmode)
-    SetGhostMode(self, ghostmode)
+    set_ghost_mode(self, ghostmode)
     self:HideDummyBrain()
 end
 
@@ -158,12 +158,12 @@ function Sanity:GetRate()
     return self.rate
 end
 
-local SetInducedInsanity = Sanity.SetInducedInsanity
+local set_induced_insanity = Sanity.SetInducedInsanity
 function Sanity:SetInducedInsanity(src, val)
     if self.inducedinsanity ~= val then
         self.inst.replica.sanity:SetInducedInsanity(val)
     end
-    SetInducedInsanity(self, src, val)
+    set_induced_insanity(self, src, val)
 end
 
 -- Sanity Replica --

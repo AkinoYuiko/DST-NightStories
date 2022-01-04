@@ -41,15 +41,15 @@ local function check_dummy_spawn_beak(inst)
 end
 
 local ChildSpawner = require("components/childspawner")
-local DoSpawnChild = ChildSpawner.DoSpawnChild
-ChildSpawner.DoSpawnChild = function(self, target, prefab, ...)
+local do_spawn_child = ChildSpawner.DoSpawnChild
+function ChildSpawner:DoSpawnChild(target, prefab, ...)
     if self.childname == "crawlingnightmare" then
-        return DoSpawnChild(self, target, check_dummy_spawn_beak(self.inst), ...)
+        return do_spawn_child(self, target, check_dummy_spawn_beak(self.inst), ...)
     end
-    return DoSpawnChild(self, target, prefab, ...)
+    return do_spawn_child(self, target, prefab, ...)
 end
 
-local function OnWorkFinished(inst)
+local function on_work_finished(inst)
     inst.components.lootdropper:DropLoot(inst:GetPosition())
 
     local fx = SpawnAt("collapse_small", inst)
@@ -73,7 +73,7 @@ local STATUERUINS = {
 local function statueruins_postinit(inst)
     if not TheWorld.ismastersim then return end
     if inst.components.workable then
-        inst.components.workable:SetOnFinishCallback(OnWorkFinished)
+        inst.components.workable:SetOnFinishCallback(on_work_finished)
     end
 end
 for _, prefab in ipairs(STATUERUINS) do

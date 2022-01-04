@@ -112,9 +112,9 @@ AddRecipe("blackholestaff",
 {Ingredient("livinglog", 2), Ingredient("orangegem", 2), Ingredient("nightmarefuel", 4)},
 dummytab, TECH.ANCIENT_FOUR, nil, nil, true, nil, "nightmarebreaker", nil, "blackholestaff.tex" )
 
-AddStategraphPostInit("wilson", function(sg)
-    local old_handler = sg.actionhandlers[ACTIONS.BUILD].deststate
-    sg.actionhandlers[ACTIONS.BUILD].deststate = function(inst, action)
+AddStategraphPostInit("wilson", function(self)
+    local old_handler = self.actionhandlers[ACTIONS.BUILD].deststate
+    self.actionhandlers[ACTIONS.BUILD].deststate = function(inst, action)
         -- if not inst.sg:HasStateTag("busy") then
         if action.recipe and action.recipe == "nightmare_spear" and action.doer and action.doer.prefab == "dummy" then
             return "domediumaction"

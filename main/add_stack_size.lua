@@ -9,10 +9,10 @@ local NS_STACK_SIZES =
 local NS_STACK_SIZE_CODES = table.invert(NS_STACK_SIZES)
 
 local Stackable = require("components/stackable_replica")
-Stackable.SetMaxSize = function(self, maxsize)
+function Stackable:SetMaxSize(maxsize)
     self._maxsize:set(NS_STACK_SIZE_CODES[maxsize] - 1)
 end
 
-Stackable.MaxSize = function(self)
+function Stackable:MaxSize()
     return NS_STACK_SIZES[self._maxsize:value() + 1]
 end

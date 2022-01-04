@@ -1,6 +1,5 @@
 local AddAction = AddAction
 local AddComponentAction = AddComponentAction
-local AddPrefabPostInit = AddPrefabPostInit
 local AddStategraphActionHandler = AddStategraphActionHandler
 GLOBAL.setfenv(1, GLOBAL)
 
@@ -277,10 +276,3 @@ for _, sg in ipairs({"wilson", "wilson_client"}) do
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.NIGHTSWITCH, "domediumaction"))
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.FUELPOCKETWATCH, "pocketwatch_warpback_pre"))
 end
-
-AddPrefabPostInit("nightmarefuel", function(inst)
-    if not TheWorld.ismastersim then return end
-
-    inst:AddComponent("fuelpocketwatch")
-
-end)
