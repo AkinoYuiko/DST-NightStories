@@ -154,7 +154,7 @@ function Sanity:Recalc(dt)
     self:DoDelta(self.rate * dt, true)
 end
 
-function Sanity:GetRate(self)
+function Sanity:GetRate()
     return self.rate
 end
 
