@@ -6,7 +6,12 @@ local assets = {
     Asset( "ANIM", "anim/miotan.zip" ),
     Asset( "ANIM", "anim/ghost_miotan_build.zip" ),
 }
-local prefabs = {}
+
+local prefabs = {
+    "pandorachest_reset",
+    "statue_transition"
+}
+
 local start_inv = {}
 
 for k, v in pairs(TUNING.GAMEMODE_STARTING_ITEMS) do
