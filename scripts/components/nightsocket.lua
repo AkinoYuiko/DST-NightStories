@@ -1,5 +1,1 @@
-local NightSocket = Class(function(self, inst)
-    self.inst = inst
-end)
-
-return NightSocket
+return GlassicAPI.ShellComponent
