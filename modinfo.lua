@@ -1,12 +1,13 @@
-version = "1.23.4"
+version = "1.23.5"
 -- basic info --
 name = locale == "zh" and "暗夜故事集" or "Night Stories"
 author = "丁香女子学校"
 description = locale == "zh" and "[版本: " .. version .. [[]
 
 更新内容:
-- 更新Mio的代码提升加载性能。
+- 更新适配新版的 Glassic API。
 
+- 更新Mio的代码提升加载性能。
 - 优化部分代码的格式。
 - 修复了黑洞法杖动作表现上不符合预期的问题。
 - 修复了澪或达米可以被达米以外的玩家作祟的问题。
@@ -17,8 +18,9 @@ description = locale == "zh" and "[版本: " .. version .. [[]
 ]] or "[Version: " .. version .. [[]
 
 Changelog:
-- Improve code performance for Mio.
+- Update for a new version of Glassic API.
 
+- Improve code performance for Mio.
 - Tweak some code format.
 - Fix action behavior on Blackhole Staff.
 - Fix issue that Mio or Dummy can be haunted by non-Dummy players.
