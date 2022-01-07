@@ -23,10 +23,10 @@ end
 
 ------------------------------------------------
 
-local OverrideSymbol = AnimState.OverrideSymbol
-AnimState.OverrideSymbol = function(self, symbol, override_build, override_symbol, ...)
+local anim_state_override_symbol = AnimState.OverrideSymbol
+function AnimState:OverrideSymbol(symbol, override_build, override_symbol, ...)
     if symbol == "swap_garnish" and override_build == "spices" and NS_SPICES[override_symbol:upper()] then
         override_build = "ns_spices"
     end
-    return OverrideSymbol(self, symbol, override_build, override_symbol, ...)
+    return anim_state_override_symbol(self, symbol, override_build, override_symbol, ...)
 end

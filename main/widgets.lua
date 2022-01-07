@@ -1,4 +1,5 @@
-local Vector3 = GLOBAL.Vector3
+GLOBAL.setfenv(1, GLOBAL)
+
 local containers = require("containers")
 local params = containers.params
 

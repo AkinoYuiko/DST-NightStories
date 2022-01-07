@@ -163,7 +163,7 @@ function Sanity:SetInducedInsanity(src, val)
     if self.inducedinsanity ~= val then
         self.inst.replica.sanity:SetInducedInsanity(val)
     end
-    set_induced_insanity(self, src, val)
+    return set_induced_insanity(self, src, val)
 end
 
 -- Sanity Replica --

@@ -34,20 +34,20 @@ end
 -- fix lantern reskin in inventory
 local old_lantern_init_fn = lantern_init_fn
 lantern_init_fn = function(inst, ...)
-    local rt_lantern_init = {old_lantern_init_fn(inst, ...)}
+    local ret = { old_lantern_init_fn(inst, ...) }
     if inst.components.inventoryitem then
         inst.components.inventoryitem:ChangeImageName(inst:GetSkinName())
     end
-    return unpack(rt_lantern_init)
+    return unpack(ret)
 end
 
 local old_lantern_clear_fn = lantern_clear_fn
 lantern_clear_fn = function(inst, ...)
-    local rt_lantern_clear = {old_lantern_clear_fn(inst, ...)}
+    local ret = { old_lantern_clear_fn(inst, ...) }
     if inst.components.inventoryitem then
         inst.components.inventoryitem:ChangeImageName()
     end
-    return unpack(rt_lantern_clear)
+    return unpack(ret)
 end
 
 -- nightstick
