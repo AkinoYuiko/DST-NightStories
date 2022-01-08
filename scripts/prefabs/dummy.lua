@@ -1,5 +1,6 @@
-local MakePlayerCharacter = require("prefabs/player_common")
-local DummyBadge = require("widgets/dummybadge")
+local MakePlayerCharacter = require "prefabs/player_common"
+local DummyBadge = require "widgets/dummybadge"
+local NS_Utils = require "ns_utils"
 
 local assets = {
     Asset( "SCRIPT", "scripts/prefabs/player_common.lua" ),
@@ -18,7 +19,7 @@ end
 
 prefabs = FlattenTree({ prefabs, start_inv }, true)
 
-local function CalcSanityAura(inst, observer)
+local function calc_sanity_aura(inst, observer)
     if observer.prefab == "dummy" then
         return 0
     elseif observer.prefab ~= "dummy" and observer:HasTag("nightstorychar") then
@@ -28,7 +29,7 @@ local function CalcSanityAura(inst, observer)
     end
 end
 
-local function GetEquippableDapperness(owner, equippable)
+local function get_equippable_dapperness(owner, equippable)
     local dapperness = equippable:GetDapperness(owner, owner.components.sanity.no_moisture_penalty)
     if equippable.inst:HasTag("shadow_item") then
         return 0
@@ -36,7 +37,7 @@ local function GetEquippableDapperness(owner, equippable)
     return dapperness
 end
 
-local function CheckInsanity(inst)
+local function check_insanity(inst)
     local sanity = inst.components.sanity
     if not sanity then return end
 
@@ -81,7 +82,7 @@ local function CheckInsanity(inst)
     end
 end
 
-local function onsanitychange(inst)
+local function do_hunger_rate_change(inst)
     if inst:HasTag("playerghost") or inst.components.health:IsDead() then
         return
     end
@@ -94,7 +95,7 @@ local function onsanitychange(inst)
         inst:AddTag("monster")
         if not inst.components.sanityaura then
             inst:AddComponent("sanityaura")
-            inst.components.sanityaura.aurafn = CalcSanityAura
+            inst.components.sanityaura.aurafn = calc_sanity_aura
             inst.components.sanityaura.aura = (TUNING.DUMMY_SANITY_AURA * (1 + percent) / 2)
         end
     else
@@ -107,45 +108,21 @@ local function onsanitychange(inst)
     end
 end
 
-local function CalcFireDamageUpdate(inst)
-    inst._calc_firedamage_task_left = inst._calc_firedamage_task_left - 1
-    if inst._calc_firedamage_task_left <= 0 then
-        inst._calc_firedamage_task_left = 0
-        if inst._calc_firedamage_task ~= nil then
-            inst._calc_firedamage_task:Cancel()
-            inst._calc_firedamage_task = nil
-        end
-        inst._ontakenfiredamage_rate:set(0)
-    else
-        inst._ontakenfiredamage_rate:set(inst._total_firedamage / (GetTime() - inst._firedamage_task_starttime))
-    end
-end
-
-local function OnCalcFireDamage(inst, amount)
-    inst._calc_firedamage_task_left = 31
-    if inst._calc_firedamage_task == nil then
-        inst._total_firedamage = 0
-        inst._firedamage_task_starttime = GetTime()
-        inst._calc_firedamage_task = inst:DoPeriodicTask(0, CalcFireDamageUpdate)
-    else
-        inst._total_firedamage = inst._total_firedamage + amount
-    end
-end
-
-local function OnHealthSanityChange(inst, data)
+local function on_health_sanity_change(inst, data)
     if inst.components.sanity and inst.components.health then
         local sanity = inst.components.sanity
         sanity.current = inst.components.health.currenthealth
         sanity.inst:PushEvent("sanitydelta", { oldpercent = sanity._oldpercent, newpercent = sanity:GetPercent(), overtime = true, sanitymode = sanity.mode})
         sanity._oldpercent = sanity:GetPercent()
     end
-    onsanitychange(inst)
-    CheckInsanity(inst)
+    do_hunger_rate_change(inst)
+    check_insanity(inst)
 
     if data and data.cause == "fire" then
         local amount = data.amount and math.abs(data.amount) or 0
-        OnCalcFireDamage(inst, amount)
+        NS_Utils.TableInsertRate(inst.firedamage_history, amount)
     end
+    inst._firedamage_rate:set(NS_Utils.GetRateFromTable(inst.firedamage_history))
 end
 
 local function redirect_to_health(inst, amount, overtime, ...)
@@ -156,7 +133,7 @@ local function onhaunt(inst, doer)
     return not (inst.components.sanity and inst.components.sanity.current == 0)
 end
 
-local function OnRespawnFromGhost(inst, data)
+local function on_respawn_from_ghost(inst, data)
     if data and data.source then
         local target = (data.source.prefab == "reviver" and data.user)
                         or (data.source.prefab == "pocketwatch_revive" and data.source.components.inventoryitem.owner)
@@ -164,19 +141,19 @@ local function OnRespawnFromGhost(inst, data)
         local reviver_sanity = target.components.sanity
         if reviver_sanity then
             inst.components.health:SetCurrentHealth(reviver_sanity.current)
-            OnHealthSanityChange(inst)
+            on_health_sanity_change(inst)
             reviver_sanity:DoDelta(-reviver_sanity.current)
         end
     end
 end
 
-local function OnDebuffRemoved(inst, name, ...)
+local function on_debuff_removed(inst, name, ...)
     if inst:HasTag("hasbuff_" .. name) then
         inst:RemoveTag("hasbuff_" .. name)
     end
 end
 
-local function OnDebuffAdded(inst, name, ...)
+local function on_debuff_added(inst, name, ...)
     if not inst:HasTag("hasbuff_" .. name) then
         inst:AddTag("hasbuff_" .. name)
     end
@@ -193,7 +170,7 @@ local common_postinit = function(inst)
     -- Minimap icon
     inst.MiniMapEntity:SetIcon("dummy.tex")
 
-    inst._ontakenfiredamage_rate = net_byte(inst.GUID, "_ontakenfiredamage_rate", "_ontakenfiredamage_rate")
+    inst._firedamage_rate = net_byte(inst.GUID, "_firedamage_rate", "_firedamage_rate")
 
     if TheNet:GetServerGameMode() == "lavaarena" then
     elseif TheNet:GetServerGameMode() == "quagmire" then
@@ -210,8 +187,7 @@ local master_postinit = function(inst)
 
     inst.customidleanim = "idle_wortox"
 
-    inst._total_firedamage = 0
-    -- inst.ontakenfiredamage_rate:set(0)
+    inst.firedamage_history = {}
 
     inst:AddComponent("reader")
 
@@ -228,7 +204,7 @@ local master_postinit = function(inst)
     inst.components.sanity.night_drain_mult = TUNING.DUMMY_NIGHT_SANITY_MULT
     inst.components.sanity.neg_aura_mult = TUNING.DUMMY_SANITY_MULT
     inst.components.sanity.redirect = redirect_to_health
-    inst.components.sanity.get_equippable_dappernessfn = GetEquippableDapperness
+    inst.components.sanity.get_equippable_dappernessfn = get_equippable_dapperness
 
     inst.components.health.disable_penalty = true
 
@@ -242,12 +218,12 @@ local master_postinit = function(inst)
     inst.components.foodaffinity:AddPrefabAffinity("nightmarepie", TUNING.AFFINITY_15_CALORIES_MED)
 
     if inst.components.debuffable then
-        inst.components.debuffable.ondebuffremoved = OnDebuffRemoved
-        inst.components.debuffable.ondebuffadded = OnDebuffAdded
+        inst.components.debuffable.ondebuffremoved = on_debuff_removed
+        inst.components.debuffable.ondebuffadded = on_debuff_added
     end
 
-    inst:ListenForEvent("respawnfromghost", OnRespawnFromGhost)
-    inst:ListenForEvent("healthdelta", OnHealthSanityChange)
+    inst:ListenForEvent("respawnfromghost", on_respawn_from_ghost)
+    inst:ListenForEvent("healthdelta", on_health_sanity_change)
 
     inst.skeleton_prefab = nil
     inst:ListenForEvent("death", function(inst)
