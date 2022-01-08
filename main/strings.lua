@@ -100,7 +100,7 @@ local strings = {
     },
     TABS =
     {
-        ["dummytab"] = "Nightmare"
+        dummytab = "Nightmare",
     },
     CIVI_GEMS =
     {
