@@ -31,8 +31,11 @@ local function set_moisture(table)
     end
 end
 
-local function find_nightmarefuel(item) return item.prefab == "nightmarefuel" end
-local function dryequipment(inst)
+local function find_nightmarefuel(item)
+    return item.prefab == "nightmarefuel"
+end
+
+local function dry_equipment(inst)
     local inv = inst.components.inventory
     if not inv then return end
 
@@ -54,14 +57,14 @@ local function dryequipment(inst)
     end
 end
 
-local function CheckHasItem(inst, item)
+local function check_has_item(inst, item)
     if item == nil then return end
     local inv = inst.components.inventory
     local inv_boat = inst.components.sailor and inst.components.sailor:GetBoat() and inst.components.sailor:GetBoat().components.container
     return (inv and inv:Has(item, 1)) or (inv_boat and inv_boat:Has(item, 1))
 end
 
-local function ConsumeItem(inst, item)
+local function consume_item(inst, item)
     if item == nil then return end
     local inv = inst.components.inventory
     local inv_boat = inst.components.sailor and inst.components.sailor:GetBoat() and inst.components.sailor:GetBoat().components.container
@@ -72,7 +75,7 @@ local function ConsumeItem(inst, item)
     end
 end
 
-local function autorefuel(inst)
+local function auto_refuel(inst)
     local is_fx_true = false
     local fueledtable = {
         player = {
@@ -107,11 +110,11 @@ local function autorefuel(inst)
             if table.contains(fueledtable[source], target.prefab) then
                 local fueled = target.components.fueled
                 if fueled and fueled:GetPercent() + TUNING.LARGE_FUEL / fueled.maxfuel * fueled.bonusmult <= 1 and
-                    CheckHasItem(inst, "nightmarefuel")
+                    check_has_item(inst, "nightmarefuel")
                 then
                     is_fx_true = true
                     fueled:DoDelta(TUNING.LARGE_FUEL * fueled.bonusmult)
-                    ConsumeItem(inst, "nightmarefuel")
+                    consume_item(inst, "nightmarefuel")
                     if fueled.ontakefuelfn then fueled.ontakefuelfn(target) end
                 end
             end
@@ -123,7 +126,7 @@ local function autorefuel(inst)
     end
 end
 
-local function onboost(inst)
+local function on_boost(inst)
     inst.components.locomotor.runspeed = TUNING.MIOTAN_RUN_SPEED
     inst.components.temperature.mintemp = TUNING.MIOTAN_BOOST_MINTEMP
     if inst.components.eater ~= nil then
@@ -131,7 +134,7 @@ local function onboost(inst)
     end
 end
 
-local function onupdate(inst, dt)
+local function on_update(inst, dt)
     inst.boost_time = inst.boost_time - dt
     if inst.boost_time <= 0 then
         inst.boost_time = 0
@@ -150,37 +153,37 @@ local function onupdate(inst, dt)
         end
     else
         --boosteffect(inst)
-        autorefuel(inst)
+        auto_refuel(inst)
         if inst._dry_task == nil then
             inst._dry_task = inst:DoPeriodicTask(0, function(inst)
-                dryequipment(inst)
+                dry_equipment(inst)
             end)
         end
     end
 end
 
-local function onlongupdate(inst, dt)
+local function on_long_update(inst, dt)
     inst.boost_time = math.max(0, inst.boost_time - dt)
 end
 
-local function startboost(inst, duration)
+local function start_boost(inst, duration)
     inst.boost_time = duration
     if inst.boosted_task == nil then
-        inst.boosted_task = inst:DoPeriodicTask(1, onupdate, nil, 1)
-        inst:DoTaskInTime(0, function(inst) onupdate(inst, 0) end) -- Prevent autorefuel function consumes nightmarefuels before actually "eated"
-        onboost(inst)
+        inst.boosted_task = inst:DoPeriodicTask(1, on_update, nil, 1)
+        inst:DoTaskInTime(0, function(inst) on_update(inst, 0) end) -- Prevent autorefuel function consumes nightmarefuels before actually "eated"
+        on_boost(inst)
     end
 end
 
-local function onload(inst, data)
-    if data ~= nil and data.boost_time ~= nil then startboost(inst, data.boost_time) end
+local function on_load(inst, data)
+    if data ~= nil and data.boost_time ~= nil then start_boost(inst, data.boost_time) end
 end
 
-local function onsave(inst, data)
+local function on_save(inst, data)
     data.boost_time = inst.boost_time > 0 and inst.boost_time or nil
 end
 
-local function oneat(inst, food, eater)
+local function on_eat(inst, food, eater)
     if food and food.components.edible and food.prefab == "nightmarefuel" then
         -- local player = food.components.inventoryitem and food.components.inventoryitem.owner or nil
         local fx = SpawnPrefab("statue_transition")
@@ -189,11 +192,11 @@ local function oneat(inst, food, eater)
             fx.Transform:SetScale(0.4, 0.4, 0.4)
         end
         inst.SoundEmitter:PlaySound("dontstarve/common/nightmareAddFuel")
-        startboost(inst, 180)
+        start_boost(inst, 180)
     end
 end
 
-local function onbecameghost(inst)
+local function on_became_ghost(inst)
     if inst.boosted_task ~= nil then
         inst.boosted_task:Cancel()
         inst.boosted_task = nil
@@ -201,7 +204,7 @@ local function onbecameghost(inst)
     end
 end
 
-local function onhaunt(inst, doer)
+local function on_haunt(inst, doer)
     return not (inst.components.sanity and inst.components.sanity.current == 0)
 end
 
@@ -224,7 +227,7 @@ local master_postinit = function(inst)
     inst:AddComponent("reader")
 
     inst:AddComponent("hauntable")
-    inst.components.hauntable.onhaunt = onhaunt
+    inst.components.hauntable.onhaunt = on_haunt
     inst.components.hauntable.hauntvalue = TUNING.HAUNT_INSTANT_REZ
     inst.components.hauntable.no_wipe_value = true
 
@@ -238,17 +241,17 @@ local master_postinit = function(inst)
 
     if inst.components.eater then
         inst.components.eater:SetCanEatNightmareFuel()
-        inst.components.eater:SetOnEatFn(oneat)
+        inst.components.eater:SetOnEatFn(on_eat)
         inst.components.eater.stale_hunger = TUNING.MIOTAN_STALE_HUNGER_RATE
         inst.components.eater.stale_health = TUNING.MIOTAN_STALE_HEALTH_RATE
         inst.components.eater.spoiled_hunger = TUNING.MIOTAN_SPOILED_HUNGER_RATE
         inst.components.eater.spoiled_health = TUNING.MIOTAN_SPOILED_HUNGER_RATE
     end
 
-    inst:ListenForEvent("ms_becameghost", onbecameghost)
-    inst.OnLongUpdate = onlongupdate
-    inst.OnSave = onsave
-    inst.OnLoad = onload
+    inst:ListenForEvent("ms_becameghost", on_became_ghost)
+    inst.OnLongUpdate = on_long_update
+    inst.OnSave = on_save
+    inst.OnLoad = on_load
 
     inst.skeleton_prefab = nil
     inst:ListenForEvent("death", function(inst)

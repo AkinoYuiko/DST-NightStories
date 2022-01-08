@@ -14,7 +14,7 @@ for k, v in pairs(TUNING.GAMEMODE_STARTING_ITEMS) do
 end
 prefabs = FlattenTree({ prefabs, start_inv }, true)
 
-local function updatefood(inst)
+local function update_food(inst)
     inst.components.foodaffinity:RemovePrefabAffinity("bonesoup")
     inst.components.foodaffinity:RemovePrefabAffinity("meatballs")
     inst.components.foodaffinity:RemovePrefabAffinity("voltgoatjelly")
@@ -27,11 +27,11 @@ local function updatefood(inst)
     end
 end
 
-local function applyupgrades(inst)
+local function on_level_change(inst)
     inst.level = math.min(2,inst.level)
     inst.level = math.max(0,inst.level)
 
-    updatefood(inst)
+    update_food(inst)
 
     if inst:HasTag("civi_canupgrade") then inst:RemoveTag("civi_canupgrade") end
     if inst:HasTag("civi_candegrade") then inst:RemoveTag("civi_candegrade") end
@@ -61,11 +61,11 @@ local function applyupgrades(inst)
     inst.components.sanity:SetPercent(sanity_percent)
 end
 
-local function onpreload(inst, data)
+local function on_preload(inst, data)
     if data then
         if data.level then
             inst.level = data.level
-            applyupgrades(inst)
+            on_level_change(inst)
             --re-set these from the save data, because of load-order clipping issues
             if data.health and data.health.health then inst.components.health.currenthealth = data.health.health end
             if data.hunger and data.hunger.hunger then inst.components.hunger.current = data.hunger.hunger end
@@ -78,23 +78,24 @@ local function onpreload(inst, data)
 end
 
 
-local function onsave(inst, data)
+local function on_save(inst, data)
     data.level = inst.level
 end
 
 
-local function ondeath(inst)
-    applyupgrades(inst)
+local function on_death(inst)
+    on_level_change(inst)
 end
 
 
-local function onbecamehuman(inst)
-    applyupgrades(inst)
+local function on_became_human(inst)
+    on_level_change(inst)
 end
 -- This initializes for both clients and the host
 local common_postinit = function(inst)
     -- choose which sounds this character will play
     inst.soundsname = "wendy"
+
     inst:AddTag("nightstorychar")
     inst:AddTag("nightmaregem")
 
@@ -110,13 +111,13 @@ local master_postinit = function(inst)
     -- inst.components.eater:SetOnEatFn(oneat)
     inst.components.builder.magic_bonus = 1
 
-    applyupgrades(inst)
-    inst.applylevelfn = applyupgrades
+    on_level_change(inst)
+    inst.applylevelfn = on_level_change
 
-    inst.OnSave = onsave
-    inst.OnPreLoad = onpreload
-    inst:ListenForEvent("death", ondeath)
-    inst:ListenForEvent("ms_respawnedfromghost", onbecamehuman)
+    inst.OnSave = on_save
+    inst.OnPreLoad = on_preload
+    inst:ListenForEvent("death", on_death)
+    inst:ListenForEvent("ms_respawnedfromghost", on_became_human)
 end
 
 return MakePlayerCharacter("civi", prefabs, assets, common_postinit, master_postinit),
