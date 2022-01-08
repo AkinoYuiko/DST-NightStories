@@ -1,12 +1,13 @@
-version = "1.23.6"
+version = "1.23.7"
 -- basic info --
 name = locale == "zh" and "暗夜故事集" or "Night Stories"
 author = "丁香女子学校"
 description = locale == "zh" and "[版本: " .. version .. [[]
 
 更新内容:
-- 调整部分代码的格式。
+- 移除物品的drawnameoverride，现由纯净辅助自行兼容。
 
+- 调整部分代码的格式。
 - 更新适配新版的 Glassic API。
 - 更新Mio的代码提升加载性能。
 - 优化部分代码的格式。
@@ -19,8 +20,9 @@ description = locale == "zh" and "[版本: " .. version .. [[]
 ]] or "[Version: " .. version .. [[]
 
 Changelog:
-- Tweak some code format.
+- Remove prefabs' drawnameoverride.
 
+- Tweak some code format.
 - Update for a new version of Glassic API.
 - Improve code performance for Mio.
 - Tweak some code format.
