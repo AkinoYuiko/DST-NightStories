@@ -88,10 +88,6 @@ local function fn_dark()
 
     inst:AddComponent("inventoryitem")
 
-    inst:DoTaskInTime(0, function(inst)
-        inst.drawnameoverride = rawget(_G, "EncodeStrCode") and EncodeStrCode({content = "NAMES." .. string.upper(inst.prefab)})
-    end)
-
     return inst
 end
 
@@ -135,10 +131,6 @@ local function fn_light()
     inst.components.fueled.accepting = false
 
     inst:AddComponent("inventoryitem")
-
-    inst:DoTaskInTime(0, function(inst)
-        inst.drawnameoverride = rawget(_G, "EncodeStrCode") and EncodeStrCode({content = "NAMES." .. string.upper(inst.prefab)})
-    end)
 
     return inst
 end

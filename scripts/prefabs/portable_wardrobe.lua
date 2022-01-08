@@ -217,10 +217,6 @@ local function wrap_fn()
 
     inst.Consume = Consume
 
-    inst:DoTaskInTime(0, function(inst)
-        inst.drawnameoverride = rawget(_G, "EncodeStrCode") and EncodeStrCode({content = "NAMES." .. string.upper(inst.prefab)})
-    end)
-
     return inst
 end
 
@@ -244,10 +240,6 @@ local function wardrobe_item_fn()
     inst:AddComponent("deployable")
     inst.components.deployable.ondeploy = OnDeploy
     inst.components.deployable:SetDeploySpacing(DEPLOYSPACING.PLACER_DEFAULT)
-
-    inst:DoTaskInTime(0, function(inst)
-        inst.drawnameoverride = rawget(_G, "EncodeStrCode") and EncodeStrCode({content = "NAMES." .. string.upper(inst.prefab)})
-    end)
 
     return inst
 end
@@ -326,10 +318,6 @@ local function wardrobe_fn()
 
     MakeSnowCovered(inst)
     MakeHauntableWork(inst)
-
-    inst:DoTaskInTime(0, function(inst)
-        inst.drawnameoverride = rawget(_G, "EncodeStrCode") and EncodeStrCode({content = "NAMES." .. string.upper(inst.prefab)})
-    end)
 
     return inst
 end
