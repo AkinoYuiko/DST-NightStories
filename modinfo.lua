@@ -11,16 +11,7 @@ description = locale == "zh" and "[版本: " .. version .. [[]
 ]] or "[Version: " .. version .. [[]
 
 Changelog:
-- Remove prefabs' drawnameoverride.
-
-- Tweak some code format.
-- Update for a new version of Glassic API.
-- Improve code performance for Mio.
-- Tweak some code format.
-- Fix action behavior on Blackhole Staff.
-- Fix issue that Mio or Dummy can be haunted by non-Dummy players.
-- Change string text of hacking Backtrek Watch.
-- Mio and Dummy can hack Backtrek Watch with Nightmare Fuel.
+- Mio can refuel Winter Lights.
 
 "Night is coming, aren't you ready yet?"
 ]]
