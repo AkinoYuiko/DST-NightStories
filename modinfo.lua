@@ -1,20 +1,11 @@
-version = "1.23.7"
+version = "1.24"
 -- basic info --
 name = locale == "zh" and "暗夜故事集" or "Night Stories"
 author = "丁香女子学校"
 description = locale == "zh" and "[版本: " .. version .. [[]
 
 更新内容:
-- 移除物品的drawnameoverride，现由纯净辅助自行兼容。
-
-- 调整部分代码的格式。
-- 更新适配新版的 Glassic API。
-- 更新Mio的代码提升加载性能。
-- 优化部分代码的格式。
-- 修复了黑洞法杖动作表现上不符合预期的问题。
-- 修复了澪或达米可以被达米以外的玩家作祟的问题。
-- 调整了入侵溯源表的动作文本。
-- 澪和达米现在可以使用噩梦燃料入侵溯源表。
+- 澪现在可以使用噩梦燃料充能彩灯。
 
 “黑夜将至，你准备好了吗？”
 ]] or "[Version: " .. version .. [[]
