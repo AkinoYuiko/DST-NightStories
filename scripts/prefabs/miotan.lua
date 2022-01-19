@@ -204,6 +204,16 @@ local function on_became_ghost(inst)
     end
 end
 
+local function on_death(inst)
+    if inst.death_task == nil then
+        inst.death_task = inst:DoTaskInTime(2, function(inst)
+            SpawnPrefab("nightmarefuel").Transform:SetPosition(inst:GetPosition():Get())
+            inst.death_task:Cancel()
+            inst.death_task = nil
+        end)
+    end
+end
+
 local function on_haunt(inst, doer)
     return not (inst.components.sanity and inst.components.sanity.current == 0)
 end
@@ -254,15 +264,7 @@ local master_postinit = function(inst)
     inst.OnLoad = on_load
 
     inst.skeleton_prefab = nil
-    inst:ListenForEvent("death", function(inst)
-        if inst.death_task == nil then
-            inst.death_task = inst:DoTaskInTime(2, function(inst)
-                SpawnPrefab("nightmarefuel").Transform:SetPosition(inst:GetPosition():Get())
-                inst.death_task:Cancel()
-                inst.death_task = nil
-            end)
-        end
-    end)
+    inst:ListenForEvent("death", on_death)
 
 end
 

@@ -126,7 +126,7 @@ local function on_health_sanity_change(inst, data)
 end
 
 local function redirect_to_health(inst, amount, overtime, ...)
-    return inst.components.health ~= nil and inst.components.health:DoDelta(amount, overtime, "lose_sanity", true, nil, true)
+    return inst.components.health and ( amount and amount < 0 or inst.components.health.currenthealth > 0 ) and inst.components.health:DoDelta(amount, overtime, "lose_sanity", true, nil, true)
 end
 
 local function onhaunt(inst, doer)
@@ -144,6 +144,16 @@ local function on_respawn_from_ghost(inst, data)
             on_health_sanity_change(inst)
             reviver_sanity:DoDelta(-reviver_sanity.current)
         end
+    end
+end
+
+local function on_death(inst, data)
+    if inst.death_task == nil then
+        inst.death_task = inst:DoTaskInTime(2, function(inst)
+            SpawnPrefab("nightmarefuel").Transform:SetPosition(inst:GetPosition():Get())
+            inst.death_task:Cancel()
+            inst.death_task = nil
+        end)
     end
 end
 
@@ -226,15 +236,7 @@ local master_postinit = function(inst)
     inst:ListenForEvent("healthdelta", on_health_sanity_change)
 
     inst.skeleton_prefab = nil
-    inst:ListenForEvent("death", function(inst)
-        if inst.death_task == nil then
-            inst.death_task = inst:DoTaskInTime(2, function(inst)
-                SpawnPrefab("nightmarefuel").Transform:SetPosition(inst:GetPosition():Get())
-                inst.death_task:Cancel()
-                inst.death_task = nil
-            end)
-        end
-    end)
+    inst:ListenForEvent("death", on_death)
 
     -- Hack Builder:RemoveIngredients so Dummy won't do anim when crafting costs Sanity-Health.
     if inst.components.builder then
