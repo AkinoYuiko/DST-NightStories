@@ -182,12 +182,11 @@ local common_postinit = function(inst)
 
     inst._firedamage_rate = net_byte(inst.GUID, "_firedamage_rate", "_firedamage_rate")
 
-    if TheNet:GetServerGameMode() == "lavaarena" then
-    elseif TheNet:GetServerGameMode() == "quagmire" then
-    else
-        if not TheNet:IsDedicated() then
+    if not (TheNet:GetServerGameMode() == "lavaarena" or
+            TheNet:GetServerGameMode() == "quagmire" or
+            TheNet:IsDedicated())
+        then
             inst.CreateHealthBadge = DummyBadge
-        end
     end
 end
 
