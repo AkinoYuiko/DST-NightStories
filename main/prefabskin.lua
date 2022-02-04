@@ -25,7 +25,7 @@ ns_armorskeleton_init_fn = function(inst, build)
     end
 
     inst:ListenForEvent("equipped", onequipfn)
-    inst.OnSkinChange = function(inst)
+    inst.OnReskin = function(inst)
         inst:RemoveEventCallback("equipped", onequipfn)
     end
 end
@@ -209,7 +209,7 @@ ns_lantern_init_fn = function(inst, build_name, overridesymbols, followoffset, l
         lantern_on(inst)
     end
 
-    inst.OnSkinChange = function(inst)
+    inst.OnReskinFn = function(inst)
         lantern_off(inst)
 
         inst:RemoveEventCallback("equipped", onequipfn)
