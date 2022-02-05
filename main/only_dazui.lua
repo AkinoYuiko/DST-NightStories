@@ -1,14 +1,14 @@
-local UpvalueHacker = require("upvaluehacker")
+local UpvalueUtil = require("upvalueutil")
 local AddComponentPostInit = AddComponentPostInit
 local AddPrefabPostInit = AddPrefabPostInit
 GLOBAL.setfenv(1, GLOBAL)
 AddComponentPostInit("shadowcreaturespawner", function(self, inst)
     for _, fn in ipairs(inst.event_listeners["ms_playerjoined"][inst]) do
         local path = "Start.UpdatePopulation.StartSpawn.UpdateSpawn.SpawnLandShadowCreature"
-        local SpawnLandShadowCreature = UpvalueHacker.GetUpvalue(fn, path)
+        local SpawnLandShadowCreature = UpvalueUtil.GetUpvalue(fn, path)
         if SpawnLandShadowCreature then
             -- print("setting SpawnLandShadowCreature")
-            UpvalueHacker.SetUpvalue(fn, path, function(player, ...)
+            UpvalueUtil.SetUpvalue(fn, path, function(player, ...)
                 return SpawnPrefab(
                     player.spawnlandshadow_fn ~= nil and player.spawnlandshadow_fn(player, ...) or
                     player.components.sanity:GetPercent() < .1 and

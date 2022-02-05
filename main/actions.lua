@@ -3,7 +3,7 @@ local AddComponentAction = AddComponentAction
 local AddStategraphActionHandler = AddStategraphActionHandler
 GLOBAL.setfenv(1, GLOBAL)
 
-local UpvalueHacker = require "upvaluehacker"
+local UpvalueUtil = require "upvalueutil"
 
 NS_ACTIONS = {
     GEMTRADE = Action({mount_valid = true}),
@@ -245,7 +245,7 @@ AddComponentAction("INVENTORY", "nightswitch", function(inst, doer, actions, rig
 end)
 
 -- Hauntable for Dummy
-local COMPONENT_ACTIONS = UpvalueHacker.GetUpvalue(EntityScript.CollectActions, "COMPONENT_ACTIONS")
+local COMPONENT_ACTIONS = UpvalueUtil.GetUpvalue(EntityScript.CollectActions, "COMPONENT_ACTIONS")
 local SCENE = COMPONENT_ACTIONS.SCENE
 local scene_hauntable = SCENE.hauntable
 function SCENE.hauntable(inst, doer, actions, ...)

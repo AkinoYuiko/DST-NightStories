@@ -6,9 +6,9 @@ local NS_SPICES = {
 
 require("cooking" )
 local spicedfoods = require("spicedfoods")
-local UpvalueHacker = require("upvaluehacker")
+local UpvalueUtil = require("upvalueutil")
 
-local SPICES = UpvalueHacker.GetUpvalue(GenerateSpicedFoods, "SPICES")
+local SPICES = UpvalueUtil.GetUpvalue(GenerateSpicedFoods, "SPICES")
 if not SPICES then print("U GOT NOPED SO HARD GAGAGA") return end  -- :angri:
 shallowcopy(NS_SPICES, SPICES)
 
