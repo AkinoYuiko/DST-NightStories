@@ -1,12 +1,13 @@
-version = "1.24.4"
+version = "1.24.5"
 -- basic info --
 name = locale == "zh" and "暗夜故事集" or "Night Stories"
 author = "丁香女子学校"
 description = locale == "zh" and "[版本: " .. version .. [[]
 
 更新内容:
-- 重命名 OnSkinChange 为 OnReskinFn。
+- 重命名 UpvalueHacker 为 UpvalueUtil。
 
+- 重命名 OnSkinChange 为 OnReskinFn。
 - 修复和澪的精神速率有关的问题。
 - 修复达米被大月灵打死时会被同时治疗的问题。
 - 澪现在可以使用噩梦燃料充能彩灯。
@@ -15,8 +16,9 @@ description = locale == "zh" and "[版本: " .. version .. [[]
 ]] or "[Version: " .. version .. [[]
 
 Changelog:
-- Rename OnSkinChange as OnReskinFn.
+- Rename UpvalueHacker as UpvalueUtil.
 
+- Rename OnSkinChange as OnReskinFn.
 - Fix a bug for Mio's sanity rate.
 - Fix Dummy getting healing by gestalts when dying.
 - Mio can refuel Winter Lights.
