@@ -25,7 +25,7 @@ ns_armorskeleton_init_fn = function(inst, build)
     end
 
     inst:ListenForEvent("equipped", onequipfn)
-    inst.OnReskin = function(inst)
+    inst.OnReskinFn = function(inst)
         inst:RemoveEventCallback("equipped", onequipfn)
     end
 end
