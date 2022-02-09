@@ -718,6 +718,11 @@ msgctxt "STRINGS.SKIN_DESCRIPTIONS.miotan_none"
 msgid "Mio cames from another world, where nightmare is everywhere."
 msgstr ""
 
+#. STRINGS.SKIN_NAMES.alterguardianhat_finger
+msgctxt "STRINGS.SKIN_NAMES.alterguardianhat_finger"
+msgid "Crossed Fingers"
+msgstr ""
+
 #. STRINGS.SKIN_NAMES.armorskeleton_none
 msgctxt "STRINGS.SKIN_NAMES.armorskeleton_none"
 msgid "Emperor's Formal"

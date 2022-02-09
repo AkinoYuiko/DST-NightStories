@@ -1,21 +1,17 @@
-version = "1.24.1"
+version = "1.25"
 -- basic info --
 name = locale == "zh" and "暗夜故事集" or "Night Stories"
 author = "丁香女子学校"
 description = locale == "zh" and "[版本: " .. version .. [[]
 
 更新内容:
-- 修复达米被大月灵打死时会被同时治疗的问题。
-
-- 澪现在可以使用噩梦燃料充能彩灯。
+- 新增启迪之冠皮肤：交叉手指。
 
 “黑夜将至，你准备好了吗？”
 ]] or "[Version: " .. version .. [[]
 
 Changelog:
-- Fix Dummy getting healing by gestalts when dying.
-
-- Mio can refuel Winter Lights.
+- New skin for Enlightened Crown: Crossed Fingers.
 
 "Night is coming, aren't you ready yet?"
 ]]

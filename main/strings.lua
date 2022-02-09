@@ -89,6 +89,7 @@ local strings = {
         hivehat_pigcrown_willow = "Dark Crown",
 
         eyebrellahat_peggy = "Peggy's Eyebrella",
+        alterguardianhat_finger = "Crossed Fingers",
     },
     SKIN_DESCRIPTIONS =
     {

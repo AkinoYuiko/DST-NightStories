@@ -181,4 +181,17 @@ table.insert(prefabs, CreatePrefabSkin("eyebrellahat_peggy", {
     skin_tags = { "EYEBRELLAHAT" },
 }))
 
+table.insert(prefabs, CreatePrefabSkin("alterguardianhat_finger", {
+    base_prefab = "alterguardianhat",
+    type = "item",
+    rarity = "Glassic",
+    build_name_override = "alterguardianhat_finger",
+    assets = {
+        Asset( "DYNAMIC_ANIM", "anim/dynamic/alterguardianhat_finger.zip"),
+        Asset( "PKGREF", "anim/dynamic/alterguardianhat_finger.dyn"),
+    },
+    init_fn = function(inst) ns_equipment_init_fn(inst, "hat", "alterguardianhat_finger") end,
+    skin_tags = { "ALTERGUARDIANHAT" },
+}))
+
 return unpack(prefabs)

@@ -1,4 +1,6 @@
+local AddPrefabPostInit = AddPrefabPostInit
 GLOBAL.setfenv(1, GLOBAL)
+
 ns_equipment_init_fn = function(inst, slot, skinname, override_build, swap_data)
     if swap_data then
         GlassicAPI.SetFloatData(inst, swap_data)
@@ -255,7 +257,7 @@ meatrack_clear_fn = function(inst)
     return _meatrack_clear_fn(inst)
 end
 
-
+-- Bee Queen Crown --
 if not rawget(_G, "hivehat_clear_fn") then
     hivehat_clear_fn = function(inst)
         inst.AnimState:SetBuild("hat_hive")
@@ -263,6 +265,26 @@ if not rawget(_G, "hivehat_clear_fn") then
         inst.components.inventoryitem:ChangeImageName()
     end
 end
+
+-- Enlightened Crown --
+AddPrefabPostInit("alterguardian_hat_equipped", function(inst)
+    if not TheWorld.ismastersim then return end
+
+    local set_skin = inst.SetSkin
+    inst.SetSkin = function(inst, skin_build, ...)
+        if GlassicAPI.SkinHandler.IsModSkin(skin_build) then
+            inst.AnimState:OverrideSymbol("p4_piece", skin_build, "p4_piece")
+        else
+            return set_skin(inst, skin_build, ...)
+        end
+    end
+end)
+-- local vanilla_alterguardianhat_clear_fn = alterguardianhat_clear_fn
+-- alterguardianhat_clear_fn = function(inst, ...)
+--     local ret = { vanilla_alterguardianhat_clear_fn(inst, ...) }
+--     inst.components.inventoryitem:ChangeImageName()
+--     return unpack(ret)
+-- end
 
 GlassicAPI.SkinHandler.AddModSkins({
     -- Civi
@@ -306,4 +328,5 @@ GlassicAPI.SkinHandler.AddModSkins({
     dragonflychest = { "dragonflychest_gingerbread" },
     meatrack = { "meatrack_hermit_red", "meatrack_hermit_white" },
     hivehat = { "hivehat_pigcrown", "hivehat_pigcrown_willow" },
+    alterguardianhat = { "alterguardianhat_finger" },
 })

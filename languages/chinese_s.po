@@ -834,3 +834,8 @@ msgstr "入侵溯源表"
 msgctxt "STRINGS.ACTIONS.FUELPOCKETWATCH"
 msgid "Hack"
 msgstr "入侵"
+
+#. STRINGS.SKIN_NAMES.alterguardianhat_finger
+msgctxt "STRINGS.SKIN_NAMES.alterguardianhat_finger"
+msgid "Crossed Fingers"
+msgstr "交叉手指"
