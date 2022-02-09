@@ -12,7 +12,7 @@ local prefabs =
     "book_fx",
 }
 
-local UpvalueHacker = require("upvaluehacker")
+local UpvalueUtil = require("upvalueutil")
 
 local book_defs =
 {
@@ -25,7 +25,7 @@ local book_defs =
             if TheWorld.state.islandisraining or TheWorld.state.israining or TheWorld.state.issnowing then
                 TheWorld:PushEvent("ms_forceprecipitation_island", false)
                 TheWorld:PushEvent("ms_forceprecipitation", false)
-                local _moistureceil = UpvalueHacker.GetUpvalue(weather_cmp.OnUpdate, "_moistureceil") or UpvalueHacker.GetUpvalue(weather_cmp.OnUpdate, "_moistureceil_island")
+                local _moistureceil = UpvalueUtil.GetUpvalue(weather_cmp.OnUpdate, "_moistureceil") or UpvalueUtil.GetUpvalue(weather_cmp.OnUpdate, "_moistureceil_island")
                 local old_val = _moistureceil:value()
                 weather_cmp:OnUpdate(0)
                 _moistureceil:set(old_val)
@@ -33,9 +33,9 @@ local book_defs =
                 TheWorld:PushEvent("ms_forceprecipitation_island", true)
                 TheWorld:PushEvent("ms_forceprecipitation", true)
                 weather_cmp:OnUpdate(0)
-                local _moisture = UpvalueHacker.GetUpvalue(weather_cmp.OnUpdate, "_moisture") or UpvalueHacker.GetUpvalue(weather_cmp.OnUpdate, "_moisture_island")
-                local _moisturefloormultiplier = UpvalueHacker.GetUpvalue(weather_cmp.OnSave, "_moisturefloormultiplier")
-                local _moisturefloor = UpvalueHacker.GetUpvalue(weather_cmp.OnUpdate, "_moisturefloor") or UpvalueHacker.GetUpvalue(weather_cmp.OnUpdate, "_moisturefloor_island")
+                local _moisture = UpvalueUtil.GetUpvalue(weather_cmp.OnUpdate, "_moisture") or UpvalueUtil.GetUpvalue(weather_cmp.OnUpdate, "_moisture_island")
+                local _moisturefloormultiplier = UpvalueUtil.GetUpvalue(weather_cmp.OnSave, "_moisturefloormultiplier")
+                local _moisturefloor = UpvalueUtil.GetUpvalue(weather_cmp.OnUpdate, "_moisturefloor") or UpvalueUtil.GetUpvalue(weather_cmp.OnUpdate, "_moisturefloor_island")
                 _moisturefloor:set(0.25 * _moisture:value() * _moisturefloormultiplier)
             end
             return true
