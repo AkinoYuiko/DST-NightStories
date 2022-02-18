@@ -1,16 +1,20 @@
-version = "1.25"
+version = "1.25.1"
 -- basic info --
 name = locale == "zh" and "暗夜故事集" or "Night Stories"
 author = "丁香女子学校"
 description = locale == "zh" and "[版本: " .. version .. [[]
 
 更新内容:
+- 提高堆叠数量修改写法的兼容性 (Fxxx Upvalue).
+
 - 新增启迪之冠皮肤：交叉手指。
 
 “黑夜将至，你准备好了吗？”
 ]] or "[Version: " .. version .. [[]
 
 Changelog:
+- Improve compatibility on "add_stack_size" (Fxxx Upvalue).
+
 - New skin for Enlightened Crown: Crossed Fingers.
 
 "Night is coming, aren't you ready yet?"
