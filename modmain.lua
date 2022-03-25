@@ -20,9 +20,9 @@ PrefabFiles = {
     "portable_wardrobe",
 }
 
-GlassicAPI.InitCharacterAssets("miotan", "FEMALE", Assets)
-GlassicAPI.InitCharacterAssets("dummy", "FEMALE", Assets)
-GlassicAPI.InitCharacterAssets("civi", "MALE", Assets)
+GlassicAPI.InitCharacterAssets("miotan", "FEMALE", Assets, true)
+GlassicAPI.InitCharacterAssets("dummy", "FEMALE", Assets, true)
+GlassicAPI.InitCharacterAssets("civi", "MALE", Assets, true)
 
 GlassicAPI.InitMinimapAtlas("ns_minimap", Assets)
 GlassicAPI.RegisterItemAtlas("ns_inventoryimages", Assets)
