@@ -120,7 +120,7 @@ AddCharacterRecipe("nightpack",
 AddCharacterRecipe("dummy_nightmarefuel",
     {Ingredient(CHARACTER_INGREDIENT.HEALTH, 20, nil, nil, "decrease_sanity.tex")},
     TECH.NONE,
-    {builder_tag = "ns_builder_dummy", product = "nightmarefuel"}
+    {builder_tag = "ns_builder_dummy", product = "nightmarefuel", actionstr = "SOULSPLIT"}
 )
 
 -- 暗影破碎者 --

@@ -1,12 +1,13 @@
-version = "1.26.1"
+version = "1.26.2"
 -- basic info --
 name = locale == "zh" and "暗夜故事集" or "Night Stories"
 author = "丁香女子学校"
 description = locale == "zh" and "[版本: " .. version .. [[]
 
 更新内容:
-- 更新适配 Glassic API。
+- 更新配方“灵魂剥离”的动作文本。
 
+- 更新适配 Glassic API。
 - 所有配方适配新版本。
 - 增加人物专属合成栏的图标。
 
@@ -14,8 +15,9 @@ description = locale == "zh" and "[版本: " .. version .. [[]
 ]] or "[Version: " .. version .. [[]
 
 Changelog:
-- Update for Glassic API.
+- Update actionstr for Dummy's recipe.
 
+- Update for Glassic API.
 - Update for the new version of DST.
 - Add characters' crafting menu icon.
 

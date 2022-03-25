@@ -839,3 +839,8 @@ msgstr "入侵"
 msgctxt "STRINGS.SKIN_NAMES.alterguardianhat_finger"
 msgid "Crossed Fingers"
 msgstr "交叉手指"
+
+#. STRINGS.UI.CRAFTING.RECIPEACTION.SOULSPLIT
+msgctxt "STRINGS.UI.CRAFTING.RECIPEACTION.SOULSPLIT"
+msgid "Split"
+msgstr "剥离"

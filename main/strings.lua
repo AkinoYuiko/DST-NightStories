@@ -6,6 +6,15 @@ local strings = {
     {
         FUELPOCKETWATCH = "Hack",
     },
+    UI = {
+        CRAFTING =
+        {
+            RECIPEACTION =
+            {
+                SOULSPLIT = "Split"
+            }
+        }
+    },
     NAMES =
     {
         CIVI = "Civi",

@@ -807,3 +807,8 @@ msgstr ""
 msgctxt "STRINGS.TABS.dummytab"
 msgid "Nightmare"
 msgstr ""
+
+#. STRINGS.UI.CRAFTING.RECIPEACTION.SOULSPLIT
+msgctxt "STRINGS.UI.CRAFTING.RECIPEACTION.SOULSPLIT"
+msgid "Split"
+msgstr ""
