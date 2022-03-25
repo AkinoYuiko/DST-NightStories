@@ -25,7 +25,7 @@ end)
 local function get_nearby_dummy(inst, disq)
     if not inst or type(disq) ~= "number" then return end
     for _, v in ipairs(AllPlayers) do
-        if inst:GetDistanceSqToInst(v) < (disq * disq) and v:HasTag("nightmarebreaker") then
+        if inst:GetDistanceSqToInst(v) < (disq * disq) and v:HasTag("ns_builder_dummy") then
             return true
         end
     end

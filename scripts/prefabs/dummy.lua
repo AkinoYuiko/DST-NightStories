@@ -1,6 +1,7 @@
 local MakePlayerCharacter = require "prefabs/player_common"
 local DummyBadge = require "widgets/dummybadge"
 local NS_Utils = require "ns_utils"
+local BUILDER_TAG = "ns_builder_dummy"
 
 local assets = {
     Asset( "SCRIPT", "scripts/prefabs/player_common.lua" ),
@@ -171,7 +172,7 @@ end
 
 local common_postinit = function(inst)
     inst.soundsname = "willow"
-    inst:AddTag("nightmarebreaker")
+    inst:AddTag(BUILDER_TAG)
     inst:AddTag("insomniac")
     inst:AddTag("reader")
     inst:AddTag("mime")
@@ -242,8 +243,8 @@ local master_postinit = function(inst)
 
         local remove_ingredients = inst.components.builder.RemoveIngredients
         inst.components.builder.RemoveIngredients = function(self, ingredients, recname, ...)
-            local tab = AllRecipes[recname] and AllRecipes[recname].tab
-            if tab.str == "nightmaretab" then
+            local builder_tag = AllRecipes[recname] and AllRecipes[recname].builder_tag
+            if builder_tag == BUILDER_TAG then
                 local push_event = self.inst.PushEvent
                 self.inst.PushEvent = function(inst, event, ...)
                     if event ~= "consumehealthcost" then

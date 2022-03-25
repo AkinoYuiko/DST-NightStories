@@ -1,4 +1,5 @@
 local MakePlayerCharacter = require("prefabs/player_common")
+local BUILDER_TAG = "ns_builder_civi"
 
 local assets = {
     Asset( "SCRIPT", "scripts/prefabs/player_common.lua"),
@@ -97,7 +98,7 @@ local common_postinit = function(inst)
     inst.soundsname = "wendy"
 
     inst:AddTag("nightstorychar")
-    inst:AddTag("nightmaregem")
+    inst:AddTag(BUILDER_TAG)
 
     inst.MiniMapEntity:SetIcon( "civi.tex" )
 end

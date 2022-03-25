@@ -29,7 +29,7 @@ local function onpickedfn_flower(inst, picker)
     local pos = inst:GetPosition()
 
     if picker then
-        if picker.components.sanity and not picker:HasTag("plantkin") and not picker:HasTag("nightmarebreaker") then -- changed part from original fn
+        if picker.components.sanity and not picker:HasTag("plantkin") and not picker:HasTag("ns_builder_dummy") then -- changed part from original fn
             picker.components.sanity:DoDelta(TUNING.SANITY_TINY)
         end
 
@@ -60,7 +60,7 @@ AddPrefabPostInit("flower", function(inst)
 end)
 
 local function onpickedfn_evil(inst, picker)
-    if picker and picker.components.sanity and not picker:HasTag("nightmarebreaker") then
+    if picker and picker.components.sanity and not picker:HasTag("ns_builder_dummy") then
         picker.components.sanity:DoDelta(-TUNING.SANITY_TINY)
     end
     inst:Remove()
