@@ -15,18 +15,18 @@ AddCharacterRecipe("darkgem",
     {Ingredient("purplegem", 1), Ingredient("nightmarefuel", 4)},
     TECH.NONE,
     {builder_tag = "ns_builder_civi", no_deconstruction = true},
-    {"REFINE", "MODS"}
+    {"MODS"}
 )
--- AllRecipes["civi_darkgem"].sortkey = AllRecipes["purplegem"].sortkey + 0.1
+GlassicAPI.SortRecipeToTarget("REFINE", "darkgem", "purplegem")
 
 -- 白宝石 --
 AddCharacterRecipe("lightgem",
     {Ingredient("purplegem", 1), Ingredient("nightmarefuel", 4)},
     TECH.NONE,
     {builder_tag = "ns_builder_civi", no_deconstruction = true},
-    {"REFINE", "MODS" }
+    {"MODS" }
 )
--- AllRecipes["civi_lightgem"].sortkey = AllRecipes["civi_darkgem"].sortkey + 0.1
+GlassicAPI.SortRecipeToTarget("REFINE", "lightgem", "darkgem")
 
 -- 红宝石 --
 AddCharacterRecipe("civi_redgem",
@@ -43,7 +43,6 @@ AddCharacterRecipe("civi_bluegem",
     {nounlock = true, builder_tag = "ns_builder_civi", image = "bluegem.tex", product = "bluegem"},
     {"CRAFTING_STATION"}
 )
-
 
 -- 黑暗护符 --
 AddCharacterRecipe("civi_darkamulet",
@@ -87,9 +86,9 @@ AddRecipe2("darkmagatama",
 AddCharacterRecipe("civi_darkmagatama",
     {Ingredient("darkgem", 1), Ingredient("nightmarefuel", 1)},
     TECH.MAGIC_THREE,
-    {builder_tag = "ns_builder_civi", image = "darkmagatama.tex", product = "darkmagatama"},
-    {"MAGIC"}
+    {builder_tag = "ns_builder_civi", image = "darkmagatama.tex", product = "darkmagatama"}
 )
+GlassicAPI.SortRecipeToTarget("MAGIC", "civi_darkmagatama", "nightsword")
 
 -- 白勾玉 --
 AddRecipe2("lightmagatama",
@@ -98,15 +97,13 @@ AddRecipe2("lightmagatama",
     {nounlock = true, no_deconstruction = true},
     {"MODS"}
 )
--- AllRecipes["civi_lightmagatama"].sortkey = AllRecipes["civi_darkmagatama"].sortkey + 0.1
 
 AddCharacterRecipe("civi_lightmagatama",
     {Ingredient("lightgem", 1), Ingredient("nightmarefuel", 1)},
     TECH.MAGIC_THREE,
-    {builder_tag = "ns_builder_civi", image = "lightmagatama.tex", product = "lightmagatama"},
-    {"MAGIC"}
+    {builder_tag = "ns_builder_civi", image = "lightmagatama.tex", product = "lightmagatama"}
 )
--- AllRecipes["civi_lightmagatama_d"].sortkey = AllRecipes["civi_darkmagatama_d"].sortkey + 0.1
+GlassicAPI.SortRecipeToTarget("MAGIC", "civi_lightmagatama", "civi_darkmagatama")
 
 -- 影背包 --
 AddCharacterRecipe("nightpack",
