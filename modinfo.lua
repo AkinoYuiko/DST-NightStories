@@ -1,14 +1,13 @@
-version = "1.26.4"
+version = "1.26.5"
 -- basic info --
 name = locale == "zh" and "暗夜故事集" or "Night Stories"
 author = "丁香女子学校"
 description = locale == "zh" and "[版本: " .. version .. [[]
 
 更新内容:
-- 新增 GlassicAPI.SortBefore 和 GlassicAPI.SortAfter。
-- 移除 GlassicAPI.SortRecipeToTarget。
+- 修复一些配方问题。
 
-- 使用 GlassicAPI.SortRecipeToTarget 调整配方排序。
+- 使用 GlassicAPI.SortBefore 和 GlassicAPI.SortAfter 调整配方排序。
 - 更新配方“灵魂剥离”的动作文本。
 - 更新适配 Glassic API。
 - 所有配方适配新版本。
@@ -18,10 +17,9 @@ description = locale == "zh" and "[版本: " .. version .. [[]
 ]] or "[Version: " .. version .. [[]
 
 Changelog:
-- Use GlassicAPI.SortBefore and GlassicAPI.SortAfter instead.
-- Remove GlassicAPI.SortRecipeToTarget.
+- Fix issues with recipes.
 
-- Use GlassicAPI.SortRecipeToTarget for recipe sorting.
+- Use GlassicAPI.SortAfter for recipe sorting.
 - Update actionstr for Dummy's recipe.
 - Update for Glassic API.
 - Update for the new version of DST.
