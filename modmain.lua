@@ -58,3 +58,7 @@ local main_files = {
 for _, v in ipairs(main_files) do
     modimport("main/"..v)
 end
+
+if GLOBAL.KnownModIndex:IsModEnabled("workshop-1467214795") then
+    modimport("main/dummybadge_poison")
+end

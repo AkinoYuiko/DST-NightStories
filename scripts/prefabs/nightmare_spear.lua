@@ -1,17 +1,18 @@
+local easing = require("easing")
+
 local assets =
 {
     Asset("ANIM", "anim/nightmare_spear.zip"),
-    -- Asset("ANIM", "anim/swap_nightmare_spear.zip"),
 }
 
 local function onattack(inst)
-  if inst.components.fueled ~= nil then
-    local _f = inst.components.fueled
-    local _p = _f:GetPercent()
-    _f:SetPercent( math.min( 1, (_p + ( math.max(0,((15 - inst._hits )/150))))))
-    -- if inst._hits <15 then print(inst._hits..", ".._p) end
-  end
-  inst._hits = inst._hits + 1
+    local max_hits = 30
+    if inst.components.fueled ~= nil then
+        local fueled = inst.components.fueled
+        local new_percent = fueled:GetPercent() + (max_hits - inst.total_hits) / (max_hits * 20)
+        fueled:SetPercent(math.min(1, new_percent))
+    end
+    inst.total_hits = math.min(max_hits, inst.total_hits + 1)
 end
 
 local function onequip(inst, owner)
@@ -26,13 +27,13 @@ local function onunequip(inst, owner)
 end
 
 local function onload(inst,data)
-  if data ~= nil and data._hits ~= nil then
-    inst._hits = data._hits
-  end
+    if data and data.total_hits_hits then
+        inst.total_hits = data.total_hits_hits
+    end
 end
 
 local function onsave(inst,data)
-  data._hits = inst._hits >= 0 and inst._hits or nil
+    data.total_hits_hits_hits = inst.total_hits >= 0 and inst.total_hits
 end
 
 local function fn()
@@ -66,14 +67,15 @@ local function fn()
     -------
 
     inst:AddComponent("fueled")
+    inst.components.fueled.period = 2 * FRAMES
     inst.components.fueled:InitializeFuelLevel(15)
     inst.components.fueled:SetDepletedFn(inst.Remove)
     inst.components.fueled:StartConsuming()
 
     inst:AddComponent("weapon")
-    inst.components.weapon:SetDamage(68)
+    inst.components.weapon:SetDamage(TUNING.NIGHTMARE_SPEAR_DAMAGE)
     inst.components.weapon:SetOnAttack(onattack)
-    inst._hits = 0
+    inst.total_hits = 0
 
     inst.OnSave = onsave
     inst.OnLoad = onload
@@ -81,8 +83,6 @@ local function fn()
     inst:AddComponent("inspectable")
 
     inst:AddComponent("inventoryitem")
-    -- inst.components.inventoryitem.imagename = "nightmare_spear"
-    -- inst.components.inventoryitem.atlasname = resolvefilepath("images/inventoryimages/nightmare_spear.xml")
 
     inst:AddComponent("equippable")
     inst.components.equippable:SetOnEquip(onequip)
