@@ -1,29 +1,17 @@
-version = "1.26.5"
+version = "1.27"
 -- basic info --
 name = locale == "zh" and "暗夜故事集" or "Night Stories"
 author = "丁香女子学校"
 description = locale == "zh" and "[版本: " .. version .. [[]
 
 更新内容:
-- 修复一些配方问题。
-
-- 使用 GlassicAPI.SortBefore 和 GlassicAPI.SortAfter 调整配方排序。
-- 更新配方“灵魂剥离”的动作文本。
-- 更新适配 Glassic API。
-- 所有配方适配新版本。
-- 增加人物专属合成栏的图标。
+- 使用 GlassicAPI.AddRecipe 改善配方标签管理。
 
 “黑夜将至，你准备好了吗？”
 ]] or "[Version: " .. version .. [[]
 
 Changelog:
-- Fix issues with recipes.
-
-- Use GlassicAPI.SortAfter for recipe sorting.
-- Update actionstr for Dummy's recipe.
-- Update for Glassic API.
-- Update for the new version of DST.
-- Add characters' crafting menu icon.
+- Use GlassicAPI.AddRecipe for better recipe-init.
 
 "Night is coming, aren't you ready yet?"
 ]]
