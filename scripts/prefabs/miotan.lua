@@ -103,9 +103,9 @@ local function auto_refuel(inst)
 
     local player_eslots = inst.components.inventory and inst.components.inventory.equipslots
     local boat = inst.components.sailor and inst.components.sailor:GetBoat() -- Compatible for Island Adventures
-    local boat_elots = boat and boat.components.container and boat.components.container.boat_elots
+    local boatequipslots = boat and boat.components.container and boat.components.container.boatequipslots
 
-    for source, eslots in pairs({player = player_eslots, boat = boat_elots}) do
+    for source, eslots in pairs({player = player_eslots, boat = boatequipslots}) do
         for _, target in pairs(eslots) do
             if table.contains(fueledtable[source], target.prefab) then
                 local fueled = target.components.fueled
