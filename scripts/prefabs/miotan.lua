@@ -96,7 +96,7 @@ local function auto_refuel(inst)
 
         },
         boat = { -- Island Adventures
-            "boat_lantern", -- 船灯
+            -- "boat_lantern", -- 船灯
             "ironwind", -- 螺旋桨
         }
     }

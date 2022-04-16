@@ -21,8 +21,9 @@ description = zh_en(
 "[版本: " .. version .. [[]
 
 更新内容:
-- 更新 modinfo 的多语言文本功能。
+- 澪现在不会自动充能船灯了（岛屿冒险MOD）。
 
+- 更新 modinfo 的多语言文本功能。
 - 修复澪的自动充能对 Island Adventures 的船装备不生效的问题。
 - 使用 GlassicAPI.AddRecipe 改善配方标签管理。
 
@@ -31,8 +32,9 @@ description = zh_en(
 "[Version: " .. version .. [[]
 
 Changelog:
-- Update LOC fn in modinfo.
+- Mio now won't do auto-refuel to boat lamp in IA.
 
+- Update LOC fn in modinfo.
 - Fix issue that Mio's auto-refuel not working for boat equiment in Island Adventures.
 - Use GlassicAPI.AddRecipe for better recipe-init.
 
