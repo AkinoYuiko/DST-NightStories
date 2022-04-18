@@ -65,7 +65,8 @@ AddRecipe("book_toggledownfall", {Ingredient("papyrus", 2), Ingredient(CHARACTER
 AddRecipe("blackholestaff", {Ingredient("livinglog", 2), Ingredient("orangegem", 2), Ingredient("nightmarefuel", 4)}, TECH.ANCIENT_FOUR, {nounclock = true, builder_tag = "ns_builder_dummy"})
 
 -- 仙人掌粉 --
-AddRecipe("spice_cactus", {Ingredient("cactus_meat", 2), Ingredient("cactus_flower", 1)}, TECH.FOODPROCESSING_ONE, {nounlock = true, numtogive = 2, builder_tag = "professionalchef"})
+AddRecipe("spice_cactus", {Ingredient("cactus_meat", 2), Ingredient("cactus_flower", 1)}, TECH.FOODPROCESSING_ONE, {nounlock = true, numtogive = 2, nochar = true, builder_tag = "professionalchef"})
+SortAfter("spice_cactus", "spice_salt", "CRAFTING_STATION")
 
 -- 便携衣柜 & 魔法礼装 --
 AddRecipe("portable_wardrobe_wrap", {Ingredient("giftwrap", 1), Ingredient("nightmarefuel",1)}, TECH.MAGIC_THREE, nil, {"MAGIC"})
