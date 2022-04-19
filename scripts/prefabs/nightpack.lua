@@ -338,7 +338,7 @@ local function RenewState(inst, gemtype, isdummy)
 
     local slots = inst.components.container.slots
     local need_compress = newpack.components.container:GetNumSlots() < inst.components.container:GetNumSlots()
-    for slot, item in orderedPairs(slots) do
+    for _, slot, item in sorted_pairs(slots) do
         if need_compress then
             if not newpack.components.container:IsFull() or owner == nil then
                 newpack.components.container:GiveItem(item)

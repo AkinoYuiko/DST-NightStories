@@ -12,7 +12,7 @@ local function zh_en(a, b)
     })
 end
 
-version = "1.27.5"
+version = "1.28"
 -- basic info --
 name = zh_en("暗夜故事集", "Night Stories")
 author = zh_en("丁香女子学校", "Civi, Tony, LSSSS")
@@ -21,24 +21,16 @@ description = zh_en(
 "[版本: " .. version .. [[]
 
 更新内容:
-- 仙人掌粉现在不会出现在大厨的专属栏了。
-
-- 澪现在不会自动充能船灯了（岛屿冒险MOD）。
-- 更新 modinfo 的多语言文本功能。
-- 修复澪的自动充能对 Island Adventures 的船装备不生效的问题。
-- 使用 GlassicAPI.AddRecipe 改善配方标签管理。
+- 更新SortAfter适配新版本的Glassic API。
+- 重绘了黑宝石、白宝石、黑暗护符、光明护符的动画（高清重制）。
 
 “黑夜将至，你准备好了吗？”]],
     -- en
 "[Version: " .. version .. [[]
 
 Changelog:
-- Cactus Powder now won't show in Warly's exclusive filter.
-
-- Mio now won't do auto-refuel to boat lamp in IA.
-- Update LOC fn in modinfo.
-- Fix issue that Mio's auto-refuel not working for boat equiment in Island Adventures.
-- Use GlassicAPI.AddRecipe for better recipe-init.
+- Update SortAfter for a new version of Glassic API.
+- Rework animations of Dark/Light Gem, Dark/Light Amulet.
 
 "Night is coming, aren't you ready yet?"]]
 )

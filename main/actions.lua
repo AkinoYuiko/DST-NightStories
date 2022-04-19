@@ -150,7 +150,7 @@ ACTIONS.CHANGEIN.fn = function(act, ...)
     return changein_fn(act, ...)
 end
 
-for k, v in orderedPairs(NS_ACTIONS) do
+for _, k, v in sorted_pairs(NS_ACTIONS) do
     v.id = k
     AddAction(v)
 end

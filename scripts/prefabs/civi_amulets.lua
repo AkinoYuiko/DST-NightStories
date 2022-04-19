@@ -5,7 +5,7 @@ local assets =
 }
 
 local function onequip_light(inst, owner)
-    owner.AnimState:OverrideSymbol("swap_body", "torso_civiamulets", "blueamulet")
+    owner.AnimState:OverrideSymbol("swap_body", "torso_civiamulets", "lightamulet")
     if inst.components.fueled then
         inst.components.fueled:StartConsuming()
     end
@@ -19,7 +19,7 @@ local function onunequip_light(inst, owner)
 end
 
 local function onequip_dark(inst, owner)
-    owner.AnimState:OverrideSymbol("swap_body", "torso_civiamulets", "purpleamulet")
+    owner.AnimState:OverrideSymbol("swap_body", "torso_civiamulets", "darkamulet")
     if owner.components.combat ~= nil then
         owner.components.combat.externaldamagemultipliers:SetModifier(inst,1.2,"darkamulet")
     end
