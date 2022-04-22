@@ -10,7 +10,7 @@ NS_ACTIONS = {
     MIOFUEL = Action({mount_valid = true}),
     NIGHTSWITCH = Action({mount_valid = true, priority = 1}),
     NIGHTSWORDMAGATAMA = Action({mount_valid = true, priority = 2}),
-    FUELPOCKETWATCH = Action({ priority=-1, rmb=true }),
+    FUELPOCKETWATCH = Action({ priority = 3, rmb = true }),
 }
 
 NS_ACTIONS.GEMTRADE.str = STRINGS.ACTIONS.GIVE.SOCKET
