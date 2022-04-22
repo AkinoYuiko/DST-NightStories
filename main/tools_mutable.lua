@@ -5,6 +5,7 @@ local MUTABLE_TARGETS = {
     goldenaxe       = "moonglassaxe",
     goldenpickaxe   = "moonglasspickaxe",
     hammer          = "moonglasshammer",
+    -- goldenmachete   = "moonglassmachete",   -- IA Deluxe Addon
 }
 
 local function onmutatefn(inst, target)

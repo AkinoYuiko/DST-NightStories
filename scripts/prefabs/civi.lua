@@ -100,7 +100,7 @@ local common_postinit = function(inst)
     inst:AddTag("nightstorychar")
     inst:AddTag(BUILDER_TAG)
 
-    inst.MiniMapEntity:SetIcon( "civi.tex" )
+    inst.MiniMapEntity:SetIcon("civi.tex")
 end
 
 -- This initializes for the host only
@@ -122,13 +122,13 @@ local master_postinit = function(inst)
 end
 
 return MakePlayerCharacter("civi", prefabs, assets, common_postinit, master_postinit),
-CreatePrefabSkin("civi_none", {
-    base_prefab = "civi",
-    type = "base",
-    assets = assets,
-    skins = { normal_skin = "civi", ghost_skin = "ghost_civi_build" },
-    bigportrait = { build = "bigportrait/civi_none.xml", symbol = "civi_none_oval.tex"},
-    skin_tags = { "CIVI", "BASE"},
-    build_name_override = "civi",
-    rarity = "Character",
-})
+    CreatePrefabSkin("civi_none", {
+        base_prefab = "civi",
+        type = "base",
+        assets = assets,
+        skins = { normal_skin = "civi", ghost_skin = "ghost_civi_build" },
+        bigportrait = { build = "bigportrait/civi_none.xml", symbol = "civi_none_oval.tex"},
+        skin_tags = { "CIVI", "BASE"},
+        build_name_override = "civi",
+        rarity = "Character",
+    })
