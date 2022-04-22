@@ -1,5 +1,7 @@
 local AddRecipe = GlassicAPI.AddRecipe
 local SortAfter = GlassicAPI.SortAfter
+local SortBefore = GlassicAPI.SortBefore
+local AddDeconstructRecipe = AddDeconstructRecipe
 GLOBAL.setfenv(1, GLOBAL)
 
 STRINGS.NAMES.CIVI_REDGEM = STRINGS.NAMES.REDGEM
@@ -10,42 +12,69 @@ STRINGS.NAMES.CIVI_DARKMAGATAMA = STRINGS.NAMES.DARKMAGATAMA
 STRINGS.NAMES.CIVI_LIGHTMAGATAMA = STRINGS.NAMES.LIGHTMAGATAMA
 STRINGS.NAMES.DUMMY_NIGHTMAREFUEL = STRINGS.NAMES.NIGHTMAREFUEL
 
+--------------------
+------- Civi -------
+--------------------
+
 -- 黑宝石 --
-AddRecipe("darkgem", {Ingredient("purplegem", 1), Ingredient("nightmarefuel", 4)}, TECH.NONE, {builder_tag = "ns_builder_civi", no_deconstruction = true})
-SortAfter("darkgem", "purplegem")
+-- AddRecipe("darkgem", {Ingredient("purplegem", 1), Ingredient("nightmarefuel", 4)}, TECH.NONE, {builder_tag = "ns_builder_civi", no_deconstruction = true})
+-- SortAfter("darkgem", "purplegem")
 
 -- 白宝石 --
-AddRecipe("lightgem", {Ingredient("purplegem", 1), Ingredient("nightmarefuel", 4)}, TECH.NONE, {builder_tag = "ns_builder_civi", no_deconstruction = true})
-SortAfter("lightgem", "darkgem")
+-- AddRecipe("lightgem", {Ingredient("purplegem", 1), Ingredient("nightmarefuel", 4)}, TECH.NONE, {builder_tag = "ns_builder_civi", no_deconstruction = true})
+-- SortAfter("lightgem", "darkgem")
 
 -- 红宝石 --
-AddRecipe("civi_redgem", {Ingredient("bluegem", 1), Ingredient("nightmarefuel", 1)}, TECH.CELESTIAL_ONE, {nounlock = true, builder_tag = "ns_builder_civi", image = "redgem.tex", product = "redgem"})
+AddRecipe("civi_redgem", {Ingredient("bluegem", 1), Ingredient("nightmarefuel", 1)}, TECH.CELESTIAL_ONE, {nounlock = true, nochar = true, builder_tag = "ns_builder_civi", image = "redgem.tex", product = "redgem"})
 
 -- 蓝宝石 --
-AddRecipe("civi_bluegem", {Ingredient("redgem", 1), Ingredient("nightmarefuel", 1)}, TECH.CELESTIAL_ONE, {nounlock = true, builder_tag = "ns_builder_civi", image = "bluegem.tex", product = "bluegem"})
+AddRecipe("civi_bluegem", {Ingredient("redgem", 1), Ingredient("nightmarefuel", 1)}, TECH.CELESTIAL_ONE, {nounlock = true, nochar = true, builder_tag = "ns_builder_civi", image = "bluegem.tex", product = "bluegem"})
+SortAfter("civi_bluegem", "civi_redgem")
 
--- 黑暗护符 --
-AddRecipe("civi_darkamulet", {Ingredient("moonrocknugget", 3), Ingredient("nightmarefuel", 3), Ingredient("darkgem", 1)}, TECH.CELESTIAL_ONE, {nomods = true, nounlock = true, builder_tag = "ns_builder_civi", image ="darkamulet.tex", product = "darkamulet"})
-AddRecipe("darkamulet", {Ingredient("thulecite", 2), Ingredient("nightmarefuel", 3), Ingredient("darkgem", 1)}, TECH.ANCIENT_TWO, {nounlock = true})
+-- 黑水晶
+AddRecipe("darkcrystal", {Ingredient("purplegem",1), Ingredient("nightmarefuel", 4)}, TECH.NONE, {builder_tag = "ns_builder_civi", no_deconstruction = true})
+SortAfter("darkcrystal", "purplegem")
 
--- 光明护符 --
-AddRecipe("civi_lightamulet", {Ingredient("moonrocknugget", 3), Ingredient("nightmarefuel", 3), Ingredient("lightgem", 1)}, TECH.CELESTIAL_ONE, {nomods = true, nounlock = true, builder_tag = "ns_builder_civi", image = "lightamulet.tex", product ="lightamulet"})
-AddRecipe("lightamulet", {Ingredient("thulecite", 2), Ingredient("nightmarefuel", 3), Ingredient("lightgem", 1)}, TECH.ANCIENT_TWO, {nounlock = true})
+-- 白水晶
+AddRecipe("lightcrystal", {Ingredient("purplegem",1), Ingredient("nightmarefuel", 4)}, TECH.NONE, {builder_tag = "ns_builder_civi", no_deconstruction = true})
+SortAfter("lightcrystal", "darkcrystal")
 
--- 黑勾玉 --
-AddRecipe("darkmagatama", {Ingredient("darkgem", 1), Ingredient("nightmarefuel", 1)}, TECH.CELESTIAL_ONE, {nounlock = true, no_deconstruction = true})
-
-AddRecipe("civi_darkmagatama", {Ingredient("darkgem", 1), Ingredient("nightmarefuel", 1)}, TECH.MAGIC_THREE, {nomods = true, builder_tag = "ns_builder_civi", image = "darkmagatama.tex", product = "darkmagatama"})
-SortAfter("civi_darkmagatama", "nightsword", "MAGIC")
-
--- 白勾玉 --
-AddRecipe("lightmagatama", {Ingredient("lightgem", 1), Ingredient("nightmarefuel", 1)}, TECH.CELESTIAL_ONE, {nounlock = true, no_deconstruction = true})
-
-AddRecipe("civi_lightmagatama", {Ingredient("lightgem", 1), Ingredient("nightmarefuel", 1)}, TECH.MAGIC_THREE, {nomods = true, builder_tag = "ns_builder_civi", image = "lightmagatama.tex", product = "lightmagatama"})
-SortAfter("civi_lightmagatama", "civi_darkmagatama")
+-- 注能黑水晶、注能白水晶
+AddDeconstructRecipe("darkcrystal_charged", {Ingredient("darkcrystal", 1)})
+AddDeconstructRecipe("lightcrystal_charged", {Ingredient("lightcrystal", 1)})
 
 -- 影背包 --
-AddRecipe("nightpack", {Ingredient("darkgem", 1), Ingredient("lightgem", 1), Ingredient("nightmarefuel", 5)}, TECH.CELESTIAL_ONE, {nounlock = true, builder_tag = "ns_builder_civi"})
+AddRecipe("nightpack", {Ingredient("darkcrystal", 1), Ingredient("lightcrystal", 1), Ingredient("nightmarefuel", 5)}, TECH.CELESTIAL_ONE, {nounlock = true, builder_tag = "ns_builder_civi"})
+SortBefore("nightpack", "civi_redgem")
+
+-- 烟斗扩散器 :angri:
+-- AddRecipe("nightangri", {Ingredient("moonglass", 4), Ingredient("nightmarefuel", 4)}, TECH.CELESTIAL_THREE, {nounlock = true, builder_tag = "ns_builder_civi"})
+-- SortAfter("nightangri", "nightpack")
+
+
+-- 黑暗护符 --
+-- AddRecipe("civi_darkamulet", {Ingredient("moonrocknugget", 3), Ingredient("nightmarefuel", 3), Ingredient("darkgem", 1)}, TECH.CELESTIAL_ONE, {nomods = true, nounlock = true, builder_tag = "ns_builder_civi", image ="darkamulet.tex", product = "darkamulet"})
+-- AddRecipe("darkamulet", {Ingredient("thulecite", 2), Ingredient("nightmarefuel", 3), Ingredient("darkgem", 1)}, TECH.ANCIENT_TWO, {nounlock = true})
+
+-- 光明护符 --
+-- AddRecipe("civi_lightamulet", {Ingredient("moonrocknugget", 3), Ingredient("nightmarefuel", 3), Ingredient("lightgem", 1)}, TECH.CELESTIAL_ONE, {nomods = true, nounlock = true, builder_tag = "ns_builder_civi", image = "lightamulet.tex", product ="lightamulet"})
+-- AddRecipe("lightamulet", {Ingredient("thulecite", 2), Ingredient("nightmarefuel", 3), Ingredient("lightgem", 1)}, TECH.ANCIENT_TWO, {nounlock = true})
+
+-- 黑勾玉 --
+-- AddRecipe("darkmagatama", {Ingredient("darkgem", 1), Ingredient("nightmarefuel", 1)}, TECH.CELESTIAL_ONE, {nounlock = true, no_deconstruction = true})
+
+-- AddRecipe("civi_darkmagatama", {Ingredient("darkgem", 1), Ingredient("nightmarefuel", 1)}, TECH.MAGIC_THREE, {nomods = true, builder_tag = "ns_builder_civi", image = "darkmagatama.tex", product = "darkmagatama"})
+-- SortAfter("civi_darkmagatama", "nightsword", "MAGIC")
+
+-- 白勾玉 --
+-- AddRecipe("lightmagatama", {Ingredient("lightgem", 1), Ingredient("nightmarefuel", 1)}, TECH.CELESTIAL_ONE, {nounlock = true, no_deconstruction = true})
+
+-- AddRecipe("civi_lightmagatama", {Ingredient("lightgem", 1), Ingredient("nightmarefuel", 1)}, TECH.MAGIC_THREE, {nomods = true, builder_tag = "ns_builder_civi", image = "lightmagatama.tex", product = "lightmagatama"})
+-- SortAfter("civi_lightmagatama", "civi_darkmagatama")
+
+---------------------
+------- Dummy -------
+---------------------
 
 -- 灵魂剥离 --
 AddRecipe("dummy_nightmarefuel", {Ingredient(CHARACTER_INGREDIENT.HEALTH, 20, nil, nil, "decrease_sanity.tex")}, TECH.NONE, {builder_tag = "ns_builder_dummy", product = "nightmarefuel", actionstr = "SOULSPLIT"})
@@ -62,10 +91,14 @@ AddRecipe("book_toggledownfall", {Ingredient("papyrus", 2), Ingredient(CHARACTER
 -- 黑洞法杖 --
 AddRecipe("blackholestaff", {Ingredient("livinglog", 2), Ingredient("orangegem", 2), Ingredient("nightmarefuel", 4)}, TECH.ANCIENT_FOUR, {nounclock = true, builder_tag = "ns_builder_dummy"})
 
+---------------------
+------- Other -------
+---------------------
+
 -- 仙人掌粉 --
-AddRecipe("spice_cactus", {Ingredient("cactus_meat", 2), Ingredient("cactus_flower", 1)}, TECH.FOODPROCESSING_ONE, {nounlock = true, numtogive = 2, nochar = true, builder_tag = "professionalchef"})
+AddRecipe("spice_cactus", {Ingredient("cactus_meat", 2), Ingredient("cactus_flower", 1)}, TECH.FOODPROCESSING_ONE, {nounlock = true, numtogive = 2, nochar = true, builder_tag = "professionalchef", no_deconstruction = true})
 SortAfter("spice_cactus", "spice_salt")
 
 -- 便携衣柜 & 魔法礼装 --
-AddRecipe("portable_wardrobe_wrap", {Ingredient("giftwrap", 1), Ingredient("nightmarefuel",1)}, TECH.MAGIC_THREE, nil, {"MAGIC"})
-AddRecipe("portable_wardrobe_item", {Ingredient("portable_wardrobe_wrap", 3), Ingredient("boards", 4)}, TECH.MAGIC_THREE, nil, {"MAGIC"})
+AddRecipe("portable_wardrobe_wrap", {Ingredient("giftwrap", 1), Ingredient("nightmarefuel",1)}, TECH.MAGIC_THREE, {no_deconstruction = true}, {"MAGIC"})
+AddRecipe("portable_wardrobe_item", {Ingredient("portable_wardrobe_wrap", 3), Ingredient("boards", 4)}, TECH.MAGIC_THREE, {no_deconstruction = true}, {"MAGIC"})

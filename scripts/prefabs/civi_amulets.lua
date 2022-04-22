@@ -84,7 +84,7 @@ local function fn_dark()
     inst.components.fueled:SetDepletedFn(inst.Remove)
     inst.components.fueled:SetTakeFuelFn(ontakefuel)
     inst.components.fueled:SetFirstPeriod(TUNING.TURNON_FUELED_CONSUMPTION, TUNING.TURNON_FULL_FUELED_CONSUMPTION)
-    inst.components.fueled.accepting = true
+    inst.components.fueled.accepting = false
 
     inst:AddComponent("inventoryitem")
 

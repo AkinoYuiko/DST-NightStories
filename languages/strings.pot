@@ -3,6 +3,11 @@ msgstr ""
 "Application: Dont' Starve\n"
 "POT Version: 2.0\n"
 
+#. STRINGS.ACTIONS.CHANGE_TACKLE.CRYSTAL
+msgctxt "STRINGS.ACTIONS.CHANGE_TACKLE.CRYSTAL"
+msgid "Boost Sword"
+msgstr ""
+
 #. STRINGS.ACTIONS.FUELPOCKETWATCH
 msgctxt "STRINGS.ACTIONS.FUELPOCKETWATCH"
 msgid "Hack"
@@ -78,6 +83,11 @@ msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKAMULET"
 msgid "I can feel the darkness coming."
 msgstr ""
 
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKCRYSTAL
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKCRYSTAL"
+msgid "Get closer to dark!"
+msgstr ""
+
 #. STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKGEM
 msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKGEM"
 msgid "Get closer to dark!"
@@ -91,6 +101,11 @@ msgstr ""
 #. STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTAMULET
 msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTAMULET"
 msgid "I can feel the darkness away."
+msgstr ""
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTCRYSTAL
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTCRYSTAL"
+msgid "Get closer to light!"
 msgstr ""
 
 #. STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTGEM
@@ -458,23 +473,23 @@ msgctxt "STRINGS.CHARACTER_TITLES.miotan"
 msgid "The Nightmare Eater"
 msgstr ""
 
-#. STRINGS.CIVI_GEMS.ALREADY_DARK
-msgctxt "STRINGS.CIVI_GEMS.ALREADY_DARK"
+#. STRINGS.CIVI_LEVELS.ALREADY_DARK
+msgctxt "STRINGS.CIVI_LEVELS.ALREADY_DARK"
 msgid "I've already in the dark."
 msgstr ""
 
-#. STRINGS.CIVI_GEMS.ALREADY_LIGHT
-msgctxt "STRINGS.CIVI_GEMS.ALREADY_LIGHT"
+#. STRINGS.CIVI_LEVELS.ALREADY_LIGHT
+msgctxt "STRINGS.CIVI_LEVELS.ALREADY_LIGHT"
 msgid "I've already in the light."
 msgstr ""
 
-#. STRINGS.CIVI_GEMS.FEEL_DARK
-msgctxt "STRINGS.CIVI_GEMS.FEEL_DARK"
+#. STRINGS.CIVI_LEVELS.FEEL_DARK
+msgctxt "STRINGS.CIVI_LEVELS.FEEL_DARK"
 msgid "I felt the dark."
 msgstr ""
 
-#. STRINGS.CIVI_GEMS.FEEL_LIGHT
-msgctxt "STRINGS.CIVI_GEMS.FEEL_LIGHT"
+#. STRINGS.CIVI_LEVELS.FEEL_LIGHT
+msgctxt "STRINGS.CIVI_LEVELS.FEEL_LIGHT"
 msgid "I felt the light."
 msgstr ""
 
@@ -503,6 +518,11 @@ msgctxt "STRINGS.NAMES.DARKAMULET"
 msgid "Dark Amulet"
 msgstr ""
 
+#. STRINGS.NAMES.DARKCRYSTAL
+msgctxt "STRINGS.NAMES.DARKCRYSTAL"
+msgid "Dark Crystal"
+msgstr ""
+
 #. STRINGS.NAMES.DARKGEM
 msgctxt "STRINGS.NAMES.DARKGEM"
 msgid "Dark Gem"
@@ -526,6 +546,11 @@ msgstr ""
 #. STRINGS.NAMES.LIGHTAMULET
 msgctxt "STRINGS.NAMES.LIGHTAMULET"
 msgid "Light Amulet"
+msgstr ""
+
+#. STRINGS.NAMES.LIGHTCRYSTAL
+msgctxt "STRINGS.NAMES.LIGHTCRYSTAL"
+msgid "Light Crystal"
 msgstr ""
 
 #. STRINGS.NAMES.LIGHTGEM
@@ -643,6 +668,11 @@ msgctxt "STRINGS.RECIPE_DESC.DARKAMULET"
 msgid "Powerful but dark."
 msgstr ""
 
+#. STRINGS.RECIPE_DESC.DARKCRYSTAL
+msgctxt "STRINGS.RECIPE_DESC.DARKCRYSTAL"
+msgid "Into Dark!"
+msgstr ""
+
 #. STRINGS.RECIPE_DESC.DARKGEM
 msgctxt "STRINGS.RECIPE_DESC.DARKGEM"
 msgid "Upgrades!"
@@ -656,6 +686,11 @@ msgstr ""
 #. STRINGS.RECIPE_DESC.LIGHTAMULET
 msgctxt "STRINGS.RECIPE_DESC.LIGHTAMULET"
 msgid "Keep away from dark things."
+msgstr ""
+
+#. STRINGS.RECIPE_DESC.LIGHTCRYSTAL
+msgctxt "STRINGS.RECIPE_DESC.LIGHTCRYSTAL"
+msgid "Into Light!"
 msgstr ""
 
 #. STRINGS.RECIPE_DESC.LIGHTGEM

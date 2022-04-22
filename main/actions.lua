@@ -6,16 +6,16 @@ GLOBAL.setfenv(1, GLOBAL)
 local UpvalueUtil = require "upvalueutil"
 
 NS_ACTIONS = {
-    GEMTRADE = Action({mount_valid = true}),
-    MIOFUEL = Action({mount_valid = true}),
-    NIGHTSWITCH = Action({mount_valid = true, priority = 1}),
-    NIGHTSWORDMAGATAMA = Action({mount_valid = true, priority = 2}),
-    FUELPOCKETWATCH = Action({ priority = 3, rmb = true }),
+    GEMTRADE = Action({priority = 3, mount_valid = true}),
+    MIOFUEL = Action({priority = 3, mount_valid = true}),
+    NIGHTSWITCH = Action({priority = 1, mount_valid = true}),
+    NIGHTSWORD = Action({priority = 2, mount_valid = true}),
+    FUELPOCKETWATCH = Action({priority = 3, rmb = true}),
 }
 
 NS_ACTIONS.GEMTRADE.str = STRINGS.ACTIONS.GIVE.SOCKET
 NS_ACTIONS.NIGHTSWITCH.str = STRINGS.ACTIONS.USEITEM
-NS_ACTIONS.NIGHTSWORDMAGATAMA.str = STRINGS.ACTIONS.GIVE.SOCKET
+NS_ACTIONS.NIGHTSWORD.str = STRINGS.ACTIONS.GIVE.SOCKET
 -- NS_ACTIONS.FUELPOCKETWATCH.str = STRINGS.ACTIONS.FUELPOCKETWATCH
 
 NS_ACTIONS.MIOFUEL.stroverridefn = function(act)
@@ -42,7 +42,7 @@ NS_ACTIONS.GEMTRADE.fn = function(act)
         if target.OnGemTrade then
             local gem_type = GEM_MAP[item.prefab]
             if gem_type then
-                target:OnGemTrade(gem_type, doer.prefab == "dummy" and gem_type ~= "fuel")
+                target:OnGemTrade(gem_type, doer.prefab == "dummy")
             end
         end
         item:Remove()
@@ -55,19 +55,19 @@ NS_ACTIONS.NIGHTSWITCH.fn = function(act)
     local level = doer.level
     if doer.components.inventory then
         local item = doer.components.inventory:RemoveItem(act.invobject)
-        if item.prefab == "darkgem" then
+        if item.prefab == "darkcrystal" then
             doer.level = level + 1
             if doer.level < 2 then
-                doer.components.talker:Say(STRINGS.CIVI_GEMS.FEEL_DARK, 3)
+                doer.components.talker:Say(STRINGS.CIVI_LEVELS.FEEL_DARK, 3)
             else
-                doer.components.talker:Say(STRINGS.CIVI_GEMS.ALREADY_DARK, 3)
+                doer.components.talker:Say(STRINGS.CIVI_LEVELS.ALREADY_DARK, 3)
             end
-        elseif item.prefab == "lightgem" then
+        elseif item.prefab == "lightcrystal" then
             doer.level = level - 1
             if doer.level > 0 then
-                doer.components.talker:Say(STRINGS.CIVI_GEMS.FEEL_LIGHT, 3)
+                doer.components.talker:Say(STRINGS.CIVI_LEVELS.FEEL_LIGHT, 3)
             else
-                doer.components.talker:Say(STRINGS.CIVI_GEMS.ALREADY_LIGHT, 3)
+                doer.components.talker:Say(STRINGS.CIVI_LEVELS.ALREADY_LIGHT, 3)
             end
         end
 
@@ -82,18 +82,33 @@ end
 
 scheduler:ExecuteInTime(0, function()
     if rawget(_G, "STRCODE_TALKER") then
-        STRCODE_TALKER[STRINGS.CIVI_GEMS.FEEL_DARK] = "CIVI_GEMS.FEEL_DARK"
-        STRCODE_TALKER[STRINGS.CIVI_GEMS.ALREADY_DARK] = "CIVI_GEMS.ALREADY_DARK"
-        STRCODE_TALKER[STRINGS.CIVI_GEMS.FEEL_LIGHT] = "CIVI_GEMS.FEEL_LIGHT"
-        STRCODE_TALKER[STRINGS.CIVI_GEMS.ALREADY_LIGHT] = "CIVI_GEMS.ALREADY_LIGHT"
+        STRCODE_TALKER[STRINGS.CIVI_LEVELS.FEEL_DARK] = "CIVI_LEVELS.FEEL_DARK"
+        STRCODE_TALKER[STRINGS.CIVI_LEVELS.ALREADY_DARK] = "CIVI_LEVELS.ALREADY_DARK"
+        STRCODE_TALKER[STRINGS.CIVI_LEVELS.FEEL_LIGHT] = "CIVI_LEVELS.FEEL_LIGHT"
+        STRCODE_TALKER[STRINGS.CIVI_LEVELS.ALREADY_LIGHT] = "CIVI_LEVELS.ALREADY_LIGHT"
     end
 end)
+
+local fuel_action_prefabs = {
+    torch = true,
+    lighter = true,
+    pumpkin_lantern = true,
+    ironwind = true, -- Volcano Biome MOD
+    purpleamulet = true,
+}
+
+for i = 1, 8 do
+    fuel_action_prefabs["winter_ornament_light" .. tostring(i)] = true
+end
 
 local function use_fuel(item, target, doer)
     local wetmult = item:GetIsWet() and TUNING.WET_FUEL_PENALTY or 1
     local fueled = target.components.fueled
     if fueled then
         fueled:DoDelta(item.components.fuel.fuelvalue * fueled.bonusmult * wetmult, doer)
+        if fuel_action_prefabs[target.prefab] then
+            doer.SoundEmitter:PlaySound("dontstarve/common/nightmareAddFuel")
+        end
         if fueled.ontakefuelfn then
             fueled.ontakefuelfn(target)
         end
@@ -101,7 +116,6 @@ local function use_fuel(item, target, doer)
     elseif target.components.perishable then
         target.components.perishable:SetPercent( target.components.perishable:GetPercent() + item.components.fuel.fuelvalue / TUNING.LANTERN_LIGHTTIME * wetmult )
         return true
-
     end
 end
 
@@ -119,7 +133,7 @@ NS_ACTIONS.MIOFUEL.fn = function(act)
     end
 end
 
-NS_ACTIONS.NIGHTSWORDMAGATAMA.fn = function(act)
+NS_ACTIONS.NIGHTSWORD.fn = function(act)
     local doer = act.doer
     local target = act.target
     if doer.components.inventory then
@@ -156,7 +170,7 @@ for _, k, v in sorted_pairs(NS_ACTIONS) do
 end
 
 local function fuel_pocket_watch(inst, caster)
-    print("FuelPocketWatch, GetActionPoint")
+    -- print("FuelPocketWatch, GetActionPoint")
     return inst.components.pocketwatch:CastSpell(caster)
 end
 NS_ACTIONS.FUELPOCKETWATCH.fn = function(act)
@@ -175,18 +189,6 @@ end
 ---------------------------------------------------------------------
 ----------------------- COMPONENT ACTIONS ---------------------------
 ---------------------------------------------------------------------
-
-local fuel_action_prefabs = {
-    torch = true,
-    lighter = true,
-    pumpkin_lantern = true,
-    ironwind = true, -- Volcano Biome MOD
-    purpleamulet = true,
-}
-
-for i = 1, 8 do
-    fuel_action_prefabs["winter_ornament_light" .. tostring(i)] = true
-end
 
 local function fuel_action_testfn(target)
     return target:HasTag("CAVE_fueled") or
@@ -209,20 +211,11 @@ AddComponentAction("USEITEM", "fuel", function(inst, doer, target, actions, righ
     end
 end)
 
-AddComponentAction("USEITEM", "nightmagatama", function(inst, doer, target, actions, right)
-    if right and target.prefab == "nightsword" and not target:HasTag("nomagatamasocket") then
-        table.insert(actions, NS_ACTIONS.NIGHTSWORDMAGATAMA)
-    end
-end)
-AddComponentAction("INVENTORY", "nightmagatama", function(inst, doer, actions, right)
-    if doer.replica.inventory and not doer.replica.inventory:IsHeavyLifting() then
-        local sword = doer.replica.inventory:GetEquippedItem(EQUIPSLOTS.HANDS)
-        if sword and sword.prefab == "nightsword" and
-            sword.replica.container and sword.replica.container:IsOpenedBy(doer) and
-            sword.replica.container:CanTakeItemInSlot(inst)
-        then
-            table.insert(actions, ACTIONS.CHANGE_TACKLE)
-        end
+AddComponentAction("USEITEM", "fuelpocketwatch", function(inst, doer, target, actions, right)
+    if right and inst.prefab =="nightmarefuel" and doer:HasTag("nightmare_twins")
+    and target.prefab == "pocketwatch_recall" and target:HasTag("pocketwatch_inactive") and not target:HasTag("recall_unmarked")
+    then
+        table.insert(actions, NS_ACTIONS.FUELPOCKETWATCH)
     end
 end)
 
@@ -230,17 +223,42 @@ AddComponentAction("USEITEM", "inventoryitem", function(inst, doer, target, acti
     if right and target.prefab == "nightpack" and inst:HasTag("nightpackgem") and not doer.replica.rider:IsRiding()
     and not (target:HasTag("nofuelsocket") and inst.prefab == "nightmarefuel")
     then
-        table.insert(actions, 1, NS_ACTIONS.GEMTRADE)
+        table.insert(actions, NS_ACTIONS.GEMTRADE)
     end
 end)
 
-AddComponentAction("INVENTORY", "nightswitch", function(inst, doer, actions, right)
-    if doer.prefab ~= "civi" then return end
-    if doer.replica.inventory:GetActiveItem() == inst then return end
-    if inst.prefab == "darkgem" and doer:HasTag("civi_canupgrade") then
-        table.insert(actions, NS_ACTIONS.NIGHTSWITCH)
-    elseif inst.prefab == "lightgem" and doer:HasTag("civi_candegrade") then
-        table.insert(actions, NS_ACTIONS.NIGHTSWITCH)
+
+AddComponentAction("USEITEM", "nightcrystal", function(inst, doer, target, actions, right)
+    if right and target.prefab == "nightsword" and not target:HasTag("crystal_socketed") then
+        table.insert(actions, NS_ACTIONS.NIGHTSWORD)
+    end
+end)
+
+local change_tackle_strfn = ACTIONS.CHANGE_TACKLE.strfn
+ACTIONS.CHANGE_TACKLE.strfn = function(act)
+	local item = (act.invobject ~= nil and act.invobject:IsValid()) and act.invobject or nil
+    local equipped = (item ~= nil and act.doer.replica.inventory ~= nil) and act.doer.replica.inventory:GetEquippedItem(EQUIPSLOTS.HANDS) or nil
+	return (equipped ~= nil and equipped.replica.container ~= nil and equipped.replica.container:IsHolding(item)) and "REMOVE"
+			or (item ~= nil and item:HasTag("civicrystal")) and ("CRYSTAL")
+			or change_tackle_strfn(act)
+end
+
+AddComponentAction("INVENTORY", "nightcrystal", function(inst, doer, actions, right)
+    if doer.replica.inventory and not doer.replica.inventory:IsHeavyLifting() then
+        local sword = doer.replica.inventory:GetEquippedItem(EQUIPSLOTS.HANDS)
+        if sword and sword.prefab == "nightsword" and
+            sword.replica.container and sword.replica.container:IsOpenedBy(doer) and
+            sword.replica.container:CanTakeItemInSlot(inst)
+        then
+            table.insert(actions, ACTIONS.CHANGE_TACKLE)
+        elseif doer.prefab == "civi" then
+            -- if doer.replica.inventory:GetActiveItem() == inst then return end
+            if inst.prefab == "darkcrystal" and doer:HasTag("civi_canupgrade") then
+                table.insert(actions, NS_ACTIONS.NIGHTSWITCH)
+            elseif inst.prefab == "lightcrystal" and doer:HasTag("civi_candegrade") then
+                table.insert(actions, NS_ACTIONS.NIGHTSWITCH)
+            end
+        end
     end
 end)
 
@@ -268,18 +286,10 @@ AddComponentAction("INVENTORY", "wardrobe", function(inst, doer, actions, right)
     end
 end)
 
-AddComponentAction("USEITEM", "fuelpocketwatch", function(inst, doer, target, actions, right)
-    if right and inst.prefab =="nightmarefuel" and doer:HasTag("nightmare_twins")
-    and target.prefab == "pocketwatch_recall" and target:HasTag("pocketwatch_inactive") and not target:HasTag("recall_unmarked")
-    then
-        table.insert(actions, NS_ACTIONS.FUELPOCKETWATCH)
-    end
-end)
-
 for _, sg in ipairs({"wilson", "wilson_client"}) do
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.MIOFUEL, "doshortaction"))
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.GEMTRADE, "doshortaction"))
-    AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.NIGHTSWORDMAGATAMA, "doshortaction"))
+    AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.NIGHTSWORD, "doshortaction"))
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.NIGHTSWITCH, "domediumaction"))
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.FUELPOCKETWATCH, "pocketwatch_warpback_pre"))
 end

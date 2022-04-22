@@ -1,8 +1,8 @@
 local assets=
 {
-    Asset("ANIM", "anim/civi_magatamas.zip"),
+    Asset("ANIM", "anim/civi_crystal.zip"),
 }
-local function buildmagatama(colour)
+local function MakeCrystal(colour)
     local function fn()
         local inst = CreateEntity()
 
@@ -13,9 +13,15 @@ local function buildmagatama(colour)
 
         MakeInventoryPhysics(inst)
 
-        inst.AnimState:SetBank("civi_magatamas")
-        inst.AnimState:SetBuild("civi_magatamas")
+        inst.AnimState:SetBank("civi_crystal")
+        inst.AnimState:SetBuild("civi_crystal")
         inst.AnimState:PlayAnimation(colour)
+
+        -- inst:AddTag("molebait")
+        -- inst:AddTag("quakedebris")
+
+        inst:AddTag("civicrystal")
+        -- inst:AddTag("reloaditem_crystal")
 
         MakeInventoryFloatable(inst, "small", 0.05)
 
@@ -33,6 +39,8 @@ local function buildmagatama(colour)
 
         inst:AddComponent("inspectable")
 
+        inst:AddComponent("nightcrystal")
+
         inst:DoTaskInTime(0, function(inst)
             inst.drawnameoverride = rawget(_G, "EncodeStrCode") and EncodeStrCode({content = "NAMES." .. string.upper(inst.prefab)})
         end)
@@ -40,8 +48,8 @@ local function buildmagatama(colour)
         return inst
     end
 
-    return Prefab(colour.."magatama", fn, assets)
+    return Prefab(colour.."crystal", fn, assets)
 
 end
-return buildmagatama("dark"),
-        buildmagatama("light")
+return MakeCrystal("dark"),
+        MakeCrystal("light")

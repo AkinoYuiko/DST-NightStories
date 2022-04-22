@@ -2,14 +2,14 @@ local AddClassPostConstruct = AddClassPostConstruct
 local AddPrefabPostInit = AddPrefabPostInit
 GLOBAL.setfenv(1, GLOBAL)
 
-local MAGATAMA_NAMES = {
-    "darkmagatama",
-    "lightmagatama"
+local CRYSTAL_NAMES = {
+    "darkcrystal",
+    "lightcrystal"
 }
-local MAGATAMA_IDS = table.invert(MAGATAMA_NAMES)
+local CRYSTAL_IDS = table.invert(CRYSTAL_NAMES)
 
 local function InitContainer(inst)
-    inst:AddTag("nomagatamasocket")
+    inst:AddTag("crystal_socketed")
     inst:AddComponent("container")
     inst.components.container:WidgetSetup("nightsword")
     inst.components.container.canbeopened = false
@@ -21,14 +21,14 @@ local function GetImageBG(base_name)
     return { image = name, atlas = GetInventoryItemAtlas(name) }
 end
 
-local function OnMagatamaDirty(inst)
-    inst.inv_image_bg = GetImageBG(MAGATAMA_NAMES[inst.magatama_id:value()])
+local function OnCrystalDirty(inst)
+    inst.inv_image_bg = GetImageBG(CRYSTAL_NAMES[inst.crystal_id:value()])
     inst:PushEvent("imagechange")
 end
 
-local function SetMagatamaBG(inst, override)
-    inst.magatama_id:set(override or MAGATAMA_IDS[inst.socketed_magatama] or 0)
-    OnMagatamaDirty(inst)
+local function SetCrystalBG(inst, override)
+    inst.crystal_id:set(override or CRYSTAL_IDS[inst.socketed_crystal] or 0)
+    OnCrystalDirty(inst)
 end
 
 local function on_add_container(inst)
@@ -65,11 +65,11 @@ local function onunequipfn(inst)
 end
 
 local function onopen(inst)
-    inst:SetMagatamaBG(0)
+    inst:SetCrystalBG(0)
 end
 
 local function onclose(inst)
-    inst:SetMagatamaBG()
+    inst:SetCrystalBG()
 end
 
 local function onitemget(inst, data)
@@ -77,24 +77,24 @@ local function onitemget(inst, data)
         inst.remove_container_task:Cancel()
         inst.remove_container_task = nil
     end
-    if data.item.prefab == "darkmagatama" then
-        inst.socketed_magatama = "darkmagatama"
+    if data.item.prefab == "darkcrystal" then
+        inst.socketed_crystal = "darkcrystal"
         inst.components.weapon:SetDamage(TUNING.NIGHTSWORD_DAMAGE * 1.125)
-        inst.components.weapon.attackwearmultipliers:SetModifier("nightmagatama", 1.25)
-        inst.components.equippable.dapperness = TUNING.CRAZINESS_MED * 1.5
-    elseif data.item.prefab == "lightmagatama" then
-        inst.socketed_magatama = "lightmagatama"
+        inst.components.weapon.attackwearmultipliers:SetModifier("nightcrystal", 1.25)
+        inst.components.equippable.dapperness = TUNING.CRAZINESS_MED * 1.25
+    elseif data.item.prefab == "lightcrystal" then
+        inst.socketed_crystal = "lightcrystal"
         inst.components.weapon:SetDamage(TUNING.NIGHTSWORD_DAMAGE)
-        inst.components.weapon.attackwearmultipliers:SetModifier("nightmagatama", 0.8)
+        inst.components.weapon.attackwearmultipliers:SetModifier("nightcrystal", 0.8)
         inst.components.equippable.dapperness = 0
     end
-    inst:SetMagatamaBG(inst.components.container:IsOpen() and 0)
+    inst:SetCrystalBG(inst.components.container:IsOpen() and 0)
 end
 
 local function onitemlose(inst)
-    inst.socketed_magatama = nil
+    inst.socketed_crystal = nil
     inst.components.weapon:SetDamage(TUNING.NIGHTSWORD_DAMAGE)
-    inst.components.weapon.attackwearmultipliers:RemoveModifier("nightmagatama")
+    inst.components.weapon.attackwearmultipliers:RemoveModifier("nightcrystal")
     inst.components.equippable.dapperness = TUNING.CRAZINESS_MED
     if inst.remove_container_task then
         inst.remove_container_task:Cancel()
@@ -104,22 +104,22 @@ local function onitemlose(inst)
         if inst.components.container and inst.components.container:IsEmpty() then
             inst.components.container:Close()
             inst:RemoveComponent("container")
-            inst:RemoveTag("nomagatamasocket")
+            inst:RemoveTag("crystal_socketed")
             inst.remove_container_task = nil
         end
     end)
-    inst:SetMagatamaBG()
+    inst:SetCrystalBG()
 end
 
 AddPrefabPostInit("nightsword", function(inst)
     inst.entity:AddSoundEmitter()
 
-    inst.magatama_id = net_tinybyte(inst.GUID, "nightsword.magatama_id", "magatamadirty")
+    inst.crystal_id = net_tinybyte(inst.GUID, "nightsword.crystal_id", "crystaldirty")
     inst.add_container_event = net_event(inst.GUID, "add_container")
     inst:AddTag("__container")
 
     if not TheWorld.ismastersim then
-        inst:ListenForEvent("magatamadirty", OnMagatamaDirty)
+        inst:ListenForEvent("crystaldirty", OnCrystalDirty)
         inst:ListenForEvent("add_container", on_add_container)
         return
     end
@@ -128,7 +128,7 @@ AddPrefabPostInit("nightsword", function(inst)
     inst:PrereplicateComponent("container")
     inst.InitContainer = InitContainer
 
-    inst.SetMagatamaBG = SetMagatamaBG
+    inst.SetCrystalBG = SetCrystalBG
 
     local onfinished = inst.components.finiteuses.onfinished or function() end
     inst.components.finiteuses:SetOnFinished(function(inst, ...)
@@ -140,28 +140,28 @@ AddPrefabPostInit("nightsword", function(inst)
             if item then
                 inst.components.finiteuses:SetPercent(1)
                 if inv and ( owner.prefab == "civi" or ( owner.prefab == "miotan" and owner.boosted_task ) ) then
-                    local magatama = inv:FindItem(function(new_item) return new_item.prefab == item.prefab end)
-                    if magatama then
+                    local crystal = inv:FindItem(function(new_item) return new_item.prefab == item.prefab end)
+                    if crystal then
                         local slot_widget
                         local controls = owner.HUD and owner.HUD.controls
                         if controls then
                             local overflow = inv:GetOverflowContainer()
-                            slot_widget = controls.inv.inv[inv:GetItemSlot(magatama)] -- check inventory first
-                            or ( inv:GetActiveItem() == magatama and controls.inv.hovertile ) -- else, check active item
+                            slot_widget = controls.inv.inv[inv:GetItemSlot(crystal)] -- check inventory first
+                            or ( inv:GetActiveItem() == crystal and controls.inv.hovertile ) -- else, check active item
                             or ( overflow -- else, if backpack, check backpack
                                 and (
                                     controls.containers[overflow.inst] -- if backpack is side-display
-                                    and controls.containers[overflow.inst].inv[overflow:GetItemSlot(magatama)]
-                                    or controls.inv.backpackinv[overflow:GetItemSlot(magatama)]
+                                    and controls.containers[overflow.inst].inv[overflow:GetItemSlot(crystal)]
+                                    or controls.inv.backpackinv[overflow:GetItemSlot(crystal)]
                                 )
                             )
                         end
-                        local single_magatama = inv:RemoveItem(magatama)
-                        if single_magatama then
+                        local single_crystal = inv:RemoveItem(crystal)
+                        if single_crystal then
                             local pos = slot_widget
                                and Vector3(TheSim:ProjectScreenPos(slot_widget:GetWorldPosition():Get()))
                                or inst:GetPosition()
-                            container:GiveItem(single_magatama, nil, pos)
+                            container:GiveItem(single_crystal, nil, pos)
                         end
                     end
                 end

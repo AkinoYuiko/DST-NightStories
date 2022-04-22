@@ -22,7 +22,6 @@ local function buildgem(colour)
 
         MakeInventoryFloatable(inst, "small", 0.10, 0.80)
 
-
         inst.entity:SetPristine()
 
         if not TheWorld.ismastersim then
@@ -36,7 +35,7 @@ local function buildgem(colour)
 
         inst:AddComponent("inspectable")
 
-        inst:AddComponent("nightswitch")
+        -- inst:AddComponent("nightswitch")
 
         inst:DoTaskInTime(0, function(inst)
             inst.drawnameoverride = rawget(_G, "EncodeStrCode") and EncodeStrCode({content = "NAMES." .. string.upper(inst.prefab)})

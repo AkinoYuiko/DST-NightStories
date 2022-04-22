@@ -5,6 +5,10 @@ local strings = {
     ACTIONS =
     {
         FUELPOCKETWATCH = "Hack",
+        CHANGE_TACKLE =
+        {
+            CRYSTAL = "Boost Sword",
+        },
     },
     UI = {
         CRAFTING =
@@ -31,6 +35,8 @@ local strings = {
         -- NIGHTPACK_DARK = "Dark Night Pack",
         -- NIGHTPACK_LIGHT = "Light Night Pack",
         NIGHTPACK_FUEL = "Night Pack",
+        DARKCRYSTAL = "Dark Crystal",
+        LIGHTCRYSTAL = "Light Crystal",
         DARKGEM = "Dark Gem",
         LIGHTGEM = "Light Gem",
         DARKMAGATAMA = "Dark Magatama",
@@ -59,6 +65,10 @@ local strings = {
         NIGHTPACK = "Dark away.",
         DARKAMULET = "Powerful but dark.",
         LIGHTAMULET = "Keep away from dark things.",
+
+        DARKCRYSTAL = "Into Dark!",
+        LIGHTCRYSTAL = "Into Light!",
+
         DARKGEM = "Upgrades!",
         LIGHTGEM = "Degrades!",
 
@@ -112,7 +122,7 @@ local strings = {
     {
         dummytab = "Nightmare",
     },
-    CIVI_GEMS =
+    CIVI_LEVELS =
     {
         FEEL_DARK = "I felt the dark.",
         ALREADY_DARK = "I've already in the dark.",
@@ -139,6 +149,10 @@ local strings = {
                 },
                 DARKAMULET = "I can feel the darkness coming.",
                 LIGHTAMULET = "I can feel the darkness away.",
+
+                DARKCRYSTAL = "Get closer to dark!",
+                LIGHTCRYSTAL = "Get closer to light!",
+
                 DARKGEM = "Get closer to dark!",
                 LIGHTGEM = "Get closer to light!",
 
@@ -229,7 +243,7 @@ local function MergeCharacterSpeech(char)
     GlassicAPI.MergeSpeechFile(STRINGS.CHARACTERS[string.upper(char)], file)
 end
 
-UpdateNsStrings = function(update_speech)
+function UpdateNsStrings(update_speech)
     if update_speech then
         MergeCharacterSpeech("miotan")
         -- MergeCharacterSpeech("dummy")
