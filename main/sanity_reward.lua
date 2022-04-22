@@ -5,7 +5,8 @@ local nightmare_prefabs =
 {
     "crawlinghorror",
     "terrorbeak",
-    "swimminghorror",
+    "oceanhorror",
+    "swimminghorror",   -- IA
 }
 
 local function sanity_reward_postinit(inst)
