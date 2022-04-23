@@ -12,7 +12,7 @@ local function zh_en(a, b)
     })
 end
 
-version = "1.28"
+version = "1.29"
 -- basic info --
 name = zh_en("暗夜故事集", "Night Stories")
 author = zh_en("丁香女子学校", "Civi, Tony, LSSSS")
@@ -21,16 +21,26 @@ description = zh_en(
 "[版本: " .. version .. [[]
 
 更新内容:
-- 更新SortAfter适配新版本的Glassic API。
-- 重绘了黑宝石、白宝石、黑暗护符、光明护符的动画（高清重制）。
+- 使用白水晶可以给友爱戒指注能，将注能光明图腾放在地上，可以降低负面精神光环对玩家的影响，并增强正面精神光环对玩家的影响。
+- 使用黑水晶可以给友爱戒指注能，将注能黑暗图腾放在地上，可以提高附近人物的攻击力。
+- 装备友爱戒指后，吃恢复类食物时，可以广域化给附近其他角色，但恢复效果会根据受益人数衰减。
+- 黑水晶代替原来黑宝石、黑勾玉的功能，即人物升级、嵌入武器。
+- 白水晶代替原来白宝石、白勾玉的功能，即人物升级、嵌入武器。
+- 新道具：黑水晶、白水晶、友爱戒指、注能黑暗图腾、注能光明图腾。
+- 新增配方：黑水晶、白水晶、光暗投影仪。
+- 移除配方：黑宝石、白宝石、黑勾玉、白勾玉、黑暗护符、光明护符。
 
 “黑夜将至，你准备好了吗？”]],
     -- en
 "[Version: " .. version .. [[]
 
 Changelog:
-- Update SortAfter for a new version of Glassic API.
-- Rework animations of Dark/Light Gem, Dark/Light Amulet.
+- Charged Ring of Friendship can buff nearby players when on ground, replace Dark/Light Amulet.
+- Equipping Ring of Friendship allows you to buff nearby players when eating food.
+- Dark/Light Crystal replace Dark/Light Gem/Magatama's function.
+- New items: Dark Crystal, Light Cystal, Ring of Friendship, Charged Ring of Friendship.
+- New recipes: Dark Crystal, Light Crystal.
+- Remove recipes: Dark Gem, Light Gem, Dark Magatama, Light Magatama, Dark Amulet, Light Amulet.
 
 "Night is coming, aren't you ready yet?"]]
 )
