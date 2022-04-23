@@ -12,7 +12,7 @@ local function zh_en(a, b)
     })
 end
 
-version = "1.29"
+version = "1.29.1"
 -- basic info --
 name = zh_en("暗夜故事集", "Night Stories")
 author = zh_en("丁香女子学校", "Civi, Tony, LSSSS")
@@ -21,6 +21,8 @@ description = zh_en(
 "[版本: " .. version .. [[]
 
 更新内容:
+- 修复一个崩溃问题。
+
 - 使用白水晶可以给友爱戒指注能，将注能光明图腾放在地上，可以降低负面精神光环对玩家的影响，并增强正面精神光环对玩家的影响。
 - 使用黑水晶可以给友爱戒指注能，将注能黑暗图腾放在地上，可以提高附近人物的攻击力。
 - 装备友爱戒指后，吃恢复类食物时，可以广域化给附近其他角色，但恢复效果会根据受益人数衰减。
@@ -35,6 +37,8 @@ description = zh_en(
 "[Version: " .. version .. [[]
 
 Changelog:
+- Fix crash on friendshipring.
+
 - Charged Ring of Friendship can buff nearby players when on ground, replace Dark/Light Amulet.
 - Equipping Ring of Friendship allows you to buff nearby players when eating food.
 - Dark/Light Crystal replace Dark/Light Gem/Magatama's function.
