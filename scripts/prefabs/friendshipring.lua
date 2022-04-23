@@ -88,7 +88,6 @@ local function onequip(inst, owner)
     owner.AnimState:Show("ARM_normal")
 end
 
-
 local function onunequip(inst, owner)
 
     inst:RemoveEventCallback("oneat", inst._oneat, owner)
@@ -167,7 +166,9 @@ end
 local function base_fn()
     local inst = common_fn()
 
-    if not TheWorld.ismastersim then return end
+    if not TheWorld.ismastersim then
+        return inst
+    end
 
     inst:AddComponent("equippable")
     inst.components.equippable:SetOnEquip(onequip)
@@ -187,7 +188,9 @@ local function MakeTotem(color)
 
         inst.AnimState:PlayAnimation(color .. "_loop", true)
 
-        if not TheWorld.ismastersim then return end
+        if not TheWorld.ismastersim then
+            return inst
+        end
 
         inst:AddComponent("fueled")
         inst.components.fueled.fueltype = FUELTYPE.MAGIC
