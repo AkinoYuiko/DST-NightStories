@@ -6,6 +6,8 @@ PrefabFiles = {
     "civi_gems",        -- nouse anymore
     "civi_magatamas",   -- nouse anymore
     "nightpack",
+    "friendshipring",
+    "friendshiptotem_buff",
 
     "miotan",
     "lantern_mio_fx",

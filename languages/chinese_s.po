@@ -109,6 +109,21 @@ msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKMAGATAMA"
 msgid "Make THE sword to the dark."
 msgstr "让那把刀接近黑暗。"
 
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.FRIENDSHIPRING
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.FRIENDSHIPRING"
+msgid "It's the proof of friendship."
+msgstr "这是友谊的证明。"
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.FRIENDSHIPTOTEM_DARK
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.FRIENDSHIPTOTEM_DARK"
+msgid "It's the proof of friendship."
+msgstr "这是友谊的黑暗证明。"
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.FRIENDSHIPTOTEM_LIGHT
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.FRIENDSHIPTOTEM_LIGHT"
+msgid "It's the proof of friendship."
+msgstr "这是友谊的光明证明。"
+
 #. STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTAMULET
 msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTAMULET"
 msgid "I can feel the darkness away."
@@ -568,6 +583,21 @@ msgctxt "STRINGS.NAMES.DUMMY"
 msgid "Dummy"
 msgstr "达米"
 
+#. STRINGS.NAMES.FRIENDSHIPRING
+msgctxt "STRINGS.NAMES.FRIENDSHIPRING"
+msgid "Ring of Friendship"
+msgstr "友爱戒指"
+
+#. STRINGS.NAMES.FRIENDSHIPTOTEM_DARK
+msgctxt "STRINGS.NAMES.FRIENDSHIPTOTEM_DARK"
+msgid "Charged Dark Totem"
+msgstr "注能黑暗图腾"
+
+#. STRINGS.NAMES.FRIENDSHIPTOTEM_LIGHT
+msgctxt "STRINGS.NAMES.FRIENDSHIPTOTEM_LIGHT"
+msgid "Charged Light Totem"
+msgstr "注能光明图腾"
+
 #. STRINGS.NAMES.FUELPOCKETWATCH
 msgctxt "STRINGS.NAMES.FUELPOCKETWATCH"
 msgid "hacking Backtrek Watch"
@@ -712,6 +742,11 @@ msgstr "升级！升级！"
 msgctxt "STRINGS.RECIPE_DESC.DARKMAGATAMA"
 msgid "Into Dark!"
 msgstr "嵌入黑暗！"
+
+#. STRINGS.RECIPE_DESC.FRIENDSHIPRING
+msgctxt "STRINGS.RECIPE_DESC.FRIENDSHIPRING"
+msgid "Buff your team."
+msgstr "强化你的队伍。"
 
 #. STRINGS.RECIPE_DESC.LIGHTAMULET
 msgctxt "STRINGS.RECIPE_DESC.LIGHTAMULET"

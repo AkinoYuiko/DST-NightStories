@@ -11,11 +11,13 @@ NS_ACTIONS = {
     NIGHTSWITCH = Action({priority = 1, mount_valid = true}),
     NIGHTSWORD = Action({priority = 2, mount_valid = true}),
     FUELPOCKETWATCH = Action({priority = 3, rmb = true}),
+    FRIENDSHIPTOTEM = Action({priority = 3, rmb = true}),
 }
 
 NS_ACTIONS.GEMTRADE.str = STRINGS.ACTIONS.GIVE.SOCKET
 NS_ACTIONS.NIGHTSWITCH.str = STRINGS.ACTIONS.USEITEM
 NS_ACTIONS.NIGHTSWORD.str = STRINGS.ACTIONS.GIVE.SOCKET
+NS_ACTIONS.FRIENDSHIPTOTEM.str = STRINGS.ACTIONS.GIVE.SOCKET
 -- NS_ACTIONS.FUELPOCKETWATCH.str = STRINGS.ACTIONS.FUELPOCKETWATCH
 
 NS_ACTIONS.MIOFUEL.stroverridefn = function(act)
@@ -155,6 +157,32 @@ NS_ACTIONS.NIGHTSWORD.fn = function(act)
     end
 end
 
+local TOTEM_TARGET = {
+    darkcrystal = "friendshiptotem_dark",
+    lightcrystal = "friendshiptotem_light",
+}
+NS_ACTIONS.FRIENDSHIPTOTEM.fn = function(act)
+    local item = act.invobject
+    local totem_prefab = TOTEM_TARGET[item.prefab]
+    if totem_prefab then
+        if item.components.stackable then
+            item.components.stackable:Get():Remove()
+        else
+            item:Remove()
+        end
+        local totem = SpawnPrefab(totem_prefab)
+        local target = act.target
+        local container = target.components.inventoryitem and target.components.inventoryitem:GetContainer()
+        if container then
+            container:GiveItem(totem, nil, target:GetPosition())
+        else
+            totem.Transform:SetPosition(target.Transform:GetWorldPosition())
+        end
+        target:Remove()
+        return true
+    end
+end
+
 -- For portable_wardrobe
 local changein_fn = ACTIONS.CHANGEIN.fn
 ACTIONS.CHANGEIN.fn = function(act, ...)
@@ -229,9 +257,18 @@ end)
 
 
 AddComponentAction("USEITEM", "nightcrystal", function(inst, doer, target, actions, right)
-    if right and target.prefab == "nightsword" and not target:HasTag("crystal_socketed") then
-        table.insert(actions, NS_ACTIONS.NIGHTSWORD)
+    if right then
+        if target.prefab == "nightsword" then
+            if not target:HasTag("crystal_socketed") then
+                table.insert(actions, NS_ACTIONS.NIGHTSWORD)
+            end
+        elseif target.prefab == "friendshipring"
+            and not (target.replica.equippable and target.replica.equippable:IsEquipped()) then
+
+            table.insert(actions, NS_ACTIONS.FRIENDSHIPTOTEM)
+        end
     end
+    -- 这里写新的那部分
 end)
 
 local change_tackle_strfn = ACTIONS.CHANGE_TACKLE.strfn
@@ -292,4 +329,5 @@ for _, sg in ipairs({"wilson", "wilson_client"}) do
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.NIGHTSWORD, "doshortaction"))
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.NIGHTSWITCH, "domediumaction"))
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.FUELPOCKETWATCH, "pocketwatch_warpback_pre"))
+    AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.FRIENDSHIPTOTEM, "doshortaction"))
 end

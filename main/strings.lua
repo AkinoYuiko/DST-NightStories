@@ -42,6 +42,10 @@ local strings = {
         DARKMAGATAMA = "Dark Magatama",
         LIGHTMAGATAMA = "Light Magatama",
 
+        FRIENDSHIPRING = "Ring of Friendship",
+        FRIENDSHIPTOTEM_DARK = "Charged Dark Totem",
+        FRIENDSHIPTOTEM_LIGHT = "Charged Light Totem",
+
         MIOTAN = "Mio",
         FUELPOCKETWATCH = "hacking Backtrek Watch",
 
@@ -63,6 +67,9 @@ local strings = {
         REDGEM = "Change ice into fire.",
         BLUEGEM = "Change fire into ice.",
         NIGHTPACK = "Dark away.",
+
+        FRIENDSHIPRING = "Buff your team.",
+
         DARKAMULET = "Powerful but dark.",
         LIGHTAMULET = "Keep away from dark things.",
 
@@ -147,6 +154,10 @@ local strings = {
                     OPAL = "It shines!",
                     FUEL = "It doesn't shine.",
                 },
+                FRIENDSHIPRING = "It's the proof of friendship.",
+                FRIENDSHIPTOTEM_DARK = "It's the proof of friendship.",
+                FRIENDSHIPTOTEM_LIGHT = "It's the proof of friendship.",
+
                 DARKAMULET = "I can feel the darkness coming.",
                 LIGHTAMULET = "I can feel the darkness away.",
 

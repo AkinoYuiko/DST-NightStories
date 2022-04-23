@@ -39,18 +39,17 @@ SortAfter("darkcrystal", "purplegem")
 AddRecipe("lightcrystal", {Ingredient("purplegem",1), Ingredient("nightmarefuel", 4)}, TECH.NONE, {builder_tag = "ns_builder_civi", no_deconstruction = true})
 SortAfter("lightcrystal", "darkcrystal")
 
--- 注能黑水晶、注能白水晶
-AddDeconstructRecipe("darkcrystal_charged", {Ingredient("darkcrystal", 1)})
-AddDeconstructRecipe("lightcrystal_charged", {Ingredient("lightcrystal", 1)})
-
 -- 影背包 --
 AddRecipe("nightpack", {Ingredient("darkcrystal", 1), Ingredient("lightcrystal", 1), Ingredient("nightmarefuel", 5)}, TECH.CELESTIAL_ONE, {nounlock = true, builder_tag = "ns_builder_civi"})
 SortBefore("nightpack", "civi_redgem")
 
--- 烟斗扩散器 :angri:
--- AddRecipe("nightangri", {Ingredient("moonglass", 4), Ingredient("nightmarefuel", 4)}, TECH.CELESTIAL_THREE, {nounlock = true, builder_tag = "ns_builder_civi"})
--- SortAfter("nightangri", "nightpack")
+-- 友爱戒指
+AddRecipe("friendshipring", {Ingredient("moonrocknugget", 4), Ingredient("nightmarefuel", 4)}, TECH.CELESTIAL_THREE, {nounlock = true, builder_tag = "ns_builder_civi"})
+SortAfter("friendshipring", "nightpack")
 
+-- 注能图腾
+AddDeconstructRecipe("friendshiptotem_dark", {Ingredient("moonrocknugget", 4), Ingredient("nightmarefuel", 4), Ingredient("darkcrystal", 1)})
+AddDeconstructRecipe("friendshiptotem_light", {Ingredient("moonrocknugget", 4), Ingredient("nightmarefuel", 4), Ingredient("lightcrystal", 1)})
 
 -- 黑暗护符 --
 -- AddRecipe("civi_darkamulet", {Ingredient("moonrocknugget", 3), Ingredient("nightmarefuel", 3), Ingredient("darkgem", 1)}, TECH.CELESTIAL_ONE, {nomods = true, nounlock = true, builder_tag = "ns_builder_civi", image ="darkamulet.tex", product = "darkamulet"})
