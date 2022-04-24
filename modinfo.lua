@@ -12,7 +12,7 @@ local function zh_en(a, b)
     })
 end
 
-version = "1.29.3"
+version = "1.29.4"
 -- basic info --
 name = zh_en("暗夜故事集", "Night Stories")
 author = zh_en("丁香女子学校", "Civi, Tony, LSSSS")
@@ -21,9 +21,10 @@ description = zh_en(
 "[版本: " .. version .. [[]
 
 更新内容:
+- 修复友爱戒指配方科技的一个小问题。
+
 - 优化了配方逻辑，使其不会出现在不该出现的地方。
 - 友爱戒指在【岛屿冒险】中拥有不同的配方。
-
 - 修复一个崩溃问题。
 ...
 - 新道具：黑水晶、白水晶、友爱戒指、注能黑暗图腾、注能光明图腾。
@@ -35,9 +36,10 @@ description = zh_en(
 "[Version: " .. version .. [[]
 
 Changelog:
+- Fix a recipe issue for Ring of Friendship.
+
 - Improve code logic of some recipes.
 - A new recipe for Ring of Friendship in mod "Island Adventures".
-
 - Fix crash on friendshipring.
 ...
 - New items: Dark Crystal, Light Cystal, Ring of Friendship, Charged Dark Totem, Charged Light Totem.
