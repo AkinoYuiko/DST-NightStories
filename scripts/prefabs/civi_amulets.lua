@@ -4,10 +4,20 @@ local assets =
     Asset( "ANIM", "anim/torso_civiamulets.zip"),
 }
 
+local get_aura_rate = require("nsutils/get_player_aura")
+local function onupdate_light(inst, owner)
+    if owner.components.sanity then
+        owner.components.sanity.neg_aura_modifiers:SetModifier(inst, get_aura_rate(owner), "lightamulet")
+    end
+end
+
 local function onequip_light(inst, owner)
     owner.AnimState:OverrideSymbol("swap_body", "torso_civiamulets", "lightamulet")
     if inst.components.fueled then
         inst.components.fueled:StartConsuming()
+    end
+    if inst.task == nil then
+        inst.task = inst:DoPeriodicTask(0, function(_inst, _data) onupdate_light(inst, owner) end)
     end
 end
 
@@ -15,6 +25,13 @@ local function onunequip_light(inst, owner)
     owner.AnimState:ClearOverrideSymbol("swap_body")
     if inst.components.fueled then
         inst.components.fueled:StopConsuming()
+    end
+    if inst.task then
+        inst.task:Cancel()
+        inst.task = nil
+    end
+    if owner.components.sanity then
+        owner.components.sanity.neg_aura_modifiers:RemoveModifier(inst, "lightamulet")
     end
 end
 
