@@ -43,14 +43,14 @@ local totemfn =
 {
     dark = function(inst)
         local x, y, z = inst.Transform:GetWorldPosition()
-        local players = FindPlayersInRange(x, y, z, 10, true)
+        local players = FindPlayersInRange(x, y, z, TUNING.TOTEM_BUFF_RANGE, true)
         for _, player in pairs(players) do
             player:AddDebuff("buff_friendshiptotem_dark", "buff_friendshiptotem_dark")
         end
     end,
     light = function(inst)
         local x, y, z = inst.Transform:GetWorldPosition()
-        local players = FindPlayersInRange(x, y, z, 10, true)
+        local players = FindPlayersInRange(x, y, z, TUNING.TOTEM_BUFF_RANGE, true)
         for _, player in pairs(players) do
             player:AddDebuff("buff_friendshiptotem_light", "buff_friendshiptotem_light")
         end
@@ -68,7 +68,7 @@ local function oneat(inst, owner, data)
         -- print("oneatenfn", inst, owner, oneatenfn)
         if oneatenfn then
             local x, y, z = owner.Transform:GetWorldPosition()
-            local players = FindPlayersInRange(x, y, z, 10, true)
+            local players = FindPlayersInRange(x, y, z, TUNING.TOTEM_BUFF_RANGE, true)
             for _, player in pairs(players) do
                 if player.userid ~= owner.userid then
                     oneatenfn(food, player)
