@@ -3,6 +3,7 @@ local SortAfter = GlassicAPI.SortAfter
 local SortBefore = GlassicAPI.SortBefore
 local NoSearch = GlassicAPI.NoSearch
 local AddDeconstructRecipe = AddDeconstructRecipe
+local AddPlayerPostInit = AddPlayerPostInit
 GLOBAL.setfenv(1, GLOBAL)
 
 GlassicAPI.AddTech("FRIENDSHIPRING")
@@ -36,16 +37,12 @@ SortAfter("civi_bluegem", "civi_redgem")
 NoSearch("civi_bluegem")
 
 -- 黑水晶
-AddRecipe("darkcrystal", {Ingredient("purplegem", 1), Ingredient("nightmarefuel", 4)}, TECH.CELESTIAL_ONE, {nounlock = true, no_deconstruction = true})
-AddRecipe("civi_darkcrystal", {Ingredient("purplegem", 1), Ingredient("nightmarefuel", 4)}, TECH.NONE, {nomods = true, builder_tag = "ns_builder_civi", no_deconstruction = true, product = "darkcrystal"})
-SortAfter("civi_darkcrystal", "purplegem")
-NoSearch("civi_darkcrystal")
+AddRecipe("darkcrystal", {Ingredient("purplegem", 1), Ingredient("nightmarefuel", 4)}, TECH.NONE, {nomods = true, builder_tag = "ns_builder_civi", no_deconstruction = true})
+SortAfter("darkcrystal", "purplegem")
 
 -- 白水晶
-AddRecipe("lightcrystal", {Ingredient("purplegem", 1), Ingredient("nightmarefuel", 4)}, TECH.CELESTIAL_ONE, {nounlock = true, no_deconstruction = true})
-AddRecipe("civi_lightcrystal", {Ingredient("purplegem", 1), Ingredient("nightmarefuel", 4)}, TECH.NONE, {nomods = true, builder_tag = "ns_builder_civi", no_deconstruction = true, product = "lightcrystal"})
-SortAfter("civi_lightcrystal", "civi_darkcrystal")
-NoSearch("civi_lightcrystal")
+AddRecipe("lightcrystal", {Ingredient("purplegem", 1), Ingredient("nightmarefuel", 4)}, TECH.NONE, {nomods = true, builder_tag = "ns_builder_civi", no_deconstruction = true})
+SortAfter("lightcrystal", "darkcrystal")
 
 -- 影背包 --
 AddRecipe("nightpack", {Ingredient("darkcrystal", 1), Ingredient("lightcrystal", 1), Ingredient("nightmarefuel", 5)}, TECH.CELESTIAL_ONE, {nounlock = true, builder_tag = "ns_builder_civi"})
