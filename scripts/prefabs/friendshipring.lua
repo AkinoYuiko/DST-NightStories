@@ -5,9 +5,18 @@ local assets =
 
 local prefabs =
 {
-    "statue_transition",
-    "statue_transition_2",
+    ring =
+    {
+        "glash_big_fx",
+
+    },
+    totem =
+    {
+        "statue_transition",
+        "statue_transition_2",
+    },
 }
+
 ----------------------------------------------------------------
 ------------------------ TOTEM FUNCTION ------------------------
 ----------------------------------------------------------------
@@ -75,6 +84,7 @@ local function oneat(inst, owner, data)
                 end
             end
             inst.components.finiteuses:Use(1)
+            SpawnPrefab("glash_big_fx").Transform:SetPosition(x, y, z)
         end
     end
 end
@@ -208,9 +218,9 @@ local function MakeTotem(color)
         return inst
     end
 
-    return Prefab("friendshiptotem_" .. color, totem_fn, assets, prefabs)
+    return Prefab("friendshiptotem_" .. color, totem_fn, assets, prefabs.totem)
 end
 
-return Prefab("friendshipring", base_fn, assets),
+return Prefab("friendshipring", base_fn, assets.ring),
         MakeTotem("dark"),
         MakeTotem("light")
