@@ -12,7 +12,7 @@ local function zh_en(a, b)
     })
 end
 
-version = "1.29.6"
+version = "1.29.7"
 -- basic info --
 name = zh_en("暗夜故事集", "Night Stories")
 author = zh_en("丁香女子学校", "Civi, Tony, LSSSS")
@@ -21,8 +21,9 @@ description = zh_en(
 "[版本: " .. version .. [[]
 
 更新内容:
-- 友爱戒指变换到注能图腾时新增特效。
+- 新增触发友爱戒指时的特效。
 
+- 友爱戒指变换到注能图腾时新增特效。
 - 更新适配Glassic API的功能调整。
 ...
 - 新道具：黑水晶、白水晶、友爱戒指、注能黑暗图腾、注能光明图腾。
@@ -34,8 +35,9 @@ description = zh_en(
 "[Version: " .. version .. [[]
 
 Changelog:
-- Add fx to mutating Ring of Friendship.
+- Add fx to activating Ring of Friendship.
 
+- Add fx to mutating Ring of Friendship.
 - Upate recipes for Glassic API.
 ...
 - New items: Dark Crystal, Light Cystal, Ring of Friendship, Charged Dark Totem, Charged Light Totem.

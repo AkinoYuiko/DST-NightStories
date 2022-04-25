@@ -8,7 +8,6 @@ local prefabs =
     ring =
     {
         "glash_big_fx",
-
     },
     totem =
     {
