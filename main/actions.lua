@@ -173,10 +173,14 @@ NS_ACTIONS.FRIENDSHIPTOTEM.fn = function(act)
         local totem = SpawnPrefab(totem_prefab)
         local target = act.target
         local container = target.components.inventoryitem and target.components.inventoryitem:GetContainer()
+        local fx = SpawnPrefab("halloween_moonpuff")
+        -- fx.AnimState:SetScale(0.6, 0.6, 0.6)
         if container then
             container:GiveItem(totem, nil, target:GetPosition())
+            fx.Transform:SetPosition(container.inst.Transform:GetWorldPosition())
         else
             totem.Transform:SetPosition(target.Transform:GetWorldPosition())
+            fx.Transform:SetPosition(target:GetPosition():Get())
         end
         target:Remove()
         return true
