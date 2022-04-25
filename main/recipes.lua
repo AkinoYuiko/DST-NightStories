@@ -47,7 +47,7 @@ SortBefore("nightpack", "civi_redgem")
 
 -- 友爱戒指
 AddRecipe("friendshipring", {Ingredient(RING_INGREDIENT[IsIA], 4), Ingredient("nightmarefuel", 4)}, { FRIENDSHIPRING = 2 }, {nounlock = true, builder_tag = "ns_builder_civi"})
--- SortAfter("friendshipring", "nightpack")
+SortAfter("friendshipring", "nightpack")
 
 -- 注能图腾
 AddDeconstructRecipe("friendshiptotem_dark", {Ingredient(RING_INGREDIENT[IsIA], 4), Ingredient("nightmarefuel", 4), Ingredient("darkcrystal", 1)})
