@@ -214,6 +214,11 @@ local function MakeTotem(color)
         -- inst.components.inventoryitem:SetOnPutInInventoryFn(turn_on)
         inst.totemfn = totemfn[color]
 
+        if color == "dark" then
+            inst:AddComponent("sanityaura")
+            inst.components.sanityaura.aura = - TUNING.SANITYAURA_SMALL
+        end
+
         return inst
     end
 
