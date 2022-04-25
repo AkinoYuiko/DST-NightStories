@@ -1,9 +1,7 @@
 local AddRecipe = GlassicAPI.AddRecipe
 local SortAfter = GlassicAPI.RecipeSortAfter
 local SortBefore = GlassicAPI.RecipeSortBefore
-local NoSearch = GlassicAPI.RecipeNoSearch
 local AddDeconstructRecipe = AddDeconstructRecipe
-local AddPlayerPostInit = AddPlayerPostInit
 GLOBAL.setfenv(1, GLOBAL)
 
 GlassicAPI.AddTech("FRIENDSHIPRING")
@@ -29,13 +27,11 @@ local RING_INGREDIENT =
 }
 
 -- 红宝石 --
-AddRecipe("civi_redgem", {Ingredient("bluegem", 1), Ingredient("nightmarefuel", 1)}, TECH.CELESTIAL_ONE, {nounlock = true, nochar = true, builder_tag = "ns_builder_civi", product = "redgem"})
-NoSearch("civi_redgem")
+AddRecipe("civi_redgem", {Ingredient("bluegem", 1), Ingredient("nightmarefuel", 1)}, TECH.CELESTIAL_ONE, {nounlock = true, nochar = true, builder_tag = "ns_builder_civi", product = "redgem", hidden = true})
 
 -- 蓝宝石 --
-AddRecipe("civi_bluegem", {Ingredient("redgem", 1), Ingredient("nightmarefuel", 1)}, TECH.CELESTIAL_ONE, {nounlock = true, nochar = true, builder_tag = "ns_builder_civi", product = "bluegem"})
+AddRecipe("civi_bluegem", {Ingredient("redgem", 1), Ingredient("nightmarefuel", 1)}, TECH.CELESTIAL_ONE, {nounlock = true, nochar = true, builder_tag = "ns_builder_civi", product = "bluegem", hidden = true})
 SortAfter("civi_bluegem", "civi_redgem")
-NoSearch("civi_bluegem")
 
 -- 黑水晶
 AddRecipe("darkcrystal", {Ingredient("purplegem", 1), Ingredient("nightmarefuel", 4)}, TECH.NONE, {nomods = true, builder_tag = "ns_builder_civi", no_deconstruction = true})
@@ -62,8 +58,7 @@ AddDeconstructRecipe("friendshiptotem_light", {Ingredient(RING_INGREDIENT[IsIA],
 ---------------------
 
 -- 灵魂剥离 --
-AddRecipe("dummy_nightmarefuel", {Ingredient(CHARACTER_INGREDIENT.HEALTH, 20, nil, nil, "decrease_sanity.tex")}, TECH.NONE, {nomods = true, builder_tag = "ns_builder_dummy", product = "nightmarefuel", actionstr = "SOULSPLIT"})
-NoSearch("dummy_nightmarefuel")
+AddRecipe("dummy_nightmarefuel", {Ingredient(CHARACTER_INGREDIENT.HEALTH, 20, nil, nil, "decrease_sanity.tex")}, TECH.NONE, {nomods = true, builder_tag = "ns_builder_dummy", product = "nightmarefuel", actionstr = "SOULSPLIT", hidden = true})
 -- 暗影破碎者 --
 AddRecipe("nightmare_spear", {Ingredient("nightmarefuel", 1)}, TECH.NONE, {builder_tag = "ns_builder_dummy", no_deconstruction = true, sg_state = "domediumaction"})
 
