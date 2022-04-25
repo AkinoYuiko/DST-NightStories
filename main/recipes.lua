@@ -53,6 +53,12 @@ SortAfter("friendshipring", "nightpack")
 AddDeconstructRecipe("friendshiptotem_dark", {Ingredient(RING_INGREDIENT[IsIA], 4), Ingredient("nightmarefuel", 4), Ingredient("darkcrystal", 1)})
 AddDeconstructRecipe("friendshiptotem_light", {Ingredient(RING_INGREDIENT[IsIA], 4), Ingredient("nightmarefuel", 4), Ingredient("lightcrystal", 1)})
 
+AddDeconstructRecipe("darkgem", {Ingredient("darkcrystal", 1)})
+AddDeconstructRecipe("lightgem", {Ingredient("lightcrystal", 1)})
+AddDeconstructRecipe("darkmagatama", {Ingredient("darkcrystal", 1), Ingredient("nightmarefuel", 1)})
+AddDeconstructRecipe("lightmagatama", {Ingredient("lightcrystal", 1), Ingredient("nightmarefuel", 1)})
+AddDeconstructRecipe("darkamulet", {Ingredient("thulecite", 2), Ingredient("darkcrystal", 1), Ingredient("nightmarefuel", 4)})
+AddDeconstructRecipe("lightamulet", {Ingredient("thulecite", 2), Ingredient("lightcrystal", 1), Ingredient("nightmarefuel", 4)})
 ---------------------
 ------- Dummy -------
 ---------------------
