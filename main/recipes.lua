@@ -1,7 +1,7 @@
 local AddRecipe = GlassicAPI.AddRecipe
-local SortAfter = GlassicAPI.SortAfter
-local SortBefore = GlassicAPI.SortBefore
-local NoSearch = GlassicAPI.NoSearch
+local SortAfter = GlassicAPI.RecipeSortAfter
+local SortBefore = GlassicAPI.RecipeSortBefore
+local NoSearch = GlassicAPI.RecipeNoSearch
 local AddDeconstructRecipe = AddDeconstructRecipe
 local AddPlayerPostInit = AddPlayerPostInit
 GLOBAL.setfenv(1, GLOBAL)
