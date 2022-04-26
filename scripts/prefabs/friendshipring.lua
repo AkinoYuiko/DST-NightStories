@@ -153,8 +153,6 @@ local function common_fn()
     inst.AnimState:PlayAnimation("idle")
     inst.AnimState:SetBloomEffectHandle("shaders/anim.ksh")
 
-    MakeInventoryFloatable(inst)
-
     inst.entity:SetPristine()
 
     if not TheWorld.ismastersim then
@@ -174,6 +172,7 @@ end
 
 local function base_fn()
     local inst = common_fn()
+    MakeInventoryFloatable(inst, "small", 0.07, {0.7, 0.7, 0.7})
 
     if not TheWorld.ismastersim then
         return inst
@@ -200,6 +199,8 @@ local function MakeTotem(color)
         if not TheWorld.ismastersim then
             return inst
         end
+
+        inst.components.inventoryitem:SetSinks(true)
 
         inst:AddComponent("fueled")
         inst.components.fueled.fueltype = FUELTYPE.MAGIC

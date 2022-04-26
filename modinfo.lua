@@ -12,7 +12,7 @@ local function zh_en(a, b)
     })
 end
 
-version = "1.29.8"
+version = "1.29.9"
 -- basic info --
 name = zh_en("暗夜故事集", "Night Stories")
 author = zh_en("丁香女子学校", "Civi, Tony, LSSSS")
@@ -21,8 +21,9 @@ description = zh_en(
 "[版本: " .. version .. [[]
 
 更新内容:
-- 注能黑暗图腾现在拥有一个负面精神光环。
+- 注能图腾现在会沉了。
 
+- 注能黑暗图腾现在拥有一个负面精神光环。
 - 新增触发友爱戒指时的特效。
 ...
 - 新道具：黑水晶、白水晶、友爱戒指、注能黑暗图腾、注能光明图腾。
@@ -34,8 +35,9 @@ description = zh_en(
 "[Version: " .. version .. [[]
 
 Changelog:
-- Charged Dark Totem now has a sanityaura.
+- Charged Totem will sink now.
 
+- Charged Dark Totem now has a sanityaura.
 - Add fx to activating Ring of Friendship.
 ...
 - New items: Dark Crystal, Light Cystal, Ring of Friendship, Charged Dark Totem, Charged Light Totem.
