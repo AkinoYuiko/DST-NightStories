@@ -2,6 +2,7 @@ local AddRecipe = GlassicAPI.AddRecipe
 local SortAfter = GlassicAPI.RecipeSortAfter
 local SortBefore = GlassicAPI.RecipeSortBefore
 local AddDeconstructRecipe = AddDeconstructRecipe
+local AddPlayerPostInit = AddPlayerPostInit
 GLOBAL.setfenv(1, GLOBAL)
 
 GlassicAPI.AddTech("FRIENDSHIPRING")
@@ -75,7 +76,7 @@ AddRecipe("book_harvest", {Ingredient("papyrus", 2), Ingredient(CHARACTER_INGRED
 AddRecipe("book_toggledownfall", {Ingredient("papyrus", 2), Ingredient(CHARACTER_INGREDIENT.HEALTH, 30, nil, nil, "decrease_sanity.tex")}, TECH.MAGIC_THREE, {builder_tag = "ns_builder_dummy"})
 
 -- 黑洞法杖 --
-AddRecipe("blackholestaff", {Ingredient("livinglog", 2), Ingredient("orangegem", 2), Ingredient("nightmarefuel", 4)}, TECH.ANCIENT_FOUR, {nounclock = true, builder_tag = "ns_builder_dummy"})
+AddRecipe("blackholestaff", {Ingredient("livinglog", 2), Ingredient("orangegem", 2), Ingredient("nightmarefuel", 4)}, TECH.ANCIENT_FOUR, {nounlock = true, builder_tag = "ns_builder_dummy"})
 
 ---------------------
 ------- Other -------
@@ -88,3 +89,28 @@ SortAfter("spice_cactus", "spice_salt")
 -- 便携衣柜 & 魔法礼装 --
 AddRecipe("portable_wardrobe_wrap", {Ingredient("giftwrap", 1), Ingredient("nightmarefuel",1)}, TECH.MAGIC_THREE, {no_deconstruction = true}, {"MAGIC"})
 AddRecipe("portable_wardrobe_item", {Ingredient("portable_wardrobe_wrap", 3), Ingredient("boards", 4)}, TECH.MAGIC_THREE, {no_deconstruction = true}, {"MAGIC"})
+
+-- 防止改配方出问题的一个修复 --
+local function clear_nounlock_recipes(inst)
+    if inst.components.builder then
+        local recipes = inst.components.builder.recipes
+        if recipes then
+            -- recipes["blackholestaff"] = nil
+            for i, recipe in ipairs(recipes) do
+                if AllRecipes[recipe] and AllRecipes[recipe].nounlock then
+                    recipes[i] = nil
+                end
+            end
+        end
+    end
+end
+
+AddPlayerPostInit(function(inst)
+    if not TheWorld.ismastersim then return end
+
+    local onload = inst.OnLoad
+    inst.OnLoad = function(inst, ...)
+        onload(inst, ...)
+        clear_nounlock_recipes(inst)
+    end
+end)
