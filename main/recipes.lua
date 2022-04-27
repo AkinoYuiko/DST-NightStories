@@ -90,7 +90,9 @@ SortAfter("spice_cactus", "spice_salt")
 AddRecipe("portable_wardrobe_wrap", {Ingredient("giftwrap", 1), Ingredient("nightmarefuel",1)}, TECH.MAGIC_THREE, {no_deconstruction = true}, {"MAGIC"})
 AddRecipe("portable_wardrobe_item", {Ingredient("portable_wardrobe_wrap", 3), Ingredient("boards", 4)}, TECH.MAGIC_THREE, {no_deconstruction = true}, {"MAGIC"})
 
--- 防止改配方出问题的一个修复 --
+------------------------------------------------
+-- 防止改配方出问题的一个修复
+------------------------------------------------
 local function clear_nounlock_recipes(inst)
     if inst.components.builder then
         local recipes = inst.components.builder.recipes
@@ -110,7 +112,7 @@ AddPlayerPostInit(function(inst)
 
     local onload = inst.OnLoad
     inst.OnLoad = function(inst, ...)
-        onload(inst, ...)
+        if onload then onload(inst, ...) end
         clear_nounlock_recipes(inst)
     end
 end)

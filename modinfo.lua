@@ -12,7 +12,7 @@ local function zh_en(a, b)
     })
 end
 
-version = "1.29.9"
+version = "1.29.10"
 -- basic info --
 name = zh_en("暗夜故事集", "Night Stories")
 author = zh_en("丁香女子学校", "Civi, Tony, LSSSS")
@@ -21,10 +21,10 @@ description = zh_en(
 "[版本: " .. version .. [[]
 
 更新内容:
-- 注能图腾现在会沉了。
+- 修复达米能解锁黑洞法杖的问题。
+- 友爱戒指现在对影响的玩家也有特效了。
 
-- 注能黑暗图腾现在拥有一个负面精神光环。
-- 新增触发友爱戒指时的特效。
+- 注能图腾现在会沉了。
 ...
 - 新道具：黑水晶、白水晶、友爱戒指、注能黑暗图腾、注能光明图腾。
 - 新增配方：黑水晶、白水晶、友爱戒指。
@@ -35,10 +35,10 @@ description = zh_en(
 "[Version: " .. version .. [[]
 
 Changelog:
-- Charged Totem will sink now.
+- Fix issue that Dummy can unlock Blackhole Staff.
+- Ring of Friendship has an effect on players affected when triggered.
 
-- Charged Dark Totem now has a sanityaura.
-- Add fx to activating Ring of Friendship.
+- Charged Totem will sink now.
 ...
 - New items: Dark Crystal, Light Cystal, Ring of Friendship, Charged Dark Totem, Charged Light Totem.
 - New recipes: Dark Crystal, Light Crystal, Ring of Friendship.

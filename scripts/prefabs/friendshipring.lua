@@ -7,6 +7,7 @@ local prefabs =
 {
     ring =
     {
+        "glash_fx",
         "glash_big_fx",
     },
     totem =
@@ -78,12 +79,15 @@ local function oneat(inst, owner, data)
             local x, y, z = owner.Transform:GetWorldPosition()
             local players = FindPlayersInRange(x, y, z, TUNING.TOTEM_BUFF_RANGE, true)
             for _, player in pairs(players) do
+                local _x, _y, _z = player.Transform:GetWorldPosition()
                 if player.userid ~= owner.userid then
                     oneatenfn(food, player)
+                    SpawnPrefab("glash_fx").Transform:SetPosition(_x, _y, _z)
+                else
+                    SpawnPrefab("glash_big_fx").Transform:SetPosition(_x, _y, _z)
                 end
             end
             inst.components.finiteuses:Use(1)
-            SpawnPrefab("glash_big_fx").Transform:SetPosition(x, y, z)
         end
     end
 end
