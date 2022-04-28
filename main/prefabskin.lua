@@ -5,7 +5,7 @@ ns_equipment_init_fn = function(inst, slot, skinname, override_build, swap_data)
     if swap_data then
         GlassicAPI.SetFloatData(inst, swap_data)
     end
-    GlassicAPI.BasicInitFn(inst, skinname, override_build or skinname, override_build or skinname)
+    GlassicAPI.BasicInitFn(inst, skinname, override_build)
     GlassicAPI.BasicOnequipFn(inst, slot, override_build or skinname)
 end
 
@@ -61,7 +61,7 @@ end
 -- end
 -- ns_nightstick_init_fn = function(inst, skinname, override_build)
 --     GlassicAPI.SetFloatData(inst, { sym_build = override_build or skinname, sym_name = "swap_nightstick" })
---     GlassicAPI.BasicInitFn(inst, skinname, override_build or skinname, override_build or skinname)
+--     GlassicAPI.BasicInitFn(inst, skinname, override_build)
 --     GlassicAPI.BasicOnequipFn(inst, "hand", override_build or skinname, "swap_nightstick")
 -- end
 
