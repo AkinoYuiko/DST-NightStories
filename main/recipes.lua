@@ -97,7 +97,6 @@ local function clear_nounlock_recipes(inst)
     if inst.components.builder then
         local recipes = inst.components.builder.recipes
         if recipes then
-            -- recipes["blackholestaff"] = nil
             for i, recipe in ipairs(recipes) do
                 if AllRecipes[recipe] and AllRecipes[recipe].nounlock then
                     recipes[i] = nil
@@ -115,4 +114,5 @@ AddPlayerPostInit(function(inst)
         if onload then onload(inst, ...) end
         clear_nounlock_recipes(inst)
     end
+    clear_nounlock_recipes(inst)
 end)
