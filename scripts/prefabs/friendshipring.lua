@@ -61,7 +61,7 @@ local totemfn =
         local x, y, z = inst.Transform:GetWorldPosition()
         local players = FindPlayersInRange(x, y, z, TUNING.TOTEM_BUFF_RANGE, true)
         for _, player in pairs(players) do
-            player:AddDebuff("buff_friendshiptotem_light", "buff_friendshiptotem_light")
+            player:AddDebuff("buff_friendshiptotem_dark", "buff_friendshiptotem_dark")
         end
     end
 }
@@ -69,6 +69,24 @@ local totemfn =
 ---------------------------------------------------------------
 ------------------------ RING FUNCTION ------------------------
 ---------------------------------------------------------------
+local function buff_friends(oneatenfn, food, player, buff_self)
+    local buff_entities = {}
+    if buff_self then buff_entities[player] = true end
+    local leader = player.components.leader
+    if leader and leader.numfollowers > 0 then
+        for follower in pairs(leader.followers) do
+            if follower.components.eater then
+                buff_entities[follower] = true
+            end
+        end
+    end
+    for ent in pairs(buff_entities) do
+        oneatenfn(food, ent)
+        local x, y, z = ent.Transform:GetWorldPosition()
+        SpawnPrefab("glash_fx").Transform:SetPosition(x, y, z)
+    end
+end
+
 local function oneat(inst, owner, data)
     local food = data and data.food
     -- local owner = inst.components.inventoryitem.owner
@@ -79,12 +97,11 @@ local function oneat(inst, owner, data)
             local x, y, z = owner.Transform:GetWorldPosition()
             local players = FindPlayersInRange(x, y, z, TUNING.TOTEM_BUFF_RANGE, true)
             for _, player in pairs(players) do
-                local _x, _y, _z = player.Transform:GetWorldPosition()
                 if player.userid ~= owner.userid then
-                    oneatenfn(food, player)
-                    SpawnPrefab("glash_fx").Transform:SetPosition(_x, _y, _z)
+                    buff_friends(oneatenfn, food, player, true)
                 else
-                    SpawnPrefab("glash_big_fx").Transform:SetPosition(_x, _y, _z)
+                    buff_friends(oneatenfn, food, player)
+                    SpawnPrefab("glash_big_fx").Transform:SetPosition(x, y, z)
                 end
             end
             inst.components.finiteuses:Use(1)
