@@ -1,10 +1,9 @@
 local main_files = {
     "assets",
-    "actions",
     "tuning",
     "strings",
 
-    -- "add_stack_size",
+    "actions",
 
     "crystal_sword",
     "gem_pack",
