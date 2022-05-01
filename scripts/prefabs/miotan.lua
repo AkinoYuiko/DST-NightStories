@@ -183,19 +183,6 @@ local function on_save(inst, data)
     data.boost_time = inst.boost_time > 0 and inst.boost_time or nil
 end
 
-local function on_eat(inst, food, eater)
-    if food and food.components.edible and food.prefab == "nightmarefuel" then
-        -- local player = food.components.inventoryitem and food.components.inventoryitem.owner or nil
-        local fx = SpawnPrefab("statue_transition")
-        if fx then
-            fx.entity:SetParent(inst.entity)
-            fx.Transform:SetScale(0.4, 0.4, 0.4)
-        end
-        inst.SoundEmitter:PlaySound("dontstarve/common/nightmareAddFuel")
-        start_boost(inst, 180)
-    end
-end
-
 local function on_became_ghost(inst)
     if inst.boosted_task ~= nil then
         inst.boosted_task:Cancel()
@@ -251,7 +238,6 @@ local master_postinit = function(inst)
 
     if inst.components.eater then
         inst.components.eater:SetCanEatNightmareFuel()
-        inst.components.eater:SetOnEatFn(on_eat)
         inst.components.eater.stale_hunger = TUNING.MIOTAN_STALE_HUNGER_RATE
         inst.components.eater.stale_health = TUNING.MIOTAN_STALE_HEALTH_RATE
         inst.components.eater.spoiled_hunger = TUNING.MIOTAN_SPOILED_HUNGER_RATE
@@ -266,6 +252,7 @@ local master_postinit = function(inst)
     inst.skeleton_prefab = nil
     inst:ListenForEvent("death", on_death)
 
+    inst.StartBoost = start_boost
 end
 
 return MakePlayerCharacter("miotan", prefabs, assets, common_postinit, master_postinit),

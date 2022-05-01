@@ -11,6 +11,19 @@ function Eater:SetCanEatNightmareFuel()
     end
 end
 
+local SCALE = 0.4
+local function oneaten(food, eater)
+    if eater.StartBoost then
+        eater:StartBoost(TUNING.LARGE_FUEL)
+        local fx = SpawnPrefab("statue_transition")
+        if fx then
+            fx.entity:SetParent(eater.entity)
+            fx.Transform:SetScale(SCALE, SCALE, SCALE)
+        end
+        eater.SoundEmitter:PlaySound("dontstarve/common/nightmareAddFuel")
+    end
+end
+
 AddPrefabPostInit("nightmarefuel", function(inst)
     if not TheWorld.ismastersim then return end
     inst:AddComponent("edible")
@@ -18,7 +31,7 @@ AddPrefabPostInit("nightmarefuel", function(inst)
     inst.components.edible.sanityvalue = 10
     inst.components.edible.hungervalue = 15
     inst.components.edible.foodtype = FOODTYPE.NIGHTFUEL
+    inst.components.edible:SetOnEatenFn(oneaten)
 
     inst:AddComponent("fuelpocketwatch")
-
 end)
