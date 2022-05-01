@@ -277,11 +277,8 @@ end)
 
 local change_tackle_strfn = ACTIONS.CHANGE_TACKLE.strfn
 ACTIONS.CHANGE_TACKLE.strfn = function(act)
-	local item = (act.invobject ~= nil and act.invobject:IsValid()) and act.invobject or nil
-    local equipped = (item ~= nil and act.doer.replica.inventory ~= nil) and act.doer.replica.inventory:GetEquippedItem(EQUIPSLOTS.HANDS) or nil
-	return (equipped ~= nil and equipped.replica.container ~= nil and equipped.replica.container:IsHolding(item)) and "REMOVE"
-			or (item ~= nil and item:HasTag("civicrystal")) and ("CRYSTAL")
-			or change_tackle_strfn(act)
+	local item = (act.invobject and act.invobject:IsValid()) and act.invobject
+	return change_tackle_strfn(act) or ((item and item:HasTag("civicrystal")) and ("CRYSTAL"))
 end
 
 AddComponentAction("INVENTORY", "nightcrystal", function(inst, doer, actions, right)

@@ -70,17 +70,8 @@ local strings = {
 
         FRIENDSHIPRING = "Buff your team.",
 
-        DARKAMULET = "Powerful but dark.",
-        LIGHTAMULET = "Keep away from dark things.",
-
         DARKCRYSTAL = "Into Dark!",
         LIGHTCRYSTAL = "Into Light!",
-
-        DARKGEM = "Upgrades!",
-        LIGHTGEM = "Degrades!",
-
-        DARKMAGATAMA = "Into Dark!",
-        LIGHTMAGATAMA = "Into Light!",
 
         BLACKHOLESTAFF = "Absorb everything!",
         BOOK_HARVEST = "Should help you harvest!",
@@ -100,7 +91,6 @@ local strings = {
 
         miotan_classic = "Classic",
         miotan_none = "Mio",
-        -- nightstick_crystal = "Mahou Shoujo Star",
         lantern_mio = "Camping Lamp",
         yellowamulet_heart = "Glowing Heart",
 
@@ -124,10 +114,6 @@ local strings = {
         miotan_none = "Mio cames from another world, where nightmare is everywhere.",
         dummy_none = "Another girl comes from nightmare's world.",
 
-    },
-    TABS =
-    {
-        dummytab = "Nightmare",
     },
     CIVI_LEVELS =
     {
@@ -164,11 +150,11 @@ local strings = {
                 DARKCRYSTAL = "Get closer to dark!",
                 LIGHTCRYSTAL = "Get closer to light!",
 
-                DARKGEM = "Get closer to dark!",
-                LIGHTGEM = "Get closer to light!",
+                DARKGEM = "It seems no use.",
+                LIGHTGEM = "It seems no use.",
 
-                DARKMAGATAMA = "Make THE sword to the dark.",
-                LIGHTMAGATAMA = "Make THE sword to the light.",
+                DARKMAGATAMA = "It seems no use.",
+                LIGHTMAGATAMA = "It seems no use.",
 
                 BLACKHOLESTAFF = "???",
                 BOOK_HARVEST = "H-A-R-V-E-S-T!",

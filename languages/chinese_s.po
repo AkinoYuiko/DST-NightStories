@@ -101,13 +101,13 @@ msgstr "接近黑暗！"
 
 #. STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKGEM
 msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKGEM"
-msgid "Get closer to dark!"
-msgstr "接近黑暗！"
+msgid "It seems no use."
+msgstr "似乎没有用。"
 
 #. STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKMAGATAMA
 msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKMAGATAMA"
-msgid "Make THE sword to the dark."
-msgstr "让那把刀接近黑暗。"
+msgid "It seems no use."
+msgstr "似乎没有用。"
 
 #. STRINGS.CHARACTERS.GENERIC.DESCRIBE.FRIENDSHIPRING
 msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.FRIENDSHIPRING"
@@ -136,13 +136,13 @@ msgstr "接近光明！"
 
 #. STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTGEM
 msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTGEM"
-msgid "Get closer to light!"
-msgstr "接近光明！"
+msgid "It seems no use."
+msgstr "似乎没有用。"
 
 #. STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTMAGATAMA
 msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTMAGATAMA"
-msgid "Make THE sword to the light."
-msgstr "让那把刀接近光明。"
+msgid "It seems no use."
+msgstr "似乎没有用。"
 
 #. STRINGS.CHARACTERS.GENERIC.DESCRIBE.NIGHTMARE_SPEAR
 msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.NIGHTMARE_SPEAR"
@@ -379,9 +379,9 @@ msgstr "生日"
 #. STRINGS.CHARACTER_BIOS.civi.2.desc
 msgctxt "STRINGS.CHARACTER_BIOS.civi.2.desc"
 msgid ""
-"Lv.0 - 骨头汤\n"
-"Lv.1 - 肉丸\n"
-"Lv.2 - 伏特羊肉冻"
+"Lv.0 - Bone Bouillon\n"
+"Lv.1 - Meatballs\n"
+"Lv.2 - Volt Goat Chaud-Froid"
 msgstr ""
 
 #. STRINGS.CHARACTER_BIOS.civi.2.title
@@ -401,7 +401,7 @@ msgstr "生日"
 
 #. STRINGS.CHARACTER_BIOS.dummy.2.desc
 msgctxt "STRINGS.CHARACTER_BIOS.dummy.2.desc"
-msgid "恐怖国王饼"
+msgid "Grim Galette"
 msgstr ""
 
 #. STRINGS.CHARACTER_BIOS.dummy.2.title
@@ -490,17 +490,17 @@ msgstr "\"假如我可以吞噬梦魇。\""
 
 #. STRINGS.CHARACTER_SURVIVABILITY.civi
 msgctxt "STRINGS.CHARACTER_SURVIVABILITY.civi"
-msgid "渺茫"
+msgid "Slim"
 msgstr ""
 
 #. STRINGS.CHARACTER_SURVIVABILITY.dummy
 msgctxt "STRINGS.CHARACTER_SURVIVABILITY.dummy"
-msgid "无"
+msgid "None"
 msgstr ""
 
 #. STRINGS.CHARACTER_SURVIVABILITY.miotan
 msgctxt "STRINGS.CHARACTER_SURVIVABILITY.miotan"
-msgid "严峻"
+msgid "Grim"
 msgstr ""
 
 #. STRINGS.CHARACTER_TITLES.civi
@@ -723,50 +723,20 @@ msgctxt "STRINGS.RECIPE_DESC.BOOK_TOGGLEDOWNFALL"
 msgid "/toggledownfall"
 msgstr ""
 
-#. STRINGS.RECIPE_DESC.DARKAMULET
-msgctxt "STRINGS.RECIPE_DESC.DARKAMULET"
-msgid "Powerful but dark."
-msgstr "深邃而充满力量。"
-
 #. STRINGS.RECIPE_DESC.DARKCRYSTAL
 msgctxt "STRINGS.RECIPE_DESC.DARKCRYSTAL"
 msgid "Into Dark!"
 msgstr "进入黑暗！"
-
-#. STRINGS.RECIPE_DESC.DARKGEM
-msgctxt "STRINGS.RECIPE_DESC.DARKGEM"
-msgid "Upgrades!"
-msgstr "升级！升级！"
-
-#. STRINGS.RECIPE_DESC.DARKMAGATAMA
-msgctxt "STRINGS.RECIPE_DESC.DARKMAGATAMA"
-msgid "Into Dark!"
-msgstr "嵌入黑暗！"
 
 #. STRINGS.RECIPE_DESC.FRIENDSHIPRING
 msgctxt "STRINGS.RECIPE_DESC.FRIENDSHIPRING"
 msgid "Buff your team."
 msgstr "强化你的队伍。"
 
-#. STRINGS.RECIPE_DESC.LIGHTAMULET
-msgctxt "STRINGS.RECIPE_DESC.LIGHTAMULET"
-msgid "Keep away from dark things."
-msgstr "远离黑暗。"
-
 #. STRINGS.RECIPE_DESC.LIGHTCRYSTAL
 msgctxt "STRINGS.RECIPE_DESC.LIGHTCRYSTAL"
 msgid "Into Light!"
 msgstr "进入光明！"
-
-#. STRINGS.RECIPE_DESC.LIGHTGEM
-msgctxt "STRINGS.RECIPE_DESC.LIGHTGEM"
-msgid "Degrades!"
-msgstr "降级！降级！"
-
-#. STRINGS.RECIPE_DESC.LIGHTMAGATAMA
-msgctxt "STRINGS.RECIPE_DESC.LIGHTMAGATAMA"
-msgid "Into Light!"
-msgstr "嵌入光明！"
 
 #. STRINGS.RECIPE_DESC.NIGHTMARE_SPEAR
 msgctxt "STRINGS.RECIPE_DESC.NIGHTMARE_SPEAR"
@@ -837,7 +807,7 @@ msgstr ""
 
 #. STRINGS.SKIN_NAMES.dragonflychest_gingerbread
 msgctxt "STRINGS.SKIN_NAMES.dragonflychest_gingerbread"
-msgid "姜饼箱子"
+msgid "Gingerbread Chest"
 msgstr ""
 
 #. STRINGS.SKIN_NAMES.dummy_none
@@ -904,11 +874,6 @@ msgstr "水晶头骨"
 msgctxt "STRINGS.SKIN_NAMES.yellowamulet_heart"
 msgid "Glowing Heart"
 msgstr "发光的心"
-
-#. STRINGS.TABS.dummytab
-msgctxt "STRINGS.TABS.dummytab"
-msgid "Nightmare"
-msgstr "梦魇"
 
 #. STRINGS.UI.CRAFTING.RECIPEACTION.SOULSPLIT
 msgctxt "STRINGS.UI.CRAFTING.RECIPEACTION.SOULSPLIT"
