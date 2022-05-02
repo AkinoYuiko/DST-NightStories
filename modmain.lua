@@ -20,7 +20,7 @@ for _, v in ipairs(main_files) do
     modimport("main/"..v)
 end
 
-local postinit_files =
+local postinits =
 {
     components =
     {
@@ -36,7 +36,7 @@ local postinit_files =
     "only_dazui",
     "tools_mutable",
 }
-for index, files in pairs(postinit_files) do
+for index, files in pairs(postinits) do
     if type(files) == "table" then
         for _, file in ipairs(files) do
             modimport("postinit/".. index .. "/" .. file)
@@ -44,5 +44,4 @@ for index, files in pairs(postinit_files) do
     else
         modimport("postinit/".. files)
     end
-
 end
