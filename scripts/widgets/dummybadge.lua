@@ -79,6 +79,14 @@ local DummyBadge = Class(Badge, function(self, owner)
     self.effigy = false
     self.effigybreaksound = nil
 
+    self.poisonanim = self.underNumber:AddChild(UIAnim())
+    self.poisonanim:GetAnimState():SetBank("poison")
+    self.poisonanim:GetAnimState():SetBuild("poison_meter_overlay")
+    self.poisonanim:GetAnimState():PlayAnimation("deactivate")
+    self.poisonanim:Hide()
+    self.poisonanim:SetClickable(false)
+    self.poison = false -- So it doesn't trigger on load
+
     self.corrosives = {}
     self._onremovecorrosive = function(debuff)
         self.corrosives[debuff] = nil
@@ -274,6 +282,19 @@ function DummyBadge:OnUpdate(dt)
             self.ghostanim:Show()
         else
             self.ghostanim:GetAnimState():PlayAnimation("ghost_deactivate")
+        end
+    end
+
+    local poison = self.owner.ispoisoned or (self.owner.player_classified and self.owner.player_classified.ispoisoned and self.owner.player_classified.ispoisoned:value())
+    if self.poison ~= poison then
+        self.poison = poison
+        if poison then
+            self.poisonanim:GetAnimState():PlayAnimation("activate")
+            self.poisonanim:GetAnimState():PushAnimation("idle", true)
+            self.poisonanim:Show()
+        else
+            self.owner.SoundEmitter:PlaySound("ia/common/antivenom_use")
+            self.poisonanim:GetAnimState():PlayAnimation("deactivate")
         end
     end
 end
