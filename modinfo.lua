@@ -12,7 +12,7 @@ local function zh_en(a, b)
     })
 end
 
-version = "1.29.14"
+version = "1.29.15"
 -- basic info --
 name = zh_en("暗夜故事集", "Night Stories")
 author = zh_en("丁香女子学校", "Civi, Tony, LSSSS")
@@ -21,9 +21,9 @@ description = zh_en(
 "[版本: " .. version .. [[]
 
 更新内容:
-- 修复注能图腾动作的一个错误。
+- 移除了IA配方部分的兼容处理，现交由IA:Deluxe Addon处理。
 
-- 仙人掌粉的电羊冻可以触发机器人充电了。
+- 修复注能图腾动作的一个错误。
 ...
 - 新道具：黑水晶、白水晶、友爱戒指、注能黑暗图腾、注能光明图腾。
 - 新增配方：黑水晶、白水晶、友爱戒指。
@@ -34,9 +34,9 @@ description = zh_en(
 "[Version: " .. version .. [[]
 
 Changelog:
-- Fix an issue when socketing Crystals into Ring of Friendship.
+- Move compatibility work with IA to IA:Deluxe Addon.
 
-- Add Cactus Volt Goat Chaud-Froid as charging food.
+- Fix an issue when socketing Crystals into Ring of Friendship.
 ...
 - New items: Dark Crystal, Light Cystal, Ring of Friendship, Charged Dark Totem, Charged Light Totem.
 - New recipes: Dark Crystal, Light Crystal, Ring of Friendship.
