@@ -13,7 +13,6 @@ local main_files = {
     "sanity_reward",
 
     "hack_templates",
-    "dummybadge_poison",    -- IA
 }
 
 for _, v in ipairs(main_files) do

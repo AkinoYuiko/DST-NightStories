@@ -20,13 +20,6 @@ STRINGS.NAMES.DUMMY_NIGHTMAREFUEL = STRINGS.NAMES.NIGHTMAREFUEL
 --------------------
 ------- Civi -------
 --------------------
-local IsIA = require("nsutils/check_ia")
-local RING_INGREDIENT =
-{
-    [true]  = "obsidian",
-    [false] = "moonrocknugget",
-}
-
 -- 红宝石 --
 AddRecipe("civi_redgem", {Ingredient("bluegem", 1), Ingredient("nightmarefuel", 1)}, TECH.CELESTIAL_ONE, {nounlock = true, nochar = true, builder_tag = "ns_builder_civi", product = "redgem", hidden = true})
 
@@ -47,12 +40,12 @@ AddRecipe("nightpack", {Ingredient("darkcrystal", 1), Ingredient("lightcrystal",
 SortBefore("nightpack", "civi_redgem")
 
 -- 友爱戒指
-AddRecipe("friendshipring", {Ingredient(RING_INGREDIENT[IsIA], 4), Ingredient("nightmarefuel", 4)}, { FRIENDSHIPRING = 2 }, {nounlock = true, builder_tag = "ns_builder_civi"})
+AddRecipe("friendshipring", {Ingredient("moonrocknugget", 4), Ingredient("nightmarefuel", 4)}, { FRIENDSHIPRING = 2 }, {nounlock = true, builder_tag = "ns_builder_civi"})
 SortAfter("friendshipring", "nightpack")
 
 -- 注能图腾
-AddDeconstructRecipe("friendshiptotem_dark", {Ingredient(RING_INGREDIENT[IsIA], 4), Ingredient("nightmarefuel", 4), Ingredient("darkcrystal", 1)})
-AddDeconstructRecipe("friendshiptotem_light", {Ingredient(RING_INGREDIENT[IsIA], 4), Ingredient("nightmarefuel", 4), Ingredient("lightcrystal", 1)})
+AddDeconstructRecipe("friendshiptotem_dark", {Ingredient("moonrocknugget", 4), Ingredient("nightmarefuel", 4), Ingredient("darkcrystal", 1)})
+AddDeconstructRecipe("friendshiptotem_light", {Ingredient("moonrocknugget", 4), Ingredient("nightmarefuel", 4), Ingredient("lightcrystal", 1)})
 
 AddDeconstructRecipe("darkgem", {Ingredient("darkcrystal", 1)})
 AddDeconstructRecipe("lightgem", {Ingredient("lightcrystal", 1)})
