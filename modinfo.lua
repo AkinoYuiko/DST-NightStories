@@ -12,7 +12,7 @@ local function zh_en(a, b)
     })
 end
 
-version = "1.29.12"
+version = "1.29.13"
 -- basic info --
 name = zh_en("暗夜故事集", "Night Stories")
 author = zh_en("丁香女子学校", "Civi, Tony, LSSSS")
@@ -21,8 +21,9 @@ description = zh_en(
 "[版本: " .. version .. [[]
 
 更新内容:
-- 澪吃噩梦燃料也能触发友爱戒指了。
+- 仙人掌粉的电羊冻可以触发机器人充电了。
 
+- 澪吃噩梦燃料也能触发友爱戒指了。
 - 友爱戒指现在可以对玩家的随从生效了。
 ...
 - 新道具：黑水晶、白水晶、友爱戒指、注能黑暗图腾、注能光明图腾。
@@ -34,8 +35,9 @@ description = zh_en(
 "[Version: " .. version .. [[]
 
 Changelog:
-- Mio can trigger Ring of Friendship when eating nightmare fuel.
+- Add Cactus Volt Goat Chaud-Froid as charging food.
 
+- Mio can trigger Ring of Friendship when eating nightmare fuel.
 - Ring of Friendship also apply buffs tp players' followers.
 ...
 - New items: Dark Crystal, Light Cystal, Ring of Friendship, Charged Dark Totem, Charged Light Totem.
