@@ -278,8 +278,8 @@ end)
 
 local change_tackle_strfn = ACTIONS.CHANGE_TACKLE.strfn
 ACTIONS.CHANGE_TACKLE.strfn = function(act)
-	local item = (act.invobject and act.invobject:IsValid()) and act.invobject
-	return change_tackle_strfn(act) or ((item and item:HasTag("civicrystal")) and ("CRYSTAL"))
+    local item = (act.invobject and act.invobject:IsValid()) and act.invobject
+    return change_tackle_strfn(act) or ((item and item:HasTag("civicrystal")) and ("CRYSTAL"))
 end
 
 AddComponentAction("INVENTORY", "nightcrystal", function(inst, doer, actions, right)
