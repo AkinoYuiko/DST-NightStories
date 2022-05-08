@@ -758,6 +758,11 @@ msgctxt "STRINGS.SKIN_DESCRIPTIONS.miotan_none"
 msgid "Mio cames from another world, where nightmare is everywhere."
 msgstr ""
 
+#. STRINGS.SKIN_DESCRIPTIONS.wx78_potato
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.wx78_potato"
+msgid "The reworked WX78 is kinda potato."
+msgstr ""
+
 #. STRINGS.SKIN_NAMES.alterguardianhat_finger
 msgctxt "STRINGS.SKIN_NAMES.alterguardianhat_finger"
 msgid "Crossed Fingers"
@@ -836,6 +841,11 @@ msgstr ""
 #. STRINGS.SKIN_NAMES.skeletonhat_glass
 msgctxt "STRINGS.SKIN_NAMES.skeletonhat_glass"
 msgid "Crystal Skull"
+msgstr ""
+
+#. STRINGS.SKIN_NAMES.wx78_potato
+msgctxt "STRINGS.SKIN_NAMES.wx78_potato"
+msgid "Crop"
 msgstr ""
 
 #. STRINGS.SKIN_NAMES.yellowamulet_heart

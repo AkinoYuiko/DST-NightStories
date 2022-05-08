@@ -329,4 +329,7 @@ GlassicAPI.SkinHandler.AddModSkins({
     meatrack = { "meatrack_hermit_red", "meatrack_hermit_white" },
     hivehat = { "hivehat_pigcrown", "hivehat_pigcrown_willow" },
     alterguardianhat = { "alterguardianhat_finger" },
+    wx78 = {
+        "wx78_potato",
+    }
 })

@@ -270,8 +270,12 @@ return MakePlayerCharacter("miotan", prefabs, assets, common_postinit, master_po
         base_prefab = "miotan",
         type = "base",
         assets = {
-            Asset( "ANIM", "anim/miotan_classic.zip" ),
-            Asset( "ANIM", "anim/ghost_miotan_classic_build.zip" ),
+            Asset( "DYNAMIC_ANIM", "anim/dynamic/miotan_classic.zip" ),
+            Asset( "PKGREF", "anim/dynamic/miotan_classic.dyn" ),
+            -- Asset( "ANIM", "anim/miotan_classic.zip" ),
+            Asset( "DYNAMIC_ANIM", "anim/dynamic/ghost_miotan_classic_build.zip" ),
+            Asset( "PKGREF", "anim/dynamic/ghost_miotan_classic_build.dyn" ),
+            -- Asset( "ANIM", "anim/ghost_miotan_classic_build.zip" ),
             Asset( "ATLAS", "bigportraits/miotan_classic.xml")
         },
         skins = { normal_skin = "miotan_classic", ghost_skin = "ghost_miotan_classic_build" },

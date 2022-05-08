@@ -4,6 +4,7 @@ PrefabFiles = {
     "civi",
     "miotan",
     "dummy",
+    "wx78_potato",
 }
 
 Assets = {
@@ -45,16 +46,16 @@ modimport("main/hack_templates.lua")
 
 GlassicAPI.SkinHandler.AddModSkins({
     civi = {
-        is_char = true,
-        "civi_none"
+        "civi_none",
     },
     miotan = {
-        is_char = true,
         "miotan_none",
-        "miotan_classic"
+        "miotan_classic",
     },
     dummy = {
-        is_char = true,
-        "dummy_none"
+        "dummy_none",
     },
+    wx78 = {
+        "wx78_potato",
+    }
 })

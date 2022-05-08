@@ -790,6 +790,11 @@ msgctxt "STRINGS.SKIN_DESCRIPTIONS.miotan_none"
 msgid "Mio cames from another world, where nightmare is everywhere."
 msgstr "澪来自一个充满梦魇的异世界。"
 
+#. STRINGS.SKIN_DESCRIPTIONS.wx78_potato
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.wx78_potato"
+msgid "The reworked WX78 is kinda potato."
+msgstr "WX78重做以后竟然变成了一个土豆！"
+
 #. STRINGS.SKIN_NAMES.alterguardianhat_finger
 msgctxt "STRINGS.SKIN_NAMES.alterguardianhat_finger"
 msgid "Crossed Fingers"
@@ -803,11 +808,6 @@ msgstr "皇帝的新衣"
 #. STRINGS.SKIN_NAMES.civi_none
 msgctxt "STRINGS.SKIN_NAMES.civi_none"
 msgid "Civi"
-msgstr ""
-
-#. STRINGS.SKIN_NAMES.dragonflychest_gingerbread
-msgctxt "STRINGS.SKIN_NAMES.dragonflychest_gingerbread"
-msgid "Gingerbread Chest"
 msgstr ""
 
 #. STRINGS.SKIN_NAMES.dummy_none
@@ -853,7 +853,7 @@ msgstr "隐士肉架（白）"
 #. STRINGS.SKIN_NAMES.miotan_classic
 msgctxt "STRINGS.SKIN_NAMES.miotan_classic"
 msgid "Classic"
-msgstr ""
+msgstr "经典"
 
 #. STRINGS.SKIN_NAMES.miotan_none
 msgctxt "STRINGS.SKIN_NAMES.miotan_none"
@@ -869,6 +869,11 @@ msgstr "佩奇的雨衣"
 msgctxt "STRINGS.SKIN_NAMES.skeletonhat_glass"
 msgid "Crystal Skull"
 msgstr "水晶头骨"
+
+#. STRINGS.SKIN_NAMES.wx78_potato
+msgctxt "STRINGS.SKIN_NAMES.wx78_potato"
+msgid "Potato"
+msgstr "农作物"
 
 #. STRINGS.SKIN_NAMES.yellowamulet_heart
 msgctxt "STRINGS.SKIN_NAMES.yellowamulet_heart"

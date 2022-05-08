@@ -89,8 +89,8 @@ local strings = {
         armorskeleton_none = "Emperor's Formal",
         skeletonhat_glass = "Crystal Skull",
 
-        miotan_classic = "Classic",
         miotan_none = "Mio",
+        miotan_classic = "Classic",
         lantern_mio = "Camping Lamp",
         yellowamulet_heart = "Glowing Heart",
 
@@ -106,14 +106,17 @@ local strings = {
 
         eyebrellahat_peggy = "Peggy's Eyebrella",
         alterguardianhat_finger = "Crossed Fingers",
+
+        wx78_potato = "Crop",
     },
     SKIN_DESCRIPTIONS =
     {
         civi_none = "Civi can control magic, turning lights into darks, or turning darks into lights.",
-        miotan_classic = "Mio's V1 skin!",
         miotan_none = "Mio cames from another world, where nightmare is everywhere.",
+        miotan_classic = "Mio's V1 skin!",
         dummy_none = "Another girl comes from nightmare's world.",
 
+        wx78_potato = "A reworked machine becomes a potato!",
     },
     CIVI_LEVELS =
     {
