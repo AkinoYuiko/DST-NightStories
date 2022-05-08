@@ -18,9 +18,7 @@ name = zh_en("暗夜故事集", "Night Stories")
 author = zh_en("丁香女子学校", "Civi, Tony, LSSSS")
 description = zh_en(
     -- zh
-"[版本: " .. version .. [[]
-
-更新内容:
+"版本: " .. version .. "\n\n" .. [[更新内容:
 - 移除了IA配方部分的兼容处理，现交由IA:Deluxe Addon处理。
 
 - 修复注能图腾动作的一个错误。
@@ -31,9 +29,7 @@ description = zh_en(
 
 “黑夜将至，你准备好了吗？”]],
     -- en
-"[Version: " .. version .. [[]
-
-Changelog:
+"[Version: " .. version .. "\n\n" ..[[Changelog:
 - Move compatibility work with IA to IA:Deluxe Addon.
 
 - Fix an issue when socketing Crystals into Ring of Friendship.
