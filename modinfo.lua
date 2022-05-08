@@ -12,13 +12,15 @@ local function zh_en(a, b)
     })
 end
 
-version = "1.30.2"
+version = "1.30.3"
+version_compatible = "1.30.2"
 -- basic info --
 name = zh_en("暗夜故事集", "Night Stories")
 author = zh_en("丁香女子学校", "Civi, Tony, LSSSS")
 description = zh_en(
     -- zh
 "版本: " .. version .. "\n\n" .. [[更新内容:
+- 修复注能图腾图标缺失的问题。
 - 更新了“皇帝的新衣”的静态材质和图标。
 
 - 修复入侵溯源表动作文本丢失的问题。
@@ -28,6 +30,7 @@ description = zh_en(
 “黑夜将至，你准备好了吗？”]],
     -- en
 "[Version: " .. version .. "\n\n" ..[[Changelog:
+- Fix missing icon for Charged Totems.
 - Tweak idle anim and icon for skin "Emperor's Formal".
 
 - Fix missing string for action "Hack" into Backtrek Watch.
