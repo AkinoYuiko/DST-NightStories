@@ -12,23 +12,25 @@ local function zh_en(a, b)
     })
 end
 
-version = "1.30.1"
+version = "1.30.2"
 -- basic info --
 name = zh_en("暗夜故事集", "Night Stories")
 author = zh_en("丁香女子学校", "Civi, Tony, LSSSS")
 description = zh_en(
     -- zh
 "版本: " .. version .. "\n\n" .. [[更新内容:
-- 修复入侵溯源表动作文本丢失的问题。
+- 更新了“皇帝的新衣”的静态材质和图标。
 
+- 修复入侵溯源表动作文本丢失的问题。
 - 土豆。
 - 更改澪皮肤的格式为dyn。
 
 “黑夜将至，你准备好了吗？”]],
     -- en
 "[Version: " .. version .. "\n\n" ..[[Changelog:
-- Fix missing string for action "FUELPOCKETWATCH".
+- Tweak idle anim and icon for skin "Emperor's Formal".
 
+- Fix missing string for action "Hack" into Backtrek Watch.
 - Potato.
 - Tweak Mio's skin texture to dyn.
 

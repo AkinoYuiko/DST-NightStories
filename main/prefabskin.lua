@@ -10,26 +10,10 @@ ns_equipment_init_fn = function(inst, slot, skinname, override_build, swap_data)
 end
 
 -- Civi
-ns_armorskeleton_init_fn = function(inst, build)
-
-    local function onequipfn(inst, data)
-        data.owner.AnimState:ClearOverrideSymbol("swap_body")
-    end
-
-    GlassicAPI.SetFloatData(inst, { bank = "armor_skeleton", anim = "anim"})
-
-    if not TheWorld.ismastersim then return end
-
-    inst.skinname = build
-    inst.AnimState:SetBuild(build)
-    if inst.components.inventoryitem then
-        inst.components.inventoryitem:ChangeImageName(inst:GetSkinName())
-    end
-
-    inst:ListenForEvent("equipped", onequipfn)
-    inst.OnReskinFn = function(inst)
-        inst:RemoveEventCallback("equipped", onequipfn)
-    end
+local armor_skeleton_clear_fn = armorskeleton_clear_fn
+function armorskeleton_clear_fn(inst)
+    inst.foleysound = "dontstarve/movement/foley/bone"
+    armor_skeleton_clear_fn(inst)
 end
 
 -- Mio
