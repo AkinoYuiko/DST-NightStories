@@ -5,11 +5,38 @@ local AddDeconstructRecipe = AddDeconstructRecipe
 local AddPlayerPostInit = AddPlayerPostInit
 GLOBAL.setfenv(1, GLOBAL)
 
-GlassicAPI.AddTech("FRIENDSHIPRING")
-GlassicAPI.MergeTechBonus("MOONORB_UPGRADED", "FRIENDSHIPRING", 2)
-GlassicAPI.MergeTechBonus("MOON_ALTAR_FULL", "FRIENDSHIPRING", 2)
-GlassicAPI.MergeTechBonus("OBSIDIAN_BENCH", "FRIENDSHIPRING", 2)
-TECH.LOST.FRIENDSHIPRING = 10 --this allows the jelly brain hat to give access to recipes using these tech.
+local function add_tech(tech_name, merge_table, brainjelly)
+    if tech_name then
+        GlassicAPI.AddTech(tech_name)
+        if type(merge_table) == "table" then
+            for target, bonus in pairs(merge_table) do
+                GlassicAPI.MergeTechBonus(target, tech_name, bonus)
+            end
+        end
+        if brainjelly then
+            TECH.LOST[tech_name] = 10
+        end
+    end
+end
+
+local MERGE_TABLES =
+{
+    CIVI =
+    {
+        MOONORB_UPGRADED = 1,
+        MOON_ALTAR_FULL = 1,
+        OBSIDIAN_BENCH = 1,
+    },
+    DUMMY =
+    {
+        ANCIENTALTAR_HIGH = 1,
+        OBSIDIAN_BENCH = 1,
+    }
+}
+add_tech("CIVITECH", MERGE_TABLES.CIVI, true)
+add_tech("DUMMYTECH", MERGE_TABLES.DUMMY, true)
+local CIVITECH_ONE = { CIVITECH = 1}
+local DUMMYTECH_ONE = { DUMMYTECH = 1}
 
 STRINGS.NAMES.CIVI_REDGEM = STRINGS.NAMES.REDGEM
 STRINGS.NAMES.CIVI_BLUEGEM = STRINGS.NAMES.BLUEGEM
@@ -40,7 +67,7 @@ AddRecipe("nightpack", {Ingredient("darkcrystal", 1), Ingredient("lightcrystal",
 SortBefore("nightpack", "civi_redgem")
 
 -- 友爱戒指
-AddRecipe("friendshipring", {Ingredient("moonrocknugget", 4), Ingredient("nightmarefuel", 4)}, { FRIENDSHIPRING = 2 }, {nounlock = true, builder_tag = "ns_builder_civi"})
+AddRecipe("friendshipring", {Ingredient("moonrocknugget", 4), Ingredient("nightmarefuel", 4)}, CIVITECH_ONE, {nounlock = true, builder_tag = "ns_builder_civi"})
 SortAfter("friendshipring", "nightpack")
 
 -- 注能图腾
@@ -69,8 +96,8 @@ AddRecipe("book_harvest", {Ingredient("papyrus", 2), Ingredient(CHARACTER_INGRED
 AddRecipe("book_toggledownfall", {Ingredient("papyrus", 2), Ingredient(CHARACTER_INGREDIENT.HEALTH, 30, nil, nil, "decrease_sanity.tex")}, TECH.MAGIC_THREE, {builder_tag = "ns_builder_dummy"})
 
 -- 黑洞法杖 --
-AddRecipe("blackholestaff", {Ingredient("livinglog", 2), Ingredient("orangegem", 2), Ingredient("nightmarefuel", 4)}, TECH.ANCIENT_FOUR, {nounlock = true, builder_tag = "ns_builder_dummy"})
-
+AddRecipe("blackholestaff", {Ingredient("livinglog", 2), Ingredient("orangegem", 2), Ingredient("nightmarefuel", 4)}, DUMMYTECH_ONE, {nounlock = true, builder_tag = "ns_builder_dummy"})
+SortAfter("blackholestaff", "greenstaff")
 ---------------------
 ------- Other -------
 ---------------------
@@ -80,8 +107,10 @@ AddRecipe("spice_cactus", {Ingredient("cactus_meat", 2), Ingredient("cactus_flow
 SortAfter("spice_cactus", "spice_salt")
 
 -- 便携衣柜 & 魔法礼装 --
-AddRecipe("portable_wardrobe_wrap", {Ingredient("giftwrap", 1), Ingredient("nightmarefuel",1)}, TECH.MAGIC_THREE, {no_deconstruction = true}, {"MAGIC"})
-AddRecipe("portable_wardrobe_item", {Ingredient("portable_wardrobe_wrap", 3), Ingredient("boards", 4)}, TECH.MAGIC_THREE, {no_deconstruction = true}, {"MAGIC"})
+AddRecipe("portable_wardrobe_wrap", {Ingredient("giftwrap", 1), Ingredient("nightmarefuel",1)}, TECH.MAGIC_THREE, {no_deconstruction = true}, {"MAGIC", "DECOR"})
+SortAfter("portable_wardrobe_wrap", "wardrobe", "DECOR")
+AddRecipe("portable_wardrobe_item", {Ingredient("portable_wardrobe_wrap", 3), Ingredient("boards", 4)}, TECH.MAGIC_THREE, {no_deconstruction = true}, {"MAGIC", "DECOR"})
+SortAfter("portable_wardrobe_item", "portable_wardrobe_wrap")
 
 ------------------------------------------------
 -- 防止改配方出问题的一个修复
