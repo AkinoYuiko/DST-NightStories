@@ -1,4 +1,3 @@
-local AddPrefabPostInit = AddPrefabPostInit
 GLOBAL.setfenv(1, GLOBAL)
 
 ns_equipment_init_fn = function(inst, slot, skinname, override_build, swap_data)
@@ -250,26 +249,6 @@ if not rawget(_G, "hivehat_clear_fn") then
     end
 end
 
--- Enlightened Crown --
-AddPrefabPostInit("alterguardian_hat_equipped", function(inst)
-    if not TheWorld.ismastersim then return end
-
-    local set_skin = inst.SetSkin
-    inst.SetSkin = function(inst, skin_build, ...)
-        if GlassicAPI.SkinHandler.IsModSkin(skin_build) then
-            inst.AnimState:OverrideSymbol("p4_piece", skin_build, "p4_piece")
-        else
-            return set_skin(inst, skin_build, ...)
-        end
-    end
-end)
--- local vanilla_alterguardianhat_clear_fn = alterguardianhat_clear_fn
--- alterguardianhat_clear_fn = function(inst, ...)
---     local ret = { vanilla_alterguardianhat_clear_fn(inst, ...) }
---     inst.components.inventoryitem:ChangeImageName()
---     return unpack(ret)
--- end
-
 GlassicAPI.SkinHandler.AddModSkins({
     -- Civi
     civi = {
@@ -289,9 +268,6 @@ GlassicAPI.SkinHandler.AddModSkins({
     lantern = {
         { name = "lantern_mio", exclusive_char = "miotan" }
     },
-    -- nightstick = {
-    --     { name = "nightstick_crystal", exclusive_char = "miotan" }
-    -- },
     yellowamulet = {
         { name = "yellowamulet_heart", exclusive_char = "miotan" }
     },

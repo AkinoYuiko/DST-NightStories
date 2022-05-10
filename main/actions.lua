@@ -1,8 +1,7 @@
-local AddAction = AddAction
-local AddComponentAction = AddComponentAction
-local AddStategraphActionHandler = AddStategraphActionHandler
-GLOBAL.setfenv(1, GLOBAL)
-
+-- local AddAction = AddAction
+-- local AddComponentAction = AddComponentAction
+-- local AddStategraphActionHandler = AddStategraphActionHandler
+-- GLOBAL.setfenv(1, GLOBAL)
 local UpvalueUtil = require "upvalueutil"
 
 NS_ACTIONS = {
@@ -333,3 +332,5 @@ for _, sg in ipairs({"wilson", "wilson_client"}) do
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.FUELPOCKETWATCH, "pocketwatch_warpback_pre"))
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.FRIENDSHIPTOTEM, "doshortaction"))
 end
+
+_G.NS_ACTIONS = NS_ACTIONS

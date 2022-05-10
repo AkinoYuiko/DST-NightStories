@@ -1,7 +1,3 @@
-local AddClassPostConstruct = AddClassPostConstruct
-local AddPrefabPostInit = AddPrefabPostInit
-GLOBAL.setfenv(1, GLOBAL)
-
 local CRYSTAL_NAMES = {
     "darkcrystal",
     "lightcrystal"

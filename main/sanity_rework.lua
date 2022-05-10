@@ -1,6 +1,4 @@
-local AddPrefabPostInit = AddPrefabPostInit
-local AddPlayerPostInit = AddPlayerPostInit
-GLOBAL.setfenv(1, GLOBAL)
+
 
 -- Dummy Badge --
 local StatusDisplays = require("widgets/statusdisplays")

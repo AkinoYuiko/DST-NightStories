@@ -1,6 +1,3 @@
-local MODROOT = MODROOT
-GLOBAL.setfenv(1, GLOBAL)
-
 local strings = {
     ACTIONS =
     {
@@ -32,9 +29,8 @@ local strings = {
         NIGHTPACK_ORANGE = "Orange Night Pack",
         NIGHTPACK_GREEN = "Green Night Pack",
         NIGHTPACK_OPAL = "Opal Night Pack",
-        -- NIGHTPACK_DARK = "Dark Night Pack",
-        -- NIGHTPACK_LIGHT = "Light Night Pack",
         NIGHTPACK_FUEL = "Night Pack",
+
         DARKCRYSTAL = "Dark Crystal",
         LIGHTCRYSTAL = "Light Crystal",
         DARKGEM = "Dark Gem",

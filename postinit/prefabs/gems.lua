@@ -1,6 +1,3 @@
-local AddPrefabPostInit = AddPrefabPostInit
-GLOBAL.setfenv(1, GLOBAL)
-
 local function add_tag(inst)
     inst:AddTag("nightpackgem")
 end

@@ -1,7 +1,4 @@
-local AddPrefabPostInit = AddPrefabPostInit
-local UpvalueUtil = require("upvalueutil")
-GLOBAL.setfenv(1, GLOBAL)
-
+local UpvalueUtil = require "upvalueutil"
 local function mio_ontradeforgold(inst, item, giver, ...)
     if not (giver and giver.prefab == "miotan") then
         return inst.ontradeforgold_prefns["miotan"](inst, item, giver, ...)

@@ -1,7 +1,4 @@
-local UpvalueUtil = require("upvalueutil")
-local AddComponentPostInit = AddComponentPostInit
-local AddPrefabPostInit = AddPrefabPostInit
-GLOBAL.setfenv(1, GLOBAL)
+local UpvalueUtil = require "upvalueutil"
 AddComponentPostInit("shadowcreaturespawner", function(self, inst)
     for _, fn in ipairs(inst.event_listeners["ms_playerjoined"][inst]) do
         local path = "Start.UpdatePopulation.StartSpawn.UpdateSpawn.SpawnLandShadowCreature"

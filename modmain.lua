@@ -1,3 +1,4 @@
+GLOBAL.setmetatable(env, { __index = function(t, k) return GLOBAL.rawget(GLOBAL, k) end})
 local main_files = {
     "assets",
     "tuning",
@@ -27,6 +28,7 @@ local postinits =
     },
     prefabs =
     {
+        "alterguardian_hat_equipped",
         "gems",
         "nightmarefuel",
         "nightsword",

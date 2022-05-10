@@ -1,6 +1,3 @@
-local AddPrefabPostInit = AddPrefabPostInit
-GLOBAL.setfenv(1, GLOBAL)
-
 FOODTYPE.NIGHTFUEL = "NIGHTFUEL"
 local Eater = require("components/eater")
 function Eater:SetCanEatNightmareFuel()

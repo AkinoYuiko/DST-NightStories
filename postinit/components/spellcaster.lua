@@ -1,6 +1,3 @@
-local AddComponentAction = AddComponentAction
-GLOBAL.setfenv(1, GLOBAL)
-
 local function target_test_fn(target)
     return ( target:HasTag("_inventoryitem") and
         not (

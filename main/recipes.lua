@@ -1,9 +1,6 @@
 local AddRecipe = GlassicAPI.AddRecipe
 local SortAfter = GlassicAPI.RecipeSortAfter
 local SortBefore = GlassicAPI.RecipeSortBefore
-local AddDeconstructRecipe = AddDeconstructRecipe
-local AddPlayerPostInit = AddPlayerPostInit
-GLOBAL.setfenv(1, GLOBAL)
 
 local function add_tech(tech_name, merge_table, brainjelly)
     if tech_name then

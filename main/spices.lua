@@ -1,5 +1,3 @@
-GLOBAL.setfenv(1, GLOBAL)
-
 local NS_SPICES = {
     SPICE_CACTUS = {}
 }
@@ -17,7 +15,7 @@ GenerateSpicedFoods(require("preparedfoods_warly"))
 
 for _, recipe in pairs(spicedfoods) do
     if NS_SPICES[recipe.spice] then
-        AddCookerRecipe("portablespicer", recipe)
+        _G.AddCookerRecipe("portablespicer", recipe)
         if recipe.basename == "voltgoatjelly" then -- WX78
             TUNING.WX78_CHARGING_FOODS[recipe.name] = 1
         end

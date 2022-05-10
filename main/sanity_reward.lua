@@ -1,6 +1,3 @@
-local AddPrefabPostInit = AddPrefabPostInit
-GLOBAL.setfenv(1, GLOBAL)
-
 local nightmare_prefabs =
 {
     "crawlinghorror",
