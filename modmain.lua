@@ -27,6 +27,7 @@ local postinits =
     },
     prefabs =
     {
+        "alterguardian_hat_equipped",
         "gems",
         "nightmarefuel",
         "nightsword",
