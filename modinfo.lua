@@ -1,7 +1,5 @@
 local function loc(t)
-    t.zhr = t.zh
     t.zht = t.zht or t.zh
-    t.ch = t.ch or t.zh
     return t[locale] or t.en
 end
 
@@ -16,9 +14,7 @@ version = "1.30.6"
 -- basic info --
 name = zh_en("暗夜故事集", "Night Stories")
 author = zh_en("丁香女子学校", "Civi, Tony, LSSSS")
-description = zh_en(
-    -- zh
-"版本: " .. version .. "\n\n" .. [[更新内容:
+changelog = zh_en([[
 - 调整了部分代码的位置。
 
 - 调整了部分配方的顺序。
@@ -26,10 +22,7 @@ description = zh_en(
 - 修复入侵溯源表动作文本丢失的问题。
 - 土豆。
 - 更改澪皮肤的格式为dyn。
-
-“黑夜将至，你准备好了吗？”]],
-    -- en
-"Version: " .. version .. "\n\n" ..[[Changelog:
+]], [[
 - Tweak code structure.
 
 - Tweak some recipe sorting.
@@ -37,21 +30,20 @@ description = zh_en(
 - Fix missing string for action "Hack" into Backtrek Watch.
 - Potato.
 - Tweak Mio's skin texture to dyn.
+]])
+description = zh_en("版本: ", "Version: ") .. version ..
+    zh_en("\n\n更新内容:\n", "\n\nChangelog:\n") .. changelog ..
+    zh_en("\n“黑夜将至，你准备好了吗？”", "\n\"Night is coming, aren't you ready yet?\"")
 
-"Night is coming, aren't you ready yet?"]]
-)
+priority = 25
 
-forumthread = ""
 api_version = 10
 dst_compatible = true
-dont_starve_compatible = false
-reign_of_giants_compatible = false
 all_clients_require_mod = true
 
 icon_atlas = "images/modicon.xml"
 icon = "modicon.tex"
 
-priority = 25
 mod_dependencies = {
     {
         workshop = "workshop-2521851770",    -- Glassic API
