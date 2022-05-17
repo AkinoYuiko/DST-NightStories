@@ -10,12 +10,12 @@ local function zh_en(a, b)
     })
 end
 
-version = "1.30.7"
+version = "1.30.8"
 -- basic info --
 name = zh_en("暗夜故事集", "Night Stories")
 author = zh_en("丁香女子学校", "Civi, Tony, LSSSS")
 changelog = zh_en([[
-- 更新适配 Glassic API 3.0
+- 更新适配 Glassic API 3.0.1
 
 - 调整了部分代码的位置。
 - 调整了部分配方的顺序。
@@ -24,7 +24,7 @@ changelog = zh_en([[
 - 土豆。
 - 更改澪皮肤的格式为dyn。
 ]], [[
-- Update for Glassic API 3.0
+- Update for Glassic API 3.0.1
 
 - Tweak code structure.
 - Tweak some recipe sorting.
