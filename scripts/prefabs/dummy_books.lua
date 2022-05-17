@@ -12,7 +12,7 @@ local prefabs =
     "book_fx",
 }
 
-local UpvalueUtil = require("upvalueutil")
+local UpvalueUtil = GlassicAPI.UpvalueUtil
 
 local book_defs =
 {

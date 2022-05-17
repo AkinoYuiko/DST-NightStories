@@ -1,5 +1,5 @@
 local AddPrefabPostInit = AddPrefabPostInit
-local UpvalueUtil = require("upvalueutil")
+local UpvalueUtil = GlassicAPI.UpvalueUtil
 GLOBAL.setfenv(1, GLOBAL)
 
 local function mio_ontradeforgold(inst, item, giver, ...)

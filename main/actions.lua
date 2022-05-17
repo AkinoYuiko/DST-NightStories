@@ -3,7 +3,7 @@ local AddComponentAction = AddComponentAction
 local AddStategraphActionHandler = AddStategraphActionHandler
 GLOBAL.setfenv(1, GLOBAL)
 
-local UpvalueUtil = require "upvalueutil"
+local UpvalueUtil = GlassicAPI.UpvalueUtil
 
 NS_ACTIONS = {
     GEMTRADE = Action({priority = 3, mount_valid = true}),

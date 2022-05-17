@@ -1,4 +1,4 @@
-local UpvalueUtil = require("upvalueutil")
+local UpvalueUtil = GlassicAPI.UpvalueUtil
 local AddComponentPostInit = AddComponentPostInit
 local AddPrefabPostInit = AddPrefabPostInit
 GLOBAL.setfenv(1, GLOBAL)
