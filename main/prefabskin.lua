@@ -84,7 +84,7 @@ if not rawget(_G, "hivehat_clear_fn") then
         if not TheWorld.ismastersim then return end
         inst.components.inventoryitem:ChangeImageName()
     end
-    GlassicAPI.SetOnequipSkinItem("hivehat", {"swap_body", "swap_body", "hat_hive"})
+    -- GlassicAPI.SetOnequipSkinItem("hivehat", {"swap_body", "swap_body", "hat_hive"})
 end
 
 GlassicAPI.SkinHandler.AddModSkins({

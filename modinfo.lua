@@ -10,12 +10,12 @@ local function zh_en(a, b)
     })
 end
 
-version = "1.30.8"
+version = "1.30.9"
 -- basic info --
 name = zh_en("暗夜故事集", "Night Stories")
 author = zh_en("丁香女子学校", "Civi, Tony, LSSSS")
 changelog = zh_en([[
-- 更新适配 Glassic API 3.0.1
+- 修复雨衣缺少SetOnequipSkinItem的问题。
 
 - 调整了部分代码的位置。
 - 调整了部分配方的顺序。
@@ -24,7 +24,7 @@ changelog = zh_en([[
 - 土豆。
 - 更改澪皮肤的格式为dyn。
 ]], [[
-- Update for Glassic API 3.0.1
+- Fix missing SetOnequipSkinItem for Rain Coat.
 
 - Tweak code structure.
 - Tweak some recipe sorting.
@@ -34,8 +34,8 @@ changelog = zh_en([[
 - Tweak Mio's skin texture to dyn.
 ]])
 description = zh_en("版本: ", "Version: ") .. version ..
-    zh_en("\n\n更新内容:\n", "\n\nChangelog:\n") .. changelog ..
-    zh_en("\n“黑夜将至，你准备好了吗？”", "\n\"Night is coming, aren't you ready yet?\"")
+    zh_en("\n\n更新内容:\n", "\n\nChangelog:\n") .. changelog .. "\n"
+    zh_en("“黑夜将至，你准备好了吗？”", "\"Night is coming, aren't you ready yet?\"")
 
 priority = 25
 
