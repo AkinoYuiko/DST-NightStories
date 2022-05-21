@@ -10,7 +10,7 @@ local function zh_en(a, b)
     })
 end
 
-version = "1.30.9"
+version = "1.30.10"
 -- basic info --
 name = zh_en("暗夜故事集", "Night Stories")
 author = zh_en("丁香女子学校", "Civi, Tony, LSSSS")
@@ -34,7 +34,7 @@ changelog = zh_en([[
 - Tweak Mio's skin texture to dyn.
 ]])
 description = zh_en("版本: ", "Version: ") .. version ..
-    zh_en("\n\n更新内容:\n", "\n\nChangelog:\n") .. changelog .. "\n"
+    zh_en("\n\n更新内容:\n", "\n\nChangelog:\n") .. changelog .. "\n" ..
     zh_en("“黑夜将至，你准备好了吗？”", "\"Night is coming, aren't you ready yet?\"")
 
 priority = 25
