@@ -10,28 +10,14 @@ local function zh_en(a, b)
     })
 end
 
-version = "1.30.10"
+version = "1.31"
 -- basic info --
 name = zh_en("暗夜故事集", "Night Stories")
 author = zh_en("丁香女子学校", "Civi, Tony, LSSSS")
 changelog = zh_en([[
-- 修复雨衣缺少SetOnequipSkinItem的问题。
-
-- 调整了部分代码的位置。
-- 调整了部分配方的顺序。
-- 更新了“皇帝的新衣”的静态材质和图标。
-- 修复入侵溯源表动作文本丢失的问题。
-- 土豆。
-- 更改澪皮肤的格式为dyn。
+- 达米装备梦魇护符或骨头盔时吃恐怖国王饼不会暴毙了。
 ]], [[
-- Fix missing SetOnequipSkinItem for Rain Coat.
-
-- Tweak code structure.
-- Tweak some recipe sorting.
-- Tweak idle anim and icon for skin "Emperor's Formal".
-- Fix missing string for action "Hack" into Backtrek Watch.
-- Potato.
-- Tweak Mio's skin texture to dyn.
+- Dummy won't die when eating Grim Galette with Bone Helm or Nightmare Amulet equipped.
 ]])
 description = zh_en("版本: ", "Version: ") .. version ..
     zh_en("\n\n更新内容:\n", "\n\nChangelog:\n") .. changelog .. "\n" ..

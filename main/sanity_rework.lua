@@ -166,6 +166,14 @@ function Sanity:GetRate()
     return self.rate
 end
 
+local sanity_get_percent = Sanity.GetPercent
+function Sanity:GetPercent()
+    if self.inst.prefab == "dummy" then
+        return self:GetRealPercent()
+    end
+    return sanity_get_percent(self)
+end
+
 local set_induced_insanity = Sanity.SetInducedInsanity
 function Sanity:SetInducedInsanity(src, val)
     if self.inducedinsanity ~= val then
