@@ -45,7 +45,6 @@ end
 
 -- lantern
 ns_lantern_init_fn = function(inst, skinname, ...)
-    inst.skinname = skinname
     local skin_build = inst:GetSkinBuild()
     lantern_init_fn(inst, skin_build, ...)
 end
@@ -115,7 +114,7 @@ end
 ns_nightsword_init_fn = function(inst, skinname)
     if not TheWorld.ismastersim then return end
 
-    inst.skinname = skinname
+    -- inst.skinname = skinname
     local ret = { nightsword_init_fn(inst, skinname) }
 
     nightsword_socketed_crystal(inst)
