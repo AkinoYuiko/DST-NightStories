@@ -114,7 +114,6 @@ end
 ns_nightsword_init_fn = function(inst, skinname)
     if not TheWorld.ismastersim then return end
 
-    -- inst.skinname = skinname
     local ret = { nightsword_init_fn(inst, skinname) }
 
     nightsword_socketed_crystal(inst)
@@ -126,19 +125,12 @@ end
 
 local _nightsword_clear_fn = nightsword_clear_fn
 nightsword_clear_fn = function(inst)
-    print("nightsword_clear_fn executed!")
     inst.AnimState:PlayAnimation("idle")
     GlassicAPI.SetFloatData(inst, {sym_build = "swap_nightmaresword", bank = "nightmaresword"})
     inst:RemoveEventCallback("equipped", nightsword_socketed_crystal)
     inst:RemoveEventCallback("itemget", nightsword_socketed_crystal)
     inst:RemoveEventCallback("itemlose", nightsword_socketed_crystal)
     return unpack({ _nightsword_clear_fn(inst) })
-end
-
-local _armorskeleton_clear_fn = armorskeleton_clear_fn
-armorskeleton_clear_fn = function(inst)
-    print("armorskeleton_clear_fn executed.")
-    return unpack({ _armorskeleton_clear_fn(inst) })
 end
 
 GlassicAPI.SkinHandler.AddModSkins({
