@@ -16,18 +16,18 @@ end
 
 -- Mio
 -- fix lantern reskin in inventory
-local old_lantern_init_fn = lantern_init_fn
+local _lantern_init_fn = lantern_init_fn
 lantern_init_fn = function(inst, ...)
-    local ret = { old_lantern_init_fn(inst, ...) }
+    local ret = { _lantern_init_fn(inst, ...) }
     if inst.components.inventoryitem then
         inst.components.inventoryitem:ChangeImageName(inst:GetSkinName())
     end
     return unpack(ret)
 end
 
-local old_lantern_clear_fn = lantern_clear_fn
+local _lantern_clear_fn = lantern_clear_fn
 lantern_clear_fn = function(inst, ...)
-    local ret = { old_lantern_clear_fn(inst, ...) }
+    local ret = { _lantern_clear_fn(inst, ...) }
     if inst.components.inventoryitem then
         inst.components.inventoryitem:ChangeImageName()
     end
@@ -87,6 +87,61 @@ if not rawget(_G, "hivehat_clear_fn") then
     -- GlassicAPI.SetOnequipSkinItem("hivehat", {"swap_body", "swap_body", "hat_hive"})
 end
 
+-- Black Lotus --
+local function nightsword_update_image(inst, state)
+    local skin_build = "nightsword_lotus"
+    state = state and ("_" .. state) or ""
+    inst.components.inventoryitem:ChangeImageName(skin_build .. state)
+
+    inst.AnimState:PlayAnimation("idle" .. state)
+
+    if inst.components.equippable:IsEquipped() then
+        local owner = inst.components.inventoryitem.owner
+        owner.AnimState:OverrideItemSkinSymbol("swap_object", skin_build, "swap_nightmaresword" .. state, inst.GUID, "swap_nightmaresword" .. state)
+    end
+
+    GlassicAPI.SetFloatData(inst, { sym_build = skin_build, sym_name = "swap_nightmaresword" .. state, anim = "idle" .. state})
+    GlassicAPI.UpdateFloaterAnim(inst)
+end
+
+local LOTUS_STATES = {
+    darkcrystal = "dark",
+    lightcrystal = "light",
+}
+local function nightsword_socketed_crystal(inst)
+    nightsword_update_image(inst, LOTUS_STATES[inst.socketed_crystal])
+end
+
+ns_nightsword_init_fn = function(inst, skinname)
+    if not TheWorld.ismastersim then return end
+
+    inst.skinname = skinname
+    local ret = { nightsword_init_fn(inst, skinname) }
+
+    nightsword_socketed_crystal(inst)
+    inst:ListenForEvent("equipped", nightsword_socketed_crystal)
+    inst:ListenForEvent("itemget", nightsword_socketed_crystal)
+    inst:ListenForEvent("itemlose", nightsword_socketed_crystal)
+    return unpack(ret)
+end
+
+local _nightsword_clear_fn = nightsword_clear_fn
+nightsword_clear_fn = function(inst)
+    print("nightsword_clear_fn executed!")
+    inst.AnimState:PlayAnimation("idle")
+    GlassicAPI.SetFloatData(inst, {sym_build = "swap_nightmaresword", bank = "nightmaresword"})
+    inst:RemoveEventCallback("equipped", nightsword_socketed_crystal)
+    inst:RemoveEventCallback("itemget", nightsword_socketed_crystal)
+    inst:RemoveEventCallback("itemlose", nightsword_socketed_crystal)
+    return unpack({ _nightsword_clear_fn(inst) })
+end
+
+local _armorskeleton_clear_fn = armorskeleton_clear_fn
+armorskeleton_clear_fn = function(inst)
+    print("armorskeleton_clear_fn executed.")
+    return unpack({ _armorskeleton_clear_fn(inst) })
+end
+
 GlassicAPI.SkinHandler.AddModSkins({
     -- Civi
     civi = {
@@ -97,6 +152,9 @@ GlassicAPI.SkinHandler.AddModSkins({
     },
     skeletonhat = {
         { name = "skeletonhat_glass", exclusive_char = "civi" },
+    },
+    nightsword = {
+        { name = "nightsword_lotus", exclusive_char = "civi" },
     },
     -- Mio
     miotan = {

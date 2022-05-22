@@ -10,13 +10,17 @@ local function zh_en(a, b)
     })
 end
 
-version = "1.31"
+version = "1.31.1"
 -- basic info --
 name = zh_en("暗夜故事集", "Night Stories")
 author = zh_en("丁香女子学校", "Civi, Tony, LSSSS")
 changelog = zh_en([[
+- 新皮肤：黑莲（影刀） -- 黑莲强势回归！
+
 - 达米装备梦魇护符或骨头盔时吃恐怖国王饼不会暴毙了。
 ]], [[
+- Old skin: Black Lotus (Dark Sword) -- It's back!
+
 - Dummy won't die when eating Grim Galette with Bone Helm or Nightmare Amulet equipped.
 ]])
 description = zh_en("版本: ", "Version: ") .. version ..

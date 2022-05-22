@@ -27,6 +27,18 @@ table.insert(prefabs, CreatePrefabSkin("skeletonhat_glass", {
     skin_tags = {"SKELETONHAT"},
 }))
 
+table.insert(prefabs, CreatePrefabSkin("nightsword_lotus", {
+    base_prefab = "nightsword",
+    type = "item",
+    rarity = "Glassic",
+    assets = {
+        Asset("DYNAMIC_ANIM", "anim/dynamic/nightsword_lotus.zip"),
+        Asset("PKGREF", "anim/dynamic/nightsword_lotus.dyn"),
+    },
+    init_fn = function(inst) ns_nightsword_init_fn(inst, "nightsword_lotus") end,
+    skin_tags = {"NIGHTSWORD"},
+}))
+
 table.insert(prefabs, CreatePrefabSkin("lantern_mio", {
     base_prefab = "lantern",
     type = "item",

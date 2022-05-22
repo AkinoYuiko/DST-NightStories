@@ -363,11 +363,6 @@ msgctxt "STRINGS.CHARACTER_BIOS.civi.1.title"
 msgid "Birthday"
 msgstr ""
 
-#. STRINGS.CHARACTER_BIOS.civi.2.desc
-msgctxt "STRINGS.CHARACTER_BIOS.civi.2.desc"
-msgid "Lv.0 - Bone Bouillon\nLv.1 - Meatballs\nLv.2 - Volt Goat Chaud-Froid"
-msgstr ""
-
 #. STRINGS.CHARACTER_BIOS.civi.2.title
 msgctxt "STRINGS.CHARACTER_BIOS.civi.2.title"
 msgid "Favorite Food"
@@ -381,11 +376,6 @@ msgstr ""
 #. STRINGS.CHARACTER_BIOS.dummy.1.title
 msgctxt "STRINGS.CHARACTER_BIOS.dummy.1.title"
 msgid "Birthday"
-msgstr ""
-
-#. STRINGS.CHARACTER_BIOS.dummy.2.desc
-msgctxt "STRINGS.CHARACTER_BIOS.dummy.2.desc"
-msgid "Grim Galette"
 msgstr ""
 
 #. STRINGS.CHARACTER_BIOS.dummy.2.title
@@ -456,21 +446,6 @@ msgstr ""
 #. STRINGS.CHARACTER_QUOTES.miotan
 msgctxt "STRINGS.CHARACTER_QUOTES.miotan"
 msgid "\"If I could eat nightmare!\""
-msgstr ""
-
-#. STRINGS.CHARACTER_SURVIVABILITY.civi
-msgctxt "STRINGS.CHARACTER_SURVIVABILITY.civi"
-msgid "Slim"
-msgstr ""
-
-#. STRINGS.CHARACTER_SURVIVABILITY.dummy
-msgctxt "STRINGS.CHARACTER_SURVIVABILITY.dummy"
-msgid "None"
-msgstr ""
-
-#. STRINGS.CHARACTER_SURVIVABILITY.miotan
-msgctxt "STRINGS.CHARACTER_SURVIVABILITY.miotan"
-msgid "Grim"
 msgstr ""
 
 #. STRINGS.CHARACTER_TITLES.civi
@@ -760,7 +735,7 @@ msgstr ""
 
 #. STRINGS.SKIN_DESCRIPTIONS.wx78_potato
 msgctxt "STRINGS.SKIN_DESCRIPTIONS.wx78_potato"
-msgid "The reworked WX78 is kinda potato."
+msgid "A reworked machine becomes a potato!"
 msgstr ""
 
 #. STRINGS.SKIN_NAMES.alterguardianhat_finger
@@ -776,11 +751,6 @@ msgstr ""
 #. STRINGS.SKIN_NAMES.civi_none
 msgctxt "STRINGS.SKIN_NAMES.civi_none"
 msgid "Civi"
-msgstr ""
-
-#. STRINGS.SKIN_NAMES.dragonflychest_gingerbread
-msgctxt "STRINGS.SKIN_NAMES.dragonflychest_gingerbread"
-msgid "Gingerbread Chest"
 msgstr ""
 
 #. STRINGS.SKIN_NAMES.dummy_none
@@ -831,6 +801,11 @@ msgstr ""
 #. STRINGS.SKIN_NAMES.miotan_none
 msgctxt "STRINGS.SKIN_NAMES.miotan_none"
 msgid "Mio"
+msgstr ""
+
+#. STRINGS.SKIN_NAMES.nightsword_lotus
+msgctxt "STRINGS.SKIN_NAMES.nightsword_lotus"
+msgid "Black Lotus"
 msgstr ""
 
 #. STRINGS.SKIN_NAMES.raincoat_peggy

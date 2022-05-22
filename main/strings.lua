@@ -88,6 +88,7 @@ local strings = {
         civi_none = "Civi",
         armorskeleton_none = "Emperor's Formal",
         skeletonhat_glass = "Crystal Skull",
+        nightsword_lotus = "Black Lotus",
 
         miotan_none = "Mio",
         miotan_classic = "Classic",

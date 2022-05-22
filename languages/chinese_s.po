@@ -376,14 +376,6 @@ msgctxt "STRINGS.CHARACTER_BIOS.civi.1.title"
 msgid "Birthday"
 msgstr "生日"
 
-#. STRINGS.CHARACTER_BIOS.civi.2.desc
-msgctxt "STRINGS.CHARACTER_BIOS.civi.2.desc"
-msgid ""
-"Lv.0 - Bone Bouillon\n"
-"Lv.1 - Meatballs\n"
-"Lv.2 - Volt Goat Chaud-Froid"
-msgstr ""
-
 #. STRINGS.CHARACTER_BIOS.civi.2.title
 msgctxt "STRINGS.CHARACTER_BIOS.civi.2.title"
 msgid "Favorite Food"
@@ -398,11 +390,6 @@ msgstr "7月17日"
 msgctxt "STRINGS.CHARACTER_BIOS.dummy.1.title"
 msgid "Birthday"
 msgstr "生日"
-
-#. STRINGS.CHARACTER_BIOS.dummy.2.desc
-msgctxt "STRINGS.CHARACTER_BIOS.dummy.2.desc"
-msgid "Grim Galette"
-msgstr ""
 
 #. STRINGS.CHARACTER_BIOS.dummy.2.title
 msgctxt "STRINGS.CHARACTER_BIOS.dummy.2.title"
@@ -487,21 +474,6 @@ msgstr "\"无人肯同我玩...\""
 msgctxt "STRINGS.CHARACTER_QUOTES.miotan"
 msgid "\"If I could eat nightmare!\""
 msgstr "\"假如我可以吞噬梦魇。\""
-
-#. STRINGS.CHARACTER_SURVIVABILITY.civi
-msgctxt "STRINGS.CHARACTER_SURVIVABILITY.civi"
-msgid "Slim"
-msgstr ""
-
-#. STRINGS.CHARACTER_SURVIVABILITY.dummy
-msgctxt "STRINGS.CHARACTER_SURVIVABILITY.dummy"
-msgid "None"
-msgstr ""
-
-#. STRINGS.CHARACTER_SURVIVABILITY.miotan
-msgctxt "STRINGS.CHARACTER_SURVIVABILITY.miotan"
-msgid "Grim"
-msgstr ""
 
 #. STRINGS.CHARACTER_TITLES.civi
 msgctxt "STRINGS.CHARACTER_TITLES.civi"
@@ -792,7 +764,7 @@ msgstr "澪来自一个充满梦魇的异世界。"
 
 #. STRINGS.SKIN_DESCRIPTIONS.wx78_potato
 msgctxt "STRINGS.SKIN_DESCRIPTIONS.wx78_potato"
-msgid "The reworked WX78 is kinda potato."
+msgid "A reworked machine becomes a potato!"
 msgstr "WX78重做以后竟然变成了一个土豆！"
 
 #. STRINGS.SKIN_NAMES.alterguardianhat_finger
@@ -860,6 +832,11 @@ msgctxt "STRINGS.SKIN_NAMES.miotan_none"
 msgid "Mio"
 msgstr "澪"
 
+#. STRINGS.SKIN_NAMES.nightsword_lotus
+msgctxt "STRINGS.SKIN_NAMES.nightsword_lotus"
+msgid "Black Lotus"
+msgstr "黑莲"
+
 #. STRINGS.SKIN_NAMES.raincoat_peggy
 msgctxt "STRINGS.SKIN_NAMES.raincoat_peggy"
 msgid "Peggy's Raincoat"
@@ -872,7 +849,7 @@ msgstr "水晶头骨"
 
 #. STRINGS.SKIN_NAMES.wx78_potato
 msgctxt "STRINGS.SKIN_NAMES.wx78_potato"
-msgid "Potato"
+msgid "Crop"
 msgstr "农作物"
 
 #. STRINGS.SKIN_NAMES.yellowamulet_heart
