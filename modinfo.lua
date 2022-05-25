@@ -10,21 +10,15 @@ local function zh_en(a, b)
     })
 end
 
-version = "1.31.2"
+version = "1.32"
 version_compatible = "1.31.1"
 -- basic info --
 name = zh_en("暗夜故事集", "Night Stories")
 author = zh_en("丁香女子学校", "Civi, Tony, LSSSS")
 changelog = zh_en([[
-- 调整了skinname初始化逻辑。
-
-- 新皮肤：黑莲（影刀） -- 黑莲强势回归！
-- 达米装备梦魇护符或骨头盔时吃恐怖国王饼不会暴毙了。
+- 新增雕塑：真头痛鸭。仅在秋天第一天可以在陶轮制作。
 ]], [[
-- Tweak code logic for skinname init.
-
-- Old skin: Black Lotus (Dark Sword) -- It's back!
-- Dummy won't die when eating Grim Galette with Bone Helm or Nightmare Amulet equipped.
+- New Figure: Headuck. Only available on Autumn 1st.
 ]])
 description = zh_en("版本: ", "Version: ") .. version ..
     zh_en("\n\n更新内容:\n", "\n\nChangelog:\n") .. changelog .. "\n" ..
