@@ -32,6 +32,7 @@ local postinits =
         "nightmarefuel",
         "nightsword",
         "pigking",
+        "sculptingtable",
     },
     "only_dazui",
     "tools_mutable",

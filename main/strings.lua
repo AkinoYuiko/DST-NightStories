@@ -61,6 +61,9 @@ local strings = {
 
         PORTABLE_WARDROBE_WRAP = "Magic Dress",
         PORTABLE_WARDROBE_ITEM = "Portable Wardrobe",
+
+        CHESSPIECE_HEADUCK = "Headuck Figure",
+        CHESSPIECE_HEADUCK_BUILDER = "Headuck Figure",
     },
     RECIPE_DESC =
     {
@@ -82,6 +85,7 @@ local strings = {
         PORTABLE_WARDROBE_WRAP = "Convenient for dressing up.",
         PORTABLE_WARDROBE_ITEM = "Convenient for dressing up a lot.",
 
+        CHESSPIECE_HEADUCK_BUILDER = "I feel headache, but a duck.",
     },
     SKIN_NAMES =
     {
@@ -145,8 +149,8 @@ local strings = {
                     FUEL = "It doesn't shine.",
                 },
                 FRIENDSHIPRING = "It's the proof of friendship.",
-                FRIENDSHIPTOTEM_DARK = "It's the proof of friendship.",
-                FRIENDSHIPTOTEM_LIGHT = "It's the proof of friendship.",
+                FRIENDSHIPTOTEM_DARK = "Darkness will be wide-range spread.",
+                FRIENDSHIPTOTEM_LIGHT = "Pureness will be wide-range spread.",
 
                 DARKAMULET = "I can feel the darkness coming.",
                 LIGHTAMULET = "I can feel the darkness away.",
@@ -169,6 +173,7 @@ local strings = {
                 PORTABLE_WARDROBE_WRAP = "Dress up anytime.",
                 PORTABLE_WARDROBE_ITEM = "Dress up anywhere.",
 
+                CHESSPIECE_HEADUCK = "󰂷",
             }
         },
         CIVI = require("speech_civi"),

@@ -116,13 +116,13 @@ msgstr "这是友谊的证明。"
 
 #. STRINGS.CHARACTERS.GENERIC.DESCRIBE.FRIENDSHIPTOTEM_DARK
 msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.FRIENDSHIPTOTEM_DARK"
-msgid "It's the proof of friendship."
-msgstr "这是友谊的黑暗证明。"
+msgid "Darkness will be wide-range spread."
+msgstr "散播黑暗。"
 
 #. STRINGS.CHARACTERS.GENERIC.DESCRIBE.FRIENDSHIPTOTEM_LIGHT
 msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.FRIENDSHIPTOTEM_LIGHT"
-msgid "It's the proof of friendship."
-msgstr "这是友谊的光明证明。"
+msgid "Pureness will be wide-range spread."
+msgstr "散播圣洁。"
 
 #. STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTAMULET
 msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTAMULET"
@@ -525,6 +525,16 @@ msgctxt "STRINGS.NAMES.BOOK_TOGGLEDOWNFALL"
 msgid "Love of Rain"
 msgstr "雨神的眷恋"
 
+#. STRINGS.NAMES.CHESSPIECE_HEADUCK
+msgctxt "STRINGS.NAMES.CHESSPIECE_HEADUCK"
+msgid "Headuck Figure"
+msgstr "真头痛鸭雕塑"
+
+#. STRINGS.NAMES.CHESSPIECE_HEADUCK_BUILDER
+msgctxt "STRINGS.NAMES.CHESSPIECE_HEADUCK_BUILDER"
+msgid "Headuck Figure"
+msgstr "真头痛鸭雕塑"
+
 #. STRINGS.NAMES.CIVI
 msgctxt "STRINGS.NAMES.CIVI"
 msgid "Civi"
@@ -694,6 +704,11 @@ msgstr "快速收获！"
 msgctxt "STRINGS.RECIPE_DESC.BOOK_TOGGLEDOWNFALL"
 msgid "/toggledownfall"
 msgstr ""
+
+#. STRINGS.RECIPE_DESC.CHESSPIECE_HEADUCK_BUILDER
+msgctxt "STRINGS.RECIPE_DESC.CHESSPIECE_HEADUCK_BUILDER"
+msgid "I feel headache, but a duck."
+msgstr "我感觉头痛鸭。"
 
 #. STRINGS.RECIPE_DESC.DARKCRYSTAL
 msgctxt "STRINGS.RECIPE_DESC.DARKCRYSTAL"

@@ -112,6 +112,9 @@ SortAfter("portable_wardrobe_wrap", "wardrobe", "DECOR")
 AddRecipe("portable_wardrobe_item", {Ingredient("portable_wardrobe_wrap", 3), Ingredient("boards", 4)}, TECH.MAGIC_THREE, {no_deconstruction = true}, {"MAGIC", "DECOR"})
 SortAfter("portable_wardrobe_item", "portable_wardrobe_wrap")
 
+-- 鸭子雕像 --
+AddRecipe("chesspiece_headuck_builder", {Ingredient(TECH_INGREDIENT.SCULPTING, 2), Ingredient("rocks", 2)}, TECH.LOST, {nounlock = true, actionstr="SCULPTING", image="chesspiece_headuck.tex"})
+
 ------------------------------------------------
 -- 防止改配方出问题的一个修复
 ------------------------------------------------

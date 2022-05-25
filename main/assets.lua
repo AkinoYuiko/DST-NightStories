@@ -22,6 +22,7 @@ PrefabFiles = {
     "wx78_potato",
 
     "portable_wardrobe",
+    "chesspiece_headuck",
 }
 
 GlassicAPI.InitCharacterAssets("miotan", "FEMALE", Assets, true)
