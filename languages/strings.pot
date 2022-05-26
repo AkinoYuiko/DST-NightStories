@@ -78,6 +78,11 @@ msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.BOOK_TOGGLEDOWNFALL"
 msgid "/toggledownfall"
 msgstr ""
 
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.CHESSPIECE_HEADUCK
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.CHESSPIECE_HEADUCK"
+msgid "󰂷"
+msgstr ""
+
 #. STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKAMULET
 msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKAMULET"
 msgid "I can feel the darkness coming."
@@ -363,6 +368,11 @@ msgctxt "STRINGS.CHARACTER_BIOS.civi.1.title"
 msgid "Birthday"
 msgstr ""
 
+#. STRINGS.CHARACTER_BIOS.civi.2.desc
+msgctxt "STRINGS.CHARACTER_BIOS.civi.2.desc"
+msgid "Lv.0 - Bone Bouillon\nLv.1 - Meatballs\nLv.2 - Volt Goat Chaud-Froid"
+msgstr ""
+
 #. STRINGS.CHARACTER_BIOS.civi.2.title
 msgctxt "STRINGS.CHARACTER_BIOS.civi.2.title"
 msgid "Favorite Food"
@@ -376,6 +386,11 @@ msgstr ""
 #. STRINGS.CHARACTER_BIOS.dummy.1.title
 msgctxt "STRINGS.CHARACTER_BIOS.dummy.1.title"
 msgid "Birthday"
+msgstr ""
+
+#. STRINGS.CHARACTER_BIOS.dummy.2.desc
+msgctxt "STRINGS.CHARACTER_BIOS.dummy.2.desc"
+msgid "Grim Galette"
 msgstr ""
 
 #. STRINGS.CHARACTER_BIOS.dummy.2.title
@@ -446,6 +461,21 @@ msgstr ""
 #. STRINGS.CHARACTER_QUOTES.miotan
 msgctxt "STRINGS.CHARACTER_QUOTES.miotan"
 msgid "\"If I could eat nightmare!\""
+msgstr ""
+
+#. STRINGS.CHARACTER_SURVIVABILITY.civi
+msgctxt "STRINGS.CHARACTER_SURVIVABILITY.civi"
+msgid "Slim"
+msgstr ""
+
+#. STRINGS.CHARACTER_SURVIVABILITY.dummy
+msgctxt "STRINGS.CHARACTER_SURVIVABILITY.dummy"
+msgid "None"
+msgstr ""
+
+#. STRINGS.CHARACTER_SURVIVABILITY.miotan
+msgctxt "STRINGS.CHARACTER_SURVIVABILITY.miotan"
+msgid "Grim"
 msgstr ""
 
 #. STRINGS.CHARACTER_TITLES.civi
@@ -680,7 +710,7 @@ msgstr ""
 
 #. STRINGS.RECIPE_DESC.CHESSPIECE_HEADUCK_BUILDER
 msgctxt "STRINGS.RECIPE_DESC.CHESSPIECE_HEADUCK_BUILDER"
-msgid "You feel headache, but a duck."
+msgid "I feel headache, but a duck."
 msgstr ""
 
 #. STRINGS.RECIPE_DESC.DARKCRYSTAL
@@ -728,14 +758,59 @@ msgctxt "STRINGS.RECIPE_DESC.SPICE_CACTUS"
 msgid "Make sanity great again."
 msgstr ""
 
+#. STRINGS.SKIN_DESCRIPTIONS.alterguardianhat_finger
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.alterguardianhat_finger"
+msgid "It's completely an emoji joke."
+msgstr ""
+
+#. STRINGS.SKIN_DESCRIPTIONS.armorskeleton_none
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.armorskeleton_none"
+msgid "Only clever people can see it."
+msgstr ""
+
 #. STRINGS.SKIN_DESCRIPTIONS.civi_none
 msgctxt "STRINGS.SKIN_DESCRIPTIONS.civi_none"
 msgid "Civi can control magic, turning lights into darks, or turning darks into lights."
 msgstr ""
 
+#. STRINGS.SKIN_DESCRIPTIONS.dragonflychest_gingerbread
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.dragonflychest_gingerbread"
+msgid "Don't be fooled... it's completely inedible."
+msgstr ""
+
 #. STRINGS.SKIN_DESCRIPTIONS.dummy_none
 msgctxt "STRINGS.SKIN_DESCRIPTIONS.dummy_none"
 msgid "Another girl comes from nightmare's world."
+msgstr ""
+
+#. STRINGS.SKIN_DESCRIPTIONS.eyebrellahat_peggy
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.eyebrellahat_peggy"
+msgid "Wow! It's Peggy!"
+msgstr ""
+
+#. STRINGS.SKIN_DESCRIPTIONS.hivehat_pigcrown
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.hivehat_pigcrown"
+msgid "Pig Queen likes it."
+msgstr ""
+
+#. STRINGS.SKIN_DESCRIPTIONS.hivehat_pigcrown_willow
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.hivehat_pigcrown_willow"
+msgid "Pig Queen and Willow like it."
+msgstr ""
+
+#. STRINGS.SKIN_DESCRIPTIONS.lantern_mio
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.lantern_mio"
+msgid "A lamp that is fit for camping."
+msgstr ""
+
+#. STRINGS.SKIN_DESCRIPTIONS.meatrack_hermit_red
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.meatrack_hermit_red"
+msgid "HD meatrack by Hermit."
+msgstr ""
+
+#. STRINGS.SKIN_DESCRIPTIONS.meatrack_hermit_white
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.meatrack_hermit_white"
+msgid "HD meatrack by Hermit."
 msgstr ""
 
 #. STRINGS.SKIN_DESCRIPTIONS.miotan_classic
@@ -746,6 +821,21 @@ msgstr ""
 #. STRINGS.SKIN_DESCRIPTIONS.miotan_none
 msgctxt "STRINGS.SKIN_DESCRIPTIONS.miotan_none"
 msgid "Mio cames from another world, where nightmare is everywhere."
+msgstr ""
+
+#. STRINGS.SKIN_DESCRIPTIONS.nightsword_lotus
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.nightsword_lotus"
+msgid "She's back."
+msgstr ""
+
+#. STRINGS.SKIN_DESCRIPTIONS.raincoat_peggy
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.raincoat_peggy"
+msgid "Wow! There are lots of Peggy...s!"
+msgstr ""
+
+#. STRINGS.SKIN_DESCRIPTIONS.skeletonhat_glass
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.skeletonhat_glass"
+msgid "Indiana Jones and the Kingdom of the Crystal Skull XD."
 msgstr ""
 
 #. STRINGS.SKIN_DESCRIPTIONS.wx78_potato
@@ -760,12 +850,17 @@ msgstr ""
 
 #. STRINGS.SKIN_NAMES.armorskeleton_none
 msgctxt "STRINGS.SKIN_NAMES.armorskeleton_none"
-msgid "Emperor's Formal"
+msgid "Emperor's New Clothes"
 msgstr ""
 
 #. STRINGS.SKIN_NAMES.civi_none
 msgctxt "STRINGS.SKIN_NAMES.civi_none"
 msgid "Civi"
+msgstr ""
+
+#. STRINGS.SKIN_NAMES.dragonflychest_gingerbread
+msgctxt "STRINGS.SKIN_NAMES.dragonflychest_gingerbread"
+msgid "Gingerbread Chest"
 msgstr ""
 
 #. STRINGS.SKIN_NAMES.dummy_none
@@ -776,11 +871,6 @@ msgstr ""
 #. STRINGS.SKIN_NAMES.eyebrellahat_peggy
 msgctxt "STRINGS.SKIN_NAMES.eyebrellahat_peggy"
 msgid "Peggy's Eyebrella"
-msgstr ""
-
-#. STRINGS.SKIN_NAMES.greenamulet_heart
-msgctxt "STRINGS.SKIN_NAMES.greenamulet_heart"
-msgid "Green Heart"
 msgstr ""
 
 #. STRINGS.SKIN_NAMES.hivehat_pigcrown
@@ -838,9 +928,9 @@ msgctxt "STRINGS.SKIN_NAMES.wx78_potato"
 msgid "Crop"
 msgstr ""
 
-#. STRINGS.SKIN_NAMES.yellowamulet_heart
-msgctxt "STRINGS.SKIN_NAMES.yellowamulet_heart"
-msgid "Glowing Heart"
+#. STRINGS.SKIN_TAG_CATEGORIES.COLLECTION.PEGGY
+msgctxt "STRINGS.SKIN_TAG_CATEGORIES.COLLECTION.PEGGY"
+msgid "Peggy Collection"
 msgstr ""
 
 #. STRINGS.UI.CRAFTING.RECIPEACTION.SOULSPLIT

@@ -755,6 +755,16 @@ msgctxt "STRINGS.RECIPE_DESC.SPICE_CACTUS"
 msgid "Make sanity great again."
 msgstr "让精神再次伟大。"
 
+#. STRINGS.SKIN_DESCRIPTIONS.alterguardianhat_finger
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.alterguardianhat_finger"
+msgid "It's completely an emoji joke."
+msgstr "绘文字笑话。"
+
+#. STRINGS.SKIN_DESCRIPTIONS.armorskeleton_none
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.armorskeleton_none"
+msgid "Only clever people can see it."
+msgstr "只有聪明的人能看见它。"
+
 #. STRINGS.SKIN_DESCRIPTIONS.civi_none
 msgctxt "STRINGS.SKIN_DESCRIPTIONS.civi_none"
 msgid ""
@@ -767,6 +777,36 @@ msgctxt "STRINGS.SKIN_DESCRIPTIONS.dummy_none"
 msgid "Another girl comes from nightmare's world."
 msgstr "另一个来自梦魇异世界的女孩。"
 
+#. STRINGS.SKIN_DESCRIPTIONS.eyebrellahat_peggy
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.eyebrellahat_peggy"
+msgid "Wow! It's Peggy!"
+msgstr "哇哦！是小猪佩奇！"
+
+#. STRINGS.SKIN_DESCRIPTIONS.hivehat_pigcrown
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.hivehat_pigcrown"
+msgid "Pig Queen likes it."
+msgstr "猪猪女王很喜欢它。"
+
+#. STRINGS.SKIN_DESCRIPTIONS.hivehat_pigcrown_willow
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.hivehat_pigcrown_willow"
+msgid "Pig Queen and Willow like it."
+msgstr "猪猪女王和薇洛都很喜欢它。"
+
+#. STRINGS.SKIN_DESCRIPTIONS.lantern_mio
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.lantern_mio"
+msgid "A lamp that is fit for camping."
+msgstr "一盏很适合露营使用的灯。"
+
+#. STRINGS.SKIN_DESCRIPTIONS.meatrack_hermit_red
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.meatrack_hermit_red"
+msgid "HD meatrack by Hermit."
+msgstr "老妖婆的超清肉架。"
+
+#. STRINGS.SKIN_DESCRIPTIONS.meatrack_hermit_white
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.meatrack_hermit_white"
+msgid "HD meatrack by Hermit."
+msgstr "老妖婆的超清肉架。"
+
 #. STRINGS.SKIN_DESCRIPTIONS.miotan_classic
 msgctxt "STRINGS.SKIN_DESCRIPTIONS.miotan_classic"
 msgid "Mio's V1 skin!"
@@ -776,6 +816,21 @@ msgstr "澪的初版角色形象!"
 msgctxt "STRINGS.SKIN_DESCRIPTIONS.miotan_none"
 msgid "Mio cames from another world, where nightmare is everywhere."
 msgstr "澪来自一个充满梦魇的异世界。"
+
+#. STRINGS.SKIN_DESCRIPTIONS.nightsword_lotus
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.nightsword_lotus"
+msgid "She's back."
+msgstr "她回来了。"
+
+#. STRINGS.SKIN_DESCRIPTIONS.raincoat_peggy
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.raincoat_peggy"
+msgid "Wow! There are lots of Peggy...s!"
+msgstr "哇哦！好多好多佩奇！"
+
+#. STRINGS.SKIN_DESCRIPTIONS.skeletonhat_glass
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.skeletonhat_glass"
+msgid "Indiana Jones and the Kingdom of the Crystal Skull XD."
+msgstr "致敬《夺宝奇兵4：水晶头骨王国》。"
 
 #. STRINGS.SKIN_DESCRIPTIONS.wx78_potato
 msgctxt "STRINGS.SKIN_DESCRIPTIONS.wx78_potato"
@@ -789,7 +844,7 @@ msgstr "交叉手指"
 
 #. STRINGS.SKIN_NAMES.armorskeleton_none
 msgctxt "STRINGS.SKIN_NAMES.armorskeleton_none"
-msgid "Emperor's Formal"
+msgid "Emperor's New Clothes"
 msgstr "皇帝的新衣"
 
 #. STRINGS.SKIN_NAMES.civi_none
@@ -806,11 +861,6 @@ msgstr "达米"
 msgctxt "STRINGS.SKIN_NAMES.eyebrellahat_peggy"
 msgid "Peggy's Eyebrella"
 msgstr "佩奇的伞帽"
-
-#. STRINGS.SKIN_NAMES.greenamulet_heart
-msgctxt "STRINGS.SKIN_NAMES.greenamulet_heart"
-msgid "Green Heart"
-msgstr "绿色的心"
 
 #. STRINGS.SKIN_NAMES.hivehat_pigcrown
 msgctxt "STRINGS.SKIN_NAMES.hivehat_pigcrown"
@@ -867,10 +917,10 @@ msgctxt "STRINGS.SKIN_NAMES.wx78_potato"
 msgid "Crop"
 msgstr "农作物"
 
-#. STRINGS.SKIN_NAMES.yellowamulet_heart
-msgctxt "STRINGS.SKIN_NAMES.yellowamulet_heart"
-msgid "Glowing Heart"
-msgstr "发光的心"
+#. STRINGS.SKIN_TAG_CATEGORIES.COLLECTION.PEGGY
+msgctxt "STRINGS.SKIN_TAG_CATEGORIES.COLLECTION.PEGGY"
+msgid "Peggy Collection"
+msgstr "佩奇系列"
 
 #. STRINGS.UI.CRAFTING.RECIPEACTION.SOULSPLIT
 msgctxt "STRINGS.UI.CRAFTING.RECIPEACTION.SOULSPLIT"
