@@ -1,10 +1,11 @@
 local MakePlayerCharacter = require("prefabs/player_common")
 
 local assets = {
-    Asset( "SCRIPT", "scripts/prefabs/player_common.lua" ),
+    Asset("SCRIPT", "scripts/prefabs/player_common.lua"),
+    Asset("SOUND", "sound/miotan.fsb"),
 
-    Asset( "ANIM", "anim/miotan.zip" ),
-    Asset( "ANIM", "anim/ghost_miotan_build.zip" ),
+    Asset("ANIM", "anim/miotan.zip"),
+    Asset("ANIM", "anim/ghost_miotan_build.zip"),
 }
 
 local prefabs = {
@@ -206,7 +207,6 @@ local function on_haunt(inst, doer)
 end
 
 local common_postinit = function(inst)
-    inst.soundsname = "willow"
     inst:AddTag("reader")
     inst:AddTag("nightstorychar")
     inst:AddTag("nightmare_twins")
@@ -217,6 +217,8 @@ end
 -- This initializes for the host only
 local master_postinit = function(inst)
     inst.starting_inventory = start_inv[TheNet:GetServerGameMode()] or start_inv.default
+
+    inst.talker_path_override = "nightstories/characters/"
 
     inst.boost_time = 0
     inst.boosted_task = nil
