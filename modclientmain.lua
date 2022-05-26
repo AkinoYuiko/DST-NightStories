@@ -1,10 +1,7 @@
 if not GLOBAL.IsInFrontEnd() then return end
 
 PrefabFiles = {
-    "civi",
-    "miotan",
-    "dummy",
-    "wx78_potato",
+    "ns_skins",
 }
 
 Assets = {
@@ -44,18 +41,4 @@ modimport("main/tuning.lua")
 modimport("main/strings.lua")
 modimport("main/hack_templates.lua")
 
-GlassicAPI.SkinHandler.AddModSkins({
-    civi = {
-        "civi_none",
-    },
-    miotan = {
-        "miotan_none",
-        "miotan_classic",
-    },
-    dummy = {
-        "dummy_none",
-    },
-    wx78 = {
-        "wx78_potato",
-    }
-})
+modimport("main/prefabskin")
