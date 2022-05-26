@@ -158,16 +158,16 @@ GlassicAPI.SkinHandler.AddModSkins({
     -- nightstick = {
     --     { name = "nightstick_crystal", exclusive_char = "miotan" }
     -- },
-    yellowamulet = {
-        { name = "yellowamulet_heart", exclusive_char = "miotan" }
-    },
+    -- yellowamulet = {
+    --     { name = "yellowamulet_heart", exclusive_char = "miotan" }
+    -- },
     -- Dummy
     dummy = {
         "dummy_none"
     },
-    greenamulet = {
-        { name = "greenamulet_heart", exclusive_char = "dummy" }
-    },
+    -- greenamulet = {
+    --     { name = "greenamulet_heart", exclusive_char = "dummy" }
+    -- },
     raincoat = {
         { name = "raincoat_peggy", exclusive_char = "dummy" }
     },
