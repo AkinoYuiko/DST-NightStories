@@ -90,17 +90,17 @@ local strings = {
     SKIN_NAMES =
     {
         civi_none = "Civi",
-        armorskeleton_none = "Emperor's Formal",
+        armorskeleton_none = "Emperor's New Clothes",
         skeletonhat_glass = "Crystal Skull",
         nightsword_lotus = "Black Lotus",
 
         miotan_none = "Mio",
         miotan_classic = "Classic",
         lantern_mio = "Camping Lamp",
-        yellowamulet_heart = "Glowing Heart",
+        -- yellowamulet_heart = "Glowing Heart",
 
         dummy_none = "Dummy",
-        greenamulet_heart = "Green Heart",
+        -- greenamulet_heart = "Green Heart",
         raincoat_peggy = "Peggy's Raincoat",
 
         dragonflychest_gingerbread = STRINGS.SKIN_NAMES.treasurechest_gingerbread,
@@ -116,12 +116,40 @@ local strings = {
     },
     SKIN_DESCRIPTIONS =
     {
+        -- characters
         civi_none = "Civi can control magic, turning lights into darks, or turning darks into lights.",
         miotan_none = "Mio cames from another world, where nightmare is everywhere.",
         miotan_classic = "Mio's V1 skin!",
         dummy_none = "Another girl comes from nightmare's world.",
 
         wx78_potato = "A reworked machine becomes a potato!",
+
+        -- items
+        armorskeleton_none = "Only clever people can see it.",
+        skeletonhat_glass = "Indiana Jones and the Kingdom of the Crystal Skull XD.",
+        nightsword_lotus = "She's back.",
+
+        lantern_mio = "A lamp that is fit for camping.",
+        -- yellowamulet_heart = "Glowing Heart",
+
+        -- greenamulet_heart = "Green Heart",
+        raincoat_peggy = "Wow! There are lots of Peggy...s!",
+
+        dragonflychest_gingerbread = STRINGS.SKIN_DESCRIPTIONS.treasurechest_gingerbread,
+        meatrack_hermit_red = "HD meatrack by Hermit.",
+        meatrack_hermit_white = "HD meatrack by Hermit.",
+        hivehat_pigcrown = "Pig Queen likes it.",
+        hivehat_pigcrown_willow = "Pig Queen and Willow like it.",
+
+        eyebrellahat_peggy = "Wow! It's Peggy!",
+        alterguardianhat_finger = "It's completely an emoji joke.",
+    },
+    SKIN_TAG_CATEGORIES =
+    {
+        COLLECTION =
+        {
+            PEGGY = "Peggy Collection",
+        }
     },
     CIVI_LEVELS =
     {
