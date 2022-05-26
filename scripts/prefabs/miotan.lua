@@ -255,32 +255,4 @@ local master_postinit = function(inst)
     inst.StartBoost = start_boost
 end
 
-return MakePlayerCharacter("miotan", prefabs, assets, common_postinit, master_postinit),
-    CreatePrefabSkin("miotan_none", {
-        base_prefab = "miotan",
-        type = "base",
-        assets = assets,
-        skins = { normal_skin = "miotan", ghost_skin = "ghost_miotan_build" },
-        bigportrait = { build = "bigportrait/miotan_none.xml", symbol = "miotan_none_oval.tex"},
-        skin_tags = { "MIOTAN", "BASE"},
-        build_name_override = "miotan",
-        rarity = "Character",
-    }),
-    CreatePrefabSkin("miotan_classic", {
-        base_prefab = "miotan",
-        type = "base",
-        assets = {
-            Asset( "DYNAMIC_ANIM", "anim/dynamic/miotan_classic.zip" ),
-            Asset( "PKGREF", "anim/dynamic/miotan_classic.dyn" ),
-            -- Asset( "ANIM", "anim/miotan_classic.zip" ),
-            Asset( "DYNAMIC_ANIM", "anim/dynamic/ghost_miotan_classic_build.zip" ),
-            Asset( "PKGREF", "anim/dynamic/ghost_miotan_classic_build.dyn" ),
-            -- Asset( "ANIM", "anim/ghost_miotan_classic_build.zip" ),
-            Asset( "ATLAS", "bigportraits/miotan_classic.xml")
-        },
-        skins = { normal_skin = "miotan_classic", ghost_skin = "ghost_miotan_classic_build" },
-        bigportrait = { build = "bigportrait/miotan_classic.xml", symbol = "miotan_classic_oval.tex"},
-        skin_tags = { "MIOTAN", "BASE"},
-        build_name_override = "miotan_classic",
-        rarity = "Glassic",
-    })
+return MakePlayerCharacter("miotan", prefabs, assets, common_postinit, master_postinit)

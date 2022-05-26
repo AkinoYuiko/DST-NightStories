@@ -261,14 +261,4 @@ local master_postinit = function(inst)
     end
 end
 
-return MakePlayerCharacter("dummy", prefabs, assets, common_postinit, master_postinit),
-    CreatePrefabSkin("dummy_none", {
-        base_prefab = "dummy",
-        type = "base",
-        assets = assets,
-        skins = { normal_skin = "dummy", ghost_skin = "ghost_dummy_build" },
-        skin_tags = { "DUMMY", "BASE"},
-        bigportrait = { build = "bigportrait/dummy_none.xml", symbol = "dummy_none_oval.tex"},
-        build_name_override = "dummy",
-        rarity = "Character"
-    })
+return MakePlayerCharacter("dummy", prefabs, assets, common_postinit, master_postinit)
