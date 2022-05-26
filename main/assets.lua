@@ -19,7 +19,6 @@ PrefabFiles = {
 
     "ns_spices",
     "ns_skins",
-    "wx78_potato",
 
     "portable_wardrobe",
     "chesspiece_headuck",
