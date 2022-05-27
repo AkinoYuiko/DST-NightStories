@@ -103,6 +103,8 @@ local strings = {
         -- greenamulet_heart = "Green Heart",
         raincoat_peggy = "Peggy's Raincoat",
 
+        wx78_potato = "Crop",
+
         dragonflychest_gingerbread = STRINGS.SKIN_NAMES.treasurechest_gingerbread,
         meatrack_hermit_red = "Hermit's Meat Rack",
         meatrack_hermit_white = "Hermit's Meat Rack",
@@ -111,8 +113,6 @@ local strings = {
 
         eyebrellahat_peggy = "Peggy's Eyebrella",
         alterguardianhat_finger = "Crossed Fingers",
-
-        wx78_potato = "Crop",
     },
     SKIN_DESCRIPTIONS =
     {

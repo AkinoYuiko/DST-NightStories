@@ -41,4 +41,5 @@ modimport("main/tuning.lua")
 modimport("main/strings.lua")
 modimport("main/hack_templates.lua")
 
+modimport("main/clothing")
 modimport("main/prefabskin")

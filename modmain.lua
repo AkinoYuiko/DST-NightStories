@@ -4,6 +4,7 @@ local main_files = {
     "strings",
 
     "actions",
+    "clothing",
     "prefabskin",
     "recipes",
     "widgets",
