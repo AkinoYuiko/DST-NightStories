@@ -10,17 +10,21 @@ local function zh_en(a, b)
     })
 end
 
-version = "1.32.1"
+version = "1.32.2"
 -- basic info --
 name = zh_en("暗夜故事集", "Night Stories")
 author = zh_en("丁香女子学校", "Civi, Tony, LSSSS")
 changelog = zh_en([[
+- 修复佩奇的雨衣放在地上不显示的问题。
+
 - 修复了皮肤中缺失和错误的 SWAP_ICON。
 - 现在使用 Mods In Menu 时可以在物品收藏中看到这些物品皮肤了。
 - 移除皮肤：发光的心，绿色的心。
 
 - 新增雕塑：真头痛鸭。仅在秋天第一天可以在陶轮制作。
 ]], [[
+- Fix missing ground anim for Peggy's Raincoat.
+
 - Fix mistaken and missing SWAP_ICON in all skin builds.
 - Improve compatibility with Mods In Menu. Now you can see all prefab skins.
 - Remove skin: "Glowing Heart" and "Green Heart".
