@@ -1,12 +1,5 @@
 GLOBAL.setfenv(1, GLOBAL)
 
-ns_equipment_init_fn = function(inst, skinname, swap_data)
-    if swap_data then
-        GlassicAPI.SetFloatData(inst, swap_data)
-    end
-    GlassicAPI.BasicInitFn(inst, skinname)
-end
-
 -- Civi
 local armor_skeleton_clear_fn = armorskeleton_clear_fn
 function armorskeleton_clear_fn(inst)
@@ -36,27 +29,14 @@ end
 
 -- yellowamulet
 if not rawget(_G, "yellowamulet_clear_fn") then
-    yellowamulet_clear_fn = function(inst)
-        GlassicAPI.SetFloatData(inst, { bank = "amulets", anim = "yellowamulet" })
-        basic_clear_fn(inst, "amulets")
-    end
+    yellowamulet_clear_fn = function(inst) basic_clear_fn(inst, "amulets") end
     GlassicAPI.SetOnequipSkinItem("yellowamulet", {"swap_body", "swap_body", "torso_amulets"})
 end
-
--- lantern
-ns_lantern_init_fn = function(inst, skinname, ...)
-    local skin_build = inst:GetSkinBuild()
-    lantern_init_fn(inst, skin_build, ...)
-end
-
 
 -- Dummy
 -- Green Amulet
 if not rawget(_G, "greenamulet_clear_fn") then
-    greenamulet_clear_fn = function(inst)
-        GlassicAPI.SetFloatData(inst, { bank = "amulets", anim = "greenamulet" })
-        basic_clear_fn(inst, "amulets")
-    end
+    greenamulet_clear_fn = function(inst) basic_clear_fn(inst, "amulets") end
     GlassicAPI.SetOnequipSkinItem("greenamulet", {"swap_body", "swap_body", "torso_amulets"})
 end
 
@@ -78,12 +58,7 @@ end
 
 -- Bee Queen Crown --
 if not rawget(_G, "hivehat_clear_fn") then
-    hivehat_clear_fn = function(inst)
-        inst.AnimState:SetBuild("hat_hive")
-        if not TheWorld.ismastersim then return end
-        inst.components.inventoryitem:ChangeImageName()
-    end
-    -- GlassicAPI.SetOnequipSkinItem("hivehat", {"swap_body", "swap_body", "hat_hive"})
+    hivehat_clear_fn = function(inst) basic_clear_fn(inst, "hat_hive") end
 end
 
 -- Black Lotus --
@@ -111,10 +86,10 @@ local function nightsword_socketed_crystal(inst)
     nightsword_update_image(inst, LOTUS_STATES[inst.socketed_crystal])
 end
 
-ns_nightsword_init_fn = function(inst, skinname)
+ns_nightsword_init_fn = function(inst, build_name)
     if not TheWorld.ismastersim then return end
 
-    local ret = { nightsword_init_fn(inst, skinname) }
+    local ret = { nightsword_init_fn(inst, build_name) }
 
     nightsword_socketed_crystal(inst)
     inst:ListenForEvent("equipped", nightsword_socketed_crystal)

@@ -91,7 +91,7 @@ table.insert(prefabs, CreatePrefabSkin("armorskeleton_none", {
     build_name_override = "armor_skeleton_none",
     init_fn = function(inst)
         inst.foleysound = nil
-        ns_equipment_init_fn(inst, "armorskeleton_none")
+        GlassicAPI.BasicInitFn(inst)
     end,
     skin_tags = {"ARMORSKELETON", "GLASSIC"},
 }))
@@ -104,7 +104,7 @@ table.insert(prefabs, CreatePrefabSkin("skeletonhat_glass", {
         Asset("DYNAMIC_ANIM", "anim/dynamic/skeletonhat_glass.zip"),
         Asset("PKGREF", "anim/dynamic/skeletonhat_glass.dyn"),
     },
-    init_fn = function(inst) ns_equipment_init_fn(inst, "skeletonhat_glass") end,
+    init_fn = GlassicAPI.BasicInitFn,
     skin_tags = {"SKELETONHAT", "GLASSIC"},
 }))
 
@@ -129,7 +129,7 @@ table.insert(prefabs, CreatePrefabSkin("lantern_mio", {
         Asset("PKGREF", "anim/dynamic/lantern_mio.dyn"),
     },
     prefabs = {"lantern_mio_fx_held", "lantern_mio_fx_ground"},
-    init_fn = function(inst) ns_lantern_init_fn(inst, "lantern_mio", {"firefly"}, Vector3(67, -7, 0), {195 / 255, 190 / 255, 120 / 255}) end,
+    init_fn = function(inst) lantern_init_fn(inst, "lantern_mio", {"firefly"}, Vector3(67, -7, 0), {195 / 255, 190 / 255, 120 / 255}) end,
     skin_tags = {"LANTERN"},
     fx_prefab = {"lantern_mio_fx_held", "lantern_mio_fx_ground"},
 }))
@@ -142,7 +142,7 @@ table.insert(prefabs, CreatePrefabSkin("yellowamulet_heart", {
         Asset("DYNAMIC_ANIM", "anim/dynamic/yellowamulet_heart.zip"),
         Asset("PKGREF", "anim/dynamic/yellowamulet_heart.dyn"),
     },
-    init_fn = function(inst) ns_equipment_init_fn(inst, "yellowamulet_heart", { bank = "amulets", anim = "yellowamulet" }) end,
+    init_fn = GlassicAPI.BasicInitFn,
     skin_tags = {"YELLOWAMULET"},
 }))
 
@@ -154,7 +154,7 @@ table.insert(prefabs, CreatePrefabSkin("greenamulet_heart", {
         Asset("DYNAMIC_ANIM", "anim/dynamic/greenamulet_heart.zip"),
         Asset("PKGREF", "anim/dynamic/greenamulet_heart.dyn"),
     },
-    init_fn = function(inst) ns_equipment_init_fn(inst, "greenamulet_heart", { bank = "amulets", anim = "greenamulet" }) end,
+    init_fn = GlassicAPI.BasicInitFn,
     skin_tags = {"GREENAMULET"},
 }))
 
@@ -166,7 +166,7 @@ table.insert(prefabs, CreatePrefabSkin("raincoat_peggy", {
         Asset("DYNAMIC_ANIM", "anim/dynamic/raincoat_peggy.zip"),
         Asset("PKGREF", "anim/dynamic/raincoat_peggy.dyn"),
     },
-    init_fn = function(inst) ns_equipment_init_fn(inst, "raincoat_peggy", { bank = "torso_rain", anim = "anim" }) end,
+    init_fn = GlassicAPI.BasicInitFn,
     skin_tags = {"RAINCOAT","PEGGY"},
 }))
 
@@ -178,7 +178,7 @@ table.insert(prefabs, CreatePrefabSkin("dragonflychest_gingerbread", {
         Asset("DYNAMIC_ANIM", "anim/dynamic/dragonflychest_gingerbread.zip"),
         Asset("PKGREF", "anim/dynamic/dragonflychest_gingerbread.dyn"),
     },
-    init_fn = function(inst) GlassicAPI.BasicInitFn(inst, "dragonflychest_gingerbread") end,
+    init_fn = GlassicAPI.BasicInitFn,
     skin_tags = {"DRAGONFLYCHEST"},
 }))
 
@@ -192,7 +192,7 @@ table.insert(prefabs, CreatePrefabSkin("meatrack_hermit_red", {
     },
     init_fn = function(inst)
         inst.AnimState:SetBank("meatrack_hermit")
-        GlassicAPI.BasicInitFn(inst, "meatrack_hermit_red")
+        GlassicAPI.BasicInitFn(inst)
     end,
     skin_tags = {"MEATRACK"},
 }))
@@ -207,7 +207,7 @@ table.insert(prefabs, CreatePrefabSkin("meatrack_hermit_white", {
     },
     init_fn = function(inst)
         inst.AnimState:SetBank("meatrack_hermit")
-        GlassicAPI.BasicInitFn(inst, "meatrack_hermit_white")
+        GlassicAPI.BasicInitFn(inst)
     end,
     skin_tags = {"MEATRACK"},
 }))
@@ -220,7 +220,7 @@ table.insert(prefabs, CreatePrefabSkin("hivehat_pigcrown", {
         Asset("DYNAMIC_ANIM", "anim/dynamic/hivehat_pigcrown.zip"),
         Asset("PKGREF", "anim/dynamic/hivehat_pigcrown.dyn"),
     },
-    init_fn = function(inst) ns_equipment_init_fn(inst, "hivehat_pigcrown") end,
+    init_fn = GlassicAPI.BasicInitFn,
     skin_tags = {"HIVEHAT"},
 }))
 
@@ -232,7 +232,7 @@ table.insert(prefabs, CreatePrefabSkin("hivehat_pigcrown_willow", {
         Asset("DYNAMIC_ANIM", "anim/dynamic/hivehat_pigcrown_willow.zip"),
         Asset("PKGREF", "anim/dynamic/hivehat_pigcrown_willow.dyn"),
     },
-    init_fn = function(inst) ns_equipment_init_fn(inst, "hivehat_pigcrown_willow") end,
+    init_fn = GlassicAPI.BasicInitFn,
     skin_tags = {"HIVEHAT"},
 }))
 
@@ -244,7 +244,7 @@ table.insert(prefabs, CreatePrefabSkin("eyebrellahat_peggy", {
         Asset("DYNAMIC_ANIM", "anim/dynamic/eyebrellahat_peggy.zip"),
         Asset("PKGREF", "anim/dynamic/eyebrellahat_peggy.dyn"),
     },
-    init_fn = function(inst) ns_equipment_init_fn(inst, "eyebrellahat_peggy") end,
+    init_fn = GlassicAPI.BasicInitFn,
     skin_tags = {"EYEBRELLAHAT", "PEGGY"},
 }))
 
@@ -256,7 +256,7 @@ table.insert(prefabs, CreatePrefabSkin("alterguardianhat_finger", {
         Asset("DYNAMIC_ANIM", "anim/dynamic/alterguardianhat_finger.zip"),
         Asset("PKGREF", "anim/dynamic/alterguardianhat_finger.dyn"),
     },
-    init_fn = function(inst) ns_equipment_init_fn(inst, "alterguardianhat_finger") end,
+    init_fn = GlassicAPI.BasicInitFn,
     skin_tags = {"ALTERGUARDIANHAT"},
 }))
 
