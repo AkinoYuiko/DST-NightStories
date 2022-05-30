@@ -42,10 +42,7 @@ end
 
 -- Raincoat
 if not rawget(_G, "raincoat_clear_fn") then
-    raincoat_clear_fn = function(inst)
-        GlassicAPI.SetFloatData(inst, { bank = "torso_rain", anim = "anim" })
-        basic_clear_fn(inst, "torso_rain")
-    end
+    raincoat_clear_fn = function(inst) basic_clear_fn(inst, "torso_rain") end
     GlassicAPI.SetOnequipSkinItem("raincoat", {"swap_body", "swap_body", "torso_rain"})
 end
 

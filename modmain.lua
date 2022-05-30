@@ -33,6 +33,7 @@ local postinits =
         "nightmarefuel",
         "nightsword",
         "pigking",
+        "raincoat",
         "sculptingtable",
     },
     "only_dazui",
