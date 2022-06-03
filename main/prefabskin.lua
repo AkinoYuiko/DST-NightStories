@@ -53,11 +53,6 @@ meatrack_clear_fn = function(inst)
     return _meatrack_clear_fn(inst)
 end
 
--- Bee Queen Crown --
-if not rawget(_G, "hivehat_clear_fn") then
-    hivehat_clear_fn = function(inst) basic_clear_fn(inst, "hat_hive") end
-end
-
 -- Black Lotus --
 local function nightsword_update_image(inst, state)
     local skin_build = "nightsword_lotus"
