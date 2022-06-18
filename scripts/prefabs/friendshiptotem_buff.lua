@@ -1,3 +1,5 @@
+local Utils = require "ns_utils"
+
 -------------------------------------------------------------------------
 -------------------------- dark totem functions -------------------------
 -------------------------------------------------------------------------
@@ -17,10 +19,9 @@ end
 ------------------------- light totem functions -------------------------
 -------------------------------------------------------------------------
 
-local get_aura_rate = require("nsutils/get_player_aura")
 local function sanity_attach(inst, target)
     if target.components.sanity then
-        target.components.sanity.neg_aura_modifiers:SetModifier(inst, get_aura_rate(target), "friendshiptotem_light")
+        target.components.sanity.neg_aura_modifiers:SetModifier(inst, Utils.GetAuraRate(target), "friendshiptotem_light")
     end
 end
 

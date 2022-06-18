@@ -1,6 +1,6 @@
 local MakePlayerCharacter = require "prefabs/player_common"
 local DummyBadge = require "widgets/dummybadge"
-local NS_Utils = require "ns_utils"
+local Utils = require "ns_utils"
 local BUILDER_TAG = "ns_builder_dummy"
 
 local assets = {
@@ -121,9 +121,9 @@ local function on_health_sanity_change(inst, data)
 
     if data and data.cause == "fire" then
         local amount = data.amount and math.abs(data.amount) or 0
-        NS_Utils.TableInsertRate(inst.firedamage_history, amount)
+        Utils.TableInsertRate(inst.firedamage_history, amount)
     end
-    inst._firedamage_rate:set(NS_Utils.GetRateFromTable(inst.firedamage_history))
+    inst._firedamage_rate:set(Utils.GetRateFromTable(inst.firedamage_history))
 end
 
 local function redirect_to_health(inst, amount, overtime, ...)
