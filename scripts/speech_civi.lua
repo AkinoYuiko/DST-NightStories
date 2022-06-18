@@ -3652,7 +3652,7 @@ return {
     -- ANNOUNCE_WINCH_CLAW_MISS = "I think I missed the mark.",
     -- ANNOUNCE_WEIGHT = "Weight: {weight}",
     -- ANNOUNCE_DETACH_BUFF_WORKEFFECTIVENESS = "Desire to procrastinate... creeping back...",
-    -- ANNOUNCE_TRAP_WENT_OFF = "Oops.",
+    ANNOUNCE_TRAP_WENT_OFF = "Oops 󰂷",
     -- ANNOUNCE_OCEANFISHING_BADCAST = "My casting needs work...",
     -- ANNOUNCE_WAYTOOMANYBIRDS = "only_used_by_waxwell_and_wicker",
     -- ANNOUNCE_MOONPOTION_FAILED = "Perhaps I didn't let it steep long enough...",

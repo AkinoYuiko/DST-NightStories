@@ -64,6 +64,11 @@ msgctxt "STRINGS.CHARACTERS.CIVI.ANNOUNCE_QUAKE"
 msgid "Ahhh! Something bad is happening."
 msgstr "啊啊，有不好的事情要发生了。"
 
+#. STRINGS.CHARACTERS.CIVI.ANNOUNCE_TRAP_WENT_OFF
+msgctxt "STRINGS.CHARACTERS.CIVI.ANNOUNCE_TRAP_WENT_OFF"
+msgid "Oops 󰂷"
+msgstr "哀鸭 󰂷"
+
 #. STRINGS.CHARACTERS.CIVI.DESCRIBE.MOOSE
 msgctxt "STRINGS.CHARACTERS.CIVI.DESCRIBE.MOOSE"
 msgid "󰂡"
