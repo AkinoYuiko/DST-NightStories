@@ -11,7 +11,7 @@ table.insert(prefabs, CreatePrefabSkin("civi_none", {
     },
     skins = { normal_skin = "civi", ghost_skin = "ghost_civi_build" },
     bigportrait = { build = "bigportrait/civi_none.xml", symbol = "civi_none_oval.tex"},
-    skin_tags = { "CIVI", "BASE", "GLASSIC" },
+    skin_tags = { "CIVI", "BASE" },
     build_name_override = "civi",
     rarity = "Character",
 }))
