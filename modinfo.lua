@@ -10,24 +10,17 @@ local function zh_en(a, b)
     })
 end
 
-version = "1.32.5"
+version = "1.33"
 -- basic info --
 name = zh_en("暗夜故事集", "Night Stories")
 author = zh_en("丁香女子学校", "Civi, Tony, LSSSS")
 changelog = zh_en([[
-- 更新光暗魔法使的部分台词翻译。
-- 修复友爱戒指对老麦小弟不生效的问题。
-
-- 调整了雨衣在水面切换皮肤的代码逻辑。
-...
-- 新增雕塑：真头痛鸭。仅在秋天第一天可以在陶轮制作。
+- 新功能：澪在加速状态可以消耗噩梦燃料修复懒人魔杖。
+- 修复：澪在死亡状态下仍然享受加速。
+- 修复：光暗魔法使在死亡状态仍然享受加速。
 ]], [[
-- Update translate strings for Civi.
-- Fix issue that Ring of Friendship doesn't affect Maxwell's shadows.
-
-- Tweak swap_data for Rain Coat.
-...
-- New Figure: Headuck. Only available on Autumn 1st.
+- Mio can auto-refuel the Lazy Explorer with Nightmare Fuel when boosted.
+- Fix issue that Mio and Civi still have extra movement speed after become ghost.
 ]])
 description = zh_en("版本: ", "Version: ") .. version ..
     zh_en("\n\n更新内容:\n", "\n\nChangelog:\n") .. changelog .. "\n" ..

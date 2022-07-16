@@ -22,7 +22,7 @@ local book_defs =
         fn = function(inst, reader)
             reader.components.sanity:DoDelta(-50)
             local weather_cmp = TheWorld:HasTag("cave") and TheWorld.net.components.caveweather or TheWorld.net.components.weather
-            if TheWorld.state.islandisraining or TheWorld.state.israining or TheWorld.state.issnowing then
+            if TheWorld.state.precipitation ~= "none" then
                 TheWorld:PushEvent("ms_forceprecipitation_island", false)
                 TheWorld:PushEvent("ms_forceprecipitation", false)
                 local _moistureceil = UpvalueUtil.GetUpvalue(weather_cmp.OnUpdate, "_moistureceil") or UpvalueUtil.GetUpvalue(weather_cmp.OnUpdate, "_moistureceil_island")
