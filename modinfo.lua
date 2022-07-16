@@ -10,15 +10,19 @@ local function zh_en(a, b)
     })
 end
 
-version = "1.33"
+version = "1.33.1"
 -- basic info --
 name = zh_en("暗夜故事集", "Night Stories")
 author = zh_en("丁香女子学校", "Civi, Tony, LSSSS")
 changelog = zh_en([[
+- 调整了澪吃噩梦燃料恢复精神的方式。
+
 - 新功能：澪在加速状态可以消耗噩梦燃料修复懒人魔杖。
 - 修复：澪在死亡状态下仍然享受加速。
 - 修复：光暗魔法使在死亡状态仍然享受加速。
 ]], [[
+- Tweak Mio's sanity regen by eating Nightmare Fuel.
+
 - Mio can auto-refuel the Lazy Explorer with Nightmare Fuel when boosted.
 - Fix issue that Mio and Civi still have extra movement speed after become ghost.
 ]])

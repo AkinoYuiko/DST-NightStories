@@ -21,6 +21,7 @@ local function oneaten(food, eater)
             fx.Transform:SetScale(SCALE, SCALE, SCALE)
         end
         eater.SoundEmitter:PlaySound("dontstarve/common/nightmareAddFuel")
+        eater:AddDebuff("buff_miosanity", "buff_miosanity")
     end
 end
 
@@ -28,7 +29,7 @@ AddPrefabPostInit("nightmarefuel", function(inst)
     if not TheWorld.ismastersim then return end
     inst:AddComponent("edible")
     inst.components.edible.healthvalue = 10
-    inst.components.edible.sanityvalue = 10
+    inst.components.edible.sanityvalue = 0
     inst.components.edible.hungervalue = 15
     inst.components.edible.foodtype = FOODTYPE.NIGHTFUEL
     inst.components.edible:SetOnEatenFn(oneaten)

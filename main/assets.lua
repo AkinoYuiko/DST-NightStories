@@ -10,6 +10,7 @@ PrefabFiles = {
     "friendshiptotem_buff",
 
     "miotan",
+    "miosanity_buff",
     "lantern_mio_fx",
 
     "dummy",
