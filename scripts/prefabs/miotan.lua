@@ -159,6 +159,14 @@ local function on_boost(inst)
     end
 end
 
+local function end_boost(inst)
+    inst.components.locomotor.runspeed = TUNING.WILSON_RUN_SPEED
+    inst.components.temperature.mintemp = -20
+    if inst.components.eater ~= nil then
+        inst.components.eater:SetAbsorptionModifiers(1, 1, 1)
+    end
+end
+
 local function on_update(inst, dt)
     inst.boost_time = inst.boost_time - dt
     if inst.boost_time <= 0 then
@@ -167,11 +175,7 @@ local function on_update(inst, dt)
             inst.boosted_task:Cancel()
             inst.boosted_task = nil
         end
-        inst.components.locomotor.runspeed = TUNING.WILSON_RUN_SPEED
-        inst.components.temperature.mintemp = -20
-        if inst.components.eater ~= nil then
-            inst.components.eater:SetAbsorptionModifiers(1, 1, 1)
-        end
+        end_boost(inst)
         if inst._dry_task ~= nil then
             inst._dry_task:Cancel()
             inst._dry_task = nil
@@ -208,18 +212,19 @@ local function on_save(inst, data)
     data.boost_time = inst.boost_time > 0 and inst.boost_time or nil
 end
 
-local function on_became_ghost(inst)
+local function on_becameghost(inst)
     if inst.boosted_task ~= nil then
-        inst.boosted_task:Cancel()
-        inst.boosted_task = nil
+        -- inst.boosted_task:Cancel()
+        -- inst.boosted_task = nil
         inst.boost_time = 0
+        on_update(inst, 0)
     end
 end
 
 local function on_death(inst)
     if inst.death_task == nil then
         inst.death_task = inst:DoTaskInTime(2, function(inst)
-            SpawnPrefab("nightmarefuel").Transform:SetPosition(inst:GetPosition():Get())
+            SpawnPrefab(FUELTYPE).Transform:SetPosition(inst:GetPosition():Get())
             inst.death_task:Cancel()
             inst.death_task = nil
         end)
@@ -269,7 +274,7 @@ local master_postinit = function(inst)
         inst.components.eater.spoiled_health = TUNING.MIOTAN_SPOILED_HUNGER_RATE
     end
 
-    inst:ListenForEvent("ms_becameghost", on_became_ghost)
+    inst:ListenForEvent("ms_becameghost", on_becameghost)
     inst.OnLongUpdate = on_long_update
     inst.OnSave = on_save
     inst.OnLoad = on_load

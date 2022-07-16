@@ -84,12 +84,12 @@ local function on_save(inst, data)
 end
 
 
-local function on_death(inst)
+local function on_becameghost(inst)
     on_level_change(inst)
+    inst.components.locomotor.runspeed = UNING.WILSON_RUN_SPEED -- max_level = 9
 end
 
-
-local function on_became_human(inst)
+local function on_becamehuman(inst)
     on_level_change(inst)
 end
 -- This initializes for both clients and the host
@@ -117,8 +117,8 @@ local master_postinit = function(inst)
 
     inst.OnSave = on_save
     inst.OnPreLoad = on_preload
-    inst:ListenForEvent("death", on_death)
-    inst:ListenForEvent("ms_respawnedfromghost", on_became_human)
+    inst:ListenForEvent("ms_becameghost", on_becameghost)
+    inst:ListenForEvent("ms_respawnedfromghost", on_becamehuman)
 end
 
 return MakePlayerCharacter("civi", prefabs, assets, common_postinit, master_postinit)
