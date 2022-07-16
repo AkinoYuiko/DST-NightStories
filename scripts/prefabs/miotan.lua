@@ -57,29 +57,28 @@ local function dry_equipment(inst)
     end
 end
 
-local function check_has_item(inst, item, mult)
-    local amount = type(mult) == "number" and mult or 1
+local function check_has_item(inst, item)
     if item == nil then return end
     local inv = inst.components.inventory
     local inv_boat = inst.components.sailor and inst.components.sailor:GetBoat() and inst.components.sailor:GetBoat().components.container
-    return (inv and inv:Has(item, amount)) or (inv_boat and inv_boat:Has(item, amount))
+    return (inv and inv:Has(item, 1)) or (inv_boat and inv_boat:Has(item, 1))
 end
 
-local function consume_item(inst, item, mult)
-    local amount = type(mult) == "number" and mult or 1
+local function consume_item(inst, item)
     if item == nil then return end
     local inv = inst.components.inventory
     local inv_boat = inst.components.sailor and inst.components.sailor:GetBoat() and inst.components.sailor:GetBoat().components.container
-    if inv and inv:Has(item, amount) then
-        inv:ConsumeByName(item, amount)
-    elseif inv_boat and inv_boat:Has(item, amount) then
-        inv_boat:ConsumeByName(item, amount)
+    if inv and inv:Has(item, 1) then
+        inv:ConsumeByName(item, 1)
+    elseif inv_boat and inv_boat:Has(item, 1) then
+        inv_boat:ConsumeByName(item, 1)
     end
 end
 
 local function auto_refuel(inst)
+    local FUELTYPE = "nightmarefuel"
     local is_fx_true = false
-    local fueledtable = {
+    local fueled_table = {
         player = {
             armorskeleton   = 1, -- 骨甲
             lantern         = 1, -- 提灯
@@ -104,7 +103,7 @@ local function auto_refuel(inst)
             ironwind        = 2, -- 螺旋桨
         }
     }
-    local finiteusestable = {
+    local finiteuses_table = {
         player = {
             orangestaff     = 2, -- 橙杖
         }
@@ -116,26 +115,26 @@ local function auto_refuel(inst)
 
     for source, eslots in pairs({player = player_eslots, boat = boatequipslots}) do
         for _, target in pairs(eslots) do
-            if fueledtable[source] and fueledtable[source][target.prefab] then
-                local mult = fueledtable[source][target.prefab]
+            if fueled_table[source] and fueled_table[source][target.prefab] then
+                local mult = fueled_table[source][target.prefab]
                 local fueled = target.components.fueled
                 if fueled and fueled:GetPercent() + TUNING.LARGE_FUEL * mult / fueled.maxfuel * fueled.bonusmult <= 1 and
-                    check_has_item(inst, "nightmarefuel")
+                    check_has_item(inst, FUELTYPE)
                 then
                     is_fx_true = true
                     fueled:DoDelta(TUNING.LARGE_FUEL * fueled.bonusmult)
-                    consume_item(inst, "nightmarefuel")
+                    consume_item(inst, FUELTYPE)
                     if fueled.ontakefuelfn then fueled.ontakefuelfn(target) end
                 end
-            elseif finiteusestable[source] and finiteusestable[source][target.prefab] then
-                local bonus = finiteusestable[source][target.prefab]
+            elseif finiteuses_table[source] and finiteuses_table[source][target.prefab] then
+                local uses = finiteuses_table[source][target.prefab]
                 local finiteuses = target.components.finiteuses
-                if finiteuses and finiteuses:GetUses() + bonus <= finiteuses.total and
-                    check_has_item(inst, "nightmarefuel")
+                if finiteuses and finiteuses:GetUses() + uses <= finiteuses.total and
+                    check_has_item(inst, FUELTYPE)
                 then
                     is_fx_true = true
-                    finiteuses:Use(0 - bonus)
-                    consume_item(inst, "nightmarefuel")
+                    finiteuses:Use(0 - uses)
+                    consume_item(inst, FUELTYPE)
                 end
             end
         end
