@@ -8,8 +8,9 @@ local assets = {
 }
 
 local prefabs = {
+    "nightmarefuel",
     "pandorachest_reset",
-    "statue_transition"
+    "statue_transition",
 }
 
 local start_inv = {}
@@ -19,9 +20,11 @@ for k, v in pairs(TUNING.GAMEMODE_STARTING_ITEMS) do
 end
 prefabs = FlattenTree({ prefabs, start_inv }, true)
 
+local FUELTYPE = "nightmarefuel"
+
 local function set_moisture(table)
     for _, v in pairs(table) do
-        if (v.prefab == "nightmarefuel" or
+        if (v.prefab == FUELTYPE or
             (v.components.equippable and v.components.equippable:IsEquipped()))
                 and v.components.inventoryitem
                 and v.components.inventoryitem:IsWet()
@@ -32,7 +35,7 @@ local function set_moisture(table)
 end
 
 local function find_nightmarefuel(item)
-    return item.prefab == "nightmarefuel"
+    return item.prefab == FUELTYPE
 end
 
 local function dry_equipment(inst)
@@ -57,55 +60,56 @@ local function dry_equipment(inst)
     end
 end
 
-local function check_has_item(inst, item)
+local function check_has_item(inst, item, mult)
+    local amount = mult or 1
     if item == nil then return end
     local inv = inst.components.inventory
     local inv_boat = inst.components.sailor and inst.components.sailor:GetBoat() and inst.components.sailor:GetBoat().components.container
-    return (inv and inv:Has(item, 1)) or (inv_boat and inv_boat:Has(item, 1))
+    return (inv and inv:Has(item, amount)) or (inv_boat and inv_boat:Has(item, amount))
 end
 
-local function consume_item(inst, item)
+local function consume_item(inst, item, mult)
+    local amount = mult or 1
     if item == nil then return end
     local inv = inst.components.inventory
     local inv_boat = inst.components.sailor and inst.components.sailor:GetBoat() and inst.components.sailor:GetBoat().components.container
-    if inv and inv:Has(item, 1) then
-        inv:ConsumeByName(item, 1)
-    elseif inv_boat and inv_boat:Has(item, 1) then
-        inv_boat:ConsumeByName(item, 1)
+    if inv and inv:Has(item, amount) then
+        inv:ConsumeByName(item, amount)
+    elseif inv_boat and inv_boat:Has(item, amount) then
+        inv_boat:ConsumeByName(item, amount)
     end
 end
 
 local function auto_refuel(inst)
-    local FUELTYPE = "nightmarefuel"
     local is_fx_true = false
     local fueled_table = {
         player = {
-            armorskeleton   = 1, -- 骨甲
-            lantern         = 1, -- 提灯
-            lighter         = 1, -- 薇洛的打火机
-            minerhat        = 1, -- 头灯
-            molehat         = 2, -- 鼹鼠帽
-            nightstick      = 1, -- 晨星
-            thurible        = 1, -- 香炉
-            yellowamulet    = 1, -- 黄符
-            purpleamulet    = 1, -- 紫符
-            blueamulet      = 1, -- 冰符
+            armorskeleton   = { trigger = 1 }, -- 骨甲
+            lantern         = { trigger = 1 }, -- 提灯
+            lighter         = { trigger = 1 }, -- 薇洛的打火机
+            minerhat        = { trigger = 1 }, -- 头灯
+            molehat         = { trigger = 2, bonus = 2, cost = 2 }, -- 鼹鼠帽
+            nightstick      = { trigger = 1 }, -- 晨星
+            thurible        = { trigger = 1 }, -- 香炉
+            yellowamulet    = { trigger = 1 }, -- 黄符
+            purpleamulet    = { trigger = 1 }, -- 紫符
+            blueamulet      = { trigger = 1 }, -- 冰符
 
-            nightpack       = 1, -- 影背包 in Civi the MOgician of Light and Dark
-            darkamulet      = 1, -- 黑暗护符 in Civi
-            lightamulet     = 1, -- 光明护符 in Civi
+            nightpack       = { trigger = 1 }, -- 影背包 in Night Stories
+            darkamulet      = { trigger = 1 }, -- 黑暗护符 in Night Stories
+            lightamulet     = { trigger = 1 }, -- 光明护符 in Night Stories
 
-            bottlelantern   = 1, -- 瓶灯 in Island Adventures
+            bottlelantern   = { trigger = 1 }, -- 瓶灯 in Island Adventures
 
         },
         boat = { -- Island Adventures
-            boat_lantern    = 1, -- 船灯
-            ironwind        = 2, -- 螺旋桨
+            boat_lantern    = { trigger = 1 }, -- 船灯
+            ironwind        = { trigger = 2, cost = 2 }, -- 螺旋桨
         }
     }
     local finiteuses_table = {
         player = {
-            orangestaff     = 2, -- 橙杖
+            orangestaff     = { trigger = 2, bonus = 2}, -- 橙杖
         }
     }
 
@@ -116,25 +120,27 @@ local function auto_refuel(inst)
     for source, eslots in pairs({player = player_eslots, boat = boatequipslots}) do
         for _, target in pairs(eslots) do
             if fueled_table[source] and fueled_table[source][target.prefab] then
-                local mult = fueled_table[source][target.prefab]
+                local data = fueled_table[source][target.prefab]
+                local bonus = data.bonus or 1
                 local fueled = target.components.fueled
-                if fueled and fueled:GetPercent() + TUNING.LARGE_FUEL * mult / fueled.maxfuel * fueled.bonusmult <= 1 and
-                    check_has_item(inst, FUELTYPE)
+                if fueled and fueled:GetPercent() + TUNING.LARGE_FUEL / fueled.maxfuel * data.trigger * fueled.bonusmult <= 1 and
+                    check_has_item(inst, FUELTYPE, data.cost)
                 then
                     is_fx_true = true
-                    fueled:DoDelta(TUNING.LARGE_FUEL * fueled.bonusmult)
-                    consume_item(inst, FUELTYPE)
+                    fueled:DoDelta(TUNING.LARGE_FUEL * bonus * fueled.bonusmult)
+                    consume_item(inst, FUELTYPE, data.cost)
                     if fueled.ontakefuelfn then fueled.ontakefuelfn(target) end
                 end
             elseif finiteuses_table[source] and finiteuses_table[source][target.prefab] then
-                local uses = finiteuses_table[source][target.prefab]
+                local data = finiteuses_table[source][target.prefab]
+                local bonus = data.bonus or 1
                 local finiteuses = target.components.finiteuses
-                if finiteuses and finiteuses:GetUses() + uses <= finiteuses.total and
-                    check_has_item(inst, FUELTYPE)
+                if finiteuses and finiteuses:GetUses() + data.trigger <= finiteuses.total and
+                    check_has_item(inst, FUELTYPE, data.cost)
                 then
                     is_fx_true = true
-                    finiteuses:Use(0 - uses)
-                    consume_item(inst, FUELTYPE)
+                    finiteuses:Use(-bonus)
+                    consume_item(inst, FUELTYPE, data.cost)
                 end
             end
         end
