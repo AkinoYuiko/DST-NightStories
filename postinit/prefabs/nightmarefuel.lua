@@ -29,7 +29,7 @@ AddPrefabPostInit("nightmarefuel", function(inst)
     if not TheWorld.ismastersim then return end
     inst:AddComponent("edible")
     inst.components.edible.healthvalue = 10
-    inst.components.edible.sanityvalue = 0
+    inst.components.edible.sanityvalue = 10
     inst.components.edible.hungervalue = 15
     inst.components.edible.foodtype = FOODTYPE.NIGHTFUEL
     inst.components.edible:SetOnEatenFn(oneaten)

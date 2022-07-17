@@ -200,7 +200,7 @@ local function start_boost(inst, duration)
     if inst.boosted_task == nil then
         inst.boosted_task = inst:DoPeriodicTask(1, on_update, nil, 1)
         inst:DoTaskInTime(0, function(inst) on_update(inst, 0) end) -- Prevent autorefuel function consumes nightmarefuels before actually "eated"
-        inst:AddDebuff("buff_miosanity", "buff_miosanity")
+        -- inst:AddDebuff("buff_miosanity", "buff_miosanity")
         on_boost(inst)
     end
 end

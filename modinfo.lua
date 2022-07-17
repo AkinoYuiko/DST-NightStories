@@ -10,7 +10,7 @@ local function zh_en(a, b)
     })
 end
 
-version = "1.33.3"
+version = "1.33.4"
 -- basic info --
 name = zh_en("暗夜故事集", "Night Stories")
 author = zh_en("丁香女子学校", "Civi, Tony, LSSSS")
