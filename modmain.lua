@@ -32,6 +32,7 @@ local postinits =
         "gems",
         "nightmarefuel",
         "nightsword",
+        "orangestaff",
         "pigking",
         "raincoat",
         "sculptingtable",

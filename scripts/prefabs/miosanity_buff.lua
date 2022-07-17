@@ -1,5 +1,5 @@
 local BUFF_DURATION = 30
-local BUFF_TICK_RATE = 2
+local BUFF_TICK_RATE = 3
 local BUFF_TICK_VALUE = 1
 
 local function OnTick(inst, target)
