@@ -18,9 +18,10 @@ local book_defs =
 {
     {
         name = "book_toggledownfall",
-        uses = 3,
+        uses = TUNING.BOOK_USES_SMALL,
+        read_sanity = -TUNING.SANITY_HUGE,
+        peruse_sanity = -TUNING.SANITY_HUGE,
         fn = function(inst, reader)
-            reader.components.sanity:DoDelta(-50)
             local weather_cmp = TheWorld:HasTag("cave") and TheWorld.net.components.caveweather or TheWorld.net.components.weather
             if TheWorld.state.precipitation ~= "none" then
                 TheWorld:PushEvent("ms_forceprecipitation_island", false)
@@ -44,9 +45,10 @@ local book_defs =
 
     {
         name = "book_harvest",
-        uses = 5,
+        uses = TUNING.BOOK_USES_LARGE,
+        read_sanity = -TUNING.SANITY_LARGE,
+        peruse_sanity = TUNING.SANITY_LARGE,
         fn = function(inst, reader)
-            reader.components.sanity:DoDelta(-40)
             local pos = Vector3(inst.Transform:GetWorldPosition())
             local ents = TheSim:FindEntities(pos.x,pos.y,pos.z, 30)
             for k,v in pairs(ents) do
@@ -91,6 +93,9 @@ local function MakeBook(def)
 
         MakeInventoryFloatable(inst, "med", nil, 0.75)
 
+        inst:AddTag("book")
+        inst:AddTag("bookcabinet_item")
+
         inst.entity:SetPristine()
 
         if not TheWorld.ismastersim then
@@ -102,11 +107,12 @@ local function MakeBook(def)
 
         inst:AddComponent("inspectable")
         inst:AddComponent("book")
-        inst.components.book.onread = def.fn
+        inst.components.book:SetOnRead(def.fn)
+        -- inst.components.book:SetOnPeruse(def.perusefn)
+        inst.components.book:SetReadSanity(def.read_sanity)
+        -- inst.components.book:SetPeruseSanity(def.peruse_sanity)
 
         inst:AddComponent("inventoryitem")
-        -- inst.components.inventoryitem.imagename = def.name
-        -- inst.components.inventoryitem.atlasname = resolvefilepath("images/inventoryimages/"..def.name..".xml")
 
         inst:AddComponent("finiteuses")
         inst.components.finiteuses:SetMaxUses(def.uses)
@@ -119,7 +125,6 @@ local function MakeBook(def)
         MakeSmallBurnable(inst, TUNING.MED_BURNTIME)
         MakeSmallPropagator(inst)
 
-        --MakeHauntableLaunchOrChangePrefab(inst, TUNING.HAUNT_CHANCE_OFTEN, TUNING.HAUNT_CHANCE_OCCASIONAL, nil, nil, morphlist)
         MakeHauntableLaunch(inst)
 
         inst:DoTaskInTime(0, function(inst)
