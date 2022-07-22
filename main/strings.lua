@@ -206,7 +206,6 @@ local strings = {
         },
         CIVI = require("speech_civi"),
         MIOTAN = require("speech_miotan"),
-        -- MIOTAN = require("speech_miotan")
     },
     -- character
     CHARACTER_NAMES =
@@ -244,7 +243,6 @@ local strings = {
         civi = {
             { title = "Birthday", desc = "Feb 25" },
             { title = "Favorite Food", desc = "Lv.0 - "..STRINGS.NAMES.BONESOUP.."\nLv.1 - "..STRINGS.NAMES.MEATBALLS.."\nLv.2 - "..STRINGS.NAMES.VOLTGOATJELLY },
-            -- { title = "Secret Knowledge", desc = "While toiling away in his home laboratory late one night, Wilson was startled to hear a voice on the radio speaking directly to him. At first he feared he'd gone mad from too many late nights of experiments and accidentally-inhaled chemical fumes, but the voice assured him that it was no mere figment of the imagination. In fact, the voice had a proposition for him: if Wilson would build a machine according to their specifications, then he would be rewarded with secret knowledge, the likes of which no one had ever seen. Casting aside his better judgement (after all, what harm could come from making a vague bargain with a mysterious disembodied voice?) Wilson threw himself into constructing the machine. When at long last it was finally completed, the gentleman scientist had a moment of hesitation... a moment that might have saved him from his impending fate, had he been just a bit stronger of will. But at the voice's insistence, Wilson flipped the switch and activated his creation... and was never seen again.\nWell, at least not in this world." },
         },
         miotan =
         {
@@ -270,16 +268,16 @@ GlassicAPI.MergeStringsToGLOBAL(strings)
 GlassicAPI.MergeStringsToGLOBAL(require("speech_wortox"), STRINGS.CHARACTERS.MIOTAN, true)
 GlassicAPI.MergeTranslationFromPO(MODROOT.."languages")
 
-local function MergeCharacterSpeech(char)
+local function MergeCharacterSpeech(char, source)
     local file, errormsg = io.open(MODROOT .. "scripts/speech_"..char..".lua", "w")
     if not file then print("Can't update " .. MODROOT .. "scripts/speech_" .. char .. ".lua" .. "\n" .. tostring(errormsg)) return end
     -- GlassicAPI.MergeSpeechFile(require("speech_"..char), file)
-    GlassicAPI.MergeSpeechFile(STRINGS.CHARACTERS[string.upper(char)], file)
+    GlassicAPI.MergeSpeechFile(STRINGS.CHARACTERS[string.upper(char)], file, source)
 end
 
 function UpdateNsStrings(update_speech)
     if update_speech then
-        MergeCharacterSpeech("miotan")
+        MergeCharacterSpeech("miotan", "speech_wortox")
         -- MergeCharacterSpeech("dummy")
         MergeCharacterSpeech("civi")
     end
