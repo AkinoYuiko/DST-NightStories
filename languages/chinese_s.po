@@ -1232,3 +1232,18 @@ msgstr "佩奇系列"
 msgctxt "STRINGS.UI.CRAFTING.RECIPEACTION.SOULSPLIT"
 msgid "Split"
 msgstr "剥离"
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.BATTLERUINSHAT
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.BATTLERUINSHAT"
+msgid "For The King!"
+msgstr "为了吾王！"
+
+#. STRINGS.NAMES.BATTLERUINSHAT
+msgctxt "STRINGS.NAMES.BATTLERUINSHAT"
+msgid "Battle Crown"
+msgstr "战斗皇冠"
+
+#. STRINGS.RECIPE_DESC.BATTLERUINSHAT
+msgctxt "STRINGS.RECIPE_DESC.BATTLERUINSHAT"
+msgid "Complete with ancient force field!"
+msgstr "附有远古力场！"

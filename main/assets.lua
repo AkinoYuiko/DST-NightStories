@@ -21,6 +21,7 @@ PrefabFiles = {
     "ns_spices",
     "ns_skins",
 
+    "battleruinshat",
     "portable_wardrobe",
     "chesspiece_headuck",
 }

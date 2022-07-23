@@ -56,6 +56,8 @@ local strings = {
         BOOK_TOGGLEDOWNFALL = "Love of Rain",
         NIGHTMARE_SPEAR = "Nightmare Spear",
 
+        BATTLERUINSHAT = "Battle Crown",
+
         SPICE_CACTUS = "Cactus Powder",
         SPICE_CACTUS_FOOD = "Cactus {food}",
 
@@ -80,6 +82,8 @@ local strings = {
         BOOK_HARVEST = "Should help you harvest!",
         BOOK_TOGGLEDOWNFALL = "/toggledownfall",
         NIGHTMARE_SPEAR = "Disappear in a moment.",
+
+        BATTLERUINSHAT = "Complete with ancient force field!",
 
         SPICE_CACTUS = "Make sanity great again.",
         PORTABLE_WARDROBE_WRAP = "Convenient for dressing up.",
@@ -196,6 +200,8 @@ local strings = {
                 BOOK_HARVEST = "H-A-R-V-E-S-T!",
                 BOOK_TOGGLEDOWNFALL = "/toggledownfall",
                 NIGHTMARE_SPEAR = "It looks like breaking.",
+
+                BATTLERUINSHAT = "For The King!",
 
                 SPICE_CACTUS = "Make sanity great again.",
                 PORTABLE_WARDROBE_WRAP = "Dress up anytime.",

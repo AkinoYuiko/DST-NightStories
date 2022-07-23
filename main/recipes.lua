@@ -102,6 +102,10 @@ SortAfter("blackholestaff", "greenstaff")
 ------- Other -------
 ---------------------
 
+-- 武神铥头 --
+AddRecipe("battleruinshat", {Ingredient("wathgrithrhat", 1), Ingredient("thulecite", 2)}, TECH.NONE, {builder_tag = "valkyrie"})
+SortAfter("battleruinshat", "wathgrithrhat")
+
 -- 仙人掌粉 --
 AddRecipe("spice_cactus", {Ingredient("cactus_meat", 2), Ingredient("cactus_flower", 1)}, TECH.FOODPROCESSING_ONE, {nounlock = true, numtogive = 2, nochar = true, builder_tag = "professionalchef", no_deconstruction = true})
 SortAfter("spice_cactus", "spice_salt")
