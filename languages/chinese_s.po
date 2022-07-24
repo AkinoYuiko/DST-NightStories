@@ -1247,3 +1247,8 @@ msgstr "战斗皇冠"
 msgctxt "STRINGS.RECIPE_DESC.BATTLERUINSHAT"
 msgid "Complete with ancient force field!"
 msgstr "附有远古力场！"
+
+#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_ATTACH_BUFF_MOISTUREIMMUNITY
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_ATTACH_BUFF_MOISTUREIMMUNITY"
+msgid "There will be no wet! Hyuyu!"
+msgstr "不潮湿啦！哼哼~"
