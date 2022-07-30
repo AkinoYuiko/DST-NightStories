@@ -223,6 +223,20 @@ return {
         },
         READ =
         {
+            ALREADYFULLMOON = "It's already full-moon today.",
+            GENERIC = "Attempt to call a no value.",
+            NOBIRDS = "The birds are not keen on this weather.",
+            NOFIRES = "There are no fires to put out.",
+            NOHARVESTABLE = "There's nothing to harvest.",
+            NOHORTICULTURE = "There's nothing to cultivate.",
+            NOMOONINCAVES = "The moon can't be affected from this subterranean location.",
+            NOSILVICULTURE = "There's nothing to to focus on.",
+            NOSLEEPTARGETS = "Nothing wants to sleep.",
+            NOTENTACLEGROUND = "The tentacles would be unable to break the surface here.",
+            NOWATERNEARBY = "Fish may only be summoned in close proximity to a body of water.",
+            TOOMANYBEES = "That would be too many bees.",
+            TOOMANYBIRDS = "It doesn't work as well with this many birds around.",
+            WAYTOOMANYBIRDS = "The sky is out of birds for now.",
         },
         REMOVEMODULES =
         {
@@ -368,6 +382,7 @@ return {
     -- ANNOUNCE_ATTACH_BUFF_WORKEFFECTIVENESS = "That was just the thing to give my step a spring!",
     -- ANNOUNCE_BECOMEGHOST = "ooOooooO!",
     -- ANNOUNCE_BEES = "Fiddle dee dee, HERE COMES A BEE!",
+    ANNOUNCE_BOOK_MOON_DAYTIME = "It's gonna be fullmoon tonight!",
     ANNOUNCE_BLOOMING =
     {
     },
@@ -508,6 +523,7 @@ return {
     },
     -- ANNOUNCE_LIGHTNING_DAMAGE_AVOIDED = "Hyuyu! Can't catch me!",
     -- ANNOUNCE_LOWRESEARCH = "That wasn't very enlightening.",
+    -- ANNOUNCE_MEGA_FLARE_SEEN = "An open invitation! Who knows what might drop by?",
     -- ANNOUNCE_MONKEY_CURSE_1 = "As curses go, it could be worse.",
     -- ANNOUNCE_MONKEY_CURSE_CHANGE = "Hyuyu you've made a monkey out of me!",
     -- ANNOUNCE_MONKEY_CURSE_CHANGEBACK = "All's well that ends spells.",
@@ -571,47 +587,35 @@ return {
     ANNOUNCE_REVIVED_FROM_CORPSE = "I--AM--BACK!",
     -- ANNOUNCE_REVIVED_OTHER_CORPSE = "Up and at'em!",
     -- ANNOUNCE_REVIVING_CORPSE = "C'mon back, silly goose.",
-    ANNOUNCE_ROYALTY =
-    {
-    },
     -- ANNOUNCE_RUINS_RESET = "Oh good. The monsters have returned.",
     -- ANNOUNCE_SACREDCHEST_NO = "It seems my soul is too tarnished.",
     -- ANNOUNCE_SACREDCHEST_YES = "I'm... worthy?",
     -- ANNOUNCE_SHELTER = "Ah, much better!",
-    ANNOUNCE_SLINGHSOT_OUT_OF_AMMO =
-    {
-    },
     -- ANNOUNCE_SNARED = "I've been bound!",
     -- ANNOUNCE_SNARED_IVY = "Oh ho! You think you can contain me?",
     -- ANNOUNCE_SOAKED = "I AM DRENCHED!",
     ANNOUNCE_SOUL_EMPTY =
     {
-        "only_used_by_wortox",
-        "only_used_by_wortox",
-        "only_used_by_wortox",
+        -- "Woe be to a soul-starved imp!",
+        -- "I don't want to suck anymore souls!",
+        -- "What gruesome things I must do to live!",
     },
     ANNOUNCE_SOUL_FEW =
     {
-        "only_used_by_wortox",
-        "only_used_by_wortox",
+        -- "I'll need more souls soon.",
+        -- "I feel the soul hunger stirring.",
     },
     ANNOUNCE_SOUL_MANY =
     {
-        "only_used_by_wortox",
-        "only_used_by_wortox",
+        -- "I've enough souls to sustain me.",
+        -- "I hope I was not too greedy.",
     },
     ANNOUNCE_SOUL_OVERLOAD =
     {
-        "only_used_by_wortox",
-        "only_used_by_wortox",
+        -- "I can't handle that much soul power!",
+        -- "That was one soul too many!",
     },
     -- ANNOUNCE_SPOOKED = "What a s-silly prank!",
-    ANNOUNCE_STORYTELLING_ABORT_FIREWENTOUT =
-    {
-    },
-    ANNOUNCE_STORYTELLING_ABORT_NOT_NIGHT =
-    {
-    },
     ANNOUNCE_TALK_TO_PLANTS =
     {
         "You know what? We have a EMOJI system mod!",
@@ -1046,7 +1050,7 @@ return {
         -- BOAT_BUMPER_SHELL_KIT = "But idle hands are such good playthings!",
         BOAT_CANNON =
         {
-            -- AMMOLOADED = "Ready to fire, but decidedly unready to brimstone.",
+            -- AMMOLOADED = "Ready to fire and brimstone!",
             -- GENERIC = "Rounded stones are required for this cannon to fire.",
             -- NOAMMO = "This cannon cannot fire.",
         },
@@ -1622,6 +1626,7 @@ return {
         -- FENCE_GATE = "For temporary visiting.",
         -- FENCE_GATE_ITEM = "It's of no use there on the ground.",
         -- FENCE_ITEM = "It's of no use there on the ground.",
+        -- FENCE_ROTATOR = "A sword against fences... we've all lost our senses!",
         -- FERTILIZER = "Hyuyu! That's some poo!",
         -- FESTIVEFISH = "Nothing fishy here at all, hyuyu!",
         -- FESTIVE_BLUEPRINT = "My friend can frolic in this festive frock!",
@@ -2155,6 +2160,7 @@ return {
         },
         -- MEATYSALAD = "Hyuyuyu! What a deliciously deceptive prank!",
         -- MEAT_DRIED = "Mortals like this more than when it's wet.",
+        -- MEGAFLARE = "Hyuyuyu, this might get interesting!",
         -- MERM = "Aren't you intimidated by my massive horns?",
         -- MERMGUARD = "The horns are an improvement.",
         -- MERMHAT = "Some would call me two-faced, hyuyu!",

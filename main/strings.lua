@@ -212,6 +212,26 @@ local strings = {
         },
         CIVI = require("speech_civi"),
         MIOTAN = require("speech_miotan"),
+        WICKERBOTTOM = {
+            ACTIONFAIL = {
+                READ = {
+                    NOHARVESTABLE = "Oh, I don't think there are things to harvest.",
+                }
+            }
+        },
+        WAXWELL = {
+            ACTIONFAIL = {
+                READ = {
+                    NOHARVESTABLE = "Kidding? Nothing to harvest!",
+                }
+            }
+        },
+        WURT = {
+            ANNOUNCE_READ_BOOK = {
+                BOOK_HARVEST = "Oh, breaking crops is awful.",
+                BOOK_TOGGLEDOWNFALL = "I couldn't live without water!"
+            }
+        }
     },
     -- character
     CHARACTER_NAMES =
@@ -271,7 +291,7 @@ local strings = {
 -- if not rawget(_G, "GlassicAPI") then return end
 
 GlassicAPI.MergeStringsToGLOBAL(strings)
-GlassicAPI.MergeStringsToGLOBAL(require("speech_wortox"), STRINGS.CHARACTERS.MIOTAN, true)
+-- GlassicAPI.MergeStringsToGLOBAL(require("speech_wortox"), STRINGS.CHARACTERS.MIOTAN, true)
 GlassicAPI.MergeTranslationFromPO(MODROOT.."languages")
 
 local function MergeCharacterSpeech(char, source)

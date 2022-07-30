@@ -3,6 +3,7 @@ local assets =
     Asset("ANIM", "anim/dummy_books.zip"),
     Asset("ANIM", "anim/swap_book_harvest.zip"),
     Asset("ANIM", "anim/swap_book_toggledownfall.zip"),
+    Asset("ANIM", "anim/swap_dummy_books.zip"),
 
 }
 
@@ -80,6 +81,8 @@ local book_defs =
         uses = TUNING.BOOK_USES_SMALL,
         read_sanity = -TUNING.SANITY_HUGE,
         peruse_sanity = -TUNING.SANITY_HUGE,
+        fx = "fx_book_rain",
+        layer = "",
         fn = function(inst, reader)
             local weather_cmp = TheWorld:HasTag("cave") and TheWorld.net.components.caveweather or TheWorld.net.components.weather
             if TheWorld.state.precipitation ~= "none" then
@@ -99,38 +102,72 @@ local book_defs =
                 _moisturefloor:set(0.25 * _moisture:value() * _moisturefloormultiplier)
             end
             return true
-        end
+        end,
+        perusefn = function(inst,reader)
+            if reader.peruse_toggledownfall then
+                reader.peruse_toggledownfall(reader)
+            end
+            reader.components.talker:Say(GetString(reader, "ANNOUNCE_READ_BOOK","BOOK_TOGGLEDOWNFALL"))
+            return true
+        end,
     },
 
     {
         name = "book_harvest",
         uses = TUNING.BOOK_USES_LARGE,
-        read_sanity = -TUNING.SANITY_LARGE,
-        peruse_sanity = TUNING.SANITY_LARGE,
+        read_sanity = -TUNING.SANITY_LARGER,
+        peruse_sanity = -TUNING.SANITY_HUGE,
+        layer = "",
+        layer_sound = { frame = 30, sound = "wickerbottom_rework/book_spells/upgraded_horticulture" },
         fn = function(inst, reader)
+            local success
             local pos = Vector3(inst.Transform:GetWorldPosition())
             local ents = TheSim:FindEntities(pos.x,pos.y,pos.z, 30)
+            local NO_PICK_DEFS = {
+                "flower",
+                "flower_evil",
+                "gemsocket",
+            }
+            local HARVESTABLE_DEFS = {
+                "beebox",
+                "waterplant_baby",
+                "waterplant",
+            }
             for k,v in pairs(ents) do
-                if v.components.pickable and not
-                (v.prefab == "flower" or
-                 v.prefab == "flower_evil" or
-                 v.prefab == "gemsocket") then
-                    v.components.pickable:Pick(reader)
+
+                if v.components.pickable and not table.contains(NO_PICK_DEFS, v.prefab) then
+                    if v.components.pickable:Pick(reader) then
+                        success = true
+                    end
                 end
-                if v.components.crop then v.components.crop:Harvest(reader) end
-                -- 针对蜂箱、藤壶和肉架 --
-                if v.prefab == "beebox"
-                  or v.prefab == "waterplant_baby"
-                  or v.prefab == "waterplant"
-                  then
-                    if v.components.harvestable then v.components.harvestable:Harvest(reader) end
+
+                if v.components.crop then
+                    if v.components.crop:Harvest(reader) then
+                        success = true
+                    end
                 end
-                if v.prefab == "meatrack" then
-                    if v.components.dryer then v.components.dryer:Harvest(reader) end
+
+                if v.components.harvestable and table.contains(HARVESTABLE_DEFS, v.prefab) then
+                    if v.components.harvestable:Harvest(reader) then
+                        success = true
+                    end
+                end
+
+                if v.components.dryer and v.prefab == "meatrack" then
+                    if v.components.dryer:Harvest(reader) then
+                        success = true
+                    end
                 end
             end
+            return success, "NOHARVESTABLE"
+        end,
+        perusefn = function(inst,reader)
+            if reader.peruse_harvest then
+                reader.peruse_harvest(reader)
+            end
+            reader.components.talker:Say(GetString(reader, "ANNOUNCE_READ_BOOK","BOOK_HARVEST"))
             return true
-        end
+        end,
     },
 }
 
@@ -168,8 +205,13 @@ local function MakeBook(def)
         if inst.components.book.SetOnRead ~= nil then
             inst.components.book:SetOnRead(def.fn)
             inst.components.book:SetReadSanity(def.read_sanity)
-            -- inst.components.book:SetOnPeruse(def.perusefn)
-            -- inst.components.book:SetPeruseSanity(def.peruse_sanity)
+            inst.components.book:SetOnPeruse(def.perusefn)
+            inst.components.book:SetPeruseSanity(def.peruse_sanity)
+            inst.components.book:SetFx(def.fx)
+
+            inst.def = def
+            inst.swap_build = "swap_dummy_books"
+            inst.swap_prefix = def.name
         else
             inst.skinname = def.name -- reading-book animation
             inst.components.book.onread = def.fn

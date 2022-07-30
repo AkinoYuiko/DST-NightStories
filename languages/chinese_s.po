@@ -79,6 +79,11 @@ msgctxt "STRINGS.CHARACTERS.CIVI.DESCRIBE.MOSSLING"
 msgid "󰂡"
 msgstr ""
 
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.BATTLERUINSHAT
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.BATTLERUINSHAT"
+msgid "For The King!"
+msgstr "为了吾王！"
+
 #. STRINGS.CHARACTERS.GENERIC.DESCRIBE.BLACKHOLESTAFF
 msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.BLACKHOLESTAFF"
 msgid "???"
@@ -219,6 +224,81 @@ msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.SPICE_CACTUS"
 msgid "Make sanity great again."
 msgstr "让精神再次伟大。"
 
+#. STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.ALREADYFULLMOON
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.ALREADYFULLMOON"
+msgid "It's already full-moon today."
+msgstr "今天已经是满月了。"
+
+#. STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.GENERIC
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.GENERIC"
+msgid "Attempt to call a no value."
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.NOBIRDS
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.NOBIRDS"
+msgid "The birds are not keen on this weather."
+msgstr "鸟不喜欢这种天气。"
+
+#. STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.NOFIRES
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.NOFIRES"
+msgid "There are no fires to put out."
+msgstr "没有火可以扑灭呢。"
+
+#. STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.NOHARVESTABLE
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.NOHARVESTABLE"
+msgid "There's nothing to harvest."
+msgstr "无可收获。"
+
+#. STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.NOHORTICULTURE
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.NOHORTICULTURE"
+msgid "There's nothing to cultivate."
+msgstr "无可生长。"
+
+#. STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.NOMOONINCAVES
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.NOMOONINCAVES"
+msgid "The moon can't be affected from this subterranean location."
+msgstr "洞穴里是操作不了月亮的。"
+
+#. STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.NOSILVICULTURE
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.NOSILVICULTURE"
+msgid "There's nothing to to focus on."
+msgstr "无可生长。"
+
+#. STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.NOSLEEPTARGETS
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.NOSLEEPTARGETS"
+msgid "Nothing wants to sleep."
+msgstr "不睡。"
+
+#. STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.NOTENTACLEGROUND
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.NOTENTACLEGROUND"
+msgid "The tentacles would be unable to break the surface here."
+msgstr "触手长不出来哟。"
+
+#. STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.NOWATERNEARBY
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.NOWATERNEARBY"
+msgid "Fish may only be summoned in close proximity to a body of water."
+msgstr "没有水，就没有鱼。"
+
+#. STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.TOOMANYBEES
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.TOOMANYBEES"
+msgid "That would be too many bees."
+msgstr "太多蜜蜂了。"
+
+#. STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.TOOMANYBIRDS
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.TOOMANYBIRDS"
+msgid "It doesn't work as well with this many birds around."
+msgstr "太多鸟啦。"
+
+#. STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.WAYTOOMANYBIRDS
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.WAYTOOMANYBIRDS"
+msgid "The sky is out of birds for now."
+msgstr "天上全是鸟。"
+
+#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_BOOK_MOON_DAYTIME
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_BOOK_MOON_DAYTIME"
+msgid "It's gonna be fullmoon tonight!"
+msgstr "今晚将会是满月！"
+
 #. STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.TEACH.CANTLEARN
 msgctxt "STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.TEACH.CANTLEARN"
 msgid "Only AI can learn this knowledge."
@@ -233,6 +313,11 @@ msgstr ""
 msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_ATTACH_BUFF_ELECTRICATTACK"
 msgid "I want some goat!"
 msgstr "来点 :zap: ！"
+
+#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_ATTACH_BUFF_MOISTUREIMMUNITY
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_ATTACH_BUFF_MOISTUREIMMUNITY"
+msgid "There will be no wet! Hyuyu!"
+msgstr "不潮湿啦！哼哼~！"
 
 #. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_ATTACH_BUFF_SLEEPRESISTANCE
 msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_ATTACH_BUFF_SLEEPRESISTANCE"
@@ -618,7 +703,7 @@ msgstr "你不会夺走年轻漂亮的小女孩的生命吧？"
 #. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.WARGLET
 msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.WARGLET"
 msgid "You wouldn't want to eat me!"
-msgstr "我不好吃的。"
+msgstr "我不好吃的！"
 
 #. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.WATHGRITHR.GENERIC
 msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.WATHGRITHR.GENERIC"
@@ -655,6 +740,26 @@ msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE_TOODARK"
 msgid "What is that?"
 msgstr "啥？"
 
+#. STRINGS.CHARACTERS.WAXWELL.ACTIONFAIL.READ.NOHARVESTABLE
+msgctxt "STRINGS.CHARACTERS.WAXWELL.ACTIONFAIL.READ.NOHARVESTABLE"
+msgid "Kidding? Nothing to harvest!"
+msgstr "逗我呢？没有可以收获的东西！"
+
+#. STRINGS.CHARACTERS.WICKERBOTTOM.ACTIONFAIL.READ.NOHARVESTABLE
+msgctxt "STRINGS.CHARACTERS.WICKERBOTTOM.ACTIONFAIL.READ.NOHARVESTABLE"
+msgid "Oh, I don't think there are things to harvest."
+msgstr "噢，我认为现在无可收获。"
+
+#. STRINGS.CHARACTERS.WURT.ANNOUNCE_READ_BOOK.BOOK_HARVEST
+msgctxt "STRINGS.CHARACTERS.WURT.ANNOUNCE_READ_BOOK.BOOK_HARVEST"
+msgid "Oh, breaking crops is awful."
+msgstr "破坏庄稼是可恶的。"
+
+#. STRINGS.CHARACTERS.WURT.ANNOUNCE_READ_BOOK.BOOK_TOGGLEDOWNFALL
+msgctxt "STRINGS.CHARACTERS.WURT.ANNOUNCE_READ_BOOK.BOOK_TOGGLEDOWNFALL"
+msgid "I couldn't live without water!"
+msgstr "鱼儿不能离开水生存！"
+
 #. STRINGS.CHARACTER_ABOUTME.civi
 msgctxt "STRINGS.CHARACTER_ABOUTME.civi"
 msgid ""
@@ -682,6 +787,14 @@ msgctxt "STRINGS.CHARACTER_BIOS.civi.1.title"
 msgid "Birthday"
 msgstr "生日"
 
+#. STRINGS.CHARACTER_BIOS.civi.2.desc
+msgctxt "STRINGS.CHARACTER_BIOS.civi.2.desc"
+msgid ""
+"Lv.0 - Bone Bouillon\n"
+"Lv.1 - Meatballs\n"
+"Lv.2 - Volt Goat Chaud-Froid"
+msgstr ""
+
 #. STRINGS.CHARACTER_BIOS.civi.2.title
 msgctxt "STRINGS.CHARACTER_BIOS.civi.2.title"
 msgid "Favorite Food"
@@ -696,6 +809,11 @@ msgstr "7月17日"
 msgctxt "STRINGS.CHARACTER_BIOS.dummy.1.title"
 msgid "Birthday"
 msgstr "生日"
+
+#. STRINGS.CHARACTER_BIOS.dummy.2.desc
+msgctxt "STRINGS.CHARACTER_BIOS.dummy.2.desc"
+msgid "Grim Galette"
+msgstr ""
 
 #. STRINGS.CHARACTER_BIOS.dummy.2.title
 msgctxt "STRINGS.CHARACTER_BIOS.dummy.2.title"
@@ -781,6 +899,21 @@ msgctxt "STRINGS.CHARACTER_QUOTES.miotan"
 msgid "\"If I could eat nightmare!\""
 msgstr "\"假如我可以吞噬梦魇。\""
 
+#. STRINGS.CHARACTER_SURVIVABILITY.civi
+msgctxt "STRINGS.CHARACTER_SURVIVABILITY.civi"
+msgid "Slim"
+msgstr ""
+
+#. STRINGS.CHARACTER_SURVIVABILITY.dummy
+msgctxt "STRINGS.CHARACTER_SURVIVABILITY.dummy"
+msgid "None"
+msgstr ""
+
+#. STRINGS.CHARACTER_SURVIVABILITY.miotan
+msgctxt "STRINGS.CHARACTER_SURVIVABILITY.miotan"
+msgid "Grim"
+msgstr ""
+
 #. STRINGS.CHARACTER_TITLES.civi
 msgctxt "STRINGS.CHARACTER_TITLES.civi"
 msgid "Mogician of Light and Dark"
@@ -815,6 +948,11 @@ msgstr "我感受到了黑暗。"
 msgctxt "STRINGS.CIVI_LEVELS.FEEL_LIGHT"
 msgid "I felt the light."
 msgstr "我感受到了光明。"
+
+#. STRINGS.NAMES.BATTLERUINSHAT
+msgctxt "STRINGS.NAMES.BATTLERUINSHAT"
+msgid "Battle Crown"
+msgstr "战斗皇冠"
 
 #. STRINGS.NAMES.BLACKHOLESTAFF
 msgctxt "STRINGS.NAMES.BLACKHOLESTAFF"
@@ -991,6 +1129,11 @@ msgctxt "STRINGS.NAMES.SPICE_CACTUS_FOOD"
 msgid "Cactus {food}"
 msgstr "仙人掌味{food}"
 
+#. STRINGS.RECIPE_DESC.BATTLERUINSHAT
+msgctxt "STRINGS.RECIPE_DESC.BATTLERUINSHAT"
+msgid "Complete with ancient force field!"
+msgstr "附有远古力场！"
+
 #. STRINGS.RECIPE_DESC.BLACKHOLESTAFF
 msgctxt "STRINGS.RECIPE_DESC.BLACKHOLESTAFF"
 msgid "Absorb everything!"
@@ -1078,6 +1221,11 @@ msgid ""
 "lights."
 msgstr "控制光与暗的魔法使, 拥有超强的适应能力和战斗能力。"
 
+#. STRINGS.SKIN_DESCRIPTIONS.dragonflychest_gingerbread
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.dragonflychest_gingerbread"
+msgid "Don't be fooled... it's completely inedible."
+msgstr ""
+
 #. STRINGS.SKIN_DESCRIPTIONS.dummy_none
 msgctxt "STRINGS.SKIN_DESCRIPTIONS.dummy_none"
 msgid "Another girl comes from nightmare's world."
@@ -1158,6 +1306,11 @@ msgctxt "STRINGS.SKIN_NAMES.civi_none"
 msgid "Civi"
 msgstr ""
 
+#. STRINGS.SKIN_NAMES.dragonflychest_gingerbread
+msgctxt "STRINGS.SKIN_NAMES.dragonflychest_gingerbread"
+msgid "Gingerbread Chest"
+msgstr ""
+
 #. STRINGS.SKIN_NAMES.dummy_none
 msgctxt "STRINGS.SKIN_NAMES.dummy_none"
 msgid "Dummy"
@@ -1232,23 +1385,3 @@ msgstr "佩奇系列"
 msgctxt "STRINGS.UI.CRAFTING.RECIPEACTION.SOULSPLIT"
 msgid "Split"
 msgstr "剥离"
-
-#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.BATTLERUINSHAT
-msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.BATTLERUINSHAT"
-msgid "For The King!"
-msgstr "为了吾王！"
-
-#. STRINGS.NAMES.BATTLERUINSHAT
-msgctxt "STRINGS.NAMES.BATTLERUINSHAT"
-msgid "Battle Crown"
-msgstr "战斗皇冠"
-
-#. STRINGS.RECIPE_DESC.BATTLERUINSHAT
-msgctxt "STRINGS.RECIPE_DESC.BATTLERUINSHAT"
-msgid "Complete with ancient force field!"
-msgstr "附有远古力场！"
-
-#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_ATTACH_BUFF_MOISTUREIMMUNITY
-msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_ATTACH_BUFF_MOISTUREIMMUNITY"
-msgid "There will be no wet! Hyuyu!"
-msgstr "不潮湿啦！哼哼~"

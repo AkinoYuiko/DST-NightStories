@@ -20,8 +20,22 @@ for k, v in pairs(TUNING.GAMEMODE_STARTING_ITEMS) do
 end
 prefabs = FlattenTree({ prefabs, start_inv }, true)
 
-local FUELTYPE = "nightmarefuel"
 
+local SHADOWCREATURE_MUST_TAGS = { "shadowcreature", "_combat", "locomotor" }
+local SHADOWCREATURE_CANT_TAGS = { "INLIMBO", "notaunt" }
+local function OnReadFn(inst, book)
+    if inst.components.sanity:IsInsane() then
+
+        local x,y,z = inst.Transform:GetWorldPosition()
+        local ents = TheSim:FindEntities(x, y, z, 16, SHADOWCREATURE_MUST_TAGS, SHADOWCREATURE_CANT_TAGS)
+
+        if #ents < TUNING.BOOK_MAX_SHADOWCREATURES then
+            TheWorld.components.shadowcreaturespawner:SpawnShadowCreature(inst)
+        end
+    end
+end
+
+local FUELTYPE = "nightmarefuel"
 local function set_moisture(table)
     for _, v in pairs(table) do
         if (v.prefab == FUELTYPE or
@@ -253,6 +267,9 @@ local master_postinit = function(inst)
     inst.boosted_task = nil
 
     inst:AddComponent("reader")
+    if inst.components.reader.SetOnReadFn then
+        inst.components.reader:SetOnReadFn(OnReadFn)
+    end
 
     inst:AddComponent("hauntable")
     inst.components.hauntable.onhaunt = on_haunt

@@ -20,6 +20,20 @@ end
 
 prefabs = FlattenTree({ prefabs, start_inv }, true)
 
+local SHADOWCREATURE_MUST_TAGS = { "shadowcreature", "_combat", "locomotor" }
+local SHADOWCREATURE_CANT_TAGS = { "INLIMBO", "notaunt" }
+local function OnReadFn(inst, book)
+    if inst.components.sanity:IsInsane() then
+
+        local x,y,z = inst.Transform:GetWorldPosition()
+        local ents = TheSim:FindEntities(x, y, z, 16, SHADOWCREATURE_MUST_TAGS, SHADOWCREATURE_CANT_TAGS)
+
+        if #ents < TUNING.BOOK_MAX_SHADOWCREATURES then
+            TheWorld.components.shadowcreaturespawner:SpawnShadowCreature(inst)
+        end
+    end
+end
+
 local function calc_sanity_aura(inst, observer)
     if observer.prefab == "dummy" then
         return 0
@@ -200,6 +214,9 @@ local master_postinit = function(inst)
     inst.firedamage_history = {}
 
     inst:AddComponent("reader")
+    if inst.components.reader.SetOnReadFn then
+        inst.components.reader:SetOnReadFn(OnReadFn)
+    end
 
     inst:AddComponent("hauntable")
     inst.components.hauntable.onhaunt = onhaunt
