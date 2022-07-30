@@ -291,7 +291,7 @@ local strings = {
 -- if not rawget(_G, "GlassicAPI") then return end
 
 GlassicAPI.MergeStringsToGLOBAL(strings)
--- GlassicAPI.MergeStringsToGLOBAL(require("speech_wortox"), STRINGS.CHARACTERS.MIOTAN, true)
+GlassicAPI.MergeStringsToGLOBAL(require("speech_wortox"), STRINGS.CHARACTERS.MIOTAN, true)
 GlassicAPI.MergeTranslationFromPO(MODROOT.."languages")
 
 local function MergeCharacterSpeech(char, source)
