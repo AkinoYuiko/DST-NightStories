@@ -23,7 +23,7 @@ prefabs = FlattenTree({ prefabs, start_inv }, true)
 
 local SHADOWCREATURE_MUST_TAGS = { "shadowcreature", "_combat", "locomotor" }
 local SHADOWCREATURE_CANT_TAGS = { "INLIMBO", "notaunt" }
-local function OnReadFn(inst, book)
+local function on_read_fn(inst, book)
     if inst.components.sanity:IsInsane() then
 
         local x,y,z = inst.Transform:GetWorldPosition()
@@ -194,6 +194,9 @@ local function on_update(inst, dt)
             inst._dry_task:Cancel()
             inst._dry_task = nil
         end
+        if inst:HasTag("mio_boosted_task") then
+            inst:RemoveTag("mio_boosted_task")
+        end
     else
         --boosteffect(inst)
         auto_refuel(inst)
@@ -201,6 +204,9 @@ local function on_update(inst, dt)
             inst._dry_task = inst:DoPeriodicTask(0, function(inst)
                 dry_equipment(inst)
             end)
+        end
+        if not inst:HasTag("mio_boosted_task") then
+            inst:AddTag("mio_boosted_task")
         end
     end
 end
@@ -268,7 +274,7 @@ local master_postinit = function(inst)
 
     inst:AddComponent("reader")
     if inst.components.reader.SetOnReadFn then
-        inst.components.reader:SetOnReadFn(OnReadFn)
+        inst.components.reader:SetOnReadFn(on_read_fn)
     end
 
     inst:AddComponent("hauntable")
