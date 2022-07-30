@@ -14,6 +14,65 @@ local prefabs =
 
 local UpvalueUtil = GlassicAPI.UpvalueUtil
 
+local book_defs_old =
+{
+    {
+        name = "book_toggledownfall",
+        uses = 3,
+        fn = function(inst, reader)
+            reader.components.sanity:DoDelta(-50)
+            local weather_cmp = TheWorld:HasTag("cave") and TheWorld.net.components.caveweather or TheWorld.net.components.weather
+            if TheWorld.state.precipitation ~= "none" then
+                TheWorld:PushEvent("ms_forceprecipitation_island", false)
+                TheWorld:PushEvent("ms_forceprecipitation", false)
+                local _moistureceil = UpvalueUtil.GetUpvalue(weather_cmp.OnUpdate, "_moistureceil") or UpvalueUtil.GetUpvalue(weather_cmp.OnUpdate, "_moistureceil_island")
+                local old_val = _moistureceil:value()
+                weather_cmp:OnUpdate(0)
+                _moistureceil:set(old_val)
+            else
+                TheWorld:PushEvent("ms_forceprecipitation_island", true)
+                TheWorld:PushEvent("ms_forceprecipitation", true)
+                weather_cmp:OnUpdate(0)
+                local _moisture = UpvalueUtil.GetUpvalue(weather_cmp.OnUpdate, "_moisture") or UpvalueUtil.GetUpvalue(weather_cmp.OnUpdate, "_moisture_island")
+                local _moisturefloormultiplier = UpvalueUtil.GetUpvalue(weather_cmp.OnSave, "_moisturefloormultiplier")
+                local _moisturefloor = UpvalueUtil.GetUpvalue(weather_cmp.OnUpdate, "_moisturefloor") or UpvalueUtil.GetUpvalue(weather_cmp.OnUpdate, "_moisturefloor_island")
+                _moisturefloor:set(0.25 * _moisture:value() * _moisturefloormultiplier)
+            end
+            return true
+        end
+    },
+
+    {
+        name = "book_harvest",
+        uses = 5,
+        fn = function(inst, reader)
+            reader.components.sanity:DoDelta(-40)
+            local pos = Vector3(inst.Transform:GetWorldPosition())
+            local ents = TheSim:FindEntities(pos.x,pos.y,pos.z, 30)
+            for k,v in pairs(ents) do
+                if v.components.pickable and not
+                (v.prefab == "flower" or
+                 v.prefab == "flower_evil" or
+                 v.prefab == "gemsocket") then
+                    v.components.pickable:Pick(reader)
+                end
+                if v.components.crop then v.components.crop:Harvest(reader) end
+                -- 针对蜂箱、藤壶和肉架 --
+                if v.prefab == "beebox"
+                  or v.prefab == "waterplant_baby"
+                  or v.prefab == "waterplant"
+                  then
+                    if v.components.harvestable then v.components.harvestable:Harvest(reader) end
+                end
+                if v.prefab == "meatrack" then
+                    if v.components.dryer then v.components.dryer:Harvest(reader) end
+                end
+            end
+            return true
+        end
+    },
+}
+
 local book_defs =
 {
     {
@@ -103,14 +162,18 @@ local function MakeBook(def)
         end
 
         -----------------------------------
-        inst.skinname = def.name -- reading-book animation
 
         inst:AddComponent("inspectable")
         inst:AddComponent("book")
-        inst.components.book:SetOnRead(def.fn)
-        -- inst.components.book:SetOnPeruse(def.perusefn)
-        inst.components.book:SetReadSanity(def.read_sanity)
-        -- inst.components.book:SetPeruseSanity(def.peruse_sanity)
+        if inst.components.book.SetOnRead ~= nil then
+            inst.components.book:SetOnRead(def.fn)
+            inst.components.book:SetReadSanity(def.read_sanity)
+            -- inst.components.book:SetOnPeruse(def.perusefn)
+            -- inst.components.book:SetPeruseSanity(def.peruse_sanity)
+        else
+            inst.skinname = def.name -- reading-book animation
+            inst.components.book.onread = def.fn
+        end
 
         inst:AddComponent("inventoryitem")
 
@@ -138,9 +201,16 @@ local function MakeBook(def)
 end
 
 local books = {}
-for i, v in ipairs(book_defs) do
-    table.insert(books, MakeBook(v))
+if TUNING.BOOK_USES_SMALL then
+    for i, v in ipairs(book_defs) do
+        table.insert(books, MakeBook(v))
+    end
+else
+    for i, v in ipairs(book_defs_old) do
+        table.insert(books, MakeBook(v))
+    end
 end
 book_defs = nil
+book_defs_old = nil
 
 return unpack(books)
