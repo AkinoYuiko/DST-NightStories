@@ -3,6 +3,16 @@ msgstr ""
 "Application: Dont' Starve\n"
 "POT Version: 2.0\n"
 
+#. STRINGS.ACTIONS.BLINK.FUEL
+msgctxt "STRINGS.ACTIONS.BLINK.FUEL"
+msgid "Shadow Telepoof"
+msgstr ""
+
+#. STRINGS.ACTIONS.BLINK_MAP.FUEL
+msgctxt "STRINGS.ACTIONS.BLINK.FUEL"
+msgid "Shadow Telepoof({uses})"
+msgstr ""
+
 #. STRINGS.ACTIONS.CHANGE_TACKLE.CRYSTAL
 msgctxt "STRINGS.ACTIONS.CHANGE_TACKLE.CRYSTAL"
 msgid "Boost Sword"

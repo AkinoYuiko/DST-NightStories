@@ -4,6 +4,12 @@ GLOBAL.setfenv(1, GLOBAL)
 local strings = {
     ACTIONS =
     {
+        BLINK = {
+            FUEL = "Shadow Teleproof",
+        },
+        BLINK_MAP = {
+            FUEL = "Shadow Teleproof({uses})",
+        },
         FUELPOCKETWATCH = "Hack",
         CHANGE_TACKLE =
         {
