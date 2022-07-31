@@ -10,17 +10,19 @@ local function zh_en(a, b)
     })
 end
 
-version = "1.35.1"
+version = "1.35.2"
 -- basic info --
 name = zh_en("暗夜故事集", "Night Stories")
 author = zh_en("丁香女子学校", "Civi, Tony, LSSSS")
 changelog = zh_en([[
-- 新增一些文本。
+- 修复了一些拼写错误。
 
+- 新增一些文本。
 - 达米的书同时适配现版本和测试版。
 ]], [[
-- Add some string texts.
+- Fix a typo with chs translation.
 
+- Add some string texts.
 - Dummy's books are now compatible with both Release and Beta versions.
 ]])
 description = zh_en("版本: ", "Version: ") .. version ..

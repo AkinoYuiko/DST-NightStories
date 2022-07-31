@@ -14,13 +14,13 @@ msgstr ""
 "POT Version: 2.0\n"
 "X-Generator: Poedit 3.0.1\n"
 
-#. STRINGS.ACTIONS.STRINGS.ACTIONS.BLINK.FUEL
-msgctxt "STRINGS.ACTIONS.STRINGS.ACTIONS.BLINK.FUEL"
+#. STRINGS.ACTIONS.BLINK.FUEL
+msgctxt "STRINGS.ACTIONS.BLINK.FUEL"
 msgid "Shadow Telepoof"
 msgstr "暗影传送"
 
 #. STRINGS.ACTIONS.BLINK_MAP.FUEL
-msgctxt "STRINGS.ACTIONS.BLINK.FUEL"
+msgctxt "STRINGS.ACTIONS.BLINK_MAP.FUEL"
 msgid "Shadow Telepoof({uses})"
 msgstr "暗影传送({uses})"
 
