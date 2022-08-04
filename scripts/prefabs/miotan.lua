@@ -273,9 +273,7 @@ local master_postinit = function(inst)
     inst.boosted_task = nil
 
     inst:AddComponent("reader")
-    if inst.components.reader.SetOnReadFn then
-        inst.components.reader:SetOnReadFn(on_read_fn)
-    end
+    inst.components.reader:SetOnReadFn(on_read_fn)
 
     inst:AddComponent("hauntable")
     inst.components.hauntable.onhaunt = on_haunt

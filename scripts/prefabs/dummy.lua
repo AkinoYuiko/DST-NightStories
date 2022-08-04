@@ -214,9 +214,7 @@ local master_postinit = function(inst)
     inst.firedamage_history = {}
 
     inst:AddComponent("reader")
-    if inst.components.reader.SetOnReadFn then
-        inst.components.reader:SetOnReadFn(OnReadFn)
-    end
+    inst.components.reader:SetOnReadFn(OnReadFn)
 
     inst:AddComponent("hauntable")
     inst.components.hauntable.onhaunt = onhaunt
