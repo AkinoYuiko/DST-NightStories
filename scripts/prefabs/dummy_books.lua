@@ -1,8 +1,6 @@
 local assets =
 {
     Asset("ANIM", "anim/dummy_books.zip"),
-    Asset("ANIM", "anim/swap_book_harvest.zip"),
-    Asset("ANIM", "anim/swap_book_toggledownfall.zip"),
     Asset("ANIM", "anim/swap_dummy_books.zip"),
 
 }
