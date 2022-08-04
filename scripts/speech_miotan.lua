@@ -1922,7 +1922,7 @@ return {
             -- ACTIVE = "My mind's in a tizzy!",
             -- INACTIVE = "It wants to see me lose my marbles!",
         },
-        -- INSPECTSELF = "What a handsome devil. Hyuyu!",
+        INSPECTSELF = "Beautiful girl. Hyuyu!",
         -- IVY_SNARE = "That seemed like an overreaction.",
         -- JAMMYPRESERVES = "Oh no, it's in my fur.",
         -- JELLYBEAN = "I do not want those in my bellybean!",
@@ -2267,7 +2267,7 @@ return {
         MOONDIAL =
         {
             -- CAVE = "It was so silly to build it down here!",
-            -- GENERIC = "What a handsome devil I see in the water!",
+            GENERIC = "When will be a fullmoon?",
             -- GLASSED = "They certainly are keeping a watchful eye over us, hyuyu!",
             -- NIGHT_FULL = "Hyuyu, I feel a bit loony!",
             -- NIGHT_NEW = "A newest moon!",
@@ -2277,7 +2277,7 @@ return {
         -- MOONGLASS = "In its green sheen I see selene.",
         -- MOONGLASSAXE = "Swing and a chop, all the trees drop!",
         -- MOONGLASS_CHARGED = "I should make haste before they go to waste.",
-        -- MOONGLASS_ROCK = "A handsome devil is reflected back at me! Hyuyu!",
+        MOONGLASS_ROCK = "A beautiful girl is reflected back at me! Hyuyu!",
         -- MOONGLASS_WOBSTER_DEN = "A home made of glass? I think I'll pass.",
         -- MOONROCKCRATER = "It might be an eye, were gems in supply.",
         -- MOONROCKIDOL = "What, pray tell, do you desire?",

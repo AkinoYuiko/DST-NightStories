@@ -524,6 +524,11 @@ msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.ICEHOUND"
 msgid "You wouldn't want to eat an cute girl."
 msgstr "我不好吃的。"
 
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.INSPECTSELF
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.INSPECTSELF"
+msgid "Beautiful girl. Hyuyu!"
+msgstr "是个漂亮的小女孩。哼哼！"
+
 #. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.KILLERBEE.GENERIC
 msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.KILLERBEE.GENERIC"
 msgid "No no no! Don't sting my face!"
@@ -573,6 +578,16 @@ msgstr "下次你还是玩机器人吧 XD。"
 msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.MOLEHAT"
 msgid "It lets me see how other people get hit by charlie."
 msgstr "让我看看哪个小可爱会被查理摸到。"
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.MOONDIAL.GENERIC
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.MOONDIAL.GENERIC"
+msgid "When will be a fullmoon?"
+msgstr "什么时候才是月圆呢？"
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.MOONGLASS_ROCK
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.MOONGLASS_ROCK"
+msgid "A beautiful girl is reflected back at me! Hyuyu!"
+msgstr "倒影里有个漂亮的小女孩！嘿嘿！"
 
 #. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.NIGHTMAREFUEL
 msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.NIGHTMAREFUEL"
