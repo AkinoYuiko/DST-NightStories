@@ -653,7 +653,7 @@ return {
     -- ANNOUNCE_WINCH_CLAW_NO_ITEM = "It's come up with nothing.",
     -- ANNOUNCE_WINTERS_FEAST_BUFF = "Hyuyu, how splendid!",
     -- ANNOUNCE_WINTERS_FEAST_BUFF_OVER = "I'll never lose the impish sparkle in my eye.",
-    -- ANNOUNCE_WORMHOLE = "Hyuyu, how grotesque that was!",
+    ANNOUNCE_WORMHOLE = "Time traveling!",
     -- ANNOUNCE_WORMS = "Something approaches from beneath!",
     -- ANNOUNCE_WX_SCANNER_NEW_FOUND = "only_used_by_wx78",
     -- ANNOUNCE_YOTB_LEARN_NEW_PATTERN = "Hyuyu! A new plan has taken shape!",
