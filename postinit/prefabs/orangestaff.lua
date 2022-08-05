@@ -9,7 +9,7 @@ AddPrefabPostInit("orangestaff", function(inst)
     if onblink then
         local FUELTYPE = "nightmarefuel"
         inst.components.blinkstaff.onblinkfn = function(staff, pos, caster)
-            if caster and caster.prefab == "miotan" and caster.boosted_task ~= nil then
+            if caster and caster:HasTag("mio_boosted_task") then
                 local inv = caster.components.inventory
                 if inv and inv:Has(FUELTYPE, 1) then
                     inv:ConsumeByName(FUELTYPE,1)
