@@ -1966,7 +1966,7 @@ return {
         -- KITCOON_ROCKY = "Oh my friend, why the stone face?",
         -- KITCOON_SAVANNA = "Your stripes can't trick my eyes!",
         -- KITCOON_YOT = "Oh what a date, let's celebrate!",
-        -- KLAUS = "Are we not brethren?",
+        KLAUS = "Kowai!",
         -- KLAUSSACKKEY = "Now where oh where did he leave that stash.",
         -- KLAUS_SACK = "What tasty treats lie within?",
         -- KNIGHT = "A knight in rusted armor!",
