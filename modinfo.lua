@@ -10,19 +10,21 @@ local function zh_en(a, b)
     })
 end
 
-version = "1.35.4"
+version = "1.35.5"
 -- basic info --
 name = zh_en("暗夜故事集", "Night Stories")
 author = zh_en("丁香女子学校", "Civi, Tony, LSSSS")
 changelog = zh_en([[
-- 新增一些文本。
+- 调整橙影背包和黑洞法杖的拾取逻辑。
 
+- 新增一些文本。
 - 移除旧版本的兼容性代码。
 - 修复了一些拼写错误。
 - 达米的书同时适配现版本和测试版。
 ]], [[
-- Add some string texts.
+- Tweak pickup logic for Orange Night Pack and Blackhole Staff.
 
+- Add some string texts.
 - Remove backward compatible codes.
 - Fix a typo with chs translation.
 - Dummy's books are now compatible with both Release and Beta versions.
