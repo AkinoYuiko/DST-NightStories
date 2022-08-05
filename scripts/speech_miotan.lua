@@ -419,7 +419,7 @@ return {
     -- ANNOUNCE_DAMP = "The world is giving me a shower!",
     -- ANNOUNCE_DEERCLOPS = "A massive brute is en route!",
     ANNOUNCE_DESPAWN = "Switch? Switch?! Switch!",
-    -- ANNOUNCE_DETACH_BUFF_ATTACK = "It was all just a prank!",
+    ANNOUNCE_DETACH_BUFF_ATTACK = "Not spicy!",
     ANNOUNCE_DETACH_BUFF_ELECTRICATTACK = "Another zappy dish?",
     -- ANNOUNCE_DETACH_BUFF_MOISTUREIMMUNITY = "Alas and alack, the dampness is back.",
     -- ANNOUNCE_DETACH_BUFF_PLAYERABSORPTION = "That was fun, let's do it again!",
