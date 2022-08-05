@@ -103,7 +103,7 @@ SortAfter("blackholestaff", "greenstaff")
 ---------------------
 
 -- 武神铥头 --
-AddRecipe("battleruinshat", {Ingredient("wathgrithrhat", 1), Ingredient("thulecite", 2)}, TECH.NONE, {builder_tag = "valkyrie"})
+AddRecipe("battleruinshat", {Ingredient("wathgrithrhat", 1), Ingredient("thulecite", 4)}, TECH.NONE, {builder_tag = "valkyrie"})
 SortAfter("battleruinshat", "wathgrithrhat")
 
 -- 仙人掌粉 --
