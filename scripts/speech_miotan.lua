@@ -379,7 +379,7 @@ return {
     ANNOUNCE_ATTACH_BUFF_MOISTUREIMMUNITY = "There will be no wet! Hyuyu!",
     -- ANNOUNCE_ATTACH_BUFF_PLAYERABSORPTION = "I feel just great! Must've been something I ate!",
     ANNOUNCE_ATTACH_BUFF_SLEEPRESISTANCE = "Sleep Resistance Lv.7!",
-    ANNOUNCE_ATTACH_BUFF_WORKEFFECTIVENESS = "Efficiency V",
+    ANNOUNCE_ATTACH_BUFF_WORKEFFECTIVENESS = "\"Efficiency V\"",
     -- ANNOUNCE_BECOMEGHOST = "ooOooooO!",
     -- ANNOUNCE_BEES = "Fiddle dee dee, HERE COMES A BEE!",
     ANNOUNCE_BOOK_MOON_DAYTIME = "It's gonna be fullmoon tonight!",
@@ -2267,7 +2267,7 @@ return {
         MOONDIAL =
         {
             -- CAVE = "It was so silly to build it down here!",
-            GENERIC = "When will be a fullmoon?",
+            GENERIC = "Moon in the water.",
             -- GLASSED = "They certainly are keeping a watchful eye over us, hyuyu!",
             -- NIGHT_FULL = "Hyuyu, I feel a bit loony!",
             -- NIGHT_NEW = "A newest moon!",
