@@ -379,7 +379,7 @@ return {
     ANNOUNCE_ATTACH_BUFF_MOISTUREIMMUNITY = "There will be no wet! Hyuyu!",
     -- ANNOUNCE_ATTACH_BUFF_PLAYERABSORPTION = "I feel just great! Must've been something I ate!",
     ANNOUNCE_ATTACH_BUFF_SLEEPRESISTANCE = "Sleep Resistance Lv.7!",
-    -- ANNOUNCE_ATTACH_BUFF_WORKEFFECTIVENESS = "That was just the thing to give my step a spring!",
+    ANNOUNCE_ATTACH_BUFF_WORKEFFECTIVENESS = "Efficiency V",
     -- ANNOUNCE_BECOMEGHOST = "ooOooooO!",
     -- ANNOUNCE_BEES = "Fiddle dee dee, HERE COMES A BEE!",
     ANNOUNCE_BOOK_MOON_DAYTIME = "It's gonna be fullmoon tonight!",
