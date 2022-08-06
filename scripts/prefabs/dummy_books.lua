@@ -21,7 +21,6 @@ local book_defs =
         read_sanity = -TUNING.SANITY_HUGE,
         peruse_sanity = -TUNING.SANITY_HUGE,
         fx = "fx_book_rain",
-        layer = "",
         fn = function(inst, reader)
             local weather_cmp = TheWorld:HasTag("cave") and TheWorld.net.components.caveweather or TheWorld.net.components.weather
             if TheWorld.state.precipitation ~= "none" then
@@ -56,7 +55,6 @@ local book_defs =
         uses = TUNING.BOOK_USES_LARGE,
         read_sanity = -TUNING.SANITY_LARGER,
         peruse_sanity = -TUNING.SANITY_HUGE,
-        layer = "",
         layer_sound = { frame = 30, sound = "wickerbottom_rework/book_spells/upgraded_horticulture" },
         fn = function(inst, reader)
             local success
@@ -111,6 +109,25 @@ local book_defs =
 }
 
 local function MakeBook(def)
+    local prefabs
+    if def.deps ~= nil then
+        prefabs = {}
+        for i, v in ipairs(def.deps) do
+            table.insert(prefabs, v)
+        end
+    end
+    if def.fx ~= nil then
+        prefabs = prefabs or {}
+        table.insert(prefabs, def.fx)
+    end
+    if def.fx_over ~= nil then
+        prefabs = prefabs or {}
+        table.insert(prefabs, "fx_"..def.fx_over.."_over_book")
+    end
+    if def.fx_under ~= nil then
+        prefabs = prefabs or {}
+        table.insert(prefabs, "fx_"..def.fx_under.."_under_book")
+    end
 
     local function fn()
         local inst = CreateEntity()
@@ -139,22 +156,17 @@ local function MakeBook(def)
 
         -----------------------------------
 
+        inst.def = def
+        inst.swap_build = "swap_dummy_books"
+        inst.swap_prefix = def.name
+
         inst:AddComponent("inspectable")
         inst:AddComponent("book")
-        if inst.components.book.SetOnRead ~= nil then
-            inst.components.book:SetOnRead(def.fn)
-            inst.components.book:SetReadSanity(def.read_sanity)
-            inst.components.book:SetOnPeruse(def.perusefn)
-            inst.components.book:SetPeruseSanity(def.peruse_sanity)
-            inst.components.book:SetFx(def.fx)
-
-            inst.def = def
-            inst.swap_build = "swap_dummy_books"
-            inst.swap_prefix = def.name
-        else
-            inst.skinname = def.name -- reading-book animation
-            inst.components.book.onread = def.fn
-        end
+        inst.components.book:SetOnRead(def.fn)
+        inst.components.book:SetOnPeruse(def.perusefn)
+        inst.components.book:SetReadSanity(def.read_sanity)
+        inst.components.book:SetPeruseSanity(def.peruse_sanity)
+        inst.components.book:SetFx(def.fx)
 
         inst:AddComponent("inventoryitem")
 
@@ -184,6 +196,12 @@ end
 local books = {}
 for i, v in ipairs(book_defs) do
     table.insert(books, MakeBook(v))
+    if v.fx_over ~= nil then
+        v.fx_over_prefab = "fx_"..v.fx_over.."_over_book"
+    end
+    if v.fx_under ~= nil then
+        v.fx_under_prefab = "fx_"..v.fx_under.."_under_book"
+    end
 end
 book_defs = nil
 
