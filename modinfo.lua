@@ -13,7 +13,7 @@ end
 version = "1.35.8"
 -- basic info --
 name = zh_en("暗夜故事集", "Night Stories")
-author = zh_en("丁香女子学校", "Civi, Tony, LSSSS")
+author = zh_en("鸭子乐园", "Azur Circle")
 changelog = zh_en([[
 - 新增一些文本。
 
