@@ -429,7 +429,7 @@ return {
     -- ANNOUNCE_DUSK = "The night soon approaches. Hyuyu!",
     ANNOUNCE_EAT =
     {
-        -- GENERIC = "Mmm! Soul free!",
+        GENERIC = "Mmm! ",
         -- INVALID = "Not even I could eat that.",
         -- PAINFUL = "Ouch! Hyuyu!",
         -- SPOILED = "Blech! At least souls never spoil.",
