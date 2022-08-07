@@ -21,7 +21,6 @@ local function oneaten(food, eater)
             fx.Transform:SetScale(SCALE, SCALE, SCALE)
         end
         eater.SoundEmitter:PlaySound("dontstarve/common/nightmareAddFuel")
-        -- eater:AddDebuff("buff_miosanity", "buff_miosanity")
     end
 end
 
