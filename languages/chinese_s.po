@@ -16,12 +16,12 @@ msgstr ""
 
 #. STRINGS.ACTIONS.BLINK.FUEL
 msgctxt "STRINGS.ACTIONS.BLINK.FUEL"
-msgid "Shadow Telepoof"
+msgid "Shadow Teleproof"
 msgstr "暗影传送"
 
 #. STRINGS.ACTIONS.BLINK_MAP.FUEL
 msgctxt "STRINGS.ACTIONS.BLINK_MAP.FUEL"
-msgid "Shadow Telepoof({uses})"
+msgid "Shadow Teleproof({uses})"
 msgstr "暗影传送({uses})"
 
 #. STRINGS.ACTIONS.CHANGE_TACKLE.CRYSTAL
@@ -304,11 +304,6 @@ msgctxt "STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.WAYTOOMANYBIRDS"
 msgid "The sky is out of birds for now."
 msgstr "天上全是鸟。"
 
-#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_BOOK_MOON_DAYTIME
-msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_BOOK_MOON_DAYTIME"
-msgid "It's gonna be fullmoon tonight!"
-msgstr "今晚将会是满月！"
-
 #. STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.TEACH.CANTLEARN
 msgctxt "STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.TEACH.CANTLEARN"
 msgid "Only AI can learn this knowledge."
@@ -339,6 +334,11 @@ msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_ATTACH_BUFF_WORKEFFECTIVENESS"
 msgid "\"Efficiency V\""
 msgstr "\"效率 V\""
 
+#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_BOOK_MOON_DAYTIME
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_BOOK_MOON_DAYTIME"
+msgid "It's gonna be fullmoon tonight!"
+msgstr "今晚将会是满月！"
+
 #. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_CHARLIE
 msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_CHARLIE"
 msgid "Yaaaada! I'm not a naughty child!"
@@ -362,7 +362,7 @@ msgstr "不辣了！"
 #. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_DETACH_BUFF_ELECTRICATTACK
 msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_DETACH_BUFF_ELECTRICATTACK"
 msgid "Another zappy dish?"
-msgstr ":zap:？"
+msgstr "该电一电了？"
 
 #. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_DETACH_BUFF_WORKEFFECTIVENESS
 msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_DETACH_BUFF_WORKEFFECTIVENESS"
@@ -765,6 +765,11 @@ msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.WEBBER.MURDERER"
 msgid "You wouldn't murder a helpless girl, would you??"
 msgstr "你不会谋杀一个弱小无助的小女孩吧，对不对？"
 
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.WICKERBOTTOM.GHOST
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.WICKERBOTTOM.GHOST"
+msgid "Rest in peace, %s..."
+msgstr "奠..."
+
 #. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.WINONA.MURDERER
 msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.WINONA.MURDERER"
 msgid "Eep! I'm but a helpless girl!"
@@ -946,8 +951,8 @@ msgstr "\"无人肯同我玩...\""
 
 #. STRINGS.CHARACTER_QUOTES.miotan
 msgctxt "STRINGS.CHARACTER_QUOTES.miotan"
-msgid "\"If I could eat nightmare!\""
-msgstr "\"假如我可以吞噬梦魇。\""
+msgid "\"If I could eat nightmare...\""
+msgstr "\"假如我可以吞噬梦魇...\""
 
 #. STRINGS.CHARACTER_SURVIVABILITY.civi
 msgctxt "STRINGS.CHARACTER_SURVIVABILITY.civi"

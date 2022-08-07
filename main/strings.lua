@@ -267,7 +267,7 @@ local strings = {
     CHARACTER_QUOTES =
     {
         civi = "\"Get close to Nightmare!\"",
-        miotan = "\"If I could eat nightmare!\"",
+        miotan = "\"If I could eat nightmare...\"",
         dummy = "\"No one plays with me...\"",
     },
     CHARACTER_BIOS =

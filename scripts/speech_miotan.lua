@@ -429,7 +429,7 @@ return {
     -- ANNOUNCE_DUSK = "The night soon approaches. Hyuyu!",
     ANNOUNCE_EAT =
     {
-        GENERIC = "Mmm! ",
+        GENERIC = "Mmm!",
         -- INVALID = "Not even I could eat that.",
         -- PAINFUL = "Ouch! Hyuyu!",
         -- SPOILED = "Blech! At least souls never spoil.",
@@ -3716,7 +3716,7 @@ return {
             -- ATTACKER = "I'm sorry about the exploding pen gag, hyuyu!",
             -- FIRESTARTER = "You're having too much fun, %s!",
             -- GENERIC = "%s needs to have some fun.",
-            -- GHOST = "Mmm, fresh soul!",
+            GHOST = "Rest in peace, %s...",
             -- MURDERER = "Hyuyu! Please don't kill me!",
             -- REVIVER = "%s wouldn't lose a soul so easily!",
         },
