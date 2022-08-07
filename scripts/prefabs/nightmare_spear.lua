@@ -67,7 +67,7 @@ local function fn()
     -------
 
     inst:AddComponent("fueled")
-    inst.components.fueled.period = 6 * FRAMES
+    inst.components.fueled.period = TUNING.NIGHTMARE_SPEAR_PERIOD
     inst.components.fueled:InitializeFuelLevel(15)
     inst.components.fueled:SetDepletedFn(inst.Remove)
     inst.components.fueled:StartConsuming()

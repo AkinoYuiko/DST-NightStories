@@ -10,7 +10,6 @@ PrefabFiles = {
     "friendshiptotem_buff",
 
     "miotan",
-    "miosanity_buff",
     "lantern_mio_fx",
 
     "dummy",
@@ -34,5 +33,3 @@ GlassicAPI.InitMinimapAtlas("ns_minimap", Assets)
 GlassicAPI.RegisterItemAtlas("ns_inventoryimages", Assets)
 GlassicAPI.RegisterItemAtlas("hud/nightmaretab", Assets)
 GlassicAPI.RegisterItemAtlas("hud/dummy_status_health", Assets)
-
--- table.insert(Assets, Asset("ANIM", "anim/wx78_potato.zip"))

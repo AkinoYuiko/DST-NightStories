@@ -6,7 +6,6 @@ local prefabs = {
 
     blackhole = {
         "shadow_puff",
-        "reticule",
     },
 }
 
@@ -72,7 +71,7 @@ local function pickup(staff, target, pos)
         end
     end
 
-    if caster.components.sanity ~= nil then caster.components.sanity:DoDelta(-TUNING.SANITY_LARGE) end
+    if caster.components.sanity ~= nil then caster.components.sanity:DoDelta(-TUNING.SANITY_LARGER) end
     staff.components.finiteuses:Use(1)
 
 end
