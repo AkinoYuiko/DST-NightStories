@@ -2089,7 +2089,7 @@ return {
         -- LUTEFISK = "It smells real enough.",
         -- MADSCIENCE_LAB = "A place to stew my magic brew.",
         -- MALBATROSS = "It's bad luck to shoot it down, but what do I know? Hyuyu!",
-        -- MALBATROSS_BEAK = "It squawks no more.",
+        MALBATROSS_BEAK = "It quacks no more.",
         -- MALBATROSS_FEATHER = "A feather for me, from the bird of the sea.",
         -- MALBATROSS_FEATHERED_WEAVE = "This fabric tickles, hyuyu.",
         -- MALE_PUPPET = "Greetings and salutations, sir.",
