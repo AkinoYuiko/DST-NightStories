@@ -1749,6 +1749,7 @@ return {
         -- GLASSCUTTER = "Oh, I'm sure I'll have fun with this. Hyuyu!",
         GLASSICCUTTER =
         {
+            MOONGLASS = "The Avalokitasvara of Nanhai.",
         },
         -- GLASSSPIKE = "Sharp and pointy as my tooth!",
         GLOMMER =
