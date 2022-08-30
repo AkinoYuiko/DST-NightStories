@@ -86,7 +86,7 @@ end
 
 local function on_becameghost(inst)
     on_level_change(inst)
-    inst.components.locomotor.runspeed = UNING.WILSON_RUN_SPEED -- max_level = 9
+    inst.components.locomotor.runspeed = TUNING.WILSON_RUN_SPEED -- max_level = 9
 end
 
 local function on_becamehuman(inst)
