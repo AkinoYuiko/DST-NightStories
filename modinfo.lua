@@ -10,12 +10,12 @@ local function zh_en(a, b)
     })
 end
 
-version = "1.35.11"
+version = "1.35.12"
 -- basic info --
 name = zh_en("暗夜故事集", "Night Stories")
 author = zh_en("鸭子乐园", "Azur Circle")
 changelog = zh_en([[
-- 新增一些文本。
+- 调整了部分语言文本。
 
 - 移除旧版本的兼容性代码。
 - 兼容书籍图层修复更新。
@@ -23,7 +23,7 @@ changelog = zh_en([[
 - 修复了一些拼写错误。
 - 达米的书同时适配现版本和测试版。
 ]], [[
-- Add some string texts.
+- Tweak some string texts.
 
 - Now compatible with book layer fix update.
 - Remove backward compatible codes.

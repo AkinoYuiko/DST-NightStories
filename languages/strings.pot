@@ -325,7 +325,7 @@ msgstr ""
 
 #. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_BOOK_MOON_DAYTIME
 msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_BOOK_MOON_DAYTIME"
-msgid "It's gonna be fullmoon tonight!"
+msgid "We'll be able to meet the result tonight!"
 msgstr ""
 
 #. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_CHARLIE

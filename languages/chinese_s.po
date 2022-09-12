@@ -336,8 +336,8 @@ msgstr "\"效率 V\""
 
 #. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_BOOK_MOON_DAYTIME
 msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_BOOK_MOON_DAYTIME"
-msgid "It's gonna be fullmoon tonight!"
-msgstr "今晚将会是满月！"
+msgid "We'll be able to meet the result tonight!"
+msgstr "今晚将见分晓！"
 
 #. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_CHARLIE
 msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_CHARLIE"
