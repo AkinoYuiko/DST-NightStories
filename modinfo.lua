@@ -10,21 +10,23 @@ local function zh_en(a, b)
     })
 end
 
-version = "1.35.12"
+version = "1.35.13"
 -- basic info --
 name = zh_en("暗夜故事集", "Night Stories")
 author = zh_en("鸭子乐园", "Azur Circle")
 changelog = zh_en([[
-- 调整了部分语言文本。
+- 修复隐士肉架皮肤动画错误的问题。
 
+- 调整了部分语言文本。
 - 移除旧版本的兼容性代码。
 - 兼容书籍图层修复更新。
 - 调整橙影背包和黑洞法杖的拾取逻辑。
 - 修复了一些拼写错误。
 - 达米的书同时适配现版本和测试版。
 ]], [[
-- Tweak some string texts.
+- Fix anim issue for skins: Hermit's Meatrack.
 
+- Tweak some string texts.
 - Now compatible with book layer fix update.
 - Remove backward compatible codes.
 - Tweak pickup logic for Orange Night Pack and Blackhole Staff.
