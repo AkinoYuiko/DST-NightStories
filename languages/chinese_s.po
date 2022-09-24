@@ -1318,13 +1318,13 @@ msgstr "一盏很适合露营使用的灯。"
 
 #. STRINGS.SKIN_DESCRIPTIONS.meatrack_hermit_red
 msgctxt "STRINGS.SKIN_DESCRIPTIONS.meatrack_hermit_red"
-msgid "HD meatrack by Hermit."
-msgstr "老妖婆的超清肉架。"
+msgid "Mimic HD meatrack by Hermit."
+msgstr "模仿螃蟹奶奶岛上的肉架。"
 
 #. STRINGS.SKIN_DESCRIPTIONS.meatrack_hermit_white
 msgctxt "STRINGS.SKIN_DESCRIPTIONS.meatrack_hermit_white"
-msgid "HD meatrack by Hermit."
-msgstr "老妖婆的超清肉架。"
+msgid "Mimic HD meatrack by Hermit."
+msgstr "模仿螃蟹奶奶岛上的肉架。"
 
 #. STRINGS.SKIN_DESCRIPTIONS.miotan_classic
 msgctxt "STRINGS.SKIN_DESCRIPTIONS.miotan_classic"

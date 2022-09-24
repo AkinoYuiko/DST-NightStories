@@ -146,8 +146,8 @@ local strings = {
         raincoat_peggy = "Wow! There are lots of Peggy...s!",
 
         dragonflychest_gingerbread = STRINGS.SKIN_DESCRIPTIONS.treasurechest_gingerbread,
-        meatrack_hermit_red = "HD meatrack by Hermit.",
-        meatrack_hermit_white = "HD meatrack by Hermit.",
+        meatrack_hermit_red = "Mimic HD meatrack by Hermit.",
+        meatrack_hermit_white = "Mimic HD meatrack by Hermit.",
         hivehat_pigcrown = "Pig Queen likes it.",
         hivehat_pigcrown_willow = "Pig Queen and Willow like it.",
 
