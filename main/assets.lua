@@ -23,6 +23,8 @@ PrefabFiles = {
     "battleruinshat",
     "portable_wardrobe",
     "chesspiece_headuck",
+    "book_wetness",
+
 }
 
 GlassicAPI.InitCharacterAssets("miotan", "FEMALE", Assets, true)
