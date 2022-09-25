@@ -21,6 +21,7 @@ local book_defs =
         read_sanity = -TUNING.SANITY_HUGE,
         peruse_sanity = -TUNING.SANITY_HUGE,
         fx = "fx_book_rain",
+        fxmount = "fx_book_rain_mount",
         fn = function(inst, reader)
             local weather_cmp = TheWorld:HasTag("cave") and TheWorld.net.components.caveweather or TheWorld.net.components.weather
             if TheWorld.state.precipitation ~= "none" then
@@ -120,13 +121,21 @@ local function MakeBook(def)
         prefabs = prefabs or {}
         table.insert(prefabs, def.fx)
     end
+    if def.fxmount ~= nil then
+        prefabs = prefabs or {}
+        table.insert(prefabs, def.fxmount)
+    end
     if def.fx_over ~= nil then
         prefabs = prefabs or {}
-        table.insert(prefabs, "fx_"..def.fx_over.."_over_book")
+        local fx_over_prefab = "fx_"..def.fx_over.."_over_book"
+        table.insert(prefabs, fx_over_prefab)
+        table.insert(prefabs, fx_over_prefab.."_mount")
     end
     if def.fx_under ~= nil then
         prefabs = prefabs or {}
-        table.insert(prefabs, "fx_"..def.fx_under.."_under_book")
+        local fx_under_prefab = "fx_"..def.fx_under.."_under_book"
+        table.insert(prefabs, fx_under_prefab)
+        table.insert(prefabs, fx_under_prefab.."_mount")
     end
 
     local function fn()
@@ -166,7 +175,7 @@ local function MakeBook(def)
         inst.components.book:SetOnPeruse(def.perusefn)
         inst.components.book:SetReadSanity(def.read_sanity)
         inst.components.book:SetPeruseSanity(def.peruse_sanity)
-        inst.components.book:SetFx(def.fx)
+        inst.components.book:SetFx(def.fx, def.fxmount)
 
         inst:AddComponent("inventoryitem")
 
