@@ -72,6 +72,8 @@ local strings = {
 
         CHESSPIECE_HEADUCK = "Headuck Figure",
         CHESSPIECE_HEADUCK_BUILDER = "Headuck Figure",
+
+        BOOK_WETNESS = "The Wetness",
     },
     RECIPE_DESC =
     {
@@ -96,6 +98,9 @@ local strings = {
         PORTABLE_WARDROBE_ITEM = "Convenient for dressing up a lot.",
 
         CHESSPIECE_HEADUCK_BUILDER = "I feel headache, but a duck.",
+
+        BOOK_WETNESS = "The mystery of weather.",
+
     },
     SKIN_NAMES =
     {
@@ -214,6 +219,8 @@ local strings = {
                 PORTABLE_WARDROBE_ITEM = "Dress up anywhere.",
 
                 CHESSPIECE_HEADUCK = "󰂷",
+                BOOK_WETNESS = "We would be able to see a wet world.",
+
             }
         },
         CIVI = require("speech_civi"),
@@ -235,7 +242,8 @@ local strings = {
         WURT = {
             ANNOUNCE_READ_BOOK = {
                 BOOK_HARVEST = "Oh, breaking crops is awful.",
-                BOOK_TOGGLEDOWNFALL = "I couldn't live without water!"
+                BOOK_TOGGLEDOWNFALL = "I couldn't live without water!",
+                BOOK_WETNESS = "A lot of water... soggy!",
             }
         }
     },

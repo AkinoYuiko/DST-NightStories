@@ -109,6 +109,11 @@ msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.BOOK_TOGGLEDOWNFALL"
 msgid "/toggledownfall"
 msgstr ""
 
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.BOOK_WETNESS
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.BOOK_WETNESS"
+msgid "We would be able to see a wet world."
+msgstr "一个潮湿的世界即将到来。"
+
 #. STRINGS.CHARACTERS.GENERIC.DESCRIBE.CHESSPIECE_HEADUCK
 msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.CHESSPIECE_HEADUCK"
 msgid "󰂷"
@@ -499,6 +504,11 @@ msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.BOOK_ELEMENTAL"
 msgid "Calls little Fire Friends."
 msgstr "召唤小小的火焰朋友。"
 
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.BOOK_WETNESS
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.BOOK_WETNESS"
+msgid "Finally we are able to control the power of rain."
+msgstr "我们终于掌握了雨的力量。"
+
 #. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.BRUSH
 msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.BRUSH"
 msgid "No, my hair hates this."
@@ -825,6 +835,11 @@ msgctxt "STRINGS.CHARACTERS.WURT.ANNOUNCE_READ_BOOK.BOOK_TOGGLEDOWNFALL"
 msgid "I couldn't live without water!"
 msgstr "鱼儿不能离开水生存！"
 
+#. STRINGS.CHARACTERS.WURT.ANNOUNCE_READ_BOOK.BOOK_WETNESS
+msgctxt "STRINGS.CHARACTERS.WURT.ANNOUNCE_READ_BOOK.BOOK_WETNESS"
+msgid "A lot of water... soggy!"
+msgstr "好多水……湿哒哒的！"
+
 #. STRINGS.CHARACTER_ABOUTME.civi
 msgctxt "STRINGS.CHARACTER_ABOUTME.civi"
 msgid ""
@@ -1034,6 +1049,11 @@ msgctxt "STRINGS.NAMES.BOOK_TOGGLEDOWNFALL"
 msgid "Love of Rain"
 msgstr "雨神的眷恋"
 
+#. STRINGS.NAMES.BOOK_WETNESS
+msgctxt "STRINGS.NAMES.BOOK_WETNESS"
+msgid "The Wetness"
+msgstr "THE 潮涌"
+
 #. STRINGS.NAMES.CHESSPIECE_HEADUCK
 msgctxt "STRINGS.NAMES.CHESSPIECE_HEADUCK"
 msgid "Headuck Figure"
@@ -1218,6 +1238,11 @@ msgstr "快速收获！"
 msgctxt "STRINGS.RECIPE_DESC.BOOK_TOGGLEDOWNFALL"
 msgid "/toggledownfall"
 msgstr ""
+
+#. STRINGS.RECIPE_DESC.BOOK_WETNESS
+msgctxt "STRINGS.RECIPE_DESC.BOOK_WETNESS"
+msgid "The mystery of weather."
+msgstr "雨的神秘力量。"
 
 #. STRINGS.RECIPE_DESC.CHESSPIECE_HEADUCK_BUILDER
 msgctxt "STRINGS.RECIPE_DESC.CHESSPIECE_HEADUCK_BUILDER"

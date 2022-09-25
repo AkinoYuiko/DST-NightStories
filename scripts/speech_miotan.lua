@@ -1095,6 +1095,7 @@ return {
         -- BOOK_TEMPERATURE = "Hyuyuyu, mortals have such funny ideas.",
         -- BOOK_TENTACLES = "Imps don't disseminate precious knowledge so carelessly.",
         -- BOOK_WEB = "Oh what a tangled web we read.",
+        BOOK_WETNESS = "Finally we are able to control the power of rain.",
         -- BOOMERANG = "What goes around comes around, they say, they say!",
         BRUSH = "No, my hair hates this.",
         -- BUGNET = "I'll bind those bugs.",
