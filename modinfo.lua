@@ -1,41 +1,19 @@
-local function loc(t)
-    t.zht = t.zht or t.zh
-    return t[locale] or t.en
+local function zheng(a, b)
+    return (locale == "zh" or locale == "zht") and a or b
 end
 
-local function zh_en(a, b)
-    return loc({
-        zh = a,
-        en = b
-    })
-end
-
-version = "1.35.13"
+version = "1.36"
 -- basic info --
-name = zh_en("暗夜故事集", "Night Stories")
-author = zh_en("鸭子乐园", "Azur Circle")
-changelog = zh_en([[
-- 修复隐士肉架皮肤动画错误的问题。
-
-- 调整了部分语言文本。
-- 移除旧版本的兼容性代码。
-- 兼容书籍图层修复更新。
-- 调整橙影背包和黑洞法杖的拾取逻辑。
-- 修复了一些拼写错误。
-- 达米的书同时适配现版本和测试版。
+name = zheng("暗夜故事集", "Night Stories")
+author = zheng("鸭子乐园", "Azur Circle")
+changelog = zheng([[
+- 新道具：【THE 潮涌】。从【实用求雨仪式】和【控温学】升级而来。
 ]], [[
-- Fix anim issue for skins: Hermit's Meatrack.
-
-- Tweak some string texts.
-- Now compatible with book layer fix update.
-- Remove backward compatible codes.
-- Tweak pickup logic for Orange Night Pack and Blackhole Staff.
-- Fix a typo with chs translation.
-- Dummy's books are now compatible with both Release and Beta versions.
+- New Item: The Wetness. A book upgraded from Practical Rain Rituals and Tempering Temperatures.
 ]])
-description = zh_en("版本: ", "Version: ") .. version ..
-    zh_en("\n\n更新内容:\n", "\n\nChangelog:\n") .. changelog .. "\n" ..
-    zh_en("“黑夜将至，你准备好了吗？”", "\"Night is coming, aren't you ready yet?\"")
+description = zheng("版本: ", "Version: ") .. version ..
+    zheng("\n\n更新内容:\n", "\n\nChangelog:\n") .. changelog .. "\n" ..
+    zheng("“黑夜将至，你准备好了吗？”", "\"Night is coming, aren't you ready yet?\"")
 
 priority = 25
 
