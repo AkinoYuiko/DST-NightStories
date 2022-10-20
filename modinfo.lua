@@ -2,13 +2,17 @@ local function zheng(a, b)
     return (locale == "zh" or locale == "zht") and a or b
 end
 
-version = "1.36"
+version = "1.36.1"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Azur Circle")
 changelog = zheng([[
+- 澪的自动充能对懒人护符生效。
+
 - 新道具：【THE 潮涌】。从【实用求雨仪式】和【控温学】升级而来。
 ]], [[
+- Mio can now trigger auto refuel to The Lazy Forager.
+
 - New Item: The Wetness. A book upgraded from Practical Rain Rituals and Tempering Temperatures.
 ]])
 description = zheng("版本: ", "Version: ") .. version ..
