@@ -624,7 +624,7 @@ return {
         -- "You like hearing the sound of my voice almost as much as I do, hyuyu!",
         -- "Let's pull a prank! What do you think the mortals would do if you sprouted into a sheep?",
     },
-    -- ANNOUNCE_THORNS = "It pricked me!",
+    ANNOUNCE_THORNS = "Aiyo! It's pointy!",
     -- ANNOUNCE_THURIBLE_OUT = "Oh dear, I think our truce just expired.",
     -- ANNOUNCE_TICOON_ABANDONED = "I did my best, now I'll rest.",
     -- ANNOUNCE_TICOON_DEAD = "My guide is gone, do I carry on?",

@@ -418,6 +418,11 @@ msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_TALK_TO_PLANTS.1"
 msgid "You know what? We have a EMOJI system mod!"
 msgstr ""
 
+#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_THORNS
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_THORNS"
+msgid "Aiyo! It's pointy!"
+msgstr ""
+
 #. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_TOOMANYBIRDS
 msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_TOOMANYBIRDS"
 msgid "I don't think it's smart to read it now."
