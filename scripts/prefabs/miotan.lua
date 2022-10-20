@@ -124,6 +124,7 @@ local function auto_refuel(inst)
     local finiteuses_table = {
         player = {
             orangestaff     = { trigger = 2, bonus = 2}, -- 橙杖
+            orangeamulet    = { trigger = 50, bonus = 50, cost = 1 } -- 橙符
         }
     }
 
