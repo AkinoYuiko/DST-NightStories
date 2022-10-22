@@ -26,6 +26,7 @@ local postinits =
     "components/spellcaster",
     -- prefabs
     "prefabs/alterguardian_hat_equipped",
+    "prefabs/foodbuffs",
     "prefabs/gems",
     "prefabs/nightmarefuel",
     "prefabs/nightsword",
