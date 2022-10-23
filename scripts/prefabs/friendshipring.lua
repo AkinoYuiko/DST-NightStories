@@ -75,9 +75,7 @@ local function buff_friends(oneatenfn, food, player, buff_self)
     local leader = player.components.leader
     if leader and leader.numfollowers > 0 then
         for follower in pairs(leader.followers) do
-            if follower.components.eater then
-                buff_entities[follower] = true
-            end
+            buff_entities[follower] = true
         end
     end
     for ent in pairs(buff_entities) do

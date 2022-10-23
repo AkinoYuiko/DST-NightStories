@@ -6,22 +6,23 @@ local prefabs = {
 
     blackhole = {
         "shadow_puff",
-        "reticule",
     },
 }
 
 ---------- BLACKHOLE STAFF ----------
+
+local PICKUP_MUST_TAGS = { "_inventoryitem" }
+local PICKUP_CANT_TAGS = {
+    "INLIMBO", "NOCLICK", "irreplaceable", "knockbackdelayinteraction",
+    "minesprung", "mineactive", "catchable",
+    "fire", "spider", "cursed", "paired",
+}
 local function pickup(staff, target, pos)
 
     local caster = staff.components.inventoryitem.owner
     if caster == nil then return end
 
-    local px = 0
-    local py = 0
-    local pz = 0
-    local prange = 4
-    local t_prefab = nil
-
+    local px, py, pz, prange, t_prefab = 0, 0, 0, 4, nil
     if target == nil and pos ~= nil then
         px, py, pz = pos:Get()
     elseif target == nil and pos == nil then
@@ -36,37 +37,41 @@ local function pickup(staff, target, pos)
         return
     end
 
-    local ents = TheSim:FindEntities(px, py, pz, prange,
-                    { "_inventoryitem" },
-                    { "INLIMBO", "NOCLICK", "catchable", "fire", "minesprung", "mineactive" })
+    local ba = caster:GetBufferedAction()
+    local ents = TheSim:FindEntities(px, py, pz, prange, PICKUP_MUST_TAGS, PICKUP_CANT_TAGS)
     --for i=1, #ents do
         for i, v in ipairs(ents) do
-            if v.components.inventoryitem ~= nil and
-                v.components.inventoryitem.canbepickedup and
-                v.components.inventoryitem.cangoincontainer and
-                not v.components.inventoryitem:IsHeld() and ( t_prefab == nil or ( v.prefab == t_prefab ) ) then
-                --local num = v.components.stackable and v.components.stackable.stacksize or 1
-                if caster.components.inventory:CanAcceptCount(v, 40) > 0 then
+        if v.components.container == nil and -- Containers are most likely sorted and placed by the player do not pick them up.
+            v.components.inventoryitem ~= nil and
+            v.components.inventoryitem.canbepickedup and
+            v.components.inventoryitem.cangoincontainer and
+            not v.components.inventoryitem:IsHeld() and
+            (v.components.bait == nil or v.components.bait.trap == nil) and -- Do not steal baits.
+            ( t_prefab == nil or ( v.prefab == t_prefab ) ) and
+            --local num = v.components.stackable and v.components.stackable.stacksize or 1
+            caster.components.inventory:CanAcceptCount(v, 60) > 0 and
+            (ba == nil or (ba.action ~= ACTIONS.PICKUP and ba.action ~= ACTIONS.CHECKTRAP) or ba.target ~= v) then
 
-                local fx = SpawnPrefab("shadow_puff")
-                if fx then fx.Transform:SetPosition(v.Transform:GetWorldPosition()) fx.Transform:SetScale(0.7, 0.7, 0.7) end
-                if v.components.stackable ~= nil then
-                    local num = caster.components.inventory:CanAcceptCount(v, 40)
-                    v = v.components.stackable:Get(num)
-                end
-                --end
+            local fx = SpawnPrefab("shadow_puff")
+            if fx then
+                fx.Transform:SetPosition(v.Transform:GetWorldPosition())
+                fx.Transform:SetScale(0.7, 0.7, 0.7)
+            end
+            if v.components.stackable ~= nil then
+                local num = caster.components.inventory:CanAcceptCount(v, 60)
+                v = v.components.stackable:Get(num)
+            end
+            --end
 
-                if v.components.trap ~= nil and v.components.trap:IsSprung() then
-                    v.components.trap:Harvest(caster)
-                else
-                    caster.components.inventory:GiveItem(v, nil, v:GetPosition())
-                end
-                --return
+            if v.components.trap and v.components.trap:IsSprung() and v.components.trap:HasLoot() then
+                v.components.trap:Harvest(caster)
+            else
+                caster.components.inventory:GiveItem(v, nil, v:GetPosition())
             end
         end
     end
 
-    if caster.components.sanity ~= nil then caster.components.sanity:DoDelta(-30) end
+    if caster.components.sanity ~= nil then caster.components.sanity:DoDelta(-TUNING.SANITY_LARGER) end
     staff.components.finiteuses:Use(1)
 
 end

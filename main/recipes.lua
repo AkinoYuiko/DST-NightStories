@@ -102,6 +102,10 @@ SortAfter("blackholestaff", "greenstaff")
 ------- Other -------
 ---------------------
 
+-- 武神铥头 --
+AddRecipe("battleruinshat", {Ingredient("wathgrithrhat", 1), Ingredient("thulecite", 4)}, TECH.NONE, {builder_tag = "valkyrie"})
+SortAfter("battleruinshat", "wathgrithrhat")
+
 -- 仙人掌粉 --
 AddRecipe("spice_cactus", {Ingredient("cactus_meat", 2), Ingredient("cactus_flower", 1)}, TECH.FOODPROCESSING_ONE, {nounlock = true, numtogive = 2, nochar = true, builder_tag = "professionalchef", no_deconstruction = true})
 SortAfter("spice_cactus", "spice_salt")
@@ -114,6 +118,10 @@ SortAfter("portable_wardrobe_item", "portable_wardrobe_wrap")
 
 -- 鸭子雕像 --
 AddRecipe("chesspiece_headuck_builder", {Ingredient(TECH_INGREDIENT.SCULPTING, 2), Ingredient("rocks", 2)}, TECH.LOST, {nounlock = true, actionstr="SCULPTING", image="chesspiece_headuck.tex"})
+
+-- THE 潮涌 --
+AddRecipe("book_wetness", {Ingredient("book_rain", 1), Ingredient("book_temperature", 1), Ingredient("malbatross_feather", 10)}, TECH.BOOKCRAFT_ONE, {nounlock = true, builder_tag = "reader"})
+SortAfter("book_wetness", "book_rain")
 
 ------------------------------------------------
 -- 防止改配方出问题的一个修复

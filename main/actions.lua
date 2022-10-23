@@ -5,6 +5,16 @@ GLOBAL.setfenv(1, GLOBAL)
 
 local UpvalueUtil = GlassicAPI.UpvalueUtil
 
+local blink_strfn = ACTIONS.BLINK.strfn
+ACTIONS.BLINK.strfn = function(act)
+    local blinkstaff = act.invobject == nil or act.invobject.prefab == "orangestaff"
+    local doer = act.doer
+    if blinkstaff and doer and doer:HasTag("mio_boosted_task") then
+        if doer.replica.inventory:Has("nightmarefuel", 1) then return "FUEL" end
+    end
+    return blink_strfn(act)
+end
+
 NS_ACTIONS = {
     GEMTRADE = Action({priority = 3, mount_valid = true}),
     MIOFUEL = Action({priority = 3, mount_valid = true}),

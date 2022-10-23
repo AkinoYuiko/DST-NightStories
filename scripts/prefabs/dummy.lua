@@ -1,6 +1,6 @@
-local MakePlayerCharacter = require("prefabs/player_common")
-local DummyBadge = require("widgets/dummybadge")
-local NS_Utils = require("ns_utils")
+local MakePlayerCharacter = require "prefabs/player_common"
+local DummyBadge = require "widgets/dummybadge"
+local Utils = require "ns_utils"
 local BUILDER_TAG = "ns_builder_dummy"
 
 local assets = {
@@ -21,6 +21,20 @@ for k, v in pairs(TUNING.GAMEMODE_STARTING_ITEMS) do
     start_inv[string.lower(k)] = v.DUMMY
 end
 prefabs = FlattenTree({ prefabs, start_inv }, true)
+
+local SHADOWCREATURE_MUST_TAGS = { "shadowcreature", "_combat", "locomotor" }
+local SHADOWCREATURE_CANT_TAGS = { "INLIMBO", "notaunt" }
+local function OnReadFn(inst, book)
+    if inst.components.sanity:IsInsane() then
+
+        local x,y,z = inst.Transform:GetWorldPosition()
+        local ents = TheSim:FindEntities(x, y, z, 16, SHADOWCREATURE_MUST_TAGS, SHADOWCREATURE_CANT_TAGS)
+
+        if #ents < TUNING.BOOK_MAX_SHADOWCREATURES then
+            TheWorld.components.shadowcreaturespawner:SpawnShadowCreature(inst)
+        end
+    end
+end
 
 local function calc_sanity_aura(inst, observer)
     if observer.prefab == "dummy" then
@@ -123,9 +137,9 @@ local function on_health_sanity_change(inst, data)
 
     if data and data.cause == "fire" then
         local amount = data.amount and math.abs(data.amount) or 0
-        NS_Utils.TableInsertRate(inst.firedamage_history, amount)
+        Utils.TableInsertRate(inst.firedamage_history, amount)
     end
-    inst._firedamage_rate:set(NS_Utils.GetRateFromTable(inst.firedamage_history))
+    inst._firedamage_rate:set(Utils.GetRateFromTable(inst.firedamage_history))
 end
 
 local function redirect_to_health(inst, amount, overtime, ...)
@@ -202,6 +216,7 @@ local master_postinit = function(inst)
     inst.firedamage_history = {}
 
     inst:AddComponent("reader")
+    inst.components.reader:SetOnReadFn(OnReadFn)
 
     inst:AddComponent("hauntable")
     inst.components.hauntable.onhaunt = onhaunt
@@ -263,14 +278,4 @@ local master_postinit = function(inst)
     end
 end
 
-return MakePlayerCharacter("dummy", prefabs, assets, common_postinit, master_postinit),
-    CreatePrefabSkin("dummy_none", {
-        base_prefab = "dummy",
-        type = "base",
-        assets = assets,
-        skins = { normal_skin = "dummy", ghost_skin = "ghost_dummy_build" },
-        skin_tags = { "DUMMY", "BASE"},
-        bigportrait = { build = "bigportrait/dummy_none.xml", symbol = "dummy_none_oval.tex"},
-        build_name_override = "dummy",
-        rarity = "Character"
-    })
+return MakePlayerCharacter("dummy", prefabs, assets, common_postinit, master_postinit)

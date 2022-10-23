@@ -1,28 +1,25 @@
-local function loc(t)
-    t.zht = t.zht or t.zh
-    return t[locale] or t.en
+local function zheng(a, b)
+    return (locale == "zh" or locale == "zht") and a or b
 end
 
-local function zh_en(a, b)
-    return loc({
-        zh = a,
-        en = b
-    })
-end
-
-version = "1.32"
-version_compatible = "1.31.1"
+version = "1.36.2"
 -- basic info --
-name = zh_en("暗夜故事集", "Night Stories")
-author = zh_en("丁香女子学校", "Civi, Tony, LSSSS")
-changelog = zh_en([[
-- 新增雕塑：真头痛鸭。仅在秋天第一天可以在陶轮制作。
+name = zheng("暗夜故事集", "Night Stories")
+author = zheng("鸭子乐园", "Azur Circle")
+changelog = zheng([[
+- Civi的等级会影响他获得BUFF时的持续时间。
+
+- 澪的自动充能对懒人护符生效。
+- 新道具：【THE 潮涌】。从【实用求雨仪式】和【控温学】升级而来。
 ]], [[
-- New Figure: Headuck. Only available on Autumn 1st.
+- Civi's level now affects duration when he gets debuffed.
+
+- Mio can now trigger auto refuel to The Lazy Forager.
+- New Item: The Wetness. A book upgraded from Practical Rain Rituals and Tempering Temperatures.
 ]])
-description = zh_en("版本: ", "Version: ") .. version ..
-    zh_en("\n\n更新内容:\n", "\n\nChangelog:\n") .. changelog .. "\n" ..
-    zh_en("“黑夜将至，你准备好了吗？”", "\"Night is coming, aren't you ready yet?\"")
+description = zheng("版本: ", "Version: ") .. version ..
+    zheng("\n\n更新内容:\n", "\n\nChangelog:\n") .. changelog .. "\n" ..
+    zheng("“黑夜将至，你准备好了吗？”", "\"Night is coming, aren't you ready yet?\"")
 
 priority = 25
 

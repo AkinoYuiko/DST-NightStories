@@ -4,6 +4,7 @@ local main_files = {
     "strings",
 
     "actions",
+    "clothing",
     "prefabskin",
     "recipes",
     "widgets",
@@ -21,28 +22,22 @@ end
 
 local postinits =
 {
-    components =
-    {
-        "spellcaster",
-    },
-    prefabs =
-    {
-        "alterguardian_hat_equipped",
-        "gems",
-        "nightmarefuel",
-        "nightsword",
-        "pigking",
-        "sculptingtable",
-    },
+    -- components
+    "components/spellcaster",
+    -- prefabs
+    "prefabs/alterguardian_hat_equipped",
+    "prefabs/foodbuffs",
+    "prefabs/gems",
+    "prefabs/nightmarefuel",
+    "prefabs/nightsword",
+    "prefabs/orangestaff",
+    "prefabs/pigking",
+    "prefabs/raincoat",
+    "prefabs/sculptingtable",
+    -- root
     "only_dazui",
     "tools_mutable",
 }
 for index, files in pairs(postinits) do
-    if type(files) == "table" then
-        for _, file in ipairs(files) do
-            modimport("postinit/".. index .. "/" .. file)
-        end
-    else
-        modimport("postinit/".. files)
-    end
+    modimport("postinit/".. files)
 end

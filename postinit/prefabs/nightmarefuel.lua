@@ -13,7 +13,7 @@ end
 
 local SCALE = 0.4
 local function oneaten(food, eater)
-    if eater.StartBoost then
+    if eater.prefab == "miotan" and eater.StartBoost then
         eater:StartBoost(TUNING.LARGE_FUEL)
         local fx = SpawnPrefab("statue_transition")
         if fx then

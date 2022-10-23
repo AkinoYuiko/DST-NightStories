@@ -3,6 +3,16 @@ msgstr ""
 "Application: Dont' Starve\n"
 "POT Version: 2.0\n"
 
+#. STRINGS.ACTIONS.BLINK.FUEL
+msgctxt "STRINGS.ACTIONS.BLINK.FUEL"
+msgid "Shadow Teleproof"
+msgstr ""
+
+#. STRINGS.ACTIONS.BLINK_MAP.FUEL
+msgctxt "STRINGS.ACTIONS.BLINK_MAP.FUEL"
+msgid "Shadow Teleproof({uses})"
+msgstr ""
+
 #. STRINGS.ACTIONS.CHANGE_TACKLE.CRYSTAL
 msgctxt "STRINGS.ACTIONS.CHANGE_TACKLE.CRYSTAL"
 msgid "Boost Sword"
@@ -53,6 +63,11 @@ msgctxt "STRINGS.CHARACTERS.CIVI.ANNOUNCE_QUAKE"
 msgid "Ahhh! Something bad is happening."
 msgstr ""
 
+#. STRINGS.CHARACTERS.CIVI.ANNOUNCE_TRAP_WENT_OFF
+msgctxt "STRINGS.CHARACTERS.CIVI.ANNOUNCE_TRAP_WENT_OFF"
+msgid "Oops 󰂷"
+msgstr ""
+
 #. STRINGS.CHARACTERS.CIVI.DESCRIBE.MOOSE
 msgctxt "STRINGS.CHARACTERS.CIVI.DESCRIBE.MOOSE"
 msgid "󰂡"
@@ -61,6 +76,11 @@ msgstr ""
 #. STRINGS.CHARACTERS.CIVI.DESCRIBE.MOSSLING
 msgctxt "STRINGS.CHARACTERS.CIVI.DESCRIBE.MOSSLING"
 msgid "󰂡"
+msgstr ""
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.BATTLERUINSHAT
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.BATTLERUINSHAT"
+msgid "For The King!"
 msgstr ""
 
 #. STRINGS.CHARACTERS.GENERIC.DESCRIBE.BLACKHOLESTAFF
@@ -76,6 +96,16 @@ msgstr ""
 #. STRINGS.CHARACTERS.GENERIC.DESCRIBE.BOOK_TOGGLEDOWNFALL
 msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.BOOK_TOGGLEDOWNFALL"
 msgid "/toggledownfall"
+msgstr ""
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.BOOK_WETNESS
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.BOOK_WETNESS"
+msgid "We would be able to see a wet world."
+msgstr ""
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.CHESSPIECE_HEADUCK
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.CHESSPIECE_HEADUCK"
+msgid "󰂷"
 msgstr ""
 
 #. STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKAMULET
@@ -198,6 +228,81 @@ msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.SPICE_CACTUS"
 msgid "Make sanity great again."
 msgstr ""
 
+#. STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.ALREADYFULLMOON
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.ALREADYFULLMOON"
+msgid "It's already full-moon today."
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.GENERIC
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.GENERIC"
+msgid "Attempt to call a no value."
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.NOBIRDS
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.NOBIRDS"
+msgid "The birds are not keen on this weather."
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.NOFIRES
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.NOFIRES"
+msgid "There are no fires to put out."
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.NOHARVESTABLE
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.NOHARVESTABLE"
+msgid "There's nothing to harvest."
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.NOHORTICULTURE
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.NOHORTICULTURE"
+msgid "There's nothing to cultivate."
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.NOMOONINCAVES
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.NOMOONINCAVES"
+msgid "The moon can't be affected from this subterranean location."
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.NOSILVICULTURE
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.NOSILVICULTURE"
+msgid "There's nothing to to focus on."
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.NOSLEEPTARGETS
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.NOSLEEPTARGETS"
+msgid "Nothing wants to sleep."
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.NOTENTACLEGROUND
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.NOTENTACLEGROUND"
+msgid "The tentacles would be unable to break the surface here."
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.NOWATERNEARBY
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.NOWATERNEARBY"
+msgid "Fish may only be summoned in close proximity to a body of water."
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.TOOMANYBEES
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.TOOMANYBEES"
+msgid "That would be too many bees."
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.TOOMANYBIRDS
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.TOOMANYBIRDS"
+msgid "It doesn't work as well with this many birds around."
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.WAYTOOMANYBIRDS
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.WAYTOOMANYBIRDS"
+msgid "The sky is out of birds for now."
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.TEACH.CANTLEARN
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.TEACH.CANTLEARN"
+msgid "Only AI can learn this knowledge."
+msgstr ""
+
 #. STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL_GENERIC
 msgctxt "STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL_GENERIC"
 msgid "Attempt to call a nil value."
@@ -208,9 +313,34 @@ msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_ATTACH_BUFF_ELECTRICATTACK"
 msgid "I want some goat!"
 msgstr ""
 
+#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_ATTACH_BUFF_MOISTUREIMMUNITY
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_ATTACH_BUFF_MOISTUREIMMUNITY"
+msgid "There will be no wet! Hyuyu!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_ATTACH_BUFF_SLEEPRESISTANCE
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_ATTACH_BUFF_SLEEPRESISTANCE"
+msgid "Sleep Resistance Lv.7!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_ATTACH_BUFF_WORKEFFECTIVENESS
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_ATTACH_BUFF_WORKEFFECTIVENESS"
+msgid "\"Efficiency V\""
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_BOOK_MOON_DAYTIME
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_BOOK_MOON_DAYTIME"
+msgid "We'll be able to meet the result tonight!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_CHARLIE
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_CHARLIE"
+msgid "Yaaaada! I'm not a naughty child!"
+msgstr ""
+
 #. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_COLD
 msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_COLD"
-msgid "Help, I need some nightmare fuels!"
+msgid "Help, I need some nightmare fuel!"
 msgstr ""
 
 #. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_DESPAWN
@@ -218,9 +348,24 @@ msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_DESPAWN"
 msgid "Switch? Switch?! Switch!"
 msgstr ""
 
+#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_DETACH_BUFF_ATTACK
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_DETACH_BUFF_ATTACK"
+msgid "Not spicy!"
+msgstr ""
+
 #. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_DETACH_BUFF_ELECTRICATTACK
 msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_DETACH_BUFF_ELECTRICATTACK"
 msgid "Another zappy dish?"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_DETACH_BUFF_WORKEFFECTIVENESS
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_DETACH_BUFF_WORKEFFECTIVENESS"
+msgid "All work and no play doesn't suit me. Hyuyu!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_EAT.GENERIC
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_EAT.GENERIC"
+msgid "Mmm!"
 msgstr ""
 
 #. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_EAT.STALE
@@ -248,9 +393,34 @@ msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_INV_FULL"
 msgid "Anyone want some free stuffs?"
 msgstr ""
 
-#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_TALK_TO_PLANTS.5
-msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_TALK_TO_PLANTS.5"
+#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_NODAYSLEEP_CAVE
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_NODAYSLEEP_CAVE"
+msgid "How can a brave girl go sleep when underground?"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_NONIGHTSIESTA
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_NONIGHTSIESTA"
+msgid "How can a brave girl go sleep at night?"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_NONIGHTSIESTA_CAVE
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_NONIGHTSIESTA_CAVE"
+msgid "How can a brave girl go sleep when underground?"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_REVIVED_FROM_CORPSE
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_REVIVED_FROM_CORPSE"
+msgid "I--AM--BACK!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_TALK_TO_PLANTS.1
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_TALK_TO_PLANTS.1"
 msgid "You know what? We have a EMOJI system mod!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_THORNS
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_THORNS"
+msgid "Aiyo! It's pointy!"
 msgstr ""
 
 #. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_TOOMANYBIRDS
@@ -258,9 +428,104 @@ msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_TOOMANYBIRDS"
 msgid "I don't think it's smart to read it now."
 msgstr ""
 
+#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_TOWNPORTALTELEPORT
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_TOWNPORTALTELEPORT"
+msgid "Never fear, the brave Mio is here!"
+msgstr ""
+
 #. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_WAYTOOMANYBIRDS
 msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_WAYTOOMANYBIRDS"
 msgid "I can't see any birds in the sky!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_WET
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_WET"
+msgid "I need some fuel to dry myself away from wet!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_WETTER
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_WETTER"
+msgid "I am the soggiest girl!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_WORMHOLE
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_WORMHOLE"
+msgid "Time traveling!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.COMBAT_QUIT.GENERIC
+msgctxt "STRINGS.CHARACTERS.MIOTAN.COMBAT_QUIT.GENERIC"
+msgid "I am the wimp girl!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.COMBAT_QUIT.SPIDER
+msgctxt "STRINGS.CHARACTERS.MIOTAN.COMBAT_QUIT.SPIDER"
+msgid "I am the wimp girl!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.ALTERGUARDIAN_PHASE2SPIKE
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.ALTERGUARDIAN_PHASE2SPIKE"
+msgid "It can't fence me that easily."
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.ALTERGUARDIAN_PHASE3TRAP
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.ALTERGUARDIAN_PHASE3TRAP"
+msgid "Sleepy stone! I know it. I always know it!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.ARMOR_BRAMBLE
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.ARMOR_BRAMBLE"
+msgid "A great design that protects me from strike!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.ATRIUM_GATE.ON
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.ATRIUM_GATE.ON"
+msgid "Will it send me back home?"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.ATRIUM_KEY
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.ATRIUM_KEY"
+msgid "Will it send me back home?"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.BISHOP_NIGHTMARE
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.BISHOP_NIGHTMARE"
+msgid "Eep! Play nice with me!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.BOOK_ELEMENTAL
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.BOOK_ELEMENTAL"
+msgid "Calls little Fire Friends."
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.BOOK_WETNESS
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.BOOK_WETNESS"
+msgid "Finally we are able to control the power of rain."
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.BRUSH
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.BRUSH"
+msgid "No, my hair hates this."
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.CAVE_ENTRANCE_OPEN.GENERIC
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.CAVE_ENTRANCE_OPEN.GENERIC"
+msgid "No spelunking for this little Mio!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.DRAGONBODYHAT
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.DRAGONBODYHAT"
+msgid "Fire goes away!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.DRAGONFLY
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.DRAGONFLY"
+msgid "Fear me!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.FARM_PLOW_ITEM
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.FARM_PLOW_ITEM"
+msgid "All work and no play makes for an unhappy girl."
 msgstr ""
 
 #. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.HOMESIGN.BURNT
@@ -278,6 +543,56 @@ msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.HOMESIGN.UNWRITTEN"
 msgid "There's no way we don't have a :blpp: here."
 msgstr ""
 
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.ICEHOUND
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.ICEHOUND"
+msgid "You wouldn't want to eat an cute girl."
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.INSPECTSELF
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.INSPECTSELF"
+msgid "Beautiful girl. Hyuyu!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.KILLERBEE.GENERIC
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.KILLERBEE.GENERIC"
+msgid "No no no! Don't sting my face!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.KILLERBEE.HELD
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.KILLERBEE.HELD"
+msgid "Now you are in my hand!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.KLAUS
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.KLAUS"
+msgid "Kowai!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.KNIGHT_NIGHTMARE
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.KNIGHT_NIGHTMARE"
+msgid "Eep! Play nice with me!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.LAVAARENA_ARMOREXTRAHEAVY
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.LAVAARENA_ARMOREXTRAHEAVY"
+msgid "I can barely move my little legs in it!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.LAVAARENA_ARMORLIGHTSPEED
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.LAVAARENA_ARMORLIGHTSPEED"
+msgid "Skittery!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.LAVAARENA_ARMOR_HP
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.LAVAARENA_ARMOR_HP"
+msgid "Fortified!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.LAVAARENA_TIARAFLOWERPETALSHAT
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.LAVAARENA_TIARAFLOWERPETALSHAT"
+msgid "Mio is here to help!"
+msgstr ""
+
 #. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.LUREPLANT
 msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.LUREPLANT"
 msgid "Trash can, or maybe a harvester."
@@ -293,14 +608,39 @@ msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.MOLEHAT"
 msgid "It lets me see how other people get hit by charlie."
 msgstr ""
 
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.MOONDIAL.GENERIC
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.MOONDIAL.GENERIC"
+msgid "Moon in the water."
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.MOONGLASS_ROCK
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.MOONGLASS_ROCK"
+msgid "A beautiful girl is reflected back at me! Hyuyu!"
+msgstr ""
+
 #. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.NIGHTMAREFUEL
 msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.NIGHTMAREFUEL"
 msgid "How I LOVE it!"
 msgstr ""
 
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.OASISLAKE.EMPTY
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.OASISLAKE.EMPTY"
+msgid "Swimming noob is safe today."
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.OASISLAKE.GENERIC
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.OASISLAKE.GENERIC"
+msgid "You see water but I see fireflies."
+msgstr ""
+
 #. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.PANFLUTE
 msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.PANFLUTE"
 msgid "Sleepy time!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.PIGMAN.GUARD
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.PIGMAN.GUARD"
+msgid "You wouldn't hit an cute girl, would you?!"
 msgstr ""
 
 #. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.PLAYER.ATTACKER
@@ -333,9 +673,154 @@ msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.PLAYER.REVIVER"
 msgid "Please don't, we want life giving amulets!"
 msgstr ""
 
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.QUAGMIRE_KEY_PARK
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.QUAGMIRE_KEY_PARK"
+msgid "No gate can stop me!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.QUAGMIRE_SAFE.GENERIC
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.QUAGMIRE_SAFE.GENERIC"
+msgid "None can impede me!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.RESURRECTIONSTATUE.BURNT
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.RESURRECTIONSTATUE.BURNT"
+msgid "Still ali... burnt."
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.RESURRECTIONSTATUE.GENERIC
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.RESURRECTIONSTATUE.GENERIC"
+msgid "Still alive."
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.ROOK_NIGHTMARE
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.ROOK_NIGHTMARE"
+msgid "Eep! Play nice with me!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.ROPE
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.ROPE"
+msgid "I hope it's not for binding me."
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.SADDLE_WAR
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.SADDLE_WAR"
+msgid "King Of War!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.SKELETONHAT
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.SKELETONHAT"
+msgid "Ooohoo, it tickles my little brain!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.STAFFLIGHT
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.STAFFLIGHT"
+msgid "So bright and warm!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.STATUEMAXWELL
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.STATUEMAXWELL"
+msgid "A statue of moving rocks and logs."
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.TELEPORTATO_BASE.LOCKED
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.TELEPORTATO_BASE.LOCKED"
+msgid "Why won't you work?"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.TOPHAT
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.TOPHAT"
+msgid "It looks fit to me!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.TRAILS
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.TRAILS"
+msgid "You wouldn't pummel me, would you?!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.TRAP
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.TRAP"
+msgid "I'm very patient."
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.UMBRELLA
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.UMBRELLA"
+msgid "No soggy on this fine day!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.WANDA.MURDERER
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.WANDA.MURDERER"
+msgid "You wouldn't kill an beautiful girl in the prime of her life, would you?"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.WARGLET
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.WARGLET"
+msgid "You wouldn't want to eat me!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.WATHGRITHR.GENERIC
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.WATHGRITHR.GENERIC"
+msgid "%s, which of your myths mentions nightmares?"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.WEBBER.MURDERER
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.WEBBER.MURDERER"
+msgid "You wouldn't murder a helpless girl, would you??"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.WICKERBOTTOM.GHOST
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.WICKERBOTTOM.GHOST"
+msgid "Rest in peace, %s..."
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.WINONA.MURDERER
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.WINONA.MURDERER"
+msgid "Eep! I'm but a helpless girl!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.WONKEY.MURDERER
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.WONKEY.MURDERER"
+msgid "angri! We should get along!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.WURT.MURDERER
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.WURT.MURDERER"
+msgid "Surely we can sort this out, nightmare to shrimp?"
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.WX78.MURDERER
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.WX78.MURDERER"
+msgid "Don't kill the poor girl!"
+msgstr ""
+
 #. STRINGS.CHARACTERS.MIOTAN.DESCRIBE_TOODARK
 msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE_TOODARK"
 msgid "What is that?"
+msgstr ""
+
+#. STRINGS.CHARACTERS.WAXWELL.ACTIONFAIL.READ.NOHARVESTABLE
+msgctxt "STRINGS.CHARACTERS.WAXWELL.ACTIONFAIL.READ.NOHARVESTABLE"
+msgid "Kidding? Nothing to harvest!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.WICKERBOTTOM.ACTIONFAIL.READ.NOHARVESTABLE
+msgctxt "STRINGS.CHARACTERS.WICKERBOTTOM.ACTIONFAIL.READ.NOHARVESTABLE"
+msgid "Oh, I don't think there are things to harvest."
+msgstr ""
+
+#. STRINGS.CHARACTERS.WURT.ANNOUNCE_READ_BOOK.BOOK_HARVEST
+msgctxt "STRINGS.CHARACTERS.WURT.ANNOUNCE_READ_BOOK.BOOK_HARVEST"
+msgid "Oh, breaking crops is awful."
+msgstr ""
+
+#. STRINGS.CHARACTERS.WURT.ANNOUNCE_READ_BOOK.BOOK_TOGGLEDOWNFALL
+msgctxt "STRINGS.CHARACTERS.WURT.ANNOUNCE_READ_BOOK.BOOK_TOGGLEDOWNFALL"
+msgid "I couldn't live without water!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.WURT.ANNOUNCE_READ_BOOK.BOOK_WETNESS
+msgctxt "STRINGS.CHARACTERS.WURT.ANNOUNCE_READ_BOOK.BOOK_WETNESS"
+msgid "A lot of water... soggy!"
 msgstr ""
 
 #. STRINGS.CHARACTER_ABOUTME.civi
@@ -363,6 +848,11 @@ msgctxt "STRINGS.CHARACTER_BIOS.civi.1.title"
 msgid "Birthday"
 msgstr ""
 
+#. STRINGS.CHARACTER_BIOS.civi.2.desc
+msgctxt "STRINGS.CHARACTER_BIOS.civi.2.desc"
+msgid "Lv.0 - Bone Bouillon\nLv.1 - Meatballs\nLv.2 - Volt Goat Chaud-Froid"
+msgstr ""
+
 #. STRINGS.CHARACTER_BIOS.civi.2.title
 msgctxt "STRINGS.CHARACTER_BIOS.civi.2.title"
 msgid "Favorite Food"
@@ -376,6 +866,11 @@ msgstr ""
 #. STRINGS.CHARACTER_BIOS.dummy.1.title
 msgctxt "STRINGS.CHARACTER_BIOS.dummy.1.title"
 msgid "Birthday"
+msgstr ""
+
+#. STRINGS.CHARACTER_BIOS.dummy.2.desc
+msgctxt "STRINGS.CHARACTER_BIOS.dummy.2.desc"
+msgid "Grim Galette"
 msgstr ""
 
 #. STRINGS.CHARACTER_BIOS.dummy.2.title
@@ -445,7 +940,22 @@ msgstr ""
 
 #. STRINGS.CHARACTER_QUOTES.miotan
 msgctxt "STRINGS.CHARACTER_QUOTES.miotan"
-msgid "\"If I could eat nightmare!\""
+msgid "\"If I could eat nightmare...\""
+msgstr ""
+
+#. STRINGS.CHARACTER_SURVIVABILITY.civi
+msgctxt "STRINGS.CHARACTER_SURVIVABILITY.civi"
+msgid "Slim"
+msgstr ""
+
+#. STRINGS.CHARACTER_SURVIVABILITY.dummy
+msgctxt "STRINGS.CHARACTER_SURVIVABILITY.dummy"
+msgid "None"
+msgstr ""
+
+#. STRINGS.CHARACTER_SURVIVABILITY.miotan
+msgctxt "STRINGS.CHARACTER_SURVIVABILITY.miotan"
+msgid "Grim"
 msgstr ""
 
 #. STRINGS.CHARACTER_TITLES.civi
@@ -483,6 +993,11 @@ msgctxt "STRINGS.CIVI_LEVELS.FEEL_LIGHT"
 msgid "I felt the light."
 msgstr ""
 
+#. STRINGS.NAMES.BATTLERUINSHAT
+msgctxt "STRINGS.NAMES.BATTLERUINSHAT"
+msgid "Battle Crown"
+msgstr ""
+
 #. STRINGS.NAMES.BLACKHOLESTAFF
 msgctxt "STRINGS.NAMES.BLACKHOLESTAFF"
 msgid "Blackhole Staff"
@@ -496,6 +1011,11 @@ msgstr ""
 #. STRINGS.NAMES.BOOK_TOGGLEDOWNFALL
 msgctxt "STRINGS.NAMES.BOOK_TOGGLEDOWNFALL"
 msgid "Love of Rain"
+msgstr ""
+
+#. STRINGS.NAMES.BOOK_WETNESS
+msgctxt "STRINGS.NAMES.BOOK_WETNESS"
+msgid "The Wetness"
 msgstr ""
 
 #. STRINGS.NAMES.CHESSPIECE_HEADUCK
@@ -658,6 +1178,11 @@ msgctxt "STRINGS.NAMES.SPICE_CACTUS_FOOD"
 msgid "Cactus {food}"
 msgstr ""
 
+#. STRINGS.RECIPE_DESC.BATTLERUINSHAT
+msgctxt "STRINGS.RECIPE_DESC.BATTLERUINSHAT"
+msgid "Complete with ancient force field!"
+msgstr ""
+
 #. STRINGS.RECIPE_DESC.BLACKHOLESTAFF
 msgctxt "STRINGS.RECIPE_DESC.BLACKHOLESTAFF"
 msgid "Absorb everything!"
@@ -678,9 +1203,14 @@ msgctxt "STRINGS.RECIPE_DESC.BOOK_TOGGLEDOWNFALL"
 msgid "/toggledownfall"
 msgstr ""
 
+#. STRINGS.RECIPE_DESC.BOOK_WETNESS
+msgctxt "STRINGS.RECIPE_DESC.BOOK_WETNESS"
+msgid "The mystery of weather."
+msgstr ""
+
 #. STRINGS.RECIPE_DESC.CHESSPIECE_HEADUCK_BUILDER
 msgctxt "STRINGS.RECIPE_DESC.CHESSPIECE_HEADUCK_BUILDER"
-msgid "You feel headache, but a duck."
+msgid "I feel headache, but a duck."
 msgstr ""
 
 #. STRINGS.RECIPE_DESC.DARKCRYSTAL
@@ -728,14 +1258,59 @@ msgctxt "STRINGS.RECIPE_DESC.SPICE_CACTUS"
 msgid "Make sanity great again."
 msgstr ""
 
+#. STRINGS.SKIN_DESCRIPTIONS.alterguardianhat_finger
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.alterguardianhat_finger"
+msgid "It's completely an emoji joke."
+msgstr ""
+
+#. STRINGS.SKIN_DESCRIPTIONS.armorskeleton_none
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.armorskeleton_none"
+msgid "Only clever people can see it."
+msgstr ""
+
 #. STRINGS.SKIN_DESCRIPTIONS.civi_none
 msgctxt "STRINGS.SKIN_DESCRIPTIONS.civi_none"
 msgid "Civi can control magic, turning lights into darks, or turning darks into lights."
 msgstr ""
 
+#. STRINGS.SKIN_DESCRIPTIONS.dragonflychest_gingerbread
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.dragonflychest_gingerbread"
+msgid "Don't be fooled... it's completely inedible."
+msgstr ""
+
 #. STRINGS.SKIN_DESCRIPTIONS.dummy_none
 msgctxt "STRINGS.SKIN_DESCRIPTIONS.dummy_none"
 msgid "Another girl comes from nightmare's world."
+msgstr ""
+
+#. STRINGS.SKIN_DESCRIPTIONS.eyebrellahat_peggy
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.eyebrellahat_peggy"
+msgid "Wow! It's Peggy!"
+msgstr ""
+
+#. STRINGS.SKIN_DESCRIPTIONS.hivehat_pigcrown
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.hivehat_pigcrown"
+msgid "Pig Queen likes it."
+msgstr ""
+
+#. STRINGS.SKIN_DESCRIPTIONS.hivehat_pigcrown_willow
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.hivehat_pigcrown_willow"
+msgid "Pig Queen and Willow like it."
+msgstr ""
+
+#. STRINGS.SKIN_DESCRIPTIONS.lantern_mio
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.lantern_mio"
+msgid "A lamp that is fit for camping."
+msgstr ""
+
+#. STRINGS.SKIN_DESCRIPTIONS.meatrack_hermit_red
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.meatrack_hermit_red"
+msgid "Mimic HD meatrack by Hermit."
+msgstr ""
+
+#. STRINGS.SKIN_DESCRIPTIONS.meatrack_hermit_white
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.meatrack_hermit_white"
+msgid "Mimic HD meatrack by Hermit."
 msgstr ""
 
 #. STRINGS.SKIN_DESCRIPTIONS.miotan_classic
@@ -746,6 +1321,21 @@ msgstr ""
 #. STRINGS.SKIN_DESCRIPTIONS.miotan_none
 msgctxt "STRINGS.SKIN_DESCRIPTIONS.miotan_none"
 msgid "Mio cames from another world, where nightmare is everywhere."
+msgstr ""
+
+#. STRINGS.SKIN_DESCRIPTIONS.nightsword_lotus
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.nightsword_lotus"
+msgid "She's back."
+msgstr ""
+
+#. STRINGS.SKIN_DESCRIPTIONS.raincoat_peggy
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.raincoat_peggy"
+msgid "Wow! There are lots of Peggy...s!"
+msgstr ""
+
+#. STRINGS.SKIN_DESCRIPTIONS.skeletonhat_glass
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.skeletonhat_glass"
+msgid "Indiana Jones and the Kingdom of the Crystal Skull XD."
 msgstr ""
 
 #. STRINGS.SKIN_DESCRIPTIONS.wx78_potato
@@ -760,12 +1350,17 @@ msgstr ""
 
 #. STRINGS.SKIN_NAMES.armorskeleton_none
 msgctxt "STRINGS.SKIN_NAMES.armorskeleton_none"
-msgid "Emperor's Formal"
+msgid "Emperor's New Clothes"
 msgstr ""
 
 #. STRINGS.SKIN_NAMES.civi_none
 msgctxt "STRINGS.SKIN_NAMES.civi_none"
 msgid "Civi"
+msgstr ""
+
+#. STRINGS.SKIN_NAMES.dragonflychest_gingerbread
+msgctxt "STRINGS.SKIN_NAMES.dragonflychest_gingerbread"
+msgid "Gingerbread Chest"
 msgstr ""
 
 #. STRINGS.SKIN_NAMES.dummy_none
@@ -776,11 +1371,6 @@ msgstr ""
 #. STRINGS.SKIN_NAMES.eyebrellahat_peggy
 msgctxt "STRINGS.SKIN_NAMES.eyebrellahat_peggy"
 msgid "Peggy's Eyebrella"
-msgstr ""
-
-#. STRINGS.SKIN_NAMES.greenamulet_heart
-msgctxt "STRINGS.SKIN_NAMES.greenamulet_heart"
-msgid "Green Heart"
 msgstr ""
 
 #. STRINGS.SKIN_NAMES.hivehat_pigcrown
@@ -838,9 +1428,9 @@ msgctxt "STRINGS.SKIN_NAMES.wx78_potato"
 msgid "Crop"
 msgstr ""
 
-#. STRINGS.SKIN_NAMES.yellowamulet_heart
-msgctxt "STRINGS.SKIN_NAMES.yellowamulet_heart"
-msgid "Glowing Heart"
+#. STRINGS.SKIN_TAG_CATEGORIES.COLLECTION.PEGGY
+msgctxt "STRINGS.SKIN_TAG_CATEGORIES.COLLECTION.PEGGY"
+msgid "Peggy Collection"
 msgstr ""
 
 #. STRINGS.UI.CRAFTING.RECIPEACTION.SOULSPLIT

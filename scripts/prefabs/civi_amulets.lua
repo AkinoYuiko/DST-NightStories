@@ -1,13 +1,13 @@
+local Utils = require "ns_utils"
 local assets =
 {
     Asset( "ANIM", "anim/civi_amulets.zip"),
     Asset( "ANIM", "anim/torso_civiamulets.zip"),
 }
 
-local get_aura_rate = require("nsutils/get_player_aura")
 local function onupdate_light(inst, owner)
     if owner.components.sanity then
-        owner.components.sanity.neg_aura_modifiers:SetModifier(inst, get_aura_rate(owner), "lightamulet")
+        owner.components.sanity.neg_aura_modifiers:SetModifier(inst, Utils.GetAuraRate(owner), "lightamulet")
     end
 end
 
