@@ -4,20 +4,22 @@ local Utils = require "ns_utils"
 local BUILDER_TAG = "ns_builder_dummy"
 
 local assets = {
-    Asset( "SCRIPT", "scripts/prefabs/player_common.lua" ),
+    Asset("SCRIPT", "scripts/prefabs/player_common.lua"),
+    Asset("SOUND", "sound/dummy.fsb"),
 
-    Asset( "ANIM", "anim/dummy.zip" ),
-    Asset( "ANIM", "anim/ghost_dummy_build.zip" ),
+    Asset("ANIM", "anim/dummy.zip"),
+    Asset("ANIM", "anim/ghost_dummy_build.zip"),
 }
 
 local prefabs = {
     "nightmarefuel"
 }
+
 local start_inv = {}
+
 for k, v in pairs(TUNING.GAMEMODE_STARTING_ITEMS) do
     start_inv[string.lower(k)] = v.DUMMY
 end
-
 prefabs = FlattenTree({ prefabs, start_inv }, true)
 
 local SHADOWCREATURE_MUST_TAGS = { "shadowcreature", "_combat", "locomotor" }
@@ -185,11 +187,9 @@ local function on_debuff_added(inst, name, ...)
 end
 
 local common_postinit = function(inst)
-    inst.soundsname = "willow"
     inst:AddTag(BUILDER_TAG)
     inst:AddTag("insomniac")
     inst:AddTag("reader")
-    inst:AddTag("mime")
     inst:AddTag("nightstorychar")
     inst:AddTag("nightmare_twins")
     -- Minimap icon
@@ -208,6 +208,8 @@ end
 -- This initializes for the host only
 local master_postinit = function(inst)
     inst.starting_inventory = start_inv[TheNet:GetServerGameMode()] or start_inv.default
+
+    inst.talker_path_override = "nightstories/characters/"
 
     inst.customidleanim = "idle_wortox"
 

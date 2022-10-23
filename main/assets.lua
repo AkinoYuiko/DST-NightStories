@@ -1,4 +1,6 @@
-Assets = {}
+Assets = {
+    Asset("SOUNDPACKAGE", "sound/nightstories.fev"),
+}
 PrefabFiles = {
     "civi",
     "civi_crystal",
