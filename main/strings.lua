@@ -306,6 +306,8 @@ local strings = {
 
 GlassicAPI.MergeStringsToGLOBAL(strings)
 GlassicAPI.MergeStringsToGLOBAL(require("speech_wortox"), STRINGS.CHARACTERS.MIOTAN, true)
+GlassicAPI.MergeStringsToGLOBAL(require("speech_wilson"), STRINGS.CHARACTERS.CIVI, true)
+STRINGS.CHARACTERS.DUMMY = STRINGS.CHARACTERS.MIOTAN -- Use mio's quote for now
 GlassicAPI.MergeTranslationFromPO(MODROOT.."languages")
 
 local function MergeCharacterSpeech(char, source)
