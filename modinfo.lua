@@ -2,20 +2,14 @@ local function zheng(a, b)
     return (locale == "zh" or locale == "zht") and a or b
 end
 
-version = "1.36.2"
+version = "1.37.0"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Azur Circle")
 changelog = zheng([[
-- Civi的等级会影响他获得BUFF时的持续时间。
-
-- 澪的自动充能对懒人护符生效。
-- 新道具：【THE 潮涌】。从【实用求雨仪式】和【控温学】升级而来。
+- 添加角色声音
 ]], [[
-- Civi's level now affects duration when he gets debuffed.
-
-- Mio can now trigger auto refuel to The Lazy Forager.
-- New Item: The Wetness. A book upgraded from Practical Rain Rituals and Tempering Temperatures.
+- Add character sound
 ]])
 description = zheng("版本: ", "Version: ") .. version ..
     zheng("\n\n更新内容:\n", "\n\nChangelog:\n") .. changelog .. "\n" ..
