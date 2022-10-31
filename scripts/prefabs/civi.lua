@@ -3,6 +3,7 @@ local BUILDER_TAG = "ns_builder_civi"
 
 local assets = {
     Asset( "SCRIPT", "scripts/prefabs/player_common.lua"),
+    Asset("SOUND", "sound/civi.fsb"),
 
     Asset( "ANIM", "anim/civi.zip" ),
     Asset( "ANIM", "anim/ghost_civi_build.zip" ),
@@ -94,9 +95,6 @@ local function on_becamehuman(inst)
 end
 -- This initializes for both clients and the host
 local common_postinit = function(inst)
-    -- choose which sounds this character will play
-    inst.soundsname = "wendy"
-
     inst:AddTag("nightstorychar")
     inst:AddTag(BUILDER_TAG)
 
@@ -106,6 +104,8 @@ end
 -- This initializes for the host only
 local master_postinit = function(inst)
     inst.starting_inventory = start_inv[TheNet:GetServerGameMode()] or start_inv.default
+
+    inst.talker_path_override = "nightstories/characters/"
 
     inst.level = 0
 
