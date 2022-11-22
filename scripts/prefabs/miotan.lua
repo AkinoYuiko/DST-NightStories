@@ -106,6 +106,8 @@ local function auto_refuel(inst)
             purpleamulet    = { trigger = 1 }, -- 紫符
             blueamulet      = { trigger = 1 }, -- 冰符
 
+            tophat_magician = { trigger = 1 }, -- 老麦魔术帽
+
             nightpack       = { trigger = 1 }, -- 影背包 in Night Stories
             darkamulet      = { trigger = 1 }, -- 黑暗护符 in Night Stories
             lightamulet     = { trigger = 1 }, -- 光明护符 in Night Stories
