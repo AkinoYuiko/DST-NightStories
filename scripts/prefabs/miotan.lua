@@ -39,11 +39,7 @@ end
 local FUELTYPE = "nightmarefuel"
 local function set_moisture(table)
     for _, v in pairs(table) do
-        if (v.prefab == FUELTYPE or
-            (v.components.equippable and v.components.equippable:IsEquipped()))
-                and v.components.inventoryitem
-                and v.components.inventoryitem:IsWet()
-                then
+        if (v.components.equippable and v.components.equippable:IsEquipped()) and (v.components.inventoryitem and v.components.inventoryitem:IsWet()) then
             v.components.inventoryitemmoisture:SetMoisture(0)
         end
     end
