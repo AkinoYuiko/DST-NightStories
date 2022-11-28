@@ -221,6 +221,11 @@ local function MakeHat(name)
     local function battleruins()
         local inst = simple(ruins_custom_init)
 
+        inst:AddTag("shadow_item")
+
+        --shadowlevel (from shadowlevel component) added to pristine state for optimization
+        inst:AddTag("shadowlevel")
+
         if not TheWorld.ismastersim then
             return inst
         end
@@ -233,6 +238,9 @@ local function MakeHat(name)
 
         inst.components.equippable:SetOnEquip(ruins_onequip)
         inst.components.equippable:SetOnUnequip(ruins_onunequip)
+
+        inst:AddComponent("shadowlevel")
+        inst.components.shadowlevel:SetDefaultLevel(TUNING.NIGHTSWORD_SHADOW_LEVEL)
 
         MakeHauntableLaunch(inst)
 
