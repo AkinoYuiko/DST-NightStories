@@ -24,7 +24,7 @@ local book_defs =
         fxmount = "fx_book_rain_mount",
         fn = function(inst, reader)
             local weather_cmp = TheWorld:HasTag("cave") and TheWorld.net.components.caveweather or TheWorld.net.components.weather
-            if TheWorld.state.precipitation ~= "none" then
+            if TheWorld.state.precipitation ~= "none" or TheWorld.state.islandisraining then
                 TheWorld:PushEvent("ms_forceprecipitation_island", false)
                 TheWorld:PushEvent("ms_forceprecipitation", false)
                 local _moistureceil = UpvalueUtil.GetUpvalue(weather_cmp.OnUpdate, "_moistureceil") or UpvalueUtil.GetUpvalue(weather_cmp.OnUpdate, "_moistureceil_island")
