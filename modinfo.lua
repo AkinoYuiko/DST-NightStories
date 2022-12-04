@@ -2,7 +2,7 @@ local function zheng(a, b)
     return (locale == "zh" or locale == "zht") and a or b
 end
 
-version = "1.37.3.1"
+version = "1.37.3.2"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Azur Circle")
