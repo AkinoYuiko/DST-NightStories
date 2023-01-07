@@ -2,22 +2,22 @@ local function zheng(a, b)
     return (locale == "zh" or locale == "zht") and a or b
 end
 
-version = "1.37.4"
+version = "1.37.5"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Azur Circle")
 changelog = zheng([[
-- 降低角色音量
+- 调整了部分语言文本。
 
+- 降低角色音量。
 - 战斗皇冠兼容麦斯威尔更新。
-
 - 澪的自动充能对魔术师高礼帽有效。
 - 添加角色声音。
 ]], [[
-- Descease character sound volume
+- Slightly tweak some string texts.
 
+- Descease character sound volume.
 - Make Battle Crown compatible with Maxwell Update.
-
 - Auto Refuel now works for Magician's Top Hat.
 - Add character sound.
 ]])
