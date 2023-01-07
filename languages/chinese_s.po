@@ -972,17 +972,17 @@ msgstr "澪"
 #. STRINGS.CHARACTER_QUOTES.civi
 msgctxt "STRINGS.CHARACTER_QUOTES.civi"
 msgid "\"Get close to Nightmare!\""
-msgstr "\"使你更接近光明!\""
+msgstr "“更接近光明!”"
 
 #. STRINGS.CHARACTER_QUOTES.dummy
 msgctxt "STRINGS.CHARACTER_QUOTES.dummy"
 msgid "\"No one plays with me...\""
-msgstr "\"无人肯同我玩...\""
+msgstr "“无人肯同我玩...”"
 
 #. STRINGS.CHARACTER_QUOTES.miotan
 msgctxt "STRINGS.CHARACTER_QUOTES.miotan"
 msgid "\"If I could eat nightmare...\""
-msgstr "\"假如我可以吞噬梦魇...\""
+msgstr "“假如我可以吞噬梦魇...”"
 
 #. STRINGS.CHARACTER_SURVIVABILITY.civi
 msgctxt "STRINGS.CHARACTER_SURVIVABILITY.civi"
