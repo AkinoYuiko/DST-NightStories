@@ -262,15 +262,33 @@ local StateFns = {
         end
     end,
 
-    fuel = function(inst, owner)
+    nightmare = function(inst, owner)
         if not inst:HasTag("nofuelsocket") then
             inst:AddTag("nofuelsocket")
         end
         if inst.components.fueled == nil then
             inst:AddComponent("fueled")
             inst.components.fueled.fueltype = FUELTYPE.NIGHTMARE
-            inst.components.fueled:InitializeFuelLevel(300)
-            inst.components.fueled:SetPercent(0.6)
+            inst.components.fueled:InitializeFuelLevel(360)
+            inst.components.fueled:SetPercent(0.5)
+            inst.components.fueled:SetDepletedFn(nofuel)
+            inst.components.fueled:SetUpdateFn(onfuelupdate)
+            inst.components.fueled:SetFirstPeriod(TUNING.TURNON_FUELED_CONSUMPTION, TUNING.TURNON_FULL_FUELED_CONSUMPTION)
+            inst.components.fueled.accepting = true
+
+            inst.components.fueled:StartConsuming()
+        end
+    end,
+
+    horror = function(inst, owner)
+        if not inst:HasTag("nofuelsocket") then
+            inst:AddTag("nofuelsocket")
+        end
+        if inst.components.fueled == nil then
+            inst:AddComponent("fueled")
+            inst.components.fueled.fueltype = FUELTYPE.NIGHTMARE
+            inst.components.fueled:InitializeFuelLevel(360)
+            inst.components.fueled:SetPercent(1)
             inst.components.fueled:SetDepletedFn(nofuel)
             inst.components.fueled:SetUpdateFn(onfuelupdate)
             inst.components.fueled:SetFirstPeriod(TUNING.TURNON_FUELED_CONSUMPTION, TUNING.TURNON_FULL_FUELED_CONSUMPTION)

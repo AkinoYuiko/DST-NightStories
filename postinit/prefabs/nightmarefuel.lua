@@ -1,20 +1,27 @@
 local AddPrefabPostInit = AddPrefabPostInit
 GLOBAL.setfenv(1, GLOBAL)
 
-FOODTYPE.NIGHTFUEL = "NIGHTFUEL"
+local foodvalue =
+{
+    health = 10,
+    sanity = 10,
+    hunger = 15,
+}
+
+FOODTYPE.NIGHTMAREFUEL = "NIGHTMAREFUEL"
 local Eater = require("components/eater")
 function Eater:SetCanEatNightmareFuel()
-    table.insert(self.preferseating, FOODTYPE.NIGHTFUEL)
-    table.insert(self.caneat, FOODTYPE.NIGHTFUEL)
-    if not self.inst:HasTag(FOODTYPE.NIGHTFUEL.."_eater") then
-        self.inst:AddTag(FOODTYPE.NIGHTFUEL.."_eater")
+    table.insert(self.preferseating, FOODTYPE.NIGHTMAREFUEL)
+    table.insert(self.caneat, FOODTYPE.NIGHTMAREFUEL)
+    if not self.inst:HasTag(FOODTYPE.NIGHTMAREFUEL.."_eater") then
+        self.inst:AddTag(FOODTYPE.NIGHTMAREFUEL.."_eater")
     end
 end
 
 local SCALE = 0.4
 local function oneaten(food, eater)
     if eater.prefab == "miotan" and eater.StartBoost then
-        eater:StartBoost(TUNING.LARGE_FUEL)
+        eater:StartBoost(food.components.fuel.fuelvalue)
         local fx = SpawnPrefab("statue_transition")
         if fx then
             fx.entity:SetParent(eater.entity)
@@ -27,10 +34,24 @@ end
 AddPrefabPostInit("nightmarefuel", function(inst)
     if not TheWorld.ismastersim then return end
     inst:AddComponent("edible")
-    inst.components.edible.healthvalue = 10
-    inst.components.edible.sanityvalue = 10
-    inst.components.edible.hungervalue = 15
-    inst.components.edible.foodtype = FOODTYPE.NIGHTFUEL
+    inst.components.edible.healthvalue = foodvalue.health
+    inst.components.edible.sanityvalue = foodvalue.sanity
+    inst.components.edible.hungervalue = foodvalue.hunger
+    inst.components.edible.foodtype = FOODTYPE.NIGHTMAREFUEL
+    inst.components.edible:SetOnEatenFn(oneaten)
+
+    inst:AddComponent("fuelpocketwatch")
+end)
+
+-- if not Prefabs["horrorfuel"] then return end
+
+AddPrefabPostInit("horrorfuel", function(inst)
+    if not TheWorld.ismastersim then return end
+    inst:AddComponent("edible")
+    inst.components.edible.healthvalue = foodvalue.health * 2
+    inst.components.edible.sanityvalue = foodvalue.sanity * 2
+    inst.components.edible.hungervalue = foodvalue.hunger * 2
+    inst.components.edible.foodtype = FOODTYPE.NIGHTMAREFUEL
     inst.components.edible:SetOnEatenFn(oneaten)
 
     inst:AddComponent("fuelpocketwatch")

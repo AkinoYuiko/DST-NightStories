@@ -9,6 +9,7 @@ local assets = {
 }
 
 local prefabs = {
+    "horrorfuel",
     "nightmarefuel",
     "pandorachest_reset",
     "statue_transition",
@@ -36,7 +37,12 @@ local function on_read_fn(inst, book)
     end
 end
 
-local FUELTYPE = "nightmarefuel"
+local FUELMULT =
+{
+    nightmarefuel = 1,
+    horrorfuel = 2,
+}
+
 local function set_moisture(table)
     for _, v in pairs(table) do
         if (v.components.equippable and v.components.equippable:IsEquipped()) and (v.components.inventoryitem and v.components.inventoryitem:IsWet()) then
@@ -45,19 +51,9 @@ local function set_moisture(table)
     end
 end
 
-local function find_nightmarefuel(item)
-    return item.prefab == FUELTYPE
-end
-
 local function dry_equipment(inst)
     local inv = inst.components.inventory
     if not inv then return end
-
-    for _, item in ipairs(inv:FindItems(find_nightmarefuel)) do
-        if item.components.inventoryitem and item.components.inventoryitem:IsWet() then
-            item.components.inventoryitemmoisture:SetMoisture(0)
-        end
-    end
 
     local eslots = inv.equipslots
     if eslots then set_moisture(eslots) end
@@ -71,12 +67,16 @@ local function dry_equipment(inst)
     end
 end
 
-local function check_has_item(inst, item, mult)
-    local amount = mult or 1
-    if item == nil then return end
+local function check_fuel(inst, count)
+    local amount = count or 1
     local inv = inst.components.inventory
     local inv_boat = inst.components.sailor and inst.components.sailor:GetBoat() and inst.components.sailor:GetBoat().components.container
-    return (inv and inv:Has(item, amount)) or (inv_boat and inv_boat:Has(item, amount))
+
+    if (inv and inv:Has("nightmarefuel", amount)) or (inv_boat and inv_boat:Has("nightmarefuel", amount)) then
+        return "nightmarefuel", FUELMULT["nightmarefuel"]
+    elseif (inv and inv:Has("horrorfuel", amount)) or (inv_boat and inv_boat:Has("horrorfuel", amount)) then
+        return "horrorfuel", FUELMULT["horrorfuel"]
+    end
 end
 
 local function consume_item(inst, item, mult)
@@ -137,24 +137,26 @@ local function auto_refuel(inst)
                 local data = fueled_table[source][target.prefab]
                 local bonus = data.bonus or 1
                 local fueled = target.components.fueled
-                if fueled and fueled:GetPercent() + TUNING.LARGE_FUEL / fueled.maxfuel * data.trigger * fueled.bonusmult <= 1 and
-                    check_has_item(inst, FUELTYPE, data.cost)
-                then
-                    is_fx_true = true
-                    fueled:DoDelta(TUNING.LARGE_FUEL * bonus * fueled.bonusmult)
-                    consume_item(inst, FUELTYPE, data.cost)
-                    if fueled.ontakefuelfn then fueled.ontakefuelfn(target) end
+                local fuel, fuelmult = check_fuel(inst, data.cost)
+                if fuel and fuelmult then
+                    if fueled and fueled:GetPercent() + TUNING.LARGE_FUEL / fueled.maxfuel * fuelmult * data.trigger * fueled.bonusmult <= 1 then
+                        is_fx_true = true
+                        fueled:DoDelta(TUNING.LARGE_FUEL * bonus * fueled.bonusmult * fuelmult )
+                        consume_item(inst, fuel, data.cost)
+                        if fueled.ontakefuelfn then fueled.ontakefuelfn(target) end
+                    end
                 end
             elseif finiteuses_table[source] and finiteuses_table[source][target.prefab] then
                 local data = finiteuses_table[source][target.prefab]
                 local bonus = data.bonus or 1
                 local finiteuses = target.components.finiteuses
-                if finiteuses and finiteuses:GetUses() + data.trigger <= finiteuses.total and
-                    check_has_item(inst, FUELTYPE, data.cost)
-                then
-                    is_fx_true = true
-                    finiteuses:Use(-bonus)
-                    consume_item(inst, FUELTYPE, data.cost)
+                local fuel, fuelmult = check_fuel(inst, data.cost)
+                if fuel and fuelmult then
+                    if finiteuses and finiteuses:GetUses() + data.trigger * fuelmult <= finiteuses.total then
+                        is_fx_true = true
+                        finiteuses:Use(- bonus * fuelmult)
+                        consume_item(inst, data.cost)
+                    end
                 end
             end
         end
@@ -242,9 +244,10 @@ local function on_becameghost(inst)
 end
 
 local function on_death(inst)
+    local deathprefab = inst.boost_time > 0 and "horrorfuel" or "nightmarefuel"
     if inst.death_task == nil then
         inst.death_task = inst:DoTaskInTime(2, function(inst)
-            SpawnPrefab(FUELTYPE).Transform:SetPosition(inst:GetPosition():Get())
+            SpawnPrefab(deathprefab).Transform:SetPosition(inst:GetPosition():Get())
             inst.death_task:Cancel()
             inst.death_task = nil
         end)

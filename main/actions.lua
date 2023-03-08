@@ -37,7 +37,8 @@ NS_ACTIONS.MIOFUEL.stroverridefn = function(act)
 end
 
 local GEM_MAP = {
-    nightmarefuel = "fuel",
+    horrorfuel = "horror",
+    nightmarefuel = "nightmare",
     redgem = "red",
     bluegem = "blue",
     purplegem = "purple",
@@ -220,8 +221,10 @@ NS_ACTIONS.FUELPOCKETWATCH.fn = function(act)
     local fuel = act.doer.components.inventory:RemoveItem(act.invobject)
     if fuel then
         if fuel_pocket_watch(act.target, act.doer) then
+            if fuel.prefab ~= "horrorfuel" then
+                act.doer.components.health:DoDelta(TUNING.HEALTH_FUELPOCKETWATCH_COST, nil, "fuelpocketwatch", true, nil, true)
+            end
             fuel:Remove()
-            act.doer.components.health:DoDelta(TUNING.HEALTH_FUELPOCKETWATCH_COST, nil, "fuelpocketwatch", true, nil, true)
             return true
         else
             act.doer.components.inventory:GiveItem(fuel)
@@ -242,7 +245,7 @@ local function fuel_action_testfn(target)
 end
 
 AddComponentAction("USEITEM", "fuel", function(inst, doer, target, actions, right)
-    if doer.prefab == "miotan" and inst.prefab == "nightmarefuel" then
+    if doer.prefab == "miotan" and (inst.prefab == "nightmarefuel" or inst.prefab == "horrorfuel") then
         if fuel_action_testfn(target)
             and (
                 not (doer.replica.rider and doer.replica.rider:IsRiding())
@@ -255,7 +258,7 @@ AddComponentAction("USEITEM", "fuel", function(inst, doer, target, actions, righ
 end)
 
 AddComponentAction("USEITEM", "fuelpocketwatch", function(inst, doer, target, actions, right)
-    if right and inst.prefab =="nightmarefuel" and doer:HasTag("nightmare_twins")
+    if right and (inst.prefab == "nightmarefuel" or inst.prefab == "horrorfuel") and doer:HasTag("nightmare_twins")
     and target.prefab == "pocketwatch_recall" and target:HasTag("pocketwatch_inactive") and not target:HasTag("recall_unmarked")
     then
         table.insert(actions, NS_ACTIONS.FUELPOCKETWATCH)
@@ -264,7 +267,7 @@ end)
 
 AddComponentAction("USEITEM", "inventoryitem", function(inst, doer, target, actions, right)
     if right and target.prefab == "nightpack" and inst:HasTag("nightpackgem") and not doer.replica.rider:IsRiding()
-    and not (target:HasTag("nofuelsocket") and inst.prefab == "nightmarefuel")
+    and not (target:HasTag("nofuelsocket") and (inst.prefab == "nightmarefuel" or inst.prefab == "horrorfuel"))
     then
         table.insert(actions, NS_ACTIONS.GEMTRADE)
     end

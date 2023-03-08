@@ -6,6 +6,7 @@ local function add_tag(inst)
 end
 
 local NIGHTPACK_GEMS = {
+    "horrorfuel",
     "nightmarefuel",
     "redgem",
     "bluegem",
