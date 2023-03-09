@@ -244,7 +244,7 @@ local function on_becameghost(inst)
 end
 
 local function on_death(inst)
-    local deathprefab = inst.boost_time > 0 and "horrorfuel" or "nightmarefuel"
+    local deathprefab = ( inst.boost_time > 0 and Prefabs["horrorfuel"] ~= nil ) and "horrorfuel" or "nightmarefuel"
     if inst.death_task == nil then
         inst.death_task = inst:DoTaskInTime(2, function(inst)
             SpawnPrefab(deathprefab).Transform:SetPosition(inst:GetPosition():Get())

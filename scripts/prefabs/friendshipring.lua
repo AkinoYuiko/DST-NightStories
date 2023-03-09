@@ -57,11 +57,12 @@ local totemfn =
             player:AddDebuff("buff_friendshiptotem_dark", "buff_friendshiptotem_dark")
         end
     end,
+
     light = function(inst)
         local x, y, z = inst.Transform:GetWorldPosition()
         local players = FindPlayersInRange(x, y, z, TUNING.TOTEM_BUFF_RANGE, true)
         for _, player in pairs(players) do
-            player:AddDebuff("buff_friendshiptotem_dark", "buff_friendshiptotem_dark")
+            player:AddDebuff("buff_friendshiptotem_light", "buff_friendshiptotem_light")
         end
     end
 }
