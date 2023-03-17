@@ -20,7 +20,8 @@ local STATE_NAMES = {
     "opal",
     "dark",     -- Deprecated
     "light",    -- Deprecated
-    "fuel",
+    "nightmare",
+    "horror",
 }
 local STATE_IDS = table.invert(STATE_NAMES)
 
@@ -402,7 +403,7 @@ local function OnGemTrade(inst, gemtype, isdummy, from_renew)
     if fx ~= nil then
         fx.entity:SetParent((owner or inst).entity)
     end
-    if gemtype == "fuel" then
+    if gemtype == "nightmare" or gemtype == "horror" then
         inst.SoundEmitter:PlaySound("dontstarve/common/nightmareAddFuel")
     else
         inst.SoundEmitter:PlaySound("dontstarve/common/telebase_gemplace")
