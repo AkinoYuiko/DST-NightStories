@@ -23,6 +23,12 @@ local STATE_NAMES = {
     "nightmare",
     "horror",
 }
+
+local FUEL_STATES = {
+    nightmare = true,
+    horror = true,
+}
+
 local STATE_IDS = table.invert(STATE_NAMES)
 
 local function SetState(inst, state)
@@ -297,16 +303,17 @@ local StateFns = {
 
             inst.components.fueled:StartConsuming()
         end
-    end
+    end,
 
 }
 
 local function ApplyState(inst, override_state)
     local state = override_state or inst:GetState()
     if not state then print("error: trying to apply nil state on", inst) return end
-    inst.components.inventoryitem:ChangeImageName("nightpack_"..state)
-    inst.MiniMapEntity:SetIcon("nightpack_"..state..".tex")
-    inst.AnimState:PlayAnimation(state)
+    local image_state = FUEL_STATES[state] and "fuel" or state
+    inst.components.inventoryitem:ChangeImageName("nightpack_" .. image_state)
+    inst.MiniMapEntity:SetIcon("nightpack_"..image_state..".tex")
+    inst.AnimState:PlayAnimation(image_state)
 
     local state_fn = StateFns[state]
     if state_fn then
