@@ -2,6 +2,12 @@ Assets = {
     Asset("SOUNDPACKAGE", "sound/nightstories.fev"),
 }
 PrefabFiles = {
+    "glassicflash",
+    "glassiccutter",
+    "glassicskins",
+    "moonglasshammer",
+    "moonglasspickaxe",
+
     "civi",
     "civi_crystal",
     "civi_amulets",     -- nouse anymore
@@ -37,3 +43,5 @@ GlassicAPI.InitMinimapAtlas("ns_minimap", Assets)
 GlassicAPI.RegisterItemAtlas("ns_inventoryimages", Assets)
 GlassicAPI.RegisterItemAtlas("hud/nightmaretab", Assets)
 GlassicAPI.RegisterItemAtlas("hud/dummy_status_health", Assets)
+
+GlassicAPI.RegisterItemAtlas("ginventoryimages", Assets)

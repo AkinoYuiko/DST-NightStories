@@ -1,6 +1,8 @@
 local AddAction = AddAction
 local AddComponentAction = AddComponentAction
+local AddStategraphState = AddStategraphState
 local AddStategraphActionHandler = AddStategraphActionHandler
+local AddPrefabPostInit = AddPrefabPostInit
 GLOBAL.setfenv(1, GLOBAL)
 
 local UpvalueUtil = GlassicAPI.UpvalueUtil
@@ -22,6 +24,7 @@ NS_ACTIONS = {
     NIGHTSWORD = Action({priority = 2, mount_valid = true}),
     FUELPOCKETWATCH = Action({priority = 3, rmb = true}),
     FRIENDSHIPTOTEM = Action({priority = 3, rmb = true}),
+    GLASSCUTTEREX = Action({mount_valid=true}),
 }
 
 NS_ACTIONS.GEMTRADE.str = STRINGS.ACTIONS.GIVE.SOCKET
@@ -29,11 +32,18 @@ NS_ACTIONS.NIGHTSWITCH.str = STRINGS.ACTIONS.USEITEM
 NS_ACTIONS.NIGHTSWORD.str = STRINGS.ACTIONS.GIVE.SOCKET
 NS_ACTIONS.FRIENDSHIPTOTEM.str = STRINGS.ACTIONS.GIVE.SOCKET
 NS_ACTIONS.FUELPOCKETWATCH.str = STRINGS.ACTIONS.FUELPOCKETWATCH
+NS_ACTIONS.GLASSCUTTEREX.str = STRINGS.ACTIONS.GIVE.SOCKET
 
 NS_ACTIONS.MIOFUEL.stroverridefn = function(act)
     if act.invobject then
         return act.invobject:GetIsWet() and STRINGS.ACTIONS.ADDWETFUEL or STRINGS.ACTIONS.ADDFUEL
     end
+end
+
+local change_tackle_strfn = ACTIONS.CHANGE_TACKLE.strfn
+ACTIONS.CHANGE_TACKLE.strfn = function(act)
+    local item = (act.invobject and act.invobject:IsValid()) and act.invobject
+    return change_tackle_strfn(act) or ((item and item:HasTag("reloaditem_fragment")) and "FRAG") or nil
 end
 
 local GEM_MAP = {
@@ -232,6 +242,31 @@ NS_ACTIONS.FUELPOCKETWATCH.fn = function(act)
     end
 end
 
+NS_ACTIONS.GLASSCUTTEREX.fn = function(act)
+    local doer = act.doer
+    local target = act.target
+    if doer.components.inventory then
+        local item = doer.components.inventory:RemoveItem(act.invobject)
+
+        -- add efx
+        local ent = target.components.inventoryitem and target.components.inventoryitem.owner or target
+        if ent then
+            local _fx = SpawnPrefab("explode_reskin")
+            _fx.Transform:SetPosition(ent.Transform:GetWorldPosition())
+            _fx.scale_override = 1.7 * ent:GetPhysicsRadius(0.5)
+        end
+
+        -- do mutate
+        if item.prefab == "alterguardianhatshard" and target.prefab == "glasscutter" then
+            item:Remove()
+            if target.components.halloweenmoonmutable then
+                target.components.halloweenmoonmutable:Mutate("glassiccutter")
+            end
+            return true
+        end
+    end
+end
+
 ---------------------------------------------------------------------
 ----------------------- COMPONENT ACTIONS ---------------------------
 ---------------------------------------------------------------------
@@ -338,11 +373,52 @@ AddComponentAction("INVENTORY", "wardrobe", function(inst, doer, actions, right)
     end
 end)
 
+
+AddComponentAction("USEITEM", "glasssocket", function(inst, doer, target, actions, right)
+    if target.prefab == "glasscutter" then
+        table.insert(actions, ACTIONS.GLASSCUTTEREX)
+    end
+end)
+
+local glassic_state = State({
+    name = "doglassicbuild",
+
+    onenter = function(inst)
+        inst.sg:GoToState("dolongaction", 2)
+    end
+})
+
 for _, sg in ipairs({"wilson", "wilson_client"}) do
+    AddStategraphState(sg, glassic_state)
+
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.MIOFUEL, "doshortaction"))
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.GEMTRADE, "doshortaction"))
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.NIGHTSWORD, "doshortaction"))
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.NIGHTSWITCH, "domediumaction"))
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.FUELPOCKETWATCH, "pocketwatch_warpback_pre"))
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.FRIENDSHIPTOTEM, "doshortaction"))
+    AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.GLASSCUTTEREX, "doglassicbuild"))
+end
+
+--------------------------------------------------------------------------------
+
+AddPrefabPostInit("glasscutter", function(inst)
+    if not TheWorld.ismastersim then return end
+    inst:AddComponent("halloweenmoonmutable")
+end)
+
+AddPrefabPostInit("alterguardianhatshard", function(inst)
+    if not TheWorld.ismastersim then return end
+    inst:AddComponent("glasssocket")
+end)
+
+-- right click to set ammo --
+local function set_reloaditem_fragment(inst)
+    inst:AddTag("reloaditem_fragment")
+    if not TheWorld.ismastersim then return end
+    inst:AddComponent("reloaditem")
+end
+
+for prefab in pairs(TUNING.GLASSICCUTTER.ACCEPTING_PREFABS) do
+    AddPrefabPostInit(prefab, set_reloaditem_fragment)
 end

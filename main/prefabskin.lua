@@ -100,6 +100,56 @@ nightsword_clear_fn = function(inst)
     return unpack({ _nightsword_clear_fn(inst) })
 end
 
+
+-- [[ Glassic Item Skins ]] --
+-- Moon Glass Axe
+if not rawget(_G, "moonglassaxe_clear_fn") then
+    moonglassaxe_clear_fn = function(inst) basic_clear_fn(inst, "glassaxe") end
+    GlassicAPI.SetOnequipSkinItem("moonglassaxe", {"swap_object", "swap_glassaxe", "swap_glassaxe"})
+end
+
+-- Moon Glass Hammer
+moonglasshammer_clear_fn = function(inst) basic_clear_fn(inst, "glasshammer") end
+
+-- Moon Glass Pickaxe
+moonglasspickaxe_clear_fn = function(inst) basic_clear_fn(inst, "glasspickaxe") end
+
+-- Glassic Cutter
+glassiccutter_init_fn = function(inst, build_name)
+    if not TheWorld.ismastersim then return end
+    inst.AnimState:SetSkin(build_name, "glassiccutter")
+    inst:OnChangeImage()
+end
+glassiccutter_clear_fn = function(inst)
+    inst.AnimState:SetBuild("glassiccutter")
+    inst:OnChangeImage()
+end
+
+local function onpercentusedchange(inst, data)
+    if data.percent <= 0 and not inst:HasTag("usesdepleted") then
+        local owner = inst.components.inventoryitem.owner
+        if owner then
+            owner.components.talker:Say(STRINGS.ANNOUNCE_GLASSIC_BROKE, nil, true)
+        end
+    end
+end
+
+glassic_orangestaff_init_fn = function(inst)
+    local build_name = inst:GetSkinBuild()
+    orangestaff_init_fn(inst, build_name)
+
+    inst:ListenForEvent("percentusedchange", onpercentusedchange)
+end
+
+local _orangestaff_clear_fn = orangestaff_clear_fn
+orangestaff_clear_fn = function(inst)
+    local ret = { _orangestaff_clear_fn(inst) }
+
+    inst:RemoveEventCallback("percentusedchange", onpercentusedchange)
+
+    return unpack(ret)
+end
+
 GlassicAPI.SkinHandler.AddModSkins({
     -- Civi
     civi = {
@@ -148,5 +198,13 @@ GlassicAPI.SkinHandler.AddModSkins({
     alterguardianhat = { "alterguardianhat_finger" },
     wx78 = {
         "wx78_potato",
-    }
+    },
+    -- Glassic items
+    cane = { "cane_glass" },
+    glassiccutter = { "glassiccutter_dream" },
+    goldenaxe = { "goldenaxe_victorian" },
+    moonglassaxe = { "moonglassaxe_northern", "moonglassaxe_victorian" },
+    moonglasspickaxe = { "moonglasspickaxe_northern" },
+    moonglasshammer = { "moonglasshammer_forge" },
+    orangestaff = { "orangestaff_glass" },
 })

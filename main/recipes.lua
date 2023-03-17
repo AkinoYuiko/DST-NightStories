@@ -123,6 +123,15 @@ AddRecipe("chesspiece_headuck_builder", {Ingredient(TECH_INGREDIENT.SCULPTING, 2
 AddRecipe("book_wetness", {Ingredient("book_rain", 1), Ingredient("book_temperature", 1), Ingredient("malbatross_feather", 10)}, TECH.BOOKCRAFT_ONE, {nounlock = true, builder_tag = "reader"})
 SortAfter("book_wetness", "book_rain")
 
+-- 月镐和月锤 --
+AddRecipe("moonglasspickaxe", {Ingredient("twigs", 2), Ingredient("moonglass", 3)}, TECH.CELESTIAL_THREE, {nomods = true, nounlock = true, description = "moonglassaxe"})
+SortAfter("moonglasspickaxe", "moonglassaxe")
+
+AddRecipe("moonglasshammer", {Ingredient("twigs", 3), Ingredient("cutgrass", 6), Ingredient("moonglass", 3)}, TECH.CELESTIAL_THREE, {nomods = true, nounlock = true, description = "moonglassaxe"})
+SortAfter("moonglasshammer", "moonglasspickaxe")
+
+AddDeconstructRecipe("glassiccutter", {Ingredient("glasscutter", 1)})
+
 ------------------------------------------------
 -- 防止改配方出问题的一个修复
 ------------------------------------------------

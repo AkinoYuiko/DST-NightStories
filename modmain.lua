@@ -5,6 +5,7 @@ local main_files = {
 
     "actions",
     "clothing",
+    "containerwidgets",
     "prefabskin",
     "recipes",
     "widgets",

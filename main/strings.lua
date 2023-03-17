@@ -2,6 +2,8 @@ local MODROOT = MODROOT
 GLOBAL.setfenv(1, GLOBAL)
 
 local strings = {
+    ANNOUNCE_GLASSIC_BROKE = "WEAPON BREAK!",
+
     ACTIONS =
     {
         BLINK = {
@@ -10,11 +12,12 @@ local strings = {
         BLINK_MAP = {
             FUEL = "Shadow Teleproof({uses})",
         },
-        FUELPOCKETWATCH = "Hack",
         CHANGE_TACKLE =
         {
             CRYSTAL = "Boost Sword",
+            FRAG = "Set Fragment",
         },
+        FUELPOCKETWATCH = "Hack",
     },
     UI = {
         CRAFTING =
@@ -76,6 +79,15 @@ local strings = {
         CHESSPIECE_HEADUCK_BUILDER = "Headuck Figure",
 
         BOOK_WETNESS = "The Wetness",
+        -- Glassic items
+
+        GLASSICCUTTER = "Glassic Cutter",
+        GLASSICCUTTER_MOONGLASS = "Gestalt Cutter",
+        GLASSICCUTTER_MOONROCK = "Frost Cutter",
+        GLASSICCUTTER_DREAM = "Musou Isshin",
+        GLASSICCUTTER_FROST = "Frost Mourning",
+        MOONGLASSHAMMER = "Moon Glass Hammer",
+        MOONGLASSPICKAXE = "Moon Glass Pickaxe",
     },
     RECIPE_DESC =
     {
@@ -130,6 +142,16 @@ local strings = {
 
         eyebrellahat_peggy = "Peggy's Eyebrella",
         alterguardianhat_finger = "Crossed Fingers",
+
+        -- Glassic items
+        cane_glass = "Gane",
+        glassiccutter_dream = "Musou Isshin",
+        goldenaxe_victorian = "Fanciful Luxury Axe",
+        moonglassaxe_northern = "Moon Nordic Axe",
+        moonglassaxe_victorian = "Fanciful Moon Glass Axe",
+        moonglasshammer_forge = "Moon Forging Hammer",
+        moonglasspickaxe_northern = "Moon Nordic Pickaxe",
+        orangestaff_glass = "Rod Of Glass",
     },
     SKIN_DESCRIPTIONS =
     {
@@ -160,6 +182,16 @@ local strings = {
 
         eyebrellahat_peggy = "Wow! It's Peggy!",
         alterguardianhat_finger = "It's completely an emoji joke.",
+
+        -- Glassic items
+        cane_glass = "It's a glassic joke, I assume.",
+        glassiccutter_dream = "Inazuma shines eternal!",
+        goldenaxe_victorian = "An elegantly engraved golden axe.",
+        moonglassaxe_northern = "A resplendent moon axe, its design reminiscent of days of yore.",
+        moonglassaxe_victorian = "An elegantly engraved moon axe.",
+        moonglasshammer_forge = STRINGS.SKIN_DESCRIPTIONS.hammer_forge,
+        moonglasspickaxe_northern = "A resplendent moon pickaxe, its design reminiscent of days of yore.",
+        orangestaff_glass = "It's a glassic joke, I assume.",
     },
     SKIN_TAG_CATEGORIES =
     {
@@ -181,6 +213,17 @@ local strings = {
         {
             DESCRIBE =
             {
+                GLASSICCUTTER =
+                {
+                    GENERIC = "Sharp but probably get broken.",
+                    MOONGLASS = "Sword with gestalt flash.",
+                    MOONROCK = "Sword with frost energy.",
+                    DREAM = "Inazuma shines eternal!",
+                    FROST = "ao?",
+                },
+                MOONGLASSHAMMER = STRINGS.CHARACTERS.GENERIC.DESCRIBE.MOONGLASSAXE,
+                MOONGLASSPICKAXE = STRINGS.CHARACTERS.GENERIC.DESCRIBE.MOONGLASSAXE,
+
                 NIGHTPACK =
                 {
                     GENERIC = "It seems to need some glowing materials.",
@@ -311,6 +354,14 @@ GlassicAPI.MergeStringsToGLOBAL(require("speech_wortox"), STRINGS.CHARACTERS.MIO
 GlassicAPI.MergeStringsToGLOBAL(require("speech_wilson"), STRINGS.CHARACTERS.CIVI, true)
 STRINGS.CHARACTERS.DUMMY = STRINGS.CHARACTERS.MIOTAN -- Use mio's quote for now
 GlassicAPI.MergeTranslationFromPO(MODROOT.."languages")
+
+-- Wait for DST Fixed
+scheduler:ExecuteInTime(0, function()
+    local STRCODE_TALKER = rawget(_G, "STRCODE_TALKER")
+    if STRCODE_TALKER then
+        STRCODE_TALKER[STRINGS.ANNOUNCE_GLASSIC_BROKE] = "ANNOUNCE_GLASSIC_BROKE"
+    end
+end)
 
 local function MergeCharacterSpeech(char, source)
     local file, errormsg = io.open(MODROOT .. "scripts/speech_"..char..".lua", "w")
