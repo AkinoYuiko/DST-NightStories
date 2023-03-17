@@ -2,13 +2,17 @@ local function zheng(a, b)
     return (locale == "zh" or locale == "zht") and a or b
 end
 
-version = "1.39"
+version = "1.39.1"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Azur Circle")
 changelog = zheng([[
+- 修复一处拼写错误。
+
 - 从【Glassic API】中迁移了道具和皮肤。
 ]], [[
+- Fix a typo.
+
 - Merge example items and skins from "Glassic API".
 ]])
 description = zheng("版本: ", "Version: ") .. version ..
