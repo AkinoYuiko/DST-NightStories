@@ -155,7 +155,7 @@ local function auto_refuel(inst)
                     if finiteuses and finiteuses:GetUses() + data.trigger * fuelmult <= finiteuses.total then
                         is_fx_true = true
                         finiteuses:Use(- bonus * fuelmult)
-                        consume_item(inst, data.cost)
+                        consume_item(inst, fuel, data.cost)
                     end
                 end
             end
