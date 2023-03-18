@@ -2,20 +2,22 @@ local function zheng(a, b)
     return (locale == "zh" or locale == "zht") and a or b
 end
 
-version = "1.39.4"
+version = "1.39.5"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Azur Circle")
 changelog = zheng([[
-- 移除多余的文件。
+- 修复食物BUFF倍率的问题。
 
+- 移除多余的文件。
 - 修复一处代码逻辑问题。
 - 修复影背包缺失图片的问题。
 - 修复一处拼写错误。
 - 从【Glassic API】中迁移了道具和皮肤。
 ]], [[
-- Remove some anim.
+- Fix bug with Civi's bonus on foodbuffs.
 
+- Remove some anim.
 - Fix a crash with "Mods In Menu" enabled but mod not enabled in game.
 - Fix missing image for Night Pack.
 - Fix a typo.
