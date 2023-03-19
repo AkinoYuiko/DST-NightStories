@@ -44,4 +44,4 @@ GlassicAPI.RegisterItemAtlas("ns_inventoryimages", Assets)
 GlassicAPI.RegisterItemAtlas("hud/nightmaretab", Assets)
 GlassicAPI.RegisterItemAtlas("hud/dummy_status_health", Assets)
 
-GlassicAPI.RegisterItemAtlas("ginventoryimages", Assets)
+-- GlassicAPI.RegisterItemAtlas("ginventoryimages", Assets)

@@ -143,6 +143,7 @@ local strings = {
         eyebrellahat_peggy = "Peggy's Eyebrella",
         alterguardianhat_finger = "Crossed Fingers",
 
+        krampus_sack_invisible = "Pantomimed Krampus Sack",
         -- Glassic items
         cane_glass = "Gane",
         glassiccutter_dream = "Musou Isshin",
@@ -182,6 +183,8 @@ local strings = {
 
         eyebrellahat_peggy = "Wow! It's Peggy!",
         alterguardianhat_finger = "It's completely an emoji joke.",
+
+        krampus_sack_invisible = "Convey an incredibly convincing impression of a krampus sack.",
 
         -- Glassic items
         cane_glass = "It's a glassic joke, I assume.",

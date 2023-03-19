@@ -1635,3 +1635,13 @@ msgstr "月光北欧鹤嘴锄"
 msgctxt "STRINGS.SKIN_NAMES.orangestaff_glass"
 msgid "Rod Of Glass"
 msgstr "玻璃魔杖"
+
+#. STRINGS.SKIN_NAMES.krampus_sack_invisible
+msgctxt "STRINGS.SKIN_NAMES.krampus_sack_invisible"
+msgid "Pantomimed Krampus Sack"
+msgstr "拟真坎普斯背包"
+
+#. STRINGS.SKIN_DESCRIPTIONS.krampus_sack_invisible
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.krampus_sack_invisible"
+msgid "Convey an incredibly convincing impression of a krampus sack."
+msgstr "惟妙惟肖地模仿了坎普斯背包。"
