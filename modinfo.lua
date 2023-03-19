@@ -1,11 +1,15 @@
-local function zheng(a, b)
-    return (locale == "zh" or locale == "zht") and a or b
+local function zheng(zh, en)
+    local LOC = {
+        zh = zh,
+        zht = zh,
+    }
+    return LOC[locale] or en
 end
 
 version = "1.39.5"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
-author = zheng("鸭子乐园", "Azur Circle")
+author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng([[
 - 修复食物BUFF倍率的问题。
 
