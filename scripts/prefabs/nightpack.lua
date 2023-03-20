@@ -323,6 +323,19 @@ local function ApplyState(inst, override_state)
 
 end
 
+local function DisplayNameFn(inst)
+    local state = inst:GetState()
+    return state and STRINGS.NAMES["NIGHTPACK_"..state:upper()] or STRINGS.NAMES.NIGHTPACK
+end
+
+local function ImmortalDisplayNameFn(inst)
+    inst:DoTaskInTime(FRAMES, function()
+        inst.displaynamefn = function()
+            return subfmt(STRINGS.NAMES["IMMORTAL_BACKPACK"], { backpack = DisplayNameFn(inst) })
+        end
+    end)
+end
+
 local function RenewState(inst, gemtype, isdummy)
     local owner = inst.components.inventoryitem and inst.components.inventoryitem.owner
     -- healing --
@@ -366,11 +379,22 @@ local function RenewState(inst, gemtype, isdummy)
             newpack.components.container:GiveItem(item, slot)
         end
     end
+
+    local setImmortal = false
+    if inst:HasTag("keepfresh") and newpack.setImmortal then
+        setImmortal = true
+    end
     inst:Remove()
 
     if gemtype then
         newpack:OnGemTrade(gemtype, isdummy, true)
     end
+
+    if setImmortal then
+        newpack:setImmortal()
+        ImmortalDisplayNameFn(newpack)
+    end
+
 end
 
 local function OnChangeState(inst, state, duration)
@@ -484,11 +508,6 @@ local function OnStateDirty(inst)
     end
 end
 
-local function DisplayNameFn(inst)
-    local state = inst:GetState()
-    return state and STRINGS.NAMES["NIGHTPACK_"..state:upper()] or STRINGS.NAMES.NIGHTPACK
-end
-
 local function getstatus(inst, viwer)
     local state = inst:GetState()
     return state and state:upper()
@@ -564,6 +583,12 @@ local function fn()
     inst.OnSave = OnSave
     inst.OnPreLoad = OnPreLoad
     inst.OnRemoveEntity = OnRemove
+
+    inst:ListenForEvent("immortalchangenamedirty", function(_inst)
+        if _inst:HasTag("keepfresh") and _inst.immortalchangename:value() then
+            ImmortalDisplayNameFn(_inst)
+        end
+    end)
 
     inst.drawnameoverride = rawget(_G, "EncodeStrCode") and EncodeStrCode({content = "NAMES.NIGHTPACK"})
 
