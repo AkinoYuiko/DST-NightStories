@@ -370,9 +370,8 @@ table.insert(prefabs, CreatePrefabSkin("krampus_sack_invisible", {
     type = "item",
     rarity = "Glassic",
     assets = {
-        Asset( "ANIM", "anim/krampus_sack_invisible.zip" ),
-        -- Asset( "DYNAMIC_ANIM", "anim/dynamic/krampus_sack_invisible.zip" ),
-        -- Asset( "PKGREF", "anim/dynamic/orangestaff_glass.dyn" ),
+        Asset( "DYNAMIC_ANIM", "anim/dynamic/krampus_sack_invisible.zip" ),
+        Asset( "PKGREF", "anim/dynamic/orangestaff_glass.dyn" ),
     },
     init_fn = GlassicAPI.BasicInitFn,
     skin_tags = { "KRAMPUS_SACK", "GLASSIC" },
