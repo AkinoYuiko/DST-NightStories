@@ -30,9 +30,11 @@ PrefabFiles = {
     "moonglasspickaxe",
 }
 
-GlassicAPI.InitCharacterAssets("miotan", "FEMALE", Assets, true)
-GlassicAPI.InitCharacterAssets("dummy", "FEMALE", Assets, true)
-GlassicAPI.InitCharacterAssets("civi", "MALE", Assets, true)
+
+
+GlassicAPI.InitCharacterAssets("miotan", "FEMALE", Assets)
+GlassicAPI.InitCharacterAssets("dummy", "FEMALE", Assets)
+GlassicAPI.InitCharacterAssets("civi", "DUCK", Assets)
 
 GlassicAPI.InitMinimapAtlas("ns_minimap", Assets)
 
