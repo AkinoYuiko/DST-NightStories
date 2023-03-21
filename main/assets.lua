@@ -4,7 +4,6 @@ Assets = {
 PrefabFiles = {
     "glassicflash",
     "glassiccutter",
-    "glassicskins",
     "moonglasshammer",
     "moonglasspickaxe",
 
