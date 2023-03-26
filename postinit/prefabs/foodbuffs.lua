@@ -1,6 +1,7 @@
 local AddPrefabPostInitAny = AddPrefabPostInitAny
 GLOBAL.setfenv(1, GLOBAL)
 
+-- do return end
 local Timer = require("components/timer")
 
 local on_save = Timer.OnSave
@@ -29,8 +30,13 @@ function Timer:OnLoad(data, ...)
 end
 
 local function timer_fn(base_fn, buff_timer)
-    return function(inst, target)
-        FunctionOrValue(base_fn, inst, target)
+    return function(inst, target, ...)
+
+        if inst.components.timer then
+
+        end
+
+        FunctionOrValue(base_fn, inst, target, ...)
 
         local duration = inst.components.timer:GetTimeLeft(buff_timer)
 
@@ -38,7 +44,7 @@ local function timer_fn(base_fn, buff_timer)
             local level_mult = 1 + target.level * 0.25
 
             inst.components.timer:StopTimer(buff_timer)
-            inst.components.timer:StartTimer(buff_timer, duration * level_mult)
+            inst.components.timer:StartTimer(buff_timer, duration * level_mult, false, duration)
             if inst.components.timer.timers[buff_timer] then
                 inst.components.timer.timers[buff_timer].civi_buffed = true
             end
@@ -47,7 +53,13 @@ local function timer_fn(base_fn, buff_timer)
 end
 
 local known_buff_timers = {"buffover", "regenover"}
+local exclude_debuffs = {
+    buff_medal_suckingblood = true,
+    buff_medal_mermcurse = true,
+}
+
 AddPrefabPostInitAny(function(inst)
+    if exclude_debuffs[inst.prefab] then return end
     if not TheWorld.ismastersim then return end
 
     local debuff = inst.components.debuff
