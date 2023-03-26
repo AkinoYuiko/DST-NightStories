@@ -32,10 +32,6 @@ end
 local function timer_fn(base_fn, buff_timer)
     return function(inst, target, ...)
 
-        if inst.components.timer then
-
-        end
-
         FunctionOrValue(base_fn, inst, target, ...)
 
         local duration = inst.components.timer:GetTimeLeft(buff_timer)
@@ -44,7 +40,7 @@ local function timer_fn(base_fn, buff_timer)
             local level_mult = 1 + target.level * 0.25
 
             inst.components.timer:StopTimer(buff_timer)
-            inst.components.timer:StartTimer(buff_timer, duration * level_mult, false, duration)
+            inst.components.timer:StartTimer(buff_timer, duration * level_mult)
             if inst.components.timer.timers[buff_timer] then
                 inst.components.timer.timers[buff_timer].civi_buffed = true
             end
