@@ -132,6 +132,7 @@ table.insert(prefabs, CreatePrefabSkin("lantern_mio", {
     init_fn = function(inst) lantern_init_fn(inst, "lantern_mio", {"firefly"}, Vector3(67, -7, 0), {195 / 255, 190 / 255, 120 / 255}) end,
     skin_tags = {"LANTERN"},
     fx_prefab = {"lantern_mio_fx_held", "lantern_mio_fx_ground"},
+    release_group = 87,
 }))
 
 table.insert(prefabs, CreatePrefabSkin("yellowamulet_heart", {
@@ -271,6 +272,7 @@ table.insert(prefabs, CreatePrefabSkin("goldenaxe_victorian", {
     },
     init_fn = GlassicAPI.BasicInitFn,
     skin_tags = { "GOLDENAXE", "VICTORIAN" },
+    release_group = 87,
 }))
 
 table.insert(prefabs, CreatePrefabSkin("cane_glass", {
@@ -296,6 +298,7 @@ table.insert(prefabs, CreatePrefabSkin("moonglassaxe_northern", {
     init_fn = GlassicAPI.BasicInitFn,
     build_name_override = "glassaxe_northern",
     skin_tags = { "MOONGLASSAXE", "GLASSIC" },
+    release_group = 87,
 }))
 
 table.insert(prefabs, CreatePrefabSkin("moonglassaxe_victorian", {
@@ -309,6 +312,7 @@ table.insert(prefabs, CreatePrefabSkin("moonglassaxe_victorian", {
     init_fn = GlassicAPI.BasicInitFn,
     build_name_override = "glassaxe_victorian",
     skin_tags = { "MOONGLASSAXE", "GLASSIC" },
+    release_group = 87,
 }))
 
 table.insert(prefabs, CreatePrefabSkin("moonglasshammer_forge", {
@@ -322,6 +326,7 @@ table.insert(prefabs, CreatePrefabSkin("moonglasshammer_forge", {
     init_fn = GlassicAPI.BasicInitFn,
     build_name_override = "glasshammer_forge",
     skin_tags = { "MOONGLASSHAMMER", "GLASSIC" },
+    release_group = 87,
 }))
 
 table.insert(prefabs, CreatePrefabSkin("moonglasspickaxe_northern", {
@@ -335,6 +340,7 @@ table.insert(prefabs, CreatePrefabSkin("moonglasspickaxe_northern", {
     init_fn = GlassicAPI.BasicInitFn,
     build_name_override = "glasspickaxe_northern",
     skin_tags = { "MOONGLASSPICKAXE", "GLASSIC" },
+    release_group = 87,
 }))
 
 
