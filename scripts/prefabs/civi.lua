@@ -64,21 +64,18 @@ local function on_level_change(inst)
 end
 
 local function on_preload(inst, data)
-    if data then
-        if data.level then
-            inst.level = data.level
-            on_level_change(inst)
-            --re-set these from the save data, because of load-order clipping issues
-            if data.health and data.health.health then inst.components.health.currenthealth = data.health.health end
-            if data.hunger and data.hunger.hunger then inst.components.hunger.current = data.hunger.hunger end
-            if data.sanity and data.sanity.current then inst.components.sanity.current = data.sanity.current end
-            inst.components.health:DoDelta(0)
-            inst.components.hunger:DoDelta(0)
-            inst.components.sanity:DoDelta(0)
-        end
+    if data and data.level then
+        inst.level = data.level
+        on_level_change(inst)
+        --re-set these from the save data, because of load-order clipping issues
+        -- if data.health and data.health.health then inst.components.health.currenthealth = data.health.health end
+        -- if data.hunger and data.hunger.hunger then inst.components.hunger.current = data.hunger.hunger end
+        -- if data.sanity and data.sanity.current then inst.components.sanity.current = data.sanity.current end
+        inst.components.health:DoDelta(0)
+        inst.components.hunger:DoDelta(0)
+        inst.components.sanity:DoDelta(0)
     end
 end
-
 
 local function on_save(inst, data)
     data.level = inst.level
@@ -87,7 +84,7 @@ end
 
 local function on_becameghost(inst)
     on_level_change(inst)
-    inst.components.locomotor.runspeed = TUNING.WILSON_RUN_SPEED -- max_level = 9
+    inst.components.locomotor.runspeed = TUNING.WILSON_RUN_SPEED -- set to default speed when dead.
 end
 
 local function on_becamehuman(inst)
