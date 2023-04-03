@@ -49,13 +49,9 @@ local function timer_fn(base_fn, buff_timer)
 end
 
 local known_buff_timers = {"buffover", "regenover"}
-local exclude_debuffs = {
-    buff_medal_suckingblood = true,
-    buff_medal_mermcurse = true,
-}
 
 AddPrefabPostInitAny(function(inst)
-    if exclude_debuffs[inst.prefab] then return end
+    if TUNING.CIVI_EXCLUDE_DEBUFFS[inst.prefab] then return end
     if not TheWorld.ismastersim then return end
 
     local debuff = inst.components.debuff

@@ -93,43 +93,13 @@ end
 
 local function auto_refuel(inst)
     local is_fx_true = false
-    local fueled_table = {
-        player = {
-            armorskeleton   = { trigger = 1 }, -- 骨甲
-            lantern         = { trigger = 1 }, -- 提灯
-            lighter         = { trigger = 1 }, -- 薇洛的打火机
-            minerhat        = { trigger = 1 }, -- 头灯
-            molehat         = { trigger = 2, bonus = 2, cost = 2 }, -- 鼹鼠帽
-            nightstick      = { trigger = 1 }, -- 晨星
-            thurible        = { trigger = 1 }, -- 香炉
-            yellowamulet    = { trigger = 1 }, -- 黄符
-            purpleamulet    = { trigger = 1 }, -- 紫符
-            blueamulet      = { trigger = 1 }, -- 冰符
-
-            tophat          = { trigger = 1 }, -- 高礼貌 & 魔术师魔术帽
-
-            nightpack       = { trigger = 1 }, -- 影背包 in Night Stories
-            darkamulet      = { trigger = 1 }, -- 黑暗护符 in Night Stories
-            lightamulet     = { trigger = 1 }, -- 光明护符 in Night Stories
-
-            bottlelantern   = { trigger = 1 }, -- 瓶灯 in Island Adventures
-
-        },
-        boat = { -- Island Adventures
-            boat_lantern    = { trigger = 1 }, -- 船灯
-            ironwind        = { trigger = 2, cost = 2 }, -- 螺旋桨
-        }
-    }
-    local finiteuses_table = {
-        player = {
-            orangestaff     = { trigger = 2, bonus = 2}, -- 橙杖
-            orangeamulet    = { trigger = 50, bonus = 50, cost = 1 } -- 橙符
-        }
-    }
 
     local player_eslots = inst.components.inventory and inst.components.inventory.equipslots
     local boat = inst.components.sailor and inst.components.sailor:GetBoat() -- Compatible for Island Adventures
     local boatequipslots = boat and boat.components.container and boat.components.container.boatequipslots
+
+    local fueled_table = TUNING.MIOTAN_AUTO_REFUEL_TABLE.FUELED
+    local finiteuses_table = TUNING.MIOTAN_AUTO_REFUEL_TABLE.FINITEUSES
 
     for source, eslots in pairs({player = player_eslots, boat = boatequipslots}) do
         for _, target in pairs(eslots) do
@@ -170,7 +140,7 @@ end
 local function on_boost(inst)
     inst.components.locomotor.runspeed = TUNING.MIOTAN_RUN_SPEED
     inst.components.temperature.mintemp = TUNING.MIOTAN_BOOST_MINTEMP
-    if inst.components.eater ~= nil then
+    if inst.components.eater then
         inst.components.eater:SetAbsorptionModifiers(TUNING.MIOTAN_BOOST_ABSORPTION, TUNING.MIOTAN_BOOST_ABSORPTION, TUNING.MIOTAN_BOOST_ABSORPTION)
     end
 end
@@ -178,7 +148,7 @@ end
 local function end_boost(inst)
     inst.components.locomotor.runspeed = TUNING.WILSON_RUN_SPEED
     inst.components.temperature.mintemp = -20
-    if inst.components.eater ~= nil then
+    if inst.components.eater then
         inst.components.eater:SetAbsorptionModifiers(1, 1, 1)
     end
 end
@@ -187,12 +157,12 @@ local function on_update(inst, dt)
     inst.boost_time = inst.boost_time - dt
     if inst.boost_time <= 0 then
         inst.boost_time = 0
-        if inst.boosted_task ~= nil then
+        if inst.boosted_task then
             inst.boosted_task:Cancel()
             inst.boosted_task = nil
         end
         end_boost(inst)
-        if inst._dry_task ~= nil then
+        if inst._dry_task then
             inst._dry_task:Cancel()
             inst._dry_task = nil
         end
@@ -227,7 +197,7 @@ local function start_boost(inst, duration)
 end
 
 local function on_load(inst, data)
-    if data ~= nil and data.boost_time ~= nil then start_boost(inst, data.boost_time) end
+    if data and data.boost_time then start_boost(inst, data.boost_time) end
 end
 
 local function on_save(inst, data)
@@ -235,7 +205,7 @@ local function on_save(inst, data)
 end
 
 local function on_becameghost(inst)
-    if inst.boosted_task ~= nil then
+    if inst.boosted_task then
         -- inst.boosted_task:Cancel()
         -- inst.boosted_task = nil
         inst.boost_time = 0
@@ -244,7 +214,7 @@ local function on_becameghost(inst)
 end
 
 local function on_death(inst)
-    local deathprefab = ( inst.boost_time > 0 and Prefabs["horrorfuel"] ~= nil ) and "horrorfuel" or "nightmarefuel"
+    local deathprefab = inst.boost_time > 0 and "horrorfuel" or "nightmarefuel"
     if inst.death_task == nil then
         inst.death_task = inst:DoTaskInTime(2, function(inst)
             SpawnPrefab(deathprefab).Transform:SetPosition(inst:GetPosition():Get())
