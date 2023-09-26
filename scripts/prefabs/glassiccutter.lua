@@ -138,7 +138,7 @@ end
 
 local function target_testfn(target)
     return (target.components.health == nil or not target.components.health:IsDead()) and
-        (target:HasTag("spiderden") or not target:HasTag("structure")) and
+        (target:HasTag("spiderden") or target:HasTag("wooden") or not target:HasTag("structure")) and
         not target:HasTag("wall")
 end
 
@@ -156,7 +156,7 @@ local function onattack_moonglass(inst, attacker, target)
         local moonglass_rate = TUNING.GLASSICCUTTER.CONSUME_RATE.MOONGLASS.BASE
         if target_testfn(target) then
             moonglass_rate = moonglass_rate * get_attacker_mult(attacker)
-            SpawnPrefab("glassic_flash"):SetTarget(attacker, target)
+            SpawnPrefab("glash"):SetTarget(attacker, target)
         end
         try_consume_and_refill(inst, attacker, "moonglass", moonglass_rate)
     end
@@ -286,6 +286,8 @@ local function fn()
     inst:AddTag("pointy")
 
     inst:AddTag("weapon")
+
+    inst:AddTag("ignore_planar_entity")
 
     MakeInventoryFloatable(inst, "med", 0.05, {1.0, 0.4, 1.0}, true, -17.5, {sym_build = "glassiccutter", sym_name = "swap_glassiccutter", anim = "none" } )
 

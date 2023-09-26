@@ -24,7 +24,8 @@ PrefabFiles = {
     "chesspiece_headuck",
     "book_wetness",
 
-    "glassicflash",
+    -- "glassicflash",
+    "glash",
     "glassiccutter",
     "moonglasshammer",
     "moonglasspickaxe",
