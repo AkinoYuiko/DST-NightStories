@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
-"Application: Dont' Starve\n"
-"POT Version: 2.0\n"
+"Application: Don't Starve Together"
+"POT Version: 2.0"
 
 #. STRINGS.ACTIONS.BLINK.FUEL
 msgctxt "STRINGS.ACTIONS.BLINK.FUEL"
@@ -18,9 +18,19 @@ msgctxt "STRINGS.ACTIONS.CHANGE_TACKLE.CRYSTAL"
 msgid "Boost Sword"
 msgstr ""
 
+#. STRINGS.ACTIONS.CHANGE_TACKLE.FRAG
+msgctxt "STRINGS.ACTIONS.CHANGE_TACKLE.FRAG"
+msgid "Set Fragment"
+msgstr ""
+
 #. STRINGS.ACTIONS.FUELPOCKETWATCH
 msgctxt "STRINGS.ACTIONS.FUELPOCKETWATCH"
 msgid "Hack"
+msgstr ""
+
+#. STRINGS.ANNOUNCE_GLASSIC_BROKE
+msgctxt "STRINGS.ANNOUNCE_GLASSIC_BROKE"
+msgid "WEAPON BREAK!"
 msgstr ""
 
 #. STRINGS.CHARACTERS.CIVI.ACTIONFAIL.ACTIVATE.LOCKED_GATE
@@ -141,6 +151,36 @@ msgstr ""
 #. STRINGS.CHARACTERS.GENERIC.DESCRIBE.FRIENDSHIPTOTEM_LIGHT
 msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.FRIENDSHIPTOTEM_LIGHT"
 msgid "Pureness will be wide-range spread."
+msgstr ""
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.GLASSICCUTTER.DREAM
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.GLASSICCUTTER.DREAM"
+msgid "Inazuma shines eternal!"
+msgstr ""
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.GLASSICCUTTER.FROST
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.GLASSICCUTTER.FROST"
+msgid "ao?"
+msgstr ""
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.GLASSICCUTTER.GENERIC
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.GLASSICCUTTER.GENERIC"
+msgid "Sharp but probably get broken."
+msgstr ""
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.GLASSICCUTTER.MOONGLASS
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.GLASSICCUTTER.MOONGLASS"
+msgid "Sword with gestalt flash."
+msgstr ""
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.GLASSICCUTTER.MOONROCK
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.GLASSICCUTTER.MOONROCK"
+msgid "Sword with frost energy."
+msgstr ""
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.MOONLIGHT_SHADOW
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.MOONLIGHT_SHADOW"
+msgid "Secret power comes from the moon."
 msgstr ""
 
 #. STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTAMULET
@@ -528,6 +568,11 @@ msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.FARM_PLOW_ITEM"
 msgid "All work and no play makes for an unhappy girl."
 msgstr ""
 
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.GLASSICCUTTER.MOONGLASS
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.GLASSICCUTTER.MOONGLASS"
+msgid "The Avalokitasvara of Nanhai."
+msgstr ""
+
 #. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.HOMESIGN.BURNT
 msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.HOMESIGN.BURNT"
 msgid "My :blpp:! Noooo!"
@@ -596,6 +641,11 @@ msgstr ""
 #. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.LUREPLANT
 msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.LUREPLANT"
 msgid "Trash can, or maybe a harvester."
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.MALBATROSS_BEAK
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.MALBATROSS_BEAK"
+msgid "It quacks no more."
 msgstr ""
 
 #. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.MIOTAN.GHOST
@@ -1018,6 +1068,16 @@ msgctxt "STRINGS.NAMES.BOOK_WETNESS"
 msgid "The Wetness"
 msgstr ""
 
+#. STRINGS.NAMES.BUFF_FRIENDSHIPTOTEM_DARK
+msgctxt "STRINGS.NAMES.BUFF_FRIENDSHIPTOTEM_DARK"
+msgid "Charged Dark Totem"
+msgstr ""
+
+#. STRINGS.NAMES.BUFF_FRIENDSHIPTOTEM_LIGHT
+msgctxt "STRINGS.NAMES.BUFF_FRIENDSHIPTOTEM_LIGHT"
+msgid "Charged Light Totem"
+msgstr ""
+
 #. STRINGS.NAMES.CHESSPIECE_HEADUCK
 msgctxt "STRINGS.NAMES.CHESSPIECE_HEADUCK"
 msgid "Headuck Figure"
@@ -1078,6 +1138,31 @@ msgctxt "STRINGS.NAMES.FUELPOCKETWATCH"
 msgid "hacking Backtrek Watch"
 msgstr ""
 
+#. STRINGS.NAMES.GLASSICCUTTER
+msgctxt "STRINGS.NAMES.GLASSICCUTTER"
+msgid "Glassic Cutter"
+msgstr ""
+
+#. STRINGS.NAMES.GLASSICCUTTER_DREAM
+msgctxt "STRINGS.NAMES.GLASSICCUTTER_DREAM"
+msgid "Musou Isshin"
+msgstr ""
+
+#. STRINGS.NAMES.GLASSICCUTTER_FROST
+msgctxt "STRINGS.NAMES.GLASSICCUTTER_FROST"
+msgid "Frost Mourning"
+msgstr ""
+
+#. STRINGS.NAMES.GLASSICCUTTER_MOONGLASS
+msgctxt "STRINGS.NAMES.GLASSICCUTTER_MOONGLASS"
+msgid "Gestalt Cutter"
+msgstr ""
+
+#. STRINGS.NAMES.GLASSICCUTTER_MOONROCK
+msgctxt "STRINGS.NAMES.GLASSICCUTTER_MOONROCK"
+msgid "Frost Cutter"
+msgstr ""
+
 #. STRINGS.NAMES.LIGHTAMULET
 msgctxt "STRINGS.NAMES.LIGHTAMULET"
 msgid "Light Amulet"
@@ -1106,6 +1191,21 @@ msgstr ""
 #. STRINGS.NAMES.MIOTAN
 msgctxt "STRINGS.NAMES.MIOTAN"
 msgid "Mio"
+msgstr ""
+
+#. STRINGS.NAMES.MOONGLASSHAMMER
+msgctxt "STRINGS.NAMES.MOONGLASSHAMMER"
+msgid "Moon Glass Hammer"
+msgstr ""
+
+#. STRINGS.NAMES.MOONGLASSPICKAXE
+msgctxt "STRINGS.NAMES.MOONGLASSPICKAXE"
+msgid "Moon Glass Pickaxe"
+msgstr ""
+
+#. STRINGS.NAMES.MOONLIGHT_SHADOW
+msgctxt "STRINGS.NAMES.MOONLIGHT_SHADOW"
+msgid "Moonlight Shadow"
 msgstr ""
 
 #. STRINGS.NAMES.NIGHTMARE_SPEAR
@@ -1268,6 +1368,11 @@ msgctxt "STRINGS.SKIN_DESCRIPTIONS.armorskeleton_none"
 msgid "Only clever people can see it."
 msgstr ""
 
+#. STRINGS.SKIN_DESCRIPTIONS.cane_glass
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.cane_glass"
+msgid "It's a glassic joke, I assume."
+msgstr ""
+
 #. STRINGS.SKIN_DESCRIPTIONS.civi_none
 msgctxt "STRINGS.SKIN_DESCRIPTIONS.civi_none"
 msgid "Civi can control magic, turning lights into darks, or turning darks into lights."
@@ -1288,6 +1393,16 @@ msgctxt "STRINGS.SKIN_DESCRIPTIONS.eyebrellahat_peggy"
 msgid "Wow! It's Peggy!"
 msgstr ""
 
+#. STRINGS.SKIN_DESCRIPTIONS.glassiccutter_dream
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.glassiccutter_dream"
+msgid "Inazuma shines eternal!"
+msgstr ""
+
+#. STRINGS.SKIN_DESCRIPTIONS.goldenaxe_victorian
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.goldenaxe_victorian"
+msgid "An elegantly engraved golden axe."
+msgstr ""
+
 #. STRINGS.SKIN_DESCRIPTIONS.hivehat_pigcrown
 msgctxt "STRINGS.SKIN_DESCRIPTIONS.hivehat_pigcrown"
 msgid "Pig Queen likes it."
@@ -1296,6 +1411,11 @@ msgstr ""
 #. STRINGS.SKIN_DESCRIPTIONS.hivehat_pigcrown_willow
 msgctxt "STRINGS.SKIN_DESCRIPTIONS.hivehat_pigcrown_willow"
 msgid "Pig Queen and Willow like it."
+msgstr ""
+
+#. STRINGS.SKIN_DESCRIPTIONS.krampus_sack_invisible
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.krampus_sack_invisible"
+msgid "Convey an incredibly convincing impression of a krampus sack."
 msgstr ""
 
 #. STRINGS.SKIN_DESCRIPTIONS.lantern_mio
@@ -1323,9 +1443,34 @@ msgctxt "STRINGS.SKIN_DESCRIPTIONS.miotan_none"
 msgid "Mio cames from another world, where nightmare is everywhere."
 msgstr ""
 
+#. STRINGS.SKIN_DESCRIPTIONS.moonglassaxe_northern
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.moonglassaxe_northern"
+msgid "A resplendent moon axe, its design reminiscent of days of yore."
+msgstr ""
+
+#. STRINGS.SKIN_DESCRIPTIONS.moonglassaxe_victorian
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.moonglassaxe_victorian"
+msgid "An elegantly engraved moon axe."
+msgstr ""
+
+#. STRINGS.SKIN_DESCRIPTIONS.moonglasshammer_forge
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.moonglasshammer_forge"
+msgid "小心它的尖刺部分。"
+msgstr ""
+
+#. STRINGS.SKIN_DESCRIPTIONS.moonglasspickaxe_northern
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.moonglasspickaxe_northern"
+msgid "A resplendent moon pickaxe, its design reminiscent of days of yore."
+msgstr ""
+
 #. STRINGS.SKIN_DESCRIPTIONS.nightsword_lotus
 msgctxt "STRINGS.SKIN_DESCRIPTIONS.nightsword_lotus"
 msgid "She's back."
+msgstr ""
+
+#. STRINGS.SKIN_DESCRIPTIONS.orangestaff_glass
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.orangestaff_glass"
+msgid "It's a glassic joke, I assume."
 msgstr ""
 
 #. STRINGS.SKIN_DESCRIPTIONS.raincoat_peggy
@@ -1353,6 +1498,11 @@ msgctxt "STRINGS.SKIN_NAMES.armorskeleton_none"
 msgid "Emperor's New Clothes"
 msgstr ""
 
+#. STRINGS.SKIN_NAMES.cane_glass
+msgctxt "STRINGS.SKIN_NAMES.cane_glass"
+msgid "Gane"
+msgstr ""
+
 #. STRINGS.SKIN_NAMES.civi_none
 msgctxt "STRINGS.SKIN_NAMES.civi_none"
 msgid "Civi"
@@ -1373,6 +1523,16 @@ msgctxt "STRINGS.SKIN_NAMES.eyebrellahat_peggy"
 msgid "Peggy's Eyebrella"
 msgstr ""
 
+#. STRINGS.SKIN_NAMES.glassiccutter_dream
+msgctxt "STRINGS.SKIN_NAMES.glassiccutter_dream"
+msgid "Musou Isshin"
+msgstr ""
+
+#. STRINGS.SKIN_NAMES.goldenaxe_victorian
+msgctxt "STRINGS.SKIN_NAMES.goldenaxe_victorian"
+msgid "Fanciful Luxury Axe"
+msgstr ""
+
 #. STRINGS.SKIN_NAMES.hivehat_pigcrown
 msgctxt "STRINGS.SKIN_NAMES.hivehat_pigcrown"
 msgid "Royal Crown"
@@ -1381,6 +1541,11 @@ msgstr ""
 #. STRINGS.SKIN_NAMES.hivehat_pigcrown_willow
 msgctxt "STRINGS.SKIN_NAMES.hivehat_pigcrown_willow"
 msgid "Dark Crown"
+msgstr ""
+
+#. STRINGS.SKIN_NAMES.krampus_sack_invisible
+msgctxt "STRINGS.SKIN_NAMES.krampus_sack_invisible"
+msgid "Pantomimed Krampus Sack"
 msgstr ""
 
 #. STRINGS.SKIN_NAMES.lantern_mio
@@ -1408,9 +1573,34 @@ msgctxt "STRINGS.SKIN_NAMES.miotan_none"
 msgid "Mio"
 msgstr ""
 
+#. STRINGS.SKIN_NAMES.moonglassaxe_northern
+msgctxt "STRINGS.SKIN_NAMES.moonglassaxe_northern"
+msgid "Moon Nordic Axe"
+msgstr ""
+
+#. STRINGS.SKIN_NAMES.moonglassaxe_victorian
+msgctxt "STRINGS.SKIN_NAMES.moonglassaxe_victorian"
+msgid "Fanciful Moon Glass Axe"
+msgstr ""
+
+#. STRINGS.SKIN_NAMES.moonglasshammer_forge
+msgctxt "STRINGS.SKIN_NAMES.moonglasshammer_forge"
+msgid "Moon Forging Hammer"
+msgstr ""
+
+#. STRINGS.SKIN_NAMES.moonglasspickaxe_northern
+msgctxt "STRINGS.SKIN_NAMES.moonglasspickaxe_northern"
+msgid "Moon Nordic Pickaxe"
+msgstr ""
+
 #. STRINGS.SKIN_NAMES.nightsword_lotus
 msgctxt "STRINGS.SKIN_NAMES.nightsword_lotus"
 msgid "Black Lotus"
+msgstr ""
+
+#. STRINGS.SKIN_NAMES.orangestaff_glass
+msgctxt "STRINGS.SKIN_NAMES.orangestaff_glass"
+msgid "Rod Of Glass"
 msgstr ""
 
 #. STRINGS.SKIN_NAMES.raincoat_peggy
@@ -1436,149 +1626,4 @@ msgstr ""
 #. STRINGS.UI.CRAFTING.RECIPEACTION.SOULSPLIT
 msgctxt "STRINGS.UI.CRAFTING.RECIPEACTION.SOULSPLIT"
 msgid "Split"
-msgstr ""
-
-#. STRINGS.ACTIONS.CHANGE_TACKLE.FRAG
-msgctxt "STRINGS.ACTIONS.CHANGE_TACKLE.FRAG"
-msgid "Set Fragment"
-msgstr ""
-
-#. STRINGS.ANNOUNCE_GLASSIC_BROKE
-msgctxt "STRINGS.ANNOUNCE_GLASSIC_BROKE"
-msgid "WEAPON BREAK!"
-msgstr ""
-
-#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.GLASSICCUTTER.DREAM
-msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.GLASSICCUTTER.DREAM"
-msgid "Inazuma shines eternal!"
-msgstr ""
-
-#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.GLASSICCUTTER.FROST
-msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.GLASSICCUTTER.FROST"
-msgid "ao?"
-msgstr ""
-
-#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.GLASSICCUTTER.GENERIC
-msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.GLASSICCUTTER.GENERIC"
-msgid "Sharp but probably get broken."
-msgstr ""
-
-#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.GLASSICCUTTER.MOONGLASS
-msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.GLASSICCUTTER.MOONGLASS"
-msgid "Sword with gestalt flash."
-msgstr ""
-
-#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.GLASSICCUTTER.MOONROCK
-msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.GLASSICCUTTER.MOONROCK"
-msgid "Sword with frost energy."
-msgstr ""
-
-#. STRINGS.NAMES.GLASSICCUTTER
-msgctxt "STRINGS.NAMES.GLASSICCUTTER"
-msgid "Glassic Cutter"
-msgstr ""
-
-#. STRINGS.NAMES.GLASSICCUTTER_DREAM
-msgctxt "STRINGS.NAMES.GLASSICCUTTER_DREAM"
-msgid "Musou Isshin"
-msgstr ""
-
-#. STRINGS.NAMES.GLASSICCUTTER_FROST
-msgctxt "STRINGS.NAMES.GLASSICCUTTER_FROST"
-msgid "Frost Mourning"
-msgstr ""
-
-#. STRINGS.NAMES.GLASSICCUTTER_MOONGLASS
-msgctxt "STRINGS.NAMES.GLASSICCUTTER_MOONGLASS"
-msgid "Gestalt Cutter"
-msgstr ""
-
-#. STRINGS.NAMES.GLASSICCUTTER_MOONROCK
-msgctxt "STRINGS.NAMES.GLASSICCUTTER_MOONROCK"
-msgid "Frost Cutter"
-msgstr ""
-
-#. STRINGS.NAMES.MOONGLASSHAMMER
-msgctxt "STRINGS.NAMES.MOONGLASSHAMMER"
-msgid "Moon Glass Hammer"
-msgstr ""
-
-#. STRINGS.NAMES.MOONGLASSPICKAXE
-msgctxt "STRINGS.NAMES.MOONGLASSPICKAXE"
-msgid "Moon Glass Pickaxe"
-msgstr ""
-
-#. STRINGS.SKIN_DESCRIPTIONS.cane_glass
-msgctxt "STRINGS.SKIN_DESCRIPTIONS.cane_glass"
-msgid "It's a glassic joke, I assume."
-msgstr ""
-
-#. STRINGS.SKIN_DESCRIPTIONS.glassiccutter_dream
-msgctxt "STRINGS.SKIN_DESCRIPTIONS.glassiccutter_dream"
-msgid "Inazuma shines eternal!"
-msgstr ""
-
-#. STRINGS.SKIN_DESCRIPTIONS.goldenaxe_victorian
-msgctxt "STRINGS.SKIN_DESCRIPTIONS.goldenaxe_victorian"
-msgid "An elegantly engraved golden axe."
-msgstr ""
-
-#. STRINGS.SKIN_DESCRIPTIONS.moonglassaxe_northern
-msgctxt "STRINGS.SKIN_DESCRIPTIONS.moonglassaxe_northern"
-msgid "A resplendent moon axe, its design reminiscent of days of yore."
-msgstr ""
-
-#. STRINGS.SKIN_DESCRIPTIONS.moonglassaxe_victorian
-msgctxt "STRINGS.SKIN_DESCRIPTIONS.moonglassaxe_victorian"
-msgid "An elegantly engraved moon axe."
-msgstr ""
-
-#. STRINGS.SKIN_DESCRIPTIONS.moonglasspickaxe_northern
-msgctxt "STRINGS.SKIN_DESCRIPTIONS.moonglasspickaxe_northern"
-msgid "A resplendent moon pickaxe, its design reminiscent of days of yore."
-msgstr ""
-
-#. STRINGS.SKIN_NAMES.cane_glass
-msgctxt "STRINGS.SKIN_NAMES.cane_glass"
-msgid "Gane"
-msgstr ""
-
-#. STRINGS.SKIN_DESCRIPTIONS.orangestaff_glass
-msgctxt "STRINGS.SKIN_DESCRIPTIONS.orangestaff_glass"
-msgid "It's a glassic joke, I assume."
-msgstr ""
-
-#. STRINGS.SKIN_NAMES.glassiccutter_dream
-msgctxt "STRINGS.SKIN_NAMES.glassiccutter_dream"
-msgid "Musou Isshin"
-msgstr ""
-
-#. STRINGS.SKIN_NAMES.goldenaxe_victorian
-msgctxt "STRINGS.SKIN_NAMES.goldenaxe_victorian"
-msgid "Fanciful Luxury Axe"
-msgstr ""
-
-#. STRINGS.SKIN_NAMES.moonglassaxe_northern
-msgctxt "STRINGS.SKIN_NAMES.moonglassaxe_northern"
-msgid "Moon Nordic Axe"
-msgstr ""
-
-#. STRINGS.SKIN_NAMES.moonglassaxe_victorian
-msgctxt "STRINGS.SKIN_NAMES.moonglassaxe_victorian"
-msgid "Fanciful Moon Glass Axe"
-msgstr ""
-
-#. STRINGS.SKIN_NAMES.moonglasshammer_forge
-msgctxt "STRINGS.SKIN_NAMES.moonglasshammer_forge"
-msgid "Moon Forging Hammer"
-msgstr ""
-
-#. STRINGS.SKIN_NAMES.moonglasspickaxe_northern
-msgctxt "STRINGS.SKIN_NAMES.moonglasspickaxe_northern"
-msgid "Moon Nordic Pickaxe"
-msgstr ""
-
-#. STRINGS.SKIN_NAMES.orangestaff_glass
-msgctxt "STRINGS.SKIN_NAMES.orangestaff_glass"
-msgid "Rod Of Glass"
 msgstr ""

@@ -26,9 +26,10 @@ PrefabFiles = {
 
     -- "glassicflash",
     "glash",
-    "glassiccutter",
+    -- "glassiccutter",
     "moonglasshammer",
     "moonglasspickaxe",
+    "moonlight_shadow",
 }
 
 

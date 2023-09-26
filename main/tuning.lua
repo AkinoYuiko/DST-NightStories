@@ -125,28 +125,21 @@ TUNING.MOONGLASSPICKAXE =
 }
 
 
-TUNING.GLASSICCUTTER =
+TUNING.MOONLIGHT_SHADOW =
 {
     ACCEPTING_PREFABS = {
         moonglass       = true,
-        moonrocknugget  = true,
-
-        spore_tall      = true,
-        spore_medium    = true,
-        spore_small     = true,
     },
     CONSUME_RATE = {
-        NONE = 0.01,
+        NONE = 0.02,
         MOONGLASS = {
             BASE = 0.1,
             MULT = 2.5,
         },
-        MOONROCK = 0.5,
+        -- MOONROCK = 0.5,
     },
     DAMAGE = {
-        SPORE = wilson_attack,
-        NONE = wilson_attack * 2,
+        NONE = wilson_attack * 1.5,
         MOONGLASS = wilson_attack * 2,
-        MOONROCK = wilson_attack * 1.25,
     },
 }

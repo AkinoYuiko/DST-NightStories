@@ -24,7 +24,7 @@ NS_ACTIONS = {
     NIGHTSWORD = Action({priority = 2, mount_valid = true}),
     FUELPOCKETWATCH = Action({priority = 3, rmb = true}),
     FRIENDSHIPTOTEM = Action({priority = 3, rmb = true}),
-    GLASSCUTTEREX = Action({mount_valid=true}),
+    MOONLIGHTSHADOW = Action({mount_valid=true}),
 }
 
 NS_ACTIONS.GEMTRADE.str = STRINGS.ACTIONS.GIVE.SOCKET
@@ -32,7 +32,7 @@ NS_ACTIONS.NIGHTSWITCH.str = STRINGS.ACTIONS.USEITEM
 NS_ACTIONS.NIGHTSWORD.str = STRINGS.ACTIONS.GIVE.SOCKET
 NS_ACTIONS.FRIENDSHIPTOTEM.str = STRINGS.ACTIONS.GIVE.SOCKET
 NS_ACTIONS.FUELPOCKETWATCH.str = STRINGS.ACTIONS.FUELPOCKETWATCH
-NS_ACTIONS.GLASSCUTTEREX.str = STRINGS.ACTIONS.GIVE.SOCKET
+NS_ACTIONS.MOONLIGHTSHADOW.str = STRINGS.ACTIONS.GIVE.SOCKET
 
 NS_ACTIONS.MIOFUEL.stroverridefn = function(act)
     if act.invobject then
@@ -242,7 +242,7 @@ NS_ACTIONS.FUELPOCKETWATCH.fn = function(act)
     end
 end
 
-NS_ACTIONS.GLASSCUTTEREX.fn = function(act)
+NS_ACTIONS.MOONLIGHTSHADOW.fn = function(act)
     local doer = act.doer
     local target = act.target
     if doer.components.inventory then
@@ -257,10 +257,10 @@ NS_ACTIONS.GLASSCUTTEREX.fn = function(act)
         end
 
         -- do mutate
-        if item.prefab == "alterguardianhatshard" and target.prefab == "glasscutter" then
+        if item.prefab == "alterguardianhatshard" and target.prefab == "sword_lunarplant" then
             item:Remove()
             if target.components.halloweenmoonmutable then
-                target.components.halloweenmoonmutable:Mutate("glassiccutter")
+                target.components.halloweenmoonmutable:Mutate("moonlight_shadow")
             end
             return true
         end
@@ -375,8 +375,8 @@ end)
 
 
 AddComponentAction("USEITEM", "glasssocket", function(inst, doer, target, actions, right)
-    if target.prefab == "glasscutter" then
-        table.insert(actions, ACTIONS.GLASSCUTTEREX)
+    if target.prefab == "sword_lunarplant" then
+        table.insert(actions, ACTIONS.MOONLIGHTSHADOW)
     end
 end)
 
@@ -397,12 +397,12 @@ for _, sg in ipairs({"wilson", "wilson_client"}) do
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.NIGHTSWITCH, "domediumaction"))
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.FUELPOCKETWATCH, "pocketwatch_warpback_pre"))
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.FRIENDSHIPTOTEM, "doshortaction"))
-    AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.GLASSCUTTEREX, "doglassicbuild"))
+    AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.MOONLIGHTSHADOW, "doglassicbuild"))
 end
 
 --------------------------------------------------------------------------------
 
-AddPrefabPostInit("glasscutter", function(inst)
+AddPrefabPostInit("sword_lunarplant", function(inst)
     if not TheWorld.ismastersim then return end
     inst:AddComponent("halloweenmoonmutable")
 end)
@@ -419,6 +419,6 @@ local function set_reloaditem_fragment(inst)
     inst:AddComponent("reloaditem")
 end
 
-for prefab in pairs(TUNING.GLASSICCUTTER.ACCEPTING_PREFABS) do
+for prefab in pairs(TUNING.MOONLIGHT_SHADOW.ACCEPTING_PREFABS) do
     AddPrefabPostInit(prefab, set_reloaditem_fragment)
 end

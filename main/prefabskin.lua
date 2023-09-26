@@ -202,7 +202,7 @@ GlassicAPI.SkinHandler.AddModSkins({
     krampus_sack = { "krampus_sack_invisible"},
     -- Glassic items
     cane = { "cane_glass" },
-    glassiccutter = { "glassiccutter_dream" },
+    -- glassiccutter = { "glassiccutter_dream" },
     goldenaxe = { "goldenaxe_victorian" },
     moonglassaxe = { "moonglassaxe_northern", "moonglassaxe_victorian" },
     moonglasspickaxe = { "moonglasspickaxe_northern" },

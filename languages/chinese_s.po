@@ -12,7 +12,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "Application: Dont' Starve\n"
 "POT Version: 2.0\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #. STRINGS.ACTIONS.BLINK.FUEL
 msgctxt "STRINGS.ACTIONS.BLINK.FUEL"
@@ -29,10 +29,20 @@ msgctxt "STRINGS.ACTIONS.CHANGE_TACKLE.CRYSTAL"
 msgid "Boost Sword"
 msgstr "镶嵌武器"
 
+#. STRINGS.ACTIONS.CHANGE_TACKLE.FRAG
+msgctxt "STRINGS.ACTIONS.CHANGE_TACKLE.FRAG"
+msgid "Set Fragment"
+msgstr "嵌入武器"
+
 #. STRINGS.ACTIONS.FUELPOCKETWATCH
 msgctxt "STRINGS.ACTIONS.FUELPOCKETWATCH"
 msgid "Hack"
 msgstr "入侵"
+
+#. STRINGS.ANNOUNCE_GLASSIC_BROKE
+msgctxt "STRINGS.ANNOUNCE_GLASSIC_BROKE"
+msgid "WEAPON BREAK!"
+msgstr "武器断裂！"
 
 #. STRINGS.CHARACTERS.CIVI.ACTIONFAIL.ACTIVATE.LOCKED_GATE
 msgctxt "STRINGS.CHARACTERS.CIVI.ACTIONFAIL.ACTIVATE.LOCKED_GATE"
@@ -153,6 +163,36 @@ msgstr "散播黑暗。"
 msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.FRIENDSHIPTOTEM_LIGHT"
 msgid "Pureness will be wide-range spread."
 msgstr "散播圣洁。"
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.GLASSICCUTTER.DREAM
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.GLASSICCUTTER.DREAM"
+msgid "Inazuma shines eternal!"
+msgstr "稻光，亦是永恒！"
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.GLASSICCUTTER.FROST
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.GLASSICCUTTER.FROST"
+msgid "ao?"
+msgstr "嗷？"
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.GLASSICCUTTER.GENERIC
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.GLASSICCUTTER.GENERIC"
+msgid "Sharp but probably get broken."
+msgstr "如果不碎的话，还是很强的。"
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.GLASSICCUTTER.MOONGLASS
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.GLASSICCUTTER.MOONGLASS"
+msgid "Sword with gestalt flash."
+msgstr "蕴含了月灵之力的刀刃。"
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.GLASSICCUTTER.MOONROCK
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.GLASSICCUTTER.MOONROCK"
+msgid "Sword with frost energy."
+msgstr "凝结了冰霜之力的刀刃。"
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.MOONLIGHT_SHADOW
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.MOONLIGHT_SHADOW"
+msgid "Secret power comes from the moon."
+msgstr "神秘的力量从月亮而来。"
 
 #. STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTAMULET
 msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTAMULET"
@@ -1059,6 +1099,16 @@ msgctxt "STRINGS.NAMES.BOOK_WETNESS"
 msgid "The Wetness"
 msgstr "THE 潮涌"
 
+#. STRINGS.NAMES.BUFF_FRIENDSHIPTOTEM_DARK
+msgctxt "STRINGS.NAMES.BUFF_FRIENDSHIPTOTEM_DARK"
+msgid "Charged Dark Totem"
+msgstr "注能黑暗图腾"
+
+#. STRINGS.NAMES.BUFF_FRIENDSHIPTOTEM_LIGHT
+msgctxt "STRINGS.NAMES.BUFF_FRIENDSHIPTOTEM_LIGHT"
+msgid "Charged Light Totem"
+msgstr "注能光明图腾"
+
 #. STRINGS.NAMES.CHESSPIECE_HEADUCK
 msgctxt "STRINGS.NAMES.CHESSPIECE_HEADUCK"
 msgid "Headuck Figure"
@@ -1109,18 +1159,8 @@ msgctxt "STRINGS.NAMES.FRIENDSHIPTOTEM_DARK"
 msgid "Charged Dark Totem"
 msgstr "注能黑暗图腾"
 
-#. STRINGS.NAMES.BUFF_FRIENDSHIPTOTEM_DARK
-msgctxt "STRINGS.NAMES.BUFF_FRIENDSHIPTOTEM_DARK"
-msgid "Charged Dark Totem"
-msgstr "注能黑暗图腾"
-
 #. STRINGS.NAMES.FRIENDSHIPTOTEM_LIGHT
 msgctxt "STRINGS.NAMES.FRIENDSHIPTOTEM_LIGHT"
-msgid "Charged Light Totem"
-msgstr "注能光明图腾"
-
-#. STRINGS.NAMES.BUFF_FRIENDSHIPTOTEM_LIGHT
-msgctxt "STRINGS.NAMES.BUFF_FRIENDSHIPTOTEM_LIGHT"
 msgid "Charged Light Totem"
 msgstr "注能光明图腾"
 
@@ -1128,6 +1168,31 @@ msgstr "注能光明图腾"
 msgctxt "STRINGS.NAMES.FUELPOCKETWATCH"
 msgid "hacking Backtrek Watch"
 msgstr "入侵溯源表"
+
+#. STRINGS.NAMES.GLASSICCUTTER
+msgctxt "STRINGS.NAMES.GLASSICCUTTER"
+msgid "Glassic Cutter"
+msgstr "玻璃剑"
+
+#. STRINGS.NAMES.GLASSICCUTTER_DREAM
+msgctxt "STRINGS.NAMES.GLASSICCUTTER_DREAM"
+msgid "Musou Isshin"
+msgstr "梦想一心"
+
+#. STRINGS.NAMES.GLASSICCUTTER_FROST
+msgctxt "STRINGS.NAMES.GLASSICCUTTER_FROST"
+msgid "Frost Mourning"
+msgstr "霜之哀嚎"
+
+#. STRINGS.NAMES.GLASSICCUTTER_MOONGLASS
+msgctxt "STRINGS.NAMES.GLASSICCUTTER_MOONGLASS"
+msgid "Gestalt Cutter"
+msgstr "月灵刀"
+
+#. STRINGS.NAMES.GLASSICCUTTER_MOONROCK
+msgctxt "STRINGS.NAMES.GLASSICCUTTER_MOONROCK"
+msgid "Frost Cutter"
+msgstr "霜灵刀"
 
 #. STRINGS.NAMES.LIGHTAMULET
 msgctxt "STRINGS.NAMES.LIGHTAMULET"
@@ -1158,6 +1223,21 @@ msgstr "没有精神"
 msgctxt "STRINGS.NAMES.MIOTAN"
 msgid "Mio"
 msgstr "澪"
+
+#. STRINGS.NAMES.MOONGLASSHAMMER
+msgctxt "STRINGS.NAMES.MOONGLASSHAMMER"
+msgid "Moon Glass Hammer"
+msgstr "月光玻璃锤"
+
+#. STRINGS.NAMES.MOONGLASSPICKAXE
+msgctxt "STRINGS.NAMES.MOONGLASSPICKAXE"
+msgid "Moon Glass Pickaxe"
+msgstr "月光玻璃镐"
+
+#. STRINGS.NAMES.MOONLIGHT_SHADOW
+msgctxt "STRINGS.NAMES.MOONLIGHT_SHADOW"
+msgid "Moonlight Shadow"
+msgstr "月影"
 
 #. STRINGS.NAMES.NIGHTMARE_SPEAR
 msgctxt "STRINGS.NAMES.NIGHTMARE_SPEAR"
@@ -1319,6 +1399,11 @@ msgctxt "STRINGS.SKIN_DESCRIPTIONS.armorskeleton_none"
 msgid "Only clever people can see it."
 msgstr "只有聪明的人能看见它。"
 
+#. STRINGS.SKIN_DESCRIPTIONS.cane_glass
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.cane_glass"
+msgid "It's a glassic joke, I assume."
+msgstr "玻璃笑话。"
+
 #. STRINGS.SKIN_DESCRIPTIONS.civi_none
 msgctxt "STRINGS.SKIN_DESCRIPTIONS.civi_none"
 msgid ""
@@ -1341,6 +1426,16 @@ msgctxt "STRINGS.SKIN_DESCRIPTIONS.eyebrellahat_peggy"
 msgid "Wow! It's Peggy!"
 msgstr "哇哦！是小猪佩奇！"
 
+#. STRINGS.SKIN_DESCRIPTIONS.glassiccutter_dream
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.glassiccutter_dream"
+msgid "Inazuma shines eternal!"
+msgstr "稻光，亦是永恒！"
+
+#. STRINGS.SKIN_DESCRIPTIONS.goldenaxe_victorian
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.goldenaxe_victorian"
+msgid "An elegantly engraved golden axe."
+msgstr "一把雕工精美的金斧头。"
+
 #. STRINGS.SKIN_DESCRIPTIONS.hivehat_pigcrown
 msgctxt "STRINGS.SKIN_DESCRIPTIONS.hivehat_pigcrown"
 msgid "Pig Queen likes it."
@@ -1350,6 +1445,11 @@ msgstr "猪猪女王很喜欢它。"
 msgctxt "STRINGS.SKIN_DESCRIPTIONS.hivehat_pigcrown_willow"
 msgid "Pig Queen and Willow like it."
 msgstr "猪猪女王和薇洛都很喜欢它。"
+
+#. STRINGS.SKIN_DESCRIPTIONS.krampus_sack_invisible
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.krampus_sack_invisible"
+msgid "Convey an incredibly convincing impression of a krampus sack."
+msgstr "惟妙惟肖地模仿了坎普斯背包。"
 
 #. STRINGS.SKIN_DESCRIPTIONS.lantern_mio
 msgctxt "STRINGS.SKIN_DESCRIPTIONS.lantern_mio"
@@ -1376,10 +1476,35 @@ msgctxt "STRINGS.SKIN_DESCRIPTIONS.miotan_none"
 msgid "Mio cames from another world, where nightmare is everywhere."
 msgstr "澪来自一个充满梦魇的异世界。"
 
+#. STRINGS.SKIN_DESCRIPTIONS.moonglassaxe_northern
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.moonglassaxe_northern"
+msgid "A resplendent moon axe, its design reminiscent of days of yore."
+msgstr "华丽的月斧头，古代遗物。"
+
+#. STRINGS.SKIN_DESCRIPTIONS.moonglassaxe_victorian
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.moonglassaxe_victorian"
+msgid "An elegantly engraved moon axe."
+msgstr "一把雕工精美的月光斧头。"
+
+#. STRINGS.SKIN_DESCRIPTIONS.moonglasshammer_forge
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.moonglasshammer_forge"
+msgid "小心它的尖刺部分。"
+msgstr ""
+
+#. STRINGS.SKIN_DESCRIPTIONS.moonglasspickaxe_northern
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.moonglasspickaxe_northern"
+msgid "A resplendent moon pickaxe, its design reminiscent of days of yore."
+msgstr "华丽的月光鹤嘴锄，古代遗物。"
+
 #. STRINGS.SKIN_DESCRIPTIONS.nightsword_lotus
 msgctxt "STRINGS.SKIN_DESCRIPTIONS.nightsword_lotus"
 msgid "She's back."
 msgstr "她回来了。"
+
+#. STRINGS.SKIN_DESCRIPTIONS.orangestaff_glass
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.orangestaff_glass"
+msgid "It's a glassic joke, I assume."
+msgstr "玻璃笑话。"
 
 #. STRINGS.SKIN_DESCRIPTIONS.raincoat_peggy
 msgctxt "STRINGS.SKIN_DESCRIPTIONS.raincoat_peggy"
@@ -1406,6 +1531,11 @@ msgctxt "STRINGS.SKIN_NAMES.armorskeleton_none"
 msgid "Emperor's New Clothes"
 msgstr "皇帝的新衣"
 
+#. STRINGS.SKIN_NAMES.cane_glass
+msgctxt "STRINGS.SKIN_NAMES.cane_glass"
+msgid "Gane"
+msgstr "手丈"
+
 #. STRINGS.SKIN_NAMES.civi_none
 msgctxt "STRINGS.SKIN_NAMES.civi_none"
 msgid "Civi"
@@ -1426,6 +1556,16 @@ msgctxt "STRINGS.SKIN_NAMES.eyebrellahat_peggy"
 msgid "Peggy's Eyebrella"
 msgstr "佩奇的伞帽"
 
+#. STRINGS.SKIN_NAMES.glassiccutter_dream
+msgctxt "STRINGS.SKIN_NAMES.glassiccutter_dream"
+msgid "Musou Isshin"
+msgstr "梦想一心"
+
+#. STRINGS.SKIN_NAMES.goldenaxe_victorian
+msgctxt "STRINGS.SKIN_NAMES.goldenaxe_victorian"
+msgid "Fanciful Luxury Axe"
+msgstr "华丽黄金斧头"
+
 #. STRINGS.SKIN_NAMES.hivehat_pigcrown
 msgctxt "STRINGS.SKIN_NAMES.hivehat_pigcrown"
 msgid "Royal Crown"
@@ -1435,6 +1575,11 @@ msgstr "皇家头冠"
 msgctxt "STRINGS.SKIN_NAMES.hivehat_pigcrown_willow"
 msgid "Dark Crown"
 msgstr "黑暗皇冠"
+
+#. STRINGS.SKIN_NAMES.krampus_sack_invisible
+msgctxt "STRINGS.SKIN_NAMES.krampus_sack_invisible"
+msgid "Pantomimed Krampus Sack"
+msgstr "拟真坎普斯背包"
 
 #. STRINGS.SKIN_NAMES.lantern_mio
 msgctxt "STRINGS.SKIN_NAMES.lantern_mio"
@@ -1461,10 +1606,35 @@ msgctxt "STRINGS.SKIN_NAMES.miotan_none"
 msgid "Mio"
 msgstr "澪"
 
+#. STRINGS.SKIN_NAMES.moonglassaxe_northern
+msgctxt "STRINGS.SKIN_NAMES.moonglassaxe_northern"
+msgid "Moon Nordic Axe"
+msgstr "月光北欧斧头"
+
+#. STRINGS.SKIN_NAMES.moonglassaxe_victorian
+msgctxt "STRINGS.SKIN_NAMES.moonglassaxe_victorian"
+msgid "Fanciful Moon Glass Axe"
+msgstr "华丽月光玻璃斧"
+
+#. STRINGS.SKIN_NAMES.moonglasshammer_forge
+msgctxt "STRINGS.SKIN_NAMES.moonglasshammer_forge"
+msgid "Moon Forging Hammer"
+msgstr "月神锤"
+
+#. STRINGS.SKIN_NAMES.moonglasspickaxe_northern
+msgctxt "STRINGS.SKIN_NAMES.moonglasspickaxe_northern"
+msgid "Moon Nordic Pickaxe"
+msgstr "月光北欧鹤嘴锄"
+
 #. STRINGS.SKIN_NAMES.nightsword_lotus
 msgctxt "STRINGS.SKIN_NAMES.nightsword_lotus"
 msgid "Black Lotus"
 msgstr "黑莲"
+
+#. STRINGS.SKIN_NAMES.orangestaff_glass
+msgctxt "STRINGS.SKIN_NAMES.orangestaff_glass"
+msgid "Rod Of Glass"
+msgstr "玻璃魔杖"
 
 #. STRINGS.SKIN_NAMES.raincoat_peggy
 msgctxt "STRINGS.SKIN_NAMES.raincoat_peggy"
@@ -1490,158 +1660,3 @@ msgstr "佩奇系列"
 msgctxt "STRINGS.UI.CRAFTING.RECIPEACTION.SOULSPLIT"
 msgid "Split"
 msgstr "剥离"
-
-#. STRINGS.ACTIONS.CHANGE_TACKLE.FRAG
-msgctxt "STRINGS.ACTIONS.CHANGE_TACKLE.FRAG"
-msgid "Set Fragment"
-msgstr "嵌入武器"
-
-#. STRINGS.ANNOUNCE_GLASSIC_BROKE
-msgctxt "STRINGS.ANNOUNCE_GLASSIC_BROKE"
-msgid "WEAPON BREAK!"
-msgstr "武器断裂！"
-
-#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.GLASSICCUTTER.DREAM
-msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.GLASSICCUTTER.DREAM"
-msgid "Inazuma shines eternal!"
-msgstr "稻光，亦是永恒！"
-
-#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.GLASSICCUTTER.FROST
-msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.GLASSICCUTTER.FROST"
-msgid "ao?"
-msgstr "嗷？"
-
-#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.GLASSICCUTTER.GENERIC
-msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.GLASSICCUTTER.GENERIC"
-msgid "Sharp but probably get broken."
-msgstr "如果不碎的话，还是很强的。"
-
-#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.GLASSICCUTTER.MOONGLASS
-msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.GLASSICCUTTER.MOONGLASS"
-msgid "Sword with gestalt flash."
-msgstr "蕴含了月灵之力的刀刃。"
-
-#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.GLASSICCUTTER.MOONROCK
-msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.GLASSICCUTTER.MOONROCK"
-msgid "Sword with frost energy."
-msgstr "凝结了冰霜之力的刀刃。"
-
-#. STRINGS.NAMES.GLASSICCUTTER
-msgctxt "STRINGS.NAMES.GLASSICCUTTER"
-msgid "Glassic Cutter"
-msgstr "玻璃剑"
-
-#. STRINGS.NAMES.GLASSICCUTTER_DREAM
-msgctxt "STRINGS.NAMES.GLASSICCUTTER_DREAM"
-msgid "Musou Isshin"
-msgstr "梦想一心"
-
-#. STRINGS.NAMES.GLASSICCUTTER_FROST
-msgctxt "STRINGS.NAMES.GLASSICCUTTER_FROST"
-msgid "Frost Mourning"
-msgstr "霜之哀嚎"
-
-#. STRINGS.NAMES.GLASSICCUTTER_MOONGLASS
-msgctxt "STRINGS.NAMES.GLASSICCUTTER_MOONGLASS"
-msgid "Gestalt Cutter"
-msgstr "月灵刀"
-
-#. STRINGS.NAMES.GLASSICCUTTER_MOONROCK
-msgctxt "STRINGS.NAMES.GLASSICCUTTER_MOONROCK"
-msgid "Frost Cutter"
-msgstr "霜灵刀"
-
-#. STRINGS.NAMES.MOONGLASSHAMMER
-msgctxt "STRINGS.NAMES.MOONGLASSHAMMER"
-msgid "Moon Glass Hammer"
-msgstr "月光玻璃锤"
-
-#. STRINGS.NAMES.MOONGLASSPICKAXE
-msgctxt "STRINGS.NAMES.MOONGLASSPICKAXE"
-msgid "Moon Glass Pickaxe"
-msgstr "月光玻璃镐"
-
-#. STRINGS.SKIN_DESCRIPTIONS.cane_glass
-msgctxt "STRINGS.SKIN_DESCRIPTIONS.cane_glass"
-msgid "It's a glassic joke, I assume."
-msgstr "玻璃笑话。"
-
-#. STRINGS.SKIN_DESCRIPTIONS.glassiccutter_dream
-msgctxt "STRINGS.SKIN_DESCRIPTIONS.glassiccutter_dream"
-msgid "Inazuma shines eternal!"
-msgstr "稻光，亦是永恒！"
-
-#. STRINGS.SKIN_DESCRIPTIONS.goldenaxe_victorian
-msgctxt "STRINGS.SKIN_DESCRIPTIONS.goldenaxe_victorian"
-msgid "An elegantly engraved golden axe."
-msgstr "一把雕工精美的金斧头。"
-
-#. STRINGS.SKIN_DESCRIPTIONS.moonglassaxe_northern
-msgctxt "STRINGS.SKIN_DESCRIPTIONS.moonglassaxe_northern"
-msgid "A resplendent moon axe, its design reminiscent of days of yore."
-msgstr "华丽的月斧头，古代遗物。"
-
-#. STRINGS.SKIN_DESCRIPTIONS.moonglassaxe_victorian
-msgctxt "STRINGS.SKIN_DESCRIPTIONS.moonglassaxe_victorian"
-msgid "An elegantly engraved moon axe."
-msgstr "一把雕工精美的月光斧头。"
-
-#. STRINGS.SKIN_DESCRIPTIONS.moonglasspickaxe_northern
-msgctxt "STRINGS.SKIN_DESCRIPTIONS.moonglasspickaxe_northern"
-msgid "A resplendent moon pickaxe, its design reminiscent of days of yore."
-msgstr "华丽的月光鹤嘴锄，古代遗物。"
-
-#. STRINGS.SKIN_NAMES.cane_glass
-msgctxt "STRINGS.SKIN_NAMES.cane_glass"
-msgid "Gane"
-msgstr "手丈"
-
-#. STRINGS.SKIN_DESCRIPTIONS.orangestaff_glass
-msgctxt "STRINGS.SKIN_DESCRIPTIONS.orangestaff_glass"
-msgid "It's a glassic joke, I assume."
-msgstr "玻璃笑话。"
-
-#. STRINGS.SKIN_NAMES.glassiccutter_dream
-msgctxt "STRINGS.SKIN_NAMES.glassiccutter_dream"
-msgid "Musou Isshin"
-msgstr "梦想一心"
-
-#. STRINGS.SKIN_NAMES.goldenaxe_victorian
-msgctxt "STRINGS.SKIN_NAMES.goldenaxe_victorian"
-msgid "Fanciful Luxury Axe"
-msgstr "华丽黄金斧头"
-
-#. STRINGS.SKIN_NAMES.moonglassaxe_northern
-msgctxt "STRINGS.SKIN_NAMES.moonglassaxe_northern"
-msgid "Moon Nordic Axe"
-msgstr "月光北欧斧头"
-
-#. STRINGS.SKIN_NAMES.moonglassaxe_victorian
-msgctxt "STRINGS.SKIN_NAMES.moonglassaxe_victorian"
-msgid "Fanciful Moon Glass Axe"
-msgstr "华丽月光玻璃斧"
-
-#. STRINGS.SKIN_NAMES.moonglasshammer_forge
-msgctxt "STRINGS.SKIN_NAMES.moonglasshammer_forge"
-msgid "Moon Forging Hammer"
-msgstr "月神锤"
-
-#. STRINGS.SKIN_NAMES.moonglasspickaxe_northern
-msgctxt "STRINGS.SKIN_NAMES.moonglasspickaxe_northern"
-msgid "Moon Nordic Pickaxe"
-msgstr "月光北欧鹤嘴锄"
-
-#. STRINGS.SKIN_NAMES.orangestaff_glass
-msgctxt "STRINGS.SKIN_NAMES.orangestaff_glass"
-msgid "Rod Of Glass"
-msgstr "玻璃魔杖"
-
-#. STRINGS.SKIN_NAMES.krampus_sack_invisible
-msgctxt "STRINGS.SKIN_NAMES.krampus_sack_invisible"
-msgid "Pantomimed Krampus Sack"
-msgstr "拟真坎普斯背包"
-
-#. STRINGS.SKIN_DESCRIPTIONS.krampus_sack_invisible
-msgctxt "STRINGS.SKIN_DESCRIPTIONS.krampus_sack_invisible"
-msgid "Convey an incredibly convincing impression of a krampus sack."
-msgstr "惟妙惟肖地模仿了坎普斯背包。"

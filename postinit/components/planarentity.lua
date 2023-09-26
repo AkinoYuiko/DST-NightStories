@@ -1,4 +1,3 @@
-local AddComponentAction = AddComponentAction
 GLOBAL.setfenv(1, GLOBAL)
 
 local PlanarEntity = require("components/planarentity")
@@ -11,3 +10,5 @@ function PlanarEntity:AbsorbDamage(damage, attacker, weapon, spdmg, ...)
     end
     return AbsorbDamage(self, damage, attacker, weapon, spdmg, ...)
 end
+
+NS_PLANARENTITY_HACKING = true

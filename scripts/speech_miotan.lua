@@ -382,7 +382,7 @@ return {
     ANNOUNCE_ATTACH_BUFF_WORKEFFECTIVENESS = "\"Efficiency V\"",
     -- ANNOUNCE_BECOMEGHOST = "ooOooooO!",
     -- ANNOUNCE_BEES = "Fiddle dee dee, HERE COMES A BEE!",
-    ANNOUNCE_BOOK_MOON_DAYTIME = "We'll be able to meet the result tonightc!",
+    ANNOUNCE_BOOK_MOON_DAYTIME = "We'll be able to meet the result tonight!",
     ANNOUNCE_BLOOMING =
     {
     },

@@ -344,18 +344,18 @@ table.insert(prefabs, CreatePrefabSkin("moonglasspickaxe_northern", {
 }))
 
 
-table.insert(prefabs, CreatePrefabSkin("glassiccutter_dream", {
-    base_prefab = "glassiccutter",
-    type = "item",
-    rarity = "Glassic",
-    assets = {
-        Asset( "DYNAMIC_ANIM", "anim/dynamic/glassiccutter_dream.zip" ),
-        Asset( "PKGREF", "anim/dynamic/glassiccutter_dream.dyn" ),
-    },
-    init_fn = function(inst) glassiccutter_init_fn(inst, "glassiccutter_dream") end,
-    skin_tags = { "GLASSICCUTTER", "GLASSIC" },
+-- table.insert(prefabs, CreatePrefabSkin("glassiccutter_dream", {
+--     base_prefab = "glassiccutter",
+--     type = "item",
+--     rarity = "Glassic",
+--     assets = {
+--         Asset( "DYNAMIC_ANIM", "anim/dynamic/glassiccutter_dream.zip" ),
+--         Asset( "PKGREF", "anim/dynamic/glassiccutter_dream.dyn" ),
+--     },
+--     init_fn = function(inst) glassiccutter_init_fn(inst, "glassiccutter_dream") end,
+--     skin_tags = { "GLASSICCUTTER", "GLASSIC" },
 
-}))
+-- }))
 
 table.insert(prefabs, CreatePrefabSkin("orangestaff_glass", {
     base_prefab = "orangestaff",

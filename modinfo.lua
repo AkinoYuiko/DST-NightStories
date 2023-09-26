@@ -6,14 +6,20 @@ local function zheng(zh, en)
     return LOC[locale] or en
 end
 
-version = "1.41"
+version = "1.42"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng([[
-- 月灵刀现在无视位面实体提抗。
+- 新武器【月影】代替原【玻璃剑】
+- 移除【玻璃剑】
+- 武器【月影】只接受【玻璃碎片】作为弹药
+- 修复澪的部分语言文本错误。
 ]], [[
-- Gestalt Cutter now ignores Planar Entity Protection.
+- Add "Moonlight Shadow".
+- Remove "Glassic Cutter".
+- Moonlight Shadow only accepts Moon Glass.
+- Fix a typo in Mio's speech text.
 ]])
 description = zheng("版本: ", "Version: ") .. version ..
     zheng("\n\n更新内容:\n", "\n\nChangelog:\n") .. changelog .. "\n" ..

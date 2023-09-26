@@ -88,6 +88,7 @@ local strings = {
         GLASSICCUTTER_FROST = "Frost Mourning",
         MOONGLASSHAMMER = "Moon Glass Hammer",
         MOONGLASSPICKAXE = "Moon Glass Pickaxe",
+        MOONLIGHT_SHADOW = "Moonlight Shadow",
     },
     RECIPE_DESC =
     {
@@ -224,6 +225,7 @@ local strings = {
                     DREAM = "Inazuma shines eternal!",
                     FROST = "ao?",
                 },
+                MOONLIGHT_SHADOW = "Secret power comes from the moon.",
                 MOONGLASSHAMMER = STRINGS.CHARACTERS.GENERIC.DESCRIBE.MOONGLASSAXE,
                 MOONGLASSPICKAXE = STRINGS.CHARACTERS.GENERIC.DESCRIBE.MOONGLASSAXE,
 
