@@ -6,19 +6,14 @@ local function zheng(zh, en)
     return LOC[locale] or en
 end
 
-version = "1.40.2"
+version = "1.41"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng([[
-- 更新适配Glassic API 4.2版本。
-- 提高代码兼容性。
-- 新皮肤：拟真坎普斯背包。
+- 月灵刀现在无视位面实体提抗。
 ]], [[
-- Update for Glassic API 4.2.
-
-- Make Night Pack compatible with Functional Medal.
-- New skin: Pantomimed Krampus Sack.
+- Gestalt Cutter now ignores Planar Entity Protection.
 ]])
 description = zheng("版本: ", "Version: ") .. version ..
     zheng("\n\n更新内容:\n", "\n\nChangelog:\n") .. changelog .. "\n" ..
