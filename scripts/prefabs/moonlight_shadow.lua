@@ -143,44 +143,6 @@ local function onattack_none(inst, attacker, target)
     end
 end
 
--- local GLASSIC_NAMES = {}
--- for name, map in pairs(SKINNED_ITEMTYPE_MAP) do
---     table.insert(GLASSIC_NAMES, name)
---     table.insert(GLASSIC_NAMES, map)
--- end
--- local GLASSIC_IDS = table.invert(GLASSIC_NAMES)
-
--- local function on_change_image(inst)
---     local itemtype = get_item_type(inst)
---     local skinned_itemtype = get_skinned_itemtype(inst)
-    -- local anim = itemtype or "none"
-    -- local tail = itemtype and ("_" .. itemtype) or ""
-    -- local skin_build = inst:GetSkinBuild() or "glassiccutter"
---     local displayname = skinned_itemtype and string.upper("_" .. skinned_itemtype) or ""
-    -- AnimState --
-    -- inst.AnimState:PlayAnimation(anim)
-    -- Image --
-    -- if inst.components.inventoryitem then
-    --     inst.components.inventoryitem:ChangeImageName( skin_build .. tail )
-    -- end
-    -- float swap data --
-    -- if inst.components.floater then
-    --     inst.components.floater.swap_data = { sym_build = skin_build, sym_name = "swap_glassiccutter" .. tail, anim = anim}
-    --     if inst.components.floater:IsFloating() then
-    --         inst.components.floater:SwitchToDefaultAnim(true)
-    --         inst.components.floater:SwitchToFloatAnim()
-    --     end
-    -- end
-    -- Equipped --
-    -- if inst.components.equippable and inst.components.equippable:IsEquipped() then
-    --     local owner = inst.components.inventoryitem and inst.components.inventoryitem.owner
-    --     owner.AnimState:OverrideSymbol("swap_object", skin_build, "swap_glassiccutter" .. tail)
-    -- end
-    -- inst._nametail:set(GLASSIC_IDS[(skinned_itemtype)] or 0)
-    -- Strcode Name --
-    -- inst.drawnameoverride = rawget(_G, "EncodeStrCode") and EncodeStrCode({content = "NAMES.GLASSICCUTTER" .. displayname})
--- end
-
 local function on_frag_change(inst, data)
     if data and data.item and data.item.prefab == "moonglass" then
         inst.components.weapon:SetDamage(TUNING.MOONLIGHT_SHADOW.DAMAGE.MOONGLASS)
@@ -192,108 +154,8 @@ local function on_frag_change(inst, data)
         inst.components.weapon:SetDamage(TUNING.MOONLIGHT_SHADOW.DAMAGE.NONE)
         inst.components.weapon:SetOnAttack(onattack_none)
         inst:RemoveTag("ignore_planar_entity")
-
-    -- elseif data.item.prefab == "moonrocknugget" then
-    --     inst.components.weapon:SetDamage(TUNING.MOONLIGHT_SHADOW.DAMAGE.MOONROCK)
-    --     inst.components.weapon:SetOnAttack(onattack_moonrock)
-    -- elseif data.item:HasTag("spore") then
-    --     inst.components.weapon:SetDamage(TUNING.MOONLIGHT_SHADOW.DAMAGE.SPORE)
-    --     turn_on(inst, inst.components.inventoryitem.owner)
     end
-    -- anim and image --
-    -- on_change_image(inst)
 end
-
--- local function on_frag_unload(inst, data)
---     inst.components.weapon:SetDamage(TUNING.MOONLIGHT_SHADOW.DAMAGE.NONE)
---     inst.components.weapon:SetOnAttack(onattack_none)
-    -- turn_off(inst)
-    -- anim and image --
-    -- on_change_image(inst)
--- end
-
--- local function display_name_fn(inst)
---     local displayname = GLASSIC_NAMES[inst._nametail:value()]
---     displayname = displayname and ("_" .. displayname) or ""
---     return STRINGS.NAMES[string.upper("glassiccutter" .. displayname)]
--- end
-
--- local function get_status(inst)
---     local skinned_itemtype = get_skinned_itemtype(inst)
---     return skinned_itemtype and string.upper(skinned_itemtype)
--- end
-
--- local function fn()
---     local inst = CreateEntity()
-
---     inst.entity:AddTransform()
---     inst.entity:AddAnimState()
---     inst.entity:AddNetwork()
-
---     MakeInventoryPhysics(inst)
-
---     inst.AnimState:SetBank("glassiccutter")
---     inst.AnimState:SetBuild("glassiccutter")
---     inst.AnimState:PlayAnimation("none")
-
---     inst:AddTag("sharp")
---     inst:AddTag("pointy")
-
---     inst:AddTag("weapon")
-
---     inst:AddTag("ignore_planar_entity")
-
---     MakeInventoryFloatable(inst, "med", 0.05, {1.0, 0.4, 1.0}, true, -17.5, {sym_build = "glassiccutter", sym_name = "swap_glassiccutter", anim = "none" } )
-
---     inst.entity:SetPristine()
-
---     inst.displaynamefn = display_name_fn
---     inst._nametail = net_tinybyte(inst.GUID, "glassiccutter._nametail")
-
---     if not TheWorld.ismastersim then
---         return inst
---     end
-
---     inst:AddComponent("weapon")
---     inst.components.weapon:SetDamage(TUNING.GLASSCUTTER.DAMAGE)
---     inst.components.weapon:SetOnAttack(onattack_none)
-
---     inst:AddComponent("container")
---     inst.components.container:WidgetSetup("glassiccutter")
---     inst.components.container.canbeopened = false
-
---     inst:ListenForEvent("itemget", on_frag_load)
---     inst:ListenForEvent("itemlose", on_frag_unload)
-
---     -------
-
---     inst:AddComponent("inspectable")
---     inst.components.inspectable.getstatus = get_status
-
---     inst:AddComponent("inventoryitem")
-
---     inst:AddComponent("equippable")
---     inst.components.equippable:SetOnEquip(onequip)
---     inst.components.equippable:SetOnUnequip(onunequip)
-
---     MakeHauntableLaunch(inst)
-
---     inst.OnChangeImage = on_change_image
-
---     inst.drawnameoverride = rawget(_G, "EncodeStrCode") and EncodeStrCode({content = "NAMES.GLASSICCUTTER"})
-
---     return inst
--- end
-
--- local function SetupComponents(inst)
--- 	inst:AddComponent("equippable")
--- 	inst.components.equippable:SetOnEquip(onequip)
--- 	inst.components.equippable:SetOnUnequip(onunequip)
-
--- 	inst:AddComponent("weapon")
--- 	inst.components.weapon:SetDamage(TUNING.MOONLIGHT_SHADOW.DAMAGE.NONE)
--- 	inst.components.weapon:SetOnAttack(onattack_none)
--- end
 
 local function fn()
     local inst = CreateEntity()
@@ -312,22 +174,15 @@ local function fn()
     inst.AnimState:SetLightOverride(.1)
 
     inst:AddTag("sharp")
-    -- inst:AddTag("show_broken_ui")
 
     --weapon (from weapon component) added to pristine state for optimization
     inst:AddTag("weapon")
 
 
     inst:AddComponent("floater")
-    -- inst.isbroken = net_bool(inst.GUID, "sword_lunarplant.isbroken", "isbrokendirty")
-    -- SetIsBroken(inst, false)
-
     inst.entity:SetPristine()
 
-    -- inst.displaynamefn = display_name_fn
-    -- inst._nametail = net_tinybyte(inst.GUID, "glassiccutter._nametail")
     if not TheWorld.ismastersim then
-        -- inst:ListenForEvent("isbrokendirty", OnIsBrokenDirty)
 
         return inst
     end
@@ -340,24 +195,8 @@ local function fn()
     inst.blade1.AnimState:SetFrame(frame)
     inst.blade2.AnimState:SetFrame(frame)
     set_fx_owner(inst, nil)
-    -- inst:ListenForEvent("floater_stopfloating", OnStopFloating)
-
-    -------
-    -- local finiteuses = inst:AddComponent("finiteuses")
-    -- finiteuses:SetMaxUses(TUNING.SWORD_LUNARPLANT_USES)
-    -- finiteuses:SetUses(TUNING.SWORD_LUNARPLANT_USES)
-
-    -------
-    -- inst.base_damage = TUNING.SWORD_LUNARPLANT_DAMAGE
-
-    -- local planardamage = inst:AddComponent("planardamage")
-    -- planardamage:SetBaseDamage(TUNING.SWORD_LUNARPLANT_PLANAR_DAMAGE)
-
-    -- local damagetypebonus = inst:AddComponent("damagetypebonus")
-    -- damagetypebonus:AddBonus("shadow_aligned", inst, TUNING.WEAPONS_LUNARPLANT_VS_SHADOW_BONUS)
 
     inst:AddComponent("inspectable")
-    -- inst.components.inspectable.getstatus = get_status
     inst:AddComponent("inventoryitem")
     inst.components.inventoryitem:ChangeImageName("sword_lunarplant")
 
@@ -376,15 +215,9 @@ local function fn()
     inst.components.equippable:SetOnEquip(onequip)
     inst.components.equippable:SetOnUnequip(onunequip)
 
-
-    -- inst:AddComponent("lunarplant_tentacle_weapon")
-
-    -- MakeForgeRepairable(inst, FORGEMATERIALS.LUNARPLANT, OnBroken, OnRepaired)
     MakeHauntableLaunch(inst)
 
-    -- inst.OnChangeImage = on_change_image
-
-    inst.drawnameoverride = rawget(_G, "EncodeStrCode") and EncodeStrCode({content = "NAMES.GLASSICCUTTER"})
+    inst.drawnameoverride = rawget(_G, "EncodeStrCode") and EncodeStrCode({content = "NAMES.MOONLIGHT_SHADOW"})
 
     return inst
 end
