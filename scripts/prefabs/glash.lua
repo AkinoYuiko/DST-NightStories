@@ -22,7 +22,7 @@ local function on_attack_other(inst, data)
 end
 
 local props = {"externaldamagemultipliers", "damagebonus"}
-local function set_target(inst, owner, target)
+local function set_target(inst, owner, target, enhanced)
     if owner then
         for _, v in ipairs(props) do
             inst.components.combat[v] = owner.components.combat[v]
@@ -35,6 +35,10 @@ local function set_target(inst, owner, target)
         inst:ListenForEvent("onattackother", on_attack_other)
 
         inst.entity:SetParent(owner.entity)
+
+        if enhanced then
+            inst.components.combat:SetDefaultDamage(42.5)
+        end
 
         inst:DoTaskInTime(0, do_attack, target)
     end
@@ -51,7 +55,8 @@ local function fn()
     end
 
     inst:AddComponent("combat")
-    inst.components.combat:SetDefaultDamage(TUNING.ALTERGUARDIANHAT_GESTALT_DAMAGE)
+    inst.components.combat:SetDefaultDamage(34)
+    -- inst.components.combat:SetDefaultDamage(TUNING.ALTERGUARDIANHAT_GESTALT_DAMAGE)
     inst.components.combat:SetRange(TUNING.GESTALTGUARD_ATTACK_RANGE * 10)
 
     inst.SetTarget = set_target

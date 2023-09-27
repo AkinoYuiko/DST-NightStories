@@ -128,7 +128,9 @@ TUNING.MOONGLASSPICKAXE =
 TUNING.MOONLIGHT_SHADOW =
 {
     ACCEPTING_PREFABS = {
-        moonglass       = true,
+        moonglass         = true,
+        moonglass_charged = true,
+        purebrilliance    = true,
     },
     CONSUME_RATE = {
         NONE = 0.02,
@@ -139,7 +141,8 @@ TUNING.MOONLIGHT_SHADOW =
         -- MOONROCK = 0.5,
     },
     DAMAGE = {
-        NONE = wilson_attack * 1.5,
-        MOONGLASS = wilson_attack * 2,
+        NONE = wilson_attack * 1.25,
+        MOONGLASS = wilson_attack * 1.5,
+        BUFFED = wilson_attack * 1.75,
     },
 }
