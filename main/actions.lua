@@ -419,6 +419,6 @@ local function set_reloaditem_fragment(inst)
     inst:AddComponent("reloaditem")
 end
 
-for prefab in pairs(TUNING.MOONLIGHT_SHADOW.ACCEPTING_PREFABS) do
+for prefab in pairs(TUNING.MOONLIGHT_SHADOW.BATTERIES) do
     AddPrefabPostInit(prefab, set_reloaditem_fragment)
 end

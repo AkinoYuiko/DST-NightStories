@@ -31,7 +31,7 @@ params.moonlight_shadow =
     type = "hand_inv",
 }
 
-local allowed_items = TUNING.MOONLIGHT_SHADOW.ACCEPTING_PREFABS
+local allowed_items = TUNING.MOONLIGHT_SHADOW.BATTERIES
 
 function params.glassiccutter.itemtestfn(container, item, slot)
     return allowed_items[item.prefab]

@@ -9,19 +9,6 @@ local prefabs =
     "hitsparks_fx",
 }
 
-local MAX_POWER = 160
-
-local ITEM_POWERS = {
-    moonglass = 4,
-    moonglass_charged = 20,
-    purebrilliance = 80,
-}
-
-local ITEM_BUFF_TIMES = {
-    moonglass_charged = 25,
-    purebrilliance = 80,
-}
-
 local function set_fx_owner(inst, owner)
     if inst._fxowner ~= nil and inst._fxowner.components.colouradder ~= nil then
         inst._fxowner.components.colouradder:DetachChild(inst.blade1)
@@ -81,22 +68,25 @@ end
 
 local function update_base_damage(inst)
     if inst.components.finiteuses:GetUses() == 0 then
-        inst.components.weapon:SetDamage(TUNING.MOONLIGHT_SHADOW.DAMAGE.NONE)
+        inst.components.weapon:SetDamage(TUNING.MOONLIGHT_SHADOW.DAMAGE.EMPTY)
+        inst:RemoveTag("ignore_planar_entity")
+
     else
-        if inst.buffed_attack_times > 0 then
+        inst:AddTag("ignore_planar_entity")
+        if inst.buffed_atks > 0 then
             inst.components.weapon:SetDamage(TUNING.MOONLIGHT_SHADOW.DAMAGE.BUFFED)
         else
-            inst.components.weapon:SetDamage(TUNING.MOONLIGHT_SHADOW.DAMAGE.MOONGLASS)
+            inst.components.weapon:SetDamage(TUNING.MOONLIGHT_SHADOW.DAMAGE.CHARGED)
         end
     end
 end
 
-local function set_buffed_attack_times(inst, times)
-    inst.buffed_attack_times = math.clamp(times, 0, MAX_POWER)
+local function set_buffed_atks(inst, amount)
+    inst.buffed_atks = math.clamp(amount, 0, TUNING.MOONLIGHT_SHADOW.MAX_USES)
     update_base_damage(inst)
 end
 
-local function get_current_power_item(inst)
+local function get_current_battery(inst)
     return inst.components.container:GetItemInSlot(1)
 end
 
@@ -131,28 +121,28 @@ local function get_attacker_mult(attacker)
     return 0.5 * (damagemult + 1) + electricmult
 end
 
-local function can_consume_item_to_power(inst)
-    local current_item = get_current_power_item(inst)
+local function can_consume_battery(inst)
+    local current_item = get_current_battery(inst)
     if not current_item then
         return
     end
-    local power = ITEM_POWERS[current_item.prefab]
+    local power = TUNING.MOONLIGHT_SHADOW.BATTERIES[current_item.prefab]
     -- total is max uses
     return inst.components.finiteuses.total - inst.components.finiteuses:GetUses() >= power
 end
 
-local function try_consume_item_to_power(inst)
-    local current_item = get_current_power_item(inst)
+local function try_consume_battery(inst)
+    local current_item = get_current_battery(inst)
     if not current_item then
         return
     end
-    local power = ITEM_POWERS[current_item.prefab]
+    local power = TUNING.MOONLIGHT_SHADOW.BATTERIES[current_item.prefab]
     -- total is max uses
     if inst.components.finiteuses.total - inst.components.finiteuses:GetUses() >= power then
         inst.components.finiteuses:Repair(power)
-        local buff_times = ITEM_BUFF_TIMES[current_item.prefab]
-        if buff_times then
-            set_buffed_attack_times(inst, inst.buffed_attack_times + buff_times)
+        local buff_atks = TUNING.MOONLIGHT_SHADOW.BUFFS[current_item.prefab]
+        if buff_atks then
+            set_buffed_atks(inst, inst.buffed_atks + buff_atks)
         end
 
         if current_item.components.stackable then
@@ -165,22 +155,12 @@ local function try_consume_item_to_power(inst)
     end
 end
 
-local function consume(inst, attacker)
+local function do_consume(inst, attacker)
     local mult = get_attacker_mult(attacker)
     inst.components.finiteuses:Use(mult)
-    set_buffed_attack_times(inst, inst.buffed_attack_times - mult)
-    try_consume_item_to_power(inst)
+    set_buffed_atks(inst, inst.buffed_atks - mult)
+    try_consume_battery(inst)
 end
-
--- local function consume_and_refill(inst, owner, item_prefab, chance)
---     consume(inst, chance)
---     auto_refill(inst, item_prefab)
--- end
-
--- local function attacker_testfn(attacker, target)
---     return attacker and (attacker.components.health == nil or not attacker.components.health:IsDead())
---         and target and target ~= attacker and target:IsValid()
--- end
 
 local function target_testfn(target)
     return (target.components.health == nil or not target.components.health:IsDead()) and
@@ -188,18 +168,7 @@ local function target_testfn(target)
         not target:HasTag("wall")
 end
 
--- local function onattack_charged(inst, attacker, target)
---     -- if attacker_testfn(attacker, target) then
---         -- local moonglass_rate = TUNING.MOONLIGHT_SHADOW.CONSUME_RATE.MOONGLASS.BASE
---         if target_testfn(target) then
---             -- moonglass_rate = moonglass_rate * get_attacker_mult(attacker)
---             SpawnPrefab("glash"):SetTarget(attacker, target, true)
---         end
---         -- try_consume_and_refill(inst, attacker, "moonglass", moonglass_rate)
---     -- end
--- end
-
-local function on_break(inst, owner)
+local function onbreak(inst, owner)
     if owner.components.talker then
         owner.components.talker:Say(STRINGS.ANNOUNCE_GLASSIC_BROKE, nil, true)
     end
@@ -213,45 +182,53 @@ end
 
 local function onattack(inst, attacker, target)
     if inst.components.finiteuses:GetUses() == 0 then
-        -- if attacker_testfn(attacker, target) then
-            if math.random() < TUNING.MOONLIGHT_SHADOW.CONSUME_RATE.NONE then
-                on_break(inst, attacker)
-            end
-        -- end
+        if math.random() < TUNING.MOONLIGHT_SHADOW.CONSUME_RATE.NONE then
+            onbreak(inst, attacker)
+        end
     else
-        consume(inst, attacker)
+        do_consume(inst, attacker)
         if target_testfn(target) then
-            -- moonglass_rate = moonglass_rate * get_attacker_mult(attacker)
-            SpawnPrefab("glash"):SetTarget(attacker, target, true)
+            SpawnPrefab("glash"):SetTarget(attacker, target, inst.buffed_atks > 0)
         end
     end
 end
 
-local function cancel_try_power_task(inst)
-    if inst.try_power_task then
-        inst.try_power_task:Cancel()
-        inst.try_power_task = nil
+local function cancel_charge_task(inst)
+    if inst.try_charge_task then
+        inst.try_charge_task:Cancel()
+        inst.try_charge_task = nil
     end
 end
 
-local function try_power(inst)
-    try_consume_item_to_power(inst)
-    if not can_consume_item_to_power(inst) then
-        cancel_try_power_task(inst)
+local function try_charge_task(inst)
+    try_consume_battery(inst)
+    if not can_consume_battery(inst) then
+        cancel_charge_task(inst)
     end
 end
 
 local function on_frag_change(inst, data)
-    cancel_try_power_task(inst)
+    cancel_charge_task(inst)
     if data and data.item then
-        inst:AddTag("ignore_planar_entity")
-        try_consume_item_to_power(inst)
-        if can_consume_item_to_power(inst) then
-            inst.try_power_task = inst:DoPeriodicTask(1, try_power)
+        -- inst:AddTag("ignore_planar_entity")
+        try_consume_battery(inst)
+        if can_consume_battery(inst) then
+            inst.try_charge_task = inst:DoPeriodicTask(1, try_charge_task)
         end
-    else
-        inst:RemoveTag("ignore_planar_entity")
+    -- else
+        -- inst:RemoveTag("ignore_planar_entity")
     end
+end
+
+local function onload(inst, data)
+    if data and data.buffed_atks then
+        inst.buffed_atks = data.buffed_atks
+    end
+    update_base_damage(inst)
+end
+
+local function onsave(inst, data)
+    data.buffed_atks = inst.buffed_atks > 0 and inst.buffed_atks
 end
 
 local function fn()
@@ -308,23 +285,28 @@ local function fn()
     inst:ListenForEvent("itemlose", on_frag_change)
 
     inst:AddComponent("finiteuses")
-    inst.components.finiteuses:SetMaxUses(MAX_POWER)
-    inst.components.finiteuses:SetUses(MAX_POWER)
+    inst.components.finiteuses:SetMaxUses(TUNING.MOONLIGHT_SHADOW.MAX_USES)
+    inst.components.finiteuses:SetUses(TUNING.MOONLIGHT_SHADOW.MAX_USES)
     inst.components.finiteuses:SetIgnoreCombatDurabilityLoss(true) -- We'll handle this ourselfs
     inst:ListenForEvent("percentusedchange", update_base_damage)
     -- inst.components.finiteuses:SetOnFinished(inst.Remove)
 
     inst:AddComponent("weapon")
-    inst.components.weapon:SetDamage(TUNING.GLASSCUTTER.DAMAGE)
+    inst.components.weapon:SetDamage(TUNING.MOONLIGHT_SHADOW.DAMAGE.EMPTY)
     inst.components.weapon:SetOnAttack(onattack)
 
-    inst.buffed_attack_times = 0
+    inst.buffed_atks = 0
 
     inst:AddComponent("equippable")
     inst.components.equippable:SetOnEquip(onequip)
     inst.components.equippable:SetOnUnequip(onunequip)
 
     MakeHauntableLaunch(inst)
+
+    inst.OnSave = onsave
+    inst.OnLoad = onload
+
+    inst:DoTaskInTime(0, update_base_damage)
 
     inst.drawnameoverride = rawget(_G, "EncodeStrCode") and EncodeStrCode({content = "NAMES.MOONLIGHT_SHADOW"})
 
