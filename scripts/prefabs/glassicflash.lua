@@ -158,6 +158,7 @@ local glash_big_fx =
     fn = function(inst) inst.AnimState:SetFinalOffset(1) end,
 }
 
-return Prefab("glassic_flash", fn, assets, prefabs),
+-- return Prefab("glassic_flash", fn, assets, prefabs),
+return
         MakeFx(glash_fx),
         MakeFx(glash_big_fx)
