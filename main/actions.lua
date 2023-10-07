@@ -285,7 +285,7 @@ NS_ACTIONS.MOONLIGHTSHADOW_CHARGE.fn = function(act)
         act.invobject:Remove()
     end
     target:ChargeWithItem(item, charges)
-    TheFocalPoint.SoundEmitter:PlaySound("aqol/new_test/gem")
+    doer.SoundEmitter:PlaySound("aqol/new_test/gem")
     return true
 end
 

@@ -138,11 +138,11 @@ end
 
 local function charge_with_item(inst, battery, amount)
     amount = amount or 1
-    local power = TUNING.MOONLIGHT_SHADOW.BATTERIES[battery.prefab] * amount
-    inst.components.finiteuses:Repair(power)
-    local buff_atks = TUNING.MOONLIGHT_SHADOW.BUFFS[battery.prefab] * amount
+    local power = TUNING.MOONLIGHT_SHADOW.BATTERIES[battery.prefab]
+    inst.components.finiteuses:Repair(power * amount)
+    local buff_atks = TUNING.MOONLIGHT_SHADOW.BUFFS[battery.prefab]
     if buff_atks then
-        set_buffed_atks(inst, inst.buffed_atks + buff_atks)
+        set_buffed_atks(inst, inst.buffed_atks + buff_atks * amount)
     end
 end
 
