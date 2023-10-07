@@ -1,6 +1,7 @@
 local assets =
 {
     Asset("ANIM", "anim/sword_lunarplant.zip"),
+    Asset("ANIM", "anim/inventory_fx_moonlight.zip")
 }
 
 local prefabs =
@@ -70,7 +71,6 @@ local function update_base_damage(inst)
     if inst.components.finiteuses:GetUses() == 0 then
         inst.components.weapon:SetDamage(TUNING.MOONLIGHT_SHADOW.DAMAGE.EMPTY)
         inst:RemoveTag("ignore_planar_entity")
-
     else
         inst:AddTag("ignore_planar_entity")
         if inst.buffed_atks > 0 then
@@ -83,6 +83,11 @@ end
 
 local function set_buffed_atks(inst, amount)
     inst.buffed_atks = math.clamp(amount, 0, TUNING.MOONLIGHT_SHADOW.MAX_USES)
+    if inst.buffed_atks > 0 then
+        inst.is_buffed:set(true)
+    else
+        inst.is_buffed:set(false)
+    end
     update_base_damage(inst)
 end
 
@@ -131,20 +136,24 @@ local function can_consume_battery(inst)
     return inst.components.finiteuses.total - inst.components.finiteuses:GetUses() >= power
 end
 
+local function charge_with_item(inst, battery, amount)
+    amount = amount or 1
+    local power = TUNING.MOONLIGHT_SHADOW.BATTERIES[battery.prefab] * amount
+    inst.components.finiteuses:Repair(power)
+    local buff_atks = TUNING.MOONLIGHT_SHADOW.BUFFS[battery.prefab] * amount
+    if buff_atks then
+        set_buffed_atks(inst, inst.buffed_atks + buff_atks)
+    end
+end
+
 local function try_consume_battery(inst)
     local current_item = get_current_battery(inst)
     if not current_item then
         return
     end
-    local power = TUNING.MOONLIGHT_SHADOW.BATTERIES[current_item.prefab]
     -- total is max uses
-    if inst.components.finiteuses.total - inst.components.finiteuses:GetUses() >= power then
-        inst.components.finiteuses:Repair(power)
-        local buff_atks = TUNING.MOONLIGHT_SHADOW.BUFFS[current_item.prefab]
-        if buff_atks then
-            set_buffed_atks(inst, inst.buffed_atks + buff_atks)
-        end
-
+    if inst.components.finiteuses.total - inst.components.finiteuses:GetUses() >= TUNING.MOONLIGHT_SHADOW.BATTERIES[current_item.prefab] then
+        inst:ChargeWithItem(current_item)
         if current_item.components.stackable then
             current_item.components.stackable:Get():Remove()
         else
@@ -222,9 +231,8 @@ end
 
 local function onload(inst, data)
     if data and data.buffed_atks then
-        inst.buffed_atks = data.buffed_atks
+        set_buffed_atks(inst, data.buffed_atks)
     end
-    update_base_damage(inst)
 end
 
 local function onsave(inst, data)
@@ -237,6 +245,7 @@ local function fn()
     inst.entity:AddTransform()
     inst.entity:AddAnimState()
     inst.entity:AddNetwork()
+    -- inst.entity:AddSoundEmitter()
 
     MakeInventoryPhysics(inst)
 
@@ -252,12 +261,12 @@ local function fn()
     --weapon (from weapon component) added to pristine state for optimization
     inst:AddTag("weapon")
 
-
     inst:AddComponent("floater")
     inst.entity:SetPristine()
 
-    if not TheWorld.ismastersim then
+    inst.is_buffed = net_bool(inst.GUID, "moonlight_shadow_buffed", "moonlight_shadow_buffed")
 
+    if not TheWorld.ismastersim then
         return inst
     end
 
@@ -306,7 +315,7 @@ local function fn()
     inst.OnSave = onsave
     inst.OnLoad = onload
 
-    inst:DoTaskInTime(0, update_base_damage)
+    inst.ChargeWithItem = charge_with_item
 
     inst.drawnameoverride = rawget(_G, "EncodeStrCode") and EncodeStrCode({content = "NAMES.MOONLIGHT_SHADOW"})
 

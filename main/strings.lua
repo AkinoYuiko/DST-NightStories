@@ -15,9 +15,10 @@ local strings = {
         CHANGE_TACKLE =
         {
             CRYSTAL = "Boost Sword",
-            FRAG = "Set Fragment",
+            BATTERY = "Set Battery",
         },
         FUELPOCKETWATCH = "Hack",
+        MOONLIGHTSHADOW_CHARGE = "Charge",
     },
     UI = {
         CRAFTING =

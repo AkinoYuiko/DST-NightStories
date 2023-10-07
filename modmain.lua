@@ -36,6 +36,8 @@ local postinits =
     "prefabs/pigking",
     "prefabs/raincoat",
     "prefabs/sculptingtable",
+    -- widgets
+    "widgets/itemtile",
     -- root
     "only_dazui",
     "tools_mutable",
