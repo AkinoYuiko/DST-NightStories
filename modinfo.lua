@@ -6,18 +6,20 @@ local function zheng(zh, en)
     return LOC[locale] or en
 end
 
-version = "1.43.2"
+version = "1.43.3"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng([[
-- 修复一处崩溃。
+- 修复玻璃魔杖和友谊戒指特效不显示的问题。
 
+- 修复一处崩溃。
 - 月影更改了充能系统。
 - 使用【月亮碎片】、【注能月亮碎片】、【纯净辉煌】为月影提供能量。
 ]], [[
-- Fix a crash.
+- Fix missing fx for Rod of Glass and Ring of Friendship.
 
+- Fix a crash.
 - Rework battery system for Moonlight Shadow.
 - Use Moon Glass, Charged Moon Glass or Pure Brilliance as battery for Moonlight Shadow.
 ]])

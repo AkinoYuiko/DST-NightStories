@@ -1,5 +1,6 @@
 Assets = {
     Asset("SOUNDPACKAGE", "sound/nightstories.fev"),
+    Asset("ANIM", "anim/glash_fx.zip"), -- GLASH FX FOR ROD OF GLASS AND RING OF FRIENDSHIP.
 }
 PrefabFiles = {
     "civi",
@@ -24,7 +25,7 @@ PrefabFiles = {
     "chesspiece_headuck",
     "book_wetness",
 
-    "glassicflash",
+    -- "glassicflash",
     "glash",
     -- "glassiccutter",
     "moonglasshammer",
