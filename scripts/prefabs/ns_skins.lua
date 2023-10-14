@@ -366,7 +366,9 @@ table.insert(prefabs, CreatePrefabSkin("orangestaff_glass", {
         Asset( "PKGREF", "anim/dynamic/orangestaff_glass.dyn" ),
     },
     init_fn = glassic_orangestaff_init_fn,
-    skin_sound = { "dontstarve/common/gem_shatter", "", },
+    skin_sound = {
+        ["preteleport"] = "dontstarve/common/gem_shatter",
+    },
     fx_prefab = { "", "", "glash_fx", "glash_fx", },
     skin_tags = { "ORANGESTAFF", "GLASSIC" },
 }))
