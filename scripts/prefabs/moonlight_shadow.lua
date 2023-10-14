@@ -1,12 +1,12 @@
 local assets =
 {
     Asset("ANIM", "anim/sword_lunarplant.zip"),
-    Asset("ANIM", "anim/inventory_fx_moonlight.zip")
+    Asset("ANIM", "anim/inventory_fx_moonlight.zip"),
 }
 
 local prefabs =
 {
-    "moonlight_shadow_blade_fx",
+    "sword_lunarplant_blade_fx",
     "hitsparks_fx",
 }
 
@@ -36,6 +36,14 @@ local function set_fx_owner(inst, owner)
         inst.blade1.components.highlightchild:SetOwner(inst)
         inst.blade2.components.highlightchild:SetOwner(inst)
     end
+end
+
+local function on_stop_floating(inst)
+    inst.blade1.AnimState:SetFrame(0)
+    inst.blade2.AnimState:SetFrame(0)
+    inst:DoTaskInTime(0, function(inst)
+        inst.AnimState:PushAnimation("idle")
+    end) --#V2C: #HACK restore the looping anim, timing issues
 end
 
 local function onequip(inst, owner)
@@ -261,7 +269,9 @@ local function fn()
     --weapon (from weapon component) added to pristine state for optimization
     inst:AddTag("weapon")
 
-    inst:AddComponent("floater")
+    local SWAP_DATA = { bank = "sword_lunarplant", sym_build = "sword_lunarplant", sym_name = "swap_sword_lunarplant" }
+    MakeInventoryFloatable(inst, "med", 0.05, {1, 0.4, 1}, true, -17.5, SWAP_DATA)
+
     inst.entity:SetPristine()
 
     inst.is_buffed = net_bool(inst.GUID, "moonlight_shadow_buffed", "moonlight_shadow_buffed")
@@ -272,14 +282,16 @@ local function fn()
 
     local frame = math.random(inst.AnimState:GetCurrentAnimationNumFrames()) - 1
     inst.AnimState:SetFrame(frame)
-    inst.blade1 = SpawnPrefab("moonlight_shadow_blade_fx")
-    inst.blade2 = SpawnPrefab("moonlight_shadow_blade_fx")
+    inst.blade1 = SpawnPrefab("sword_lunarplant_blade_fx")
+    inst.blade2 = SpawnPrefab("sword_lunarplant_blade_fx")
     inst.blade2.AnimState:PlayAnimation("swap_loop2", true)
     inst.blade1.AnimState:SetFrame(frame)
     inst.blade2.AnimState:SetFrame(frame)
     set_fx_owner(inst, nil)
+    inst:ListenForEvent("floater_stopfloating", on_stop_floating)
 
     inst:AddComponent("inspectable")
+
     inst:AddComponent("inventoryitem")
     inst.components.inventoryitem:ChangeImageName("sword_lunarplant")
 
@@ -322,37 +334,4 @@ local function fn()
     return inst
 end
 
-local function fxfn()
-    local inst = CreateEntity()
-
-    inst.entity:AddTransform()
-    inst.entity:AddAnimState()
-    inst.entity:AddFollower()
-    inst.entity:AddNetwork()
-
-    inst:AddTag("FX")
-
-    inst.AnimState:SetBank("sword_lunarplant")
-    inst.AnimState:SetBuild("sword_lunarplant")
-    inst.AnimState:PlayAnimation("swap_loop1", true)
-    inst.AnimState:SetSymbolBloom("pb_energy_loop01")
-    inst.AnimState:SetSymbolLightOverride("pb_energy_loop01", .5)
-    inst.AnimState:SetLightOverride(.1)
-
-    inst:AddComponent("highlightchild")
-
-    inst.entity:SetPristine()
-
-    if not TheWorld.ismastersim then
-        return inst
-    end
-
-    inst:AddComponent("colouradder")
-
-    inst.persists = false
-
-    return inst
-end
-
-return Prefab("moonlight_shadow", fn, assets, prefabs),
-    Prefab("moonlight_shadow_blade_fx", fxfn, assets)
+return Prefab("moonlight_shadow", fn, assets, prefabs)

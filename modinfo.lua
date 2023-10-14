@@ -6,20 +6,22 @@ local function zheng(zh, en)
     return LOC[locale] or en
 end
 
-version = "1.43.4"
+version = "1.43.5"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng([[
-- 修复玻璃魔杖传送音效问题。
+- 修复【月影】漂浮动画不正确的问题。
 
+- 修复玻璃魔杖传送音效问题。
 - 修复玻璃魔杖和友谊戒指特效不显示的问题。
 - 修复一处崩溃。
 - 月影更改了充能系统。
 - 使用【月亮碎片】、【注能月亮碎片】、【纯净辉煌】为月影提供能量。
 ]], [[
-- Fix skin sound issue for Rod of Glass.
+- Fix issue that Moonlight Shadow doesn't show correct anim when floating.
 
+- Fix skin sound issue for Rod of Glass.
 - Fix missing fx for Rod of Glass and Ring of Friendship.
 - Fix a crash.
 - Rework battery system for Moonlight Shadow.
