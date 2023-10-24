@@ -49,7 +49,11 @@ local function set_target(inst, owner, target, delay, mult)
 
         inst.components.combat:SetDefaultDamage(TUNING.GLASH_BASE_DAMAGE * math.max(1, mult))
 
-        inst.autoremove:Cancel()
+        if inst.autoremove ~= nil then
+            inst.autoremove:Cancel()
+            inst.autoremove = nil
+        end
+
         inst:DoTaskInTime(delay or 0, do_attack, target)
     end
 end
