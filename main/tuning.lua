@@ -142,6 +142,10 @@ TUNING.MOONLIGHT_SHADOW =
         CHARGED = wilson_attack * 1.5,
         BUFFED = wilson_attack * 1.75,
     },
+    SETBONUS_BASE_DAMAGE = wilson_attack * 0.25,
+    SETBONUS_PLANAR_DAMAGE = 5,
 }
+
+TUNING.GLASH_BASE_DAMAGE = wilson_attack
 
 TUNING.BUFF_MOONLIGHT_DURATION = 60 * 5

@@ -12,9 +12,7 @@ local function onattackother(owner, data)
     local target = data and data.target
     if target then
         if target_testfn(target) then
-            local glash = SpawnPrefab("glash")
-            glash.entity:SetParent(owner.entity)
-            glash:SetTarget(owner, target, 5 * FRAMES)
+            SpawnPrefab("glash").SetTarget(owner, target, 5 * FRAMES)
         end
     end
 end

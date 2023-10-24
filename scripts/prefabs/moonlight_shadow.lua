@@ -12,6 +12,76 @@ local prefabs =
     "hitsparks_fx",
 }
 
+
+local function update_damage(inst)
+    if inst.components.finiteuses:GetUses() == 0 then
+        inst.components.weapon:SetDamage(TUNING.MOONLIGHT_SHADOW.DAMAGE.EMPTY)
+        inst:RemoveTag("ignore_planar_entity")
+    else
+        inst:AddTag("ignore_planar_entity")
+        if inst.buffed_atks > 0 then
+            inst.components.weapon:SetDamage(TUNING.MOONLIGHT_SHADOW.DAMAGE.BUFFED + (inst._bonusenabled and TUNING.MOONLIGHT_SHADOW.SETBONUS_BASE_DAMAGE or 0))
+        else
+            inst.components.weapon:SetDamage(TUNING.MOONLIGHT_SHADOW.DAMAGE.CHARGED + (inst._bonusenabled and TUNING.MOONLIGHT_SHADOW.SETBONUS_BASE_DAMAGE or 0))
+        end
+    end
+end
+
+
+local function set_bonus(inst, enabled)
+    if enabled then
+        if not inst._bonusenabled then
+            inst._bonusenabled = true
+            if inst.components.weapon ~= nil then
+                update_damage(inst)
+            end
+            inst.components.planardamage:AddBonus(inst, TUNING.MOONLIGHT_SHADOW.SETBONUS_PLANAR_DAMAGE, "setbonus")
+        end
+    elseif inst._bonusenabled then
+        inst._bonusenabled = nil
+        if inst.components.weapon ~= nil then
+            update_damage(inst)
+        end
+        inst.components.planardamage:RemoveBonus(inst, "setbonus")
+    end
+end
+
+local function set_bonus_owner(inst, owner)
+    if inst._owner ~= owner then
+        if inst._owner ~= nil then
+            inst:RemoveEventCallback("equip", inst._onownerequip, inst._owner)
+            inst:RemoveEventCallback("unequip", inst._onownerunequip, inst._owner)
+            inst._onownerequip = nil
+            inst._onownerunequip = nil
+            set_bonus(inst, false)
+        end
+        inst._owner = owner
+        if owner ~= nil then
+            inst._onownerequip = function(owner, data)
+                if data ~= nil then
+                    if data.item ~= nil and data.item.prefab == "lunarplanthat" then
+                        set_bonus(inst, true)
+                    elseif data.eslot == EQUIPSLOTS.HEAD then
+                        set_bonus(inst, false)
+                    end
+                end
+            end
+            inst._onownerunequip  = function(owner, data)
+                if data ~= nil and data.eslot == EQUIPSLOTS.HEAD then
+                    set_bonus(inst, false)
+                end
+            end
+            inst:ListenForEvent("equip", inst._onownerequip, owner)
+            inst:ListenForEvent("unequip", inst._onownerunequip, owner)
+
+            local hat = owner.components.inventory:GetEquippedItem(EQUIPSLOTS.HEAD)
+            if hat ~= nil and hat.prefab == "lunarplanthat" then
+                set_bonus(inst, true)
+            end
+        end
+    end
+end
+
 local function set_fx_owner(inst, owner)
     if inst._fxowner ~= nil and inst._fxowner.components.colouradder ~= nil then
         inst._fxowner.components.colouradder:DetachChild(inst.blade1)
@@ -51,6 +121,7 @@ local function onequip(inst, owner)
     owner.AnimState:Show("ARM_carry")
     owner.AnimState:Hide("ARM_normal")
     set_fx_owner(inst, owner)
+    set_bonus_owner(inst, owner)
     if inst.components.container then
         inst.components.container:Open(owner)
     end
@@ -64,22 +135,9 @@ local function onunequip(inst, owner)
         owner:PushEvent("unequipskinneditem", inst:GetSkinName())
     end
     set_fx_owner(inst, nil)
+    set_bonus_owner(inst, owner)
     if inst.components.container then
         inst.components.container:Close()
-    end
-end
-
-local function update_base_damage(inst)
-    if inst.components.finiteuses:GetUses() == 0 then
-        inst.components.weapon:SetDamage(TUNING.MOONLIGHT_SHADOW.DAMAGE.EMPTY)
-        inst:RemoveTag("ignore_planar_entity")
-    else
-        inst:AddTag("ignore_planar_entity")
-        if inst.buffed_atks > 0 then
-            inst.components.weapon:SetDamage(TUNING.MOONLIGHT_SHADOW.DAMAGE.BUFFED)
-        else
-            inst.components.weapon:SetDamage(TUNING.MOONLIGHT_SHADOW.DAMAGE.CHARGED)
-        end
     end
 end
 
@@ -90,7 +148,7 @@ local function set_buffed_atks(inst, amount)
     else
         inst.is_buffed:set(false)
     end
-    update_base_damage(inst)
+    update_damage(inst)
 end
 
 local function get_current_battery(inst)
@@ -187,6 +245,14 @@ local function onbreak(inst, owner)
     inst:Remove()
 end
 
+local function calc_bonus_mult(inst)
+    local mult = inst.buffed_atks > 0 and 1.25 or 1
+    if inst._bonusenabled then
+        mult = mult + 0.25
+    end
+    return mult
+end
+
 local function onattack(inst, attacker, target)
     if inst.components.finiteuses:GetUses() == 0 then
         if math.random() < TUNING.MOONLIGHT_SHADOW.CONSUME_RATE.NONE then
@@ -195,7 +261,7 @@ local function onattack(inst, attacker, target)
     else
         do_consume(inst, attacker)
         if target_testfn(target) then
-            SpawnPrefab("glash"):SetTarget(attacker, target, 0, inst.buffed_atks > 0)
+            SpawnPrefab("glash"):SetTarget(attacker, target, 0, calc_bonus_mult(inst))
         end
     end
 end
@@ -283,39 +349,42 @@ local function fn()
     inst.blade1.AnimState:SetFrame(frame)
     inst.blade2.AnimState:SetFrame(frame)
     set_fx_owner(inst, nil)
+
     inst:ListenForEvent("floater_stopfloating", on_stop_floating)
 
     inst:AddComponent("inspectable")
 
     inst:AddComponent("inventoryitem")
-    -- inst.components.inventoryitem:ChangeImageName("sword_lunarplant")
 
-    inst:AddComponent("container")
-    inst.components.container:WidgetSetup("moonlight_shadow")
-    inst.components.container.canbeopened = false
+    local container = inst:AddComponent("container")
+    container:WidgetSetup("moonlight_shadow")
+    container.canbeopened = false
 
-    inst:AddComponent("preserver")
-    inst.components.preserver:SetPerishRateMultiplier(0)
+    local preserver = inst:AddComponent("preserver")
+    preserver:SetPerishRateMultiplier(0)
 
     inst:ListenForEvent("itemget", on_battery_change)
     inst:ListenForEvent("itemlose", on_battery_change)
 
-    inst:AddComponent("finiteuses")
-    inst.components.finiteuses:SetMaxUses(TUNING.MOONLIGHT_SHADOW.MAX_USES)
-    inst.components.finiteuses:SetUses(TUNING.MOONLIGHT_SHADOW.MAX_USES)
-    inst.components.finiteuses:SetIgnoreCombatDurabilityLoss(true) -- We'll handle this ourselfs
-    inst:ListenForEvent("percentusedchange", update_base_damage)
+    local finiteuses = inst:AddComponent("finiteuses")
+    finiteuses:SetMaxUses(TUNING.MOONLIGHT_SHADOW.MAX_USES)
+    finiteuses:SetUses(TUNING.MOONLIGHT_SHADOW.MAX_USES)
+    finiteuses:SetIgnoreCombatDurabilityLoss(true) -- We'll handle this ourselfs
+    inst:ListenForEvent("percentusedchange", update_damage)
     -- inst.components.finiteuses:SetOnFinished(inst.Remove)
 
-    inst:AddComponent("weapon")
-    inst.components.weapon:SetDamage(TUNING.MOONLIGHT_SHADOW.DAMAGE.EMPTY)
-    inst.components.weapon:SetOnAttack(onattack)
+    local weapon = inst:AddComponent("weapon")
+    weapon:SetDamage(TUNING.MOONLIGHT_SHADOW.DAMAGE.EMPTY)
+    weapon:SetOnAttack(onattack)
+
+    local planardamage = inst:AddComponent("planardamage")
+    planardamage:SetBaseDamage(0)
 
     inst.buffed_atks = 0
 
-    inst:AddComponent("equippable")
-    inst.components.equippable:SetOnEquip(onequip)
-    inst.components.equippable:SetOnUnequip(onunequip)
+    local equippable = inst:AddComponent("equippable")
+    equippable:SetOnEquip(onequip)
+    equippable:SetOnUnequip(onunequip)
 
     MakeHauntableLaunch(inst)
 
@@ -323,6 +392,8 @@ local function fn()
     inst.OnLoad = onload
 
     inst.ChargeWithItem = charge_with_item
+
+    update_damage(inst)
 
     inst.drawnameoverride = rawget(_G, "EncodeStrCode") and EncodeStrCode({content = "NAMES.MOONLIGHT_SHADOW"})
 
