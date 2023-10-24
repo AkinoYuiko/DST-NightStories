@@ -2,7 +2,7 @@ local assets = {}
 
 local prefabs = {
     "electrichitsparks",
-    "hitsparks_fx",
+    "planar_hit_fx",
 }
 
 local function do_attack(inst, target)
@@ -11,13 +11,20 @@ local function do_attack(inst, target)
     end
 end
 
+local function setup_fx(target)
+    local fx = SpawnPrefab("planar_hit_fx")
+    local scale = 0.7
+    fx.Transform:SetScale(scale, scale, scale)
+    fx.entity:SetParent(target.entity)
+end
+
 local function on_attack_other(inst, data)
     local target = data.target
     if target and target:IsValid() and inst:IsValid() then
         if inst.components.electricattacks then
             SpawnPrefab("electrichitsparks"):AlignToTarget(target, inst, true)
         end
-        SpawnPrefab("hitsparks_fx"):Setup(inst, target)
+        setup_fx(target)
     end
 end
 

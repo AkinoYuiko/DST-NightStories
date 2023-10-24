@@ -5,11 +5,10 @@ local AbsorbDamage = PlanarEntity.AbsorbDamage
 
 local function check_tag(attacker, weapon)
     local TAG = "ignore_planar_entity"
-    if attacker then
-        return attacker:HasTag(TAG)
-    end
-    if weapon then
-        return weapon:HasTag(TAG)
+    if attacker and attacker:HasTag(TAG) then
+        return true
+    elseif weapon and weapon:HasTag(TAG) then
+        return true
     end
 end
 

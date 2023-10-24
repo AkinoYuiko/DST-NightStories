@@ -38,14 +38,6 @@ local function set_fx_owner(inst, owner)
     end
 end
 
-local function on_stop_floating(inst)
-    inst.blade1.AnimState:SetFrame(0)
-    inst.blade2.AnimState:SetFrame(0)
-    inst:DoTaskInTime(0, function(inst)
-        inst.AnimState:PushAnimation("idle")
-    end) --#V2C: #HACK restore the looping anim, timing issues
-end
-
 local function onequip(inst, owner)
     local skin_build = inst:GetSkinBuild()
     if skin_build ~= nil then
@@ -224,7 +216,7 @@ local function try_charge_task(inst)
     end
 end
 
-local function on_frag_change(inst, data)
+local function on_battery_change(inst, data)
     cancel_charge_task(inst)
     if data and data.item then
         -- inst:AddTag("ignore_planar_entity")
@@ -245,6 +237,14 @@ end
 
 local function onsave(inst, data)
     data.buffed_atks = inst.buffed_atks > 0 and inst.buffed_atks
+end
+
+local function on_stop_floating(inst)
+    inst.blade1.AnimState:SetFrame(0)
+    inst.blade2.AnimState:SetFrame(0)
+    inst:DoTaskInTime(0, function(inst)
+        inst.AnimState:PushAnimation("idle")
+    end) --#V2C: #HACK restore the looping anim, timing issues
 end
 
 local function fn()
@@ -302,8 +302,8 @@ local function fn()
     inst:AddComponent("preserver")
     inst.components.preserver:SetPerishRateMultiplier(0)
 
-    inst:ListenForEvent("itemget", on_frag_change)
-    inst:ListenForEvent("itemlose", on_frag_change)
+    inst:ListenForEvent("itemget", on_battery_change)
+    inst:ListenForEvent("itemlose", on_battery_change)
 
     inst:AddComponent("finiteuses")
     inst.components.finiteuses:SetMaxUses(TUNING.MOONLIGHT_SHADOW.MAX_USES)
