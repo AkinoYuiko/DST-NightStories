@@ -12,7 +12,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "Application: Dont' Starve\n"
 "POT Version: 2.0\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #. STRINGS.ACTIONS.BLINK.FUEL
 msgctxt "STRINGS.ACTIONS.BLINK.FUEL"
@@ -24,15 +24,15 @@ msgctxt "STRINGS.ACTIONS.BLINK_MAP.FUEL"
 msgid "Shadow Teleproof({uses})"
 msgstr "暗影传送({uses})"
 
-#. STRINGS.ACTIONS.CHANGE_TACKLE.CRYSTAL
-msgctxt "STRINGS.ACTIONS.CHANGE_TACKLE.CRYSTAL"
-msgid "Boost Sword"
-msgstr "镶嵌武器"
-
 #. STRINGS.ACTIONS.CHANGE_TACKLE.BATTERY
 msgctxt "STRINGS.ACTIONS.CHANGE_TACKLE.BATTERY"
 msgid "Set Battery"
 msgstr "更换能源"
+
+#. STRINGS.ACTIONS.CHANGE_TACKLE.CRYSTAL
+msgctxt "STRINGS.ACTIONS.CHANGE_TACKLE.CRYSTAL"
+msgid "Boost Sword"
+msgstr "镶嵌武器"
 
 #. STRINGS.ACTIONS.FUELPOCKETWATCH
 msgctxt "STRINGS.ACTIONS.FUELPOCKETWATCH"
@@ -103,6 +103,16 @@ msgstr ""
 msgctxt "STRINGS.CHARACTERS.CIVI.DESCRIBE.MOSSLING"
 msgid "󰂡"
 msgstr ""
+
+#. STRINGS.CHARACTERS.GENERIC.ANNOUNCE_ATTACH_BUFF_MOONLIGHT
+msgctxt "STRINGS.CHARACTERS.GENERIC.ANNOUNCE_ATTACH_BUFF_MOONLIGHT"
+msgid "Extra power from the moon!"
+msgstr "来自月亮的神秘力量！"
+
+#. STRINGS.CHARACTERS.GENERIC.ANNOUNCE_DETTACH_BUFF_MOONLIGHT
+msgctxt "STRINGS.CHARACTERS.GENERIC.ANNOUNCE_DETTACH_BUFF_MOONLIGHT"
+msgid "The moon power has gone."
+msgstr "月之力已离我而去。"
 
 #. STRINGS.CHARACTERS.GENERIC.DESCRIBE.BATTLERUINSHAT
 msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.BATTLERUINSHAT"
@@ -194,11 +204,6 @@ msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.GLASSICCUTTER.MOONROCK"
 msgid "Sword with frost energy."
 msgstr "凝结了冰霜之力的刀刃。"
 
-#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.MOONLIGHT_SHADOW
-msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.MOONLIGHT_SHADOW"
-msgid "Secret power comes from the moon."
-msgstr "神秘的力量从月亮而来。"
-
 #. STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTAMULET
 msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTAMULET"
 msgid "I can feel the darkness away."
@@ -218,6 +223,21 @@ msgstr "似乎没有用。"
 msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTMAGATAMA"
 msgid "It seems no use."
 msgstr "似乎没有用。"
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.MOONGLASSHAMMER
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.MOONGLASSHAMMER"
+msgid "我把它做的非常好用。"
+msgstr ""
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.MOONGLASSPICKAXE
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.MOONGLASSPICKAXE"
+msgid "我把它做的非常好用。"
+msgstr ""
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.MOONLIGHT_SHADOW
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.MOONLIGHT_SHADOW"
+msgid "Secret power comes from the moon."
+msgstr "神秘的力量从月亮而来。"
 
 #. STRINGS.CHARACTERS.GENERIC.DESCRIBE.NIGHTMARE_SPEAR
 msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.NIGHTMARE_SPEAR"
@@ -283,6 +303,11 @@ msgstr "有了它便可随时换装。"
 msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.SPICE_CACTUS"
 msgid "Make sanity great again."
 msgstr "让精神再次伟大。"
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.SPICE_MOONGLASS
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.SPICE_MOONGLASS"
+msgid "Grant the power of the moon."
+msgstr "赋予月之力量。"
 
 #. STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.ALREADYFULLMOON
 msgctxt "STRINGS.CHARACTERS.MIOTAN.ACTIONFAIL.READ.ALREADYFULLMOON"
@@ -920,9 +945,9 @@ msgstr "生日"
 #. STRINGS.CHARACTER_BIOS.civi.2.desc
 msgctxt "STRINGS.CHARACTER_BIOS.civi.2.desc"
 msgid ""
-"Lv.0 - Bone Bouillon\n"
-"Lv.1 - Meatballs\n"
-"Lv.2 - Volt Goat Chaud-Froid"
+"Lv.0 - 骨头汤\n"
+"Lv.1 - 肉丸\n"
+"Lv.2 - 伏特羊肉冻"
 msgstr ""
 
 #. STRINGS.CHARACTER_BIOS.civi.2.title
@@ -942,7 +967,7 @@ msgstr "生日"
 
 #. STRINGS.CHARACTER_BIOS.dummy.2.desc
 msgctxt "STRINGS.CHARACTER_BIOS.dummy.2.desc"
-msgid "Grim Galette"
+msgid "恐怖国王饼"
 msgstr ""
 
 #. STRINGS.CHARACTER_BIOS.dummy.2.title
@@ -1031,17 +1056,17 @@ msgstr "“假如我可以吞噬梦魇...”"
 
 #. STRINGS.CHARACTER_SURVIVABILITY.civi
 msgctxt "STRINGS.CHARACTER_SURVIVABILITY.civi"
-msgid "Slim"
+msgid "渺茫"
 msgstr ""
 
 #. STRINGS.CHARACTER_SURVIVABILITY.dummy
 msgctxt "STRINGS.CHARACTER_SURVIVABILITY.dummy"
-msgid "None"
+msgid "无"
 msgstr ""
 
 #. STRINGS.CHARACTER_SURVIVABILITY.miotan
 msgctxt "STRINGS.CHARACTER_SURVIVABILITY.miotan"
-msgid "Grim"
+msgid "严峻"
 msgstr ""
 
 #. STRINGS.CHARACTER_TITLES.civi
@@ -1314,6 +1339,16 @@ msgctxt "STRINGS.NAMES.SPICE_CACTUS_FOOD"
 msgid "Cactus {food}"
 msgstr "仙人掌味{food}"
 
+#. STRINGS.NAMES.SPICE_MOONGLASS
+msgctxt "STRINGS.NAMES.SPICE_MOONGLASS"
+msgid "Moonlight Powder"
+msgstr "月光粉"
+
+#. STRINGS.NAMES.SPICE_MOONGLASS_FOOD
+msgctxt "STRINGS.NAMES.SPICE_MOONGLASS_FOOD"
+msgid "Moonlight {food}"
+msgstr "月光{food}"
+
 #. STRINGS.RECIPE_DESC.BATTLERUINSHAT
 msgctxt "STRINGS.RECIPE_DESC.BATTLERUINSHAT"
 msgid "Complete with ancient force field!"
@@ -1394,6 +1429,11 @@ msgctxt "STRINGS.RECIPE_DESC.SPICE_CACTUS"
 msgid "Make sanity great again."
 msgstr "让精神再次伟大。"
 
+#. STRINGS.RECIPE_DESC.SPICE_MOONGLASS
+msgctxt "STRINGS.RECIPE_DESC.SPICE_MOONGLASS"
+msgid "Grant the power of the moon."
+msgstr "赋予月之力量。"
+
 #. STRINGS.SKIN_DESCRIPTIONS.alterguardianhat_finger
 msgctxt "STRINGS.SKIN_DESCRIPTIONS.alterguardianhat_finger"
 msgid "It's completely an emoji joke."
@@ -1418,7 +1458,7 @@ msgstr "控制光与暗的魔法使, 拥有超强的适应能力和战斗能力�
 
 #. STRINGS.SKIN_DESCRIPTIONS.dragonflychest_gingerbread
 msgctxt "STRINGS.SKIN_DESCRIPTIONS.dragonflychest_gingerbread"
-msgid "Don't be fooled... it's completely inedible."
+msgid "不要被愚弄了……它完全是不能吃的。"
 msgstr ""
 
 #. STRINGS.SKIN_DESCRIPTIONS.dummy_none
@@ -1548,7 +1588,7 @@ msgstr ""
 
 #. STRINGS.SKIN_NAMES.dragonflychest_gingerbread
 msgctxt "STRINGS.SKIN_NAMES.dragonflychest_gingerbread"
-msgid "Gingerbread Chest"
+msgid "姜饼箱子"
 msgstr ""
 
 #. STRINGS.SKIN_NAMES.dummy_none

@@ -143,3 +143,5 @@ TUNING.MOONLIGHT_SHADOW =
         BUFFED = wilson_attack * 1.75,
     },
 }
+
+TUNING.BUFF_MOONLIGHT_DURATION = 180

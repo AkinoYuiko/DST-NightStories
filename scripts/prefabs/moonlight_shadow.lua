@@ -1,3 +1,5 @@
+local Utils = require "ns_utils"
+
 local assets =
 {
     Asset("ANIM", "anim/sword_lunarplant.zip"),
@@ -171,11 +173,7 @@ local function do_consume(inst, attacker)
     try_consume_battery(inst)
 end
 
-local function target_testfn(target)
-    return (target.components.health == nil or not target.components.health:IsDead()) and
-        (target:HasTag("spiderden") or target:HasTag("wooden") or not target:HasTag("structure")) and
-        not target:HasTag("wall")
-end
+local target_testfn = Utils.TargetTestFn
 
 local function onbreak(inst, owner)
     if owner.components.talker then
@@ -197,7 +195,7 @@ local function onattack(inst, attacker, target)
     else
         do_consume(inst, attacker)
         if target_testfn(target) then
-            SpawnPrefab("glash"):SetTarget(attacker, target, inst.buffed_atks > 0)
+            SpawnPrefab("glash"):SetTarget(attacker, target, 0, inst.buffed_atks > 0)
         end
     end
 end
@@ -219,13 +217,10 @@ end
 local function on_battery_change(inst, data)
     cancel_charge_task(inst)
     if data and data.item then
-        -- inst:AddTag("ignore_planar_entity")
         try_consume_battery(inst)
         if can_consume_battery(inst) then
             inst.try_charge_task = inst:DoPeriodicTask(1, try_charge_task)
         end
-    -- else
-        -- inst:RemoveTag("ignore_planar_entity")
     end
 end
 
@@ -293,7 +288,7 @@ local function fn()
     inst:AddComponent("inspectable")
 
     inst:AddComponent("inventoryitem")
-    inst.components.inventoryitem:ChangeImageName("sword_lunarplant")
+    -- inst.components.inventoryitem:ChangeImageName("sword_lunarplant")
 
     inst:AddComponent("container")
     inst.components.container:WidgetSetup("moonlight_shadow")

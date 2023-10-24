@@ -9,6 +9,7 @@ local function do_attack(inst, target)
     if inst.components.combat:CanHitTarget(target) then
         inst.components.combat:DoAttack(target)
     end
+    inst:Remove()
 end
 
 local function setup_fx(target)
@@ -29,7 +30,7 @@ local function on_attack_other(inst, data)
 end
 
 local props = {"externaldamagemultipliers", "damagebonus"}
-local function set_target(inst, owner, target, enhanced)
+local function set_target(inst, owner, target, delay, buffed)
     if owner then
         for _, v in ipairs(props) do
             inst.components.combat[v] = owner.components.combat[v]
@@ -43,11 +44,12 @@ local function set_target(inst, owner, target, enhanced)
 
         inst.entity:SetParent(owner.entity)
 
-        if enhanced then
+        if buffed then
             inst.components.combat:SetDefaultDamage(42.5)
         end
 
-        inst:DoTaskInTime(0, do_attack, target)
+        inst.autoremove:Cancel()
+        inst:DoTaskInTime(delay or 0, do_attack, target)
     end
 end
 
@@ -68,7 +70,7 @@ local function fn()
 
     inst.SetTarget = set_target
 
-    inst:DoTaskInTime( 0.1, function(inst) inst:Remove() end)
+    inst.autoremove = inst:DoTaskInTime(2 * FRAMES, inst.Remove)
 
     return inst
 end

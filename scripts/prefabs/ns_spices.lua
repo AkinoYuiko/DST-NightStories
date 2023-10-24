@@ -46,4 +46,5 @@ local function MakeSpice(name)
     return Prefab(name, fn, assets)
 end
 
-return MakeSpice("spice_cactus")
+return MakeSpice("spice_cactus"),
+        MakeSpice("spice_moonglass")

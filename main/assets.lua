@@ -25,12 +25,11 @@ PrefabFiles = {
     "chesspiece_headuck",
     "book_wetness",
 
-    -- "glassicflash",
     "glash",
-    -- "glassiccutter",
     "moonglasshammer",
     "moonglasspickaxe",
     "moonlight_shadow",
+    "moonlight_buff",
 }
 
 

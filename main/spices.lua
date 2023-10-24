@@ -1,7 +1,12 @@
 GLOBAL.setfenv(1, GLOBAL)
 
+local function oneaten_moonglass(inst, eater)
+    eater:AddDebuff("buff_moonlight", "buff_moonlight")
+end
+
 local NS_SPICES = {
-    SPICE_CACTUS = {}
+    SPICE_CACTUS = {},
+    SPICE_MOONGLASS = { oneatenfn = oneaten_moonglass}
 }
 
 require("cooking" )

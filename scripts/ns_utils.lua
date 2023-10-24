@@ -62,8 +62,16 @@ local function get_aura_rate(inst)
     return aura_delta < 0 and 0.5 or 2
 end
 
+local function target_testfn(target)
+    if not target then return end
+    return (target.components.health == nil or not target.components.health:IsDead()) and
+        (target:HasTag("spiderden") or target:HasTag("wooden") or not target:HasTag("structure")) and
+        not target:HasTag("wall")
+end
+
 return {
     GetRateFromTable = get_rate_from_table,
     TableInsertRate = table_insert_rate,
     GetAuraRate = get_aura_rate,
+    TargetTestFn = target_testfn,
 }

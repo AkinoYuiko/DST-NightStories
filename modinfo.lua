@@ -6,28 +6,14 @@ local function zheng(zh, en)
     return LOC[locale] or en
 end
 
-version = "1.43.6"
+version = "1.44"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng([[
-- 修复一处逻辑错误并更新了月影的击中特效。
-
-- 修复【月影】漂浮动画不正确的问题。
-- 修复玻璃魔杖传送音效问题。
-- 修复玻璃魔杖和友谊戒指特效不显示的问题。
-- 修复一处崩溃。
-- 月影更改了充能系统。
-- 使用【月亮碎片】、【注能月亮碎片】、【纯净辉煌】为月影提供能量。
+- 新物品【月光粉】：赋予一次额外攻击（无视位面实体抵抗），仅当未佩戴启迪之冠时生效。
 ]], [[
-- Fix an issue and update hit fx for Moonlight Shadow.
-
-- Fix issue that Moonlight Shadow doesn't show correct anim when floating.
-- Fix skin sound issue for Rod of Glass.
-- Fix missing fx for Rod of Glass and Ring of Friendship.
-- Fix a crash.
-- Rework battery system for Moonlight Shadow.
-- Use Moon Glass, Charged Moon Glass or Pure Brilliance as battery for Moonlight Shadow.
+- New Item "Moonlight Powder": Grants an extra attack that ignores planar entity protection, only active when Enlightened Crown NOT EQUIPPED!
 ]])
 description = zheng("版本: ", "Version: ") .. version ..
     zheng("\n\n更新内容:\n", "\n\nChangelog:\n") .. changelog .. "\n" ..

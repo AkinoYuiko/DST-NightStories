@@ -110,6 +110,10 @@ SortAfter("blackholestaff", "greenstaff")
 AddRecipe("spice_cactus", {Ingredient("cactus_meat", 2), Ingredient("cactus_flower", 1)}, TECH.FOODPROCESSING_ONE, {nounlock = true, numtogive = 2, nochar = true, builder_tag = "professionalchef", no_deconstruction = true})
 SortAfter("spice_cactus", "spice_salt")
 
+-- 月光粉 --
+AddRecipe("spice_moonglass", {Ingredient("moonglass_charged", 2), Ingredient("moonglass", 5)}, TECH.FOODPROCESSING_ONE, {nounlock = true, numtogive = 2, nochar = true, builder_tag = "professionalchef", no_deconstruction = true})
+SortAfter("spice_moonglass", "spice_cactus")
+
 -- 便携衣柜 & 魔法礼装 --
 AddRecipe("portable_wardrobe_wrap", {Ingredient("giftwrap", 1), Ingredient("nightmarefuel",1)}, TECH.MAGIC_THREE, {no_deconstruction = true}, {"MAGIC", "DECOR"})
 SortAfter("portable_wardrobe_wrap", "wardrobe", "DECOR")

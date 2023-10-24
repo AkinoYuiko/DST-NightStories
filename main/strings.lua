@@ -3,7 +3,6 @@ GLOBAL.setfenv(1, GLOBAL)
 
 local strings = {
     ANNOUNCE_GLASSIC_BROKE = "WEAPON BREAK!",
-
     ACTIONS =
     {
         BLINK = {
@@ -73,6 +72,9 @@ local strings = {
         SPICE_CACTUS = "Cactus Powder",
         SPICE_CACTUS_FOOD = "Cactus {food}",
 
+        SPICE_MOONGLASS = "Moonlight Powder",
+        SPICE_MOONGLASS_FOOD = "Moonlight {food}",
+
         PORTABLE_WARDROBE_WRAP = "Magic Dress",
         PORTABLE_WARDROBE_ITEM = "Portable Wardrobe",
 
@@ -110,6 +112,8 @@ local strings = {
         BATTLERUINSHAT = "Complete with ancient force field!",
 
         SPICE_CACTUS = "Make sanity great again.",
+        SPICE_MOONGLASS = "Grant the power of the moon.",
+
         PORTABLE_WARDROBE_WRAP = "Convenient for dressing up.",
         PORTABLE_WARDROBE_ITEM = "Convenient for dressing up a lot.",
 
@@ -216,6 +220,8 @@ local strings = {
     {
         GENERIC =
         {
+            ANNOUNCE_ATTACH_BUFF_MOONLIGHT = "Extra power from the moon!",
+            ANNOUNCE_DETTACH_BUFF_MOONLIGHT = "The moon power has gone.",
             DESCRIBE =
             {
                 GLASSICCUTTER =
@@ -266,6 +272,8 @@ local strings = {
                 BATTLERUINSHAT = "For The King!",
 
                 SPICE_CACTUS = "Make sanity great again.",
+                SPICE_MOONGLASS = "Grant the power of the moon.",
+
                 PORTABLE_WARDROBE_WRAP = "Dress up anytime.",
                 PORTABLE_WARDROBE_ITEM = "Dress up anywhere.",
 
