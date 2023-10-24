@@ -25,6 +25,7 @@ NS_ACTIONS = {
     FUELPOCKETWATCH = Action({priority = 3, rmb = true}),
     FRIENDSHIPTOTEM = Action({priority = 3, rmb = true}),
     MOONLIGHTSHADOW = Action({mount_valid=true}),
+    MOONLIGHTSHADOW_CHARGE = Action({mount_valid=true}),
 }
 
 NS_ACTIONS.GEMTRADE.str = STRINGS.ACTIONS.GIVE.SOCKET
@@ -33,6 +34,7 @@ NS_ACTIONS.NIGHTSWORD.str = STRINGS.ACTIONS.GIVE.SOCKET
 NS_ACTIONS.FRIENDSHIPTOTEM.str = STRINGS.ACTIONS.GIVE.SOCKET
 NS_ACTIONS.FUELPOCKETWATCH.str = STRINGS.ACTIONS.FUELPOCKETWATCH
 NS_ACTIONS.MOONLIGHTSHADOW.str = STRINGS.ACTIONS.GIVE.SOCKET
+NS_ACTIONS.MOONLIGHTSHADOW_CHARGE.str = STRINGS.ACTIONS.MOONLIGHTSHADOW_CHARGE
 
 NS_ACTIONS.MIOFUEL.stroverridefn = function(act)
     if act.invobject then
@@ -43,7 +45,7 @@ end
 local change_tackle_strfn = ACTIONS.CHANGE_TACKLE.strfn
 ACTIONS.CHANGE_TACKLE.strfn = function(act)
     local item = (act.invobject and act.invobject:IsValid()) and act.invobject
-    return change_tackle_strfn(act) or ((item and item:HasTag("reloaditem_fragment")) and "FRAG") or nil
+    return change_tackle_strfn(act) or ((item and item:HasTag("reloaditem_fragment")) and "BATTERY") or nil
 end
 
 local GEM_MAP = {
@@ -267,6 +269,26 @@ NS_ACTIONS.MOONLIGHTSHADOW.fn = function(act)
     end
 end
 
+NS_ACTIONS.MOONLIGHTSHADOW_CHARGE.fn = function(act)
+    local doer = act.doer
+    local target = act.target
+    local item = act.invobject
+    local charges = 1
+    if item.components.stackable then
+        local stacks = item.components.stackable:StackSize()
+        local single_charge = TUNING.MOONLIGHT_SHADOW.BATTERIES[item.prefab]
+        -- total is max uses
+        local max_change_needed = target.components.finiteuses.total - target.components.finiteuses:GetUses()
+        charges = math.clamp(math.ceil(max_change_needed / single_charge), 1, stacks)
+        item.components.stackable:Get(charges):Remove()
+    else
+        act.invobject:Remove()
+    end
+    target:ChargeWithItem(item, charges)
+    doer.SoundEmitter:PlaySound("aqol/new_test/gem")
+    return true
+end
+
 ---------------------------------------------------------------------
 ----------------------- COMPONENT ACTIONS ---------------------------
 ---------------------------------------------------------------------
@@ -373,6 +395,11 @@ AddComponentAction("INVENTORY", "wardrobe", function(inst, doer, actions, right)
     end
 end)
 
+AddComponentAction("USEITEM", "moonlightshadowbattery", function(inst, doer, target, actions, right)
+    if target.prefab == "moonlight_shadow" then
+        table.insert(actions, ACTIONS.MOONLIGHTSHADOW_CHARGE)
+    end
+end)
 
 AddComponentAction("USEITEM", "glasssocket", function(inst, doer, target, actions, right)
     if target.prefab == "sword_lunarplant" then
@@ -398,6 +425,7 @@ for _, sg in ipairs({"wilson", "wilson_client"}) do
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.FUELPOCKETWATCH, "pocketwatch_warpback_pre"))
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.FRIENDSHIPTOTEM, "doshortaction"))
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.MOONLIGHTSHADOW, "doglassicbuild"))
+    AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.MOONLIGHTSHADOW_CHARGE, "doshortaction"))
 end
 
 --------------------------------------------------------------------------------
@@ -417,8 +445,9 @@ local function set_reloaditem_fragment(inst)
     inst:AddTag("reloaditem_fragment")
     if not TheWorld.ismastersim then return end
     inst:AddComponent("reloaditem")
+    inst:AddComponent("moonlightshadowbattery")
 end
 
-for prefab in pairs(TUNING.MOONLIGHT_SHADOW.ACCEPTING_PREFABS) do
+for prefab in pairs(TUNING.MOONLIGHT_SHADOW.BATTERIES) do
     AddPrefabPostInit(prefab, set_reloaditem_fragment)
 end

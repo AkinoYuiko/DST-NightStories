@@ -59,6 +59,7 @@ local function fn()
 
     inst:AddComponent("tool")
     inst.components.tool:SetAction(ACTIONS.MINE, TUNING.MOONGLASSPICKAXE.EFFECTIVENESS)
+    inst.components.tool:EnableToughWork(true)
 
     inst:AddComponent("finiteuses")
     inst.components.finiteuses:SetMaxUses(TUNING.MOONGLASSPICKAXE.USES)
