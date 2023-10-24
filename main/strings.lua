@@ -221,7 +221,7 @@ local strings = {
         GENERIC =
         {
             ANNOUNCE_ATTACH_BUFF_MOONLIGHT = "Extra power from the moon!",
-            ANNOUNCE_DETTACH_BUFF_MOONLIGHT = "The moon power has gone.",
+            ANNOUNCE_DETACH_BUFF_MOONLIGHT = "The moon power has gone.",
             DESCRIBE =
             {
                 GLASSICCUTTER =

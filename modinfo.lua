@@ -6,17 +6,19 @@ local function zheng(zh, en)
     return LOC[locale] or en
 end
 
-version = "1.44.1"
+version = "1.44.2"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng([[
-- 调整了月光粉的配方和持续时间。
+- 修复一处拼写错误。
 
+- 调整了月光粉的配方和持续时间。
 - 新物品【月光粉】：赋予一次额外攻击（无视位面实体抵抗），仅当未佩戴启迪之冠时生效。
 ]], [[
-- Tweak the recipe and duration of Moonlight Powder.
+- Fix a string typo.
 
+- Tweak the recipe and duration of Moonlight Powder.
 - New Item "Moonlight Powder": Grants an extra attack that ignores planar entity protection, only active when Enlightened Crown NOT EQUIPPED!
 ]])
 description = zheng("版本: ", "Version: ") .. version ..
