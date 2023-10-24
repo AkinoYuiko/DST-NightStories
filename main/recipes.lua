@@ -111,7 +111,7 @@ AddRecipe("spice_cactus", {Ingredient("cactus_meat", 2), Ingredient("cactus_flow
 SortAfter("spice_cactus", "spice_salt")
 
 -- 月光粉 --
-AddRecipe("spice_moonglass", {Ingredient("moonglass_charged", 2), Ingredient("moonglass", 5)}, TECH.FOODPROCESSING_ONE, {nounlock = true, numtogive = 2, nochar = true, builder_tag = "professionalchef", no_deconstruction = true})
+AddRecipe("spice_moonglass", {Ingredient("moonglass_charged", 1), Ingredient("moonglass", 5)}, TECH.FOODPROCESSING_ONE, {nounlock = true, numtogive = 2, nochar = true, builder_tag = "professionalchef", no_deconstruction = true})
 SortAfter("spice_moonglass", "spice_cactus")
 
 -- 便携衣柜 & 魔法礼装 --
