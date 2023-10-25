@@ -64,7 +64,9 @@ end
 
 local function target_testfn(target)
     if not target then return end
-    return (target.components.health == nil or not target.components.health:IsDead()) and
+    if (not TheNet:GetPVPEnabled()) and target:HasTag("player") then return end
+    return target:IsValid() and
+        (target.components.health == nil or not target.components.health:IsDead()) and
         (target:HasTag("spiderden") or target:HasTag("wooden") or not target:HasTag("structure")) and
         not target:HasTag("wall")
 end

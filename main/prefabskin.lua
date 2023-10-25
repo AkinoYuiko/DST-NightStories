@@ -150,6 +150,59 @@ orangestaff_clear_fn = function(inst)
     return unpack(ret)
 end
 
+-- lunarplanthat --
+-- local NS_CHARS =
+-- {
+--     civi = true,
+--     miotan = true,
+--     dummy = true,
+-- }
+
+-- local function check_ns_chars(owner)
+--     return NS_CHARS[owner.prefab] and "_lower" or ""
+-- end
+
+local function lunarplant_onequip(inst, data)
+    local owner = data and data.owner
+    if owner == nil then return end
+    local skin_build = inst:GetSkinBuild()
+    if skin_build then
+        if inst.fx ~= nil then
+            inst.fx:Remove()
+        end
+        inst.fx = SpawnPrefab("luanrplanthat_fx")
+        inst.fx:AttachToOwner(owner)
+
+        -- print("Skinned Brightshade Helm equipped! G8!")
+        -- inst.fx = SpawnPrefab("lunarplanthat_fx_" .. skin_build .. check_ns_chars(owner))
+        -- inst.fx:AttachToOwner(owner)
+    end
+end
+
+if not rawget(_G, "lunarplanthat_init_fn") then
+    function lunarplanthat_init_fn(inst)
+        if not TheWorld.ismastersim then return end
+
+        local ret = { GlassicAPI.BasicInitFn(inst) }
+
+        inst:ListenForEvent("equipped", lunarplant_onequip)
+        return unpack(ret)
+    end
+end
+
+if not rawget(_G, "lunarplanthat_clear_fn") then
+    function lunarplanthat_clear_fn(inst)
+        if not TheWorld.ismastersim then return end
+
+        local ret = { basic_clear_fn(inst, "hat_lunarplant") }
+
+        inst:RemoveEventCallback("equipped", lunarplant_onequip)
+        return unpack(ret)
+    end
+end
+
+------------------------------------------------------------------------------
+
 GlassicAPI.SkinHandler.AddModSkins({
     -- Civi
     civi = {
@@ -208,4 +261,5 @@ GlassicAPI.SkinHandler.AddModSkins({
     moonglasspickaxe = { "moonglasspickaxe_northern" },
     moonglasshammer = { "moonglasshammer_forge" },
     orangestaff = { "orangestaff_glass" },
+    -- lunarplanthat = { "lunarplanthat_glass" },
 })

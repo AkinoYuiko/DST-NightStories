@@ -5,6 +5,7 @@ local Utils = require "ns_utils"
 -------------------------------------------------------------------------
 
 local target_testfn = Utils.TargetTestFn
+local launching_projectile = Utils.LaunchingProjectile
 
 local function onattackother(owner, data)
     local hat = owner and owner.components.inventory and owner.components.inventory:GetEquippedItem(EQUIPSLOTS.HEAD)
@@ -12,7 +13,14 @@ local function onattackother(owner, data)
     local target = data and data.target
     if target then
         if target_testfn(target) then
-            SpawnPrefab("glash"):SetTarget(owner, target, 5 * FRAMES)
+            -- In combat, this is when we're just launching a projectile, so don't spawn yet
+            if data.weapon ~= nil and data.projectile == nil
+                and (data.weapon.components.projectile ~= nil
+                    or data.weapon.components.complexprojectile ~= nil
+                    or data.weapon.components.weapon:CanRangedAttack()) then
+                return
+            end
+            SpawnPrefab("glash"):SetTarget(owner, target, 8 * FRAMES)
         end
     end
 end
