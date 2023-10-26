@@ -469,6 +469,11 @@ msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_HOUNDS"
 msgid "Watch out, hounds're coming!"
 msgstr "小心，来狗了！"
 
+#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_HUNT_SUCCESSFUL_FORK
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_HUNT_SUCCESSFUL_FORK"
+msgid "Aha! Advantage goes to me."
+msgstr "啊哈！本宝宝占尽优势。"
+
 #. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_INV_FULL
 msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_INV_FULL"
 msgid "Anyone want some free stuffs?"

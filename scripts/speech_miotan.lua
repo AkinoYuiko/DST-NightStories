@@ -491,6 +491,7 @@ return {
     -- ANNOUNCE_HUNT_BEAST_NEARBY = "I love a game of hide and seek!",
     -- ANNOUNCE_HUNT_LOST_TRAIL = "You win this round!",
     -- ANNOUNCE_HUNT_LOST_TRAIL_SPRING = "Sabotaged by this realm's mushiness.",
+    ANNOUNCE_HUNT_SUCCESSFUL_FORK = "Aha! Advantage goes to me.",
     -- ANNOUNCE_INSUFFICIENTFERTILIZER = "It needs some plant food.",
     ANNOUNCE_INV_FULL = "Anyone want some free stuffs?",
     -- ANNOUNCE_IS_FEASTING = "A fancy feast... or a fancied feast? Hyuyu!",
