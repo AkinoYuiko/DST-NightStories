@@ -6,26 +6,31 @@ local function zheng(zh, en)
     return LOC[locale] or en
 end
 
-version = "1.44.5"
+version = "1.44.6"
+version_compatible = "1.44.5"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng([[
-- 修复了月光粉额外攻击的触发条件存在的漏洞。
+- 更新澪的文本。
 
+- 修复了月光粉额外攻击的触发条件存在的漏洞。
 - 修复一处崩溃。
 - 新增【亮茄头盔】对【月影】的伤害加成。
 - 修复一处拼写错误。
 - 调整了月光粉的配方和持续时间。
-- 新物品【月光粉】：赋予一次额外攻击（无视位面实体抵抗），仅当未佩戴启迪之冠时生效。
+- 新物品【月光粉】:
+  赋予一次额外攻击（无视位面实体抵抗），仅当未佩戴启迪之冠时生效。
 ]], [[
-- Fix logic issue for the trigger condition of Moonlight Powder.
+- Update Mio's speech text.
 
+- Fix logic issue for the trigger condition of Moonlight Powder.
 - Fix a crash.
 - Add setbonus for Moonlight Shadow when Brightshade Helm is equipped.
 - Fix a string typo.
 - Tweak the recipe and duration of Moonlight Powder.
-- New Item "Moonlight Powder": Grants an extra attack that ignores planar entity protection, only active when Enlightened Crown NOT EQUIPPED!
+- New Item "Moonlight Powder":
+  Grants an extra attack that ignores planar entity protection, only active when Enlightened Crown NOT EQUIPPED!
 ]])
 description = zheng("版本: ", "Version: ") .. version ..
     zheng("\n\n更新内容:\n", "\n\nChangelog:\n") .. changelog .. "\n" ..
