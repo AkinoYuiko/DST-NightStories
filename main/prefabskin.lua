@@ -162,20 +162,29 @@ end
 --     return NS_CHARS[owner.prefab] and "_lower" or ""
 -- end
 
-local function lunarplant_onequip(inst, data)
+-- [[ Lunarplant Item Skins ]] --
+-- Brightshade Helm
+local function show_head(owner)
+    owner.AnimState:Show("HEAD")
+    if owner:HasTag("player") then
+        owner.AnimState:ShowSymbol("face")
+        owner.AnimState:ShowSymbol("swap_face")
+        owner.AnimState:ShowSymbol("beard")
+        owner.AnimState:ShowSymbol("cheeks")
+    end
+end
+
+local function lunarplanthat_onequip(inst, data)
     local owner = data and data.owner
     if owner == nil then return end
     local skin_build = inst:GetSkinBuild()
     if skin_build then
+        show_head(owner)
         if inst.fx ~= nil then
             inst.fx:Remove()
         end
-        inst.fx = SpawnPrefab("luanrplanthat_fx")
+        inst.fx = SpawnPrefab(skin_build .. "_fx")
         inst.fx:AttachToOwner(owner)
-
-        -- print("Skinned Brightshade Helm equipped! G8!")
-        -- inst.fx = SpawnPrefab("lunarplanthat_fx_" .. skin_build .. check_ns_chars(owner))
-        -- inst.fx:AttachToOwner(owner)
     end
 end
 
@@ -185,7 +194,7 @@ if not rawget(_G, "lunarplanthat_init_fn") then
 
         local ret = { GlassicAPI.BasicInitFn(inst) }
 
-        inst:ListenForEvent("equipped", lunarplant_onequip)
+        inst:ListenForEvent("equipped", lunarplanthat_onequip)
         return unpack(ret)
     end
 end
@@ -196,7 +205,7 @@ if not rawget(_G, "lunarplanthat_clear_fn") then
 
         local ret = { basic_clear_fn(inst, "hat_lunarplant") }
 
-        inst:RemoveEventCallback("equipped", lunarplant_onequip)
+        inst:RemoveEventCallback("equipped", lunarplanthat_onequip)
         return unpack(ret)
     end
 end
@@ -261,5 +270,5 @@ GlassicAPI.SkinHandler.AddModSkins({
     moonglasspickaxe = { "moonglasspickaxe_northern" },
     moonglasshammer = { "moonglasshammer_forge" },
     orangestaff = { "orangestaff_glass" },
-    -- lunarplanthat = { "lunarplanthat_glass" },
+    lunarplanthat = { "lunarplanthat_glass" },
 })

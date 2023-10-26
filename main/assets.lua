@@ -30,6 +30,8 @@ PrefabFiles = {
     "moonglasspickaxe",
     "moonlight_shadow",
     "moonlight_buff",
+
+    "lunarplanthat_glass_fx",
 }
 
 
