@@ -382,6 +382,10 @@ return {
     ANNOUNCE_ATTACH_BUFF_WORKEFFECTIVENESS = "\"Efficiency V\"",
     -- ANNOUNCE_BECOMEGHOST = "ooOooooO!",
     -- ANNOUNCE_BEES = "Fiddle dee dee, HERE COMES A BEE!",
+
+    ANNOUNCE_ATTACH_BUFF_MOONLIGHT = "Mo attacks!",
+    ANNOUNCE_DETACH_BUFF_MOONLIGHT = "My extra power is nil.",
+
     ANNOUNCE_BOOK_MOON_DAYTIME = "We'll be able to meet the result tonight!",
     ANNOUNCE_BLOOMING =
     {

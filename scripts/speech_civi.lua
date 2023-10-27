@@ -402,6 +402,9 @@ return {
         -- "What's that?!",
         -- "It's not safe here.",
     },
+
+    ANNOUNCE_ATTACH_BUFF_MOONLIGHT = "I AM THE LIGHT!",
+    ANNOUNCE_DETACH_BUFF_MOONLIGHT = "Lights out?",
     -- ANNOUNCE_ATTACH_BUFF_ATTACK = "Let me at 'em!",
     -- ANNOUNCE_ATTACH_BUFF_ELECTRICATTACK = "I feel positively electric!",
     -- ANNOUNCE_ATTACH_BUFF_MOISTUREIMMUNITY = "I feel as dry as one of Wickerbottom's lectures!",
