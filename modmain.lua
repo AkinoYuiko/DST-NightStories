@@ -8,7 +8,7 @@ local main_files = {
     "containerwidgets",
     "prefabskin",
     "recipes",
-    "widgets",
+    -- "widgets",
     "spices",
 
     "sanity_rework",

@@ -3,6 +3,11 @@ local params = require("containers").params
 
 params.moonlight_shadow = deepcopy(params.slingshot)
 params.moonlight_shadow.widget.slotbg = nil
+params.moonlight_shadow.excludefromcrafting = false
+function params.moonlight_shadow.itemtestfn(container, item, slot)
+    return TUNING.MOONLIGHT_SHADOW.BATTERIES[item.prefab]
+end
+
 -- params.moonlight_shadow =
 -- {
 --     widget =
@@ -18,6 +23,10 @@ params.moonlight_shadow.widget.slotbg = nil
 --     type = "hand_inv",
 -- }
 
-function params.moonlight_shadow.itemtestfn(container, item, slot)
-    return TUNING.MOONLIGHT_SHADOW.BATTERIES[item.prefab]
+params.nightsword = deepcopy(params.slingshot)
+params.nightsword.widget.slotbg = nil
+params.nightsword.excludefromcrafting = false
+params.nightsword.acceptsstacks = false
+function params.nightsword.itemtestfn(container, item, slot)
+    return item:HasTag("civicrystal")
 end
