@@ -644,7 +644,7 @@ return {
     -- ANNOUNCE_TOOL_SLIP = "Whoops-a-doodle, hyuyu!",
     ANNOUNCE_TOOMANYBIRDS = "I don't think it's smart to read it now.",
     -- ANNOUNCE_TORCH_OUT = "Farewell, sweet flame!",
-    ANNOUNCE_TOWNPORTALTELEPORT = "Never fear, the brave Mio is here!",
+    ANNOUNCE_TOWNPORTALTELEPORT = "Never fear, brave me is here!",
     -- ANNOUNCE_TRAP_WENT_OFF = "Oh dear, oh dear.",
     -- ANNOUNCE_UNIMPLEMENTED = "What on earth could it be!",
     -- ANNOUNCE_WASHED_ASHORE = "I escaped the threat, but now I'm wet!",
