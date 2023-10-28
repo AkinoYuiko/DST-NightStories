@@ -1,6 +1,12 @@
 local MODROOT = MODROOT
 GLOBAL.setfenv(1, GLOBAL)
 
+local SPEECHES =
+{
+    civi = require("speech_civi"),
+    miotan = require("speech_miotan")
+}
+
 local strings = {
     ANNOUNCE_GLASSIC_BROKE = "WEAPON BREAK!",
     ACTIONS =
@@ -282,8 +288,8 @@ local strings = {
 
             }
         },
-        CIVI = require("speech_civi"),
-        MIOTAN = require("speech_miotan"),
+        CIVI = deepcopy(SPEECHES["civi"]),
+        MIOTAN = deepcopy(SPEECHES["miotan"]),
         WICKERBOTTOM = {
             ACTIONFAIL = {
                 READ = {
@@ -361,11 +367,9 @@ local strings = {
     },
 }
 
--- if not rawget(_G, "GlassicAPI") then return end
 
 GlassicAPI.MergeStringsToGLOBAL(strings)
 GlassicAPI.MergeStringsToGLOBAL(require("speech_wortox"), STRINGS.CHARACTERS.MIOTAN, true)
-GlassicAPI.MergeStringsToGLOBAL(require("speech_wilson"), STRINGS.CHARACTERS.CIVI, true)
 STRINGS.CHARACTERS.DUMMY = STRINGS.CHARACTERS.MIOTAN -- Use mio's quote for now
 GlassicAPI.MergeTranslationFromPO(MODROOT.."languages")
 
@@ -380,8 +384,7 @@ end)
 local function MergeCharacterSpeech(char, source)
     local file, errormsg = io.open(MODROOT .. "scripts/speech_"..char..".lua", "w")
     if not file then print("Can't update " .. MODROOT .. "scripts/speech_" .. char .. ".lua" .. "\n" .. tostring(errormsg)) return end
-    -- GlassicAPI.MergeSpeechFile(require("speech_"..char), file)
-    GlassicAPI.MergeSpeechFile(STRINGS.CHARACTERS[string.upper(char)], file, source)
+    GlassicAPI.MergeSpeechFile(SPEECHES[char], file, source)
 end
 
 function UpdateNsStrings(update_speech)

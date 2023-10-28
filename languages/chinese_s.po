@@ -79,10 +79,20 @@ msgctxt "STRINGS.CHARACTERS.CIVI.ANNOUNCE_ADVENTUREFAIL"
 msgid "I shall try again."
 msgstr "我应该再试试的。"
 
+#. STRINGS.CHARACTERS.CIVI.ANNOUNCE_ATTACH_BUFF_MOONLIGHT
+msgctxt "STRINGS.CHARACTERS.CIVI.ANNOUNCE_ATTACH_BUFF_MOONLIGHT"
+msgid "I AM THE LIGHT!"
+msgstr "我即是光！"
+
 #. STRINGS.CHARACTERS.CIVI.ANNOUNCE_CRAFTING_FAIL
 msgctxt "STRINGS.CHARACTERS.CIVI.ANNOUNCE_CRAFTING_FAIL"
 msgid "Nope, missing ingredients."
 msgstr "不行，材料不够。"
+
+#. STRINGS.CHARACTERS.CIVI.ANNOUNCE_DETACH_BUFF_MOONLIGHT
+msgctxt "STRINGS.CHARACTERS.CIVI.ANNOUNCE_DETACH_BUFF_MOONLIGHT"
+msgid "Lights out?"
+msgstr "熄灭……了？"
 
 #. STRINGS.CHARACTERS.CIVI.ANNOUNCE_QUAKE
 msgctxt "STRINGS.CHARACTERS.CIVI.ANNOUNCE_QUAKE"
@@ -103,26 +113,6 @@ msgstr ""
 msgctxt "STRINGS.CHARACTERS.CIVI.DESCRIBE.MOSSLING"
 msgid "󰂡"
 msgstr ""
-
-#. STRINGS.CHARACTERS.CIVI.ANNOUNCE_ATTACH_BUFF_MOONLIGHT
-msgctxt "STRINGS.CHARACTERS.CIVI.ANNOUNCE_ATTACH_BUFF_MOONLIGHT"
-msgid "I AM THE LIGHT!"
-msgstr "我即是光！"
-
-#. STRINGS.CHARACTERS.CIVI.ANNOUNCE_DETACH_BUFF_MOONLIGHT
-msgctxt "STRINGS.CHARACTERS.CIVI.ANNOUNCE_DETACH_BUFF_MOONLIGHT"
-msgid "Lights... out?"
-msgstr "熄灭……了？"
-
-#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_ATTACH_BUFF_MOONLIGHT
-msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_ATTACH_BUFF_MOONLIGHT"
-msgid "Mo attacks!"
-msgstr "多重打击！"
-
-#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_DETACH_BUFF_MOONLIGHT
-msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_DETACH_BUFF_MOONLIGHT"
-msgid "My extra power is nil."
-msgstr "额外的力量消失了。"
 
 #. STRINGS.CHARACTERS.GENERIC.ANNOUNCE_ATTACH_BUFF_MOONLIGHT
 msgctxt "STRINGS.CHARACTERS.GENERIC.ANNOUNCE_ATTACH_BUFF_MOONLIGHT"
@@ -246,12 +236,12 @@ msgstr "似乎没有用。"
 
 #. STRINGS.CHARACTERS.GENERIC.DESCRIBE.MOONGLASSHAMMER
 msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.MOONGLASSHAMMER"
-msgid "我把它做的非常好用。"
+msgid "I've made it extra effective."
 msgstr ""
 
 #. STRINGS.CHARACTERS.GENERIC.DESCRIBE.MOONGLASSPICKAXE
 msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.MOONGLASSPICKAXE"
-msgid "我把它做的非常好用。"
+msgid "I've made it extra effective."
 msgstr ""
 
 #. STRINGS.CHARACTERS.GENERIC.DESCRIBE.MOONLIGHT_SHADOW
@@ -419,6 +409,11 @@ msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_ATTACH_BUFF_MOISTUREIMMUNITY"
 msgid "There will be no wet! Hyuyu!"
 msgstr "不潮湿啦！哼哼~！"
 
+#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_ATTACH_BUFF_MOONLIGHT
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_ATTACH_BUFF_MOONLIGHT"
+msgid "Mo attacks!"
+msgstr "多重打击！"
+
 #. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_ATTACH_BUFF_SLEEPRESISTANCE
 msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_ATTACH_BUFF_SLEEPRESISTANCE"
 msgid "Sleep Resistance Lv.7!"
@@ -458,6 +453,11 @@ msgstr "不辣了！"
 msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_DETACH_BUFF_ELECTRICATTACK"
 msgid "Another zappy dish?"
 msgstr "该电一电了？"
+
+#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_DETACH_BUFF_MOONLIGHT
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_DETACH_BUFF_MOONLIGHT"
+msgid "My extra power is nil."
+msgstr "额外的力量消失了。"
 
 #. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_DETACH_BUFF_WORKEFFECTIVENESS
 msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_DETACH_BUFF_WORKEFFECTIVENESS"
@@ -970,9 +970,9 @@ msgstr "生日"
 #. STRINGS.CHARACTER_BIOS.civi.2.desc
 msgctxt "STRINGS.CHARACTER_BIOS.civi.2.desc"
 msgid ""
-"Lv.0 - 骨头汤\n"
-"Lv.1 - 肉丸\n"
-"Lv.2 - 伏特羊肉冻"
+"Lv.0 - Bone Bouillon\n"
+"Lv.1 - Meatballs\n"
+"Lv.2 - Volt Goat Chaud-Froid"
 msgstr ""
 
 #. STRINGS.CHARACTER_BIOS.civi.2.title
@@ -992,7 +992,7 @@ msgstr "生日"
 
 #. STRINGS.CHARACTER_BIOS.dummy.2.desc
 msgctxt "STRINGS.CHARACTER_BIOS.dummy.2.desc"
-msgid "恐怖国王饼"
+msgid "Grim Galette"
 msgstr ""
 
 #. STRINGS.CHARACTER_BIOS.dummy.2.title
@@ -1081,17 +1081,17 @@ msgstr "“假如我可以吞噬梦魇...”"
 
 #. STRINGS.CHARACTER_SURVIVABILITY.civi
 msgctxt "STRINGS.CHARACTER_SURVIVABILITY.civi"
-msgid "渺茫"
+msgid "Slim"
 msgstr ""
 
 #. STRINGS.CHARACTER_SURVIVABILITY.dummy
 msgctxt "STRINGS.CHARACTER_SURVIVABILITY.dummy"
-msgid "无"
-msgstr ""
+msgid "None"
+msgstr "无"
 
 #. STRINGS.CHARACTER_SURVIVABILITY.miotan
 msgctxt "STRINGS.CHARACTER_SURVIVABILITY.miotan"
-msgid "严峻"
+msgid "Grim"
 msgstr ""
 
 #. STRINGS.CHARACTER_TITLES.civi
@@ -1483,7 +1483,7 @@ msgstr "控制光与暗的魔法使, 拥有超强的适应能力和战斗能力�
 
 #. STRINGS.SKIN_DESCRIPTIONS.dragonflychest_gingerbread
 msgctxt "STRINGS.SKIN_DESCRIPTIONS.dragonflychest_gingerbread"
-msgid "不要被愚弄了……它完全是不能吃的。"
+msgid "Don't be fooled... it's completely inedible."
 msgstr ""
 
 #. STRINGS.SKIN_DESCRIPTIONS.dummy_none
@@ -1558,7 +1558,7 @@ msgstr "一把雕工精美的月光斧头。"
 
 #. STRINGS.SKIN_DESCRIPTIONS.moonglasshammer_forge
 msgctxt "STRINGS.SKIN_DESCRIPTIONS.moonglasshammer_forge"
-msgid "小心它的尖刺部分。"
+msgid "Watch out for the spikey bits."
 msgstr ""
 
 #. STRINGS.SKIN_DESCRIPTIONS.moonglasspickaxe_northern
@@ -1613,8 +1613,8 @@ msgstr ""
 
 #. STRINGS.SKIN_NAMES.dragonflychest_gingerbread
 msgctxt "STRINGS.SKIN_NAMES.dragonflychest_gingerbread"
-msgid "姜饼箱子"
-msgstr ""
+msgid "Gingerbread Chest"
+msgstr "姜饼箱妈妈"
 
 #. STRINGS.SKIN_NAMES.dummy_none
 msgctxt "STRINGS.SKIN_NAMES.dummy_none"
