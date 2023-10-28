@@ -16,27 +16,63 @@ local prefabs =
         "statue_transition_2",
     },
 }
+local totem_sounds =
+{
+    activate = "rifts3/bearger_sack/open_f5_loopstart",
+    deactivate = "rifts3/bearger_sack/close",
+}
+
+local ACTIVE_SOUNDNAME = "openloop"
 
 ----------------------------------------------------------------
 ------------------------ TOTEM FUNCTION ------------------------
 ----------------------------------------------------------------
-local function turn_on(inst)
-    if inst.components.fueled then
-        inst.components.fueled:StartConsuming()
+
+
+local function StartActiveSound(inst)
+    if inst._startsoundtask ~= nil then
+        inst._startsoundtask:Cancel()
+        inst._startsoundtask = nil
     end
-    if inst.task == nil then
-        inst.task = inst:DoPeriodicTask(1, inst.totemfn, 0)
+
+    inst.SoundEmitter:PlaySound(totem_sounds.activate, ACTIVE_SOUNDNAME)
+end
+
+local function turn_on(inst)
+    if not inst.toggled:value() then
+        inst.toggled:set(true)
+
+        if inst._startsoundtask ~= nil then
+            inst._startsoundtask:Cancel()
+        end
+
+        inst._startsoundtask = inst:DoTaskInTime(5*FRAMES, StartActiveSound)
+
+        if inst.components.fueled then
+            inst.components.fueled:StartConsuming()
+        end
+        if inst.task == nil then
+            inst.task = inst:DoPeriodicTask(0.5, inst.totemfn, 0)
+        end
     end
 end
 
 local function turn_off(inst)
-    if inst.components.fueled then
-        inst.components.fueled:StopConsuming()
-    end
+    if inst.toggled:value() then
+        inst.toggled:set(false)
 
-    if inst.task then
-        inst.task:Cancel()
-        inst.task = nil
+        inst.SoundEmitter:KillSound(ACTIVE_SOUNDNAME)
+
+        inst.SoundEmitter:PlaySound(totem_sounds.deactivate)
+
+        if inst.components.fueled then
+            inst.components.fueled:StopConsuming()
+        end
+
+        if inst.task then
+            inst.task:Cancel()
+            inst.task = nil
+        end
     end
 end
 
@@ -210,17 +246,32 @@ local function base_fn()
     return inst
 end
 
+
+local function OnLoad(inst, data)
+    if data and data.toggled then
+        inst:TurnOn()
+    end
+end
+
+local function OnSave(inst, data)
+    data.toggled = inst.toggled:value()
+end
+
 local function MakeTotem(color)
     local function totem_fn()
         local inst = common_fn()
 
         inst.AnimState:PlayAnimation(color .. "_loop", true)
 
+        inst.toggled = net_bool(inst.GUID, "friendshiptotem.toogle", "friendshiptotem.toggledirty")
+
         if not TheWorld.ismastersim then
             return inst
         end
 
         inst.components.inventoryitem:SetSinks(true)
+
+        inst:AddComponent("friendshiptotem")
 
         inst:AddComponent("fueled")
         inst.components.fueled.fueltype = FUELTYPE.MAGIC
@@ -231,14 +282,21 @@ local function MakeTotem(color)
         inst.components.fueled.period = FRAMES
 
         inst.components.inventoryitem:SetOnDroppedFn(turn_on)
-        inst.components.inventoryitem:SetOnPickupFn(turn_off)
-        -- inst.components.inventoryitem:SetOnPutInInventoryFn(turn_on)
+        -- inst.components.inventoryitem:SetOnPickupFn(turn_off)
+        inst.components.inventoryitem:SetOnPutInInventoryFn(turn_off)
         inst.totemfn = totemfn[color]
 
         if color == "dark" then
             inst:AddComponent("sanityaura")
             inst.components.sanityaura.aura = - TUNING.SANITYAURA_SMALL
         end
+
+        inst.TurnOn = turn_on
+        inst.TurnOff = turn_off
+        inst.toggled:set(false)
+
+        inst.OnSave = OnSave
+        inst.OnLoad = OnLoad
 
         return inst
     end

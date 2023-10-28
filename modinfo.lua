@@ -6,24 +6,14 @@ local function zheng(zh, en)
     return LOC[locale] or en
 end
 
-version = "1.44.9"
+version = "1.45"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng([[
-- 新增了部分语言文本。
-
-- 调整了月影的格子UI。
-...
-- 新物品【月光粉】:
-  赋予一次额外攻击（无视位面实体抵抗），仅当未佩戴启迪之冠时生效。
+- 注能图腾现在可以在物品栏里激活/关闭了。
 ]], [[
-- Add some string texts.
-
-- Tweak slot UI for Moonlight Shadow.
-...
-- New Item "Moonlight Powder":
-  Grants an extra attack that ignores planar entity protection, only active when Enlightened Crown NOT EQUIPPED!
+- Charged Totems can now be activated/deactivated in inventory.
 ]])
 description = zheng("版本: ", "Version: ") .. version ..
     zheng("\n\n更新内容:\n", "\n\nChangelog:\n") .. changelog .. "\n" ..

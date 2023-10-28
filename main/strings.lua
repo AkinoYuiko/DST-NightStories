@@ -24,6 +24,10 @@ local strings = {
         },
         FUELPOCKETWATCH = "Hack",
         MOONLIGHTSHADOW_CHARGE = "Charge",
+        TOGGLETOTEM = {
+            ON = "Activate",
+            OFF = "Deactivate",
+        }
     },
     UI = {
         CRAFTING =
