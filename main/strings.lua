@@ -12,10 +12,10 @@ local strings = {
     ACTIONS =
     {
         BLINK = {
-            FUEL = "Shadow Teleproof",
+            FUEL = "Shadowproof",
         },
         BLINK_MAP = {
-            FUEL = "Shadow Teleproof({uses})",
+            FUEL = "Shadowproof({uses})",
         },
         CHANGE_TACKLE =
         {
