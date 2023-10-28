@@ -518,7 +518,7 @@ return {
     -- ANNOUNCE_HUNT_BEAST_NEARBY = "I love a game of hide and seek!",
     -- ANNOUNCE_HUNT_LOST_TRAIL = "You win this round!",
     -- ANNOUNCE_HUNT_LOST_TRAIL_SPRING = "Sabotaged by this realm's mushiness.",
-    -- ANNOUNCE_HUNT_START_FORK = "The game is afoot! Or rather, a claw! Hyuyu!",
+    ANNOUNCE_HUNT_START_FORK = "The game is afoot! Hyuyu!",
     ANNOUNCE_HUNT_SUCCESSFUL_FORK = "Aha! Advantage goes to me.",
     -- ANNOUNCE_HUNT_WRONG_FORK = "My impish senses are tingling - something watches!",
     -- ANNOUNCE_INSUFFICIENTFERTILIZER = "It needs some plant food.",
@@ -1639,7 +1639,7 @@ return {
         -- DESERTHAT = "I do so dislike having sand in my face fur.",
         -- DEVTOOL = "It's a prank-maker.",
         -- DEVTOOL_NODEV = "Whoops-a-doodle!",
-        -- DIRTPILE = "I could get my claws in there.",
+        DIRTPILE = "Something diggable.",
         DIVININGROD =
         {
             -- COLD = "The trail's gone cold, I feel cajoled.",
@@ -1980,7 +1980,7 @@ return {
         -- GUNPOWDER = "I'll spell your doom with a mighty BOOM!",
         -- HALLOWEENCANDY_1 = "Something to sink my fangs into!",
         -- HALLOWEENCANDY_10 = "First time for everything, they say, they say.",
-        -- HALLOWEENCANDY_11 = "Harumpf, it melts all over my claws.",
+        HALLOWEENCANDY_11 = "Harumpf, it melts all over my hands.",
         -- HALLOWEENCANDY_12 = "How delightfully disgusting!",
         -- HALLOWEENCANDY_13 = "I'll try a nibble, I will, I will.",
         -- HALLOWEENCANDY_14 = "Ooo hoo hoo, spicy!",
@@ -2157,7 +2157,7 @@ return {
         -- LAVAARENA_ARMORLIGHT = "So light and breezy!",
         LAVAARENA_ARMORLIGHTSPEED = "Skittery!",
         -- LAVAARENA_ARMORMEDIUM = "Knock on wood for protection!",
-        -- LAVAARENA_ARMORMEDIUMDAMAGER = "Covered in claws!",
+        LAVAARENA_ARMORMEDIUMDAMAGER = "Looks sharp, eh?",
         -- LAVAARENA_ARMORMEDIUMRECHARGER = "Better! Faster!",
         LAVAARENA_ARMOR_HP = "Fortified!",
         -- LAVAARENA_BATTLESTANDARD = "Break that stake!",
@@ -2456,7 +2456,7 @@ return {
         MOONBUTTERFLY =
         {
             -- GENERIC = "A glimmering moth on wings alight.",
-            -- HELD = "Watch my claws now, dearest friend.",
+            HELD = "Hello, dearest friend.",
         },
         -- MOONBUTTERFLYWINGS = "Gossamer wings of pale, pale green.",
         -- MOONBUTTERFLY_SAPLING = "Grow now, safe and sound.",
@@ -3085,7 +3085,7 @@ return {
         RABBIT =
         {
             -- GENERIC = "A fellow hopper.",
-            -- HELD = "Do not touch my paws or claws.",
+            HELD = "Do not touch my hands!",
         },
         RABBITHOLE =
         {
@@ -3689,7 +3689,7 @@ return {
         -- TRINKET_18 = "Tiny little pranksters surely wait inside. Surprise!",
         -- TRINKET_19 = "I feel unbalanced too!",
         -- TRINKET_2 = "What might I do with a fake kazoo?",
-        -- TRINKET_20 = "Much less satisfying than big sharp claws!",
+        TRINKET_20 = "I don't like it!",
         -- TRINKET_21 = "I have no idea what it does.",
         -- TRINKET_22 = "Fried and frayed, just like my brain!",
         -- TRINKET_23 = "Not to toot my own shoehorn, but I'm great at collecting soles!",
@@ -3703,8 +3703,8 @@ return {
         -- TRINKET_30 = "A little piece from off the board.",
         -- TRINKET_31 = "A little piece from off the board.",
         -- TRINKET_32 = "If I look inside what will I see?",
-        -- TRINKET_33 = "No fun! It won't fit over my claw.",
-        -- TRINKET_34 = "I like my claws much better.",
+        TRINKET_33 = "No fun! ",
+        TRINKET_34 = "No fun! ",
         -- TRINKET_35 = "The drink's been drunk, so now it's junk!",
         -- TRINKET_36 = "Mine are much more impressive.",
         -- TRINKET_37 = "Heehee, you couldn't kill me!",
@@ -3978,7 +3978,7 @@ return {
         {
             -- ATTACKER = "I don't like the game you're playing.",
             -- FIRESTARTER = "Hyuyu, how funny you are, %s!",
-            -- GENERIC = "Do my claws scare you? Hyuyu!",
+            GENERIC = "Do I scare you? Hyuyu!",
             -- GHOST = "Don't worry, I'm not gonna eat you.",
             -- MURDERER = "I was just playing around! Please don't hurt me!",
             -- REVIVER = "Thanks for not eating that soul, %s!",
