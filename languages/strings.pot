@@ -5,12 +5,12 @@ msgstr ""
 
 #. STRINGS.ACTIONS.BLINK.FUEL
 msgctxt "STRINGS.ACTIONS.BLINK.FUEL"
-msgid "Shadowproof"
+msgid "Shadowpoof"
 msgstr ""
 
 #. STRINGS.ACTIONS.BLINK_MAP.FUEL
 msgctxt "STRINGS.ACTIONS.BLINK_MAP.FUEL"
-msgid "Shadowproof({uses})"
+msgid "Shadowpoof({uses})"
 msgstr ""
 
 #. STRINGS.ACTIONS.CHANGE_TACKLE.BATTERY

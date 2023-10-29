@@ -16,41 +16,113 @@ local prefabs =
         "statue_transition_2",
     },
 }
-local totem_sounds =
-{
-    activate = "rifts3/bearger_sack/open_f5_loopstart",
-    deactivate = "rifts3/bearger_sack/close",
-}
 
-local ACTIVE_SOUNDNAME = "openloop"
+----------------------------------------------------------------
+-------------------------- TOGGLE FX ---------------------------
+----------------------------------------------------------------
+
+local WAVE_FX_LEN = 0.5
+local function WaveFxOnUpdate(inst, dt)
+    inst.t = inst.t + dt
+
+    if inst.t < WAVE_FX_LEN then
+        local k = 1 - inst.t / WAVE_FX_LEN
+        k = k * k
+        inst.AnimState:SetMultColour(1, 1, 1, k)
+        k = (2 - 1.7 * k) * (inst.scalemult or 1)
+        inst.AnimState:SetScale(k, k)
+    else
+        inst:Remove()
+    end
+end
+
+local function CreateWaveFX()
+    local inst = CreateEntity()
+
+    inst:AddTag("FX")
+    --[[Non-networked entity]]
+    inst.entity:SetCanSleep(false)
+    inst.persists = false
+
+    inst.entity:AddTransform()
+    inst.entity:AddAnimState()
+
+    inst.AnimState:SetBank("umbrella_voidcloth")
+    inst.AnimState:SetBuild("umbrella_voidcloth")
+    inst.AnimState:PlayAnimation("barrier_rim")
+    inst.AnimState:SetOrientation(ANIM_ORIENTATION.OnGround)
+    inst.AnimState:SetLayer(LAYER_BACKGROUND)
+    inst.AnimState:SetSortOrder(3)
+
+    inst:AddComponent("updatelooper")
+    inst.components.updatelooper:AddOnUpdateFn(WaveFxOnUpdate)
+    inst.t = 0
+    inst.scalemult = .75
+    WaveFxOnUpdate(inst, 0)
+
+    return inst
+end
+
+local function CreateDomeFX()
+    local inst = CreateEntity()
+
+    inst:AddTag("FX")
+    --[[Non-networked entity]]
+    inst.entity:SetCanSleep(false)
+    inst.persists = false
+
+    inst.entity:AddTransform()
+    inst.entity:AddAnimState()
+    inst.entity:AddSoundEmitter()
+
+    inst.AnimState:SetBank("umbrella_voidcloth")
+    inst.AnimState:SetBuild("umbrella_voidcloth")
+    inst.AnimState:PlayAnimation("barrier_dome")
+    inst.AnimState:SetFinalOffset(7)
+
+    inst:AddComponent("updatelooper")
+    inst.components.updatelooper:AddOnUpdateFn(WaveFxOnUpdate)
+    inst.t = 0
+    WaveFxOnUpdate(inst, 0)
+
+    return inst
+end
+
+local function CLIENT_TriggerFX(inst)
+    local x, y, z = inst.Transform:GetWorldPosition()
+    CreateWaveFX().Transform:SetPosition(x, 0, z)
+    local fx = CreateDomeFX()
+    fx.Transform:SetPosition(x, 0, z)
+    fx.SoundEmitter:PlaySound("meta2/voidcloth_umbrella/barrier_activate")
+end
+
+local function SERVER_TriggerFX(inst)
+    inst.triggerfx:push()
+    if not TheNet:IsDedicated() then
+        CLIENT_TriggerFX(inst)
+    end
+end
 
 ----------------------------------------------------------------
 ------------------------ TOTEM FUNCTION ------------------------
 ----------------------------------------------------------------
 
-
-local function StartActiveSound(inst)
-    if inst._startsoundtask ~= nil then
-        inst._startsoundtask:Cancel()
-        inst._startsoundtask = nil
-    end
-
-    inst.SoundEmitter:PlaySound(totem_sounds.activate, ACTIVE_SOUNDNAME)
-end
-
 local function turn_on(inst)
     if not inst.toggled:value() then
         inst.toggled:set(true)
+        inst.components.fueled:StartConsuming()
 
-        if inst._startsoundtask ~= nil then
-            inst._startsoundtask:Cancel()
+        if inst.shadowtask ~= nil then
+            inst.shadowtask:Cancel()
+            inst.shadowtask = nil
         end
 
-        inst._startsoundtask = inst:DoTaskInTime(5*FRAMES, StartActiveSound)
-
-        if inst.components.fueled then
-            inst.components.fueled:StartConsuming()
+        if not (inst:IsAsleep() or POPULATING) then
+            SERVER_TriggerFX(inst)
         end
+
+        inst.SoundEmitter:PlaySound("meta2/voidcloth_umbrella/barrier_lp", "loop")
+
         if inst.task == nil then
             inst.task = inst:DoPeriodicTask(0.5, inst.totemfn, 0)
         end
@@ -60,19 +132,17 @@ end
 local function turn_off(inst)
     if inst.toggled:value() then
         inst.toggled:set(false)
-
-        inst.SoundEmitter:KillSound(ACTIVE_SOUNDNAME)
-
-        inst.SoundEmitter:PlaySound(totem_sounds.deactivate)
-
-        if inst.components.fueled then
-            inst.components.fueled:StopConsuming()
-        end
+        inst.components.fueled:StopConsuming()
 
         if inst.task then
             inst.task:Cancel()
             inst.task = nil
         end
+
+        if inst.SoundEmitter:PlayingSound("loop") then
+            inst.SoundEmitter:KillSound("loop")
+        end
+        inst.SoundEmitter:PlaySound("meta2/voidcloth_umbrella/barrier_close")
     end
 end
 
@@ -186,8 +256,19 @@ local function spawn_fx(inst)
 end
 
 local function onfinished_totem(inst)
+    turn_off(inst)
     spawn_fx(inst)
     inst:Remove()
+end
+
+local function OnLoad(inst, data)
+    if data and data.toggled then
+        turn_on(inst)
+    end
+end
+
+local function OnSave(inst, data)
+    data.toggled = inst.toggled:value()
 end
 
 ---------------------------------------------------------------
@@ -246,26 +327,23 @@ local function base_fn()
     return inst
 end
 
-
-local function OnLoad(inst, data)
-    if data and data.toggled then
-        inst:TurnOn()
-    end
-end
-
-local function OnSave(inst, data)
-    data.toggled = inst.toggled:value()
-end
-
 local function MakeTotem(color)
     local function totem_fn()
         local inst = common_fn()
 
+        inst.entity:AddDynamicShadow()
+
+        inst.DynamicShadow:SetSize(1.1, .7)
+        inst.DynamicShadow:Enable(false)
+
         inst.AnimState:PlayAnimation(color .. "_loop", true)
 
         inst.toggled = net_bool(inst.GUID, "friendshiptotem.toogle", "friendshiptotem.toggledirty")
+        inst.triggerfx = net_event(inst.GUID, "friendshiptotem.triggerfx")
 
         if not TheWorld.ismastersim then
+            inst:DoTaskInTime(0, inst.ListenForEvent, "friendshiptotem.triggerfx", CLIENT_TriggerFX)
+
             return inst
         end
 
@@ -273,27 +351,29 @@ local function MakeTotem(color)
 
         inst:AddComponent("friendshiptotem")
 
-        inst:AddComponent("fueled")
-        inst.components.fueled.fueltype = FUELTYPE.MAGIC
-        inst.components.fueled:InitializeFuelLevel(480)
-        inst.components.fueled:SetDepletedFn(onfinished_totem)
-        inst.components.fueled:SetUpdateFn(onupdate)
-        inst.components.fueled:SetFirstPeriod(TUNING.TURNON_FUELED_CONSUMPTION, TUNING.TURNON_FULL_FUELED_CONSUMPTION)
-        inst.components.fueled.period = FRAMES
+        local fueled = inst:AddComponent("fueled")
+        fueled.fueltype = FUELTYPE.MAGIC
+        fueled:InitializeFuelLevel(480)
+        fueled:SetDepletedFn(onfinished_totem)
+        fueled:SetUpdateFn(onupdate)
+        fueled:SetFirstPeriod(TUNING.TURNON_FUELED_CONSUMPTION, TUNING.TURNON_FULL_FUELED_CONSUMPTION)
+        fueled.period = FRAMES
 
-        inst.components.inventoryitem:SetOnDroppedFn(turn_on)
-        -- inst.components.inventoryitem:SetOnPickupFn(turn_off)
-        inst.components.inventoryitem:SetOnPutInInventoryFn(turn_off)
-        inst.totemfn = totemfn[color]
+
+        local inventoryitem = inst.components.inventoryitem
+        inventoryitem:SetOnDroppedFn(turn_on)
+        inventoryitem:SetOnPutInInventoryFn(turn_off)
 
         if color == "dark" then
-            inst:AddComponent("sanityaura")
-            inst.components.sanityaura.aura = - TUNING.SANITYAURA_SMALL
+            local sanityaura = inst:AddComponent("sanityaura")
+            sanityaura.aura = - TUNING.SANITYAURA_SMALL
         end
+
+        inst.totemfn = totemfn[color]
+        inst.toggled:set(false)
 
         inst.TurnOn = turn_on
         inst.TurnOff = turn_off
-        inst.toggled:set(false)
 
         inst.OnSave = OnSave
         inst.OnLoad = OnLoad

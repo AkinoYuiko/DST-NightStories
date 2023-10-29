@@ -6,13 +6,17 @@ local function zheng(zh, en)
     return LOC[locale] or en
 end
 
-version = "1.45"
+version = "1.45.1"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng([[
+- 调整了注能图腾启动时的特效。
+
 - 注能图腾现在可以在物品栏里激活/关闭了。
 ]], [[
+- Tweak activation fx for Charged Totems.
+
 - Charged Totems can now be activated/deactivated in inventory.
 ]])
 description = zheng("版本: ", "Version: ") .. version ..
