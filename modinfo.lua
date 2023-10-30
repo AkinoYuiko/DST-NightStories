@@ -6,17 +6,17 @@ local function zheng(zh, en)
     return LOC[locale] or en
 end
 
-version = "1.45.2"
+version = "1.45.3"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng([[
-- 修复注能图腾物品栏里启动的时候特效其他玩家看不见
+- 修复注能图腾背包里启动的时候特效其他玩家看不见
 - 调整了注能图腾启动时的特效。
 
 - 注能图腾现在可以在物品栏里激活/关闭了。
 ]], [[
-- Fix Charged Totems activation fx not visible to other players when activated in inventory
+- Fix Charged Totems activation fx not visible to other players when activated in backpack
 - Tweak activation fx for Charged Totems.
 
 - Charged Totems can now be activated/deactivated in inventory.
