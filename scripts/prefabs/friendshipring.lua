@@ -261,14 +261,30 @@ local function onfinished_totem(inst)
     inst:Remove()
 end
 
+local function update_fx_parent(inst)
+    local owner = inst.components.inventoryitem:GetGrandOwner() or inst.components.inventoryitem.owner or inst
+    inst.fx_proxy.entity:SetParent(owner.entity)
+end
+
+-- Going in / swap to another container
 local function on_in_inventory(inst, owner)
     turn_off(inst)
-    inst.fx_proxy.entity:SetParent(owner.entity)
+
+    update_fx_parent(inst)
+
+    inst:RemoveEventCallback("onownerputininventory", update_fx_parent)
+    inst:RemoveEventCallback("onownerdropped", update_fx_parent)
+    inst:ListenForEvent("onownerputininventory", update_fx_parent)
+    inst:ListenForEvent("onownerdropped", update_fx_parent)
 end
 
 local function on_out_inventory(inst)
     turn_on(inst)
-    inst.fx_proxy.entity:SetParent(inst.entity)
+
+    update_fx_parent(inst)
+
+    inst:RemoveEventCallback("onownerputininventory", update_fx_parent)
+    inst:RemoveEventCallback("onownerdropped", update_fx_parent)
 end
 
 local function OnLoad(inst, data)
