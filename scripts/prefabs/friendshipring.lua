@@ -97,9 +97,9 @@ local function CLIENT_TriggerFX(inst)
 end
 
 local function SERVER_TriggerFX(inst)
-    inst.triggerfx:push()
+    inst.fx_proxy.triggerfx:push()
     if not TheNet:IsDedicated() then
-        CLIENT_TriggerFX(inst)
+        CLIENT_TriggerFX(inst.fx_proxy)
     end
 end
 
@@ -261,6 +261,16 @@ local function onfinished_totem(inst)
     inst:Remove()
 end
 
+local function on_in_inventory(inst, owner)
+    turn_off(inst)
+    inst.fx_proxy.entity:SetParent(owner.entity)
+end
+
+local function on_out_inventory(inst)
+    turn_on(inst)
+    inst.fx_proxy.entity:SetParent(inst.entity)
+end
+
 local function OnLoad(inst, data)
     if data and data.toggled then
         turn_on(inst)
@@ -327,6 +337,26 @@ local function base_fn()
     return inst
 end
 
+local function fx_proxy_fn()
+    local inst = CreateEntity()
+
+    inst.entity:AddTransform()
+    inst.entity:AddNetwork()
+
+    inst:AddTag("FX")
+    inst.entity:SetCanSleep(false)
+    inst.persists = false
+
+    inst.entity:SetPristine()
+    inst.triggerfx = net_event(inst.GUID, "friendshiptotem.triggerfx")
+
+    if not TheWorld.ismastersim then
+        inst:DoTaskInTime(0, inst.ListenForEvent, "friendshiptotem.triggerfx", CLIENT_TriggerFX)
+        return inst
+    end
+    return inst
+end
+
 local function MakeTotem(color)
     local function totem_fn()
         local inst = common_fn()
@@ -339,11 +369,12 @@ local function MakeTotem(color)
         inst.AnimState:PlayAnimation(color .. "_loop", true)
 
         inst.toggled = net_bool(inst.GUID, "friendshiptotem.toogle", "friendshiptotem.toggledirty")
-        inst.triggerfx = net_event(inst.GUID, "friendshiptotem.triggerfx")
+
+        inst.fx_proxy = SpawnPrefab("friendshiptotem_fx_proxy")
+        inst.fx_proxy.entity:SetParent(inst.entity)
+        inst:ListenForEvent("remove", inst.fx_proxy.Remove)
 
         if not TheWorld.ismastersim then
-            inst:DoTaskInTime(0, inst.ListenForEvent, "friendshiptotem.triggerfx", CLIENT_TriggerFX)
-
             return inst
         end
 
@@ -361,8 +392,8 @@ local function MakeTotem(color)
 
 
         local inventoryitem = inst.components.inventoryitem
-        inventoryitem:SetOnDroppedFn(turn_on)
-        inventoryitem:SetOnPutInInventoryFn(turn_off)
+        inventoryitem:SetOnDroppedFn(on_out_inventory)
+        inventoryitem:SetOnPutInInventoryFn(on_in_inventory)
 
         if color == "dark" then
             local sanityaura = inst:AddComponent("sanityaura")
@@ -386,4 +417,5 @@ end
 
 return Prefab("friendshipring", base_fn, assets.ring),
         MakeTotem("dark"),
-        MakeTotem("light")
+        MakeTotem("light"),
+        Prefab("friendshiptotem_fx_proxy", fx_proxy_fn)
