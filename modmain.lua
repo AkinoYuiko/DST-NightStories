@@ -26,6 +26,7 @@ local postinits =
     -- components
     "components/spellcaster",
     "components/planarentity",
+    "components/combat",
     -- prefabs
     "prefabs/alterguardian_hat_equipped",
     "prefabs/foodbuffs",
