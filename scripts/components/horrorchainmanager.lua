@@ -4,27 +4,29 @@ local HorrorChainManager = Class(function(self, inst)
     self.inst = inst
     -- [member: EntityScript]: Periodic
     self.members = {}
-    -- [member: EntityScript]: EntityScript
-    self.fxs = {}
+    -- [member: EntityScript]: Periodic
+    self.fx_tasks = {}
 
     self._remove_member = function(target) self:RemoveMember(target) end
 end)
 
-local function create_fx(self, target)
-    if not self.fxs[target] then
-        local SCALE = 0.25
-        local fx = SpawnPrefab("deer_ice_fx")
-        fx.Transform:SetPosition(0, 3, 0)
-        fx.AnimState:SetScale(SCALE, SCALE, SCALE)
-        target:AddChild(fx)
-        self.fxs[target] = fx
+local function spawn_fx(target)
+    local SCALE = 1.1
+    local fx = SpawnPrefab("shadow_teleport_out")
+    fx.Transform:SetScale(SCALE, SCALE, SCALE)
+    target:AddChild(fx)
+end
+
+local function setup_fx(self, target)
+    if not self.fx_tasks[target] then
+        self.fx_tasks[target] = target:DoPeriodicTask(20 * FRAMES, spawn_fx, 0)
     end
 end
 
 local function remove_fx(self, target)
-    if self.fxs[target] then
-        self.fxs[target]:Remove()
-        self.fxs[target] = nil
+    if self.fx_tasks[target] then
+        self.fx_tasks[target]:Cancel()
+        self.fx_tasks[target] = nil
     end
 end
 
@@ -41,7 +43,7 @@ function HorrorChainManager:AddMember(target, duration, force_override_timer)
         end
     else
         target:AddTag(CHAIN_TAG)
-        create_fx(self, target)
+        setup_fx(self, target)
         self.members[target] = target:DoTaskInTime(duration, self._remove_member)
         target:ListenForEvent("remove", self._remove_member)
     end
