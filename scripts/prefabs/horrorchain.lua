@@ -55,36 +55,36 @@ local function supercrack(inst)
     end
 end
 
-local CHAIN_MUST_TAGS = { "chain" }
-local function chain_target(inst)
-    if inst.chain_task then
-        inst.chain_task:Cancel()
-        inst.chain_task = nil
+-- local CHAIN_MUST_TAGS = { "horrorchain" }
+local function chain_target(target)
+    if target.chain_task then
+        target.chain_task:Cancel()
+        target.chain_task = nil
     end
 
-    if not inst:HasTag("horrorchain") then
-        inst:AddTag("horrorchain")
+    if not target:HasTag("horrorchain") then
+        target:AddTag("horrorchain")
     end
 
-    inst.chain_task = inst:DoTaskInTime(TUNING.HORRORCHAIN_DRUATION, function ()
-        inst:RemoveTag("horrorchain")
+    target.chain_task = target:DoTaskInTime(TUNING.HORRORCHAIN_DRUATION, function ()
+        target:RemoveTag("horrorchain")
     end)
 end
 
 local function onattack(inst, attacker, target)
-    if target ~= nil and target:IsValid() then
-        local chance =
-            (target:HasTag("epic") and TUNING.WHIP_SUPERCRACK_EPIC_CHANCE) or
-            (target:HasTag("monster") and TUNING.WHIP_SUPERCRACK_MONSTER_CHANCE) or
-            TUNING.WHIP_SUPERCRACK_CREATURE_CHANCE
+    if target and target:IsValid() then
+        -- local chance =
+        --     (target:HasTag("epic") and TUNING.WHIP_SUPERCRACK_EPIC_CHANCE) or
+        --     (target:HasTag("monster") and TUNING.WHIP_SUPERCRACK_MONSTER_CHANCE) or
+        --     TUNING.WHIP_SUPERCRACK_CREATURE_CHANCE
 
-        local snap = SpawnPrefab("impact")
+        -- local snap = SpawnPrefab("impact")
 
-        local x, y, z = inst.Transform:GetWorldPosition()
-        local x1, y1, z1 = target.Transform:GetWorldPosition()
-        local angle = -math.atan2(z1 - z, x1 - x)
-        snap.Transform:SetPosition(x1, y1, z1)
-        snap.Transform:SetRotation(angle * RADIANS)
+        -- local x, y, z = inst.Transform:GetWorldPosition()
+        -- local x1, y1, z1 = target.Transform:GetWorldPosition()
+        -- local angle = -math.atan2(z1 - z, x1 - x)
+        -- snap.Transform:SetPosition(x1, y1, z1)
+        -- snap.Transform:SetRotation(angle * RADIANS)
 
         --impact sounds normally play through comabt component on the target
         --whip has additional impact sounds logic, which we'll just add here
@@ -101,9 +101,9 @@ local function onattack(inst, attacker, target)
         if target.SoundEmitter then
             target.SoundEmitter:PlaySound(inst.skin_sound_small or "dontstarve/common/whip_small")
         end
+        chain_target(target)
     end
 
-    chain_target(target)
 end
 
 
@@ -124,7 +124,7 @@ local function fn()
     inst.AnimState:SetBuild("whip")
     inst.AnimState:PlayAnimation("idle")
 
-    inst:AddTag("chain_horror")
+    inst:AddTag("chain_horror") -- ?
 
     --weapon (from weapon component) added to pristine state for optimization
     inst:AddTag("weapon")
@@ -162,4 +162,4 @@ local function fn()
     return inst
 end
 
-return Prefab("chain_horror", fn, assets)
+return Prefab("horrorchain", fn, assets)
