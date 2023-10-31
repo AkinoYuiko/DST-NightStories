@@ -6,9 +6,9 @@ function Combat:DoAttack(target, weapon, ...)
         target = self.target
     end
 
-    if target:HasTag("chain") then
+    if target:HasTag("horrorchain") then
         local x, y, z = target.Transform:GetWorldPosition()
-        local ents = TheSim:FindEntities(x, y, z, TUNING.CHAIN_RANGE, CHAIN_MUST_TAGS)
+        local ents = TheSim:FindEntities(x, y, z, TUNING.HORRORCHAIN_DIST, CHAIN_MUST_TAGS)
         for _, ent in ipairs(ents) do
             if ent ~= target then
                 local _CanHitTarget = self.CanHitTarget
