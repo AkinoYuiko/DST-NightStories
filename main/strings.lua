@@ -102,6 +102,9 @@ local strings = {
         MOONGLASSHAMMER = "Moon Glass Hammer",
         MOONGLASSPICKAXE = "Moon Glass Pickaxe",
         MOONLIGHT_SHADOW = "Moonlight Shadow",
+
+        -- Voidcloth items
+        HORRORCHAIN = "Horror Chain",
     },
     RECIPE_DESC =
     {
@@ -130,6 +133,8 @@ local strings = {
         CHESSPIECE_HEADUCK_BUILDER = "I feel headache, but a duck.",
 
         BOOK_WETNESS = "The mystery of weather.",
+
+        HORRORCHAIN = "Spread horror.",
 
     },
     SKIN_NAMES =
@@ -290,6 +295,7 @@ local strings = {
                 CHESSPIECE_HEADUCK = "󰂷",
                 BOOK_WETNESS = "We would be able to see a wet world.",
 
+                HORRORCHAIN = "We never now how it spreads horror.",
             }
         },
         CIVI = deepcopy(SPEECHES["civi"]),
