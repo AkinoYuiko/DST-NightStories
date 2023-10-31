@@ -27,85 +27,79 @@ local function onunequip(inst, owner)
     end
 end
 
-
-local CRACK_MUST_TAGS = { "_combat" }
-local CRACK_CANT_TAGS = { "player", "epic", "shadow", "shadowminion", "shadowchesspiece" }
-local function supercrack(inst)
-    local owner = inst.components.inventoryitem and inst.components.inventoryitem:GetGrandOwner() or nil
-    local x,y,z = inst.Transform:GetWorldPosition()
-    local ents = TheSim:FindEntities(x,y,z, TUNING.WHIP_SUPERCRACK_RANGE, CRACK_MUST_TAGS, CRACK_CANT_TAGS)
-    for i,v in ipairs(ents) do
-        if v ~= owner and v.components.combat:HasTarget() then
-            v.components.combat:DropTarget()
-            if v.sg ~= nil and v.sg:HasState("hit")
-                and v.components.health ~= nil and not v.components.health:IsDead()
-                and not v.sg:HasStateTag("transform")
-                and not v.sg:HasStateTag("nointerrupt")
-                and not v.sg:HasStateTag("frozen")
-                --and not v.sg:HasStateTag("attack")
-                --and not v.sg:HasStateTag("busy")
-                then
-
-                if v.components.sleeper ~= nil then
-                    v.components.sleeper:WakeUp()
-                end
-                v.sg:GoToState("hit")
-            end
-        end
-    end
-end
-
--- local CHAIN_MUST_TAGS = { "horrorchain" }
-local function chain_target(target)
-    if target.chain_task then
-        target.chain_task:Cancel()
-        target.chain_task = nil
-    end
-
-    if not target:HasTag("horrorchain") then
-        target:AddTag("horrorchain")
-    end
-
-    target.chain_task = target:DoTaskInTime(TUNING.HORRORCHAIN_DRUATION, function ()
-        target:RemoveTag("horrorchain")
-    end)
+local function get_dummy_mult(inst)
+    local owner = inst.components.inventoryitem:GetGrandOwner()
+    return owner and owner.prefab == "dummy" and 1.5 or 1
 end
 
 local function onattack(inst, attacker, target)
     if target and target:IsValid() then
-        -- local chance =
-        --     (target:HasTag("epic") and TUNING.WHIP_SUPERCRACK_EPIC_CHANCE) or
-        --     (target:HasTag("monster") and TUNING.WHIP_SUPERCRACK_MONSTER_CHANCE) or
-        --     TUNING.WHIP_SUPERCRACK_CREATURE_CHANCE
-
-        -- local snap = SpawnPrefab("impact")
-
-        -- local x, y, z = inst.Transform:GetWorldPosition()
-        -- local x1, y1, z1 = target.Transform:GetWorldPosition()
-        -- local angle = -math.atan2(z1 - z, x1 - x)
-        -- snap.Transform:SetPosition(x1, y1, z1)
-        -- snap.Transform:SetRotation(angle * RADIANS)
-
-        --impact sounds normally play through comabt component on the target
-        --whip has additional impact sounds logic, which we'll just add here
-
-        -- if math.random() < chance then
-        --     snap.Transform:SetScale(3, 3, 3)
-        --     if target.SoundEmitter ~= nil then
-        --         target.SoundEmitter:PlaySound(inst.skin_sound_large or "dontstarve/common/whip_large")
-        --     end
-        --     inst:DoTaskInTime(0, supercrack)
-        -- elseif target.SoundEmitter ~= nil then
-        --     target.SoundEmitter:PlaySound(inst.skin_sound_small or "dontstarve/common/whip_small")
-        -- end
         if target.SoundEmitter then
             target.SoundEmitter:PlaySound(inst.skin_sound_small or "dontstarve/common/whip_small")
         end
-        chain_target(target)
+        -- chain_target
+        TheWorld.components.horrorchainmanager:AddMember(target, TUNING.HORRORCHAIN_DRUATION * get_dummy_mult(inst))
+        -- target hit fx
+        local fx = SpawnPrefab("wanda_attack_pocketwatch_old_fx")
+
+        local x, y, z = target.Transform:GetWorldPosition()
+        local radius = target:GetPhysicsRadius(.5)
+        local angle = (inst.Transform:GetRotation() - 90) * DEGREES
+        fx.Transform:SetPosition(x + math.sin(angle) * radius, 0, z + math.cos(angle) * radius)
     end
 
 end
 
+local function on_broken(inst)
+    local equippable = inst.components.equippable
+    if equippable ~= nil then
+        inst.AnimState:PlayAnimation("broken")
+
+        if equippable:IsEquipped() then
+            local owner = inst.components.inventoryitem ~= nil and inst.components.inventoryitem.owner or nil
+            if owner ~= nil then
+                local data =
+                {
+                    prefab = inst.prefab,
+                    equipslot = equippable.equipslot,
+                }
+                if owner.components.inventory ~= nil then
+                    local item = owner.components.inventory:Unequip(equippable.equipslot)
+                    if item ~= nil then
+                        owner.components.inventory:GiveItem(item, nil, owner:GetPosition())
+                    end
+                end
+                inst:RemoveComponent("equippable")
+                -- SetIsBroken(inst, true)
+                -- owner:PushEvent("umbrellaranout", data)
+                return
+            end
+        end
+        inst:RemoveComponent("equippable")
+        -- SetIsBroken(inst, true)
+        inst:AddTag("broken")
+        -- inst.components.inspectable.nameoverride = "BROKEN_FORGEDITEM"
+    end
+end
+
+local function setup_equippable(inst)
+    inst:AddComponent("equippable")
+    inst.components.equippable.dapperness = -TUNING.DAPPERNESS_MED
+    -- inst.components.equippable.is_magic_dapperness = true
+    inst.components.equippable:SetOnEquip(onequip)
+    inst.components.equippable:SetOnUnequip(onunequip)
+    -- inst.components.equippable:SetOnEquipToModel(OnEquipToModel)
+end
+
+local function on_repaired(inst)
+    if inst.components.equippable == nil then
+        setup_equippable(inst)
+        inst.AnimState:PlayAnimation("idle")
+        -- SetIsBroken(inst, false)
+        inst:RemoveTag("broken")
+        inst.components.inspectable.nameoverride = nil
+    end
+end
 
 local function OnLoadPass()
 
@@ -125,9 +119,14 @@ local function fn()
     inst.AnimState:PlayAnimation("idle")
 
     inst:AddTag("chain_horror") -- ?
+    inst:AddTag("shadow_item")
+    inst:AddTag("show_broken_ui")
 
     --weapon (from weapon component) added to pristine state for optimization
     inst:AddTag("weapon")
+
+    --shadowlevel (from shadowlevel component) added to pristine state for optimization
+    inst:AddTag("shadowlevel")
 
     MakeInventoryFloatable(inst, "med", nil, 0.9)
 
@@ -145,21 +144,33 @@ local function fn()
     inst:AddComponent("finiteuses")
     inst.components.finiteuses:SetMaxUses(TUNING.HORRORCHAIN_USES)
     inst.components.finiteuses:SetUses(TUNING.HORRORCHAIN_USES)
-    inst.components.finiteuses:SetOnFinished(inst.Remove)
+    -- inst.components.finiteuses:SetOnFinished(inst.Remove)
 
     inst:AddComponent("inspectable")
 
     inst:AddComponent("inventoryitem")
+    inst.components.inventoryitem:ChangeImageName("whip")
 
-    inst:AddComponent("equippable")
-    inst.components.equippable:SetOnEquip(onequip)
-    inst.components.equippable:SetOnUnequip(onunequip)
+    setup_equippable(inst)
+
+    inst:AddComponent("planardamage")
+    inst.components.planardamage:SetBaseDamage(TUNING.HORRORCHAIN_DAMAGE_PLANAR)
+
+    inst:AddComponent("shadowlevel")
+    inst.components.shadowlevel:SetDefaultLevel(TUNING.HORRORCHAIN_SHADOW_LEVEL)
+
+    MakeForgeRepairable(inst, FORGEMATERIALS.VOIDCLOTH, nil, on_repaired)
+    inst.components.finiteuses:SetOnFinished(on_broken)
 
     MakeHauntableLaunch(inst)
 
     inst.OnLoadPass = OnLoadPass
 
     return inst
+end
+
+local function fx_fn()
+
 end
 
 return Prefab("horrorchain", fn, assets)

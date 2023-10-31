@@ -3,18 +3,20 @@ GLOBAL.setfenv(1, GLOBAL)
 local Combat = require("components/combat")
 local do_attack = Combat.DoAttack
 local CHAIN_MUST_TAGS = { "horrorchain" }
+local GLASH_PREFABS = {
+    glash = true,
+    gflash = true,
+}
+
 function Combat:DoAttack(target, weapon, ...)
     if target == nil then
         target = self.target
     end
 
-    if target:HasTag("horrorchain") then
-        print("SHABI", target)
-        local x, y, z = target.Transform:GetWorldPosition()
-        local ents = TheSim:FindEntities(x, y, z, TUNING.HORRORCHAIN_DIST, CHAIN_MUST_TAGS)
+    if TheWorld.components.horrorchainmanager:HasMember(target) and not GLASH_PREFABS[self.inst.prefab] then -- glash should NOT trigger chain attack.
+        local ents = TheWorld.components.horrorchainmanager:GetNearbyMembers(target)
         for _, ent in ipairs(ents) do
             if ent ~= target then
-                print("sb", ent)
                 local _CanHitTarget = self.CanHitTarget
                 self.CanHitTarget = function()
                     return _CanHitTarget(self, target, weapon)

@@ -37,6 +37,7 @@ local postinits =
     "prefabs/pigking",
     "prefabs/raincoat",
     "prefabs/sculptingtable",
+    "prefabs/world",
     -- widgets
     "widgets/itemtile",
     -- root

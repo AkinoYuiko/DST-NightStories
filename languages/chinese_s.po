@@ -224,6 +224,11 @@ msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.GLASSICCUTTER.MOONROCK"
 msgid "Sword with frost energy."
 msgstr "凝结了冰霜之力的刀刃。"
 
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.HORRORCHAIN
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.HORRORCHAIN"
+msgid "We never now how it spreads horror."
+msgstr "我们仍未知道它是如何散播恐惧的。"
+
 #. STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTAMULET
 msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.LIGHTAMULET"
 msgid "I can feel the darkness away."
@@ -1309,6 +1314,11 @@ msgctxt "STRINGS.NAMES.GLASSICCUTTER_MOONROCK"
 msgid "Frost Cutter"
 msgstr "霜灵刀"
 
+#. STRINGS.NAMES.HORRORCHAIN
+msgctxt "STRINGS.NAMES.HORRORCHAIN"
+msgid "Horror Chain"
+msgstr "恐惧锁链"
+
 #. STRINGS.NAMES.LIGHTAMULET
 msgctxt "STRINGS.NAMES.LIGHTAMULET"
 msgid "Light Amulet"
@@ -1478,6 +1488,11 @@ msgstr "进入黑暗！"
 msgctxt "STRINGS.RECIPE_DESC.FRIENDSHIPRING"
 msgid "Buff your team."
 msgstr "强化你的队伍。"
+
+#. STRINGS.RECIPE_DESC.HORRORCHAIN
+msgctxt "STRINGS.RECIPE_DESC.HORRORCHAIN"
+msgid "Spread horror."
+msgstr "散播恐惧。"
 
 #. STRINGS.RECIPE_DESC.LIGHTCRYSTAL
 msgctxt "STRINGS.RECIPE_DESC.LIGHTCRYSTAL"
