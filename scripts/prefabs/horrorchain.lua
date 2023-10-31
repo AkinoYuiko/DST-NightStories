@@ -62,12 +62,12 @@ local function chain_target(inst)
         inst.chain_task = nil
     end
 
-    if not inst:HasTag("chain") then
-        inst:AddTag("chain")
+    if not inst:HasTag("horrorchain") then
+        inst:AddTag("horrorchain")
     end
 
-    inst.chain_task = inst:DoTaskInTime(TUNING.CHAIN_DRUATION, function ()
-        inst:RemoveTag("chain")
+    inst.chain_task = inst:DoTaskInTime(TUNING.HORRORCHAIN_DRUATION, function ()
+        inst:RemoveTag("horrorchain")
     end)
 end
 
@@ -89,13 +89,16 @@ local function onattack(inst, attacker, target)
         --impact sounds normally play through comabt component on the target
         --whip has additional impact sounds logic, which we'll just add here
 
-        if math.random() < chance then
-            snap.Transform:SetScale(3, 3, 3)
-            if target.SoundEmitter ~= nil then
-                target.SoundEmitter:PlaySound(inst.skin_sound_large or "dontstarve/common/whip_large")
-            end
-            inst:DoTaskInTime(0, supercrack)
-        elseif target.SoundEmitter ~= nil then
+        -- if math.random() < chance then
+        --     snap.Transform:SetScale(3, 3, 3)
+        --     if target.SoundEmitter ~= nil then
+        --         target.SoundEmitter:PlaySound(inst.skin_sound_large or "dontstarve/common/whip_large")
+        --     end
+        --     inst:DoTaskInTime(0, supercrack)
+        -- elseif target.SoundEmitter ~= nil then
+        --     target.SoundEmitter:PlaySound(inst.skin_sound_small or "dontstarve/common/whip_small")
+        -- end
+        if target.SoundEmitter then
             target.SoundEmitter:PlaySound(inst.skin_sound_small or "dontstarve/common/whip_small")
         end
     end
@@ -135,13 +138,13 @@ local function fn()
     end
 
     inst:AddComponent("weapon")
-    inst.components.weapon:SetDamage(TUNING.CHAIN_HORROR_DAMAGE)
-    inst.components.weapon:SetRange(TUNING.CHAIN_HORROR_RANGE)
+    inst.components.weapon:SetDamage(TUNING.HORRORCHAIN_DAMAGE)
+    inst.components.weapon:SetRange(TUNING.HORRORCHAIN_RANGE)
     inst.components.weapon:SetOnAttack(onattack)
 
     inst:AddComponent("finiteuses")
-    inst.components.finiteuses:SetMaxUses(TUNING.CHAIN_HORROR_USES)
-    inst.components.finiteuses:SetUses(TUNING.CHAIN_HORROR_USES)
+    inst.components.finiteuses:SetMaxUses(TUNING.HORRORCHAIN_USES)
+    inst.components.finiteuses:SetUses(TUNING.HORRORCHAIN_USES)
     inst.components.finiteuses:SetOnFinished(inst.Remove)
 
     inst:AddComponent("inspectable")
