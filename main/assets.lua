@@ -30,6 +30,8 @@ PrefabFiles = {
     "moonglasspickaxe",
     "moonlight_shadow",
     "moonlight_buff",
+
+    "chain_horror"
 }
 
 
