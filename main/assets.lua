@@ -31,7 +31,7 @@ PrefabFiles = {
     "moonlight_shadow",
     "moonlight_buff",
 
-    "chain_horror"
+    "horrorchain",
 }
 
 
