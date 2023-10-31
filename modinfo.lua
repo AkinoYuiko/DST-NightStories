@@ -6,20 +6,18 @@ local function zheng(zh, en)
     return LOC[locale] or en
 end
 
-version = "1.45.3.1"
+version = "1.46"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng([[
-- 修复注能图腾背包里启动的时候特效其他玩家看不见。
-
-- 调整了注能图腾启动时的特效。
-- 注能图腾现在可以在物品栏里激活/关闭了。
+- 新道具：恐惧锁链
+  标记一个目标，再次攻击时，对附近所有拥有该标记的目标造成伤害。
+  恐惧锁链受到虚空风帽的加成。
 ]], [[
-- Fix Charged Totems activation fx not visible to other players when activated in backpack.
-
-- Tweak activation fx for Charged Totems.
-- Charged Totems can now be activated/deactivated in inventory.
+- New Item: Horror Chain
+  Tag a target. When attacking targets with tag, deal same attack to nearby targets with the tag.
+  Gets bonus by Void Cowl.
 ]])
 description = zheng("版本: ", "Version: ") .. version ..
     zheng("\n\n更新内容:\n", "\n\nChangelog:\n") .. changelog .. "\n" ..

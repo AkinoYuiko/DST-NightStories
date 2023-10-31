@@ -102,6 +102,10 @@ SortAfter("blackholestaff", "greenstaff")
 ------- Other -------
 ---------------------
 
+-- 恐惧锁链 --
+AddRecipe("horrorchain", {Ingredient("horrorfuel", 4), Ingredient("voidcloth", 2)}, TECH.SHADOWFORGING_TWO, {nounlock=true, station_tag = "shadow_forge"})
+SortAfter("horrorchain", "voidcloth_scythe")
+
 -- 武神铥头 --
 -- AddRecipe("battleruinshat", {Ingredient("wathgrithrhat", 1), Ingredient("thulecite", 4)}, TECH.NONE, {builder_tag = "valkyrie"})
 -- SortAfter("battleruinshat", "wathgrithrhat")

@@ -1,13 +1,13 @@
 GLOBAL.setfenv(1, GLOBAL)
 
-local Combat = require("components/combat")
-local do_attack = Combat.DoAttack
-local CHAIN_MUST_TAGS = { "horrorchain" }
 local GLASH_PREFABS = {
     glash = true,
     gflash = true,
+    alterguardianhat_projectile = true,
 }
 
+local Combat = require("components/combat")
+local do_attack = Combat.DoAttack
 function Combat:DoAttack(target, weapon, ...)
     if target == nil then
         target = self.target
