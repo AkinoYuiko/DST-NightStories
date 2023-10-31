@@ -377,11 +377,6 @@ local function MakeTotem(color)
     local function totem_fn()
         local inst = common_fn()
 
-        inst.entity:AddDynamicShadow()
-
-        inst.DynamicShadow:SetSize(1.1, .7)
-        inst.DynamicShadow:Enable(false)
-
         inst.AnimState:PlayAnimation(color .. "_loop", true)
 
         inst.toggled = net_bool(inst.GUID, "friendshiptotem.toogle", "friendshiptotem.toggledirty")
