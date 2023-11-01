@@ -94,8 +94,9 @@ end
 local hitsparks_fx_colouroverride = {1, 0, 0}
 local function onattack(inst, attacker, target)
     if target and target:IsValid() then
+        -- Hit Sound
         if target.SoundEmitter then
-            target.SoundEmitter:PlaySound(inst.skin_sound_small or "dontstarve/common/whip_small")
+            target.SoundEmitter:PlaySound(inst.skin_atk_sound or "wanda2/characters/wanda/watch/weapon/shadow_hit_old")
         end
         -- chain_target
         TheWorld.components.horrorchainmanager:AddMember(target, TUNING.HORRORCHAIN_DRUATION * get_bonus_mult(inst))
@@ -150,6 +151,7 @@ local function fn()
 
     inst.entity:AddTransform()
     inst.entity:AddAnimState()
+    -- inst.entity:AddSoundEmitter()
     inst.entity:AddNetwork()
 
     MakeInventoryPhysics(inst)
