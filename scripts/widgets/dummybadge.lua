@@ -109,6 +109,47 @@ local DummyBadge = Class(Badge, function(self, owner)
         end
     end, owner)
 
+    self.small_hots = {}
+    self._onremovesmallhots = function(debuff)
+        self.small_hots[debuff] = nil
+    end
+    self.inst:ListenForEvent("startsmallhealthregen", function(owner, debuff)
+        if self.small_hots[debuff] == nil then
+            self.small_hots[debuff] = true
+            self.inst:ListenForEvent("onremove", self._onremovesmallhots, debuff)
+        end
+    end, owner)
+    self.inst:ListenForEvent("stopsmallhealthregen", function(owner, debuff)
+        if self.small_hots[debuff] ~= nil then
+            self._onremovesmallhots(debuff)
+            self.inst:RemoveEventCallback("onremove", self._onremovesmallhots, debuff)
+        end
+    end, owner)
+
+    self.inst:ListenForEvent("isacidsizzling", function(owner, isacidsizzling)
+        if isacidsizzling == nil then
+            isacidsizzling = owner:IsAcidSizzling()
+        end
+        if isacidsizzling then
+            if self.acidsizzling == nil then
+                self.acidsizzling = self.underNumber:AddChild(UIAnim())
+                self.acidsizzling:GetAnimState():SetBank("inventory_fx_acidsizzle")
+                self.acidsizzling:GetAnimState():SetBuild("inventory_fx_acidsizzle")
+                self.acidsizzling:GetAnimState():PlayAnimation("idle", true)
+                self.acidsizzling:GetAnimState():SetMultColour(.65, .62, .17, 0.8)
+                self.acidsizzling:GetAnimState():SetTime(math.random())
+                self.acidsizzling:SetScale(.2)
+                self.acidsizzling:GetAnimState():AnimateWhilePaused(false)
+                self.acidsizzling:SetClickable(false)
+            end
+        else
+            if self.acidsizzling ~= nil then
+                self.acidsizzling:Kill()
+                self.acidsizzling = nil
+            end
+        end
+    end, owner)
+
     self:StartUpdating()
 end)
 
