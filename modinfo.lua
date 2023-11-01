@@ -6,20 +6,22 @@ local function zheng(zh, en)
     return LOC[locale] or en
 end
 
-version = "1.46.2"
+version = "1.46.3"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng([[
-- 修复锁链标记可能导致的崩溃。
+- 修复达米状态栏不适配酸雨的问题。
 
+- 修复锁链标记可能导致的崩溃。
 - 修复澪在启蒙状态下精神值变化异常问题。
 - 新道具：恐惧锁链
   标记一个目标，再次攻击时，对附近所有拥有该标记的目标造成伤害。
   恐惧锁链受到虚空风帽的加成。
 ]], [[
-- Fix crash for chain tag with invalid weapon compoennt.
+- Fix imcompatibility for Dummy's Health-Sanity Badge with Acid Sizzling.
 
+- Fix crash for chain tag with invalid weapon compoennt.
 - Fix issue that Mio's sanity change is incorrect when enlightened.
 - New Item: Horror Chain
   Tag a target. When attacking targets with tag, deal same attack to nearby targets with the tag.
