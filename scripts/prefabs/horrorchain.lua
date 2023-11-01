@@ -62,10 +62,10 @@ local function onequip(inst, owner)
     if skin_build then
         owner:PushEvent("equipskinneditem", inst:GetSkinName())
         owner.AnimState:OverrideItemSkinSymbol("swap_object", skin_build, "swap_chain", inst.GUID, "swap_chain")
-        owner.AnimState:OverrideItemSkinSymbol("chainline", skin_build, "chainline", inst.GUID, "swap_chain")
+        owner.AnimState:OverrideItemSkinSymbol("whipline", skin_build, "chainline", inst.GUID, "swap_chain")
     else
         owner.AnimState:OverrideSymbol("swap_object", "horrorchain", "swap_chain")
-        owner.AnimState:OverrideSymbol("chainline", "horrorchain", "chainline")
+        owner.AnimState:OverrideSymbol("whipline", "horrorchain", "chainline")
     end
     owner.AnimState:Show("ARM_carry")
     owner.AnimState:Hide("ARM_normal")
@@ -164,6 +164,7 @@ local function fn()
     inst:AddTag("shadow_item")
     inst:AddTag("show_broken_ui")
 
+    inst:AddTag("whip") -- ATK SG
     --weapon (from weapon component) added to pristine state for optimization
     inst:AddTag("weapon")
 
