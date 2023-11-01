@@ -49,6 +49,7 @@ function HorrorChainManager:AddMember(target, duration, force_override_timer)
         target:AddTag(CHAIN_TAG)
         setup_fx(self, target)
         self.members[target] = target:DoTaskInTime(duration, self._remove_member)
+        target:ListenForEvent("death", self._remove_member)
         target:ListenForEvent("remove", self._remove_member)
     end
 end
@@ -62,6 +63,7 @@ function HorrorChainManager:RemoveMember(target)
     target:RemoveTag(CHAIN_TAG)
     remove_fx(self, target)
     self.members[target] = nil
+    target:RemoveEventCallback("death", self._remove_member)
     target:RemoveEventCallback("remove", self._remove_member)
 end
 
