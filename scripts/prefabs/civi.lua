@@ -16,6 +16,14 @@ for k, v in pairs(TUNING.GAMEMODE_STARTING_ITEMS) do
 end
 prefabs = FlattenTree({ prefabs, start_inv }, true)
 
+local Utils = require("ns_utils")
+
+local function SetupHorrorChainTag(inst, target, ...)
+     if Utils.TargetTestFn(target) then
+        TheWorld.components.horrorchainmanager:AddMember(target, 3, true)
+     end
+end
+
 local function update_food(inst)
     inst.components.foodaffinity:RemovePrefabAffinity("bonesoup")
     inst.components.foodaffinity:RemovePrefabAffinity("meatballs")
@@ -61,6 +69,12 @@ local function on_level_change(inst)
     inst.components.hunger:SetPercent(hunger_percent)
     inst.components.health:SetPercent(health_percent)
     inst.components.sanity:SetPercent(sanity_percent)
+
+    if inst.level == 2 then
+        inst.components.combat.onhitotherfn = SetupHorrorChainTag
+    else
+        inst.components.combat.onhitotherfn = nil
+    end
 end
 
 local function on_preload(inst, data)

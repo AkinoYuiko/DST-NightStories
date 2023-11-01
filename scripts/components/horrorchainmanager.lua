@@ -1,4 +1,5 @@
 local CHAIN_TAG = "horrorchain"
+local Utils = require("ns_utils")
 
 local HorrorChainManager = Class(function(self, inst)
     self.inst = inst
@@ -36,6 +37,9 @@ end
 
 function HorrorChainManager:AddMember(target, duration, force_override_timer)
     -- Refresh timer only on existing member
+    if not Utils.TargetTestFn(target) then
+        return
+    end
     if self:HasMember(target) then
         if force_override_timer or self:GetMemberTimeRemaining(target) < duration then
             cancel_existing_timer(self, target)
