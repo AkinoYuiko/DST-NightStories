@@ -7,7 +7,18 @@ local GLASH_PREFABS = {
 }
 
 local Combat = require("components/combat")
+
+local function is_invalid_weapon(weapon)
+    return weapon and not weapon.components.weapon
+end
+
 local do_attack = Combat.DoAttack
+local function do_attack_with_check(self, target, weapon, ...)
+    if not is_invalid_weapon(weapon) then
+        return do_attack(self, target, weapon, ...)
+    end
+end
+
 function Combat:DoAttack(target, weapon, ...)
     if target == nil then
         target = self.target
@@ -21,11 +32,11 @@ function Combat:DoAttack(target, weapon, ...)
                 self.CanHitTarget = function()
                     return _CanHitTarget(self, target, weapon)
                 end
-                do_attack(self, ent, weapon, ...)
+                do_attack_with_check(self, ent, weapon, ...)
                 self.CanHitTarget = _CanHitTarget
             end
         end
     end
 
-    return do_attack(self, target, weapon, ...)
+    return do_attack_with_check(self, target, weapon, ...)
 end
