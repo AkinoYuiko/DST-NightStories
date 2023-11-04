@@ -36,41 +36,39 @@ local function onpickedfn_flower(inst, picker)
 
         if inst.animname == "rose" and
             picker.components.combat and
-            not (picker.components.inventory and picker.components.inventory:EquipHasTag("bramble_resistant")) then
+            not (picker.components.inventory and picker.components.inventory:EquipHasTag("bramble_resistant")) and not picker:HasTag("shadowminion") then
             picker.components.combat:GetAttacked(inst, TUNING.ROSE_DAMAGE)
             picker:PushEvent("thorns")
         end
     end
 
-    if not inst.planted then
-        TheWorld:PushEvent("beginregrowth", inst)
-    end
-
-    inst:Remove()
-
-    TheWorld:PushEvent("plantkilled", { doer = picker, pos = pos }) --this event is pushed
-
+    TheWorld:PushEvent("plantkilled", { doer = picker, pos = pos }) --this event is pushed in other places too
 end
 
-AddPrefabPostInit("flower", function(inst)
-    if not TheWorld.ismastersim then return end
+local FLOWERS =
+{
+    "flower",
+    "flower_rose",
+    "planted_flower",
+}
 
-    if inst.components.pickable then
-        inst.components.pickable.onpickedfn = onpickedfn_flower
-    end
-end)
+for _, prefab in ipairs(FLOWERS) do
+    AddPrefabPostInit(prefab, function(inst)
+        if not TheWorld.ismastersim then return end
 
-local function onpickedfn_evil(inst, picker)
-    if picker and picker.components.sanity and not picker:HasTag("ns_builder_dummy") then
-        picker.components.sanity:DoDelta(-TUNING.SANITY_TINY)
-    end
-    inst:Remove()
+        if inst.components.pickable then
+            inst.components.pickable.onpickedfn = onpickedfn_flower
+        end
+    end)
 end
 
 AddPrefabPostInit("flower_evil", function(inst)
     if not TheWorld.ismastersim then return end
 
     if inst.components.pickable then
-        inst.components.pickable.onpickedfn = onpickedfn_evil
+        local onpickedfn_evil = inst.components.pickable.onpickedfn
+        inst.components.pickable.onpickedfn = function(_inst, _picker)
+            return _picker and not _picker:HasTag("ns_builder_dummy") and onpickedfn_evil(_inst, _picker)
+        end
     end
 end)

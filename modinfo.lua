@@ -6,21 +6,23 @@ local function zheng(zh, en)
     return LOC[locale] or en
 end
 
-version = "1.46.5"
+version = "1.46.6.1"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng([[
-- 修复恐惧锁链攻击动作不正确的问题。
+- 修复一个潜在的使得花翻倍的问题。
 
+- 修复恐惧锁链攻击动作不正确的问题。
 - 调整了恐惧锁链的音效。
 ...
 - 新道具：恐惧锁链
   标记一个目标，再次攻击时，对附近所有拥有该标记的目标造成伤害。
   恐惧锁链受到虚空风帽的加成。
 ]], [[
-- Fix issue where attacking anim for Horror Chain is incorrect.
+- Fix issue where flowers would double when removed.
 
+- Fix issue where attacking anim for Horror Chain is incorrect.
 - Tweak hit sound for Horror Chain.
 ...
 - New Item: Horror Chain
