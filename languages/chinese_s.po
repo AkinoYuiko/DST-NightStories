@@ -1441,8 +1441,8 @@ msgstr "月光粉"
 
 #. STRINGS.NAMES.SPICE_MOONGLASS_FOOD
 msgctxt "STRINGS.NAMES.SPICE_MOONGLASS_FOOD"
-msgid "Moonlight {food}"
-msgstr "月光{food}"
+msgid "Mystic {food}"
+msgstr "神秘{food}"
 
 #. STRINGS.RECIPE_DESC.BATTLERUINSHAT
 msgctxt "STRINGS.RECIPE_DESC.BATTLERUINSHAT"

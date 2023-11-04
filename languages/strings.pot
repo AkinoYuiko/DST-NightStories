@@ -1410,7 +1410,7 @@ msgstr ""
 
 #. STRINGS.NAMES.SPICE_MOONGLASS_FOOD
 msgctxt "STRINGS.NAMES.SPICE_MOONGLASS_FOOD"
-msgid "Moonlight {food}"
+msgid "Mystic {food}"
 msgstr ""
 
 #. STRINGS.RECIPE_DESC.BATTLERUINSHAT

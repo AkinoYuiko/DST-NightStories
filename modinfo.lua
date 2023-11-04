@@ -6,24 +6,23 @@ local function zheng(zh, en)
     return LOC[locale] or en
 end
 
-version = "1.46.6.1"
+version = "1.46.6.2"
+version_compatible = "1.46.6.1"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng([[
-- 修复一个潜在的使得花翻倍的问题。
+- 修改了月光粉相关的文本。
 
-- 修复恐惧锁链攻击动作不正确的问题。
-- 调整了恐惧锁链的音效。
+- 修复一个潜在的使得花翻倍的问题。
 ...
 - 新道具：恐惧锁链
   标记一个目标，再次攻击时，对附近所有拥有该标记的目标造成伤害。
   恐惧锁链受到虚空风帽的加成。
 ]], [[
-- Fix issue where flowers would double when removed.
+- Tweak string text for Moonlight Powder.
 
-- Fix issue where attacking anim for Horror Chain is incorrect.
-- Tweak hit sound for Horror Chain.
+- Fix issue where flowers would double when removed.
 ...
 - New Item: Horror Chain
   Tag a target. When attacking targets with tag, deal same attack to nearby targets with the tag.
