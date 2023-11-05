@@ -31,9 +31,8 @@ end
 
 local props = {"externaldamagemultipliers", "damagebonus"}
 local function set_target(inst, owner, target, delay, mult)
-    if type(mult) ~= "number" then
-        mult = 1
-    end
+    if type(mult) ~= "number" then mult = 1 end
+    if type(delay) ~= "number" then delay = 0 end
     if owner then
         for _, v in ipairs(props) do
             inst.components.combat[v] = owner.components.combat[v]
@@ -54,7 +53,7 @@ local function set_target(inst, owner, target, delay, mult)
             inst.autoremove = nil
         end
 
-        inst:DoTaskInTime(delay or 0, do_attack, target)
+        inst:DoTaskInTime(delay, do_attack, target)
     end
 end
 
