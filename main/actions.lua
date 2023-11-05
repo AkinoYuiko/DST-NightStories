@@ -314,7 +314,7 @@ NS_ACTIONS.MOONLIGHTSHADOW_CHARGE.fn = function(act)
     local charges = 1
     if item.components.stackable then
         local stacks = item.components.stackable:StackSize()
-        local single_charge = TUNING.MOONLIGHT_SHADOW.BATTERIES[item.prefab]
+        local single_charge = TUNING.MOONLIGHT_SHADOW_BATTERIES[item.prefab]
         -- total is max uses
         local max_change_needed = target.components.finiteuses.total - target.components.finiteuses:GetUses()
         charges = math.clamp(math.ceil(max_change_needed / single_charge), 1, stacks)

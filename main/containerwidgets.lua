@@ -5,7 +5,7 @@ params.moonlight_shadow = deepcopy(params.slingshot)
 params.moonlight_shadow.widget.slotbg = nil
 params.moonlight_shadow.excludefromcrafting = false
 function params.moonlight_shadow.itemtestfn(container, item, slot)
-    return TUNING.MOONLIGHT_SHADOW.BATTERIES[item.prefab]
+    return TUNING.MOONLIGHT_SHADOW_BATTERIES[item.prefab]
 end
 
 params.nightsword = deepcopy(params.slingshot)
