@@ -125,26 +125,26 @@ TUNING.MOONGLASSPICKAXE =
 }
 
 -- V1
-TUNING.MOONLIGHT_SHADOW =
-{
-    MAX_USES = 200,
-    BATTERIES = {
-        moonglass = 5,
-        moonglass_charged = 20,
-        purebrilliance = 50,
-    },
-    BUFFS = {
-        moonglass_charged = 20,
-        purebrilliance = 50,
-    },
-    DAMAGE = {
-        EMPTY = wilson_attack * 1.25,
-        CHARGED = wilson_attack * 1.5,
-        BUFFED = wilson_attack * 1.75,
-    },
-    SETBONUS_BASE_DAMAGE = wilson_attack * 0.25,
-    SETBONUS_PLANAR_DAMAGE = 5,
-}
+-- TUNING.MOONLIGHT_SHADOW =
+-- {
+--     MAX_USES = 200,
+--     BATTERIES = {
+--         moonglass = 5,
+--         moonglass_charged = 20,
+--         purebrilliance = 50,
+--     },
+--     BUFFS = {
+--         moonglass_charged = 20,
+--         purebrilliance = 50,
+--     },
+--     DAMAGE = {
+--         EMPTY = wilson_attack * 1.25,
+--         CHARGED = wilson_attack * 1.5,
+--         BUFFED = wilson_attack * 1.75,
+--     },
+--     SETBONUS_BASE_DAMAGE = wilson_attack * 0.25,
+--     SETBONUS_PLANAR_DAMAGE = 5,
+-- }
 
 -- V2
 TUNING.MOONLIGHT_SHADOW_DAMAGE = wilson_attack * 2 - 30 -- Same as Brightshade Sword
@@ -160,12 +160,12 @@ TUNING.MOONLIGHT_SHADOW_SETBONUS_PLANAR_DAMAGE = 5
 
 TUNING.GLASH_BASE_DAMAGE = wilson_attack
 
-TUNING.BUFF_MOONLIGHT_DURATION = 60 * 5
-
-TUNING.HORRORCHAIN_DAMAGE = wilson_attack * 1.25
-TUNING.HORRORCHAIN_RANGE = TUNING.WHIP_RANGE
+TUNING.HORRORCHAIN_DAMAGE = wilson_attack
+TUNING.HORRORCHAIN_PLANAR_DAMAGE = 10
+TUNING.HORRORCHAIN_RANGE = 2
 TUNING.HORRORCHAIN_USES = 200
 TUNING.HORRORCHAIN_DIST = 20
 TUNING.HORRORCHAIN_DRUATION = 5
-TUNING.HORRORCHAIN_PLANAR_DAMAGE = 10
 TUNING.HORRORCHAIN_SHADOW_LEVEL = 2
+
+TUNING.BUFF_MOONLIGHT_DURATION = 60 * 5
