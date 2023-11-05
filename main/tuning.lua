@@ -124,18 +124,18 @@ TUNING.MOONGLASSPICKAXE =
     SHADOW_WEAR = 0.5,
 }
 
-
+-- V1
 TUNING.MOONLIGHT_SHADOW =
 {
     MAX_USES = 200,
     BATTERIES = {
         moonglass = 5,
-        moonglass_charged = 25,
-        purebrilliance = 100,
+        moonglass_charged = 20,
+        purebrilliance = 50,
     },
     BUFFS = {
-        moonglass_charged = 25,
-        purebrilliance = 100,
+        moonglass_charged = 20,
+        purebrilliance = 50,
     },
     DAMAGE = {
         EMPTY = wilson_attack * 1.25,
@@ -146,10 +146,20 @@ TUNING.MOONLIGHT_SHADOW =
     SETBONUS_PLANAR_DAMAGE = 5,
 }
 
+-- V2
+TUNING.MOONLIGHT_SHADOW_DAMAGE = 40
+TUNING.MOONLIGHT_SHADOW_PLANAR_DAMAGE = 28
+TUNING.MOONLIGHT_SHADOW_USES = 200
+TUNING.MOONLIGHT_SHADOW_BATTERIES = {
+    moonglass = 5,
+    moonglass_charged = 20,
+    purebrilliance = 50,
+}
+TUNING.MOONLIGHT_SHADOW_SETBONUS_PLANAR_DAMAGE = 5
+
 TUNING.GLASH_BASE_DAMAGE = wilson_attack
 
 TUNING.BUFF_MOONLIGHT_DURATION = 60 * 5
-
 
 TUNING.HORRORCHAIN_DAMAGE = wilson_attack * 1.25
 TUNING.HORRORCHAIN_RANGE = TUNING.WHIP_RANGE
