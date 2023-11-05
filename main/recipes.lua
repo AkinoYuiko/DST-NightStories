@@ -102,6 +102,10 @@ SortAfter("blackholestaff", "greenstaff")
 ------- Other -------
 ---------------------
 
+-- 月影（新） --
+AddRecipe("moonlight_shadow", {Ingredient("security_pulse_cage_full", 1), Ingredient("sword_lunarplant", 1), Ingredient("alterguardianhatshard", 1)}, TECH.LUNARFORGING_TWO, {nounlock=true, station_tag="lunar_forge"})
+SortAfter("moonlight_shadow", "sword_lunarplant")
+
 -- 恐惧锁链 --
 AddRecipe("horrorchain", {Ingredient("horrorfuel", 4), Ingredient("voidcloth", 2)}, TECH.SHADOWFORGING_TWO, {nounlock=true, station_tag = "shadow_forge"})
 SortAfter("horrorchain", "voidcloth_scythe")

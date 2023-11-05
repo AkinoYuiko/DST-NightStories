@@ -1499,6 +1499,11 @@ msgctxt "STRINGS.RECIPE_DESC.LIGHTCRYSTAL"
 msgid "Into Light!"
 msgstr "进入光明！"
 
+#. STRINGS.RECIPE_DESC.MOONLIGHT_SHADOW
+msgctxt "STRINGS.RECIPE_DESC.MOONLIGHT_SHADOW"
+msgid "A sword with super power of lunar light."
+msgstr "一把蕴含着月光能量的超级宝剑。"
+
 #. STRINGS.RECIPE_DESC.NIGHTMARE_SPEAR
 msgctxt "STRINGS.RECIPE_DESC.NIGHTMARE_SPEAR"
 msgid "Disappear in a moment."

@@ -29,7 +29,7 @@ end
 AddClassPostConstruct("widgets/itemtile", function(self)
     if self.item.prefab == "moonlight_shadow"then
         update_fx_fn(self,"is_buffed",FX.L)
-        self.inst:ListenForEvent("moonlight_shadow_buffed", function()
+        self.inst:ListenForEvent("moonlight_shadow_buffdirty", function()
             update_fx_fn(self,"is_buffed",FX.L)
         end, self.item)
     elseif self.item.prefab == "friendshiptotem_dark" then

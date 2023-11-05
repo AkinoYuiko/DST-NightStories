@@ -134,6 +134,7 @@ local strings = {
 
         BOOK_WETNESS = "The mystery of weather.",
 
+        MOONLIGHT_SHADOW = "A sword with super power of lunar light.",
         HORRORCHAIN = "Spread horror.",
 
     },

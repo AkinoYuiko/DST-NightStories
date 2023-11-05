@@ -1468,6 +1468,11 @@ msgctxt "STRINGS.RECIPE_DESC.LIGHTCRYSTAL"
 msgid "Into Light!"
 msgstr ""
 
+#. STRINGS.RECIPE_DESC.MOONLIGHT_SHADOW
+msgctxt "STRINGS.RECIPE_DESC.MOONLIGHT_SHADOW"
+msgid "A sword with super power of lunar light."
+msgstr ""
+
 #. STRINGS.RECIPE_DESC.NIGHTMARE_SPEAR
 msgctxt "STRINGS.RECIPE_DESC.NIGHTMARE_SPEAR"
 msgid "Disappear in a moment."

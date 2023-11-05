@@ -14,7 +14,7 @@ NS_ACTIONS = {
     NIGHTSWORD = Action({priority = 2, mount_valid = true}),
     FUELPOCKETWATCH = Action({priority = 3, rmb = true}),
     MUTATETOTEM = Action({priority = 3, rmb = true}),
-    MOONLIGHTSHADOW = Action({mount_valid=true}),
+    -- MOONLIGHTSHADOW = Action({mount_valid=true}),
     MOONLIGHTSHADOW_CHARGE = Action({mount_valid=true}),
     TOGGLETOTEM = Action({mount_valid=true}),
 }
@@ -25,7 +25,7 @@ NS_ACTIONS.NIGHTSWORD.str = STRINGS.ACTIONS.GIVE.SOCKET
 NS_ACTIONS.MUTATETOTEM.str = STRINGS.ACTIONS.GIVE.SOCKET
 NS_ACTIONS.TOGGLETOTEM.str = STRINGS.ACTIONS.TOGGLETOTEM
 NS_ACTIONS.FUELPOCKETWATCH.str = STRINGS.ACTIONS.FUELPOCKETWATCH
-NS_ACTIONS.MOONLIGHTSHADOW.str = STRINGS.ACTIONS.GIVE.SOCKET
+-- NS_ACTIONS.MOONLIGHTSHADOW.str = STRINGS.ACTIONS.GIVE.SOCKET
 NS_ACTIONS.MOONLIGHTSHADOW_CHARGE.str = STRINGS.ACTIONS.MOONLIGHTSHADOW_CHARGE
 
 NS_ACTIONS.MIOFUEL.stroverridefn = function(act)
@@ -280,30 +280,30 @@ end
 
 -- [[ Moonlight Shadow: Mutate ]] --
 
-NS_ACTIONS.MOONLIGHTSHADOW.fn = function(act)
-    local doer = act.doer
-    local target = act.target
-    if doer.components.inventory then
-        local item = doer.components.inventory:RemoveItem(act.invobject)
+-- NS_ACTIONS.MOONLIGHTSHADOW.fn = function(act)
+--     local doer = act.doer
+--     local target = act.target
+--     if doer.components.inventory then
+--         local item = doer.components.inventory:RemoveItem(act.invobject)
 
-        -- add efx
-        local ent = target.components.inventoryitem and target.components.inventoryitem.owner or target
-        if ent then
-            local _fx = SpawnPrefab("explode_reskin")
-            _fx.Transform:SetPosition(ent.Transform:GetWorldPosition())
-            _fx.scale_override = 1.7 * ent:GetPhysicsRadius(0.5)
-        end
+--         -- add efx
+--         local ent = target.components.inventoryitem and target.components.inventoryitem.owner or target
+--         if ent then
+--             local _fx = SpawnPrefab("explode_reskin")
+--             _fx.Transform:SetPosition(ent.Transform:GetWorldPosition())
+--             _fx.scale_override = 1.7 * ent:GetPhysicsRadius(0.5)
+--         end
 
-        -- do mutate
-        if item.prefab == "alterguardianhatshard" and target.prefab == "sword_lunarplant" then
-            item:Remove()
-            if target.components.halloweenmoonmutable then
-                target.components.halloweenmoonmutable:Mutate("moonlight_shadow")
-            end
-            return true
-        end
-    end
-end
+--         -- do mutate
+--         if item.prefab == "alterguardianhatshard" and target.prefab == "sword_lunarplant" then
+--             item:Remove()
+--             if target.components.halloweenmoonmutable then
+--                 target.components.halloweenmoonmutable:Mutate("moonlight_shadow")
+--             end
+--             return true
+--         end
+--     end
+-- end
 
 -- [[ Moonlight Shadow: Charge ]] --
 
@@ -445,22 +445,22 @@ AddComponentAction("USEITEM", "moonlightshadowbattery", function(inst, doer, tar
     end
 end)
 
-AddComponentAction("USEITEM", "glasssocket", function(inst, doer, target, actions, right)
-    if target.prefab == "sword_lunarplant" then
-        table.insert(actions, ACTIONS.MOONLIGHTSHADOW)
-    end
-end)
+-- AddComponentAction("USEITEM", "glasssocket", function(inst, doer, target, actions, right)
+--     if target.prefab == "sword_lunarplant" then
+--         table.insert(actions, ACTIONS.MOONLIGHTSHADOW)
+--     end
+-- end)
 
-local glassic_state = State({
-    name = "doglassicbuild",
+-- local glassic_state = State({
+--     name = "doglassicbuild",
 
-    onenter = function(inst)
-        inst.sg:GoToState("dolongaction", 2)
-    end
-})
+--     onenter = function(inst)
+--         inst.sg:GoToState("dolongaction", 2)
+--     end
+-- })
 
 for _, sg in ipairs({"wilson", "wilson_client"}) do
-    AddStategraphState(sg, glassic_state)
+    -- AddStategraphState(sg, glassic_state)
 
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.MIOFUEL, "doshortaction"))
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.GEMTRADE, "doshortaction"))
@@ -469,7 +469,7 @@ for _, sg in ipairs({"wilson", "wilson_client"}) do
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.FUELPOCKETWATCH, "pocketwatch_warpback_pre"))
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.MUTATETOTEM, "doshortaction"))
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.TOGGLETOTEM, "doshortaction"))
-    AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.MOONLIGHTSHADOW, "doglassicbuild"))
+    -- AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.MOONLIGHTSHADOW, "doglassicbuild"))
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.MOONLIGHTSHADOW_CHARGE, "doshortaction"))
 end
 
@@ -480,10 +480,10 @@ AddPrefabPostInit("sword_lunarplant", function(inst)
     inst:AddComponent("halloweenmoonmutable")
 end)
 
-AddPrefabPostInit("alterguardianhatshard", function(inst)
-    if not TheWorld.ismastersim then return end
-    inst:AddComponent("glasssocket")
-end)
+-- AddPrefabPostInit("alterguardianhatshard", function(inst)
+--     if not TheWorld.ismastersim then return end
+--     inst:AddComponent("glasssocket")
+-- end)
 
 -- right click to set ammo --
 local function set_reloaditem_fragment(inst)
@@ -493,6 +493,6 @@ local function set_reloaditem_fragment(inst)
     inst:AddComponent("moonlightshadowbattery")
 end
 
-for prefab in pairs(TUNING.MOONLIGHT_SHADOW.BATTERIES) do
+for prefab in pairs(TUNING.MOONLIGHT_SHADOW_BATTERIES) do
     AddPrefabPostInit(prefab, set_reloaditem_fragment)
 end
