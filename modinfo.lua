@@ -6,27 +6,18 @@ local function zheng(zh, en)
     return LOC[locale] or en
 end
 
-version = "1.46.6.2"
-version_compatible = "1.46.6.1"
+version = "1.47"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng([[
-- 修改了月光粉相关的文本。
-
-- 修复一个潜在的使得花翻倍的问题。
-...
-- 新道具：恐惧锁链
-  标记一个目标，再次攻击时，对附近所有拥有该标记的目标造成伤害。
-  恐惧锁链受到虚空风帽的加成。
+- 调整了月影的数值、能源耐久和获得方式。
+- 调整了恐惧锁链的数值。
+- 修改了月光粉的外观。
 ]], [[
-- Tweak string text for Moonlight Powder.
-
-- Fix issue where flowers would double when removed.
-...
-- New Item: Horror Chain
-  Tag a target. When attacking targets with tag, deal same attack to nearby targets with the tag.
-  Gets bonus by Void Cowl.
+- Change damage, repair value and recipe of Moonlight Shadow.
+- Change damage of Horror Chain.
+- Moonlight Powder has new outlook.
 ]])
 description = zheng("版本: ", "Version: ") .. version ..
     zheng("\n\n更新内容:\n", "\n\nChangelog:\n") .. changelog .. "\n" ..
