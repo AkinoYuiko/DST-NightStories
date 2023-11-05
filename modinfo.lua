@@ -6,15 +6,19 @@ local function zheng(zh, en)
     return LOC[locale] or en
 end
 
-version = "1.47"
+version = "1.47.1"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng([[
+- 调整月影为不可分解。
+
 - 调整了月影的数值、能源耐久和获得方式。
 - 调整了恐惧锁链的数值。
 - 修改了月光粉的外观。
 ]], [[
+- Moonlight Shadow is no longer deconstructable.
+
 - Change damage, repair value and recipe of Moonlight Shadow.
 - Change damage of Horror Chain.
 - Moonlight Powder has new outlook.
