@@ -233,13 +233,11 @@ end
 
 local target_testfn = Utils.TargetTestFn
 local function onattack(inst, attacker, target)
-    if target ~= nil and target:IsValid() then
-        SpawnPrefab("hitsparks_fx"):Setup(attacker, target)
-        do_consume(inst, attacker)
-    end
+    do_consume(inst, attacker)
     if target_testfn(target) and inst.is_buffed:value() then
-        -- SpawnPrefab("glash"):SetTarget(attacker, target, 0, calc_bonus_mult(inst))
         SpawnPrefab("glash"):SetTarget(attacker, target, 0, inst._bonusenabled and TUNING.MOONLIGHT_SHADOW_SETBONUS_DAMAGE_MULT)
+    elseif target ~= nil and target:IsValid() then
+        SpawnPrefab("hitsparks_fx"):Setup(attacker, target)
     end
 end
 
