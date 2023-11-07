@@ -181,13 +181,10 @@ end
 local function set_buffed_atks(inst, amount)
     inst.buffed_atks = math.clamp(amount, 0, TUNING.MOONLIGHT_SHADOW_USES)
     if inst.buffed_atks > 0 then
-        inst.is_buffed:set(true)
-        inst:AddTag("moonbuffed")
+        inst.buffed:set(true)
     else
-        inst.is_buffed:set(false)
-        inst:RemoveTag("moonbuffed")
+        inst.buffed:set(false)
     end
-    -- update_damage(inst)
 end
 
 local function try_consume_battery(inst)
@@ -218,7 +215,7 @@ end
 
 local function do_consume(inst, attacker)
     local mult = calc_consume_mult(attacker)
-    inst.components.finiteuses:Use(inst.is_buffed:value() and mult or 1)
+    inst.components.finiteuses:Use(inst.buffed:value() and mult or 1)
     set_buffed_atks(inst, inst.buffed_atks - mult)
     try_consume_battery(inst)
 end
@@ -234,7 +231,7 @@ end
 local target_testfn = Utils.TargetTestFn
 local function onattack(inst, attacker, target)
     do_consume(inst, attacker)
-    if target_testfn(target) and inst.is_buffed:value() then
+    if target_testfn(target) and inst.buffed:value() then
         SpawnPrefab("glash"):SetTarget(attacker, target, 0, inst._bonusenabled and TUNING.MOONLIGHT_SHADOW_SETBONUS_DAMAGE_MULT)
     elseif target ~= nil and target:IsValid() then
         SpawnPrefab("hitsparks_fx"):Setup(attacker, target)
@@ -380,7 +377,7 @@ local function fn()
     --weapon (from weapon component) added to pristine state for optimization
     inst:AddTag("weapon")
 
-    inst.is_buffed = net_bool(inst.GUID, "moonlight_shadow.buffed", "moonlight_shadow_buffdirty")
+    inst.buffed = net_bool(inst.GUID, "moonlight_shadow.buffed", "moonlight_shadow.buffdirty")
 
     inst:AddComponent("floater")
     inst.isbroken = net_bool(inst.GUID, "moonlight_shadow.isbroken", "isbrokendirty")
@@ -440,8 +437,7 @@ local function fn()
 
     inst:AddComponent("lunarplant_tentacle_weapon")
 
-    -- MakeForgeRepairable(inst, FORGEMATERIALS.LUNARPLANT, nil, onrepaired)
-    MakeForgeRepairable(inst, nil, onbroken, onrepaired)
+    MakeForgeRepairable(inst, FORGEMATERIALS.LUNARPLANT, onbroken, onrepaired)
 
     MakeHauntableLaunch(inst)
 
