@@ -6,21 +6,23 @@ local function zheng(zh, en)
     return LOC[locale] or en
 end
 
-version = "1.47.3"
+version = "1.47.4"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng([[
-- 修复锁链标记的攻击逻辑中存在的问题。
+- 优化了月影在物品栏的显示效果。
 
+- 修复锁链标记的攻击逻辑中存在的问题。
 - 修复一处拼写错误。
 - 调整月影为不可分解。
 - 调整了月影的数值、能源耐久和获得方式。
 - 调整了恐惧锁链的数值。
 - 修改了月光粉的外观。
 ]], [[
-- Fix issue where main target should be attacked before other chained targets.
+- Improve item tile UI for Moonlight Shadow.
 
+- Fix issue where main target should be attacked before other chained targets.
 - Fix a typo.
 - Moonlight Shadow is no longer deconstructable.
 - Change damage, repair value and recipe of Moonlight Shadow.
