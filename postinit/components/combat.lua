@@ -24,19 +24,21 @@ function Combat:DoAttack(target, weapon, ...)
         target = self.target
     end
 
+    local main_attack = do_attack(self, target, weapon, ...)
+    
     if TheWorld.components.horrorchainmanager:HasMember(target) and not GLASH_PREFABS[self.inst.prefab] then -- glash should NOT trigger chain attack.
         local ents = TheWorld.components.horrorchainmanager:GetNearbyMembers(target)
         for _, ent in ipairs(ents) do
             if ent ~= target then
-                local _CanHitTarget = self.CanHitTarget
+                local can_hit_target = self.CanHitTarget
                 self.CanHitTarget = function()
-                    return _CanHitTarget(self, target, weapon)
+                    return can_hit_target(self, target, weapon)
                 end
                 do_attack_with_check(self, ent, weapon, ...)
-                self.CanHitTarget = _CanHitTarget
+                self.CanHitTarget = can_hit_target
             end
         end
     end
 
-    return do_attack_with_check(self, target, weapon, ...)
+    return main_attack
 end
