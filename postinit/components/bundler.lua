@@ -21,16 +21,16 @@ local function handle_cook_gift(self)
     if productperishtime > 0 then
         local spoilage_total = 0
         local spoilage_n = 0
-        for k, v in pairs (self.bundlinginst.components.container.slots) do
-            if v.components.perishable ~= nil then
+        for slot, item in pairs(self.bundlinginst.components.container.slots) do
+            if item.components.perishable then
                 spoilage_n = spoilage_n + 1
-                spoilage_total = spoilage_total + v.components.perishable:GetPercent()
+                spoilage_total = spoilage_total + item.components.perishable:GetPercent()
             end
         end
         product_spoilage =
-            (spoilage_n <= 0 and 1) or
-            (keepspoilage and spoilage_total / spoilage_n) or
-            1 - (1 - spoilage_total / spoilage_n) * .5
+            (spoilage_n <= 0 and 1)
+            or (keepspoilage and spoilage_total / spoilage_n)
+            or 1 - (1 - spoilage_total / spoilage_n) * .5
     end
 
     local lowest_stack
@@ -68,7 +68,7 @@ local on_finish_bundling = Bundler.OnFinishBundling
 function Bundler:OnFinishBundling(...)
     if self.bundlinginst
         and self.bundlinginst.components.container
-        and not self.bundlinginst.components.container:IsEmpty()
+        and self.bundlinginst.components.container:IsFull()
         and self.wrappedprefab
     then
         if self.bundlinginst.prefab == "cookgift_container" then
