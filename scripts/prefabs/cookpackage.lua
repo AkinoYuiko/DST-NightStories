@@ -322,5 +322,5 @@ end
 
 return MakeContainer("cookpackage_container", "ui_bundle_2x2"),
     -- MakeBundle("cookgift", false, 2, nil, nil, nil, "gift", "gift", "gift"),
-    MakeWrap("cookgift", "cookpackage_container", nil, true, "gift", "gift", "gift"),
-    MakeWrap("cookpackage", "cookpackage_container", nil, false, "bundle", "bundle", nil)
+    MakeWrap("cookgift", "cookpackage_container", nil, true, "gift", "gift"),
+    MakeWrap("cookpackage", "cookpackage_container", nil, false, "bundle", "bundle")
