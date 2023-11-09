@@ -22,6 +22,7 @@ local strings = {
             CRYSTAL = "Boost Sword",
             BATTERY = "Set Battery",
         },
+        COOKPACKAGE = "Pacook",
         FUELPOCKETWATCH = "Hack",
         MOONLIGHTSHADOW_CHARGE = "Charge",
         TOGGLETOTEM = {
@@ -106,8 +107,8 @@ local strings = {
         -- Voidcloth items
         HORRORCHAIN = "Horror Chain",
 
-        COOKGIFT = "Cook Gift",
-        COOKGIFTWRAP = "Cook Gift Wrap",
+        COOKPACKAGEWRAP = "Cooker's Bundling Wrap",
+        COOKGIFTWRAP = "Cooker's Gift Wrap",
     },
     RECIPE_DESC =
     {
@@ -123,23 +124,21 @@ local strings = {
         BLACKHOLESTAFF = "Absorb everything!",
         BOOK_HARVEST = "Should help you harvest!",
         BOOK_TOGGLEDOWNFALL = "/toggledownfall",
+        BOOK_WETNESS = "The mystery of weather.",
         NIGHTMARE_SPEAR = "Disappear in a moment.",
 
         BATTLERUINSHAT = "Complete with ancient force field!",
 
-        SPICE_CACTUS = "Make sanity great again.",
-        SPICE_MOONGLASS = "Grant the power of the moon.",
-
-        PORTABLE_WARDROBE_WRAP = "Convenient for dressing up.",
-        PORTABLE_WARDROBE_ITEM = "Convenient for dressing up a lot.",
-
-        CHESSPIECE_HEADUCK_BUILDER = "I feel headache, but a duck.",
-
-        BOOK_WETNESS = "The mystery of weather.",
-
         MOONLIGHT_SHADOW = "A sword with super power of lunar light.",
         HORRORCHAIN = "Spread horror.",
 
+        CHESSPIECE_HEADUCK_BUILDER = "I feel headache, but a duck.",
+        COOKPACKAGEWRAP = "Package and cook instantly.",
+        COOKGIFTWRAP = "Wrap things up and cook them!",
+        PORTABLE_WARDROBE_ITEM = "Convenient for dressing up a lot.",
+        PORTABLE_WARDROBE_WRAP = "Convenient for dressing up.",
+        SPICE_CACTUS = "Make sanity great again.",
+        SPICE_MOONGLASS = "Grant the power of the moon.",
     },
     SKIN_NAMES =
     {
@@ -300,6 +299,9 @@ local strings = {
                 BOOK_WETNESS = "We would be able to see a wet world.",
 
                 HORRORCHAIN = "We never now how it spreads horror.",
+
+                COOKPACKAGEWRAP = "Wrapping things up and cook them together.",
+                COOKGIFTWRAP = "That's a cooker's wrap!",
             }
         },
         CIVI = deepcopy(SPEECHES["civi"]),

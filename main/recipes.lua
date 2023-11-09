@@ -114,6 +114,12 @@ SortAfter("horrorchain", "voidcloth_scythe")
 -- AddRecipe("battleruinshat", {Ingredient("wathgrithrhat", 1), Ingredient("thulecite", 4)}, TECH.NONE, {builder_tag = "valkyrie"})
 -- SortAfter("battleruinshat", "wathgrithrhat")
 
+-- 厨师礼物包装 & 厨师包锅
+AddRecipe("cookpackagewrap", {Ingredient("portablecookpot_item", 1), Ingredient("bundlewrap", 4)}, TECH.NONE, {builder_tag="masterchef", numtogive = 4})
+SortAfter("cookpackagewrap", "portablespicer_item")
+AddRecipe("cookgiftwrap", {Ingredient("portablecookpot_item", 1), Ingredient("giftwrap", 4)}, TECH.NONE, {builder_tag="masterchef", numtogive = 4})
+SortAfter("cookgiftwrap", "cookpackagewrap")
+
 -- 仙人掌粉 --
 AddRecipe("spice_cactus", {Ingredient("cactus_meat", 2), Ingredient("cactus_flower", 1)}, TECH.FOODPROCESSING_ONE, {nounlock = true, numtogive = 2, nochar = true, builder_tag = "professionalchef", no_deconstruction = true})
 SortAfter("spice_cactus", "spice_salt")

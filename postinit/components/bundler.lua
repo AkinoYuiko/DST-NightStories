@@ -71,7 +71,7 @@ function Bundler:OnFinishBundling(...)
         and self.bundlinginst.components.container:IsFull()
         and self.wrappedprefab
     then
-        if self.bundlinginst.prefab == "cookgift_container" then
+        if self.bundlinginst.prefab == "cookpackage_container" then
             handle_cook_gift(self)
         end
     end

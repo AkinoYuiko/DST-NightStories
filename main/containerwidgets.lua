@@ -17,11 +17,14 @@ function params.nightsword.itemtestfn(container, item, slot)
     return item:HasTag("civicrystal")
 end
 
-params.cookgift_container = deepcopy(params.bundle_container)
-function params.cookgift_container.itemtestfn(container, item, slot)
+params.cookpackage_container = deepcopy(params.cookpot)
+function params.cookpackage_container.itemtestfn(container, item, slot)
     return cooking.IsCookingIngredient(item.prefab)
         or container.finishing_bundling
 end
-function params.bundle_container.widget.buttoninfo.validfn(inst)
+function params.cookpackage_container.widget.buttoninfo.validfn(inst)
     return inst.replica.container and inst.replica.container:IsFull()
 end
+params.cookpackage_container.widget.buttoninfo.fn = params.bundle_container.widget.buttoninfo.fn
+params.cookpackage_container.widget.buttoninfo.text = STRINGS.ACTIONS.COOKPACKAGE
+params.cookpackage_container.acceptsstacks = nil
