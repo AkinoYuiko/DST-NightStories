@@ -32,6 +32,8 @@ PrefabFiles = {
     "moonlight_buff",
 
     "horrorchain",
+
+    "cookgift",
 }
 
 

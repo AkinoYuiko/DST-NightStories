@@ -105,6 +105,9 @@ local strings = {
 
         -- Voidcloth items
         HORRORCHAIN = "Horror Chain",
+
+        COOKGIFT = "Cook Gift",
+        COOKGIFTWRAP = "Cook Gift Wrap",
     },
     RECIPE_DESC =
     {
