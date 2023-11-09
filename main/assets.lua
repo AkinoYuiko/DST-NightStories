@@ -14,6 +14,7 @@ PrefabFiles = {
 
     "dummy",
     "dummy_books",
+    "book_wetness",
     "blackholestaff",
     "nightmare_spear",
 
@@ -21,9 +22,9 @@ PrefabFiles = {
     "ns_skins",
 
     "battleruinshat",
-    "portable_wardrobe",
+    "cookpackage",
     "chesspiece_headuck",
-    "book_wetness",
+    "portable_wardrobe",
 
     "glash",
     "moonglasshammer",
@@ -32,8 +33,6 @@ PrefabFiles = {
     "moonlight_buff",
 
     "horrorchain",
-
-    "cookgift",
 }
 
 
