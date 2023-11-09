@@ -6,28 +6,16 @@ local function zheng(zh, en)
     return LOC[locale] or en
 end
 
-version = "1.47.4"
+version = "1.48"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng([[
-- 优化了月影在物品栏的显示效果。
-
-- 修复锁链标记的攻击逻辑中存在的问题。
-- 修复一处拼写错误。
-- 调整月影为不可分解。
-- 调整了月影的数值、能源耐久和获得方式。
-- 调整了恐惧锁链的数值。
-- 修改了月光粉的外观。
+- 新道具：包锅 & 厨师礼物包锅
+  只有大厨沃利可以制造它们，随时随地快速烹饪吧！
 ]], [[
-- Improve item tile UI for Moonlight Shadow.
-
-- Fix issue where main target should be attacked before other chained targets.
-- Fix a typo.
-- Moonlight Shadow is no longer deconstructable.
-- Change damage, repair value and recipe of Moonlight Shadow.
-- Change damage of Horror Chain.
-- Moonlight Powder has new outlook.
+- New item: Cooker's Bundling Wrap and Cooker's Gift Wrap.
+  ONLY Warly can craft them. Enjoy instant cooking everywhere!
 ]])
 description = zheng("版本: ", "Version: ") .. version ..
     zheng("\n\n更新内容:\n", "\n\nChangelog:\n") .. changelog .. "\n" ..

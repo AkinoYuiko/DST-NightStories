@@ -12,7 +12,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "Application: Dont' Starve\n"
 "POT Version: 2.0\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4.1\n"
 
 #. STRINGS.ACTIONS.BLINK.FUEL
 msgctxt "STRINGS.ACTIONS.BLINK.FUEL"
@@ -33,6 +33,11 @@ msgstr "更换能源"
 msgctxt "STRINGS.ACTIONS.CHANGE_TACKLE.CRYSTAL"
 msgid "Boost Sword"
 msgstr "镶嵌武器"
+
+#. STRINGS.ACTIONS.COOKPACKAGE
+msgctxt "STRINGS.ACTIONS.COOKPACKAGE"
+msgid "Pacook"
+msgstr "包锅"
 
 #. STRINGS.ACTIONS.FUELPOCKETWATCH
 msgctxt "STRINGS.ACTIONS.FUELPOCKETWATCH"
@@ -163,6 +168,16 @@ msgstr "一个潮湿的世界即将到来。"
 msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.CHESSPIECE_HEADUCK"
 msgid "󰂷"
 msgstr "哀鸭 󰂷"
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.COOKGIFTWRAP
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.COOKGIFTWRAP"
+msgid "That's a cooker's wrap!"
+msgstr "我们厨师太有操作了！"
+
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.COOKPACKAGEWRAP
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.COOKPACKAGEWRAP"
+msgid "Wrapping things up and cook them together."
+msgstr "把东西打包起来一起烹饪。"
 
 #. STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKAMULET
 msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.DARKAMULET"
@@ -1244,6 +1259,16 @@ msgctxt "STRINGS.NAMES.CIVI"
 msgid "Civi"
 msgstr ""
 
+#. STRINGS.NAMES.COOKGIFTWRAP
+msgctxt "STRINGS.NAMES.COOKGIFTWRAP"
+msgid "Cooker's Gift Wrap"
+msgstr "厨师礼物包锅"
+
+#. STRINGS.NAMES.COOKPACKAGEWRAP
+msgctxt "STRINGS.NAMES.COOKPACKAGEWRAP"
+msgid "Cooker's Bundling Wrap"
+msgstr "包锅"
+
 #. STRINGS.NAMES.DARKAMULET
 msgctxt "STRINGS.NAMES.DARKAMULET"
 msgid "Dark Amulet"
@@ -1478,6 +1503,16 @@ msgstr "雨的神秘力量。"
 msgctxt "STRINGS.RECIPE_DESC.CHESSPIECE_HEADUCK_BUILDER"
 msgid "I feel headache, but a duck."
 msgstr "我感觉头痛鸭。"
+
+#. STRINGS.RECIPE_DESC.COOKGIFTWRAP
+msgctxt "STRINGS.RECIPE_DESC.COOKGIFTWRAP"
+msgid "Wrap things up and cook them!"
+msgstr "把东西打包起来一起烹饪！"
+
+#. STRINGS.RECIPE_DESC.COOKPACKAGEWRAP
+msgctxt "STRINGS.RECIPE_DESC.COOKPACKAGEWRAP"
+msgid "Package and cook instantly."
+msgstr "包起来立即烹饪。"
 
 #. STRINGS.RECIPE_DESC.DARKCRYSTAL
 msgctxt "STRINGS.RECIPE_DESC.DARKCRYSTAL"
