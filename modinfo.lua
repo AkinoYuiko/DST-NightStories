@@ -6,17 +6,17 @@ local function zheng(zh, en)
     return LOC[locale] or en
 end
 
-version = "1.48.1.1"
+version = "1.48.2"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng([[
-- 修复一处拼写错误。
+- 调整了一处语言文本。
 
 - 新道具：包锅 & 厨师礼物包锅
   只有大厨沃利可以制造它们，随时随地快速烹饪吧！
 ]], [[
-- Fix a typo.
+- Tweak some string text.
 
 - New item: Cooker's Bundling Wrap and Cooker's Gift Wrap.
   ONLY Warly can craft them. Enjoy instant cooking everywhere!
