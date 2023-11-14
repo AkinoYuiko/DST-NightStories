@@ -21,6 +21,7 @@ PrefabFiles = {
     -- "glassicflash",
     "horrorchain",
     "lantern_mio_fx",
+    "lunarplanthat_trans_fx",
     "miotan",
     "moonglasshammer",
     "moonglasspickaxe",
