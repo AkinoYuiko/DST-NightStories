@@ -37,9 +37,11 @@ AddModCharacter("miotan", "FEMALE")
 AddModCharacter("dummy", "FEMALE")
 AddModCharacter("civi", "MALE")
 
-modimport("main/tuning.lua")
-modimport("main/strings.lua")
-modimport("main/hack_templates.lua")
+modimport("main/tuning")
+modimport("main/strings")
+-- modimport("main/hack_templates.lua")
 
 modimport("main/clothing")
 modimport("main/prefabskin")
+
+modimport("postinit/widgets/templates")
