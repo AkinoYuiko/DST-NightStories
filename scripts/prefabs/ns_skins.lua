@@ -385,14 +385,14 @@ table.insert(prefabs, CreatePrefabSkin("krampus_sack_invisible", {
     skin_tags = { "KRAMPUS_SACK", "GLASSIC" },
 }))
 
-table.insert(prefabs, CreatePrefabSkin("lunarplanthat_glass", {
+table.insert(prefabs, CreatePrefabSkin("lunarplanthat_trans", {
     base_prefab = "lunarplanthat",
     type = "item",
     rarity = "Glassic",
     assets = {
-        Asset( "ANIM", "anim/lunarplanthat_glass.zip" ),
-        -- Asset( "DYNAMIC_ANIM", "anim/dynamic/lunarplanthat_glass.zip" ),
-        -- Asset( "PKGREF", "anim/dynamic/lunarplanthat_glass.dyn" ),
+        Asset( "ANIM", "anim/lunarplanthat_trans.zip" ),
+        -- Asset( "DYNAMIC_ANIM", "anim/dynamic/lunarplanthat_trans.zip" ),
+        -- Asset( "PKGREF", "anim/dynamic/lunarplanthat_trans.dyn" ),
     },
     init_fn = lunarplanthat_init_fn,
     skin_tags = { "LUNARPLANTHAT", "GLASSIC" },

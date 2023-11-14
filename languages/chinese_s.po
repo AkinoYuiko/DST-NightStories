@@ -1641,6 +1641,11 @@ msgctxt "STRINGS.SKIN_DESCRIPTIONS.lantern_mio"
 msgid "A lamp that is fit for camping."
 msgstr "一盏很适合露营使用的灯。"
 
+#. STRINGS.SKIN_DESCRIPTIONS.lunarplanthat_trans
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.lunarplanthat_trans"
+msgid "Transparent!"
+msgstr "透明！"
+
 #. STRINGS.SKIN_DESCRIPTIONS.meatrack_hermit_red
 msgctxt "STRINGS.SKIN_DESCRIPTIONS.meatrack_hermit_red"
 msgid "Mimic HD meatrack by Hermit."
@@ -1770,6 +1775,11 @@ msgstr "拟真坎普斯背包"
 msgctxt "STRINGS.SKIN_NAMES.lantern_mio"
 msgid "Camping Lamp"
 msgstr "露营灯"
+
+#. STRINGS.SKIN_NAMES.lunarplanthat_trans
+msgctxt "STRINGS.SKIN_NAMES.lunarplanthat_trans"
+msgid "Phantomshade Helm"
+msgstr "幻影亮茄头盔"
 
 #. STRINGS.SKIN_NAMES.meatrack_hermit_red
 msgctxt "STRINGS.SKIN_NAMES.meatrack_hermit_red"

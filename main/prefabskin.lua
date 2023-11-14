@@ -270,5 +270,5 @@ GlassicAPI.SkinHandler.AddModSkins({
     moonglasspickaxe = { "moonglasspickaxe_northern" },
     moonglasshammer = { "moonglasshammer_forge" },
     orangestaff = { "orangestaff_glass" },
-    lunarplanthat = { "lunarplanthat_glass" },
+    lunarplanthat = { "lunarplanthat_trans" },
 })

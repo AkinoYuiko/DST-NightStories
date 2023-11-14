@@ -178,7 +178,7 @@ local strings = {
         moonglasspickaxe_northern = "Moon Nordic Pickaxe",
         orangestaff_glass = "Rod Of Glass",
         -- lunar items
-        lunarplanthat_glass = "Lunar Glass",
+        lunarplanthat_trans = "Phantomshade Helm",
     },
     SKIN_DESCRIPTIONS =
     {
@@ -222,7 +222,7 @@ local strings = {
         moonglasspickaxe_northern = "A resplendent moon pickaxe, its design reminiscent of days of yore.",
         orangestaff_glass = "It's a glassic joke, I assume.",
         -- lunar items
-        lunarplanthat_glass = "Handsome!",
+        lunarplanthat_trans = "Transparent!",
     },
     SKIN_TAG_CATEGORIES =
     {
