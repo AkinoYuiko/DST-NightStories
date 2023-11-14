@@ -167,6 +167,7 @@ end
 local function show_head(owner)
     owner.AnimState:Show("HEAD")
     if owner:HasTag("player") then
+        owner.AnimState:Show("HAIR")
         owner.AnimState:ShowSymbol("face")
         owner.AnimState:ShowSymbol("swap_face")
         owner.AnimState:ShowSymbol("beard")
