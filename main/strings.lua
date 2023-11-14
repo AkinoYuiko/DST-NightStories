@@ -1,23 +1,34 @@
 local MODROOT = MODROOT
 GLOBAL.setfenv(1, GLOBAL)
 
+local SPEECHES =
+{
+    civi = require("speech_civi"),
+    miotan = require("speech_miotan")
+}
+
 local strings = {
     ANNOUNCE_GLASSIC_BROKE = "WEAPON BREAK!",
     ACTIONS =
     {
         BLINK = {
-            FUEL = "Shadow Teleproof",
+            FUEL = "Shadowpoof",
         },
         BLINK_MAP = {
-            FUEL = "Shadow Teleproof({uses})",
+            FUEL = "Shadowpoof({uses})",
         },
         CHANGE_TACKLE =
         {
             CRYSTAL = "Boost Sword",
             BATTERY = "Set Battery",
         },
+        COOKPACKAGE = "Pacook",
         FUELPOCKETWATCH = "Hack",
         MOONLIGHTSHADOW_CHARGE = "Charge",
+        TOGGLETOTEM = {
+            ON = "Activate",
+            OFF = "Deactivate",
+        }
     },
     UI = {
         CRAFTING =
@@ -73,7 +84,7 @@ local strings = {
         SPICE_CACTUS_FOOD = "Cactus {food}",
 
         SPICE_MOONGLASS = "Moonlight Powder",
-        SPICE_MOONGLASS_FOOD = "Moonlight {food}",
+        SPICE_MOONGLASS_FOOD = "Mystic {food}",
 
         PORTABLE_WARDROBE_WRAP = "Magic Dress",
         PORTABLE_WARDROBE_ITEM = "Portable Wardrobe",
@@ -92,6 +103,12 @@ local strings = {
         MOONGLASSHAMMER = "Moon Glass Hammer",
         MOONGLASSPICKAXE = "Moon Glass Pickaxe",
         MOONLIGHT_SHADOW = "Moonlight Shadow",
+
+        -- Voidcloth items
+        HORRORCHAIN = "Horror Chain",
+
+        COOKPACKAGEWRAP = "Cooker's Bundling Wrap",
+        COOKGIFTWRAP = "Cooker's Gift Wrap",
     },
     RECIPE_DESC =
     {
@@ -107,20 +124,21 @@ local strings = {
         BLACKHOLESTAFF = "Absorb everything!",
         BOOK_HARVEST = "Should help you harvest!",
         BOOK_TOGGLEDOWNFALL = "/toggledownfall",
+        BOOK_WETNESS = "The mystery of weather.",
         NIGHTMARE_SPEAR = "Disappear in a moment.",
 
         BATTLERUINSHAT = "Complete with ancient force field!",
 
-        SPICE_CACTUS = "Make sanity great again.",
-        SPICE_MOONGLASS = "Grant the power of the moon.",
-
-        PORTABLE_WARDROBE_WRAP = "Convenient for dressing up.",
-        PORTABLE_WARDROBE_ITEM = "Convenient for dressing up a lot.",
+        MOONLIGHT_SHADOW = "A sword with super power of lunar light.",
+        HORRORCHAIN = "Spread horror.",
 
         CHESSPIECE_HEADUCK_BUILDER = "I feel headache, but a duck.",
-
-        BOOK_WETNESS = "The mystery of weather.",
-
+        COOKPACKAGEWRAP = "Package and cook instantly.",
+        COOKGIFTWRAP = "Wrap things up and cook them!",
+        PORTABLE_WARDROBE_ITEM = "Convenient for dressing up a lot.",
+        PORTABLE_WARDROBE_WRAP = "Convenient for dressing up.",
+        SPICE_CACTUS = "Make sanity great again.",
+        SPICE_MOONGLASS = "Grant the power of the moon.",
     },
     SKIN_NAMES =
     {
@@ -224,7 +242,7 @@ local strings = {
     {
         GENERIC =
         {
-            ANNOUNCE_ATTACH_BUFF_MOONLIGHT = "Extra power from the moon!",
+            ANNOUNCE_ATTACH_BUFF_MOONLIGHT = "Secret power from the moon!",
             ANNOUNCE_DETACH_BUFF_MOONLIGHT = "The moon power has gone.",
             DESCRIBE =
             {
@@ -284,10 +302,14 @@ local strings = {
                 CHESSPIECE_HEADUCK = "󰂷",
                 BOOK_WETNESS = "We would be able to see a wet world.",
 
+                HORRORCHAIN = "We never now how it spreads horror.",
+
+                COOKPACKAGEWRAP = "Wrapping things up and cook them together.",
+                COOKGIFTWRAP = "That's a cooker's wrap!",
             }
         },
-        CIVI = require("speech_civi"),
-        MIOTAN = require("speech_miotan"),
+        CIVI = deepcopy(SPEECHES["civi"]),
+        MIOTAN = deepcopy(SPEECHES["miotan"]),
         WICKERBOTTOM = {
             ACTIONFAIL = {
                 READ = {
@@ -365,11 +387,9 @@ local strings = {
     },
 }
 
--- if not rawget(_G, "GlassicAPI") then return end
 
 GlassicAPI.MergeStringsToGLOBAL(strings)
 GlassicAPI.MergeStringsToGLOBAL(require("speech_wortox"), STRINGS.CHARACTERS.MIOTAN, true)
-GlassicAPI.MergeStringsToGLOBAL(require("speech_wilson"), STRINGS.CHARACTERS.CIVI, true)
 STRINGS.CHARACTERS.DUMMY = STRINGS.CHARACTERS.MIOTAN -- Use mio's quote for now
 GlassicAPI.MergeTranslationFromPO(MODROOT.."languages")
 
@@ -384,8 +404,7 @@ end)
 local function MergeCharacterSpeech(char, source)
     local file, errormsg = io.open(MODROOT .. "scripts/speech_"..char..".lua", "w")
     if not file then print("Can't update " .. MODROOT .. "scripts/speech_" .. char .. ".lua" .. "\n" .. tostring(errormsg)) return end
-    -- GlassicAPI.MergeSpeechFile(require("speech_"..char), file)
-    GlassicAPI.MergeSpeechFile(STRINGS.CHARACTERS[string.upper(char)], file, source)
+    GlassicAPI.MergeSpeechFile(SPEECHES[char], file, source)
 end
 
 function UpdateNsStrings(update_speech)

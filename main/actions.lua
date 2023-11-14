@@ -7,6 +7,33 @@ GLOBAL.setfenv(1, GLOBAL)
 
 local UpvalueUtil = GlassicAPI.UpvalueUtil
 
+NS_ACTIONS = {
+    GEMTRADE = Action({priority = 3, mount_valid = true}),
+    MIOFUEL = Action({priority = 3, mount_valid = true}),
+    NIGHTSWITCH = Action({priority = 1, mount_valid = true}),
+    NIGHTSWORD = Action({priority = 2, mount_valid = true}),
+    FUELPOCKETWATCH = Action({priority = 3, rmb = true}),
+    MUTATETOTEM = Action({priority = 3, rmb = true}),
+    -- MOONLIGHTSHADOW = Action({mount_valid=true}),
+    MOONLIGHTSHADOW_CHARGE = Action({mount_valid=true}),
+    TOGGLETOTEM = Action({mount_valid=true}),
+}
+
+NS_ACTIONS.GEMTRADE.str = STRINGS.ACTIONS.GIVE.SOCKET
+NS_ACTIONS.NIGHTSWITCH.str = STRINGS.ACTIONS.USEITEM
+NS_ACTIONS.NIGHTSWORD.str = STRINGS.ACTIONS.GIVE.SOCKET
+NS_ACTIONS.MUTATETOTEM.str = STRINGS.ACTIONS.GIVE.SOCKET
+NS_ACTIONS.TOGGLETOTEM.str = STRINGS.ACTIONS.TOGGLETOTEM
+NS_ACTIONS.FUELPOCKETWATCH.str = STRINGS.ACTIONS.FUELPOCKETWATCH
+-- NS_ACTIONS.MOONLIGHTSHADOW.str = STRINGS.ACTIONS.GIVE.SOCKET
+NS_ACTIONS.MOONLIGHTSHADOW_CHARGE.str = STRINGS.ACTIONS.MOONLIGHTSHADOW_CHARGE
+
+NS_ACTIONS.MIOFUEL.stroverridefn = function(act)
+    if act.invobject then
+        return act.invobject:GetIsWet() and STRINGS.ACTIONS.ADDWETFUEL or STRINGS.ACTIONS.ADDFUEL
+    end
+end
+
 local blink_strfn = ACTIONS.BLINK.strfn
 ACTIONS.BLINK.strfn = function(act)
     local blinkstaff = act.invobject == nil or act.invobject.prefab == "orangestaff"
@@ -17,36 +44,20 @@ ACTIONS.BLINK.strfn = function(act)
     return blink_strfn(act)
 end
 
-NS_ACTIONS = {
-    GEMTRADE = Action({priority = 3, mount_valid = true}),
-    MIOFUEL = Action({priority = 3, mount_valid = true}),
-    NIGHTSWITCH = Action({priority = 1, mount_valid = true}),
-    NIGHTSWORD = Action({priority = 2, mount_valid = true}),
-    FUELPOCKETWATCH = Action({priority = 3, rmb = true}),
-    FRIENDSHIPTOTEM = Action({priority = 3, rmb = true}),
-    MOONLIGHTSHADOW = Action({mount_valid=true}),
-    MOONLIGHTSHADOW_CHARGE = Action({mount_valid=true}),
-}
-
-NS_ACTIONS.GEMTRADE.str = STRINGS.ACTIONS.GIVE.SOCKET
-NS_ACTIONS.NIGHTSWITCH.str = STRINGS.ACTIONS.USEITEM
-NS_ACTIONS.NIGHTSWORD.str = STRINGS.ACTIONS.GIVE.SOCKET
-NS_ACTIONS.FRIENDSHIPTOTEM.str = STRINGS.ACTIONS.GIVE.SOCKET
-NS_ACTIONS.FUELPOCKETWATCH.str = STRINGS.ACTIONS.FUELPOCKETWATCH
-NS_ACTIONS.MOONLIGHTSHADOW.str = STRINGS.ACTIONS.GIVE.SOCKET
-NS_ACTIONS.MOONLIGHTSHADOW_CHARGE.str = STRINGS.ACTIONS.MOONLIGHTSHADOW_CHARGE
-
-NS_ACTIONS.MIOFUEL.stroverridefn = function(act)
-    if act.invobject then
-        return act.invobject:GetIsWet() and STRINGS.ACTIONS.ADDWETFUEL or STRINGS.ACTIONS.ADDFUEL
-    end
-end
-
 local change_tackle_strfn = ACTIONS.CHANGE_TACKLE.strfn
 ACTIONS.CHANGE_TACKLE.strfn = function(act)
     local item = (act.invobject and act.invobject:IsValid()) and act.invobject
     return change_tackle_strfn(act) or ((item and item:HasTag("reloaditem_fragment")) and "BATTERY") or nil
 end
+
+NS_ACTIONS.TOGGLETOTEM.strfn = function(act)
+    local totem = act.target or act.invobject
+    if totem then
+        return totem.toggled:value() and "OFF" or "ON"
+    end
+end
+
+-- [[ Gem Trade ]] --
 
 local GEM_MAP = {
     horrorfuel = "horror",
@@ -74,6 +85,8 @@ NS_ACTIONS.GEMTRADE.fn = function(act)
         return true
     end
 end
+
+-- [[ Civi: Tweak Levels ]] --
 
 NS_ACTIONS.NIGHTSWITCH.fn = function(act)
     local doer = act.doer
@@ -113,6 +126,8 @@ scheduler:ExecuteInTime(0, function()
         STRCODE_TALKER[STRINGS.CIVI_LEVELS.ALREADY_LIGHT] = "CIVI_LEVELS.ALREADY_LIGHT"
     end
 end)
+
+-- [[ Mio: Add Fuel ]] --
 
 local fuel_action_prefabs = {
     torch = true,
@@ -158,6 +173,8 @@ NS_ACTIONS.MIOFUEL.fn = function(act)
     end
 end
 
+-- [[ Dark Sword: Socket Gems ]] --
+
 NS_ACTIONS.NIGHTSWORD.fn = function(act)
     local doer = act.doer
     local target = act.target
@@ -180,11 +197,13 @@ NS_ACTIONS.NIGHTSWORD.fn = function(act)
     end
 end
 
+-- [[ Totem: Mutate ]] --
+
 local TOTEM_TARGET = {
     darkcrystal = "friendshiptotem_dark",
     lightcrystal = "friendshiptotem_light",
 }
-NS_ACTIONS.FRIENDSHIPTOTEM.fn = function(act)
+NS_ACTIONS.MUTATETOTEM.fn = function(act)
     local item = act.invobject
     local totem_prefab = TOTEM_TARGET[item.prefab]
     if totem_prefab then
@@ -211,7 +230,20 @@ NS_ACTIONS.FRIENDSHIPTOTEM.fn = function(act)
     end
 end
 
--- For portable_wardrobe
+-- [[ Totem: Inventory Toggle ]] --
+NS_ACTIONS.TOGGLETOTEM.fn = function(act, ...)
+    local totem = act.target or act.invobject
+    if totem then
+        if totem.toggled:value() then
+            totem:TurnOff()
+        else
+            totem:TurnOn()
+        end
+        return true
+    end
+end
+
+-- [[ portable_wardrobe ]] --
 local changein_fn = ACTIONS.CHANGEIN.fn
 ACTIONS.CHANGEIN.fn = function(act, ...)
     if not act.target and act.invobject then
@@ -224,6 +256,8 @@ for _, k, v in sorted_pairs(NS_ACTIONS) do
     v.id = k
     AddAction(v)
 end
+
+-- [[ Hack Pocket Watch ]] --
 
 local function fuel_pocket_watch(inst, caster)
     -- print("FuelPocketWatch, GetActionPoint")
@@ -244,30 +278,34 @@ NS_ACTIONS.FUELPOCKETWATCH.fn = function(act)
     end
 end
 
-NS_ACTIONS.MOONLIGHTSHADOW.fn = function(act)
-    local doer = act.doer
-    local target = act.target
-    if doer.components.inventory then
-        local item = doer.components.inventory:RemoveItem(act.invobject)
+-- [[ Moonlight Shadow: Mutate ]] --
 
-        -- add efx
-        local ent = target.components.inventoryitem and target.components.inventoryitem.owner or target
-        if ent then
-            local _fx = SpawnPrefab("explode_reskin")
-            _fx.Transform:SetPosition(ent.Transform:GetWorldPosition())
-            _fx.scale_override = 1.7 * ent:GetPhysicsRadius(0.5)
-        end
+-- NS_ACTIONS.MOONLIGHTSHADOW.fn = function(act)
+--     local doer = act.doer
+--     local target = act.target
+--     if doer.components.inventory then
+--         local item = doer.components.inventory:RemoveItem(act.invobject)
 
-        -- do mutate
-        if item.prefab == "alterguardianhatshard" and target.prefab == "sword_lunarplant" then
-            item:Remove()
-            if target.components.halloweenmoonmutable then
-                target.components.halloweenmoonmutable:Mutate("moonlight_shadow")
-            end
-            return true
-        end
-    end
-end
+--         -- add efx
+--         local ent = target.components.inventoryitem and target.components.inventoryitem.owner or target
+--         if ent then
+--             local _fx = SpawnPrefab("explode_reskin")
+--             _fx.Transform:SetPosition(ent.Transform:GetWorldPosition())
+--             _fx.scale_override = 1.7 * ent:GetPhysicsRadius(0.5)
+--         end
+
+--         -- do mutate
+--         if item.prefab == "alterguardianhatshard" and target.prefab == "sword_lunarplant" then
+--             item:Remove()
+--             if target.components.halloweenmoonmutable then
+--                 target.components.halloweenmoonmutable:Mutate("moonlight_shadow")
+--             end
+--             return true
+--         end
+--     end
+-- end
+
+-- [[ Moonlight Shadow: Charge ]] --
 
 NS_ACTIONS.MOONLIGHTSHADOW_CHARGE.fn = function(act)
     local doer = act.doer
@@ -276,7 +314,7 @@ NS_ACTIONS.MOONLIGHTSHADOW_CHARGE.fn = function(act)
     local charges = 1
     if item.components.stackable then
         local stacks = item.components.stackable:StackSize()
-        local single_charge = TUNING.MOONLIGHT_SHADOW.BATTERIES[item.prefab]
+        local single_charge = TUNING.MOONLIGHT_SHADOW_BATTERIES[item.prefab]
         -- total is max uses
         local max_change_needed = target.components.finiteuses.total - target.components.finiteuses:GetUses()
         charges = math.clamp(math.ceil(max_change_needed / single_charge), 1, stacks)
@@ -340,7 +378,7 @@ AddComponentAction("USEITEM", "nightcrystal", function(inst, doer, target, actio
         elseif target.prefab == "friendshipring"
             and not (target.replica.equippable and target.replica.equippable:IsEquipped()) then
 
-            table.insert(actions, NS_ACTIONS.FRIENDSHIPTOTEM)
+            table.insert(actions, NS_ACTIONS.MUTATETOTEM)
         end
     end
     -- 这里写新的那部分
@@ -368,6 +406,12 @@ AddComponentAction("INVENTORY", "nightcrystal", function(inst, doer, actions, ri
                 table.insert(actions, NS_ACTIONS.NIGHTSWITCH)
             end
         end
+    end
+end)
+
+AddComponentAction("INVENTORY", "friendshiptotem", function(inst, doer, actions, right)
+    if doer.replica.inventory and not doer.replica.inventory:IsHeavyLifting() then
+        table.insert(actions, NS_ACTIONS.TOGGLETOTEM)
     end
 end)
 
@@ -401,30 +445,31 @@ AddComponentAction("USEITEM", "moonlightshadowbattery", function(inst, doer, tar
     end
 end)
 
-AddComponentAction("USEITEM", "glasssocket", function(inst, doer, target, actions, right)
-    if target.prefab == "sword_lunarplant" then
-        table.insert(actions, ACTIONS.MOONLIGHTSHADOW)
-    end
-end)
+-- AddComponentAction("USEITEM", "glasssocket", function(inst, doer, target, actions, right)
+--     if target.prefab == "sword_lunarplant" then
+--         table.insert(actions, ACTIONS.MOONLIGHTSHADOW)
+--     end
+-- end)
 
-local glassic_state = State({
-    name = "doglassicbuild",
+-- local glassic_state = State({
+--     name = "doglassicbuild",
 
-    onenter = function(inst)
-        inst.sg:GoToState("dolongaction", 2)
-    end
-})
+--     onenter = function(inst)
+--         inst.sg:GoToState("dolongaction", 2)
+--     end
+-- })
 
 for _, sg in ipairs({"wilson", "wilson_client"}) do
-    AddStategraphState(sg, glassic_state)
+    -- AddStategraphState(sg, glassic_state)
 
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.MIOFUEL, "doshortaction"))
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.GEMTRADE, "doshortaction"))
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.NIGHTSWORD, "doshortaction"))
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.NIGHTSWITCH, "domediumaction"))
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.FUELPOCKETWATCH, "pocketwatch_warpback_pre"))
-    AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.FRIENDSHIPTOTEM, "doshortaction"))
-    AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.MOONLIGHTSHADOW, "doglassicbuild"))
+    AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.MUTATETOTEM, "doshortaction"))
+    AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.TOGGLETOTEM, "doshortaction"))
+    -- AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.MOONLIGHTSHADOW, "doglassicbuild"))
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.MOONLIGHTSHADOW_CHARGE, "doshortaction"))
 end
 
@@ -435,10 +480,10 @@ AddPrefabPostInit("sword_lunarplant", function(inst)
     inst:AddComponent("halloweenmoonmutable")
 end)
 
-AddPrefabPostInit("alterguardianhatshard", function(inst)
-    if not TheWorld.ismastersim then return end
-    inst:AddComponent("glasssocket")
-end)
+-- AddPrefabPostInit("alterguardianhatshard", function(inst)
+--     if not TheWorld.ismastersim then return end
+--     inst:AddComponent("glasssocket")
+-- end)
 
 -- right click to set ammo --
 local function set_reloaditem_fragment(inst)
@@ -448,6 +493,6 @@ local function set_reloaditem_fragment(inst)
     inst:AddComponent("moonlightshadowbattery")
 end
 
-for prefab in pairs(TUNING.MOONLIGHT_SHADOW.BATTERIES) do
+for prefab in pairs(TUNING.MOONLIGHT_SHADOW_BATTERIES) do
     AddPrefabPostInit(prefab, set_reloaditem_fragment)
 end

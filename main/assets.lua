@@ -2,39 +2,36 @@ Assets = {
     Asset("SOUNDPACKAGE", "sound/nightstories.fev"),
     Asset("ANIM", "anim/glash_fx.zip"), -- GLASH FX FOR ROD OF GLASS AND RING OF FRIENDSHIP.
 }
+
 PrefabFiles = {
-    "civi",
+    "battleruinshat",
+    "blackholestaff",
+    "book_wetness",
+    "chesspiece_headuck",
     "civi_crystal",
+    "civi",
+    "cookpackage",
+    "dummy_books",
+    "dummy",
     "nightpack",
     "friendshipring",
     "friendshiptotem_buff",
-
-    "miotan",
-    "lantern_mio_fx",
-
-    "dummy",
-    "dummy_books",
-    "blackholestaff",
-    "nightmare_spear",
-
-    "ns_spices",
-    "ns_skins",
-
-    "battleruinshat",
-    "portable_wardrobe",
-    "chesspiece_headuck",
-    "book_wetness",
-
     "glash",
+    -- "glassiccutter",
+    -- "glassicflash",
+    "horrorchain",
+    "lantern_mio_fx",
+    "lunarplanthat_glass_fx",
+    "miotan",
     "moonglasshammer",
     "moonglasspickaxe",
-    "moonlight_shadow",
     "moonlight_buff",
-
-    "lunarplanthat_glass_fx",
+    "moonlight_shadow",
+    "nightmare_spear",
+    "ns_skins",
+    "ns_spices",
+    "portable_wardrobe",
 }
-
-
 
 GlassicAPI.InitCharacterAssets("miotan", "FEMALE", Assets)
 GlassicAPI.InitCharacterAssets("dummy", "FEMALE", Assets)

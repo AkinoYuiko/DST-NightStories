@@ -18,25 +18,131 @@ local prefabs =
 }
 
 ----------------------------------------------------------------
+-------------------------- TOGGLE FX ---------------------------
+----------------------------------------------------------------
+
+local WAVE_FX_LEN = 0.5
+local function WaveFxOnUpdate(inst, dt)
+    inst.t = inst.t + dt
+
+    if inst.t < WAVE_FX_LEN then
+        local k = 1 - inst.t / WAVE_FX_LEN
+        k = k * k
+        inst.AnimState:SetMultColour(1, 1, 1, k)
+        k = (2 - 1.7 * k) * (inst.scalemult or 1)
+        inst.AnimState:SetScale(k, k)
+    else
+        inst:Remove()
+    end
+end
+
+local function CreateWaveFX()
+    local inst = CreateEntity()
+
+    inst:AddTag("FX")
+    --[[Non-networked entity]]
+    inst.entity:SetCanSleep(false)
+    inst.persists = false
+
+    inst.entity:AddTransform()
+    inst.entity:AddAnimState()
+
+    inst.AnimState:SetBank("umbrella_voidcloth")
+    inst.AnimState:SetBuild("umbrella_voidcloth")
+    inst.AnimState:PlayAnimation("barrier_rim")
+    inst.AnimState:SetOrientation(ANIM_ORIENTATION.OnGround)
+    inst.AnimState:SetLayer(LAYER_BACKGROUND)
+    inst.AnimState:SetSortOrder(3)
+
+    inst:AddComponent("updatelooper")
+    inst.components.updatelooper:AddOnUpdateFn(WaveFxOnUpdate)
+    inst.t = 0
+    inst.scalemult = .75
+    WaveFxOnUpdate(inst, 0)
+
+    return inst
+end
+
+local function CreateDomeFX()
+    local inst = CreateEntity()
+
+    inst:AddTag("FX")
+    --[[Non-networked entity]]
+    inst.entity:SetCanSleep(false)
+    inst.persists = false
+
+    inst.entity:AddTransform()
+    inst.entity:AddAnimState()
+    inst.entity:AddSoundEmitter()
+
+    inst.AnimState:SetBank("umbrella_voidcloth")
+    inst.AnimState:SetBuild("umbrella_voidcloth")
+    inst.AnimState:PlayAnimation("barrier_dome")
+    inst.AnimState:SetFinalOffset(7)
+
+    inst:AddComponent("updatelooper")
+    inst.components.updatelooper:AddOnUpdateFn(WaveFxOnUpdate)
+    inst.t = 0
+    WaveFxOnUpdate(inst, 0)
+
+    return inst
+end
+
+local function CLIENT_TriggerFX(inst)
+    local x, y, z = inst.Transform:GetWorldPosition()
+    CreateWaveFX().Transform:SetPosition(x, 0, z)
+    local fx = CreateDomeFX()
+    fx.Transform:SetPosition(x, 0, z)
+    fx.SoundEmitter:PlaySound("meta2/voidcloth_umbrella/barrier_activate")
+end
+
+local function SERVER_TriggerFX(inst)
+    inst.fx_proxy.triggerfx:push()
+    if not TheNet:IsDedicated() then
+        CLIENT_TriggerFX(inst.fx_proxy)
+    end
+end
+
+----------------------------------------------------------------
 ------------------------ TOTEM FUNCTION ------------------------
 ----------------------------------------------------------------
+
 local function turn_on(inst)
-    if inst.components.fueled then
+    if not inst.toggled:value() then
+        inst.toggled:set(true)
         inst.components.fueled:StartConsuming()
-    end
-    if inst.task == nil then
-        inst.task = inst:DoPeriodicTask(1, inst.totemfn, 0)
+
+        if inst.shadowtask ~= nil then
+            inst.shadowtask:Cancel()
+            inst.shadowtask = nil
+        end
+
+        if not (inst:IsAsleep() or POPULATING) then
+            SERVER_TriggerFX(inst)
+        end
+
+        inst.SoundEmitter:PlaySound("meta2/voidcloth_umbrella/barrier_lp", "loop")
+
+        if inst.task == nil then
+            inst.task = inst:DoPeriodicTask(0.5, inst.totemfn, 0)
+        end
     end
 end
 
 local function turn_off(inst)
-    if inst.components.fueled then
+    if inst.toggled:value() then
+        inst.toggled:set(false)
         inst.components.fueled:StopConsuming()
-    end
 
-    if inst.task then
-        inst.task:Cancel()
-        inst.task = nil
+        if inst.task then
+            inst.task:Cancel()
+            inst.task = nil
+        end
+
+        if inst.SoundEmitter:PlayingSound("loop") then
+            inst.SoundEmitter:KillSound("loop")
+        end
+        inst.SoundEmitter:PlaySound("meta2/voidcloth_umbrella/barrier_close")
     end
 end
 
@@ -150,8 +256,45 @@ local function spawn_fx(inst)
 end
 
 local function onfinished_totem(inst)
+    turn_off(inst)
     spawn_fx(inst)
     inst:Remove()
+end
+
+local function update_fx_parent(inst)
+    local owner = inst.components.inventoryitem:GetGrandOwner() or inst.components.inventoryitem.owner or inst
+    inst.fx_proxy.entity:SetParent(owner.entity)
+end
+
+-- Going in / swap to another container
+local function on_in_inventory(inst, owner)
+    turn_off(inst)
+
+    update_fx_parent(inst)
+
+    inst:RemoveEventCallback("onownerputininventory", update_fx_parent)
+    inst:RemoveEventCallback("onownerdropped", update_fx_parent)
+    inst:ListenForEvent("onownerputininventory", update_fx_parent)
+    inst:ListenForEvent("onownerdropped", update_fx_parent)
+end
+
+local function on_out_inventory(inst)
+    turn_on(inst)
+
+    update_fx_parent(inst)
+
+    inst:RemoveEventCallback("onownerputininventory", update_fx_parent)
+    inst:RemoveEventCallback("onownerdropped", update_fx_parent)
+end
+
+local function OnLoad(inst, data)
+    if data and data.toggled then
+        turn_on(inst)
+    end
+end
+
+local function OnSave(inst, data)
+    data.toggled = inst.toggled:value()
 end
 
 ---------------------------------------------------------------
@@ -210,11 +353,37 @@ local function base_fn()
     return inst
 end
 
+local function fx_proxy_fn()
+    local inst = CreateEntity()
+
+    inst.entity:AddTransform()
+    inst.entity:AddNetwork()
+
+    inst:AddTag("FX")
+    inst.entity:SetCanSleep(false)
+    inst.persists = false
+
+    inst.entity:SetPristine()
+    inst.triggerfx = net_event(inst.GUID, "friendshiptotem.triggerfx")
+
+    if not TheWorld.ismastersim then
+        inst:DoTaskInTime(0, inst.ListenForEvent, "friendshiptotem.triggerfx", CLIENT_TriggerFX)
+        return inst
+    end
+    return inst
+end
+
 local function MakeTotem(color)
     local function totem_fn()
         local inst = common_fn()
 
         inst.AnimState:PlayAnimation(color .. "_loop", true)
+
+        inst.toggled = net_bool(inst.GUID, "friendshiptotem.toogle", "friendshiptotem.toggledirty")
+
+        inst.fx_proxy = SpawnPrefab("friendshiptotem_fx_proxy")
+        inst.fx_proxy.entity:SetParent(inst.entity)
+        inst:ListenForEvent("remove", inst.fx_proxy.Remove)
 
         if not TheWorld.ismastersim then
             return inst
@@ -222,23 +391,34 @@ local function MakeTotem(color)
 
         inst.components.inventoryitem:SetSinks(true)
 
-        inst:AddComponent("fueled")
-        inst.components.fueled.fueltype = FUELTYPE.MAGIC
-        inst.components.fueled:InitializeFuelLevel(480)
-        inst.components.fueled:SetDepletedFn(onfinished_totem)
-        inst.components.fueled:SetUpdateFn(onupdate)
-        inst.components.fueled:SetFirstPeriod(TUNING.TURNON_FUELED_CONSUMPTION, TUNING.TURNON_FULL_FUELED_CONSUMPTION)
-        inst.components.fueled.period = FRAMES
+        inst:AddComponent("friendshiptotem")
 
-        inst.components.inventoryitem:SetOnDroppedFn(turn_on)
-        inst.components.inventoryitem:SetOnPickupFn(turn_off)
-        -- inst.components.inventoryitem:SetOnPutInInventoryFn(turn_on)
-        inst.totemfn = totemfn[color]
+        local fueled = inst:AddComponent("fueled")
+        fueled.fueltype = FUELTYPE.MAGIC
+        fueled:InitializeFuelLevel(480)
+        fueled:SetDepletedFn(onfinished_totem)
+        fueled:SetUpdateFn(onupdate)
+        fueled:SetFirstPeriod(TUNING.TURNON_FUELED_CONSUMPTION, TUNING.TURNON_FULL_FUELED_CONSUMPTION)
+        fueled.period = FRAMES
+
+
+        local inventoryitem = inst.components.inventoryitem
+        inventoryitem:SetOnDroppedFn(on_out_inventory)
+        inventoryitem:SetOnPutInInventoryFn(on_in_inventory)
 
         if color == "dark" then
-            inst:AddComponent("sanityaura")
-            inst.components.sanityaura.aura = - TUNING.SANITYAURA_SMALL
+            local sanityaura = inst:AddComponent("sanityaura")
+            sanityaura.aura = - TUNING.SANITYAURA_SMALL
         end
+
+        inst.totemfn = totemfn[color]
+        inst.toggled:set(false)
+
+        inst.TurnOn = turn_on
+        inst.TurnOff = turn_off
+
+        inst.OnSave = OnSave
+        inst.OnLoad = OnLoad
 
         return inst
     end
@@ -248,4 +428,5 @@ end
 
 return Prefab("friendshipring", base_fn, assets.ring),
         MakeTotem("dark"),
-        MakeTotem("light")
+        MakeTotem("light"),
+        Prefab("friendshiptotem_fx_proxy", fx_proxy_fn)

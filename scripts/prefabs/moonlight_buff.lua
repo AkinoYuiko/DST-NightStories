@@ -8,8 +8,6 @@ local target_testfn = Utils.TargetTestFn
 local launching_projectile = Utils.LaunchingProjectile
 
 local function onattackother(owner, data)
-    local hat = owner and owner.components.inventory and owner.components.inventory:GetEquippedItem(EQUIPSLOTS.HEAD)
-    if hat and hat.prefab == "alterguardianhat" then return end
     local target = data and data.target
     if target then
         if target_testfn(target) then

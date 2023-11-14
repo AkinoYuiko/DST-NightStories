@@ -1,5 +1,37 @@
 local Utils = require "ns_utils"
 
+local TRAIL_FLAGS = { "shadowtrail" }
+local function totem_do_trail(target)
+    if not target.entity:IsVisible() then
+        return
+    end
+
+    local x, y, z = target.Transform:GetWorldPosition()
+    if target.sg ~= nil and target.sg:HasStateTag("moving") then
+        local theta = -target.Transform:GetRotation() * DEGREES
+        local speed = target.components.locomotor:GetRunSpeed() * .1
+        x = x + speed * math.cos(theta)
+        z = z + speed * math.sin(theta)
+    end
+    local mounted = target.components.rider ~= nil and target.components.rider:IsRiding()
+    local map = TheWorld.Map
+    local offset = FindValidPositionByFan(
+        math.random() * 2 * PI,
+        (mounted and 1 or .5) + math.random() * .5,
+        4,
+        function(offset)
+            local pt = Vector3(x + offset.x, 0, z + offset.z)
+            return map:IsPassableAtPoint(pt:Get())
+                and not map:IsPointNearHole(pt)
+                and #TheSim:FindEntities(pt.x, 0, pt.z, .7, TRAIL_FLAGS) <= 0
+        end
+    )
+
+    if offset ~= nil then
+        SpawnPrefab("cane_ancient_fx").Transform:SetPosition(x + offset.x, 0, z + offset.z)
+    end
+end
+
 -------------------------------------------------------------------------
 -------------------------- dark totem functions -------------------------
 -------------------------------------------------------------------------
@@ -8,11 +40,18 @@ local function attack_attach(inst, target)
     if target.components.combat then
         target.components.combat.externaldamagemultipliers:SetModifier(inst, TUNING.BUFF_ATTACK_MULTIPLIER, "friendshiptotem_dark")
     end
+    if target.totem_trail_task == nil then
+        target.totem_trail_task = target:DoPeriodicTask(6 * FRAMES, totem_do_trail, 2 * FRAMES)
+    end
 end
 
 local function attack_detach(inst, target)
     if target.components.combat then
         target.components.combat.externaldamagemultipliers:RemoveModifier(inst, "friendshiptotem_dark")
+    end
+    if target.totem_trail_task then
+        target.totem_trail_task:Cancel()
+        target.totem_trail_task = nil
     end
 end
 -------------------------------------------------------------------------

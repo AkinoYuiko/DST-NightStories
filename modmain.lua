@@ -1,47 +1,51 @@
-local main_files = {
+local main = {
+    -- high priority
     "assets",
     "tuning",
     "strings",
-
+    -- medium priority
     "actions",
     "clothing",
     "containerwidgets",
     "prefabskin",
     "recipes",
-    "widgets",
     "spices",
-
-    "sanity_rework",
-    "sanity_reward",
-
-    "hack_templates",
+    -- low priority
 }
 
-for _, v in ipairs(main_files) do
-    modimport("main/"..v)
+for i = 1, #main do
+    modimport("main/"..main[i])
 end
 
-local postinits =
+local postinit =
 {
     -- components
-    "components/spellcaster",
+    "components/bundler",
+    "components/combat",
     "components/planarentity",
+    "components/sanity",
+    "components/spellcaster",
     -- prefabs
     "prefabs/alterguardian_hat_equipped",
+    "prefabs/flower",
     "prefabs/foodbuffs",
     "prefabs/gems",
+    "prefabs/nightmarecreatures",
     "prefabs/nightmarefuel",
     "prefabs/nightsword",
     "prefabs/orangestaff",
     "prefabs/pigking",
     "prefabs/raincoat",
     "prefabs/sculptingtable",
+    "prefabs/world",
     -- widgets
     "widgets/itemtile",
+    "widgets/statusdisplays",
+    "widgets/templates",
     -- root
     "only_dazui",
     "tools_mutable",
 }
-for index, files in pairs(postinits) do
-    modimport("postinit/".. files)
+for i = 1, #postinit do
+    modimport("postinit/"..postinit[i])
 end

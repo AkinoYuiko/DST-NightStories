@@ -319,7 +319,8 @@ local function ApplyState(inst, override_state)
     if state_fn then
         state_fn(inst, inst.components.inventoryitem.owner)
     end
-    inst.drawnameoverride = rawget(_G, "EncodeStrCode") and EncodeStrCode({content = state and "NAMES.NIGHTPACK_" .. state:upper() or "NAMES.NIGHTPACK" })
+
+    inst.drawnameoverride = rawget(_G, "EncodeStrCode") and EncodeStrCode({content = state and "NAMES.NIGHTPACK_" .. image_state:upper() or "NAMES.NIGHTPACK" })
 
 end
 

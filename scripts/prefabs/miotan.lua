@@ -204,6 +204,15 @@ local function on_save(inst, data)
     data.boost_time = inst.boost_time > 0 and inst.boost_time or nil
 end
 
+local function on_sanity_mode_change(inst)
+    local daydrain = TheWorld.state.isday and not TheWorld:HasTag("cave")
+    if inst.components.sanity.mode == 1 and not daydrain then -- LUNACY BUT NOT IN DAYTIME
+        inst.components.sanity.dapperness = 0
+    else
+        inst.components.sanity.dapperness = TUNING.MIOTAN_SANITY_DAPPERNESS
+    end
+end
+
 local function on_becameghost(inst)
     if inst.boosted_task then
         -- inst.boosted_task:Cancel()
@@ -260,6 +269,8 @@ local master_postinit = function(inst)
     inst.components.sanity.dapperness = TUNING.MIOTAN_SANITY_DAPPERNESS
     inst.components.sanity.night_drain_mult = TUNING.MIOTAN_SANITY_NIGHT_MULT
     inst.components.sanity.neg_aura_mult = TUNING.MIOTAN_SANITY_MULT
+
+    inst:ListenForEvent("isinsanitymodedirty", on_sanity_mode_change)
 
     if inst.components.eater then
         inst.components.eater:SetCanEatNightmareFuel()
