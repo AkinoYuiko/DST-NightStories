@@ -53,7 +53,11 @@ local function set_target(inst, owner, target, delay, mult)
             inst.autoremove = nil
         end
 
-        inst:DoTaskInTime(delay, do_attack, target)
+        if delay > 0 then
+            inst:DoTaskInTime(delay, do_attack, target)
+        else
+            do_attack(inst, target)
+        end
     end
 end
 
