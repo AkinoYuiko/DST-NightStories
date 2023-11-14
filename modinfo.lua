@@ -6,20 +6,16 @@ local function zheng(zh, en)
     return LOC[locale] or en
 end
 
-version = "1.48.3"
+version = "1.49"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng([[
-- 调整了月光粉的触发逻辑。
-
-- 新道具：包锅 & 厨师礼物包锅
-  只有大厨沃利可以制造它们，随时随地快速烹饪吧！
+- 新皮肤：幻影亮茄头盔
+  （临时皮肤，未来可能移除）。
 ]], [[
-- Tweak code logic for Moonlight Powder.
-
-- New item: Cooker's Bundling Wrap and Cooker's Gift Wrap.
-  ONLY Warly can craft them. Enjoy instant cooking everywhere!
+- New skin: Phantomshade Helm
+  (TEMP, MAY REMOVE IN FUTURE VERSION)
 ]])
 description = zheng("版本: ", "Version: ") .. version ..
     zheng("\n\n更新内容:\n", "\n\nChangelog:\n") .. changelog .. "\n" ..
