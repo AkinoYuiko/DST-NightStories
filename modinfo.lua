@@ -6,15 +6,19 @@ local function zheng(zh, en)
     return LOC[locale] or en
 end
 
-version = "1.49.0.1"
-version_compatible = "1.49"
+version = "1.49.1"
+-- version_compatible = "1.49"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng([[
+- 修复新皮肤不显示头发的问题。
+
 - 新皮肤：幻影亮茄头盔
   （临时皮肤，未来可能移除）。
 ]], [[
+- Fix issue where Phantomshade Helm doesn't show HAIR.
+
 - New skin: Phantomshade Helm
   (TEMP, MAY REMOVE IN FUTURE VERSION)
 ]])
