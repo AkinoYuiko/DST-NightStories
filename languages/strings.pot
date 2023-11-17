@@ -1205,12 +1205,12 @@ msgstr ""
 
 #. STRINGS.NAMES.BUFF_FRIENDSHIPTOTEM_DARK
 msgctxt "STRINGS.NAMES.BUFF_FRIENDSHIPTOTEM_DARK"
-msgid "Charged Dark Totem"
+msgid "Infused Dark Totem"
 msgstr ""
 
 #. STRINGS.NAMES.BUFF_FRIENDSHIPTOTEM_LIGHT
 msgctxt "STRINGS.NAMES.BUFF_FRIENDSHIPTOTEM_LIGHT"
-msgid "Charged Light Totem"
+msgid "Infused Light Totem"
 msgstr ""
 
 #. STRINGS.NAMES.CHESSPIECE_HEADUCK
@@ -1270,12 +1270,12 @@ msgstr ""
 
 #. STRINGS.NAMES.FRIENDSHIPTOTEM_DARK
 msgctxt "STRINGS.NAMES.FRIENDSHIPTOTEM_DARK"
-msgid "Charged Dark Totem"
+msgid "Infused Dark Totem"
 msgstr ""
 
 #. STRINGS.NAMES.FRIENDSHIPTOTEM_LIGHT
 msgctxt "STRINGS.NAMES.FRIENDSHIPTOTEM_LIGHT"
-msgid "Charged Light Totem"
+msgid "Infused Light Totem"
 msgstr ""
 
 #. STRINGS.NAMES.FUELPOCKETWATCH

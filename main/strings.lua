@@ -63,10 +63,10 @@ local strings = {
         LIGHTMAGATAMA = "Light Magatama",
 
         FRIENDSHIPRING = "Ring of Friendship",
-        FRIENDSHIPTOTEM_DARK = "Charged Dark Totem",
-        FRIENDSHIPTOTEM_LIGHT = "Charged Light Totem",
-        BUFF_FRIENDSHIPTOTEM_DARK = "Charged Dark Totem",
-        BUFF_FRIENDSHIPTOTEM_LIGHT = "Charged Light Totem",
+        FRIENDSHIPTOTEM_DARK = "Infused Dark Totem",
+        FRIENDSHIPTOTEM_LIGHT = "Infused Light Totem",
+        BUFF_FRIENDSHIPTOTEM_DARK = "Infused Dark Totem",
+        BUFF_FRIENDSHIPTOTEM_LIGHT = "Infused Light Totem",
 
         MIOTAN = "Mio",
         FUELPOCKETWATCH = "hacking Backtrek Watch",

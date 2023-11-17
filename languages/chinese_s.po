@@ -1236,12 +1236,12 @@ msgstr "THE 潮涌"
 
 #. STRINGS.NAMES.BUFF_FRIENDSHIPTOTEM_DARK
 msgctxt "STRINGS.NAMES.BUFF_FRIENDSHIPTOTEM_DARK"
-msgid "Charged Dark Totem"
+msgid "Infused Dark Totem"
 msgstr "注能黑暗图腾"
 
 #. STRINGS.NAMES.BUFF_FRIENDSHIPTOTEM_LIGHT
 msgctxt "STRINGS.NAMES.BUFF_FRIENDSHIPTOTEM_LIGHT"
-msgid "Charged Light Totem"
+msgid "Infused Light Totem"
 msgstr "注能光明图腾"
 
 #. STRINGS.NAMES.CHESSPIECE_HEADUCK
@@ -1301,12 +1301,12 @@ msgstr "友爱戒指"
 
 #. STRINGS.NAMES.FRIENDSHIPTOTEM_DARK
 msgctxt "STRINGS.NAMES.FRIENDSHIPTOTEM_DARK"
-msgid "Charged Dark Totem"
+msgid "Infused Dark Totem"
 msgstr "注能黑暗图腾"
 
 #. STRINGS.NAMES.FRIENDSHIPTOTEM_LIGHT
 msgctxt "STRINGS.NAMES.FRIENDSHIPTOTEM_LIGHT"
-msgid "Charged Light Totem"
+msgid "Infused Light Totem"
 msgstr "注能光明图腾"
 
 #. STRINGS.NAMES.FUELPOCKETWATCH

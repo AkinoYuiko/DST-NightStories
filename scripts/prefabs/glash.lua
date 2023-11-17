@@ -73,7 +73,6 @@ local function fn()
 
     inst:AddComponent("combat")
     inst.components.combat:SetDefaultDamage(TUNING.GLASH_BASE_DAMAGE)
-    -- inst.components.combat:SetDefaultDamage(TUNING.ALTERGUARDIANHAT_GESTALT_DAMAGE)
     inst.components.combat:SetRange(TUNING.GESTALTGUARD_ATTACK_RANGE * 10)
 
     inst.SetTarget = set_target
