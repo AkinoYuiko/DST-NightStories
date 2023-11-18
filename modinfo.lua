@@ -6,21 +6,16 @@ local function zheng(zh, en)
     return LOC[locale] or en
 end
 
-version = "1.49.1"
--- version_compatible = "1.49"
+version = "1.50"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng([[
-- 修复新皮肤不显示头发的问题。
-
-- 新皮肤：幻影亮茄头盔
-  （临时皮肤，未来可能移除）。
+- 月影现在拥有两种形态了（月亮、暗影）。
+- 通过充能切换月影的形态，不同形态的月影受到不同的加成。
 ]], [[
-- Fix issue where Phantomshade Helm doesn't show HAIR.
-
-- New skin: Phantomshade Helm
-  (TEMP, MAY REMOVE IN FUTURE VERSION)
+- Rename Moonlight Shadow as Lunar Shadow.
+- Lunar Shadow accepts both lunar and shadow batteries.
 ]])
 description = zheng("版本: ", "Version: ") .. version ..
     zheng("\n\n更新内容:\n", "\n\nChangelog:\n") .. changelog .. "\n" ..
