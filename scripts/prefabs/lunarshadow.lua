@@ -3,7 +3,7 @@ local Utils = require "ns_utils"
 local assets =
 {
     Asset("ANIM", "anim/sword_lunarplant.zip"),
-    Asset("ANIM", "anim/inventory_fx_moonlight.zip"),
+    Asset("ANIM", "anim/inventory_fx_lunar.zip"),
 }
 
 local prefabs =
