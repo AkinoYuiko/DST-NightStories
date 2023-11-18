@@ -3,12 +3,14 @@ GLOBAL.setfenv(1, GLOBAL)
 local cooking = require("cooking")
 local params = require("containers").params
 
-params.moonlight_shadow = deepcopy(params.slingshot)
-params.moonlight_shadow.widget.slotbg = nil
-params.moonlight_shadow.excludefromcrafting = false
-function params.moonlight_shadow.itemtestfn(container, item, slot)
+params.lunarshadow = deepcopy(params.slingshot)
+params.lunarshadow.widget.slotbg = nil
+params.lunarshadow.excludefromcrafting = false
+function params.lunarshadow.itemtestfn(container, item, slot)
     return TUNING.LUNARSHADOW.BATTERIES[item.prefab]
 end
+
+params.moonlight_shadow = deepcopy(params.lunarshadow)
 
 params.nightsword = deepcopy(params.slingshot)
 params.nightsword.widget.slotbg = nil
