@@ -1,7 +1,7 @@
 GLOBAL.setfenv(1, GLOBAL)
 
 local function oneaten_moonglass(inst, eater)
-    eater:AddDebuff("buff_moonlight", "buff_moonlight")
+    eater:AddDebuff("buff_moonglass", "buff_moonglass")
 end
 
 local NS_SPICES = {
