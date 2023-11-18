@@ -446,9 +446,13 @@ local function fn()
 
     inst.ChargeWithItem = charge_with_item
 
-    inst.drawnameoverride = rawget(_G, "EncodeStrCode") and EncodeStrCode({content = "NAMES.MOONLIGHT_SHADOW"})
+    -- inst:DoTaskInTime(0, function(inst)
+    --     inst.drawnameoverride = rawget(_G, "EncodeStrCode") and EncodeStrCode({content = "NAMES." .. string.upper(inst.prefab)})
+    -- end)
+    if rawget(_G, "EncodeDrawNameCode") then EncodeDrawNameCode(inst) end
 
     return inst
 end
 
-return Prefab("moonlight_shadow", fn, assets, prefabs)
+return Prefab("lunarshadow", fn, assets, prefabs),
+    Prefab("moonlight_shadow", fn, assets, prefabs)
