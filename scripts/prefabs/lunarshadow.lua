@@ -157,7 +157,6 @@ end
 local function set_lunar(inst)
     if not inst.state:value() then
         inst.state:set(true)
-        -- inst.setbonusprefab = "lunarplanthat"
         -- inst.components.inventoryitem:ChangeImageName("lunarshadow_lunar")
         inst.components.forgerepairable:SetRepairMaterial(FORGEMATERIALS.LUNARPLANT)
         inst.components.planardamage:SetBaseDamage(TUNING.LUNARSHADOW.LUNAR_PLANAR_DAMAGE)
@@ -173,7 +172,6 @@ end
 local function set_shadow(inst)
     if inst.state:value() then
         inst.state:set(false)
-        -- inst.setbonusprefab = "voidclothhat"
         -- inst.components.inventoryitem:ChangeImageName("lunarshadow_shadow")
         inst.components.forgerepairable:SetRepairMaterial(FORGEMATERIALS.VOIDCLOTH)
         inst.components.planardamage:SetBaseDamage(TUNING.LUNARSHADOW.SHADOW_PLANAR_DAMAGE)
@@ -509,7 +507,6 @@ local function fn()
 
     inst:AddComponent("weapon")
     inst.components.weapon:SetDamage(inst._bonusenabled and inst.base_damage * TUNING.LUNARSHADOW.SETBONUS_DAMAGE_MULT or inst.base_damage)
-    -- print("Lunar Shadow set damage:",inst._bonusenabled and inst.base_damage * TUNING.LUNARSHADOW.SETBONUS_DAMAGE_MULT or inst.base_damage)
     inst.components.weapon:SetOnAttack(onattack)
 
     setup_equippable(inst)
