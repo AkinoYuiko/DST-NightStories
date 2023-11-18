@@ -1,8 +1,8 @@
 local UIAnim = require "widgets/uianim"
 local FX =
 {
-    L = "inventory_fx_moonlight",
-    S = "inventory_fx_shadow",
+    LUNAR = "inventory_fx_lunar",
+    SHADOW = "inventory_fx_shadow",
 }
 
 local function update_fx(self, var, bank_and_build)
@@ -16,6 +16,9 @@ local function update_fx(self, var, bank_and_build)
             self.itemtile_fx:SetScale(.25)
             self.itemtile_fx:GetAnimState():AnimateWhilePaused(false)
             self.itemtile_fx:SetClickable(false)
+        else
+            self.itemtile_fx:GetAnimState():SetBank(bank_and_build)
+            self.itemtile_fx:GetAnimState():SetBuild(bank_and_build)
         end
     else
         if self.itemtile_fx then
@@ -36,26 +39,32 @@ local function update_meter(self)
     end
 end
 
+local function upadte_lunarshadow(self)
+    update_fx(self,"buffed", self.item.state:value() and FX.LUNAR or FX.SHADOW)
+    update_meter(self)
+end
+
 AddClassPostConstruct("widgets/itemtile", function(self)
-    if self.item.prefab == "moonlight_shadow"then
-        update_fx(self,"buffed",FX.L)
-        update_meter(self)
-        self.inst:ListenForEvent("moonlight_shadow.buffdirty", function()
-            update_fx(self,"buffed",FX.L)
-            update_meter(self)
+    if self.item.prefab == "lunarshadow"then
+        upadte_lunarshadow(self)
+        self.inst:ListenForEvent("lunarshadow_buffdirty", function()
+            upadte_lunarshadow(self)
+        end, self.item)
+        self.inst:ListenForEvent("lunarshadow_statedirty", function()
+            upadte_lunarshadow(self)
         end, self.item)
         self.inst:ListenForEvent("itemget", function() update_meter(self) end, self.item)
         self.inst:ListenForEvent("itemlose", function() update_meter(self) end, self.item)
 
     elseif self.item.prefab == "friendshiptotem_dark" then
-        update_fx(self,"toggled",FX.S)
+        update_fx(self,"toggled",FX.SHADOW)
         self.inst:ListenForEvent("friendshiptotem.toggledirty", function()
-            update_fx(self,"toggled",FX.S)
+            update_fx(self,"toggled",FX.SHADOW)
         end, self.item)
     elseif self.item.prefab == "friendshiptotem_light"then
-        update_fx(self,"toggled",FX.L)
+        update_fx(self,"toggled",FX.LUNAR)
         self.inst:ListenForEvent("friendshiptotem.toggledirty", function()
-            update_fx(self,"toggled",FX.L)
+            update_fx(self,"toggled",FX.LUNAR)
         end, self.item)
     end
 end)
