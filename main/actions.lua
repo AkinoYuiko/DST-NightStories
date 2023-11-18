@@ -14,8 +14,8 @@ NS_ACTIONS = {
     NIGHTSWORD = Action({priority = 2, mount_valid = true}),
     FUELPOCKETWATCH = Action({priority = 3, rmb = true}),
     MUTATETOTEM = Action({priority = 3, rmb = true}),
-    -- MOONLIGHTSHADOW = Action({mount_valid=true}),
-    MOONLIGHTSHADOW_CHARGE = Action({mount_valid=true}),
+    -- LUNARSHADOW = Action({mount_valid=true}),
+    LUNARSHADOW_CHARGE = Action({mount_valid=true}),
     TOGGLETOTEM = Action({mount_valid=true}),
 }
 
@@ -25,8 +25,8 @@ NS_ACTIONS.NIGHTSWORD.str = STRINGS.ACTIONS.GIVE.SOCKET
 NS_ACTIONS.MUTATETOTEM.str = STRINGS.ACTIONS.GIVE.SOCKET
 NS_ACTIONS.TOGGLETOTEM.str = STRINGS.ACTIONS.TOGGLETOTEM
 NS_ACTIONS.FUELPOCKETWATCH.str = STRINGS.ACTIONS.FUELPOCKETWATCH
--- NS_ACTIONS.MOONLIGHTSHADOW.str = STRINGS.ACTIONS.GIVE.SOCKET
-NS_ACTIONS.MOONLIGHTSHADOW_CHARGE.str = STRINGS.ACTIONS.MOONLIGHTSHADOW_CHARGE
+-- NS_ACTIONS.LUNARSHADOW.str = STRINGS.ACTIONS.GIVE.SOCKET
+NS_ACTIONS.LUNARSHADOW_CHARGE.str = STRINGS.ACTIONS.LUNARSHADOW_CHARGE
 
 NS_ACTIONS.MIOFUEL.stroverridefn = function(act)
     if act.invobject then
@@ -47,7 +47,7 @@ end
 local change_tackle_strfn = ACTIONS.CHANGE_TACKLE.strfn
 ACTIONS.CHANGE_TACKLE.strfn = function(act)
     local item = (act.invobject and act.invobject:IsValid()) and act.invobject
-    return change_tackle_strfn(act) or ((item and item:HasTag("reloaditem_fragment")) and "BATTERY") or nil
+    return change_tackle_strfn(act) or ((item and item:HasTag("reloaditem_lunarshadow")) and "BATTERY") or nil
 end
 
 NS_ACTIONS.TOGGLETOTEM.strfn = function(act)
@@ -280,7 +280,7 @@ end
 
 -- [[ Moonlight Shadow: Mutate ]] --
 
--- NS_ACTIONS.MOONLIGHTSHADOW.fn = function(act)
+-- NS_ACTIONS.LUNARSHADOW.fn = function(act)
 --     local doer = act.doer
 --     local target = act.target
 --     if doer.components.inventory then
@@ -307,14 +307,18 @@ end
 
 -- [[ Moonlight Shadow: Charge ]] --
 
-NS_ACTIONS.MOONLIGHTSHADOW_CHARGE.fn = function(act)
+NS_ACTIONS.LUNARSHADOW_CHARGE.fn = function(act)
     local doer = act.doer
     local target = act.target
     local item = act.invobject
     local charges = 1
+    local sound = "aqol/new_test/gem"
     if item.components.stackable then
         local stacks = item.components.stackable:StackSize()
-        local single_charge = TUNING.MOONLIGHT_SHADOW_BATTERIES[item.prefab]
+        local single_charge = math.abs(TUNING.LUNARSHADOW.BATTERIES[item.prefab])
+        if TUNING.LUNARSHADOW.BATTERIES[item.prefab] < 0 then
+            sound = "dontstarve/common/nightmareAddFuel"
+        end
         -- total is max uses
         local max_change_needed = target.components.finiteuses.total - target.components.finiteuses:GetUses()
         charges = math.clamp(math.ceil(max_change_needed / single_charge), 1, stacks)
@@ -323,7 +327,7 @@ NS_ACTIONS.MOONLIGHTSHADOW_CHARGE.fn = function(act)
         act.invobject:Remove()
     end
     target:ChargeWithItem(item, charges)
-    doer.SoundEmitter:PlaySound("aqol/new_test/gem")
+    doer.SoundEmitter:PlaySound(sound)
     return true
 end
 
@@ -439,15 +443,15 @@ AddComponentAction("INVENTORY", "wardrobe", function(inst, doer, actions, right)
     end
 end)
 
-AddComponentAction("USEITEM", "moonlightshadowbattery", function(inst, doer, target, actions, right)
-    if target.prefab == "moonlight_shadow" then
-        table.insert(actions, ACTIONS.MOONLIGHTSHADOW_CHARGE)
+AddComponentAction("USEITEM", "lunarshadowbattery", function(inst, doer, target, actions, right)
+    if target.prefab == "lunarshadow" then
+        table.insert(actions, ACTIONS.LUNARSHADOW_CHARGE)
     end
 end)
 
 -- AddComponentAction("USEITEM", "glasssocket", function(inst, doer, target, actions, right)
 --     if target.prefab == "sword_lunarplant" then
---         table.insert(actions, ACTIONS.MOONLIGHTSHADOW)
+--         table.insert(actions, ACTIONS.LUNARSHADOW)
 --     end
 -- end)
 
@@ -469,30 +473,21 @@ for _, sg in ipairs({"wilson", "wilson_client"}) do
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.FUELPOCKETWATCH, "pocketwatch_warpback_pre"))
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.MUTATETOTEM, "doshortaction"))
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.TOGGLETOTEM, "doshortaction"))
-    -- AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.MOONLIGHTSHADOW, "doglassicbuild"))
-    AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.MOONLIGHTSHADOW_CHARGE, "doshortaction"))
+    -- AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.LUNARSHADOW, "doglassicbuild"))
+    AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.LUNARSHADOW_CHARGE, "doshortaction"))
 end
 
 --------------------------------------------------------------------------------
 
-AddPrefabPostInit("sword_lunarplant", function(inst)
-    if not TheWorld.ismastersim then return end
-    inst:AddComponent("halloweenmoonmutable")
-end)
 
--- AddPrefabPostInit("alterguardianhatshard", function(inst)
---     if not TheWorld.ismastersim then return end
---     inst:AddComponent("glasssocket")
--- end)
-
--- right click to set ammo --
-local function set_reloaditem_fragment(inst)
-    inst:AddTag("reloaditem_fragment")
+-- right click to set battery --
+local function set_reloaditem_battery(inst)
+    inst:AddTag("reloaditem_lunarshadow")
     if not TheWorld.ismastersim then return end
     inst:AddComponent("reloaditem")
-    inst:AddComponent("moonlightshadowbattery")
+    inst:AddComponent("lunarshadowbattery")
 end
 
-for prefab in pairs(TUNING.MOONLIGHT_SHADOW_BATTERIES) do
-    AddPrefabPostInit(prefab, set_reloaditem_fragment)
+for prefab in pairs(TUNING.LUNARSHADOW.BATTERIES) do
+    AddPrefabPostInit(prefab, set_reloaditem_battery)
 end
