@@ -398,5 +398,16 @@ table.insert(prefabs, CreatePrefabSkin("lunarplanthat_trans", {
     skin_tags = { "LUNARPLANTHAT", "GLASSIC" },
 }))
 
+table.insert(prefabs, CreatePrefabSkin("cane_mossling", {
+    base_prefab = "cane",
+    type = "item",
+    rarity = "Glassic",
+    assets = {
+        Asset( "DYNAMIC_ANIM", "anim/dynamic/cane_mossling.zip" ),
+        Asset( "PKGREF", "anim/dynamic/cane_mossling.dyn" ),
+    },
+    init_fn = GlassicAPI.BasicInitFn,
+    skin_tags = { "CANE", "GLASSIC" },
+}))
 
 return unpack(prefabs)
