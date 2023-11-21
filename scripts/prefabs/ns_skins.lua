@@ -391,6 +391,8 @@ table.insert(prefabs, CreatePrefabSkin("lunarplanthat_trans", {
     rarity = "Glassic",
     assets = {
         Asset( "ANIM", "anim/lunarplanthat_trans.zip" ),
+        -- Asset( "DYNAMIC_ANIM", "anim/dynamic/lunarplanthat_trans.zip" ),
+        -- Asset( "PKGREF", "anim/dynamic/lunarplanthat_trans.dyn" ),
     },
     init_fn = lunarplanthat_init_fn,
     skin_tags = { "LUNARPLANTHAT", "GLASSIC" },

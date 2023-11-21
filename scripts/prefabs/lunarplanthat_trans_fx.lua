@@ -118,6 +118,6 @@ return MakeFollowFx("lunarplanthat_trans_fx", {
         frameend = 3,
         isfullhelm = true,
         assets = {
-            Asset("ANIM", "anim/lunarplanthat_trans.zip")
+            -- Asset("ANIM", "anim/lunarplanthat_trans.zip")
         },
     })
