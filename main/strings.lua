@@ -181,6 +181,7 @@ local strings = {
         moonglasshammer_forge = "Moon Forging Hammer",
         moonglasspickaxe_northern = "Moon Nordic Pickaxe",
         orangestaff_glass = "Rod Of Glass",
+        orangestaff_mossling = "Mossia Staff",
         -- lunar items
         lunarplanthat_trans = "Phantomshade Helm",
     },
@@ -226,6 +227,7 @@ local strings = {
         moonglasshammer_forge = STRINGS.SKIN_DESCRIPTIONS.hammer_forge,
         moonglasspickaxe_northern = "A resplendent moon pickaxe, its design reminiscent of days of yore.",
         orangestaff_glass = "It's a glassic joke, I assume.",
+        orangestaff_mossling = "Mossia!",
         -- lunar items
         lunarplanthat_trans = "Transparent!",
     },

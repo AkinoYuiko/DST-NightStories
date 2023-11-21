@@ -285,6 +285,7 @@ table.insert(prefabs, CreatePrefabSkin("cane_glass", {
     },
     init_fn = GlassicAPI.BasicInitFn,
     skin_tags = { "CANE", "GLASSIC" },
+    granted_items = { "orangestaff_glass", },
 }))
 
 table.insert(prefabs, CreatePrefabSkin("moonglassaxe_northern", {
@@ -379,7 +380,7 @@ table.insert(prefabs, CreatePrefabSkin("krampus_sack_invisible", {
     rarity = "Glassic",
     assets = {
         Asset( "DYNAMIC_ANIM", "anim/dynamic/krampus_sack_invisible.zip" ),
-        Asset( "PKGREF", "anim/dynamic/orangestaff_glass.dyn" ),
+        Asset( "PKGREF", "anim/dynamic/krampus_sack_invisible.dyn" ),
     },
     init_fn = GlassicAPI.BasicInitFn,
     skin_tags = { "KRAMPUS_SACK", "GLASSIC" },
@@ -411,6 +412,26 @@ table.insert(prefabs, CreatePrefabSkin("cane_mossling", {
         GlassicAPI.UpdateFloaterAnim(inst)
     end,
     skin_tags = { "CANE", "GLASSIC" },
+    granted_items = { "orangestaff_mossling", },
+}))
+
+table.insert(prefabs, CreatePrefabSkin("orangestaff_mossling", {
+    base_prefab = "orangestaff",
+    type = "item",
+    rarity = "Glassic",
+    assets = {
+        Asset( "DYNAMIC_ANIM", "anim/dynamic/orangestaff_mossling.zip" ),
+        Asset( "PKGREF", "anim/dynamic/orangestaff_mossling.dyn" ),
+    },
+    init_fn = function(inst)
+        orangestaff_init_fn(inst, "orangestaff_mossling")
+        GlassicAPI.UpdateFloaterAnim(inst)
+    end,
+    skin_sound = {
+        ["preteleport"] = "dontstarve/common/gem_shatter",
+    },
+    fx_prefab = { "", "", "glash_fx", "glash_fx", },
+    skin_tags = { "ORANGESTAFF", "GLASSIC" },
 }))
 
 return unpack(prefabs)
