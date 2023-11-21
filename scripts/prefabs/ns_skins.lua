@@ -391,8 +391,6 @@ table.insert(prefabs, CreatePrefabSkin("lunarplanthat_trans", {
     rarity = "Glassic",
     assets = {
         Asset( "ANIM", "anim/lunarplanthat_trans.zip" ),
-        -- Asset( "DYNAMIC_ANIM", "anim/dynamic/lunarplanthat_trans.zip" ),
-        -- Asset( "PKGREF", "anim/dynamic/lunarplanthat_trans.dyn" ),
     },
     init_fn = lunarplanthat_init_fn,
     skin_tags = { "LUNARPLANTHAT", "GLASSIC" },
@@ -406,7 +404,10 @@ table.insert(prefabs, CreatePrefabSkin("cane_mossling", {
         Asset( "DYNAMIC_ANIM", "anim/dynamic/cane_mossling.zip" ),
         Asset( "PKGREF", "anim/dynamic/cane_mossling.dyn" ),
     },
-    init_fn = GlassicAPI.BasicInitFn,
+    init_fn = function(inst)
+        cane_init_fn(inst, "cane_mossling")
+        GlassicAPI.UpdateFloaterAnim(inst)
+    end,
     skin_tags = { "CANE", "GLASSIC" },
 }))
 
