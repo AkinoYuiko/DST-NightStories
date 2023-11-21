@@ -27,7 +27,6 @@ local postinit =
     "components/sanity",
     "components/spellcaster",
     -- prefabs
-    "prefabs/alterguardian_hat_equipped",
     "prefabs/flower",
     "prefabs/foodbuffs",
     "prefabs/gems",
