@@ -273,6 +273,7 @@ local hunger_rate = - TUNING.WILSON_HEALTH / TUNING.STARVE_KILL_TIME
 local temperature_rate = - TUNING.WILSON_HEALTH / TUNING.FREEZING_KILL_TIME
 local healthregenbuff_rate = TUNING.JELLYBEAN_TICK_VALUE / TUNING.JELLYBEAN_TICK_RATE
 local halloweenpotionbuff_rate = 1 / 2
+local acidsizzling_rate = - TUNING.ACIDRAIN_DAMAGE_PER_SECOND
 function DummyBadge:OnUpdate(dt)
     if TheNet:IsServerPaused() then return end
 
@@ -287,6 +288,11 @@ function DummyBadge:OnUpdate(dt)
         DoTransitionTask(self)
     end
 
+    local moisture_rate_assuming_rain = self.owner.components.moisture and self.owner.components.moisture:_GetMoistureRateAssumingRain()
+    if moisture_rate_assuming_rain then
+        acidsizzling_rate = acidsizzling_rate * moisture_rate_assuming_rain
+    end
+
     local sanity_rate = sanity and sanity:GetRate() or 0
     local firedamage_rate = - self.owner._firedamage_rate:value()
     local health_rate = sanity_rate +
@@ -294,6 +300,7 @@ function DummyBadge:OnUpdate(dt)
             ((self.owner.IsFreezing ~= nil and self.owner:IsFreezing()) and temperature_rate or 0) +
             ((self.owner.replica.hunger ~= nil and self.owner.replica.hunger:IsStarving()) and hunger_rate or 0) +
             ((self.owner.IsOverheating ~= nil and self.owner:IsOverheating()) and temperature_rate or 0) +
+            (self.acidsizzling ~= nil and acidsizzling_rate or 0) +
             (self.owner:HasTag("hasbuff_healthregenbuff") and healthregenbuff_rate or 0) +
             (self.owner:HasTag("hasbuff_halloweenpotion_health_buff") and halloweenpotionbuff_rate or 0) +
             (self.owner:HasTag("hasbuff_halloweenpotion_sanity_buff") and halloweenpotionbuff_rate or 0)
