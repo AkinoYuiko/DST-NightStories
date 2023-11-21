@@ -3,7 +3,7 @@ local Utils = require "ns_utils"
 local assets =
 {
     Asset("ANIM", "anim/sword_lunarplant.zip"),
-    Asset("ANIM", "anim/inventory_fx_moonlight.zip"),
+    Asset("ANIM", "anim/inventory_fx_lunar.zip"),
 }
 
 local prefabs =
@@ -18,14 +18,14 @@ local function set_bonus_enabled(inst, enabled)
     if enabled then
         if not inst._bonusenabled then
             inst._bonusenabled = true
-            if inst.components.weapon ~= nil then
-                inst.components.weapon:SetDamage(inst.base_damage * TUNING.WEAPONS_LUNARPLANT_SETBONUS_DAMAGE_MULT)
+            if inst.components.weapon then
+                inst.components.weapon:SetDamage(inst.base_damage * TUNING.LUNARSHADOW.SETBONUS_DAMAGE_MULT)
             end
-            inst.components.planardamage:AddBonus(inst, TUNING.MOONLIGHT_SHADOW_SETBONUS_PLANAR_DAMAGE, "setbonus")
+            inst.components.planardamage:AddBonus(inst, TUNING.LUNARSHADOW.SETBONUS_PLANAR_DAMAGE, "setbonus")
         end
     elseif inst._bonusenabled then
         inst._bonusenabled = nil
-        if inst.components.weapon ~= nil then
+        if inst.components.weapon then
             inst.components.weapon:SetDamage(inst.base_damage)
         end
         inst.components.planardamage:RemoveBonus(inst, "setbonus")
@@ -34,7 +34,7 @@ end
 
 local function set_bonus_owner(inst, owner)
     if inst._owner ~= owner then
-        if inst._owner ~= nil then
+        if inst._owner then
             inst:RemoveEventCallback("equip", inst._onownerequip, inst._owner)
             inst:RemoveEventCallback("unequip", inst._onownerunequip, inst._owner)
             inst._onownerequip = nil
@@ -42,10 +42,10 @@ local function set_bonus_owner(inst, owner)
             set_bonus_enabled(inst, false)
         end
         inst._owner = owner
-        if owner ~= nil then
+        if owner then
             inst._onownerequip = function(owner, data)
-                if data ~= nil then
-                    if data.item ~= nil and data.item.prefab == "lunarplanthat" then
+                if data then
+                    if data.item and data.item.prefab == (inst.state:value() and "lunarplanthat" or "voidclothhat") then
                         set_bonus_enabled(inst, true)
                     elseif data.eslot == EQUIPSLOTS.HEAD then
                         set_bonus_enabled(inst, false)
@@ -53,7 +53,7 @@ local function set_bonus_owner(inst, owner)
                 end
             end
             inst._onownerunequip  = function(owner, data)
-                if data ~= nil and data.eslot == EQUIPSLOTS.HEAD then
+                if data and data.eslot == EQUIPSLOTS.HEAD then
                     set_bonus_enabled(inst, false)
                 end
             end
@@ -61,7 +61,7 @@ local function set_bonus_owner(inst, owner)
             inst:ListenForEvent("unequip", inst._onownerunequip, owner)
 
             local hat = owner.components.inventory:GetEquippedItem(EQUIPSLOTS.HEAD)
-            if hat ~= nil and hat.prefab == "lunarplanthat" then
+            if hat and hat.prefab == (inst.state:value() and "lunarplanthat" or "voidclothhat") then
                 set_bonus_enabled(inst, true)
             end
         end
@@ -141,6 +141,69 @@ local function onunequip(inst, owner)
     end
 end
 
+local function refresh_bonus(inst)
+    if inst._owner then
+        local inv = inst._owner.components.inventory
+        local hat = inv and inv:GetEquippedItem(EQUIPSLOTS.HEAD)
+        if hat and hat.prefab == (inst.state:value() and "lunarplanthat" or "voidclothhat") then
+            set_bonus_enabled(inst, true)
+        else
+            set_bonus_enabled(inst, false)
+        end
+        inst._owner:PushEvent("equip", { item = inst, eslot = EQUIPSLOTS.HANDS, no_animation = true})
+    end
+end
+
+local function set_lunar(inst)
+    if not inst.state:value() then
+        inst.state:set(true)
+        -- inst.components.inventoryitem:ChangeImageName("lunarshadow_lunar")
+        inst.components.forgerepairable:SetRepairMaterial(FORGEMATERIALS.LUNARPLANT)
+        inst.components.planardamage:SetBaseDamage(TUNING.LUNARSHADOW.LUNAR_PLANAR_DAMAGE)
+        inst.components.damagetypebonus:RemoveBonus("lunar_aligned", inst, "lunarshadow")
+        inst.components.damagetypebonus:AddBonus("shadow_aligned", inst, TUNING.LUNARSHADOW.ALIGN_VS_MULT, "lunarshadow")
+        inst:AddComponent("lunarplant_tentacle_weapon")
+        inst:RemoveComponent("shadowlevel")
+        inst:RemoveTag("shadow_item")
+        refresh_bonus(inst)
+    end
+end
+
+local function set_shadow(inst)
+    if inst.state:value() then
+        inst.state:set(false)
+        -- inst.components.inventoryitem:ChangeImageName("lunarshadow_shadow")
+        inst.components.forgerepairable:SetRepairMaterial(FORGEMATERIALS.VOIDCLOTH)
+        inst.components.planardamage:SetBaseDamage(TUNING.LUNARSHADOW.SHADOW_PLANAR_DAMAGE)
+        inst.components.damagetypebonus:RemoveBonus("shadow_aligned", inst, "lunarshadow")
+        inst.components.damagetypebonus:AddBonus("lunar_aligned", inst, TUNING.LUNARSHADOW.ALIGN_VS_MULT, "lunarshadow")
+        inst:RemoveComponent("lunarplant_tentacle_weapon")
+        inst:AddComponent("shadowlevel")
+        inst.components.shadowlevel:SetDefaultLevel(TUNING.LUNARSHADOW.SHADOW_LEVEL)
+        inst:AddTag("shadow_item")
+        refresh_bonus(inst)
+    end
+end
+
+local function set_lunarstate(inst, islunar)
+    if islunar then
+        set_lunar(inst)
+    else
+        set_shadow(inst)
+    end
+end
+
+local function validate_battery_value(inst, battery_prefab, set_state)
+    if battery_prefab then
+        local power = TUNING.LUNARSHADOW.BATTERIES[battery_prefab]
+        if set_state then
+            set_lunarstate(inst, power > 0)
+        end
+        return math.abs(power)
+    end
+    return 0
+end
+
 local function get_current_battery(inst)
     return inst.components.container:GetItemInSlot(1)
 end
@@ -173,18 +236,23 @@ local function can_consume_battery(inst)
     if not current_item then
         return
     end
-    local power = TUNING.MOONLIGHT_SHADOW_BATTERIES[current_item.prefab]
+    local power = validate_battery_value(inst, current_item.prefab)
     -- total is max uses
     return inst.components.finiteuses.total - inst.components.finiteuses:GetUses() >= power
 end
 
 local function set_buffed_atks(inst, amount)
-    inst.buffed_atks = math.clamp(amount, 0, TUNING.MOONLIGHT_SHADOW_USES)
+    inst.buffed_atks = math.clamp(amount, 0, TUNING.LUNARSHADOW.USES)
     if inst.buffed_atks > 0 then
         inst.buffed:set(true)
+        inst.base_damage = TUNING.LUNARSHADOW.BUFFED_DAMAGE
+        inst:AddTag("ignore_planar_entity")
     else
         inst.buffed:set(false)
+        inst.base_damage = TUNING.LUNARSHADOW.BASE_DAMAGE
+        inst:RemoveTag("ignore_planar_entity")
     end
+    inst.components.weapon:SetDamage(inst._bonusenabled and inst.base_damage * TUNING.LUNARSHADOW.SETBONUS_DAMAGE_MULT or inst.base_damage)
 end
 
 local function try_consume_battery(inst)
@@ -193,7 +261,8 @@ local function try_consume_battery(inst)
         return
     end
     -- total is max uses
-    if inst.components.finiteuses.total - inst.components.finiteuses:GetUses() >= TUNING.MOONLIGHT_SHADOW_BATTERIES[current_item.prefab] then
+    local power = validate_battery_value(inst, current_item.prefab)
+    if inst.components.finiteuses.total - inst.components.finiteuses:GetUses() >= power then
         inst:ChargeWithItem(current_item)
         if current_item.components.stackable then
             current_item.components.stackable:Get():Remove()
@@ -220,21 +289,24 @@ local function do_consume(inst, attacker)
     try_consume_battery(inst)
 end
 
--- local function calc_bonus_mult(inst)
---     local mult = inst.buffed_atks > 0 and 1.25 or 1
---     if inst._bonusenabled then
---         mult = mult + 0.25
---     end
---     return mult
--- end
-
 local target_testfn = Utils.TargetTestFn
 local function onattack(inst, attacker, target)
     do_consume(inst, attacker)
-    if target_testfn(target) and inst.buffed:value() then
-        SpawnPrefab("glash"):SetTarget(attacker, target, 0, inst._bonusenabled and TUNING.MOONLIGHT_SHADOW_SETBONUS_DAMAGE_MULT)
-    elseif target ~= nil and target:IsValid() then
-        SpawnPrefab("hitsparks_fx"):Setup(attacker, target)
+    -- if target_testfn(target) and inst.buffed:value() then
+    --     SpawnPrefab("glash"):SetTarget(attacker, target, 0, inst._bonusenabled and TUNING.LUNARSHADOW.SETBONUS_DAMAGE_MULT)
+    -- elseif target ~= nil and target:IsValid() then
+    --     SpawnPrefab("hitsparks_fx"):Setup(attacker, target)
+    -- end
+    if target and target:IsValid() then
+        local spark = SpawnPrefab("hitsparks_fx")
+        if inst.state:value() then
+            spark:Setup(attacker, target)
+        else
+            local hitsparks_fx_colouroverride = {1, 0, 0}
+            spark:Setup(attacker, target, nil, hitsparks_fx_colouroverride)
+            spark.black:set(true)
+        end
+
     end
 end
 
@@ -270,15 +342,10 @@ local function setup_equippable(inst)
     inst:AddComponent("equippable")
     inst.components.equippable:SetOnEquip(onequip)
     inst.components.equippable:SetOnUnequip(onunequip)
-
-    -- inst:AddComponent("weapon")
-    -- inst.components.weapon:SetDamage(inst._bonusenabled and inst.base_damage * TUNING.WEAPONS_LUNARPLANT_SETBONUS_DAMAGE_MULT or inst.base_damage)
-    -- inst.components.weapon:SetOnAttack(onattack)
 end
 
 local function disable_equippable(inst)
     inst:RemoveComponent("equippable")
-    -- inst:RemoveComponent("weapon")
 end
 
 local function onbroken(inst)
@@ -313,7 +380,7 @@ end
 
 local function charge_with_item(inst, battery, amount)
     amount = amount or 1
-    local power = TUNING.MOONLIGHT_SHADOW_BATTERIES[battery.prefab]
+    local power = validate_battery_value(inst, battery.prefab, true)
     inst.components.finiteuses:Repair(power * amount)
     set_buffed_atks(inst, inst.buffed_atks + power * amount)
     if inst.isbroken:value() then
@@ -346,13 +413,23 @@ local function on_battery_change(inst, data)
 end
 
 local function onload(inst, data)
-    if data and data.buffed_atks then
-        set_buffed_atks(inst, data.buffed_atks)
+    if data then
+        if data.buffed_atks then
+            set_buffed_atks(inst, data.buffed_atks)
+        end
+        if data.state ~= nil then -- DO NOT DELETE "~= nil"
+            set_lunarstate(inst, data.state)
+        end
     end
 end
 
 local function onsave(inst, data)
     data.buffed_atks = inst.buffed_atks > 0 and inst.buffed_atks
+    data.state = inst.state:value()
+end
+
+local function get_status(inst)
+    return inst.state:value() and "lunar" or "shadow"
 end
 
 local function fn()
@@ -374,20 +451,21 @@ local function fn()
     inst:AddTag("sharp")
     inst:AddTag("show_broken_ui")
 
+    inst:SetPrefabName("lunarshadow")
     --weapon (from weapon component) added to pristine state for optimization
     inst:AddTag("weapon")
 
-    inst.buffed = net_bool(inst.GUID, "moonlight_shadow.buffed", "moonlight_shadow.buffdirty")
+    inst.buffed = net_bool(inst.GUID, "lunarshadow.buffed", "lunarshadow_buffdirty")
+    inst.state = net_bool(inst.GUID, "lunarshadow.state", "lunarshadow_statedirty")
 
     inst:AddComponent("floater")
-    inst.isbroken = net_bool(inst.GUID, "moonlight_shadow.isbroken", "isbrokendirty")
+    inst.isbroken = net_bool(inst.GUID, "lunarshadow.isbroken", "isbrokendirty")
     set_isbroken(inst, false)
 
     inst.entity:SetPristine()
 
     if not TheWorld.ismastersim then
         inst:ListenForEvent("isbrokendirty", on_isbroken_dirty)
-
         return inst
     end
 
@@ -401,43 +479,40 @@ local function fn()
     set_fx_owner(inst, nil)
     inst:ListenForEvent("floater_stopfloating", on_stop_floating)
 
-    local container = inst:AddComponent("container")
-    container:WidgetSetup("moonlight_shadow")
-    container.canbeopened = false
+    inst:AddComponent("container")
+    inst.components.container:WidgetSetup("moonlight_shadow")
+    inst.components.container.canbeopened = false
 
-    local preserver = inst:AddComponent("preserver")
-    preserver:SetPerishRateMultiplier(0)
+    inst:AddComponent("preserver")
+    inst.components.preserver:SetPerishRateMultiplier(0)
 
     inst:ListenForEvent("itemget", on_battery_change)
     inst:ListenForEvent("itemlose", on_battery_change)
 
-    local finiteuses = inst:AddComponent("finiteuses")
-    finiteuses:SetMaxUses(TUNING.MOONLIGHT_SHADOW_USES)
-    finiteuses:SetUses(TUNING.MOONLIGHT_SHADOW_USES)
-    finiteuses:SetIgnoreCombatDurabilityLoss(true) -- We handle this ourselfs
+    inst:AddComponent("finiteuses")
+    inst.components.finiteuses:SetMaxUses(TUNING.LUNARSHADOW.USES)
+    inst.components.finiteuses:SetUses(TUNING.LUNARSHADOW.USES)
+    inst.components.finiteuses:SetIgnoreCombatDurabilityLoss(true) -- We handle this ourselfs
 
-    inst.base_damage = TUNING.MOONLIGHT_SHADOW_DAMAGE
-
-    local planardamage = inst:AddComponent("planardamage")
-    planardamage:SetBaseDamage(TUNING.MOONLIGHT_SHADOW_PLANAR_DAMAGE)
-
+    inst.base_damage = TUNING.LUNARSHADOW.BASE_DAMAGE
     inst.buffed_atks = 0
 
-    local damagetypebonus = inst:AddComponent("damagetypebonus")
-    damagetypebonus:AddBonus("shadow_aligned", inst, TUNING.WEAPONS_LUNARPLANT_VS_SHADOW_BONUS)
+    inst:AddComponent("planardamage")
+    inst:AddComponent("damagetypebonus")
 
     inst:AddComponent("inspectable")
+    inst.components.inspectable.getstatus = get_status
+
     inst:AddComponent("inventoryitem")
 
     inst:AddComponent("weapon")
-    inst.components.weapon:SetDamage(inst._bonusenabled and inst.base_damage * TUNING.WEAPONS_LUNARPLANT_SETBONUS_DAMAGE_MULT or inst.base_damage)
+    inst.components.weapon:SetDamage(inst._bonusenabled and inst.base_damage * TUNING.LUNARSHADOW.SETBONUS_DAMAGE_MULT or inst.base_damage)
     inst.components.weapon:SetOnAttack(onattack)
 
     setup_equippable(inst)
 
-    inst:AddComponent("lunarplant_tentacle_weapon")
-
     MakeForgeRepairable(inst, FORGEMATERIALS.LUNARPLANT, onbroken, onrepaired)
+    set_lunar(inst)
 
     MakeHauntableLaunch(inst)
 
@@ -446,9 +521,10 @@ local function fn()
 
     inst.ChargeWithItem = charge_with_item
 
-    inst.drawnameoverride = rawget(_G, "EncodeStrCode") and EncodeStrCode({content = "NAMES.MOONLIGHT_SHADOW"})
+    if rawget(_G, "EncodeDrawNameCode") then EncodeDrawNameCode(inst) end
 
     return inst
 end
 
-return Prefab("moonlight_shadow", fn, assets, prefabs)
+return Prefab("lunarshadow", fn, assets, prefabs),
+    Prefab("moonlight_shadow", fn, assets, prefabs)

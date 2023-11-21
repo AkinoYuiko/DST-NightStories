@@ -192,9 +192,10 @@ local function MakeBook(def)
 
         MakeHauntableLaunch(inst)
 
-        inst:DoTaskInTime(0, function(inst)
-            inst.drawnameoverride = rawget(_G, "EncodeStrCode") and EncodeStrCode({content = "NAMES." .. string.upper(inst.prefab)})
-        end)
+        -- inst:DoTaskInTime(0, function(inst)
+        --     inst.drawnameoverride = rawget(_G, "EncodeStrCode") and EncodeStrCode({content = "NAMES." .. string.upper(inst.prefab)})
+        -- end)
+        if rawget(_G, "EncodeDrawNameCode") then EncodeDrawNameCode(inst) end
 
         return inst
     end

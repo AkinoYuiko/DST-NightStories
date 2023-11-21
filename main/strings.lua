@@ -24,7 +24,8 @@ local strings = {
         },
         COOKPACKAGE = "Pacook",
         FUELPOCKETWATCH = "Hack",
-        MOONLIGHTSHADOW_CHARGE = "Charge",
+        -- MOONLIGHTSHADOW_CHARGE = "Charge",
+        LUNARSHADOW_CHARGE = "Charge",
         TOGGLETOTEM = {
             ON = "Activate",
             OFF = "Deactivate",
@@ -103,6 +104,7 @@ local strings = {
         MOONGLASSHAMMER = "Moon Glass Hammer",
         MOONGLASSPICKAXE = "Moon Glass Pickaxe",
         MOONLIGHT_SHADOW = "Moonlight Shadow",
+        LUNARSHADOW = "Lunar Shadow",
 
         -- Voidcloth items
         HORRORCHAIN = "Horror Chain",
@@ -129,7 +131,8 @@ local strings = {
 
         BATTLERUINSHAT = "Complete with ancient force field!",
 
-        MOONLIGHT_SHADOW = "A sword with super power of lunar light.",
+        -- MOONLIGHT_SHADOW = "A sword with super power of lunar light.",
+        LUNARSHADOW = "A sword with super power of both lunar light and nightmare.",
         HORRORCHAIN = "Spread horror.",
 
         CHESSPIECE_HEADUCK_BUILDER = "I feel headache, but a duck.",
@@ -244,19 +247,24 @@ local strings = {
     {
         GENERIC =
         {
-            ANNOUNCE_ATTACH_BUFF_MOONLIGHT = "Secret power from the moon!",
-            ANNOUNCE_DETACH_BUFF_MOONLIGHT = "The moon power has gone.",
+            ANNOUNCE_ATTACH_BUFF_MOONGLASS = "Secret power from the moon!",
+            ANNOUNCE_DETACH_BUFF_MOONGLASS = "The moon power has gone.",
             DESCRIBE =
             {
-                GLASSICCUTTER =
-                {
-                    GENERIC = "Sharp but probably get broken.",
-                    MOONGLASS = "Sword with gestalt flash.",
-                    MOONROCK = "Sword with frost energy.",
-                    DREAM = "Inazuma shines eternal!",
-                    FROST = "ao?",
-                },
+                -- GLASSICCUTTER =
+                -- {
+                --     GENERIC = "Sharp but probably get broken.",
+                --     MOONGLASS = "Sword with gestalt flash.",
+                --     MOONROCK = "Sword with frost energy.",
+                --     DREAM = "Inazuma shines eternal!",
+                --     FROST = "ao?",
+                -- },
                 MOONLIGHT_SHADOW = "Secret power comes from the moon.",
+                LUNARSHADOW =
+                {
+                    LUNAR = "I can feel the secret power from the moon.",
+                    SHADOW = "I can feel the secret power from the nightmare.",
+                },
                 MOONGLASSHAMMER = STRINGS.CHARACTERS.GENERIC.DESCRIBE.MOONGLASSAXE,
                 MOONGLASSPICKAXE = STRINGS.CHARACTERS.GENERIC.DESCRIBE.MOONGLASSAXE,
 
