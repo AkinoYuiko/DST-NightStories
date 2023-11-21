@@ -31,6 +31,7 @@ local postinit =
     "prefabs/flower",
     "prefabs/foodbuffs",
     "prefabs/gems",
+    "prefabs/gestalt",
     "prefabs/nightmarecreatures",
     "prefabs/nightmarefuel",
     "prefabs/nightsword",
