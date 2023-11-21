@@ -6,16 +6,14 @@ local function zheng(zh, en)
     return LOC[locale] or en
 end
 
-version = "1.50.0.2"
+version = "1.51"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng([[
-- 月影现在拥有两种形态了（月亮、暗影）。
-- 通过充能切换月影的形态，不同形态的月影受到不同的加成。
+- 新皮肤：麋鹿鸭手杖。
 ]], [[
-- Rename Moonlight Shadow as Lunar Shadow.
-- Lunar Shadow accepts both lunar and shadow batteries.
+- New skin: Mossling Cane.
 ]])
 description = zheng("版本: ", "Version: ") .. version ..
     zheng("\n\n更新内容:\n", "\n\nChangelog:\n") .. changelog .. "\n" ..
