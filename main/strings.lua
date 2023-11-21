@@ -84,7 +84,7 @@ local strings = {
         SPICE_CACTUS = "Cactus Powder",
         SPICE_CACTUS_FOOD = "Cactus {food}",
 
-        SPICE_MOONGLASS = "Moonlight Powder",
+        SPICE_MOONGLASS = "Lunar Powder",
         SPICE_MOONGLASS_FOOD = "Mystic {food}",
 
         PORTABLE_WARDROBE_WRAP = "Magic Dress",

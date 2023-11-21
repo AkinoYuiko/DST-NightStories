@@ -1420,7 +1420,7 @@ msgstr ""
 
 #. STRINGS.NAMES.SPICE_MOONGLASS
 msgctxt "STRINGS.NAMES.SPICE_MOONGLASS"
-msgid "Moonlight Powder"
+msgid "Lunar Powder"
 msgstr ""
 
 #. STRINGS.NAMES.SPICE_MOONGLASS_FOOD

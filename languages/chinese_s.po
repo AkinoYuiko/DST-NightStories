@@ -1451,7 +1451,7 @@ msgstr "仙人掌味{food}"
 
 #. STRINGS.NAMES.SPICE_MOONGLASS
 msgctxt "STRINGS.NAMES.SPICE_MOONGLASS"
-msgid "Moonlight Powder"
+msgid "Lunar Powder"
 msgstr "月光粉"
 
 #. STRINGS.NAMES.SPICE_MOONGLASS_FOOD
