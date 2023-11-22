@@ -370,7 +370,7 @@ table.insert(prefabs, CreatePrefabSkin("orangestaff_glass", {
     skin_sound = {
         ["preteleport"] = "dontstarve/common/gem_shatter",
     },
-    fx_prefab = { "", "", "glash_fx", "glash_fx", },
+    fx_prefab = { nil, nil, "glash_fx", nil, },
     skin_tags = { "ORANGESTAFF", "GLASSIC" },
 }))
 
@@ -428,9 +428,9 @@ table.insert(prefabs, CreatePrefabSkin("orangestaff_mossling", {
         GlassicAPI.UpdateFloaterAnim(inst)
     end,
     skin_sound = {
-        ["preteleport"] = "dontstarve/common/gem_shatter",
+        ["preteleport"] = "dontstarve_DLC001/creatures/mossling/taunt",
     },
-    fx_prefab = { "", "", "glash_fx", "glash_fx", },
+    fx_prefab = { nil, nil, "mossling_spin_fx", nil},
     skin_tags = { "ORANGESTAFF", "GLASSIC" },
 }))
 
