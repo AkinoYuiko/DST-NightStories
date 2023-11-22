@@ -428,7 +428,7 @@ table.insert(prefabs, CreatePrefabSkin("orangestaff_mossling", {
         GlassicAPI.UpdateFloaterAnim(inst)
     end,
     skin_sound = {
-        -- ["preteleport"] = "dontstarve_DLC001/creatures/mossling/attack",
+        ["preteleport"] = "dontstarve_DLC001/creatures/mossling/taunt",
         ["postteleport"] = "dontstarve_DLC001/creatures/mossling/taunt",
     },
     fx_prefab = { nil, nil, "mossling_spin_fx", nil},
