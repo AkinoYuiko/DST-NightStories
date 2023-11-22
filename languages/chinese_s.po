@@ -1451,7 +1451,7 @@ msgstr "仙人掌味{food}"
 
 #. STRINGS.NAMES.SPICE_MOONGLASS
 msgctxt "STRINGS.NAMES.SPICE_MOONGLASS"
-msgid "Moonlight Powder"
+msgid "Lunar Powder"
 msgstr "月光粉"
 
 #. STRINGS.NAMES.SPICE_MOONGLASS_FOOD
@@ -1579,6 +1579,11 @@ msgctxt "STRINGS.SKIN_DESCRIPTIONS.cane_glass"
 msgid "It's a glassic joke, I assume."
 msgstr "玻璃笑话。"
 
+#. STRINGS.SKIN_DESCRIPTIONS.cane_mossling
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.cane_mossling"
+msgid "Mossia!"
+msgstr "莫西鸭！"
+
 #. STRINGS.SKIN_DESCRIPTIONS.civi_none
 msgctxt "STRINGS.SKIN_DESCRIPTIONS.civi_none"
 msgid ""
@@ -1686,6 +1691,11 @@ msgctxt "STRINGS.SKIN_DESCRIPTIONS.orangestaff_glass"
 msgid "It's a glassic joke, I assume."
 msgstr "玻璃笑话。"
 
+#. STRINGS.SKIN_DESCRIPTIONS.orangestaff_mossling
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.orangestaff_mossling"
+msgid "Mossia!"
+msgstr "莫西鸭！"
+
 #. STRINGS.SKIN_DESCRIPTIONS.raincoat_peggy
 msgctxt "STRINGS.SKIN_DESCRIPTIONS.raincoat_peggy"
 msgid "Wow! There are lots of Peggy...s!"
@@ -1715,6 +1725,11 @@ msgstr "皇帝的新衣"
 msgctxt "STRINGS.SKIN_NAMES.cane_glass"
 msgid "Gane"
 msgstr "手丈"
+
+#. STRINGS.SKIN_NAMES.cane_mossling
+msgctxt "STRINGS.SKIN_NAMES.cane_mossling"
+msgid "Mossling"
+msgstr "麋鹿鸭手杖"
 
 #. STRINGS.SKIN_NAMES.civi_none
 msgctxt "STRINGS.SKIN_NAMES.civi_none"
@@ -1820,6 +1835,11 @@ msgstr "黑莲"
 msgctxt "STRINGS.SKIN_NAMES.orangestaff_glass"
 msgid "Rod Of Glass"
 msgstr "玻璃魔杖"
+
+#. STRINGS.SKIN_NAMES.orangestaff_mossling
+msgctxt "STRINGS.SKIN_NAMES.orangestaff_mossling"
+msgid "Mossia Staff"
+msgstr "莫西鸭魔杖"
 
 #. STRINGS.SKIN_NAMES.raincoat_peggy
 msgctxt "STRINGS.SKIN_NAMES.raincoat_peggy"

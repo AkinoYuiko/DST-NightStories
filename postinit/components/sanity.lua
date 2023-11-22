@@ -78,12 +78,14 @@ local function sanity_aura_post_init(inst)
         inst.components.sanityaura.aura = TUNING.DUMMY_SANITY_AURA
     end
 
-    local aurafn = inst.components.sanityaura.aurafn or function(inst, observer) return 0 end
+    local aurafn = inst.components.sanityaura.aurafn
     inst.components.sanityaura.aurafn = function(inst, observer, ...)
         if observer.prefab == "dummy" then
             return inst.components.sanityaura.aura
-        else
+        elseif aurafn then
             return aurafn(inst, observer, ...)
+        else
+            return 0
         end
     end
 end

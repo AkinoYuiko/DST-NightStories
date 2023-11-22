@@ -264,12 +264,12 @@ GlassicAPI.SkinHandler.AddModSkins({
     },
     krampus_sack = { "krampus_sack_invisible"},
     -- Glassic items
-    cane = { "cane_glass" },
-    -- glassiccutter = { "glassiccutter_dream" },
+    cane = { "cane_glass", "cane_mossling" },
     goldenaxe = { "goldenaxe_victorian" },
     moonglassaxe = { "moonglassaxe_northern", "moonglassaxe_victorian" },
     moonglasspickaxe = { "moonglasspickaxe_northern" },
     moonglasshammer = { "moonglasshammer_forge" },
-    orangestaff = { "orangestaff_glass" },
+    orangestaff = { "orangestaff_glass", "orangestaff_mossling" },
+    -- Temp
     lunarplanthat = { "lunarplanthat_trans" },
 })

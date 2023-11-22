@@ -1420,7 +1420,7 @@ msgstr ""
 
 #. STRINGS.NAMES.SPICE_MOONGLASS
 msgctxt "STRINGS.NAMES.SPICE_MOONGLASS"
-msgid "Moonlight Powder"
+msgid "Lunar Powder"
 msgstr ""
 
 #. STRINGS.NAMES.SPICE_MOONGLASS_FOOD
@@ -1548,6 +1548,11 @@ msgctxt "STRINGS.SKIN_DESCRIPTIONS.cane_glass"
 msgid "It's a glassic joke, I assume."
 msgstr ""
 
+#. STRINGS.SKIN_DESCRIPTIONS.cane_mossling
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.cane_mossling"
+msgid "Mossia!"
+msgstr ""
+
 #. STRINGS.SKIN_DESCRIPTIONS.civi_none
 msgctxt "STRINGS.SKIN_DESCRIPTIONS.civi_none"
 msgid "Civi can control magic, turning lights into darks, or turning darks into lights."
@@ -1653,6 +1658,11 @@ msgctxt "STRINGS.SKIN_DESCRIPTIONS.orangestaff_glass"
 msgid "It's a glassic joke, I assume."
 msgstr ""
 
+#. STRINGS.SKIN_DESCRIPTIONS.orangestaff_mossling
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.orangestaff_mossling"
+msgid "Mossia!"
+msgstr ""
+
 #. STRINGS.SKIN_DESCRIPTIONS.raincoat_peggy
 msgctxt "STRINGS.SKIN_DESCRIPTIONS.raincoat_peggy"
 msgid "Wow! There are lots of Peggy...s!"
@@ -1681,6 +1691,11 @@ msgstr ""
 #. STRINGS.SKIN_NAMES.cane_glass
 msgctxt "STRINGS.SKIN_NAMES.cane_glass"
 msgid "Gane"
+msgstr ""
+
+#. STRINGS.SKIN_NAMES.cane_mossling
+msgctxt "STRINGS.SKIN_NAMES.cane_mossling"
+msgid "Mossling"
 msgstr ""
 
 #. STRINGS.SKIN_NAMES.civi_none
@@ -1786,6 +1801,11 @@ msgstr ""
 #. STRINGS.SKIN_NAMES.orangestaff_glass
 msgctxt "STRINGS.SKIN_NAMES.orangestaff_glass"
 msgid "Rod Of Glass"
+msgstr ""
+
+#. STRINGS.SKIN_NAMES.orangestaff_mossling
+msgctxt "STRINGS.SKIN_NAMES.orangestaff_mossling"
+msgid "Mossia Staff"
 msgstr ""
 
 #. STRINGS.SKIN_NAMES.raincoat_peggy

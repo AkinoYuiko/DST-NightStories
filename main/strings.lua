@@ -84,7 +84,7 @@ local strings = {
         SPICE_CACTUS = "Cactus Powder",
         SPICE_CACTUS_FOOD = "Cactus {food}",
 
-        SPICE_MOONGLASS = "Moonlight Powder",
+        SPICE_MOONGLASS = "Lunar Powder",
         SPICE_MOONGLASS_FOOD = "Mystic {food}",
 
         PORTABLE_WARDROBE_WRAP = "Magic Dress",
@@ -173,6 +173,7 @@ local strings = {
         krampus_sack_invisible = "Pantomimed Krampus Sack",
         -- Glassic items
         cane_glass = "Gane",
+        cane_mossling = "Mossling",
         glassiccutter_dream = "Musou Isshin",
         goldenaxe_victorian = "Fanciful Luxury Axe",
         moonglassaxe_northern = "Moon Nordic Axe",
@@ -180,6 +181,7 @@ local strings = {
         moonglasshammer_forge = "Moon Forging Hammer",
         moonglasspickaxe_northern = "Moon Nordic Pickaxe",
         orangestaff_glass = "Rod Of Glass",
+        orangestaff_mossling = "Mossia Staff",
         -- lunar items
         lunarplanthat_trans = "Phantomshade Helm",
     },
@@ -217,6 +219,7 @@ local strings = {
 
         -- Glassic items
         cane_glass = "It's a glassic joke, I assume.",
+        cane_mossling = "Mossia!",
         glassiccutter_dream = "Inazuma shines eternal!",
         goldenaxe_victorian = "An elegantly engraved golden axe.",
         moonglassaxe_northern = "A resplendent moon axe, its design reminiscent of days of yore.",
@@ -224,6 +227,7 @@ local strings = {
         moonglasshammer_forge = STRINGS.SKIN_DESCRIPTIONS.hammer_forge,
         moonglasspickaxe_northern = "A resplendent moon pickaxe, its design reminiscent of days of yore.",
         orangestaff_glass = "It's a glassic joke, I assume.",
+        orangestaff_mossling = "Mossia!",
         -- lunar items
         lunarplanthat_trans = "Transparent!",
     },
