@@ -288,10 +288,8 @@ function DummyBadge:OnUpdate(dt)
         DoTransitionTask(self)
     end
 
-    local moisture_rate_assuming_rain = self.owner.components.moisture and self.owner.components.moisture:_GetMoistureRateAssumingRain()
-    if moisture_rate_assuming_rain then
-        acidsizzling_rate = acidsizzling_rate * moisture_rate_assuming_rain
-    end
+    local moisture_rate_assuming_rain = self.owner.replica.moisture and self.owner.replica.moisture:GetMoistureRate()
+    acidsizzling_rate = acidsizzling_rate * moisture_rate_assuming_rain
 
     local sanity_rate = sanity and sanity:GetRate() or 0
     local firedamage_rate = - self.owner._firedamage_rate:value()
