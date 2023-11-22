@@ -9,6 +9,8 @@ local UpvalueUtil = GlassicAPI.UpvalueUtil
 
 NS_ACTIONS = {
     GEMTRADE = Action({priority = 3, mount_valid = true}),
+    LUNARSHADOWCHARGE = Action({mount_valid=true}),
+    LUNARSHADOWSTATE = Action({mount_valie =true, rmb = true}),
     MIOFUEL = Action({priority = 3, mount_valid = true}),
     MIOEATFUEL = Action({priority = 4, mount_valid = true}),
     NIGHTSWITCH = Action({priority = 1, mount_valid = true}),
@@ -16,7 +18,6 @@ NS_ACTIONS = {
     FUELPOCKETWATCH = Action({priority = 3, rmb = true}),
     MUTATETOTEM = Action({priority = 3, rmb = true}),
     -- LUNARSHADOW = Action({mount_valid=true}),
-    LUNARSHADOW_CHARGE = Action({mount_valid=true}),
     TOGGLETOTEM = Action({mount_valid=true}),
 }
 
@@ -28,7 +29,8 @@ NS_ACTIONS.MUTATETOTEM.str = STRINGS.ACTIONS.GIVE.SOCKET
 NS_ACTIONS.TOGGLETOTEM.str = STRINGS.ACTIONS.TOGGLETOTEM
 NS_ACTIONS.FUELPOCKETWATCH.str = STRINGS.ACTIONS.FUELPOCKETWATCH
 -- NS_ACTIONS.LUNARSHADOW.str = STRINGS.ACTIONS.GIVE.SOCKET
-NS_ACTIONS.LUNARSHADOW_CHARGE.str = STRINGS.ACTIONS.LUNARSHADOW_CHARGE
+NS_ACTIONS.LUNARSHADOWCHARGE.str = STRINGS.ACTIONS.LUNARSHADOWCHARGE
+NS_ACTIONS.LUNARSHADOWSTATE.str = STRINGS.ACTIONS.LUNARSHADOWSTATE
 
 NS_ACTIONS.MIOFUEL.stroverridefn = function(act)
     if act.invobject then
@@ -317,9 +319,9 @@ end
 --     end
 -- end
 
--- [[ Moonlight Shadow: Charge ]] --
+-- [[ Lunar Shadow ]] --
 
-NS_ACTIONS.LUNARSHADOW_CHARGE.fn = function(act)
+NS_ACTIONS.LUNARSHADOWCHARGE.fn = function(act)
     local doer = act.doer
     local target = act.target
     local item = act.invobject
@@ -343,6 +345,12 @@ NS_ACTIONS.LUNARSHADOW_CHARGE.fn = function(act)
     return true
 end
 
+NS_ACTIONS.LUNARSHADOWSTATE.fn = function(act)
+    local current_state = act.invobject.state:value()
+    act.invobject:SetLunarState(not current_state)
+    act.doer.SoundEmitter:PlaySound("aqol/new_test/gem")
+    return true
+end
 ---------------------------------------------------------------------
 ----------------------- COMPONENT ACTIONS ---------------------------
 ---------------------------------------------------------------------
@@ -477,9 +485,27 @@ end)
 
 AddComponentAction("USEITEM", "lunarshadowbattery", function(inst, doer, target, actions, right)
     if target.prefab == "lunarshadow" then
-        table.insert(actions, ACTIONS.LUNARSHADOW_CHARGE)
+        table.insert(actions, ACTIONS.LUNARSHADOWCHARGE)
     end
 end)
+
+AddComponentAction("INVENTORY", "lunarshadowstate", function(inst, doer, actions, right)
+    if doer.replica.inventory and
+        not doer.components.playercontroller.isclientcontrollerattached and
+        (right or doer.components.playercontroller:IsControlPressed(CONTROL_FORCE_INSPECT))
+        then
+            table.insert(actions, NS_ACTIONS.LUNARSHADOWSTATE)
+    end
+end)
+
+-- AddComponentAction("USEITEM", "lunarshadowstate", function(inst, doer, target, actions, right)
+--     if doer.replica.inventory and
+--         not doer.components.playercontroller.isclientcontrollerattached and
+--         (right or doer.components.playercontroller:IsControlPressed(CONTROL_FORCE_INSPECT))
+--         then
+--             table.insert(actions, NS_ACTIONS.LUNARSHADOWSTATE)
+--     end
+-- end)
 
 -- AddComponentAction("USEITEM", "glasssocket", function(inst, doer, target, actions, right)
 --     if target.prefab == "sword_lunarplant" then
@@ -507,7 +533,8 @@ for _, sg in ipairs({"wilson", "wilson_client"}) do
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.MUTATETOTEM, "doshortaction"))
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.TOGGLETOTEM, "doshortaction"))
     -- AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.LUNARSHADOW, "doglassicbuild"))
-    AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.LUNARSHADOW_CHARGE, "doshortaction"))
+    AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.LUNARSHADOWCHARGE, "doshortaction"))
+    AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.LUNARSHADOWSTATE, "dolongaction"))
 end
 
 --------------------------------------------------------------------------------

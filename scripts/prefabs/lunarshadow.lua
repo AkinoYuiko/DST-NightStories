@@ -497,6 +497,7 @@ local function fn()
     inst.base_damage = TUNING.LUNARSHADOW.BASE_DAMAGE
     inst.buffed_atks = 0
 
+    inst:AddComponent("lunarshadowstate")
     inst:AddComponent("planardamage")
     inst:AddComponent("damagetypebonus")
 
@@ -515,6 +516,8 @@ local function fn()
     set_lunar(inst)
 
     MakeHauntableLaunch(inst)
+
+    inst.SetLunarState = set_lunarstate
 
     inst.OnSave = onsave
     inst.OnLoad = onload
