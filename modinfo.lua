@@ -6,19 +6,19 @@ local function zheng(zh, en)
     return LOC[locale] or en
 end
 
-version = "1.51.4"
+version = "1.51.5"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng([[
-- 修复了几处代码逻辑问题。
+- 调整了澪吃燃料的动作优先级。
 
 - 新皮肤：莫西鸭魔杖。
 - 达米的仪表盘适配酸雨。
 - 月光粉可以保护玩家免收月灵攻击。
 - 新皮肤：麋鹿鸭手杖。
 ]], [[
-- Fix more code logic issue.
+- Tweak action priority of Mio-Eating-Fuel.
 
 - New skin: Mossia Staff.
 - Dummy's Health-Sanity Meter fit for acid rain.
