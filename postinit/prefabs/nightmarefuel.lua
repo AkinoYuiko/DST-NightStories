@@ -10,12 +10,12 @@ local foodvalue =
 
 FOODTYPE.NIGHTMAREFUEL = "NIGHTMAREFUEL"
 local Eater = require("components/eater")
-function Eater:SetCanEatNightmareFuel()
-    table.insert(self.preferseating, FOODTYPE.NIGHTMAREFUEL)
-    table.insert(self.caneat, FOODTYPE.NIGHTMAREFUEL)
-    if not self.inst:HasTag(FOODTYPE.NIGHTMAREFUEL.."_eater") then
-        self.inst:AddTag(FOODTYPE.NIGHTMAREFUEL.."_eater")
+local prefers_to_eat = Eater.PrefersToEat
+function Eater:PrefersToEat(food)
+    if food and food.components.nightfuel and self.inst:HasTag("nightfueleater") then
+        return true
     end
+    return prefers_to_eat(self, food)
 end
 
 local SCALE = 0.4
@@ -41,6 +41,7 @@ AddPrefabPostInit("nightmarefuel", function(inst)
     inst.components.edible:SetOnEatenFn(oneaten)
 
     inst:AddComponent("fuelpocketwatch")
+    inst:AddComponent("nightfuel")
 end)
 
 -- if not Prefabs["horrorfuel"] then return end
@@ -55,4 +56,5 @@ AddPrefabPostInit("horrorfuel", function(inst)
     inst.components.edible:SetOnEatenFn(oneaten)
 
     inst:AddComponent("fuelpocketwatch")
+    inst:AddComponent("nightfuel")
 end)

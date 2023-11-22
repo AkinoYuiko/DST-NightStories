@@ -10,6 +10,7 @@ local UpvalueUtil = GlassicAPI.UpvalueUtil
 NS_ACTIONS = {
     GEMTRADE = Action({priority = 3, mount_valid = true}),
     MIOFUEL = Action({priority = 3, mount_valid = true}),
+    MIOEATFUEL = Action({priority = 4, mount_valid = true}),
     NIGHTSWITCH = Action({priority = 1, mount_valid = true}),
     NIGHTSWORD = Action({priority = 2, mount_valid = true}),
     FUELPOCKETWATCH = Action({priority = 3, rmb = true}),
@@ -22,6 +23,7 @@ NS_ACTIONS = {
 NS_ACTIONS.GEMTRADE.str = STRINGS.ACTIONS.GIVE.SOCKET
 NS_ACTIONS.NIGHTSWITCH.str = STRINGS.ACTIONS.USEITEM
 NS_ACTIONS.NIGHTSWORD.str = STRINGS.ACTIONS.GIVE.SOCKET
+NS_ACTIONS.MIOEATFUEL.str = STRINGS.ACTIONS.EAT
 NS_ACTIONS.MUTATETOTEM.str = STRINGS.ACTIONS.GIVE.SOCKET
 NS_ACTIONS.TOGGLETOTEM.str = STRINGS.ACTIONS.TOGGLETOTEM
 NS_ACTIONS.FUELPOCKETWATCH.str = STRINGS.ACTIONS.FUELPOCKETWATCH
@@ -169,6 +171,16 @@ NS_ACTIONS.MIOFUEL.fn = function(act)
             else
                 act.doer.components.inventory:GiveItem(fuel)
             end
+        end
+    end
+end
+
+-- [[ Mio Eat Fuel ]] --
+NS_ACTIONS.MIOEATFUEL.fn = function(act)
+    local obj = act.target or act.invobject
+    if obj ~= nil then
+        if obj.components.nightfuel and act.doer:HasTag("nightfueleater") then
+            return act.doer.components.eater:Eat(obj, act.doer)
         end
     end
 end
@@ -356,6 +368,26 @@ AddComponentAction("USEITEM", "fuel", function(inst, doer, target, actions, righ
     end
 end)
 
+AddComponentAction("INVENTORY", "nightfuel", function(inst, doer, actions, right)
+    if doer.replica.inventory and
+        not doer.components.playercontroller.isclientcontrollerattached and
+        (right or doer.components.playercontroller:IsControlPressed(CONTROL_FORCE_INSPECT))
+        then
+            local hand_item = doer.replica.inventory:GetEquippedItem(EQUIPSLOTS.HANDS)
+            if hand_item and hand_item.replica.container and hand_item.replica.container:IsOpenedBy(doer) and hand_item.replica.container:CanTakeItemInSlot(inst) then
+                table.insert(actions, ACTIONS.CHANGE_TACKLE)
+            end
+    elseif doer:HasTag("nightfueleater") then
+        table.insert(actions, NS_ACTIONS.MIOEATFUEL)
+    end
+end)
+
+AddComponentAction("USEITEM", "nightfuel", function(inst, doer, target, actions)
+    if doer == target and target:HasTag("nightfueleater") then
+        table.insert(actions, NS_ACTIONS.MIOEATFUEL)
+    end
+end)
+
 AddComponentAction("USEITEM", "fuelpocketwatch", function(inst, doer, target, actions, right)
     if right and (inst.prefab == "nightmarefuel" or inst.prefab == "horrorfuel") and doer:HasTag("nightmare_twins")
     and target.prefab == "pocketwatch_recall" and target:HasTag("pocketwatch_inactive") and not target:HasTag("recall_unmarked")
@@ -467,6 +499,7 @@ for _, sg in ipairs({"wilson", "wilson_client"}) do
     -- AddStategraphState(sg, glassic_state)
 
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.MIOFUEL, "doshortaction"))
+    AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.MIOEATFUEL, "quickeat"))
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.GEMTRADE, "doshortaction"))
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.NIGHTSWORD, "doshortaction"))
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.NIGHTSWITCH, "domediumaction"))

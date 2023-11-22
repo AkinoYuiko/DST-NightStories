@@ -215,8 +215,6 @@ end
 
 local function on_becameghost(inst)
     if inst.boosted_task then
-        -- inst.boosted_task:Cancel()
-        -- inst.boosted_task = nil
         inst.boost_time = 0
         on_update(inst, 0)
     end
@@ -241,6 +239,7 @@ local common_postinit = function(inst)
     inst:AddTag("reader")
     inst:AddTag("nightstorychar")
     inst:AddTag("nightmare_twins")
+    inst:AddTag("nightfueleater")
     -- Minimap icon
     inst.MiniMapEntity:SetIcon("miotan.tex")
 end
@@ -273,7 +272,6 @@ local master_postinit = function(inst)
     inst:ListenForEvent("isinsanitymodedirty", on_sanity_mode_change)
 
     if inst.components.eater then
-        inst.components.eater:SetCanEatNightmareFuel()
         inst.components.eater.stale_hunger = TUNING.MIOTAN_STALE_HUNGER_RATE
         inst.components.eater.stale_health = TUNING.MIOTAN_STALE_HEALTH_RATE
         inst.components.eater.spoiled_hunger = TUNING.MIOTAN_SPOILED_HUNGER_RATE
