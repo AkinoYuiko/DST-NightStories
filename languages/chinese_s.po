@@ -1728,7 +1728,7 @@ msgstr "手丈"
 
 #. STRINGS.SKIN_NAMES.cane_mossling
 msgctxt "STRINGS.SKIN_NAMES.cane_mossling"
-msgid "Mossling"
+msgid "Mosling Cane"
 msgstr "麋鹿鸭手杖"
 
 #. STRINGS.SKIN_NAMES.civi_none

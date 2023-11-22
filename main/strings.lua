@@ -173,7 +173,7 @@ local strings = {
         krampus_sack_invisible = "Pantomimed Krampus Sack",
         -- Glassic items
         cane_glass = "Gane",
-        cane_mossling = "Mossling",
+        cane_mossling = "Mosling Cane",
         glassiccutter_dream = "Musou Isshin",
         goldenaxe_victorian = "Fanciful Luxury Axe",
         moonglassaxe_northern = "Moon Nordic Axe",

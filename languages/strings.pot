@@ -1695,7 +1695,7 @@ msgstr ""
 
 #. STRINGS.SKIN_NAMES.cane_mossling
 msgctxt "STRINGS.SKIN_NAMES.cane_mossling"
-msgid "Mossling"
+msgid "Mosling Cane"
 msgstr ""
 
 #. STRINGS.SKIN_NAMES.civi_none
