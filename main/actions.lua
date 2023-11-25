@@ -10,14 +10,13 @@ local UpvalueUtil = GlassicAPI.UpvalueUtil
 NS_ACTIONS = {
     GEMTRADE = Action({priority = 3, mount_valid = true}),
     LUNARSHADOWCHARGE = Action({mount_valid=true}),
-    LUNARSHADOWSTATE = Action({mount_valie =true, rmb = true}),
+    LUNARSHADOWSTATE = Action({priority=1, mount_valie =true, rmb = true}),
     MIOFUEL = Action({priority = 3, mount_valid = true}),
     MIOEATFUEL = Action({priority = 4, mount_valid = true}),
     NIGHTSWITCH = Action({priority = 1, mount_valid = true}),
     NIGHTSWORD = Action({priority = 2, mount_valid = true}),
     FUELPOCKETWATCH = Action({priority = 3, rmb = true}),
     MUTATETOTEM = Action({priority = 3, rmb = true}),
-    -- LUNARSHADOW = Action({mount_valid=true}),
     TOGGLETOTEM = Action({mount_valid=true}),
 }
 
@@ -28,7 +27,6 @@ NS_ACTIONS.MIOEATFUEL.str = STRINGS.ACTIONS.EAT
 NS_ACTIONS.MUTATETOTEM.str = STRINGS.ACTIONS.GIVE.SOCKET
 NS_ACTIONS.TOGGLETOTEM.str = STRINGS.ACTIONS.TOGGLETOTEM
 NS_ACTIONS.FUELPOCKETWATCH.str = STRINGS.ACTIONS.FUELPOCKETWATCH
--- NS_ACTIONS.LUNARSHADOW.str = STRINGS.ACTIONS.GIVE.SOCKET
 NS_ACTIONS.LUNARSHADOWCHARGE.str = STRINGS.ACTIONS.LUNARSHADOWCHARGE
 NS_ACTIONS.LUNARSHADOWSTATE.str = STRINGS.ACTIONS.LUNARSHADOWSTATE
 
@@ -490,28 +488,18 @@ AddComponentAction("USEITEM", "lunarshadowbattery", function(inst, doer, target,
 end)
 
 AddComponentAction("INVENTORY", "lunarshadowstate", function(inst, doer, actions, right)
-    if doer.replica.inventory and
-        not doer.components.playercontroller.isclientcontrollerattached and
-        (right or doer.components.playercontroller:IsControlPressed(CONTROL_FORCE_INSPECT))
-        then
+    if not doer.components.playercontroller.isclientcontrollerattached and
+        ( right or
+            doer.components.playercontroller:IsControlPressed(CONTROL_FORCE_INSPECT)
+        ) then
+        table.insert(actions, NS_ACTIONS.LUNARSHADOWSTATE)
+    else
+        local equippable = inst.replica.equippable
+        if equippable and equippable:IsEquipped() then
             table.insert(actions, NS_ACTIONS.LUNARSHADOWSTATE)
+        end
     end
 end)
-
--- AddComponentAction("USEITEM", "lunarshadowstate", function(inst, doer, target, actions, right)
---     if doer.replica.inventory and
---         not doer.components.playercontroller.isclientcontrollerattached and
---         (right or doer.components.playercontroller:IsControlPressed(CONTROL_FORCE_INSPECT))
---         then
---             table.insert(actions, NS_ACTIONS.LUNARSHADOWSTATE)
---     end
--- end)
-
--- AddComponentAction("USEITEM", "glasssocket", function(inst, doer, target, actions, right)
---     if target.prefab == "sword_lunarplant" then
---         table.insert(actions, ACTIONS.LUNARSHADOW)
---     end
--- end)
 
 -- local glassic_state = State({
 --     name = "doglassicbuild",
