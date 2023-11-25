@@ -2,13 +2,15 @@ local Utils = require "ns_utils"
 
 local assets =
 {
-    Asset("ANIM", "anim/sword_lunarplant.zip"),
+    Asset("ANIM", "anim/lunarshadow.zip"),
+    Asset("ANIM", "anim/lunarshadow_shadow.zip"),
+    -- Asset("ANIM", "anim/sword_lunarplant.zip"),
     Asset("ANIM", "anim/inventory_fx_lunar.zip"),
 }
 
 local prefabs =
 {
-    "sword_lunarplant_blade_fx",
+    "lunarshadow_blade_fx",
     "hitsparks_fx",
     "lunarplanttentacle",
     "glash",
@@ -157,7 +159,6 @@ end
 local function set_lunar(inst)
     if not inst.state:value() then
         inst.state:set(true)
-        -- inst.components.inventoryitem:ChangeImageName("lunarshadow_lunar")
         inst.components.forgerepairable:SetRepairMaterial(FORGEMATERIALS.LUNARPLANT)
         inst.components.planardamage:SetBaseDamage(TUNING.LUNARSHADOW.LUNAR_PLANAR_DAMAGE)
         inst.components.damagetypebonus:RemoveBonus("lunar_aligned", inst, "lunarshadow")
@@ -166,13 +167,18 @@ local function set_lunar(inst)
         inst:RemoveComponent("shadowlevel")
         inst:RemoveTag("shadow_item")
         refresh_bonus(inst)
+        -- anim and icon --
+        local STATE_BUILD = "lunarshadow"
+        inst.AnimState:SetBuild(STATE_BUILD)
+        inst.blade1.AnimState:SetBuild(STATE_BUILD)
+        inst.blade2.AnimState:SetBuild(STATE_BUILD)
+        inst.components.inventoryitem:ChangeImageName(STATE_BUILD)
     end
 end
 
 local function set_shadow(inst)
     if inst.state:value() then
         inst.state:set(false)
-        -- inst.components.inventoryitem:ChangeImageName("lunarshadow_shadow")
         inst.components.forgerepairable:SetRepairMaterial(FORGEMATERIALS.VOIDCLOTH)
         inst.components.planardamage:SetBaseDamage(TUNING.LUNARSHADOW.SHADOW_PLANAR_DAMAGE)
         inst.components.damagetypebonus:RemoveBonus("shadow_aligned", inst, "lunarshadow")
@@ -182,6 +188,12 @@ local function set_shadow(inst)
         inst.components.shadowlevel:SetDefaultLevel(TUNING.LUNARSHADOW.SHADOW_LEVEL)
         inst:AddTag("shadow_item")
         refresh_bonus(inst)
+        -- anim and icon --
+        local STATE_BUILD = "lunarshadow_shadow"
+        inst.AnimState:SetBuild(STATE_BUILD)
+        inst.blade1.AnimState:SetBuild(STATE_BUILD)
+        inst.blade2.AnimState:SetBuild(STATE_BUILD)
+        inst.components.inventoryitem:ChangeImageName(STATE_BUILD)
     end
 end
 
@@ -325,14 +337,15 @@ local function on_isbroken_dirty(inst)
     end
 end
 
-local SWAP_DATA_BROKEN = { bank = "sword_lunarplant", anim = "broken" }
-local SWAP_DATA = { bank = "sword_lunarplant", sym_build = "sword_lunarplant", sym_name = "swap_sword_lunarplant" }
+local SWAP_DATA_BROKEN = { bank = "lunarshadow", anim = "broken" }
+local SWAP_DATA = { bank = "lunarshadow", sym_build = "lunarshadow", sym_name = "swap_lunarshadow" }
+local SWAP_DATA_SHADOW = { bank = "lunarshadow", sym_build = "lunarshadow_shadow", sym_name = "swap_lunarshadow" }
 
 local function set_isbroken(inst, isbroken)
     if isbroken then
         inst.components.floater:SetBankSwapOnFloat(false, nil, SWAP_DATA_BROKEN)
     else
-        inst.components.floater:SetBankSwapOnFloat(true, -17.5, SWAP_DATA)
+        inst.components.floater:SetBankSwapOnFloat(true, -17.5, inst.state:value() and SWAP_DATA or SWAP_DATA_SHADOW)
     end
     inst.isbroken:set(isbroken)
     on_isbroken_dirty(inst)
@@ -471,8 +484,8 @@ local function fn()
 
     local frame = math.random(inst.AnimState:GetCurrentAnimationNumFrames()) - 1
     inst.AnimState:SetFrame(frame)
-    inst.blade1 = SpawnPrefab("sword_lunarplant_blade_fx")
-    inst.blade2 = SpawnPrefab("sword_lunarplant_blade_fx")
+    inst.blade1 = SpawnPrefab("lunarshadow_blade_fx")
+    inst.blade2 = SpawnPrefab("lunarshadow_blade_fx")
     inst.blade2.AnimState:PlayAnimation("swap_loop2", true)
     inst.blade1.AnimState:SetFrame(frame)
     inst.blade2.AnimState:SetFrame(frame)
@@ -529,5 +542,38 @@ local function fn()
     return inst
 end
 
+local function fxfn()
+    local inst = CreateEntity()
+
+    inst.entity:AddTransform()
+    inst.entity:AddAnimState()
+    inst.entity:AddFollower()
+    inst.entity:AddNetwork()
+
+    inst:AddTag("FX")
+
+    inst.AnimState:SetBank("lunarshadow")
+    inst.AnimState:SetBuild("lunarshadow")
+    inst.AnimState:PlayAnimation("swap_loop1", true)
+    inst.AnimState:SetSymbolBloom("pb_energy_loop01")
+    inst.AnimState:SetSymbolLightOverride("pb_energy_loop01", .5)
+    inst.AnimState:SetLightOverride(.1)
+
+    inst:AddComponent("highlightchild")
+
+    inst.entity:SetPristine()
+
+    if not TheWorld.ismastersim then
+        return inst
+    end
+
+    inst:AddComponent("colouradder")
+
+    inst.persists = false
+
+    return inst
+end
+
 return Prefab("lunarshadow", fn, assets, prefabs),
+    Prefab("lunarshadow_blade_fx", fxfn, assets),
     Prefab("moonlight_shadow", fn, assets, prefabs)
