@@ -6,13 +6,15 @@ local function zheng(zh, en)
     return LOC[locale] or en
 end
 
-version = "1.51.8"
+version = "1.51.9"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng([[
-- 修复月影的图标和动画问题。
+- 黑水晶和白水晶可以作为月影的能源了。
+- Civi可以转换纯粹辉煌/纯粹恐惧了。
 
+- 修复月影的图标和动画问题。
 - 月影新造型（临时）
 - 月影现在可以手动改变形态了（物品栏按住ALT）。
 - 调整了澪吃燃料的动作优先级。
@@ -21,8 +23,10 @@ changelog = zheng([[
 - 月光粉可以保护玩家免收月灵攻击。
 - 新皮肤：麋鹿鸭手杖。
 ]], [[
-- Fix issue for image and anim of Lunar Shadow.
+- Lunar Shadow now accpets Dark Crystal and Light Crystal.
+- Civi can transform Pure Brilliance and Pure Horror.
 
+- Fix issue for image and anim of Lunar Shadow.
 - New icon and anim for Lunar Shadow (TEMP).
 - Lunar Shadow can switch state in inventory(HOLDING ALT).
 - Tweak action priority of Mio-Eating-Fuel.
