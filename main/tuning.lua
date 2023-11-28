@@ -149,11 +149,15 @@ TUNING.LUNARSHADOW =
     SETBONUS_PLANAR_DAMAGE = 5,
     BATTERIES =
     {
+        -- Lunar > 0
         moonglass = 5,
         moonglass_charged = 20,
         purebrilliance = 50,
+        lightcrystal = 40,
+        -- Shadow < 0
         nightmarefuel = -10,
         horrorfuel = -50,
+        darkcrystal = -40,
     },
     SHADOW_LEVEL = 2,
 }
