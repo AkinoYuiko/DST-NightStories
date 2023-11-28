@@ -48,10 +48,10 @@ STRINGS.NAMES.DUMMY_NIGHTMAREFUEL = STRINGS.NAMES.NIGHTMAREFUEL
 ------- Civi -------
 --------------------
 -- 红宝石 --
-AddRecipe("civi_redgem", {Ingredient("bluegem", 1), Ingredient("nightmarefuel", 1)}, TECH.CELESTIAL_ONE, {nounlock = true, nochar = true, builder_tag = "ns_builder_civi", product = "redgem", hidden = true})
+AddRecipe("civi_redgem", {Ingredient("bluegem", 1), Ingredient("nightmarefuel", 1)}, TECH.CELESTIAL_ONE, {nounlock = true, nochar = true, nomods = true, builder_tag = "ns_builder_civi", product = "redgem", hidden = true})
 
 -- 蓝宝石 --
-AddRecipe("civi_bluegem", {Ingredient("redgem", 1), Ingredient("nightmarefuel", 1)}, TECH.CELESTIAL_ONE, {nounlock = true, nochar = true, builder_tag = "ns_builder_civi", product = "bluegem", hidden = true})
+AddRecipe("civi_bluegem", {Ingredient("redgem", 1), Ingredient("nightmarefuel", 1)}, TECH.CELESTIAL_ONE, {nounlock = true, nochar = true, nomods = true, builder_tag = "ns_builder_civi", product = "bluegem", hidden = true})
 SortAfter("civi_bluegem", "civi_redgem")
 
 -- 黑水晶
@@ -61,6 +61,14 @@ SortAfter("darkcrystal", "purplegem")
 -- 白水晶
 AddRecipe("lightcrystal", {Ingredient("purplegem", 1), Ingredient("nightmarefuel", 4)}, TECH.NONE, {nomods = true, builder_tag = "ns_builder_civi", no_deconstruction = true})
 SortAfter("lightcrystal", "darkcrystal")
+
+-- 纯粹辉煌
+AddRecipe("civi_purebrilliance", {Ingredient("horrorfuel", 1), Ingredient("moonglass", 1)}, TECH.LUNARFORGING_TWO, {nounlock = true, nochar = true, nomods = true, builder_tag = "ns_builder_civi", product = "purebrilliance", hidden = true})
+SortAfter("civi_purebrilliance", "lunarplant_kit")
+
+-- 纯粹恐惧
+AddRecipe("civi_horrorfuel", {Ingredient("purebrilliance", 1), Ingredient("nightmarefuel", 1)}, TECH.SHADOWFORGING_TWO, {nounlock = true, nochar = true, nomods = true, builder_tag = "ns_builder_civi", product = "horrorfuel", hidden = true})
+SortAfter("civi_horrorfuel", "voidcloth_kit")
 
 -- 影背包 --
 AddRecipe("nightpack", {Ingredient("darkcrystal", 1), Ingredient("lightcrystal", 1), Ingredient("nightmarefuel", 5)}, TECH.CELESTIAL_ONE, {nounlock = true, builder_tag = "ns_builder_civi"})
