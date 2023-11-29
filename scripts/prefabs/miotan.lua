@@ -153,6 +153,16 @@ local function end_boost(inst)
     end
 end
 
+local function set_sanity_dapperness(inst)
+    local daydrain = TheWorld.state.isday and not TheWorld:HasTag("cave")
+    local sanity = inst.components.sanity
+    if sanity.mode == 1 and not daydrain then -- LUNACY BUT NOT IN DAYTIME
+        sanity.dapperness = 0
+    else
+        sanity.dapperness = TUNING.MIOTAN_SANITY_DAPPERNESS
+    end
+end
+
 local function on_update(inst, dt)
     inst.boost_time = inst.boost_time - dt
     if inst.boost_time <= 0 then
@@ -198,19 +208,11 @@ end
 
 local function on_load(inst, data)
     if data and data.boost_time then start_boost(inst, data.boost_time) end
+    set_sanity_dapperness(inst)
 end
 
 local function on_save(inst, data)
     data.boost_time = inst.boost_time > 0 and inst.boost_time or nil
-end
-
-local function on_sanity_mode_change(inst)
-    local daydrain = TheWorld.state.isday and not TheWorld:HasTag("cave")
-    if inst.components.sanity.mode == 1 and not daydrain then -- LUNACY BUT NOT IN DAYTIME
-        inst.components.sanity.dapperness = 0
-    else
-        inst.components.sanity.dapperness = TUNING.MIOTAN_SANITY_DAPPERNESS
-    end
 end
 
 local function on_becameghost(inst)
@@ -269,7 +271,8 @@ local master_postinit = function(inst)
     inst.components.sanity.night_drain_mult = TUNING.MIOTAN_SANITY_NIGHT_MULT
     inst.components.sanity.neg_aura_mult = TUNING.MIOTAN_SANITY_MULT
 
-    inst:ListenForEvent("isinsanitymodedirty", on_sanity_mode_change)
+    inst:ListenForEvent("sanitydelta", set_sanity_dapperness)
+    inst:ListenForEvent("isinsanitymodedirty", set_sanity_dapperness)
 
     if inst.components.eater then
         inst.components.eater.stale_hunger = TUNING.MIOTAN_STALE_HUNGER_RATE
