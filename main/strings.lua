@@ -95,6 +95,7 @@ local strings = {
         CHESSPIECE_HEADUCK_BUILDER = "Headuck Figure",
 
         BOOK_WETNESS = "The Wetness",
+        SKILLTREE_RESPEC_TOOL = STRINGS.SKILLTREE.RESPEC,
         -- Glassic items
 
         GLASSICCUTTER = "Glassic Cutter",
@@ -131,6 +132,7 @@ local strings = {
         NIGHTMARE_SPEAR = "Disappear in a moment.",
 
         BATTLERUINSHAT = "Complete with ancient force field!",
+        SKILLTREE_RESPEC_TOOL = "Quick way to reset insight.",
 
         -- MOONLIGHT_SHADOW = "A sword with super power of lunar light.",
         LUNARSHADOW = "A sword with super power of both lunar light and nightmare.",

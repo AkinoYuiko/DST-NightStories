@@ -110,6 +110,10 @@ SortAfter("blackholestaff", "greenstaff")
 ------- Other -------
 ---------------------
 
+-- Reset Skill Tree --
+AddRecipe("skilltree_respec_tool", {Ingredient("moonglass", 1), Ingredient("nightmarefuel", 1)}, TECH.NONE, {builder_tag = "player", nomods = true})
+SortBefore("skilltree_respec_tool", "transmute_log")
+
 -- 月影 --
 AddRecipe("lunarshadow", {Ingredient("security_pulse_cage_full", 1), Ingredient("sword_lunarplant", 1), Ingredient("voidcloth_scythe", 1)}, TECH.LUNARFORGING_TWO, {nounlock=true, station_tag="lunar_forge", no_deconstruction = true})
 SortAfter("lunarshadow", "houndstooth_blowpipe")

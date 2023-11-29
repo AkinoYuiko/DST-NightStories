@@ -40,7 +40,7 @@ msgstr ""
 
 #. STRINGS.ACTIONS.LUNARSHADOWSTATE
 msgctxt "STRINGS.ACTIONS.LUNARSHADOWSTATE"
-msgid "Charge"
+msgid "Switch State"
 msgstr ""
 
 #. STRINGS.ACTIONS.TOGGLETOTEM.OFF
@@ -1526,6 +1526,11 @@ msgstr ""
 #. STRINGS.RECIPE_DESC.REDGEM
 msgctxt "STRINGS.RECIPE_DESC.REDGEM"
 msgid "Change ice into fire."
+msgstr ""
+
+#. STRINGS.RECIPE_DESC.SKILLTREE_RESPEC_TOOL
+msgctxt "STRINGS.RECIPE_DESC.SKILLTREE_RESPEC_TOOL"
+msgid "Quick way to reset insight."
 msgstr ""
 
 #. STRINGS.RECIPE_DESC.SPICE_CACTUS
