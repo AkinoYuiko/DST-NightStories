@@ -3,6 +3,7 @@ local SortAfter = GlassicAPI.RecipeSortAfter
 local SortBefore = GlassicAPI.RecipeSortBefore
 local AddDeconstructRecipe = AddDeconstructRecipe
 local AddPlayerPostInit = AddPlayerPostInit
+local AddPrefabPostInit = AddPrefabPostInit
 GLOBAL.setfenv(1, GLOBAL)
 
 local function add_tech(tech_name, merge_table, brainjelly)
@@ -111,7 +112,7 @@ SortAfter("blackholestaff", "greenstaff")
 ---------------------
 
 -- Reset Skill Tree --
-AddRecipe("skilltree_respec_tool", {Ingredient("moonglass", 1), Ingredient("nightmarefuel", 1)}, TECH.NONE, {builder_tag = "player", nomods = true})
+AddRecipe("skilltree_respec_tool", {Ingredient("moonglass", 1), Ingredient("nightmarefuel", 1)}, TECH.NONE, {builder_tag = "skilltree_characters", nomods = true})
 SortBefore("skilltree_respec_tool", "transmute_log")
 
 -- 月影 --
@@ -197,4 +198,16 @@ function SkillTreeUpdater:DeactivateSkill(...)
     self.skilltree.skip_validation = true
     deactivate_skill(self, ...)
     self.skilltree.skip_validation = prev
+end
+
+local SKILLTREE_CHARACTERS = {
+    "wilson",
+    "woodie",
+    "wolfgang",
+    "wormwood",
+}
+for _, char in ipairs(SKILLTREE_CHARACTERS) do
+    AddPrefabPostInit(char, function(inst)
+        inst:AddTag("skilltree_characters")
+    end)
 end
