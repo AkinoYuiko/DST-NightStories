@@ -1,52 +1,15 @@
-local RECIPE_BUILDER_TAG_LOOKUP =
+local WILSON_BUILDER_TAG =
 {
     "alchemist",
-    "balloonomancer",
-    "battlesinger",
-    "bookbuilder",
-    "clockmaker",
-    "elixirbrewer",
     "gem_alchemistI",
     "gem_alchemistII",
     "gem_alchemistIII",
-    "ghostlyfriend",
-    "handyperson",
     "ick_alchemistI",
     "ick_alchemistII",
     "ick_alchemistIII",
-    "leifidolcrafter",
-    "masterchef",
-    "merm_builder",
     "ore_alchemistI",
     "ore_alchemistII",
     "ore_alchemistIII",
-    "pebblemaker",
-    "pinetreepioneer",
-    "plantkin",
-    "saplingcrafter",
-    "berrybushcrafter",
-    "juicyberrybushcrafter",
-    "reedscrafter",
-    "lureplantcrafter",
-    "syrupcrafter",
-    "carratcrafter",
-    "lightfliercrafter",
-    "fruitdragoncrafter",
-    "professionalchef",
-    "pyromaniac",
-    "shadowmagic",
-    "skill_wilson_allegiance_lunar",
-    "skill_wilson_allegiance_shadow",
-    "spiderwhisperer",
-    "strongman",
-    "upgrademoduleowner",
-    "valkyrie",
-    "werehuman",
-    "wolfgang_coach",
-    "wolfgang_dumbbell_crafting",
-    "woodcarver1",
-    "woodcarver2",
-    "woodcarver3",
 }
 
 local function reset_skill_tree(player)
@@ -62,7 +25,7 @@ local function reset_skill_tree(player)
         end
         skilltreeupdater.skilltree.skip_validation = nil
 
-        for _, tag in ipairs(RECIPE_BUILDER_TAG_LOOKUP) do
+        for _, tag in ipairs(WILSON_BUILDER_TAG) do
             player:RemoveTag(tag)
         end
 
