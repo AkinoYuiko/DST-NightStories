@@ -188,3 +188,13 @@ AddPlayerPostInit(function(inst)
     end
     clear_nounlock_recipes(inst)
 end)
+
+-- [[ Reset Insight ]] --
+local SkillTreeUpdater = require("components/skilltreeupdater")
+local deactivate_skill = SkillTreeUpdater.DeactivateSkill
+function SkillTreeUpdater:DeactivateSkill(...)
+    local prev = self.skilltree.skip_validation
+    self.skilltree.skip_validation = true
+    deactivate_skill(self, ...)
+    self.skilltree.skip_validation = prev
+end
