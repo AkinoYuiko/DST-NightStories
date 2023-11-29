@@ -14,6 +14,7 @@ changelog = zheng([[
 - 黑水晶和白水晶可以作为月影的能源了。
 - Civi可以转换纯粹辉煌/纯粹恐惧了。
 
+版本更改历史：
 - 修复月影的图标和动画问题。
 - 月影新造型（临时）
 - 月影现在可以手动改变形态了（物品栏按住ALT）。
@@ -26,6 +27,7 @@ changelog = zheng([[
 - Lunar Shadow now accpets Dark Crystal and Light Crystal.
 - Civi can transform Pure Brilliance and Pure Horror.
 
+Version Change Notes:
 - Fix issue for image and anim of Lunar Shadow.
 - New icon and anim for Lunar Shadow (TEMP).
 - Lunar Shadow can switch state in inventory(HOLDING ALT).
@@ -37,7 +39,7 @@ changelog = zheng([[
 - New skin: Mossling Cane.
 ]])
 description = zheng("版本: ", "Version: ") .. version ..
-    zheng("\n\n更新内容:\n", "\n\nChangelog:\n") .. changelog .. "\n" ..
+    zheng("\n\n本次更改内容:\n", "\n\nChange:\n") .. changelog .. "\n" ..
     zheng("“黑夜将至，你准备好了吗？”", "\"Night is coming, aren't you ready yet?\"")
 
 priority = 25
