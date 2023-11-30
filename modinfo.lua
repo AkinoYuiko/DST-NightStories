@@ -6,37 +6,18 @@ local function zheng(zh, en)
     return LOC[locale] or en
 end
 
-version = "1.51.9"
+version = "1.52.1.1"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng([[
-- 黑水晶和白水晶可以作为月影的能源了。
-- Civi可以转换纯粹辉煌/纯粹恐惧了。
+- 新增只有拥有技能树的四名角色可以重置洞察。
 
-版本更改历史：
-- 修复月影的图标和动画问题。
-- 月影新造型（临时）
-- 月影现在可以手动改变形态了（物品栏按住ALT）。
-- 调整了澪吃燃料的动作优先级。
-- 新皮肤：莫西鸭魔杖。
-- 达米的仪表盘适配酸雨。
-- 月光粉可以保护玩家免收月灵攻击。
-- 新皮肤：麋鹿鸭手杖。
+- 新增一种快捷重置洞察的方法（详见合成菜单-角色栏）。
 ]], [[
-- Lunar Shadow now accpets Dark Crystal and Light Crystal.
-- Civi can transform Pure Brilliance and Pure Horror.
+- Only characters with skill trees can reset insight.
 
-Version Change Notes:
-- Fix issue for image and anim of Lunar Shadow.
-- New icon and anim for Lunar Shadow (TEMP).
-- Lunar Shadow can switch state in inventory(HOLDING ALT).
-- Tweak action priority of Mio-Eating-Fuel.
-- New skin: Mossia Staff.
-- Dummy's Health-Sanity Meter fit for acid rain.
-- Rename: Moonlight Powder -> Lunar Powder.
-- Lunar Powder protects players from gestalt's attack.
-- New skin: Mossling Cane.
+- Add a quick way to reset insight (See Crafting Menu - Character Filter).
 ]])
 description = zheng("版本: ", "Version: ") .. version ..
     zheng("\n\n本次更改内容:\n", "\n\nChange:\n") .. changelog .. "\n" ..
