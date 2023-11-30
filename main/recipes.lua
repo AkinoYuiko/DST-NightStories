@@ -192,10 +192,11 @@ end)
 
 -- [[ Reset Insight ]] --
 local SkillTreeUpdater = require("components/skilltreeupdater")
-function SkillTreeUpdater:DeactivateSkillWithoutValidation(...)
+local deactivate_skill = SkillTreeUpdater.DeactivateSkill
+function SkillTreeUpdater:DeactivateSkill(...)
     local prev = self.skilltree.skip_validation
     self.skilltree.skip_validation = true
-    SkillTreeUpdater:DeactivateSkill(...)
+    deactivate_skill(self, ...)
     self.skilltree.skip_validation = prev
 end
 

@@ -19,7 +19,7 @@ local function reset_skill_tree(player)
         local skilldefs = require("prefabs/skilltree_defs").SKILLTREE_DEFS[player.prefab]
         if skilldefs then
             for skill, data in pairs(skilldefs) do
-                skilltreeupdater:DeactivateSkillWithoutValidation(skill)
+                skilltreeupdater:DeactivateSkill(skill)
             end
             skilltreeupdater:AddSkillXP(-skilltreeupdater:GetSkillXP())
         end
