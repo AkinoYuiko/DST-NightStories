@@ -6,18 +6,24 @@ local function zheng(zh, en)
     return LOC[locale] or en
 end
 
-version = "1.52.3"
+version = "1.52.4"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng([[
-- 调整了月光粉的代码逻辑。
+- 调整了远程武器攻击锁链目标的行为逻辑。
+- 修复启迪之冠在月光粉BUFF期间仍然会触发的问题。
+
 版本更新历史：
+- 调整了月光粉的代码逻辑。
 - 新增只有拥有技能树的四名角色可以重置洞察。
 - 新增一种快捷重置洞察的方法（详见合成菜单-角色栏）。
 ]], [[
-- Tweak code logic for Lunar Powder.
+- Tweak ranged weapon behaviors on attacking chained target.
+- Fix issue where Enlightened Crown may trigger gestalts when Lunar Powder activated.
+
 Version Change Notes:
+- Tweak code logic for Lunar Powder.
 - Only characters with skill trees can reset insight.
 - Add a quick way to reset insight (See Crafting Menu - Character Filter).
 ]])
