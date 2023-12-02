@@ -9,15 +9,15 @@ local UpvalueUtil = GlassicAPI.UpvalueUtil
 
 NS_ACTIONS = {
     GEMTRADE = Action({priority = 3, mount_valid = true}),
-    LUNARSHADOWCHARGE = Action({mount_valid=true}),
-    LUNARSHADOWSTATE = Action({priority=1, mount_valie =true, rmb = true}),
+    LUNARSHADOWCHARGE = Action({mount_valid = true}),
+    LUNARSHADOWSTATE = Action({priority = 1, mount_valie = true, rmb = true}),
     MIOFUEL = Action({priority = 3, mount_valid = true}),
     MIOEATFUEL = Action({priority = 4, mount_valid = true}),
     NIGHTSWITCH = Action({priority = 1, mount_valid = true}),
     NIGHTSWORD = Action({priority = 2, mount_valid = true}),
     FUELPOCKETWATCH = Action({priority = 3, rmb = true}),
     MUTATETOTEM = Action({priority = 3, rmb = true}),
-    TOGGLETOTEM = Action({mount_valid=true}),
+    TOGGLETOTEM = Action({mount_valid = true}),
 }
 
 NS_ACTIONS.GEMTRADE.str = STRINGS.ACTIONS.GIVE.SOCKET

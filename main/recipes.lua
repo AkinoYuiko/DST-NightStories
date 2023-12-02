@@ -3,6 +3,7 @@ local SortAfter = GlassicAPI.RecipeSortAfter
 local SortBefore = GlassicAPI.RecipeSortBefore
 local AddDeconstructRecipe = AddDeconstructRecipe
 local AddPlayerPostInit = AddPlayerPostInit
+local AddPrefabPostInit = AddPrefabPostInit
 GLOBAL.setfenv(1, GLOBAL)
 
 local function add_tech(tech_name, merge_table, brainjelly)
@@ -110,6 +111,10 @@ SortAfter("blackholestaff", "greenstaff")
 ------- Other -------
 ---------------------
 
+-- Reset Skill Tree --
+AddRecipe("skilltree_respec_tool", {Ingredient("moonglass", 1), Ingredient("nightmarefuel", 1)}, TECH.NONE, {builder_tag = "skilltree_characters", nomods = true})
+SortBefore("skilltree_respec_tool", "transmute_log")
+
 -- 月影 --
 AddRecipe("lunarshadow", {Ingredient("security_pulse_cage_full", 1), Ingredient("sword_lunarplant", 1), Ingredient("voidcloth_scythe", 1)}, TECH.LUNARFORGING_TWO, {nounlock=true, station_tag="lunar_forge", no_deconstruction = true})
 SortAfter("lunarshadow", "houndstooth_blowpipe")
@@ -184,3 +189,25 @@ AddPlayerPostInit(function(inst)
     end
     clear_nounlock_recipes(inst)
 end)
+
+-- [[ Reset Insight ]] --
+local SkillTreeUpdater = require("components/skilltreeupdater")
+local deactivate_skill = SkillTreeUpdater.DeactivateSkill
+function SkillTreeUpdater:DeactivateSkill(...)
+    local prev = self.skilltree.skip_validation
+    self.skilltree.skip_validation = true
+    deactivate_skill(self, ...)
+    self.skilltree.skip_validation = prev
+end
+
+local SKILLTREE_CHARACTERS = {
+    "wilson",
+    "woodie",
+    "wolfgang",
+    "wormwood",
+}
+for _, char in ipairs(SKILLTREE_CHARACTERS) do
+    AddPrefabPostInit(char, function(inst)
+        inst:AddTag("skilltree_characters")
+    end)
+end

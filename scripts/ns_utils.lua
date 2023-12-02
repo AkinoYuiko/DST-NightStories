@@ -71,9 +71,19 @@ local function target_testfn(target)
         not target:HasTag("wall")
 end
 
+local function do_glash_attack(attacker, target)
+    local glash = SpawnPrefab("glash")
+    glash.entity:SetParent(attacker.entity)
+    local prev_damagemultiplier = attacker.components.combat.damagemultiplier
+    attacker.components.combat.damagemultiplier = math.max(1, (prev_damagemultiplier or 1))
+    attacker.components.combat:DoAttack(target, glash)
+    attacker.components.combat.damagemultiplier = prev_damagemultiplier
+end
+
 return {
     GetRateFromTable = get_rate_from_table,
     TableInsertRate = table_insert_rate,
     GetAuraRate = get_aura_rate,
     TargetTestFn = target_testfn,
+    DoGlashAttack = do_glash_attack,
 }

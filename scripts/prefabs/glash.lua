@@ -5,13 +5,6 @@ local prefabs = {
     "planar_hit_fx",
 }
 
-local function do_attack(inst, target)
-    if inst.components.combat:CanHitTarget(target) then
-        inst.components.combat:DoAttack(target)
-    end
-    inst:Remove()
-end
-
 local function setup_fx(target)
     local fx = SpawnPrefab("planar_hit_fx")
     local scale = 0.7
@@ -19,45 +12,9 @@ local function setup_fx(target)
     fx.entity:SetParent(target.entity)
 end
 
-local function on_attack_other(inst, data)
-    local target = data.target
-    if target and target:IsValid() and inst:IsValid() then
-        if inst.components.electricattacks then
-            SpawnPrefab("electrichitsparks"):AlignToTarget(target, inst, true)
-        end
+local function on_attack(inst, attacker, target)
+    if target and target:IsValid() then
         setup_fx(target)
-    end
-end
-
-local props = {"externaldamagemultipliers", "damagebonus"}
-local function set_target(inst, owner, target, delay, mult)
-    if type(mult) ~= "number" then mult = 1 end
-    if type(delay) ~= "number" then delay = 0 end
-    if owner then
-        for _, v in ipairs(props) do
-            inst.components.combat[v] = owner.components.combat[v]
-        end
-        inst.components.combat.damagemultiplier = math.max(1, (owner.components.combat.damagemultiplier or 1))
-        if owner.components.electricattacks then
-            inst:AddComponent("electricattacks")
-        end
-
-        inst:ListenForEvent("onattackother", on_attack_other)
-
-        inst.entity:SetParent(owner.entity)
-
-        inst.components.combat:SetDefaultDamage(TUNING.GLASH_BASE_DAMAGE * math.max(1, mult))
-
-        if inst.autoremove ~= nil then
-            inst.autoremove:Cancel()
-            inst.autoremove = nil
-        end
-
-        if delay > 0 then
-            inst:DoTaskInTime(delay, do_attack, target)
-        else
-            do_attack(inst, target)
-        end
     end
 end
 
@@ -67,17 +24,19 @@ local function fn()
     inst.entity:AddTransform()
 
     inst:AddTag("ignore_planar_entity")
+
+    inst.persists = false
+
     if not TheWorld.ismastersim then
         return inst
     end
 
-    inst:AddComponent("combat")
-    inst.components.combat:SetDefaultDamage(TUNING.GLASH_BASE_DAMAGE)
-    inst.components.combat:SetRange(TUNING.GESTALTGUARD_ATTACK_RANGE * 10)
+    inst:AddComponent("weapon")
+    inst.components.weapon:SetDamage(TUNING.GLASH_BASE_DAMAGE)
+    inst.components.weapon:SetRange(TUNING.GESTALTGUARD_ATTACK_RANGE * 10)
+    inst.components.weapon:SetOnAttack(on_attack)
 
-    inst.SetTarget = set_target
-
-    inst.autoremove = inst:DoTaskInTime(2 * FRAMES, inst.Remove)
+    inst:DoTaskInTime(0, inst.Remove)
 
     return inst
 end

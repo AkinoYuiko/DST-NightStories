@@ -29,6 +29,7 @@ PrefabFiles = {
     "ns_skins",
     "ns_spices",
     "portable_wardrobe",
+    "skilltree_respec_tool",
 }
 
 GlassicAPI.InitCharacterAssets("miotan", "FEMALE", Assets)

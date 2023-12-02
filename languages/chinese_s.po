@@ -1559,6 +1559,11 @@ msgctxt "STRINGS.RECIPE_DESC.REDGEM"
 msgid "Change ice into fire."
 msgstr "用噩梦扭曲冰冻。"
 
+#. STRINGS.RECIPE_DESC.SKILLTREE_RESPEC_TOOL
+msgctxt "STRINGS.RECIPE_DESC.SKILLTREE_RESPEC_TOOL"
+msgid "Quick way to reset insight."
+msgstr "快速重置洞察的方法。"
+
 #. STRINGS.RECIPE_DESC.SPICE_CACTUS
 msgctxt "STRINGS.RECIPE_DESC.SPICE_CACTUS"
 msgid "Make sanity great again."
