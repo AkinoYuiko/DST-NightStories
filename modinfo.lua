@@ -6,17 +6,19 @@ local function zheng(zh, en)
     return LOC[locale] or en
 end
 
-version = "1.52.2"
+version = "1.52.3"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng([[
+- 调整了月光粉的代码逻辑。
+版本更新历史：
 - 新增只有拥有技能树的四名角色可以重置洞察。
-
 - 新增一种快捷重置洞察的方法（详见合成菜单-角色栏）。
 ]], [[
+- Tweak code logic for Lunar Powder.
+Version Change Notes:
 - Only characters with skill trees can reset insight.
-
 - Add a quick way to reset insight (See Crafting Menu - Character Filter).
 ]])
 description = zheng("版本: ", "Version: ") .. version ..
