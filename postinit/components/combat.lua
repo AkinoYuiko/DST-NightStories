@@ -12,23 +12,23 @@ local DISABLED_ENTITIES =
 }
 
 local Combat = require("components/combat")
+local do_attack = Combat.DoAttack
+
+local function ranged_weapon_testfn(weapon, projectile)
+    return weapon ~= nil and projectile == nil
+        and (weapon.components.projectile ~= nil
+            or weapon.components.complexprojectile ~= nil
+            or weapon.components.weapon:CanRangedAttack())
+end
 
 local function is_invalid_weapon(weapon)
     return weapon and not weapon.components.weapon
 end
 
-local do_attack = Combat.DoAttack
 local function do_attack_with_check(self, target, weapon, ...)
     if not is_invalid_weapon(weapon) then
         return do_attack(self, target, weapon, ...)
     end
-end
-
-local function launching_projectile_testfn(weapon, projectile)
-    return weapon and projectile == nil
-        and (weapon.components.projectile
-            or weapon.components.complexprojectile
-            or weapon.components.weapon:CanRangedAttack())
 end
 
 function Combat:DoAttack(target, weapon, projectile, ...)
@@ -36,16 +36,16 @@ function Combat:DoAttack(target, weapon, projectile, ...)
         target = self.target
     end
 
-    local main_attack = do_attack(self, target, weapon, projectile, ...)
- 
-    if launching_projectile_testfn(weapon, projectile) then
-        return main_attack
+    do_attack(self, target, weapon, projectile, ...)
+
+    if weapon == nil and ranged_weapon_testfn(self:GetWeapon(), projectile) then
+        return
     elseif weapon and DISABLED_WEAPONS[weapon.prefab] then
-        return main_attack
+        return
     elseif DISABLED_ENTITIES[self.inst.prefab] then
-        return main_attack
+        return
     end
-    
+
     if TheWorld.components.horrorchainmanager:HasMember(target) then
         local ents = TheWorld.components.horrorchainmanager:GetNearbyMembers(target)
         for _, ent in ipairs(ents) do
@@ -60,5 +60,5 @@ function Combat:DoAttack(target, weapon, projectile, ...)
         end
     end
 
-    return main_attack
+    return
 end

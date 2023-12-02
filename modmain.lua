@@ -28,6 +28,7 @@ local postinit =
     "components/sanity",
     "components/spellcaster",
     -- prefabs
+    "prefabs/alterguardianhat",
     "prefabs/flower",
     "prefabs/foodbuffs",
     "prefabs/gems",
