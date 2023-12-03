@@ -36,6 +36,8 @@ local function fn()
     inst.components.weapon:SetRange(TUNING.GESTALTGUARD_ATTACK_RANGE * 10)
     inst.components.weapon:SetOnAttack(on_attack)
 
+    inst:AddComponent("projectile")
+
     inst:DoTaskInTime(0, inst.Remove)
 
     return inst

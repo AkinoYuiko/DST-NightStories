@@ -76,7 +76,7 @@ local function do_glash_attack(attacker, target)
     glash.entity:SetParent(attacker.entity)
     local prev_damagemultiplier = attacker.components.combat.damagemultiplier
     attacker.components.combat.damagemultiplier = math.max(1, (prev_damagemultiplier or 1))
-    attacker.components.combat:DoAttack(target, glash)
+    attacker.components.combat:DoAttack(target, glash, glash)
     attacker.components.combat.damagemultiplier = prev_damagemultiplier
 end
 

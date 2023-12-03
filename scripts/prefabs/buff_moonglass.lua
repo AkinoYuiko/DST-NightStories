@@ -11,13 +11,18 @@ local launching_projectile = Utils.LaunchingProjectile
 local function onattackother(owner, data)
     local target = data and data.target
     local weapon = data and data.weapon
+    local projectile = data and data.projectile
+    if weapon and weapon.prefab == "glash" then
+        return
+    elseif projectile and projectile.prefab == "glash" then
+        return
+    end
     if target and target_testfn(target) then
         -- In combat, this is when we're just launching a projectile, so don't spawn yet
         if data.weapon ~= nil and data.projectile == nil
             and (data.weapon.components.projectile ~= nil
                 or data.weapon.components.complexprojectile ~= nil
-                or data.weapon.components.weapon:CanRangedAttack()
-                or data.weapon.prefab == "glash") then
+                or data.weapon.components.weapon:CanRangedAttack()) then
             return
         end
         do_glash_attack(owner, target)
