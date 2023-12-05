@@ -38,6 +38,7 @@ local postinit =
     "prefabs/nightsword",
     "prefabs/orangestaff",
     "prefabs/pigking",
+    "prefabs/punchingbag",
     "prefabs/raincoat",
     "prefabs/sculptingtable",
     "prefabs/world",
