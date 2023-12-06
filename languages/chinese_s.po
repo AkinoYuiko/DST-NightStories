@@ -459,6 +459,11 @@ msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_COLD"
 msgid "Help, I need some nightmare fuel!"
 msgstr "救命，来点噩梦燃料！"
 
+#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_COZY_SLEEP
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_COZY_SLEEP"
+msgid "I feel best after a cozy rest."
+msgstr "小憩后充满了力量。"
+
 #. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_DESPAWN
 msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_DESPAWN"
 msgid "Switch? Switch?! Switch!"
@@ -518,6 +523,11 @@ msgstr "路在脚下！哼！"
 msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_HUNT_SUCCESSFUL_FORK"
 msgid "Aha! Advantage goes to me."
 msgstr "啊哈！本宝宝占尽优势。"
+
+#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_HUNT_WRONG_FORK
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_HUNT_WRONG_FORK"
+msgid "My senses are tingling - something watches!"
+msgstr "我的感官正在刺痛——有什么东西在看！"
 
 #. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_INV_FULL
 msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_INV_FULL"
@@ -579,6 +589,11 @@ msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_WETTER"
 msgid "I am the soggiest girl!"
 msgstr "成落汤鸭了！"
 
+#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_WINTERS_FEAST_BUFF_OVER
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_WINTERS_FEAST_BUFF_OVER"
+msgid "I'll never lose the sparkle in my eye."
+msgstr "我眼中的闪光是永远不会失去的。"
+
 #. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_WORMHOLE
 msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_WORMHOLE"
 msgid "Time traveling!"
@@ -638,6 +653,11 @@ msgstr "我们终于掌握了雨的力量。"
 msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.BRUSH"
 msgid "No, my hair hates this."
 msgstr "不要，我的头发讨厌它。"
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.CARNIVAL_VEST_B
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.CARNIVAL_VEST_B"
+msgid "A cloak of leaves to drape around my frame."
+msgstr "披上叶子斗篷扮靓。"
 
 #. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.CAVE_ENTRANCE_OPEN.GENERIC
 msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.CAVE_ENTRANCE_OPEN.GENERIC"
@@ -834,6 +854,16 @@ msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.PLAYER.REVIVER"
 msgid "Please don't, we want life giving amulets!"
 msgstr "多带复活币！"
 
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.PUMPKIN_COOKED
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.PUMPKIN_COOKED"
+msgid "Slightly easier on my tum."
+msgstr "这个稍微好消化一点。"
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.PUREBRILLIANCE
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.PUREBRILLIANCE"
+msgid "Hyuyu, it tickles my brain!"
+msgstr "哼，它给我的大脑挠了一下痒痒！"
+
 #. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.QUAGMIRE_KEY_PARK
 msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.QUAGMIRE_KEY_PARK"
 msgid "No gate can stop me!"
@@ -873,6 +903,16 @@ msgstr "希望不是用来绑我的。"
 msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.SADDLE_WAR"
 msgid "King Of War!"
 msgstr "战争之王！"
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.SHADOWTHRALL_HORNS
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.SHADOWTHRALL_HORNS"
+msgid "You wouldn't want to eat a sweet little girl like me!"
+msgstr "你不会忍心吃掉我这个乖乖小女孩的！"
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.SHADOW_FORGE_KIT
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.SHADOW_FORGE_KIT"
+msgid "All work and no play makes for an irritable girl."
+msgstr "只工作，不玩耍，脾气炸。"
 
 #. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.SKELETONHAT
 msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.SKELETONHAT"
@@ -1443,6 +1483,11 @@ msgstr "便携式衣柜"
 msgctxt "STRINGS.NAMES.PORTABLE_WARDROBE_WRAP"
 msgid "Magic Dress"
 msgstr "魔术礼装"
+
+#. STRINGS.NAMES.SKILLTREE_RESPEC_TOOL
+msgctxt "STRINGS.NAMES.SKILLTREE_RESPEC_TOOL"
+msgid "Reset Insight"
+msgstr "重置洞察"
 
 #. STRINGS.NAMES.SPICE_CACTUS
 msgctxt "STRINGS.NAMES.SPICE_CACTUS"

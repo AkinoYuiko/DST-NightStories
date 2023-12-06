@@ -752,7 +752,6 @@ return {
         -- "only_used_by_wortox",
     },
     -- ANNOUNCE_SPOOKED = "Did you see that?!",
-    -- ANNOUNCE_STILLALIVE = "STILL ALIVE!",
     ANNOUNCE_STORYTELLING_ABORT_FIREWENTOUT =
     {
         -- "only_used_by_walter",
@@ -1625,6 +1624,7 @@ return {
         -- COOKEDMEAT = "Charbroiled to perfection.",
         -- COOKEDMONSTERMEAT = "That's only somewhat more appetizing than when it was raw.",
         -- COOKEDSMALLMEAT = "Now there's no reason to worry about getting worms!",
+        -- COOKGIFTWRAP = "That's a cooker's wrap!",
         -- COOKIECUTTER = "I don't like the way it's looking at my boat...",
         -- COOKIECUTTERHAT = "At least my hair will stay dry.",
         -- COOKIECUTTERSHELL = "A shell of its former self.",
@@ -1632,6 +1632,7 @@ return {
         {
             -- GENERIC = "Science help me, I can't decipher this handwriting.",
         },
+        -- COOKPACKAGEWRAP = "Wrapping things up and cook them together.",
         COOKPOT =
         {
             -- BURNT = "The pot got cooked.",
@@ -2038,11 +2039,6 @@ return {
         -- GLASSCUTTER = "I'm not really cut out for fighting.",
         GLASSICCUTTER =
         {
-            -- DREAM = "Inazuma shines eternal!",
-            -- FROST = "ao?",
-            -- GENERIC = "Sharp but probably get broken.",
-            -- MOONGLASS = "Sword with gestalt flash.",
-            -- MOONROCK = "Sword with frost energy.",
         },
         -- GLASSSPIKE = "Memories of the time I wasn't skewered.",
         GLOMMER =
@@ -2179,6 +2175,7 @@ return {
         -- HONEYHAM = "Sweet and savory.",
         -- HONEYNUGGETS = "Tastes like chicken, but I don't think it is.",
         -- HORN = "It sounds like a beefalo field in there.",
+        -- HORRORCHAIN = "We never now how it spreads horror.",
         -- HORRORFUEL = "It sends a terrible shiver down my spine.",
         -- HOTCHILI = "Five alarm!",
         HOTSPRING =
@@ -2404,6 +2401,11 @@ return {
         -- LUNARPLANT_KIT = "I'm moonlighting as a tailor.",
         -- LUNARRIFT_CRYSTAL = "Crystallized illuminosity.",
         -- LUNARRIFT_PORTAL = "All that science hiding inside... and I can't get to it!",
+        LUNARSHADOW =
+        {
+            -- LUNAR = "I can feel the secret power from the moon.",
+            -- SHADOW = "I can feel the secret power from the nightmare.",
+        },
         -- LUNARTHRALL_PLANT = "It doesn't seem to care about personal space.",
         -- LUNARTHRALL_PLANT_VINE_END = "It has a prickly disposition.",
         -- LUNAR_FORGE = "Just the place to make something very clever and scientific.",
