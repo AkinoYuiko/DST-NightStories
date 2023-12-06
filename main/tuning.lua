@@ -153,11 +153,12 @@ TUNING.LUNARSHADOW =
         moonglass = 5,
         moonglass_charged = 20,
         purebrilliance = 50,
-        lightcrystal = 40,
+        lightcrystal = 50,
         -- Shadow < 0
         nightmarefuel = -10,
+        -- thulecite = -20,
         horrorfuel = -50,
-        darkcrystal = -40,
+        darkcrystal = -50,
     },
     SHADOW_LEVEL = 2,
 }
