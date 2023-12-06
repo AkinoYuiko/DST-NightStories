@@ -116,4 +116,4 @@ local function MakeBuff(name, onattachedfn, onextendedfn, ondetachedfn, duration
     return Prefab("buff_"..name, fn, nil, prefabs)
 end
 
-return MakeBuff("moonglass", attack_attach, nil, attack_detach, TUNING.BUFF_MOONLIGHT_DURATION, 1)
+return MakeBuff("moonglass", attack_attach, nil, attack_detach, TUNING.BUFF_MOONGLASS_DURATION, 1)
