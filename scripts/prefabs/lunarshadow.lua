@@ -418,10 +418,13 @@ end
 local function on_battery_change(inst, data)
     cancel_charge_task(inst)
     if data and data.item then
-        try_consume_battery(inst)
+        -- try_consume_battery(inst)
         if can_consume_battery(inst) then
-            inst.try_charge_task = inst:DoPeriodicTask(1, try_charge_task)
+            inst.try_charge_task = inst:DoPeriodicTask(1, try_charge_task, math.random(30) * FRAMES)
         end
+        inst.slotempty:set(false)
+    else
+        inst.slotempty:set(true)
     end
 end
 
@@ -454,8 +457,8 @@ local function fn()
 
     MakeInventoryPhysics(inst)
 
-    inst.AnimState:SetBank("sword_lunarplant")
-    inst.AnimState:SetBuild("sword_lunarplant")
+    inst.AnimState:SetBank("lunarshadow")
+    inst.AnimState:SetBuild("lunarshadow")
     inst.AnimState:PlayAnimation("idle", true)
     inst.AnimState:SetSymbolBloom("pb_energy_loop01")
     inst.AnimState:SetSymbolLightOverride("pb_energy_loop01", .5)
@@ -470,6 +473,7 @@ local function fn()
 
     inst.buffed = net_bool(inst.GUID, "lunarshadow.buffed", "lunarshadow_buffdirty")
     inst.state = net_bool(inst.GUID, "lunarshadow.state", "lunarshadow_statedirty")
+    inst.slotempty = net_bool(inst.GUID, "lunarshadow.slotempty", "lunarshadow_slotdirty")
 
     inst:AddComponent("floater")
     inst.isbroken = net_bool(inst.GUID, "lunarshadow.isbroken", "isbrokendirty")

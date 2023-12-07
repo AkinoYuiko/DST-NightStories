@@ -28,8 +28,16 @@ local function update_fx(self, var, bank_and_build)
     end
 end
 
+local function is_empty(item)
+    if item.components.container then
+        return item.components.container:IsEmpty()
+    else
+        return item.replica.container.classified ~= nil and item.replica.container.classified:IsEmpty()
+    end
+end
+
 local function update_meter(self)
-    if self.item.buffed:value() and not self.item.replica.container:IsEmpty() then
+    if self.item.buffed:value() and not self.item.slotempty:value() then
         self.bg:Hide()
         self.percent:Hide()
         self.spoilage:Hide()
