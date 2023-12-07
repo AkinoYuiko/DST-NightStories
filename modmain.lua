@@ -26,6 +26,7 @@ local postinit =
     "components/moisture",
     "components/planarentity",
     "components/sanity",
+    "components/skilltreeupdater",
     "components/spellcaster",
     -- prefabs
     "prefabs/alterguardianhat",
