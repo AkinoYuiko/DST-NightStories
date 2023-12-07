@@ -290,33 +290,6 @@ NS_ACTIONS.FUELPOCKETWATCH.fn = function(act)
     end
 end
 
--- [[ Moonlight Shadow: Mutate ]] --
-
--- NS_ACTIONS.LUNARSHADOW.fn = function(act)
---     local doer = act.doer
---     local target = act.target
---     if doer.components.inventory then
---         local item = doer.components.inventory:RemoveItem(act.invobject)
-
---         -- add efx
---         local ent = target.components.inventoryitem and target.components.inventoryitem.owner or target
---         if ent then
---             local _fx = SpawnPrefab("explode_reskin")
---             _fx.Transform:SetPosition(ent.Transform:GetWorldPosition())
---             _fx.scale_override = 1.7 * ent:GetPhysicsRadius(0.5)
---         end
-
---         -- do mutate
---         if item.prefab == "alterguardianhatshard" and target.prefab == "sword_lunarplant" then
---             item:Remove()
---             if target.components.halloweenmoonmutable then
---                 target.components.halloweenmoonmutable:Mutate("moonlight_shadow")
---             end
---             return true
---         end
---     end
--- end
-
 -- [[ Lunar Shadow ]] --
 
 NS_ACTIONS.LUNARSHADOWCHARGE.fn = function(act)
@@ -501,16 +474,16 @@ AddComponentAction("INVENTORY", "lunarshadowstate", function(inst, doer, actions
     end
 end)
 
--- local glassic_state = State({
---     name = "doglassicbuild",
+local lunarshadow_state = State({
+    name = "dostatebuild",
 
---     onenter = function(inst)
---         inst.sg:GoToState("dolongaction", 2)
---     end
--- })
+    onenter = function(inst)
+        inst.sg:GoToState("dolongaction", 2)
+    end
+})
 
 for _, sg in ipairs({"wilson", "wilson_client"}) do
-    -- AddStategraphState(sg, glassic_state)
+    AddStategraphState(sg, lunarshadow_state)
 
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.MIOFUEL, "doshortaction"))
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.MIOEATFUEL, "quickeat"))
@@ -520,9 +493,8 @@ for _, sg in ipairs({"wilson", "wilson_client"}) do
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.FUELPOCKETWATCH, "pocketwatch_warpback_pre"))
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.MUTATETOTEM, "doshortaction"))
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.TOGGLETOTEM, "doshortaction"))
-    -- AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.LUNARSHADOW, "doglassicbuild"))
     AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.LUNARSHADOWCHARGE, "doshortaction"))
-    AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.LUNARSHADOWSTATE, "dolongaction"))
+    AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.LUNARSHADOWSTATE, "dostatebuild"))
 end
 
 --------------------------------------------------------------------------------
