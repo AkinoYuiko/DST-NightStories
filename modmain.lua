@@ -22,6 +22,7 @@ local postinit =
     -- components
     "components/bundler",
     "components/combat",
+    "components/forgerepair",
     "components/lptw",
     "components/moisture",
     "components/planarentity",

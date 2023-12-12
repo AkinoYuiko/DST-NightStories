@@ -7,9 +7,6 @@
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"Application: Dont' Starve\n"
-"POT Version: 2.0\n"
 "X-Generator: Poedit 3.4.1\n"
 
 #. STRINGS.ACTIONS.BLINK.FUEL
@@ -1252,6 +1249,11 @@ msgctxt "STRINGS.NAMES.BATTLERUINSHAT"
 msgid "Battle Crown"
 msgstr "战斗皇冠"
 
+#. STRINGS.NAMES.BAT_LUNARPLANT
+msgctxt "STRINGS.NAMES.BAT_LUNARPLANT"
+msgid "Brightshade Spike Bat"
+msgstr "亮茄尖刺球棒"
+
 #. STRINGS.NAMES.BLACKHOLESTAFF
 msgctxt "STRINGS.NAMES.BLACKHOLESTAFF"
 msgid "Blackhole Staff"
@@ -1521,6 +1523,11 @@ msgstr "神秘{food}"
 msgctxt "STRINGS.RECIPE_DESC.BATTLERUINSHAT"
 msgid "Complete with ancient force field!"
 msgstr "附有远古力场！"
+
+#. STRINGS.RECIPE_DESC.BAT_LUNARPLANT
+msgctxt "STRINGS.RECIPE_DESC.BAT_LUNARPLANT"
+msgid "Deadly food deals deadly damage."
+msgstr "致命的食物造成致命的伤害。"
 
 #. STRINGS.RECIPE_DESC.BLACKHOLESTAFF
 msgctxt "STRINGS.RECIPE_DESC.BLACKHOLESTAFF"

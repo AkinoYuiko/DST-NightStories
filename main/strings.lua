@@ -108,6 +108,8 @@ local strings = {
         MOONLIGHT_SHADOW = "Moonlight Shadow",
         LUNARSHADOW = "Lunar Shadow",
 
+        -- Lunarplant items
+        BAT_LUNARPLANT = "Brightshade Spike Bat",
         -- Voidcloth items
         HORRORCHAIN = "Horror Chain",
 
@@ -134,7 +136,7 @@ local strings = {
         BATTLERUINSHAT = "Complete with ancient force field!",
         SKILLTREE_RESPEC_TOOL = "Quick way to reset insight.",
 
-        -- MOONLIGHT_SHADOW = "A sword with super power of lunar light.",
+        BAT_LUNARPLANT = "Deadly food deals deadly damage.",
         LUNARSHADOW = "A sword with super power of both lunar light and nightmare.",
         HORRORCHAIN = "Spread horror.",
 
@@ -317,6 +319,7 @@ local strings = {
                 CHESSPIECE_HEADUCK = "󰂷",
                 BOOK_WETNESS = "We would be able to see a wet world.",
 
+                BAT_LUNARPLANT = STRINGS.CHARACTERS.GENERIC.DESCRIBE.HAMBAT,
                 HORRORCHAIN = "We never now how it spreads horror.",
 
                 COOKPACKAGEWRAP = "Wrapping things up and cook them together.",
