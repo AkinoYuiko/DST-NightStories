@@ -33,7 +33,7 @@ local function fn()
 
     inst:AddComponent("weapon")
     inst.components.weapon:SetDamage(TUNING.GLASH_BASE_DAMAGE)
-    inst.components.weapon:SetRange(TUNING.GESTALTGUARD_ATTACK_RANGE * 10)
+    inst.components.weapon:SetRange(TUNING.GLASH_HIT_RANGE)
     inst.components.weapon:SetOnAttack(on_attack)
 
     inst:AddComponent("projectile")

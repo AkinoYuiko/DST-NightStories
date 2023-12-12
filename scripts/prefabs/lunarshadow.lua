@@ -418,7 +418,6 @@ end
 local function on_battery_change(inst, data)
     cancel_charge_task(inst)
     if data and data.item then
-        -- try_consume_battery(inst)
         if can_consume_battery(inst) then
             inst.try_charge_task = inst:DoPeriodicTask(1, try_charge_task, math.random(30) * FRAMES)
         end
@@ -464,12 +463,12 @@ local function fn()
     inst.AnimState:SetSymbolLightOverride("pb_energy_loop01", .5)
     inst.AnimState:SetLightOverride(.1)
 
-    inst:AddTag("sharp")
-    inst:AddTag("show_broken_ui")
-
     inst:SetPrefabName("lunarshadow")
+
     --weapon (from weapon component) added to pristine state for optimization
     inst:AddTag("weapon")
+    inst:AddTag("sharp")
+    inst:AddTag("show_broken_ui")
 
     inst.buffed = net_bool(inst.GUID, "lunarshadow.buffed", "lunarshadow_buffdirty")
     inst.state = net_bool(inst.GUID, "lunarshadow.state", "lunarshadow_statedirty")
