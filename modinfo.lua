@@ -6,14 +6,16 @@ local function zheng(zh, en)
     return LOC[locale] or en
 end
 
-version = "1.52.8"
+version = "1.52.9"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng([[
-- 调整了手动切换月影状态所需要的时间。
+- 修复威尔逊重置洞察导致胡子拥有多个物品栏的问题。
+- 更改为弹射物命中锁链目标时只消耗一次武器耐久。
 
 版本更新历史：
+- 调整了手动切换月影状态所需要的时间。
 - 更新了部分语言文本。
 - 调整了黑水晶、白水晶充能月影的耐久值。
 - 拳击袋显示优化：显示同一帧内受到的伤害总额。
@@ -24,9 +26,11 @@ changelog = zheng([[
 - 新增只有拥有技能树的四名角色可以重置洞察。
 - 新增一种快捷重置洞察的方法（详见合成菜单-角色栏）。
 ]], [[
-- Tweak cost time of Lunar Shadow's manually-state-change.
+- Fix issue that reseting insights will lead to multiple slots with Wilson's beard.
+- Projectiles now only consume once of weapon's durability when hitting chained targets.
 
 Version Change Notes:
+- Tweak cost time of Lunar Shadow's manually-state-change.
 - Update some speech texts for Mio.
 - Tweak durability regen of Dark/Light Crystal to Lunar Shadow.
 - Punching Bag shows damage taken in one frame each time.
