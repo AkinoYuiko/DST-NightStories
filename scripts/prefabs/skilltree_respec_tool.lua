@@ -15,7 +15,8 @@ local WILSON_BUILDER_TAG =
 local function reset_skill_tree(player)
     if player then
         local skilltreeupdater = player.components.skilltreeupdater
-        skilltreeupdater.skilltree.skip_validation = true
+        local prev = skilltreeupdater.skilltree.skip_validation
+        skilltreeupdater:SetSkipValidation(true)
         local skilldefs = require("prefabs/skilltree_defs").SKILLTREE_DEFS[player.prefab]
         if skilldefs then
             for skill, data in pairs(skilldefs) do
@@ -23,13 +24,17 @@ local function reset_skill_tree(player)
             end
             skilltreeupdater:AddSkillXP(-skilltreeupdater:GetSkillXP())
         end
-        skilltreeupdater.skilltree.skip_validation = nil
+        skilltreeupdater:SetSkipValidation(prev)
 
         for _, tag in ipairs(WILSON_BUILDER_TAG) do
             player:RemoveTag(tag)
         end
 
         player:PushEvent("unlockrecipe")
+
+        if player.components.beard then -- for wilson
+            player.components.beard:UpdateBeardInventory()
+        end
     end
 end
 

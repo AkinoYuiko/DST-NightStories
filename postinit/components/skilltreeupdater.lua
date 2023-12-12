@@ -6,9 +6,9 @@ local SkillTreeUpdater = require("components/skilltreeupdater")
 local deactivate_skill = SkillTreeUpdater.DeactivateSkill
 function SkillTreeUpdater:DeactivateSkill(...)
     local prev = self.skilltree.skip_validation
-    self.skilltree.skip_validation = true
+    self:SetSkipValidation(true)
     deactivate_skill(self, ...)
-    self.skilltree.skip_validation = prev
+    self:SetSkipValidation(prev)
 end
 
 local SKILLTREE_CHARACTERS = {
