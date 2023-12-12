@@ -400,7 +400,7 @@ return {
     ANNOUNCE_BOOK_MOON_DAYTIME = "We'll be able to meet the result tonight!",
     -- ANNOUNCE_BOOMERANG = "Hyuyu!",
     -- ANNOUNCE_BRAVERY_POTION = "Okay, let's play!",
-    -- ANNOUNCE_BURNT = "Too hot for my impish paws!",
+    ANNOUNCE_BURNT = "Too hot for my impish hands!",
     -- ANNOUNCE_CALL_BEEF = "Over here, beefalo dear!",
     -- ANNOUNCE_CANFIX = "\nI could restore it.",
     ANNOUNCE_CANNOT_BUILD =
@@ -1213,7 +1213,7 @@ return {
         CANARY =
         {
             -- GENERIC = "Let's look out for each other, you and I.",
-            -- HELD = "Mind my paws now.",
+            HELD = "Mind my hands now.",
         },
         -- CANARY_POISONED = "Mortals don't usually look like that.",
         -- CANDYBAG = "It's a Wortox Sack!",

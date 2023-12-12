@@ -1,5 +1,3 @@
-msgid ""
-msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
@@ -449,6 +447,11 @@ msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_BOOK_MOON_DAYTIME"
 msgid "We'll be able to meet the result tonight!"
 msgstr "今晚将见分晓！"
 
+#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_BURNT
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_BURNT"
+msgid "Too hot for my impish hands!"
+msgstr "烫着我的小手手了！"
+
 #. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_CHARLIE
 msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_CHARLIE"
 msgid "Yaaaada! I'm not a naughty child!"
@@ -653,6 +656,11 @@ msgstr "我们终于掌握了雨的力量。"
 msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.BRUSH"
 msgid "No, my hair hates this."
 msgstr "不要，我的头发讨厌它。"
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.CANARY.HELD
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.CANARY.HELD"
+msgid "Mind my hands now."
+msgstr "小心我的小手手。"
 
 #. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.CARNIVAL_VEST_B
 msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.CARNIVAL_VEST_B"

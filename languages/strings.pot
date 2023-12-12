@@ -1,5 +1,3 @@
-msgid ""
-msgstr ""
 "Application: Don't Starve Together\n"
 "POT Version: 2.0\n"
 
@@ -438,6 +436,11 @@ msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_BOOK_MOON_DAYTIME"
 msgid "We'll be able to meet the result tonight!"
 msgstr ""
 
+#. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_BURNT
+msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_BURNT"
+msgid "Too hot for my impish hands!"
+msgstr ""
+
 #. STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_CHARLIE
 msgctxt "STRINGS.CHARACTERS.MIOTAN.ANNOUNCE_CHARLIE"
 msgid "Yaaaada! I'm not a naughty child!"
@@ -641,6 +644,11 @@ msgstr ""
 #. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.BRUSH
 msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.BRUSH"
 msgid "No, my hair hates this."
+msgstr ""
+
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.CANARY.HELD
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.CANARY.HELD"
+msgid "Mind my hands now."
 msgstr ""
 
 #. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.CARNIVAL_VEST_B
