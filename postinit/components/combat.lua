@@ -25,9 +25,16 @@ local function is_invalid_weapon(weapon)
     return weapon and not weapon.components.weapon
 end
 
-local function do_attack_with_check(self, target, weapon, ...)
+local function do_attack_with_check(self, target, weapon, projectile,...)
     if not is_invalid_weapon(weapon) then
-        return do_attack(self, target, weapon, ...)
+        if projectile and weapon and weapon.components.finiteuses then
+            local prev = weapon.components.finiteuses.ignorecombatdurabilityloss
+            weapon.components.finiteuses.ignorecombatdurabilityloss = true
+            local result = do_attack(self, target, weapon, projectile,...)
+            weapon.components.finiteuses.ignorecombatdurabilityloss = prev
+            return result
+        end
+        return do_attack(self, target, weapon, projectile,...)
     end
 end
 
