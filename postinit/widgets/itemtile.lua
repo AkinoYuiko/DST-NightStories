@@ -40,9 +40,9 @@ local function update_meter(self)
     if self.item.buffed:value() and not self.item.slotempty:value() then
         self.bg:Hide()
         self.spoilage:Hide()
-        if self.self.percent then self.percent:Hide() end
+        if self.percent then self.percent:Hide() end
     else
-        if self.self.percent then self.percent:Show() end
+        if self.percent then self.percent:Show() end
         self:Refresh()
     end
 end
