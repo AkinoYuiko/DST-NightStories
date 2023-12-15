@@ -5,7 +5,7 @@ GLOBAL.setfenv(1, GLOBAL)
 local function get_reward(giver)
     if giver.prefab == "miotan" then
         return "nightmarefuel", 2
-    elseif TheWorld.state.islunarhailing then
+    elseif TheWorld.components.riftspawner:IsLunarPortalActive() then
         return "moonglass_charged", 1
     elseif TheWorld.state.isalterawake then
         return "moonglass", 1
