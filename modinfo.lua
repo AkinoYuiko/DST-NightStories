@@ -6,21 +6,23 @@ local function zheng(zh, en)
     return LOC[locale] or en
 end
 
-version = "1.53.2"
+version = "1.53.3"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng([[
-- 修复几处逻辑错误。
+- 月亮入侵或月亮风暴期间猪王给月亮碎片。
 
 最近更新：
+- 修复几处逻辑错误。
 - 修正亮茄尖刺球棒数值设置错误的问题。
 - 新道具：亮茄尖刺球棒。
 - 亮茄尖刺球棒：基础攻击力34，位面伤害17，保质期10天，基础伤害随时间下降。
 ]], [[
-- Fix some potential issue.
+- Pig King rewards Moon Shard during Moonstorm.
 
 Recent Changes:
+- Fix some potential issue.
 - Fix a typo with damage of Brightshade Spike Bat.
 - New Item: Brightshade Spike Bat.
 - Brightshade Spike Bat: Base Damage 34, Planar Damage 17, Durability 10 days. Base damage reduces by freshness.
