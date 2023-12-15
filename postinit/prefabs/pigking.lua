@@ -2,12 +2,25 @@ local AddPrefabPostInit = AddPrefabPostInit
 local UpvalueUtil = GlassicAPI.UpvalueUtil
 GLOBAL.setfenv(1, GLOBAL)
 
-local function mio_ontradeforgold(inst, item, giver, ...)
-    if not (giver and giver.prefab == "miotan") then
-        return inst.ontradeforgold_prefns["miotan"](inst, item, giver, ...)
+local function get_reward(giver)
+    if giver.prefab == "miotan" then
+        return "nightmarefuel", 2
+    elseif TheWorld.state.islunarhailing then
+        return "moonglass_charged", 1
+    elseif TheWorld.state.isalterawake then
+        return "moonglass", 1
     end
-    local launchitem = inst.launchitem_fn or function() end
+    return "goldnugget"
+end
 
+local function launchitem(item, angle)
+    -- copied from pigking.lua --
+    local speed = math.random() * 4 + 2
+    angle = (angle + math.random() * 60 - 30) * DEGREES
+    item.Physics:SetVel(speed * math.cos(angle), math.random() * 2 + 8, speed * math.sin(angle))
+end
+
+local function ontradeforitem(inst, item, giver, ...)
     -- copied from pigking.lua --
     AwardPlayerAchievement("pigking_trader", giver)
 
@@ -23,11 +36,12 @@ local function mio_ontradeforgold(inst, item, giver, ...)
         giver = nil
     end
 
-    -- MODIFIED PART --
-    for k = 1, math.min(2, item.components.tradable.goldvalue) do
-        local fuel = SpawnPrefab("nightmarefuel")
-        fuel.Transform:SetPosition(x, y, z)
-        launchitem(fuel, angle)
+    -- CHANGED PART --
+    local reward, amount = get_reward(giver)
+    for k = 1, (amount or item.components.tradable.goldvalue) do
+        local nug = SpawnPrefab(reward)
+        nug.Transform:SetPosition(x, y, z)
+        launchitem(nug, angle)
     end
     -- end --
 
@@ -62,13 +76,9 @@ local function mio_ontradeforgold(inst, item, giver, ...)
             launchitem(candy, angle)
         end
     end
-    -- copy end --
 end
 
 AddPrefabPostInit("pigking", function(inst)
     if not TheWorld.ismastersim then return end
-    inst.ontradeforgold_prefns = inst.ontradeforgold_prefns or {}
-    inst.launchitem_fn = inst.launchitem_fn or UpvalueUtil.GetUpvalue(inst.components.trader.onaccept, "ontradeforgold.launchitem")
-    inst.ontradeforgold_prefns["miotan"] = inst.ontradeforgold_prefns["miotan"] or UpvalueUtil.GetUpvalue(inst.components.trader.onaccept, "ontradeforgold")
-    UpvalueUtil.SetUpvalue(inst.components.trader.onaccept, "ontradeforgold", mio_ontradeforgold)
+    UpvalueUtil.SetUpvalue(inst.components.trader.onaccept, "ontradeforgold", ontradeforitem)
 end)
