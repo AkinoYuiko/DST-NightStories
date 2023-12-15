@@ -209,6 +209,9 @@ local function oneat(inst, owner, data)
                     SpawnPrefab("glash_big_fx").Transform:SetPosition(x, y, z)
                 end
             end
+            local percent = inst.components.finiteuses:GetPercent()
+            percent = math.clamp(percent, 0, 1)
+            inst.components.finiteuses:SetPercent(percent)
             inst.components.finiteuses:Use(1)
         end
     end

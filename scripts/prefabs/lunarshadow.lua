@@ -527,6 +527,7 @@ local function fn()
     inst.components.weapon:SetOnAttack(onattack)
 
     setup_equippable(inst)
+    inst.slotempty:set(true)
 
     MakeForgeRepairable(inst, FORGEMATERIALS.LUNARPLANT, onbroken, onrepaired)
     set_lunar(inst)
