@@ -234,7 +234,7 @@ local function on_death(inst)
 end
 
 local function on_haunt(inst, doer)
-    return not (inst.components.sanity and inst.components.sanity.current == 0)
+    return inst.components.sanity and inst.components.sanity.current > 0
 end
 
 local common_postinit = function(inst)
@@ -259,9 +259,8 @@ local master_postinit = function(inst)
     inst.components.reader:SetOnReadFn(on_read_fn)
 
     inst:AddComponent("hauntable")
-    inst.components.hauntable.onhaunt = on_haunt
-    inst.components.hauntable.hauntvalue = TUNING.HAUNT_INSTANT_REZ
-    inst.components.hauntable.no_wipe_value = true
+    inst.components.hauntable:SetOnHauntFn(on_haunt)
+    inst.components.hauntable:SetHauntValue(TUNING.HAUNT_INSTANT_REZ)
 
     inst.components.health:SetMaxHealth(TUNING.MIOTAN_STATUS)
     inst.components.hunger:SetMax(TUNING.MIOTAN_STATUS)

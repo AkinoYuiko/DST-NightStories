@@ -435,13 +435,18 @@ local COMPONENT_ACTIONS = UpvalueUtil.GetUpvalue(EntityScript.CollectActions, "C
 local SCENE = COMPONENT_ACTIONS.SCENE
 local scene_hauntable = SCENE.hauntable
 function SCENE.hauntable(inst, doer, actions, ...)
-    if doer.prefab == "dummy" and inst:HasTag("nightmare_twins") then
-        if inst ~= doer and not (inst:HasTag("playerghost") or inst:HasTag("reviving"))
+    -- if doer.prefab == "dummy" and inst:HasTag("nightmare_twins") then
+    --     if inst ~= doer and not (inst:HasTag("playerghost") or inst:HasTag("reviving"))
+    --             and not (inst:HasTag("haunted") or inst:HasTag("catchable")) then
+    --         table.insert(actions, ACTIONS.HAUNT)
+    --     end
+    -- elseif inst:HasTag("nightmare_twins") and doer.prefab ~= "dummy" then
+    --     return
+    if inst:HasTag("nightmare_twins") then
+        if inst ~= doer and doer.prefab == "dummy" and not (inst:HasTag("playerghost") or inst:HasTag("reviving"))
                 and not (inst:HasTag("haunted") or inst:HasTag("catchable")) then
             table.insert(actions, ACTIONS.HAUNT)
         end
-    elseif inst:HasTag("nightmare_twins") and doer.prefab ~= "dummy" then
-        return
     else
         return scene_hauntable(inst, doer, actions, ...)
     end

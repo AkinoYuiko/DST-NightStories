@@ -146,8 +146,8 @@ local function redirect_to_health(inst, amount, overtime, ...)
     return inst.components.health and ( amount and amount < 0 or inst.components.health.currenthealth > 0 ) and inst.components.health:DoDelta(amount, overtime, "lose_sanity", true, nil, true)
 end
 
-local function onhaunt(inst, doer)
-    return not (inst.components.sanity and inst.components.sanity.current == 0)
+local function on_haunt(inst, doer)
+    return inst.components.sanity and inst.components.sanity.current > 0
 end
 
 local function on_respawn_from_ghost(inst, data)
@@ -155,11 +155,12 @@ local function on_respawn_from_ghost(inst, data)
         local target = (data.source.prefab == "reviver" and data.user)
                         or (data.source.prefab == "pocketwatch_revive" and data.source.components.inventoryitem.owner)
                         or data.source
-        local reviver_sanity = target.components.sanity
+        local reviver_sanity = target and target.components.sanity
         if reviver_sanity then
-            inst.components.health:SetCurrentHealth(reviver_sanity.current)
+            local current = reviver_sanity.current
+            inst.components.health:SetCurrentHealth(current <= 5 and 5 or current)
             on_health_sanity_change(inst)
-            reviver_sanity:DoDelta(-reviver_sanity.current)
+            reviver_sanity:DoDelta(-current)
         end
     end
 end
@@ -219,9 +220,8 @@ local master_postinit = function(inst)
     inst.components.reader:SetOnReadFn(OnReadFn)
 
     inst:AddComponent("hauntable")
-    inst.components.hauntable.onhaunt = onhaunt
-    inst.components.hauntable.hauntvalue = TUNING.HAUNT_INSTANT_REZ
-    inst.components.hauntable.no_wipe_value = true
+    inst.components.hauntable:SetOnHauntFn(on_haunt)
+    inst.components.hauntable:SetHauntValue(TUNING.HAUNT_INSTANT_REZ)
 
     inst.components.health:SetMaxHealth(TUNING.DUMMY_HEALTH)
     inst.components.hunger:SetMax(TUNING.DUMMY_HUNGER)
