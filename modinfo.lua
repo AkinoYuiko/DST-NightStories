@@ -6,14 +6,15 @@ local function zheng(zh, en)
     return LOC[locale] or en
 end
 
-version = "1.53.4"
+version = "1.53.4.1"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng([[
-- 调整了部分材质
+- 修复与猪王兑换物品的一处问题。
 
 最近更新：
+- 调整了部分材质。
 - 修复一处潜在的崩溃。
 - 月亮入侵或月亮风暴期间猪王给月亮碎片。
 - 修复几处逻辑错误。
@@ -21,9 +22,10 @@ changelog = zheng([[
 - 新道具：亮茄尖刺球棒。
 - 亮茄尖刺球棒：基础攻击力34，位面伤害17，保质期10天，基础伤害随时间下降。
 ]], [[
-- Tweak some texture.
+- Fix an issue when trading with Pig King.
 
 Recent Changes:
+- Tweak some texture.
 - Fix a potential crash.
 - Pig King rewards Moon Shard during Moonstorm.
 - Fix some potential issue.
