@@ -3,9 +3,8 @@ https://steamcommunity.com/sharedfiles/filedetails/?id=2537996276
 
 ## TODO List in Ver. 1.53
 
-- [ ] 拟真坎普斯背包：图片加描边，动画加阴影
-- [ ] 隐士肉架用官方动画重做
-- [ ] 修复作祟澪可以复活的问题
+- [x] 拟真坎普斯背包：图片加描边，动画加阴影
+- [x] 修复作祟澪可以复活的问题
 
 ## TODO List in Ver. 1.54
 

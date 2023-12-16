@@ -262,7 +262,7 @@ GlassicAPI.SkinHandler.AddModSkins({
     wx78 = {
         "wx78_potato",
     },
-    krampus_sack = { "krampus_sack_invisible"},
+    krampus_sack = { "krampus_sack_invisible" },
     -- Glassic items
     cane = { "cane_glass", "cane_mossling" },
     goldenaxe = { "goldenaxe_victorian" },
