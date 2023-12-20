@@ -1,4 +1,4 @@
--- if not GLOBAL.IsInFrontEnd() then return end
+if not GLOBAL.IsInFrontEnd() then return end
 
 PrefabFiles = {
     "ns_skins",
@@ -39,7 +39,6 @@ AddModCharacter("civi", "MALE")
 
 modimport("main/tuning")
 modimport("main/strings")
--- modimport("main/hack_templates.lua")
 
 modimport("main/clothing")
 modimport("main/prefabskin")
