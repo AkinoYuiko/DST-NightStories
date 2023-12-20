@@ -6,15 +6,15 @@ local function zheng(zh, en)
     return LOC[locale] or en
 end
 
-version = "1.53.4.2"
-version_compatible = "1.53.4.1"
+version = "1.53.5"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng([[
-- 修复与猪王兑换物品的一处问题。
+- “重置洞察”现已支持薇洛和女武神。
 
 最近更新：
+- 修复与猪王兑换物品的一处问题。
 - 调整了部分材质。
 - 修复一处潜在的崩溃。
 - 月亮入侵或月亮风暴期间猪王给月亮碎片。
@@ -23,9 +23,10 @@ changelog = zheng([[
 - 新道具：亮茄尖刺球棒。
 - 亮茄尖刺球棒：基础攻击力34，位面伤害17，保质期10天，基础伤害随时间下降。
 ]], [[
-- Fix an issue when trading with Pig King.
-
+- Add support for Willow and Wigfrid with "Reset Insights".
+    
 Recent Changes:
+- Fix an issue when trading with Pig King.
 - Tweak some texture.
 - Fix a potential crash.
 - Pig King rewards Moon Shard during Moonstorm.
