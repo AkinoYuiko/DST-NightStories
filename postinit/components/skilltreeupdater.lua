@@ -16,6 +16,8 @@ local SKILLTREE_CHARACTERS = {
     "woodie",
     "wolfgang",
     "wormwood",
+    "willow",
+    "wathgrithr",
 }
 for _, char in ipairs(SKILLTREE_CHARACTERS) do
     AddPrefabPostInit(char, function(inst)
