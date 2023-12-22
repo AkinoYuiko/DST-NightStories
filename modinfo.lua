@@ -6,14 +6,15 @@ local function zheng(zh, en)
     return LOC[locale] or en
 end
 
-version = "1.53.6"
+version = "1.53.7"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng([[
-- “重置洞察”修复薇洛缺少反激活相关操作的问题（傻逼科雷）。
+- 优化代码。
 
 最近更新：
+- “重置洞察”修复薇洛缺少反激活相关操作的问题（傻逼科雷）。
 - “重置洞察”现已支持薇洛和女武神。
 - 修复与猪王兑换物品的一处问题。
 - 调整了部分材质。
@@ -24,9 +25,10 @@ changelog = zheng([[
 - 新道具：亮茄尖刺球棒。
 - 亮茄尖刺球棒：基础攻击力34，位面伤害17，保质期10天，基础伤害随时间下降。
 ]], [[
-- Fix issue that Willow miss "ondeactivate" fn in her skill tree (Fxxk KLEI).
+- Improve code performance.
 
 Recent Changes:
+- Fix issue that Willow miss "ondeactivate" fn in her skill tree (Fxxk KLEI).
 - Add support for Willow and Wigfrid with "Reset Insights".
 - Fix an issue when trading with Pig King.
 - Tweak some texture.
