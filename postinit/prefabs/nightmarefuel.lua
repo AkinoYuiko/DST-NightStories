@@ -31,30 +31,23 @@ local function oneaten(food, eater)
     end
 end
 
-AddPrefabPostInit("nightmarefuel", function(inst)
-    if not TheWorld.ismastersim then return end
-    inst:AddComponent("edible")
-    inst.components.edible.healthvalue = foodvalue.health
-    inst.components.edible.sanityvalue = foodvalue.sanity
-    inst.components.edible.hungervalue = foodvalue.hunger
-    inst.components.edible.foodtype = FOODTYPE.NIGHTMAREFUEL
-    inst.components.edible:SetOnEatenFn(oneaten)
+local FUEL_PREFAB_MULT =
+{
+    ["nightmarefuel"] = 1,
+    ["horrorfuel"] = 2,
+}
 
-    inst:AddComponent("fuelpocketwatch")
-    inst:AddComponent("nightfuel")
-end)
+for prefab, mult in pairs(FUEL_PREFAB_MULT) do
+    AddPrefabPostInit(prefab, function(inst)
+        if not TheWorld.ismastersim then return end
+        inst:AddComponent("edible")
+        inst.components.edible.healthvalue = foodvalue.health * mult
+        inst.components.edible.sanityvalue = foodvalue.sanity * mult
+        inst.components.edible.hungervalue = foodvalue.hunger * mult
+        inst.components.edible.foodtype = FOODTYPE.NIGHTMAREFUEL
+        inst.components.edible:SetOnEatenFn(oneaten)
 
--- if not Prefabs["horrorfuel"] then return end
-
-AddPrefabPostInit("horrorfuel", function(inst)
-    if not TheWorld.ismastersim then return end
-    inst:AddComponent("edible")
-    inst.components.edible.healthvalue = foodvalue.health * 2
-    inst.components.edible.sanityvalue = foodvalue.sanity * 2
-    inst.components.edible.hungervalue = foodvalue.hunger * 2
-    inst.components.edible.foodtype = FOODTYPE.NIGHTMAREFUEL
-    inst.components.edible:SetOnEatenFn(oneaten)
-
-    inst:AddComponent("fuelpocketwatch")
-    inst:AddComponent("nightfuel")
-end)
+        inst:AddComponent("fuelpocketwatch")
+        inst:AddComponent("nightfuel")
+    end)
+end
