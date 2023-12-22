@@ -29,6 +29,7 @@ local postinit =
     "components/sanity",
     "components/skilltreeupdater",
     "components/spellcaster",
+    "components/trader",
     -- prefabs
     "prefabs/alterguardianhat",
     "prefabs/flower",

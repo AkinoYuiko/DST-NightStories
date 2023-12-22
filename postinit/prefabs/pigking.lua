@@ -44,7 +44,7 @@ local function ontradeforitem(inst, item, giver, ...)
 
     -- CHANGED PART --
     local reward, max_amount = get_reward(giver)
-    local amount = math.min(max_amount or 9999, item.components.tradable.goldvalue)
+    local amount = math.min(max_amount or 9999, item.components.tradable.goldvalue) * (item.components.stackable and item.components.stackable.stacksize or 1)
     for k = 1, amount do
         local nug = SpawnPrefab(reward)
         nug.Transform:SetPosition(x, y, z)
