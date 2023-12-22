@@ -6,7 +6,13 @@ local function get_reward(giver)
     if giver.prefab == "miotan" then
         return "nightmarefuel", 2
     elseif TheWorld.components.riftspawner:IsLunarPortalActive() then
-        return "moonglass_charged", 1
+        local rifts = TheWorld.components.riftspawner:GetRiftsOfPrefab("lunarrift_portal")
+        for _, rift in ipairs(rifts) do
+            if rift._stage == TUNING.RIFT_LUNAR1_MAXSTAGE then
+                return "moonglass_charged", 1
+            end
+        end
+        return "moonglass", 1
     elseif TheWorld.state.isalterawake then
         return "moonglass", 1
     end
