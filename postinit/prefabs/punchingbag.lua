@@ -43,9 +43,9 @@ end
 local function new_health_delta(inst, data)
 
     if data.amount <= 0 then
-        for k,v in pairs(data) do
-            print("PUNCHINGBAG HIT DATA:", k,v)
-        end
+        -- for k,v in pairs(data) do
+        --     print("PUNCHINGBAG HIT DATA:", k,v)
+        -- end
         pre_digits(inst, math.floor(math.abs(data.amount)))
     end
 end
