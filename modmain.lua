@@ -32,6 +32,8 @@ local postinit =
     "components/trader",
     -- prefabs
     "prefabs/alterguardianhat",
+    "prefabs/antlion",
+    "prefabs/birdcage",
     "prefabs/flower",
     "prefabs/foodbuffs",
     "prefabs/gems",
