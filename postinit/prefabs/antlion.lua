@@ -6,7 +6,12 @@ AddPrefabPostInit("antlion", function(inst)
 
     local on_given_item = inst.components.trader.onaccept
     inst.components.trader.onaccept = function(inst, giver, item)
-        inst.itemstacksize = item and item.components.stackable and item.components.stackable.stacksize or 1
+        if item and
+            (item.prefab == "antliontrinket" or
+                item.prefab == "cotl_trinket" or
+                item.components.tradable.goldvalue > 0) then
+            inst.itemstacksize = item and item.components.stackable and item.components.stackable.stacksize or 1
+        end
         on_given_item(inst, giver, item)
     end
 
@@ -14,13 +19,15 @@ AddPrefabPostInit("antlion", function(inst)
     inst.GiveReward = function(inst)
         local pendingrewarditem = inst.pendingrewarditem
         local tributer = inst.tributer
-        if pendingrewarditem then
+        if pendingrewarditem and inst.itemstacksize then
             for k = 1, inst.itemstacksize do
                 inst.pendingrewarditem = pendingrewarditem
                 inst.tributer = tributer
                 give_reward(inst)
             end
+            inst.itemstacksize = nil
+        else
+            give_reward(inst)
         end
-        inst.itemstacksize = nil
     end
 end)
