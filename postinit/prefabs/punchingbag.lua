@@ -57,7 +57,6 @@ for _, prefab in ipairs(PUNCHINGBAGS) do
         for _, fn in ipairs(inst.event_listeners["healthdelta"][inst]) do
             local prev_do_digits = UpvalueUtil.GetUpvalue(fn, "do_digits")
             if prev_do_digits then
-                print("gagaga!", fn, prev_do_digits)
                 inst:RemoveEventCallback("healthdelta", fn)
             end
         end
