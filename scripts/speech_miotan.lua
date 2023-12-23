@@ -2047,7 +2047,7 @@ return {
         -- HONEYHAM = "Mortals have so many ways of preparing meat.",
         -- HONEYNUGGETS = "I guess they do look kind of good.",
         -- HORN = "Phew! Not one of mine.",
-        -- HORRORFUEL = "A goop most foul.",
+        HORRORFUEL = "Twice love as Nightmare Fuel!",
         -- HOTCHILI = "I don't \"digest\" well.",
         HOTSPRING =
         {

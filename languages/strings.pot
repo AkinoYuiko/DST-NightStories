@@ -711,6 +711,11 @@ msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.HOMESIGN.UNWRITTEN"
 msgid "There's no way we don't have a :blpp: here."
 msgstr ""
 
+#. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.HORRORFUEL
+msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.HORRORFUEL"
+msgid "Twice love as Nightmare Fuel!"
+msgstr ""
+
 #. STRINGS.CHARACTERS.MIOTAN.DESCRIBE.ICEHOUND
 msgctxt "STRINGS.CHARACTERS.MIOTAN.DESCRIBE.ICEHOUND"
 msgid "You wouldn't want to eat an cute girl."

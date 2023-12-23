@@ -6,14 +6,16 @@ local function zheng(zh, en)
     return LOC[locale] or en
 end
 
-version = "1.53.9"
+version = "1.53.10"
+version_compatible = "1.53.9.2"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng([[
-- 鸟笼和蚁狮接受整组物品。
+- 调整了部分语言文本。
 
 最近更新：
+- 鸟笼和蚁狮接受整组物品。
 - 调整猪王奖励机制。
 - 猪王接受整组物品。
 - “重置洞察”修复薇洛缺少反激活相关操作的问题（傻逼科雷）。
@@ -27,9 +29,10 @@ changelog = zheng([[
 - 新道具：亮茄尖刺球棒。
 - 亮茄尖刺球棒：基础攻击力34，位面伤害17，保质期10天，基础伤害随时间下降。
 ]], [[
-- Birdcage and Antlion accept whole stack of items.
+- Tweak some speech text strings.
 
 Recent Changes:
+- Birdcage and Antlion accept whole stack of items.
 - Tweak rewards by trading with Pig King.
 - Pig King accepts whole stacks of items.
 - Fix issue that Willow miss "ondeactivate" fn in her skill tree (Fxxk KLEI).
