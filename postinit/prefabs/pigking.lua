@@ -30,7 +30,6 @@ local function ontradeforitem(inst, item, giver, ...)
     -- copied from pigking.lua --
     AwardPlayerAchievement("pigking_trader", giver)
 
-    local stacksize = item.components.stackable and item.components.stackable.stacksize or 1
     local x, y, z = inst.Transform:GetWorldPosition()
     y = 4.5
 
@@ -44,14 +43,14 @@ local function ontradeforitem(inst, item, giver, ...)
     end
 
     -- CHANGED PART --
-    local reward, max_amount = get_reward(giver, item)
-    local amount = math.min(max_amount or 9999, item.components.tradable.goldvalue)
+    local stacksize = item.components.stackable and item.components.stackable.stacksize or 1
+    local reward, max_num = get_reward(giver, item)
+    local amount = max_num and math.min(max_num, item.components.tradable.goldvalue) or item.components.tradable.goldvalue
     for k = 1, amount * stacksize do
         local nug = SpawnPrefab(reward)
         nug.Transform:SetPosition(x, y, z)
         launchitem(nug, angle)
     end
-    -- end --
 
     if item.components.tradable.tradefor ~= nil then
         for _, v in pairs(item.components.tradable.tradefor) do
@@ -87,6 +86,7 @@ local function ontradeforitem(inst, item, giver, ...)
             launchitem(candy, angle)
         end
     end
+    -- end --
 end
 
 AddPrefabPostInit("pigking", function(inst)

@@ -7,7 +7,6 @@ local function zheng(zh, en)
 end
 
 version = "1.53.10"
-version_compatible = "1.53.9.2"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")

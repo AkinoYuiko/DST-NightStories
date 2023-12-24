@@ -1,7 +1,6 @@
 local assets = {}
 
 local prefabs = {
-    "electrichitsparks",
     "planar_hit_fx",
 }
 
@@ -25,8 +24,6 @@ local function fn()
 
     inst:AddTag("ignore_planar_entity")
 
-    inst.persists = false
-
     if not TheWorld.ismastersim then
         return inst
     end
@@ -38,6 +35,7 @@ local function fn()
 
     inst:AddComponent("projectile")
 
+    inst.persists = false
     inst:DoTaskInTime(0, inst.Remove)
 
     return inst
