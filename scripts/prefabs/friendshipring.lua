@@ -185,6 +185,11 @@ local function buff_friends(oneatenfn, food, player, buff_self)
             buff_entities[follower] = true
         end
     end
+    local ppx, ppy, ppz = player.Transform:GetWorldPosition()
+    local eyeballs = TheSim:FindEntities(ppx, ppy, ppz, 30, {"eyeturret"})
+    for _, ent in ipairs(eyeballs) do
+        buff_entities[ent] = true
+    end
     for ent in pairs(buff_entities) do
         oneatenfn(food, ent)
         local x, y, z = ent.Transform:GetWorldPosition()
