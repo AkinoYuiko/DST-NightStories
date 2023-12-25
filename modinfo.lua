@@ -6,17 +6,17 @@ local function zheng(zh, en)
     return LOC[locale] or en
 end
 
-version = "1.53.11"
+version = "1.53.12"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng([[
-- 调整了友谊戒指的适用对象。
+- 调整猪王奖励机制。
 
 最近更新：
+- 调整了友谊戒指的适用对象。
 - 调整了部分语言文本。
 - 鸟笼和蚁狮接受整组物品。
-- 调整猪王奖励机制。
 - 猪王接受整组物品。
 - “重置洞察”修复薇洛缺少反激活相关操作的问题（傻逼科雷）。
 - “重置洞察”现已支持薇洛和女武神。
@@ -29,12 +29,12 @@ changelog = zheng([[
 - 新道具：亮茄尖刺球棒。
 - 亮茄尖刺球棒：基础攻击力34，位面伤害17，保质期10天，基础伤害随时间下降。
 ]], [[
-- Tweak applying entities for Ring of Friendship.
+- Tweak rewards by trading with Pig King.
 
 Recent Changes:
+- Tweak applying entities for Ring of Friendship.
 - Tweak some speech text strings.
 - Birdcage and Antlion accept whole stack of items.
-- Tweak rewards by trading with Pig King.
 - Pig King accepts whole stacks of items.
 - Fix issue that Willow miss "ondeactivate" fn in her skill tree (Fxxk KLEI).
 - Add support for Willow and Wigfrid with "Reset Insights".
