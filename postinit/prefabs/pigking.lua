@@ -5,16 +5,8 @@ GLOBAL.setfenv(1, GLOBAL)
 local function get_reward(giver, item)
     if giver.prefab == "miotan" then
         return "nightmarefuel", 2
-    elseif TheWorld.components.riftspawner:IsLunarPortalActive() then
-        local rifts = TheWorld.components.riftspawner:GetRiftsOfPrefab("lunarrift_portal")
-        for _, rift in ipairs(rifts) do
-            if rift._stage == TUNING.RIFT_LUNAR1_MAXSTAGE and item.components.tradable.goldvalue > 1 then
-                return "moonglass_charged", 1
-            end
-        end
-        return "moonglass", 1
     elseif TheWorld.state.isalterawake then
-        return "moonglass", 1
+        return TheWorld.state.islunarhailing and "moonglass_charged" or "moonglass", 1
     end
     return "goldnugget"
 end
