@@ -6,14 +6,15 @@ local function zheng(zh, en)
     return LOC[locale] or en
 end
 
-version = "1.53.12"
+version = "1.53.13"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng([[
-- 调整猪王奖励机制。
+- 修复一处逻辑错误。
 
 最近更新：
+- 调整猪王奖励机制。
 - 调整了友谊戒指的适用对象。
 - 调整了部分语言文本。
 - 鸟笼和蚁狮接受整组物品。
@@ -29,9 +30,10 @@ changelog = zheng([[
 - 新道具：亮茄尖刺球棒。
 - 亮茄尖刺球棒：基础攻击力34，位面伤害17，保质期10天，基础伤害随时间下降。
 ]], [[
-- Tweak rewards by trading with Pig King.
+- Fix logic issue for Pig King trading.
 
 Recent Changes:
+- Tweak rewards by trading with Pig King.
 - Tweak applying entities for Ring of Friendship.
 - Tweak some speech text strings.
 - Birdcage and Antlion accept whole stack of items.
