@@ -176,6 +176,11 @@ local totemfn =
 ---------------------------------------------------------------
 ------------------------ RING FUNCTION ------------------------
 ---------------------------------------------------------------
+local function get_aibo(player, tags)
+    local ppx, ppy, ppz = player.Transform:GetWorldPosition()
+    return TheSim:FindEntities(ppx, ppy, ppz, 30, {tags})
+end
+
 local function buff_friends(oneatenfn, food, player, buff_self)
     local buff_entities = {}
     if buff_self then buff_entities[player] = true end
@@ -185,9 +190,9 @@ local function buff_friends(oneatenfn, food, player, buff_self)
             buff_entities[follower] = true
         end
     end
-    local ppx, ppy, ppz = player.Transform:GetWorldPosition()
-    local aibo = TheSim:FindEntities(ppx, ppy, ppz, 30, {"eyeturret", "catapult"})
-    for _, ent in ipairs(aibo) do
+    local eyeturrets = get_aibo(player, "eyeturret")
+    local catapults = get_aibo(player, "catapult")
+    for _, ent in ipairs(ArrayUnion(eyeturrets, catapults)) do
         buff_entities[ent] = true
     end
     for ent in pairs(buff_entities) do
