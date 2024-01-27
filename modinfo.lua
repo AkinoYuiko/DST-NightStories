@@ -6,48 +6,14 @@ local function zheng(zh, en)
     return LOC[locale] or en
 end
 
-version = "1.53.13"
+version = "1.54"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng([[
-- 修复一处逻辑错误。
-
-最近更新：
-- 调整猪王奖励机制。
-- 调整了友谊戒指的适用对象。
-- 调整了部分语言文本。
-- 鸟笼和蚁狮接受整组物品。
-- 猪王接受整组物品。
-- “重置洞察”修复薇洛缺少反激活相关操作的问题（傻逼科雷）。
-- “重置洞察”现已支持薇洛和女武神。
-- 修复与猪王兑换物品的一处问题。
-- 调整了部分材质。
-- 修复一处潜在的崩溃。
-- 月亮入侵或月亮风暴期间猪王给月亮碎片。
-- 修复几处逻辑错误。
-- 修正亮茄尖刺球棒数值设置错误的问题。
-- 新道具：亮茄尖刺球棒。
-- 亮茄尖刺球棒：基础攻击力34，位面伤害17，保质期10天，基础伤害随时间下降。
+- 【友谊戒指】现在可以共享给投石机。
 ]], [[
-- Fix logic issue for Pig King trading.
-
-Recent Changes:
-- Tweak rewards by trading with Pig King.
-- Tweak applying entities for Ring of Friendship.
-- Tweak some speech text strings.
-- Birdcage and Antlion accept whole stack of items.
-- Pig King accepts whole stacks of items.
-- Fix issue that Willow miss "ondeactivate" fn in her skill tree (Fxxk KLEI).
-- Add support for Willow and Wigfrid with "Reset Insights".
-- Fix an issue when trading with Pig King.
-- Tweak some texture.
-- Fix a potential crash.
-- Pig King rewards Moon Shard during Moonstorm.
-- Fix some potential issue.
-- Fix a typo with damage of Brightshade Spike Bat.
-- New Item: Brightshade Spike Bat.
-- Brightshade Spike Bat: Base Damage 34, Planar Damage 17, Durability 10 days. Base damage reduces by freshness.
+- Ring of Friendship shares buffs with Winona's Catapult.
 ]])
 description = zheng("版本: ", "Version: ") .. version ..
     zheng("\n\n本次更新:\n", "\n\nChanges:\n") .. changelog .. "\n" ..
