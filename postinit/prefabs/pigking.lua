@@ -5,8 +5,10 @@ GLOBAL.setfenv(1, GLOBAL)
 local function get_reward(giver, item)
     if giver.prefab == "miotan" then
         return "nightmarefuel", 2
+    --[[ Removed due to new feature.
     elseif TheWorld.state.isalterawake then
         return TheWorld.state.islunarhailing and item and item.components.tradable.goldvalue > 1 and "moonglass_charged" or "moonglass", 1
+    ]]
     end
     return "goldnugget"
 end
