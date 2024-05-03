@@ -6,14 +6,20 @@ local function zheng(zh, en)
     return LOC[locale] or en
 end
 
-version = "1.54.0.1"
+version = "1.55"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng([[
-- 【友谊戒指】现在可以共享给投石机。
+- 移除配方【亮茄尖刺球棒】。
+- 调整配方【月光粉】。
+- 月亮传送门可制作部分配方。
+- 皮肤适配【姜饼箱妈妈】。
 ]], [[
-- Ring of Friendship shares buffs with Winona's Catapult.
+- Remove Recipe: Brightshade Spike Bat.
+- Tweak Recipe: Lunar Powder.
+- Set the Celestial Portal as prototyper.
+- Bug fixes.
 ]])
 description = zheng("版本: ", "Version: ") .. version ..
     zheng("\n\n本次更新:\n", "\n\nChanges:\n") .. changelog .. "\n" ..
