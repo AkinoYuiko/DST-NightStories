@@ -116,7 +116,7 @@ AddRecipe("skilltree_respec_tool", {Ingredient("moonglass", 1), Ingredient("nigh
 SortBefore("skilltree_respec_tool", "transmute_log")
 
 -- 月影 --
-AddRecipe("lunarshadow", {Ingredient("security_pulse_cage_full", 1), Ingredient("sword_lunarplant", 1), Ingredient("voidcloth_scythe", 1)}, TECH.LUNARFORGING_TWO, {nounlock=true, station_tag="lunar_forge", no_deconstruction = true})
+AddRecipe("lunarshadow", {Ingredient("security_pulse_cage_full", 1), Ingredient("sword_lunarplant", 1), Ingredient("voidcloth_scythe", 1)}, TECH.LUNARFORGING_TWO, {nounlock=true, station_tag="lunar_forge"})
 SortAfter("lunarshadow", "houndstooth_blowpipe")
 
 -- 亮茄尖刺球棒 --
@@ -142,7 +142,7 @@ AddRecipe("spice_cactus", {Ingredient("cactus_meat", 2), Ingredient("cactus_flow
 SortAfter("spice_cactus", "spice_salt")
 
 -- 月光粉 --
-AddRecipe("spice_moonglass", {Ingredient("moonglass_charged", 1), Ingredient("moonglass", 5)}, TECH.FOODPROCESSING_ONE, {nounlock = true, numtogive = 2, nochar = true, builder_tag = "professionalchef", no_deconstruction = true})
+AddRecipe("spice_moonglass", {Ingredient("moonglass_charged", 2), Ingredient("moonglass", 4)}, TECH.FOODPROCESSING_ONE, {nounlock = true, numtogive = 2, nochar = true, builder_tag = "professionalchef", no_deconstruction = true})
 SortAfter("spice_moonglass", "spice_cactus")
 
 -- 便携衣柜 & 魔法礼装 --
