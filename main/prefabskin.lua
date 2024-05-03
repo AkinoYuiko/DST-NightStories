@@ -211,6 +211,32 @@ if not rawget(_G, "lunarplanthat_clear_fn") then
     end
 end
 
+
+-- Dragonfly Chest Gingerbread --
+local function do_upgrade_visuals(inst)
+    local skin_name = (inst:GetSkinBuild() or ""):gsub("dragonflychest_", "") -- SB Klei
+    inst.AnimState:SetBank("dragonfly_chest_upgraded")
+    inst.AnimState:SetBuild("dragonfly_chest_upgraded")
+    if skin_name ~= "" then
+        skin_name = "dragonflychest_upgraded_" .. skin_name
+        inst.AnimState:SetSkin(skin_name, "dragonfly_chest_upgraded")
+    end
+end
+
+local _dragonflychest_clear_fn = dragonflychest_clear_fn
+dragonflychest_clear_fn = function(inst)
+    inst:RemoveEventCallback("dragonflychest_upgraded", do_upgrade_visuals)
+    inst.AnimState:SetBank(inst._chestupgrade_stacksize and "dragonfly_chest_upgraded" or "dragonfly_chest")
+    inst.AnimState:SetScale(1, 1, 1)
+    return _dragonflychest_clear_fn(inst)
+end
+
+local _dragonflychest_init_fn = dragonflychest_init_fn
+dragonflychest_init_fn = function(inst, ...)
+    inst:ListenForEvent("dragonflychest_upgraded", do_upgrade_visuals)
+    return _dragonflychest_init_fn(inst, ...)
+end
+
 ------------------------------------------------------------------------------
 
 GlassicAPI.SkinHandler.AddModSkins({
