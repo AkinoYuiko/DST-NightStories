@@ -39,6 +39,7 @@ local postinit =
     "prefabs/foodbuffs",
     "prefabs/gems",
     "prefabs/gestalt",
+    "prefabs/multiplayer_portal_moonrock",
     "prefabs/nightmarecreatures",
     "prefabs/nightmarefuel",
     "prefabs/nightsword",
