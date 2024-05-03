@@ -120,8 +120,8 @@ AddRecipe("lunarshadow", {Ingredient("security_pulse_cage_full", 1), Ingredient(
 SortAfter("lunarshadow", "houndstooth_blowpipe")
 
 -- 亮茄尖刺球棒 --
-AddRecipe("bat_lunarplant", {Ingredient("purebrilliance", 2), Ingredient("lunarplant_husk", 1), Ingredient("plantmeat", 2)}, TECH.LUNARFORGING_TWO, {nounlock=true, station_tag="lunar_forge"})
-SortAfter("bat_lunarplant", "sword_lunarplant")
+-- AddRecipe("bat_lunarplant", {Ingredient("purebrilliance", 2), Ingredient("lunarplant_husk", 1), Ingredient("plantmeat", 2)}, TECH.LUNARFORGING_TWO, {nounlock=true, station_tag="lunar_forge"})
+-- SortAfter("bat_lunarplant", "sword_lunarplant")
 
 -- 恐惧锁链 --
 AddRecipe("horrorchain", {Ingredient("horrorfuel", 4), Ingredient("voidcloth", 2)}, TECH.SHADOWFORGING_TWO, {nounlock=true, station_tag = "shadow_forge"})
