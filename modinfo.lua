@@ -6,11 +6,12 @@ local function zheng(zh, en)
     return LOC[locale] or en
 end
 
-version = "1.55.1"
+version = "1.55.2"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng([[
+- 修复皮肤贴图错误：【姜饼箱妈妈】。
 - 调整了澪的自动充能机制。
 
 最近更新：
@@ -20,6 +21,7 @@ changelog = zheng([[
 - 调整配方【月光粉】。
 - 皮肤适配【姜饼箱妈妈】。
 ]], [[
+- Fix texture issue.
 - Change how Mio's auto-refueling works.
 
 Recent Changes:
