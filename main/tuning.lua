@@ -77,7 +77,7 @@ TUNING.MIOTAN_AUTO_REFUEL_TABLE = {
             horrorchain         = { trigger = 100 , bonus = 100, override_fuel = "horrorfuel" }, -- 恐惧锁链
             voidcloth_scythe    = { trigger = 100 , bonus = 100, override_fuel = "horrorfuel" }, -- 暗影收割者
             sword_lunarplant    = { trigger = 100, bonus = 100, override_fuel = "purebrilliance"}, -- 亮茄剑
-            staff_lunarplant    = { trigger = 50, bonus = 50, override_fuel = "purebrilliance"}, -- 亮茄法杖
+            staff_lunarplant    = { trigger = 25, bonus = 25, override_fuel = "purebrilliance"}, -- 亮茄法杖
         },
     },
 }
