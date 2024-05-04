@@ -162,6 +162,27 @@ end
 --     return NS_CHARS[owner.prefab] and "_lower" or ""
 -- end
 
+-- [[ Dreadstone Hat ]] --
+-- if not rawget(_G, "dreadstonehat_init_fn") then
+--     function dreadstonehat_init_fn(inst)
+--         if not TheWorld.ismastersim then return end
+
+--         local ret = { GlassicAPI.BasicInitFn(inst) }
+
+--         return unpack(ret)
+--     end
+-- end
+
+if not rawget(_G, "dreadstonehat_clear_fn") then
+    function dreadstonehat_clear_fn(inst)
+        if not TheWorld.ismastersim then return end
+
+        local ret = { basic_clear_fn(inst, "hat_dreadstone") }
+
+        return unpack(ret)
+    end
+end
+
 -- [[ Lunarplant Item Skins ]] --
 -- Brightshade Helm
 local function show_head(owner)
@@ -211,7 +232,6 @@ if not rawget(_G, "lunarplanthat_clear_fn") then
     end
 end
 
-
 -- Dragonfly Chest Gingerbread --
 local function gingerbread_upgrade_visuals(inst)
     inst.AnimState:SetBank("chest_upgraded")
@@ -221,6 +241,7 @@ end
 
 local _dragonflychest_clear_fn = dragonflychest_clear_fn
 dragonflychest_clear_fn = function(inst)
+    if not TheWorld.ismastersim then return end
     inst:RemoveEventCallback("dragonflychest_upgraded", gingerbread_upgrade_visuals)
     inst.AnimState:SetBank(inst._chestupgrade_stacksize and "dragonfly_chest_upgraded" or "dragonfly_chest")
     inst.AnimState:SetScale(1, 1, 1)
@@ -228,11 +249,12 @@ dragonflychest_clear_fn = function(inst)
 end
 
 dragonflychest_gingerbread_init_fn = function(inst)
-    local result = dragonflychest_init_fn(inst, "dragonflychest_gingerbread")
+    if not TheWorld.ismastersim then return end
+    local ret = { dragonflychest_init_fn(inst, "dragonflychest_gingerbread") }
     inst:ListenForEvent("dragonflychest_upgraded", gingerbread_upgrade_visuals)
     inst.AnimState:SetBank(inst._chestupgrade_stacksize and "chest_upgraded" or "chest")
     inst.AnimState:SetScale(1.2, 1.2, 1.2)
-    return result
+    return unpack(ret)
 end
 
 ------------------------------------------------------------------------------
@@ -287,6 +309,7 @@ GlassicAPI.SkinHandler.AddModSkins({
         "wx78_potato",
     },
     krampus_sack = { "krampus_sack_invisible" },
+    dreadstonehat = { "dreadstonehat_trans" },
     -- Glassic items
     cane = { "cane_glass", "cane_mossling" },
     goldenaxe = { "goldenaxe_victorian" },

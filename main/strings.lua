@@ -176,6 +176,7 @@ local strings = {
         alterguardianhat_finger = "Crossed Fingers",
 
         krampus_sack_invisible = "Pantomimed Krampus Sack",
+        dreadstonehat_trans = "Phantomstone Helm",
         -- Glassic items
         cane_glass = "Gane",
         cane_mossling = "Mosling Cane",
@@ -222,6 +223,7 @@ local strings = {
 
         krampus_sack_invisible = "Convey an incredibly convincing impression of a krampus sack.",
 
+        dreadstonehat_trans = "Transparent!",
         -- Glassic items
         cane_glass = "It's a glassic joke, I assume.",
         cane_mossling = "Mossia!",

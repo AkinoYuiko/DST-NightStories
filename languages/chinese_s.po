@@ -3,7 +3,7 @@
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: zh_CN\n"
+"Language: zh\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1671,6 +1671,11 @@ msgctxt "STRINGS.SKIN_DESCRIPTIONS.dragonflychest_gingerbread"
 msgid "Don't be fooled... it's completely inedible."
 msgstr ""
 
+#. STRINGS.SKIN_DESCRIPTIONS.dreadstonehat_trans
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.dreadstonehat_trans"
+msgid "Transparent!"
+msgstr "透明！"
+
 #. STRINGS.SKIN_DESCRIPTIONS.dummy_none
 msgctxt "STRINGS.SKIN_DESCRIPTIONS.dummy_none"
 msgid "Another girl comes from nightmare's world."
@@ -1815,6 +1820,11 @@ msgstr ""
 msgctxt "STRINGS.SKIN_NAMES.dragonflychest_gingerbread"
 msgid "Gingerbread Chest"
 msgstr "姜饼箱妈妈"
+
+#. STRINGS.SKIN_NAMES.dreadstonehat_trans
+msgctxt "STRINGS.SKIN_NAMES.dreadstonehat_trans"
+msgid "Phantomstone Helm"
+msgstr "幻影石头盔"
 
 #. STRINGS.SKIN_NAMES.dummy_none
 msgctxt "STRINGS.SKIN_NAMES.dummy_none"
