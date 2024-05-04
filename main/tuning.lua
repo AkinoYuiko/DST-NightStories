@@ -45,35 +45,37 @@ TUNING.MIOTAN_RUN_SPEED = TUNING.WILSON_RUN_SPEED * 1.25
 TUNING.MIOTAN_AUTO_REFUEL_TABLE = {
     FUELED = {
         player = {
-            armorskeleton   = { trigger = 1 }, -- 骨甲
-            lantern         = { trigger = 1 }, -- 提灯
-            lighter         = { trigger = 1 }, -- 薇洛的打火机
-            minerhat        = { trigger = 1 }, -- 头灯
-            molehat         = { trigger = 2, bonus = 2, cost = 2 }, -- 鼹鼠帽
-            nightstick      = { trigger = 1 }, -- 晨星
-            thurible        = { trigger = 1 }, -- 香炉
-            yellowamulet    = { trigger = 1 }, -- 黄符
-            purpleamulet    = { trigger = 1 }, -- 紫符
-            blueamulet      = { trigger = 1 }, -- 冰符
+            armorskeleton       = { trigger = 1 }, -- 骨甲
+            lantern             = { trigger = 1 }, -- 提灯
+            lighter             = { trigger = 1 }, -- 薇洛的打火机
+            minerhat            = { trigger = 1 }, -- 头灯
+            molehat             = { trigger = 2, bonus = 2, cost = 2 }, -- 鼹鼠帽
+            nightstick          = { trigger = 1 }, -- 晨星
+            thurible            = { trigger = 1 }, -- 香炉
+            yellowamulet        = { trigger = 1 }, -- 黄符
+            purpleamulet        = { trigger = 1 }, -- 紫符
+            blueamulet          = { trigger = 1 }, -- 冰符
 
-            tophat          = { trigger = 1 }, -- 高礼貌 & 魔术师魔术帽
+            tophat              = { trigger = 1 }, -- 高礼貌 & 魔术师魔术帽
 
-            nightpack       = { trigger = 1 }, -- 影背包 in Night Stories
-            darkamulet      = { trigger = 1 }, -- 黑暗护符 in Night Stories
-            lightamulet     = { trigger = 1 }, -- 光明护符 in Night Stories
+            nightpack           = { trigger = 1 }, -- 影背包 in Night Stories
+            darkamulet          = { trigger = 1 }, -- 黑暗护符 in Night Stories
+            lightamulet         = { trigger = 1 }, -- 光明护符 in Night Stories
 
-            bottlelantern   = { trigger = 1 }, -- 瓶灯 in Island Adventures
+            bottlelantern       = { trigger = 1 }, -- 瓶灯 in Island Adventures
 
         },
         boat = { -- Island Adventures
-            boat_lantern    = { trigger = 1 }, -- 船灯
-            ironwind        = { trigger = 2, cost = 2 }, -- 螺旋桨
+            boat_lantern        = { trigger = 1 }, -- 船灯
+            ironwind            = { trigger = 2, cost = 2 }, -- 螺旋桨
         },
     },
     FINITEUSES = {
         player = {
-            orangestaff     = { trigger = 2, bonus = 2}, -- 橙杖
-            orangeamulet    = { trigger = 50, bonus = 50, cost = 1 } -- 橙符
+            orangestaff         = { trigger = 2, bonus = 2 }, -- 橙杖
+            orangeamulet        = { trigger = 50, bonus = 50 }, -- 橙符
+            voidcloth_scythe    = { trigger = 100, bonus = 100, override_fuel = "horrorfuel" }, -- 暗影收割者
+            sword_lunarplant    = { trigger = 100, bonus = 100, override_fuel = "purebrilliance"}, -- 亮茄剑
         },
     },
 }

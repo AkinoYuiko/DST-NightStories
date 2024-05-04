@@ -67,27 +67,36 @@ local function dry_equipment(inst)
     end
 end
 
-local function check_fuel(inst, count)
-    local amount = count or 1
+local function check_has_fuel(inv, inv_boat, item, num)
+    return (inv and inv:Has(item, num)) or (inv_boat and inv_boat:Has(item, num))
+end
+
+local function check_fuel(inst, data)
+    local num = data.count or 1
     local inv = inst.components.inventory
     local inv_boat = inst.components.sailor and inst.components.sailor:GetBoat() and inst.components.sailor:GetBoat().components.container
-
-    if (inv and inv:Has("nightmarefuel", amount)) or (inv_boat and inv_boat:Has("nightmarefuel", amount)) then
+    local override_fuel = data.override_fuel
+    if override_fuel then
+        if check_has_fuel(inv, inv_boat, override_fuel, num) then
+            return override_fuel, 1
+        end
+        return
+    elseif not data.only_horror and check_has_fuel(inv, inv_boat, "nightmarefuel", num) then
         return "nightmarefuel", FUELMULT["nightmarefuel"]
-    elseif (inv and inv:Has("horrorfuel", amount)) or (inv_boat and inv_boat:Has("horrorfuel", amount)) then
+    elseif check_has_fuel(inv, inv_boat, "horrorfuel", num) then
         return "horrorfuel", FUELMULT["horrorfuel"]
     end
 end
 
 local function consume_item(inst, item, mult)
-    local amount = mult or 1
+    local num = mult or 1
     if item == nil then return end
     local inv = inst.components.inventory
     local inv_boat = inst.components.sailor and inst.components.sailor:GetBoat() and inst.components.sailor:GetBoat().components.container
-    if inv and inv:Has(item, amount) then
-        inv:ConsumeByName(item, amount)
-    elseif inv_boat and inv_boat:Has(item, amount) then
-        inv_boat:ConsumeByName(item, amount)
+    if check_has_fuel(inv, nil, item, num) then
+        inv:ConsumeByName(item, num)
+    elseif check_has_fuel(nil, inv_boat, item, num) then
+        inv_boat:ConsumeByName(item, num)
     end
 end
 
@@ -107,7 +116,7 @@ local function auto_refuel(inst)
                 local data = fueled_table[source][target.prefab]
                 local bonus = data.bonus or 1
                 local fueled = target.components.fueled
-                local fuel, fuelmult = check_fuel(inst, data.cost)
+                local fuel, fuelmult = check_fuel(inst, data)
                 if fuel and fuelmult then
                     if fueled and fueled:GetPercent() + TUNING.LARGE_FUEL / fueled.maxfuel * fuelmult * data.trigger * fueled.bonusmult <= 1 then
                         is_fx_true = true
@@ -120,7 +129,7 @@ local function auto_refuel(inst)
                 local data = finiteuses_table[source][target.prefab]
                 local bonus = data.bonus or 1
                 local finiteuses = target.components.finiteuses
-                local fuel, fuelmult = check_fuel(inst, data.cost)
+                local fuel, fuelmult = check_fuel(inst, data)
                 if fuel and fuelmult then
                     if finiteuses and finiteuses:GetUses() + data.trigger * fuelmult <= finiteuses.total then
                         is_fx_true = true
