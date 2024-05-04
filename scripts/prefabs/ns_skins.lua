@@ -398,7 +398,7 @@ table.insert(prefabs, CreatePrefabSkin("dreadstonehat_trans", {
         Asset( "DYNAMIC_ANIM", "anim/dynamic/dreadstonehat_trans.zip" ),
         Asset( "PKGREF", "anim/dynamic/dreadstonehat_trans.dyn" ),
     },
-    init_fn = GlassicAPI.BasicInitFn,
+    init_fn = function(inst) dreadstonehat_init_fn(inst, "dreadstonehat_trans") end,
     skin_tags = { "DREADSTONEHAT"},
 }))
 

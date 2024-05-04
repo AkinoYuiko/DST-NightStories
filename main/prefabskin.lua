@@ -150,41 +150,6 @@ orangestaff_clear_fn = function(inst)
     return unpack(ret)
 end
 
--- lunarplanthat --
--- local NS_CHARS =
--- {
---     civi = true,
---     miotan = true,
---     dummy = true,
--- }
-
--- local function check_ns_chars(owner)
---     return NS_CHARS[owner.prefab] and "_lower" or ""
--- end
-
--- [[ Dreadstone Hat ]] --
--- if not rawget(_G, "dreadstonehat_init_fn") then
---     function dreadstonehat_init_fn(inst)
---         if not TheWorld.ismastersim then return end
-
---         local ret = { GlassicAPI.BasicInitFn(inst) }
-
---         return unpack(ret)
---     end
--- end
-
-if not rawget(_G, "dreadstonehat_clear_fn") then
-    function dreadstonehat_clear_fn(inst)
-        if not TheWorld.ismastersim then return end
-
-        local ret = { basic_clear_fn(inst, "hat_dreadstone") }
-
-        return unpack(ret)
-    end
-end
-
--- [[ Lunarplant Item Skins ]] --
--- Brightshade Helm
 local function show_head(owner)
     owner.AnimState:Show("HEAD")
     if owner:HasTag("player") then
@@ -196,11 +161,43 @@ local function show_head(owner)
     end
 end
 
+-- [[ Dreadstone Hat ]] --
+local function dreadstonehat_onequip(inst, data)
+    local owner = data and data.owner
+    if owner == nil then return end
+    local skin_build = inst:GetSkinBuild()
+    if skin_build:find("_trans") then
+        show_head(owner)
+    end
+end
+
+local _dreadstonehat_init_fn = dreadstonehat_init_fn
+function dreadstonehat_init_fn(inst, ...)
+    if not TheWorld.ismastersim then return end
+
+    local ret = { _dreadstonehat_init_fn(inst, ...) }
+
+    inst:ListenForEvent("equipped", dreadstonehat_onequip)
+    return unpack(ret)
+end
+
+local _dreadstonehat_clear_fn = dreadstonehat_clear_fn
+function dreadstonehat_clear_fn(inst)
+    if not TheWorld.ismastersim then return end
+
+    local ret = { _dreadstonehat_clear_fn(inst) }
+
+    inst:RemoveEventCallback("equipped", dreadstonehat_onequip)
+    return unpack(ret)
+end
+
+-- [[ Lunarplant Item Skins ]] --
+-- Brightshade Helm
 local function lunarplanthat_onequip(inst, data)
     local owner = data and data.owner
     if owner == nil then return end
     local skin_build = inst:GetSkinBuild()
-    if skin_build then
+    if skin_build:find("_trans") then
         show_head(owner)
         if inst.fx ~= nil then
             inst.fx:Remove()
