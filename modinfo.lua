@@ -6,25 +6,27 @@ local function zheng(zh, en)
     return LOC[locale] or en
 end
 
-version = "1.55.2"
+version = "1.55.3"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng([[
-- 修复皮肤贴图错误：【姜饼箱妈妈】。
-- 调整了澪的自动充能机制。
+- 新皮肤【幻影石头盔】（绝望石头盔）。
 
 最近更新：
+- 修复皮肤贴图错误：【姜饼箱妈妈】。
+- 调整了澪的自动充能机制。
 - 猪王不再提供【月亮碎片】。
 - 月亮传送门可制作部分配方。
 - 移除配方【亮茄尖刺球棒】。
 - 调整配方【月光粉】。
 - 皮肤适配【姜饼箱妈妈】。
 ]], [[
-- Fix texture issue.
-- Change how Mio's auto-refueling works.
+- New skin: Phantomstone Helm.
 
 Recent Changes:
+- Fix texture issue.
+- Change how Mio's auto-refueling works.
 - Pig King no longer rewards Moon Shards.
 - Set the Celestial Portal as prototyper.
 - Remove Recipe: Brightshade Spike Bat.
