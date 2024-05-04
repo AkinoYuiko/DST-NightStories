@@ -171,11 +171,11 @@ local function dreadstonehat_onequip(inst, data)
     end
 end
 
-local _dreadstonehat_init_fn = dreadstonehat_init_fn
-function dreadstonehat_init_fn(inst, ...)
+-- local _dreadstonehat_init_fn = dreadstonehat_init_fn
+function ns_dreadstonehat_init_fn(inst)
     if not TheWorld.ismastersim then return end
 
-    local ret = { _dreadstonehat_init_fn(inst, ...) }
+    local ret = { GlassicAPI.BasicInitFn(inst) }
 
     inst:ListenForEvent("equipped", dreadstonehat_onequip)
     return unpack(ret)
@@ -306,7 +306,7 @@ GlassicAPI.SkinHandler.AddModSkins({
         "wx78_potato",
     },
     krampus_sack = { "krampus_sack_invisible" },
-    dreadstonehat = { "dreadstonehat_trans" },
+    dreadstonehat = { "dreadstonehat_scrap", "dreadstonehat_trans" },
     -- Glassic items
     cane = { "cane_glass", "cane_mossling" },
     goldenaxe = { "goldenaxe_victorian" },

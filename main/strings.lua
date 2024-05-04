@@ -176,6 +176,7 @@ local strings = {
         alterguardianhat_finger = "Crossed Fingers",
 
         krampus_sack_invisible = "Pantomimed Krampus Sack",
+        dreadstonehat_scrap = "Scrappy Hatm",
         dreadstonehat_trans = "Phantomstone Helm",
         -- Glassic items
         cane_glass = "Gane",
@@ -223,6 +224,7 @@ local strings = {
 
         krampus_sack_invisible = "Convey an incredibly convincing impression of a krampus sack.",
 
+        dreadstonehat_scrap = STRINGS.CHARACTERS.WANDA.DESCRIBE.SCRAPHAT,
         dreadstonehat_trans = "Transparent!",
         -- Glassic items
         cane_glass = "It's a glassic joke, I assume.",

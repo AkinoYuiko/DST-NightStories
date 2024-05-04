@@ -1646,6 +1646,11 @@ msgctxt "STRINGS.SKIN_DESCRIPTIONS.dragonflychest_gingerbread"
 msgid "Don't be fooled... it's completely inedible."
 msgstr ""
 
+#. STRINGS.SKIN_DESCRIPTIONS.dreadstonehat_scrap
+msgctxt "STRINGS.SKIN_DESCRIPTIONS.dreadstonehat_scrap"
+msgid "I like it much better as a hat."
+msgstr ""
+
 #. STRINGS.SKIN_DESCRIPTIONS.dreadstonehat_trans
 msgctxt "STRINGS.SKIN_DESCRIPTIONS.dreadstonehat_trans"
 msgid "Transparent!"
@@ -1794,6 +1799,11 @@ msgstr ""
 #. STRINGS.SKIN_NAMES.dragonflychest_gingerbread
 msgctxt "STRINGS.SKIN_NAMES.dragonflychest_gingerbread"
 msgid "Gingerbread Chest"
+msgstr ""
+
+#. STRINGS.SKIN_NAMES.dreadstonehat_scrap
+msgctxt "STRINGS.SKIN_NAMES.dreadstonehat_scrap"
+msgid "Scrappy Hatm"
 msgstr ""
 
 #. STRINGS.SKIN_NAMES.dreadstonehat_trans

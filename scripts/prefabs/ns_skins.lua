@@ -390,6 +390,18 @@ table.insert(prefabs, CreatePrefabSkin("krampus_sack_invisible", {
     skin_tags = { "KRAMPUS_SACK", "GLASSIC" },
 }))
 
+table.insert(prefabs, CreatePrefabSkin("dreadstonehat_scrap", {
+    base_prefab = "dreadstonehat",
+    type = "item",
+    rarity = "Glassic",
+    assets = {
+        Asset( "DYNAMIC_ANIM", "anim/dynamic/dreadstonehat_scrap.zip" ),
+        Asset( "PKGREF", "anim/dynamic/dreadstonehat_scrap.dyn" ),
+    },
+    init_fn = ns_dreadstonehat_init_fn,
+    skin_tags = { "DREADSTONEHAT"},
+}))
+
 table.insert(prefabs, CreatePrefabSkin("dreadstonehat_trans", {
     base_prefab = "dreadstonehat",
     type = "item",
@@ -398,7 +410,7 @@ table.insert(prefabs, CreatePrefabSkin("dreadstonehat_trans", {
         Asset( "DYNAMIC_ANIM", "anim/dynamic/dreadstonehat_trans.zip" ),
         Asset( "PKGREF", "anim/dynamic/dreadstonehat_trans.dyn" ),
     },
-    init_fn = function(inst) dreadstonehat_init_fn(inst, "dreadstonehat_trans") end,
+    init_fn = ns_dreadstonehat_init_fn,
     skin_tags = { "DREADSTONEHAT"},
 }))
 
