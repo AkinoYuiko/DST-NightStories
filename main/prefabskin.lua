@@ -213,28 +213,26 @@ end
 
 
 -- Dragonfly Chest Gingerbread --
-local function do_upgrade_visuals(inst)
-    local skin_name = (inst:GetSkinBuild() or ""):gsub("dragonflychest_", "") -- SB Klei
-    inst.AnimState:SetBank("dragonfly_chest_upgraded")
-    inst.AnimState:SetBuild("dragonfly_chest_upgraded")
-    if skin_name ~= "" then
-        skin_name = "dragonflychest_upgraded_" .. skin_name
-        inst.AnimState:SetSkin(skin_name, "dragonfly_chest_upgraded")
-    end
+local function gingerbread_upgrade_visuals(inst)
+    inst.AnimState:SetBank("chest_upgraded")
+    inst.AnimState:SetBuild("chest_upgraded")
+    inst.AnimState:SetSkin("dragonflychest_upgraded_gingerbread", "dragonfly_chest_upgraded")
 end
 
 local _dragonflychest_clear_fn = dragonflychest_clear_fn
 dragonflychest_clear_fn = function(inst)
-    inst:RemoveEventCallback("dragonflychest_upgraded", do_upgrade_visuals)
+    inst:RemoveEventCallback("dragonflychest_upgraded", gingerbread_upgrade_visuals)
     inst.AnimState:SetBank(inst._chestupgrade_stacksize and "dragonfly_chest_upgraded" or "dragonfly_chest")
     inst.AnimState:SetScale(1, 1, 1)
     return _dragonflychest_clear_fn(inst)
 end
 
-local _dragonflychest_init_fn = dragonflychest_init_fn
-dragonflychest_init_fn = function(inst, ...)
-    inst:ListenForEvent("dragonflychest_upgraded", do_upgrade_visuals)
-    return _dragonflychest_init_fn(inst, ...)
+dragonflychest_gingerbread_init_fn = function(inst)
+    local result = dragonflychest_init_fn(inst, "dragonflychest_gingerbread")
+    inst:ListenForEvent("dragonflychest_upgraded", gingerbread_upgrade_visuals)
+    inst.AnimState:SetBank(inst._chestupgrade_stacksize and "chest_upgraded" or "chest")
+    inst.AnimState:SetScale(1.2, 1.2, 1.2)
+    return result
 end
 
 ------------------------------------------------------------------------------

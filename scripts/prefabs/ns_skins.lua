@@ -182,11 +182,7 @@ table.insert(prefabs, CreatePrefabSkin("dragonflychest_gingerbread", {
         Asset("PKGREF", "anim/dynamic/dragonflychest_upgraded_gingerbread.dyn"),
     },
     -- init_fn = GlassicAPI.BasicInitFn,
-    init_fn = function(inst)
-        dragonflychest_init_fn(inst, "dragonflychest_gingerbread")
-        inst.AnimState:SetBank(inst._chestupgrade_stacksize and "chest_upgraded" or "chest")
-        inst.AnimState:SetScale(1.2, 1.2, 1.2)
-    end,
+    init_fn = dragonflychest_gingerbread_init_fn,
     build_name_override = "dragonflychest_gingerbread",
     skin_tags = {"DRAGONFLYCHEST"},
 }))
