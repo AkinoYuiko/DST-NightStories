@@ -6,14 +6,15 @@ local function zheng(zh, en)
     return LOC[locale] or en
 end
 
-version = "1.55.4"
+version = "1.55.5"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng([[
-- 新皮肤【拾荒尖盔】（绝望石头盔）。
+- 重置洞察适配小鱼人和薇诺娜。
 
 最近更新：
+- 新皮肤【拾荒尖盔】（绝望石头盔）。
 - 新皮肤【幻影石头盔】（绝望石头盔）。
 - 修复皮肤贴图错误：【姜饼箱妈妈】。
 - 调整了澪的自动充能机制。
@@ -23,9 +24,10 @@ changelog = zheng([[
 - 调整配方【月光粉】。
 - 皮肤适配【姜饼箱妈妈】。
 ]], [[
-- New skin: Scrappy Hatm (Dreadstone Helm).
+- Wurt and Winona can reset insights now.
 
 Recent Changes:
+- New skin: Scrappy Hatm (Dreadstone Helm).
 - New skin: Phantomstone Helm (Dreadstone Helm).
 - Fix texture issue.
 - Change how Mio's auto-refueling works.
