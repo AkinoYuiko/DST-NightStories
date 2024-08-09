@@ -6,11 +6,12 @@ local function zheng(zh, en)
     return LOC[locale] or en
 end
 
-version = "1.55.5"
+version = "1.55.6"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng([[
+- 修复新更新 (8 月 9 号) 之后的崩溃
 - 重置洞察适配小鱼人和薇诺娜。
 
 最近更新：
@@ -24,6 +25,7 @@ changelog = zheng([[
 - 调整配方【月光粉】。
 - 皮肤适配【姜饼箱妈妈】。
 ]], [[
+- Fix new update (August 9th) crash
 - Wurt and Winona can reset insights now.
 
 Recent Changes:
