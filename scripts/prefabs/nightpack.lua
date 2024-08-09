@@ -1,7 +1,6 @@
 local assets = {
     Asset("ANIM", "anim/nightpack.zip"),
     Asset("ANIM", "anim/ui_backpack_2x4.zip"),
-    Asset("ANIM", "anim/ui_krampusbag_2x5.zip"),
 }
 
 local prefabs = {
