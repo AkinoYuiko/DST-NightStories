@@ -11,17 +11,8 @@ function SkillTreeUpdater:DeactivateSkill(...)
     self:SetSkipValidation(prev)
 end
 
-local SKILLTREE_CHARACTERS = {
-    "wilson",
-    "woodie",
-    "wolfgang",
-    "wormwood",
-    "willow",
-    "wathgrithr",
-    "winona",
-    "wurt",
-}
-for _, char in ipairs(SKILLTREE_CHARACTERS) do
+local SKILLTREE_DEFS = require("prefabs/skilltree_defs").SKILLTREE_DEFS
+for char in pairs(SKILLTREE_DEFS) do
     AddPrefabPostInit(char, function(inst)
         inst:AddTag("skilltree_characters")
     end)
