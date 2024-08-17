@@ -6,15 +6,16 @@ local function zheng(zh, en)
     return LOC[locale] or en
 end
 
-version = "1.55.7"
+version = "1.55.8"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng([[
-- 提高部分代码的兼容性以适应将来的更新。
-- 强化了【暗影破碎枪】的耐久。
+- 尝试修复一处小问题。
 
 最近更新：
+- 提高部分代码的兼容性以适应将来的更新。
+- 强化了【暗影破碎枪】的耐久。
 - 修复新更新 (8 月 9 号) 之后的崩溃
 - 重置洞察适配小鱼人和薇诺娜。
 - 新皮肤【拾荒尖盔】（绝望石头盔）。
@@ -27,10 +28,11 @@ changelog = zheng([[
 - 调整配方【月光粉】。
 - 皮肤适配【姜饼箱妈妈】。
 ]], [[
-- Improve code compatibility for future updates.
-- Enhance durability of Nightmare Spear.
+- Try to fix issue with haunting.
 
 Recent Changes:
+- Enhance durability of Nightmare Spear.
+- Improve code compatibility for future updates.
 - Fix new update (August 9th) crash
 - Wurt and Winona can reset insights now.
 - New skin: Scrappy Hatm (Dreadstone Helm).
