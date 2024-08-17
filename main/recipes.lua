@@ -6,9 +6,9 @@ local AddPlayerPostInit = AddPlayerPostInit
 local AddPrefabPostInit = AddPrefabPostInit
 GLOBAL.setfenv(1, GLOBAL)
 
-local function add_tech(tech_name, merge_table, brainjelly)
+local function add_tech(tech_name, merge_table, brainjelly, bonus_available)
     if tech_name then
-        GlassicAPI.AddTech(tech_name)
+        GlassicAPI.AddTech(tech_name, bonus_available)
         if type(merge_table) == "table" then
             for target, bonus in pairs(merge_table) do
                 GlassicAPI.MergeTechBonus(target, tech_name, bonus)
@@ -24,9 +24,10 @@ local MERGE_TABLES =
 {
     CIVI =
     {
-        MOONORB_UPGRADED = 1,
-        MOON_ALTAR_FULL = 1,
-        OBSIDIAN_BENCH = 1,
+        MOONORB_LOW = 1,
+        MOONORB_UPGRADED = 2,
+        MOON_ALTAR_FULL = 2,
+        OBSIDIAN_BENCH = 2,
     },
     DUMMY =
     {
@@ -34,9 +35,10 @@ local MERGE_TABLES =
         OBSIDIAN_BENCH = 1,
     }
 }
-add_tech("CIVITECH", MERGE_TABLES.CIVI, true)
-add_tech("DUMMYTECH", MERGE_TABLES.DUMMY, true)
+add_tech("CIVITECH", MERGE_TABLES.CIVI, true, true)
+add_tech("DUMMYTECH", MERGE_TABLES.DUMMY, true, true)
 local CIVITECH_ONE = { CIVITECH = 1}
+local CIVITECH_TWO = { CIVITECH = 2}
 local DUMMYTECH_ONE = { DUMMYTECH = 1}
 
 STRINGS.NAMES.CIVI_REDGEM = STRINGS.NAMES.REDGEM
@@ -49,10 +51,10 @@ STRINGS.NAMES.DUMMY_NIGHTMAREFUEL = STRINGS.NAMES.NIGHTMAREFUEL
 ------- Civi -------
 --------------------
 -- 红宝石 --
-AddRecipe("civi_redgem", {Ingredient("bluegem", 1), Ingredient("nightmarefuel", 1)}, TECH.CELESTIAL_ONE, {nounlock = true, nochar = true, nomods = true, builder_tag = "ns_builder_civi", product = "redgem", hidden = true})
+AddRecipe("civi_redgem", {Ingredient("bluegem", 1), Ingredient("nightmarefuel", 1)}, CIVITECH_ONE, {nounlock = true, nochar = true, nomods = true, builder_tag = "ns_builder_civi", product = "redgem", hidden = true})
 
 -- 蓝宝石 --
-AddRecipe("civi_bluegem", {Ingredient("redgem", 1), Ingredient("nightmarefuel", 1)}, TECH.CELESTIAL_ONE, {nounlock = true, nochar = true, nomods = true, builder_tag = "ns_builder_civi", product = "bluegem", hidden = true})
+AddRecipe("civi_bluegem", {Ingredient("redgem", 1), Ingredient("nightmarefuel", 1)}, CIVITECH_ONE, {nounlock = true, nochar = true, nomods = true, builder_tag = "ns_builder_civi", product = "bluegem", hidden = true})
 SortAfter("civi_bluegem", "civi_redgem")
 
 -- 黑水晶
@@ -60,7 +62,7 @@ AddRecipe("darkcrystal", {Ingredient("purplegem", 1), Ingredient("nightmarefuel"
 SortAfter("darkcrystal", "purplegem")
 
 -- 白水晶
-AddRecipe("lightcrystal", {Ingredient("purplegem", 1), Ingredient("nightmarefuel", 4)}, TECH.NONE, {nomods = true, builder_tag = "ns_builder_civi", no_deconstruction = true})
+AddRecipe("lightcrystal", {Ingredient("purplegem", 1), Ingredient("nightmazrefuel", 4)}, TECH.NONE, {nomods = true, builder_tag = "ns_builder_civi", no_deconstruction = true})
 SortAfter("lightcrystal", "darkcrystal")
 
 -- 纯粹辉煌
@@ -72,11 +74,11 @@ AddRecipe("civi_horrorfuel", {Ingredient("purebrilliance", 1), Ingredient("night
 SortAfter("civi_horrorfuel", "voidcloth_kit")
 
 -- 影背包 --
-AddRecipe("nightpack", {Ingredient("darkcrystal", 1), Ingredient("lightcrystal", 1), Ingredient("nightmarefuel", 5)}, TECH.CELESTIAL_ONE, {nounlock = true, builder_tag = "ns_builder_civi"})
-SortBefore("nightpack", "civi_redgem")
+AddRecipe("nightpack", {Ingredient("darkcrystal", 1), Ingredient("lightcrystal", 1), Ingredient("nightmarefuel", 5)}, CIVITECH_ONE, {nounlock = true, builder_tag = "ns_builder_civi"})
+SortAfter("nightpack", "civi_bluegem")
 
 -- 友爱戒指
-AddRecipe("friendshipring", {Ingredient("moonrocknugget", 4), Ingredient("nightmarefuel", 4)}, CIVITECH_ONE, {nounlock = true, builder_tag = "ns_builder_civi"})
+AddRecipe("friendshipring", {Ingredient("moonrocknugget", 4), Ingredient("nightmarefuel", 4)}, CIVITECH_TWO, {nounlock = true, builder_tag = "ns_builder_civi"})
 SortAfter("friendshipring", "nightpack")
 
 -- 注能图腾
