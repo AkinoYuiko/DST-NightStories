@@ -243,7 +243,7 @@ local function on_death(inst)
 end
 
 local function on_haunt(inst, doer)
-    return inst.components.sanity and inst.components.sanity.current > 0
+    return doer.prefab == "dummy" and inst.components.sanity and inst.components.sanity.current >= 5
 end
 
 local common_postinit = function(inst)

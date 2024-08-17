@@ -147,7 +147,7 @@ local function redirect_to_health(inst, amount, overtime, ...)
 end
 
 local function on_haunt(inst, doer)
-    return inst.components.sanity and inst.components.sanity.current > 0
+    return doer.prefab == "dummy" and inst.components.sanity and inst.components.sanity.current >= 5
 end
 
 local function on_respawn_from_ghost(inst, data)

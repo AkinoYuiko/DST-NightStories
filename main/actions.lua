@@ -431,20 +431,20 @@ AddComponentAction("INVENTORY", "friendshiptotem", function(inst, doer, actions,
 end)
 
 -- Hauntable for Dummy
-local COMPONENT_ACTIONS = UpvalueUtil.GetUpvalue(EntityScript.CollectActions, "COMPONENT_ACTIONS")
-local SCENE = COMPONENT_ACTIONS.SCENE
-local scene_hauntable = SCENE.hauntable
-function SCENE.hauntable(inst, doer, actions, ...)
-    if inst:HasTag("nightmare_twins") then
-        if doer.prefab == "dummy" then
-            if inst ~= doer and not (inst:HasTag("playerghost") or inst:HasTag("reviving") or inst:HasTag("haunted") or inst:HasTag("catchable")) then
-                table.insert(actions, ACTIONS.HAUNT)
-            end
-        end
-    else
-        scene_hauntable(inst, doer, actions, ...)
-    end
-end
+-- local COMPONENT_ACTIONS = UpvalueUtil.GetUpvalue(EntityScript.CollectActions, "COMPONENT_ACTIONS")
+-- local SCENE = COMPONENT_ACTIONS.SCENE
+-- local scene_hauntable = SCENE.hauntable
+-- function SCENE.hauntable(inst, doer, actions, ...)
+--     if inst:HasTag("nightmare_twins") then
+--         if doer.prefab == "dummy" then
+--             if inst ~= doer and not (inst:HasTag("playerghost") or inst:HasTag("reviving") or inst:HasTag("haunted") or inst:HasTag("catchable")) then
+--                 table.insert(actions, ACTIONS.HAUNT)
+--             end
+--         end
+--     else
+--         scene_hauntable(inst, doer, actions, ...)
+--     end
+-- end
 
 -- For portable_wardrobe
 AddComponentAction("INVENTORY", "wardrobe", function(inst, doer, actions, right)
