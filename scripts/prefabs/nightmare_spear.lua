@@ -6,10 +6,10 @@ local assets =
 }
 
 local function onattack(inst)
-    local max_hits = 30
+    local max_hits = 39 -- 20*2-1, let total fuel be 200% of the max fuel.
     if inst.components.fueled ~= nil then
         local fueled = inst.components.fueled
-        local new_percent = fueled:GetPercent() + (max_hits - inst.total_hits) / (max_hits * 20)
+        local new_percent = fueled:GetPercent() + (max_hits - inst.total_hits) / (max_hits * 20) -- 1/20 is 5%, fuel regen of the first hit.
         fueled:SetPercent(math.min(1, new_percent))
     end
     inst.total_hits = math.min(max_hits, inst.total_hits + 1)
@@ -27,13 +27,13 @@ local function onunequip(inst, owner)
 end
 
 local function onload(inst,data)
-    if data and data.total_hits_hits then
-        inst.total_hits = data.total_hits_hits
+    if data and data.total_hits > 0 then
+        inst.total_hits = data.total_hits
     end
 end
 
 local function onsave(inst,data)
-    data.total_hits_hits_hits = inst.total_hits >= 0 and inst.total_hits
+    data.total_hits = inst.total_hits
 end
 
 local function fn()
@@ -68,7 +68,7 @@ local function fn()
 
     inst:AddComponent("fueled")
     inst.components.fueled.period = TUNING.NIGHTMARE_SPEAR_PERIOD
-    inst.components.fueled:InitializeFuelLevel(15)
+    inst.components.fueled:InitializeFuelLevel(TUNING.NIGHTMARE_SPEAR_FUELTIME)
     inst.components.fueled:SetDepletedFn(inst.Remove)
     inst.components.fueled:StartConsuming()
 
