@@ -430,21 +430,41 @@ AddComponentAction("INVENTORY", "friendshiptotem", function(inst, doer, actions,
     end
 end)
 
--- Hauntable for Dummy
--- local COMPONENT_ACTIONS = UpvalueUtil.GetUpvalue(EntityScript.CollectActions, "COMPONENT_ACTIONS")
--- local SCENE = COMPONENT_ACTIONS.SCENE
--- local scene_hauntable = SCENE.hauntable
--- function SCENE.hauntable(inst, doer, actions, ...)
---     if inst:HasTag("nightmare_twins") then
---         if doer.prefab == "dummy" then
---             if inst ~= doer and not (inst:HasTag("playerghost") or inst:HasTag("reviving") or inst:HasTag("haunted") or inst:HasTag("catchable")) then
---                 table.insert(actions, ACTIONS.HAUNT)
---             end
---         end
---     else
---         scene_hauntable(inst, doer, actions, ...)
---     end
--- end
+local COMPONENT_ACTIONS = UpvalueUtil.GetUpvalue(EntityScript.CollectActions, "COMPONENT_ACTIONS")
+local SCENE = COMPONENT_ACTIONS.SCENE
+local scene_hauntable = SCENE.hauntable
+
+-- Hauntable for Dummy: only Dummy can haunt Mio and Dummy to revive herself
+function SCENE.hauntable(inst, doer, actions, ...)
+    if doer.prefab == "dummy" and inst:HasTag("nightmare_twins") then
+        if not (inst:HasTag("haunted") or inst:HasTag("catchable")) then
+            table.insert(actions, ACTIONS.HAUNT)
+        end
+    else
+        scene_hauntable(inst, doer, actions, ...)
+    end
+end
+
+local PlayerController = require("components/playercontroller")
+local get_action_button_action = PlayerController.GetActionButtonAction
+function PlayerController:GetActionButtonAction(force_target, ...)
+    local is_dummy = self.inst.prefab == "dummy"
+    local HAUNT_TARGET_EXCLUDE_TAGS, fn_i, scope_fn
+    if not is_dummy then
+        HAUNT_TARGET_EXCLUDE_TAGS, fn_i, scope_fn = UpvalueUtil.GetUpvalue(get_action_button_action, "HAUNT_TARGET_EXCLUDE_TAGS")
+        local haunt_exclude_tags = shallowcopy(HAUNT_TARGET_EXCLUDE_TAGS)
+        table.insert(haunt_exclude_tags, "nightmare_twins")
+        debug.setupvalue(scope_fn, fn_i, haunt_exclude_tags)
+    end
+    local bufferedaction = get_action_button_action(self, force_target, ...)
+    if not is_dummy then
+        debug.setupvalue(scope_fn, fn_i, HAUNT_TARGET_EXCLUDE_TAGS)
+    end
+    if bufferedaction and bufferedaction.action == ACTIONS.HAUNT and bufferedaction.target:HasTag("nightmare_twins") and bufferedaction.doer.prefab ~= "dummy" then
+        return
+    end
+    return bufferedaction
+end
 
 -- For portable_wardrobe
 AddComponentAction("INVENTORY", "wardrobe", function(inst, doer, actions, right)
