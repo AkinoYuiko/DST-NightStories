@@ -446,18 +446,21 @@ function SCENE.hauntable(inst, doer, actions, ...)
 end
 
 local PlayerController = require("components/playercontroller")
+
 local get_action_button_action = PlayerController.GetActionButtonAction
 function PlayerController:GetActionButtonAction(force_target, ...)
     local is_dummy = self.inst.prefab == "dummy"
     local HAUNT_TARGET_EXCLUDE_TAGS, fn_i, scope_fn
     if not is_dummy then
         HAUNT_TARGET_EXCLUDE_TAGS, fn_i, scope_fn = UpvalueUtil.GetUpvalue(get_action_button_action, "HAUNT_TARGET_EXCLUDE_TAGS")
-        local haunt_exclude_tags = shallowcopy(HAUNT_TARGET_EXCLUDE_TAGS)
-        table.insert(haunt_exclude_tags, "nightmare_twins")
-        debug.setupvalue(scope_fn, fn_i, haunt_exclude_tags)
+        if HAUNT_TARGET_EXCLUDE_TAGS then
+            local haunt_exclude_tags = shallowcopy(HAUNT_TARGET_EXCLUDE_TAGS)
+            table.insert(haunt_exclude_tags, "nightmare_twins")
+            debug.setupvalue(scope_fn, fn_i, haunt_exclude_tags)
+        end
     end
     local bufferedaction = get_action_button_action(self, force_target, ...)
-    if not is_dummy then
+    if not is_dummy and HAUNT_TARGET_EXCLUDE_TAGS then
         debug.setupvalue(scope_fn, fn_i, HAUNT_TARGET_EXCLUDE_TAGS)
     end
     if bufferedaction and bufferedaction.action == ACTIONS.HAUNT and bufferedaction.target:HasTag("nightmare_twins") and bufferedaction.doer.prefab ~= "dummy" then
