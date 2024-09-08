@@ -483,8 +483,8 @@ AddComponentAction("USEITEM", "lunarshadowbattery", function(inst, doer, target,
 end)
 
 AddComponentAction("INVENTORY", "lunarshadowstate", function(inst, doer, actions, right)
-    local force_state, available
-    local hat = doer.components.inventory:GetEquippedItem(EQUIPSLOTS.HEAD)
+    local force_state
+    local hat = doer.replica.inventory:GetEquippedItem(EQUIPSLOTS.HEAD)
     if hat and ( hat.prefab == "lunarplanthat" or hat.prefab == "voidclothhat" ) then
         force_state = true
     end
