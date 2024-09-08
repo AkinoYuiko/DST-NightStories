@@ -36,14 +36,24 @@ local function is_empty(item)
     end
 end
 
-local function update_meter(self)
-    if self.item.buffed:value() and not self.item.slotempty:value() then
+local function percent_show(self)
+    if self.percent then self.percent:Show() end
+    self:Refresh()
+end
+
+local function percent_hide(self)
+    if self.percent then self.percent:Hide() end
+end
+
+local function update_meter(self, force_show)
+    if force_show then
+        percent_show(self)
+    elseif self.item.buffed:value() and not self.item.slotempty:value() then
         self.bg:Hide()
         self.spoilage:Hide()
-        if self.percent then self.percent:Hide() end
+        percent_hide(self)
     else
-        if self.percent then self.percent:Show() end
-        self:Refresh()
+        percent_show(self)
     end
 end
 
@@ -62,7 +72,7 @@ AddClassPostConstruct("widgets/itemtile", function(self)
             upadte_lunarshadow(self)
         end, self.item)
         self.inst:ListenForEvent("itemget", function() update_meter(self) end, self.item)
-        self.inst:ListenForEvent("itemlose", function() update_meter(self) end, self.item)
+        self.inst:ListenForEvent("itemlose", function() update_meter(self, true) end, self.item)
 
     elseif self.item.prefab == "friendshiptotem_dark" then
         update_fx(self,"toggled",FX.SHADOW)
