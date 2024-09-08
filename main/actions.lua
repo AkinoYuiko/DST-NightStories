@@ -483,14 +483,22 @@ AddComponentAction("USEITEM", "lunarshadowbattery", function(inst, doer, target,
 end)
 
 AddComponentAction("INVENTORY", "lunarshadowstate", function(inst, doer, actions, right)
-    if not doer.components.playercontroller.isclientcontrollerattached and
-        ( right or
-            doer.components.playercontroller:IsControlPressed(CONTROL_FORCE_INSPECT)
-        ) then
-        table.insert(actions, NS_ACTIONS.LUNARSHADOWSTATE)
+    local force_state, available
+    local hat = doer.components.inventory:GetEquippedItem(EQUIPSLOTS.HEAD)
+    if hat and ( hat.prefab == "lunarplanthat" or hat.prefab == "voidclothhat" ) then
+        force_state = true
+    end
+    local equipped = inst.replica.equippable and inst.replica.equippable:IsEquipped()
+    if not doer.components.playercontroller.isclientcontrollerattached and (right or doer.components.playercontroller:IsControlPressed(CONTROL_FORCE_INSPECT)) then
+        if equipped then
+            if not force_state then
+                table.insert(actions, NS_ACTIONS.LUNARSHADOWSTATE)
+            end
+        else
+            table.insert(actions, NS_ACTIONS.LUNARSHADOWSTATE)
+        end
     else
-        local equippable = inst.replica.equippable
-        if equippable and equippable:IsEquipped() then
+        if equipped and not force_state then
             table.insert(actions, NS_ACTIONS.LUNARSHADOWSTATE)
         end
     end

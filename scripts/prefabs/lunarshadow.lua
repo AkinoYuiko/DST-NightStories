@@ -4,7 +4,6 @@ local assets =
 {
     Asset("ANIM", "anim/lunarshadow.zip"),
     Asset("ANIM", "anim/lunarshadow_shadow.zip"),
-    -- Asset("ANIM", "anim/sword_lunarplant.zip"),
     Asset("ANIM", "anim/inventory_fx_lunar.zip"),
 }
 
@@ -47,8 +46,12 @@ local function set_bonus_owner(inst, owner)
         if owner then
             inst._onownerequip = function(owner, data)
                 if data then
-                    if data.item and data.item.prefab == (inst.state:value() and "lunarplanthat" or "voidclothhat") then
+                    if data.item and data.item.prefab == "lunarplanthat" then
                         set_bonus_enabled(inst, true)
+                        inst:SetLunarState(true)
+                    elseif data.item and data.item.prefab == "voidclothhat" then
+                        set_bonus_enabled(inst, true)
+                        inst:SetLunarState(false)
                     elseif data.eslot == EQUIPSLOTS.HEAD then
                         set_bonus_enabled(inst, false)
                     end
@@ -63,8 +66,14 @@ local function set_bonus_owner(inst, owner)
             inst:ListenForEvent("unequip", inst._onownerunequip, owner)
 
             local hat = owner.components.inventory:GetEquippedItem(EQUIPSLOTS.HEAD)
-            if hat and hat.prefab == (inst.state:value() and "lunarplanthat" or "voidclothhat") then
-                set_bonus_enabled(inst, true)
+            if hat then
+                if hat.prefab == "lunarplanthat" then
+                    set_bonus_enabled(inst, true)
+                    inst:SetLunarState(true)
+                elseif hat.prefab == "voidclothhat" then
+                    set_bonus_enabled(inst, true)
+                    inst:SetLunarState(false)
+                end
             end
         end
     end
@@ -208,9 +217,9 @@ end
 local function validate_battery_value(inst, battery_prefab, set_state)
     if battery_prefab then
         local power = TUNING.LUNARSHADOW.BATTERIES[battery_prefab]
-        if set_state then
-            set_lunarstate(inst, power > 0)
-        end
+        -- if set_state then
+        --     set_lunarstate(inst, power > 0)
+        -- end
         return math.abs(power)
     end
     return 0
@@ -304,11 +313,6 @@ end
 local target_testfn = Utils.TargetTestFn
 local function onattack(inst, attacker, target)
     do_consume(inst, attacker)
-    -- if target_testfn(target) and inst.buffed:value() then
-    --     SpawnPrefab("glash"):SetTarget(attacker, target, 0, inst._bonusenabled and TUNING.LUNARSHADOW.SETBONUS_DAMAGE_MULT)
-    -- elseif target ~= nil and target:IsValid() then
-    --     SpawnPrefab("hitsparks_fx"):Setup(attacker, target)
-    -- end
     if target and target:IsValid() then
         local spark = SpawnPrefab("hitsparks_fx")
         if inst.state:value() then
@@ -579,5 +583,4 @@ local function fxfn()
 end
 
 return Prefab("lunarshadow", fn, assets, prefabs),
-    Prefab("lunarshadow_blade_fx", fxfn, assets),
-    Prefab("moonlight_shadow", fn, assets, prefabs)
+        Prefab("lunarshadow_blade_fx", fxfn, assets)
