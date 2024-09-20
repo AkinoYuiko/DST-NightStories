@@ -69,9 +69,17 @@ SortAfter("lightcrystal", "darkcrystal")
 AddRecipe("civi_purebrilliance", {Ingredient("horrorfuel", 1), Ingredient("moonglass", 1)}, TECH.LUNARFORGING_TWO, {nounlock = true, nochar = true, nomods = true, builder_tag = "ns_builder_civi", product = "purebrilliance", hidden = true})
 SortAfter("civi_purebrilliance", "lunarplant_kit")
 
+-- 亮茄外壳
+AddRecipe("civi_lunarplant_husk", {Ingredient("voidcloth", 1), Ingredient("purebrilliance", 1)}, TECH.LUNARFORGING_TWO, {nounlock = true, nochar = true, nomods = true, builder_tag = "ns_builder_civi", product = "lunarplant_husk", hidden = true})
+SortAfter("civi_lunarplant_husk", "civi_purebrilliance")
+
 -- 纯粹恐惧
 AddRecipe("civi_horrorfuel", {Ingredient("purebrilliance", 1), Ingredient("nightmarefuel", 1)}, TECH.SHADOWFORGING_TWO, {nounlock = true, nochar = true, nomods = true, builder_tag = "ns_builder_civi", product = "horrorfuel", hidden = true})
 SortAfter("civi_horrorfuel", "voidcloth_kit")
+
+-- 暗影碎布
+AddRecipe("civi_voidcloth", {Ingredient("lunarplant_husk", 1), Ingredient("horrorfuel", 1)}, TECH.SHADOWFORGING_TWO, {nounlock = true, nochar = true, nomods = true, builder_tag = "ns_builder_civi", product = "voidcloth", hidden = true})
+SortAfter("civi_voidcloth", "civi_horrorfuel")
 
 -- 影背包 --
 AddRecipe("nightpack", {Ingredient("darkcrystal", 1), Ingredient("lightcrystal", 1), Ingredient("nightmarefuel", 5)}, CIVITECH_ONE, {nounlock = true, builder_tag = "ns_builder_civi"})
