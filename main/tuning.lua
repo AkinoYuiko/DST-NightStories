@@ -17,6 +17,8 @@ TUNING.CIVI_EXCLUDE_DEBUFFS = {
     buff_medal_mermcurse = true,
 }
 
+TUNING.CIVI_VOIDCLOTH_BOOMERANG_CHAIN_DURATION = 3
+
 -- Mio --
 TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.MIOTAN = {
     "nightmarefuel",

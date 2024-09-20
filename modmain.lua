@@ -48,6 +48,7 @@ local postinit =
     "prefabs/punchingbag",
     "prefabs/raincoat",
     "prefabs/sculptingtable",
+    "prefabs/voidcloth_boomerang",
     "prefabs/world",
     -- widgets
     "widgets/itemtile",
