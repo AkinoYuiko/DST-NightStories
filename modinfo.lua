@@ -6,13 +6,19 @@ local function zheng(zh, en)
     return LOC[locale] or en
 end
 
-version = "1.56.1"
+version = "1.56.2"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng([[
+- Civi 新增两种转换配方。
+
+最近更新：
 - 重写了【月影】切换机制。
 ]], [[
+- Add two new recipes for Civi.
+
+Recent Changes:
 - Rework the way Lunar Shadow switches state.
 ]])
 description = zheng("版本: ", "Version: ") .. version ..
