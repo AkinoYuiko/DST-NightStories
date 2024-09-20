@@ -6,20 +6,22 @@ local function zheng(zh, en)
     return LOC[locale] or en
 end
 
-version = "1.56.3.1"
+version = "1.56.4"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng([[
-- Civi 可以通过阴郁回旋镖附加恐惧锁链效果。
+- 调整【月光粉】配方。
 
 最近更新：
+- Civi 可以通过阴郁回旋镖附加恐惧锁链效果。
 - Civi 新增两种转换配方。
 - 重写了【月影】切换机制。
 ]], [[
-- Civi can attach "horror chain" effect on targets hit by Gloomerang.
+- Tweak recipe for Lunar Powder.
 
 Recent Changes:
+- Civi can attach "horror chain" effect on targets hit by Gloomerang.
 - Add two new recipes for Civi.
 - Rework the way Lunar Shadow switches state.
 ]])
