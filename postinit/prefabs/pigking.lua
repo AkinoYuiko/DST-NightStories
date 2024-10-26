@@ -59,31 +59,31 @@ local function ontradeforitem(inst, item, giver, ...)
 	end
 
 	if IsSpecialEventActive(SPECIAL_EVENTS.HALLOWED_NIGHTS) then
-		-- pick out up to 3 types of candies to throw out
-		local candytypes = { math.random(NUM_HALLOWEENCANDY), math.random(NUM_HALLOWEENCANDY), math.random(NUM_HALLOWEENCANDY) }
-		local numcandies = (item.components.tradable.halloweencandyvalue or 1) + math.random(2) + 2
+		for k = 1, stacksize do
+			-- pick out up to 3 types of candies to throw out
+			local candytypes = { math.random(NUM_HALLOWEENCANDY), math.random(NUM_HALLOWEENCANDY), math.random(NUM_HALLOWEENCANDY) }
+			local numcandies = (item.components.tradable.halloweencandyvalue or 1) + math.random(2) + 2
 
-		-- only people in costumes get a good amount of candy!
-		if giver ~= nil and giver.components.skinner ~= nil then
-			for _, item in pairs(giver.components.skinner:GetClothing()) do
-				if DoesItemHaveTag(item, "COSTUME") or DoesItemHaveTag(item, "HALLOWED") then
-					numcandies = numcandies + math.random(4) + 2
-					break
+			-- only people in costumes get a good amount of candy!
+			if giver ~= nil and giver.components.skinner ~= nil then
+				for _, item in pairs(giver.components.skinner:GetClothing()) do
+					if DoesItemHaveTag(item, "COSTUME") or DoesItemHaveTag(item, "HALLOWED") then
+						numcandies = numcandies + math.random(4) + 2
+						break
+					end
 				end
 			end
-		end
 
-		for k = 1, numcandies * stacksize do
 			local candy = SpawnPrefab("halloweencandy_"..GetRandomItem(candytypes))
-			candy.components.stackable.stacksize = stacksize
+			candy.components.stackable.stacksize = numcandies
 			candy.Transform:SetPosition(x, y, z)
 			launchitem(candy, angle)
-		end
 
-		if math.random() <= TUNING.HALLOWEEN_PUMPKINCARVER_PIGKING_TRADE_CHANCE then
-			local pumpkincarver = SpawnPrefab("pumpkincarver"..math.random(NUM_HALLOWEEN_PUMPKINCARVERS))
-			pumpkincarver.Transform:SetPosition(x, y, z)
-			launchitem(pumpkincarver, angle)
+			if math.random() <= TUNING.HALLOWEEN_PUMPKINCARVER_PIGKING_TRADE_CHANCE then
+				local pumpkincarver = SpawnPrefab("pumpkincarver"..math.random(NUM_HALLOWEEN_PUMPKINCARVERS))
+				pumpkincarver.Transform:SetPosition(x, y, z)
+				launchitem(pumpkincarver, angle)
+			end
 		end
 	end
 	-- end --
