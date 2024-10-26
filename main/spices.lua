@@ -1,13 +1,13 @@
 GLOBAL.setfenv(1, GLOBAL)
 
 local NS_SPICES = {
-    SPICE_CACTUS = {},
-    SPICE_MOONGLASS =
-    {
-        oneatenfn = function(inst, eater)
-            eater:AddDebuff("buff_moonglass", "buff_moonglass")
-        end,
-    },
+	SPICE_CACTUS = {},
+	SPICE_MOONGLASS =
+	{
+		oneatenfn = function(inst, eater)
+			eater:AddDebuff("buff_moonglass", "buff_moonglass")
+		end,
+	},
 }
 
 require("cooking" )
@@ -22,20 +22,20 @@ GenerateSpicedFoods(require("preparedfoods"))
 GenerateSpicedFoods(require("preparedfoods_warly"))
 
 for _, recipe in pairs(spicedfoods) do
-    if NS_SPICES[recipe.spice] then
-        AddCookerRecipe("portablespicer", recipe)
-        if recipe.basename == "voltgoatjelly" then -- WX78
-            TUNING.WX78_CHARGING_FOODS[recipe.name] = 1
-        end
-    end
+	if NS_SPICES[recipe.spice] then
+		AddCookerRecipe("portablespicer", recipe)
+		if recipe.basename == "voltgoatjelly" then -- WX78
+			TUNING.WX78_CHARGING_FOODS[recipe.name] = 1
+		end
+	end
 end
 
 ------------------------------------------------
 
 local anim_state_override_symbol = AnimState.OverrideSymbol
 function AnimState:OverrideSymbol(symbol, override_build, override_symbol, ...)
-    if symbol == "swap_garnish" and override_build == "spices" and NS_SPICES[override_symbol:upper()] then
-        override_build = "ns_spices"
-    end
-    return anim_state_override_symbol(self, symbol, override_build, override_symbol, ...)
+	if symbol == "swap_garnish" and override_build == "spices" and NS_SPICES[override_symbol:upper()] then
+		override_build = "ns_spices"
+	end
+	return anim_state_override_symbol(self, symbol, override_build, override_symbol, ...)
 end

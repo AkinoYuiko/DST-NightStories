@@ -3,23 +3,23 @@ GLOBAL.setfenv(1, GLOBAL)
 
 local GESTALT_PREFABS =
 {
-    "gestalt",
-    "gestalt_guard"
+	"gestalt",
+	"gestalt_guard"
 }
 
 local function postinit(inst)
-    if not TheWorld.ismastersim then return end
+	if not TheWorld.ismastersim then return end
 
-    local retarget = inst.components.combat.targetfn
-    inst.components.combat:SetRetargetFunction(1, function(_inst)
-        local target = retarget(inst)
-        if target and target.components.debuffable and target.components.debuffable:HasDebuff("buff_moonglass") then
-            return
-        end
-        return target
-    end)
+	local retarget = inst.components.combat.targetfn
+	inst.components.combat:SetRetargetFunction(1, function(_inst)
+		local target = retarget(inst)
+		if target and target.components.debuffable and target.components.debuffable:HasDebuff("buff_moonglass") then
+			return
+		end
+		return target
+	end)
 end
 
 for _, gestalt in ipairs(GESTALT_PREFABS) do
-    AddPrefabPostInit(gestalt, postinit)
+	AddPrefabPostInit(gestalt, postinit)
 end

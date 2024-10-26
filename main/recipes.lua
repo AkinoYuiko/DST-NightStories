@@ -7,33 +7,33 @@ local AddPrefabPostInit = AddPrefabPostInit
 GLOBAL.setfenv(1, GLOBAL)
 
 local function add_tech(tech_name, merge_table, brainjelly, bonus_available)
-    if tech_name then
-        GlassicAPI.AddTech(tech_name, bonus_available)
-        if type(merge_table) == "table" then
-            for target, bonus in pairs(merge_table) do
-                GlassicAPI.MergeTechBonus(target, tech_name, bonus)
-            end
-        end
-        if brainjelly then
-            TECH.LOST[tech_name] = 10
-        end
-    end
+	if tech_name then
+		GlassicAPI.AddTech(tech_name, bonus_available)
+		if type(merge_table) == "table" then
+			for target, bonus in pairs(merge_table) do
+				GlassicAPI.MergeTechBonus(target, tech_name, bonus)
+			end
+		end
+		if brainjelly then
+			TECH.LOST[tech_name] = 10
+		end
+	end
 end
 
 local MERGE_TABLES =
 {
-    CIVI =
-    {
-        MOONORB_LOW = 1,
-        MOONORB_UPGRADED = 2,
-        MOON_ALTAR_FULL = 2,
-        OBSIDIAN_BENCH = 2,
-    },
-    DUMMY =
-    {
-        ANCIENTALTAR_HIGH = 1,
-        OBSIDIAN_BENCH = 1,
-    }
+	CIVI =
+	{
+		MOONORB_LOW = 1,
+		MOONORB_UPGRADED = 2,
+		MOON_ALTAR_FULL = 2,
+		OBSIDIAN_BENCH = 2,
+	},
+	DUMMY =
+	{
+		ANCIENTALTAR_HIGH = 1,
+		OBSIDIAN_BENCH = 1,
+	}
 }
 add_tech("CIVITECH", MERGE_TABLES.CIVI, true, true)
 add_tech("DUMMYTECH", MERGE_TABLES.DUMMY, true, true)
@@ -181,25 +181,25 @@ AddDeconstructRecipe("glassiccutter", {Ingredient("glasscutter", 1)})
 -- 防止改配方出问题的一个修复
 ------------------------------------------------
 local function clear_nounlock_recipes(inst)
-    if inst.components.builder then
-        local recipes = inst.components.builder.recipes
-        if recipes then
-            for i, recipe in ipairs(recipes) do
-                if AllRecipes[recipe] and AllRecipes[recipe].nounlock then
-                    recipes[i] = nil
-                end
-            end
-        end
-    end
+	if inst.components.builder then
+		local recipes = inst.components.builder.recipes
+		if recipes then
+			for i, recipe in ipairs(recipes) do
+				if AllRecipes[recipe] and AllRecipes[recipe].nounlock then
+					recipes[i] = nil
+				end
+			end
+		end
+	end
 end
 
 AddPlayerPostInit(function(inst)
-    if not TheWorld.ismastersim then return end
+	if not TheWorld.ismastersim then return end
 
-    local onload = inst.OnLoad
-    inst.OnLoad = function(inst, ...)
-        if onload then onload(inst, ...) end
-        clear_nounlock_recipes(inst)
-    end
-    clear_nounlock_recipes(inst)
+	local onload = inst.OnLoad
+	inst.OnLoad = function(inst, ...)
+		if onload then onload(inst, ...) end
+		clear_nounlock_recipes(inst)
+	end
+	clear_nounlock_recipes(inst)
 end)

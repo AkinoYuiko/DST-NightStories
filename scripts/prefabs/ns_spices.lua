@@ -1,48 +1,48 @@
 local assets =
 {
-    Asset("ANIM", "anim/ns_spices.zip"),
+	Asset("ANIM", "anim/ns_spices.zip"),
 }
 
 local function MakeSpice(name)
-    local function fn()
-        local inst = CreateEntity()
+	local function fn()
+		local inst = CreateEntity()
 
-        inst.entity:AddTransform()
-        inst.entity:AddAnimState()
-        inst.entity:AddNetwork()
+		inst.entity:AddTransform()
+		inst.entity:AddAnimState()
+		inst.entity:AddNetwork()
 
-        MakeInventoryPhysics(inst)
+		MakeInventoryPhysics(inst)
 
-        inst.AnimState:SetBank("spices")
-        inst.AnimState:SetBuild("spices")
-        inst.AnimState:PlayAnimation("idle")
-        inst.AnimState:OverrideSymbol("swap_spice", "ns_spices", name)
+		inst.AnimState:SetBank("spices")
+		inst.AnimState:SetBuild("spices")
+		inst.AnimState:PlayAnimation("idle")
+		inst.AnimState:OverrideSymbol("swap_spice", "ns_spices", name)
 
-        inst:AddTag("spice")
+		inst:AddTag("spice")
 
-        MakeInventoryFloatable(inst, "med", nil, 0.7)
+		MakeInventoryFloatable(inst, "med", nil, 0.7)
 
-        inst.entity:SetPristine()
+		inst.entity:SetPristine()
 
-        if not TheWorld.ismastersim then
-            return inst
-        end
+		if not TheWorld.ismastersim then
+			return inst
+		end
 
-        inst:AddComponent("stackable")
-        inst.components.stackable.maxsize = TUNING.STACK_SIZE_SMALLITEM
+		inst:AddComponent("stackable")
+		inst.components.stackable.maxsize = TUNING.STACK_SIZE_SMALLITEM
 
-        inst:AddComponent("inspectable")
-        inst:AddComponent("inventoryitem")
+		inst:AddComponent("inspectable")
+		inst:AddComponent("inventoryitem")
 
-        MakeHauntableLaunch(inst)
+		MakeHauntableLaunch(inst)
 
-        inst.drawnameoverride = rawget(_G, "EncodeStrCode") and EncodeStrCode({content = "NAMES." .. string.upper(name)})
+		inst.drawnameoverride = rawget(_G, "EncodeStrCode") and EncodeStrCode({content = "NAMES." .. string.upper(name)})
 
-        return inst
-    end
+		return inst
+	end
 
-    return Prefab(name, fn, assets)
+	return Prefab(name, fn, assets)
 end
 
 return MakeSpice("spice_cactus"),
-        MakeSpice("spice_moonglass")
+		MakeSpice("spice_moonglass")

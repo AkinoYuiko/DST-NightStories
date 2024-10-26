@@ -2,10 +2,10 @@ local AddPrefabPostInit = AddPrefabPostInit
 GLOBAL.setfenv(1, GLOBAL)
 
 AddPrefabPostInit("multiplayer_portal_moonrock", function(inst)
-    if not TheWorld.ismastersim then return end
+	if not TheWorld.ismastersim then return end
 
-    inst:AddComponent("prototyper")
-    inst.components.prototyper.trees = TUNING.PROTOTYPER_TREES.MOONORB_LOW
+	inst:AddComponent("prototyper")
+	inst.components.prototyper.trees = TUNING.PROTOTYPER_TREES.MOONORB_LOW
 
 end)
 
