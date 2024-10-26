@@ -74,10 +74,11 @@ local function ontradeforitem(inst, item, giver, ...)
 				end
 			end
 
-			local candy = SpawnPrefab("halloweencandy_"..GetRandomItem(candytypes))
-			candy.components.stackable.stacksize = numcandies
-			candy.Transform:SetPosition(x, y, z)
-			launchitem(candy, angle)
+			for k = 1, numcandies do
+				local candy = SpawnPrefab("halloweencandy_"..GetRandomItem(candytypes))
+				candy.Transform:SetPosition(x, y, z)
+				launchitem(candy, angle)
+			end
 
 			if math.random() <= TUNING.HALLOWEEN_PUMPKINCARVER_PIGKING_TRADE_CHANCE then
 				local pumpkincarver = SpawnPrefab("pumpkincarver"..math.random(NUM_HALLOWEEN_PUMPKINCARVERS))
