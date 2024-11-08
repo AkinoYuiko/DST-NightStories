@@ -6,23 +6,25 @@ local function zheng(zh, en)
 	return LOC[locale] or en
 end
 
-version = "1.56.6"
+version = "1.56.7"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng([[
-- 修复奖励数量计算错误的问题。
+- 修复配方相关的一处错误。
 
 最近更新：
+- 修复奖励数量计算错误的问题。
 - 猪王代码适配最新更新。
 - 调整【月光粉】配方。
 - Civi 可以通过阴郁回旋镖附加恐惧锁链效果。
 - Civi 新增两种转换配方。
 - 重写了【月影】切换机制。
 ]], [[
-- Fix issue that the amount of Pig King's rewards is wrong.
+- Fix a typo in recipes.
 
 Recent Changes:
+- Fix issue that the amount of Pig King's rewards is wrong.
 - Make compatibility with latest release.
 - Tweak recipe for Lunar Powder.
 - Civi can attach "horror chain" effect on targets hit by Gloomerang.
