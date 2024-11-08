@@ -62,7 +62,7 @@ AddRecipe("darkcrystal", {Ingredient("purplegem", 1), Ingredient("nightmarefuel"
 SortAfter("darkcrystal", "purplegem")
 
 -- 白水晶
-AddRecipe("lightcrystal", {Ingredient("purplegem", 1), Ingredient("nightmazrefuel", 4)}, TECH.NONE, {nomods = true, builder_tag = "ns_builder_civi", no_deconstruction = true})
+AddRecipe("lightcrystal", {Ingredient("purplegem", 1), Ingredient("nightmarefuel", 4)}, TECH.NONE, {nomods = true, builder_tag = "ns_builder_civi", no_deconstruction = true})
 SortAfter("lightcrystal", "darkcrystal")
 
 -- 纯粹辉煌
