@@ -4,7 +4,8 @@ GLOBAL.setfenv(1, GLOBAL)
 local GESTALT_PREFABS =
 {
 	"gestalt",
-	"gestalt_guard"
+	"gestalt_guard",
+	"gestalt_guard_evolved",
 }
 
 local function postinit(inst)
