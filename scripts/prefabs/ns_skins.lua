@@ -423,7 +423,7 @@ table.insert(prefabs, CreatePrefabSkin("lunarplanthat_trans", {
 		Asset( "DYNAMIC_ANIM", "anim/dynamic/lunarplanthat_trans.zip" ),
 		Asset( "PKGREF", "anim/dynamic/lunarplanthat_trans.dyn" ),
 	},
-	init_fn = lunarplanthat_init_fn,
+	init_fn = function(inst) lunarplanthat_init_fn(inst, "lunarplanthat_trans") end,
 	skin_tags = { "LUNARPLANTHAT", "GLASSIC" },
 }))
 

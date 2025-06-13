@@ -207,28 +207,6 @@ local function lunarplanthat_onequip(inst, data)
 	end
 end
 
-if not rawget(_G, "lunarplanthat_init_fn") then
-	function lunarplanthat_init_fn(inst)
-		if not TheWorld.ismastersim then return end
-
-		local ret = { GlassicAPI.BasicInitFn(inst) }
-
-		inst:ListenForEvent("equipped", lunarplanthat_onequip)
-		return unpack(ret)
-	end
-end
-
-if not rawget(_G, "lunarplanthat_clear_fn") then
-	function lunarplanthat_clear_fn(inst)
-		if not TheWorld.ismastersim then return end
-
-		local ret = { basic_clear_fn(inst, "hat_lunarplant") }
-
-		inst:RemoveEventCallback("equipped", lunarplanthat_onequip)
-		return unpack(ret)
-	end
-end
-
 -- Dragonfly Chest Gingerbread --
 local function gingerbread_upgrade_visuals(inst)
 	inst.AnimState:SetBank("chest_upgraded")
