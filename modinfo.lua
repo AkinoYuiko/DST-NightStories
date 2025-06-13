@@ -6,14 +6,15 @@ local function zheng(zh, en)
 	return LOC[locale] or en
 end
 
-version = "1.56.9"
+version = "1.56.10"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng([[
-- 修复部分皮肤问题
+- 优化代码
 
 最近更新：
+- 修复部分皮肤问题
 - 让达米的血量显示兼容新版本游戏
 - 修复奖励数量计算错误的问题。
 - 猪王代码适配最新更新。
@@ -23,9 +24,10 @@ changelog = zheng([[
 - 重写了【月影】切换机制。
 - 修复配方相关的一处错误。
 ]], [[
-- Fix skin issue
+- Optimize code logic
 
 Recent Changes:
+- Fix skin issue
 - Make dummy's health badge compatible with new version of the game
 - Fix issue that the amount of Pig King's rewards is wrong.
 - Make compatibility with latest release.
