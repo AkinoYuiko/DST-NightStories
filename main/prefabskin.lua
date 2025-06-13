@@ -199,12 +199,26 @@ local function lunarplanthat_onequip(inst, data)
 	local skin_build = inst:GetSkinBuild()
 	if skin_build:find("_trans") then
 		show_head(owner)
-		if inst.fx ~= nil then
-			inst.fx:Remove()
-		end
-		inst.fx = SpawnPrefab(skin_build .. "_fx")
-		inst.fx:AttachToOwner(owner)
+		-- if inst.fx ~= nil then
+		-- 	inst.fx:Remove()
+		-- end
+		-- inst.fx = SpawnPrefab(skin_build .. "_fx")
+		-- inst.fx:AttachToOwner(owner)
 	end
+end
+
+local _lunarplanthat_init_fn = lunarplanthat_init_fn
+function lunarplanthat_init_fn(inst, build, ...)
+	local ret = {_lunarplanthat_init_fn(inst, build, ...)}
+	inst:ListenForEvent("onequip", lunarplanthat_onequip)
+	return unpack(ret)
+end
+
+local _lunarplanthat_clear_fn = lunarplanthat_clear_fn
+function lunarplanthat_clear_fn(inst, build, ...)
+	local ret = {_lunarplanthat_clear_fn(inst, build, ...)}
+	inst:RemoveEventCallback("onequip", lunarplanthat_onequip)
+	return unpack(ret)
 end
 
 -- Dragonfly Chest Gingerbread --
