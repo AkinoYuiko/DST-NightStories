@@ -23,7 +23,6 @@ PrefabFiles =
 	"glash",
 	"horrorchain",
 	"lantern_mio_fx",
-	"lunarplanthat_trans_fx",
 	"lunarshadow",
 	"miotan",
 	"moonglasshammer",
