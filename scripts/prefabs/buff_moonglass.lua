@@ -5,8 +5,9 @@ local Utils = require "ns_utils"
 -------------------------------------------------------------------------
 
 local target_testfn = Utils.TargetTestFn
-local do_glash_attack = Utils.DoGlashAttack
+local owner_testfn = Utils.OwnerTestFn
 local launching_projectile = Utils.LaunchingProjectile
+local do_glash_attack = Utils.DoGlashAttack
 
 local function onattackother(owner, data)
 	local target = data and data.target
@@ -17,14 +18,9 @@ local function onattackother(owner, data)
 	elseif projectile and projectile.prefab == "glash" then
 		return
 	end
-	if target and target_testfn(target) then
+	if owner_testfn(owner) and target and target ~= owner and target_testfn(target) then
 		-- In combat, this is when we're just launching a projectile, so don't spawn yet
-		if data.weapon ~= nil and data.projectile == nil
-			and (data.weapon.components.projectile ~= nil
-				or data.weapon.components.complexprojectile ~= nil
-				or data.weapon.components.weapon:CanRangedAttack()) then
-			return
-		end
+		if launching_projectile(data) then return end
 		do_glash_attack(owner, target)
 	end
 end
