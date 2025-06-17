@@ -27,19 +27,7 @@ lantern_clear_fn = function(inst, ...)
 	return unpack(ret)
 end
 
--- yellowamulet
-if not rawget(_G, "yellowamulet_clear_fn") then
-	yellowamulet_clear_fn = function(inst) basic_clear_fn(inst, "amulets") end
-	GlassicAPI.SetOnequipSkinItem("yellowamulet", {"swap_body", "swap_body", "torso_amulets"})
-end
-
 -- Dummy
--- Green Amulet
-if not rawget(_G, "greenamulet_clear_fn") then
-	greenamulet_clear_fn = function(inst) basic_clear_fn(inst, "amulets") end
-	GlassicAPI.SetOnequipSkinItem("greenamulet", {"swap_body", "swap_body", "torso_amulets"})
-end
-
 -- Raincoat
 if not rawget(_G, "raincoat_clear_fn") then
 	raincoat_clear_fn = function(inst) basic_clear_fn(inst, "torso_rain") end
@@ -113,17 +101,6 @@ moonglasshammer_clear_fn = function(inst) basic_clear_fn(inst, "glasshammer") en
 
 -- Moon Glass Pickaxe
 moonglasspickaxe_clear_fn = function(inst) basic_clear_fn(inst, "glasspickaxe") end
-
--- Glassic Cutter
-glassiccutter_init_fn = function(inst, build_name)
-	if not TheWorld.ismastersim then return end
-	inst.AnimState:SetSkin(build_name, "glassiccutter")
-	inst:OnChangeImage()
-end
-glassiccutter_clear_fn = function(inst)
-	inst.AnimState:SetBuild("glassiccutter")
-	inst:OnChangeImage()
-end
 
 local function onpercentusedchange(inst, data)
 	if data.percent <= 0 and not inst:HasTag("usesdepleted") then
@@ -265,19 +242,10 @@ GlassicAPI.SkinHandler.AddModSkins({
 	lantern = {
 		{ name = "lantern_mio", exclusive_char = "miotan" }
 	},
-	-- nightstick = {
-	--	 { name = "nightstick_crystal", exclusive_char = "miotan" }
-	-- },
-	-- yellowamulet = {
-	--	 { name = "yellowamulet_heart", exclusive_char = "miotan" }
-	-- },
 	-- Dummy
 	dummy = {
 		"dummy_none"
 	},
-	-- greenamulet = {
-	--	 { name = "greenamulet_heart", exclusive_char = "dummy" }
-	-- },
 	raincoat = {
 		{ name = "raincoat_peggy", exclusive_char = "dummy" }
 	},
@@ -301,6 +269,6 @@ GlassicAPI.SkinHandler.AddModSkins({
 	moonglasspickaxe = { "moonglasspickaxe_northern" },
 	moonglasshammer = { "moonglasshammer_forge" },
 	orangestaff = { "orangestaff_glass", "orangestaff_mossling" },
-	-- Temp
+	-- Lunar items
 	lunarplanthat = { "lunarplanthat_trans" },
 })
