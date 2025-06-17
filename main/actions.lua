@@ -326,12 +326,9 @@ end
 ----------------------- COMPONENT ACTIONS ---------------------------
 ---------------------------------------------------------------------
 
+local MIO_FUEL_ACTION_TAGS = {"CAVE_fueled", "BURNABLE_fueled", "WORMLIGHT_fueled", "TAR_fueled"}
 local function fuel_action_testfn(target)
-	return target:HasTag("CAVE_fueled") or
-		target:HasTag("BURNABLE_fueled") or
-		target:HasTag("WORMLIGHT_fueled") or
-		target:HasTag("TAR_fueled") or -- IA Sea Yard
-		fuel_action_prefabs[target.prefab]
+	return target:HasAnyTag(MIO_FUEL_ACTION_TAGS) or fuel_action_prefabs[target.prefab]
 end
 
 AddComponentAction("USEITEM", "fuel", function(inst, doer, target, actions, right)
@@ -435,16 +432,10 @@ local SCENE = COMPONENT_ACTIONS.SCENE
 local scene_hauntable = SCENE.hauntable
 
 -- Hauntable for Dummy: only Dummy can haunt Mio and Dummy to revive herself
+local DUMMY_NOT_HAUNTABLE_TAGS = {"playerghost", "reviving", "haunted", "catchable"}
 function SCENE.hauntable(inst, doer, actions, ...)
 	if inst:HasTag("nightmare_twins") then
-		if doer.prefab == "dummy"
-			and not (
-				inst:HasTag("playerghost")
-				or inst:HasTag("reviving")
-				or inst:HasTag("haunted")
-				or inst:HasTag("catchable")
-			) then
-
+		if doer.prefab == "dummy" and not inst:HasAnyTag(DUMMY_NOT_HAUNTABLE_TAGS) then
 			table.insert(actions, ACTIONS.HAUNT)
 		end
 	else
