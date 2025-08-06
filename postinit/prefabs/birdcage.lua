@@ -30,6 +30,12 @@ local function SpawnLootPrefab(inst, prefab, stacksize)
 	end
 end
 
+local function CountLoot(num)
+	if type(num) == "number" and num > 0 then
+		return math.floor(num/3), num%3
+	end
+end
+
 local function DigestFood(inst, food)
 	-- COPIED FROM birdcage.lua --
 	local stacksize = food and food.components.stackable and food.components.stackable.stacksize or 1 -- changed part --
@@ -42,11 +48,15 @@ local function DigestFood(inst, food)
 		if food.components.edible.foodtype == FOODTYPE.LUNAR_SHARDS then
 			if food.prefab == "moonglass_charged" then --Can't be a tag check
 				if bird.do_drop_brilliance then
-					SpawnLootPrefab(inst, "purebrilliance", stacksize) -- changed part --
+					-- changed part begin --
+					local a, b = CountLoot(stacksize)
+					if b > 0 then
+						SpawnLootPrefab(inst, "moonglass_charged", b)
+					end
+					SpawnLootPrefab(inst, "purebrilliance", a)
 					bird.do_drop_brilliance = nil
+					-- changed part end --
 				end
-			else
-				--inst.components.lootdropper:SpawnLootPrefab("")
 			end
 		end
 	elseif food.components.edible.foodtype == FOODTYPE.MEAT then
