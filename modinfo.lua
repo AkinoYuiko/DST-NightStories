@@ -6,36 +6,18 @@ local function zheng(zh, en)
 	return LOC[locale] or en
 end
 
-version = "1.56.10"
+version = "1.57"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng([[
-- 优化代码
-
-最近更新：
-- 修复部分皮肤问题
-- 让达米的血量显示兼容新版本游戏
-- 修复奖励数量计算错误的问题。
-- 猪王代码适配最新更新。
-- 调整【月光粉】配方。
-- Civi 可以通过阴郁回旋镖附加恐惧锁链效果。
-- Civi 新增两种转换配方。
-- 重写了【月影】切换机制。
-- 修复配方相关的一处错误。
+- 鸟笼兼容官方更新。
+- 暂时禁用了本模组的晾肉架皮肤。
+- 玻璃工具变成可解锁制作了。
 ]], [[
-- Optimize code logic
-
-Recent Changes:
-- Fix skin issue
-- Make dummy's health badge compatible with new version of the game
-- Fix issue that the amount of Pig King's rewards is wrong.
-- Make compatibility with latest release.
-- Tweak recipe for Lunar Powder.
-- Civi can attach "horror chain" effect on targets hit by Gloomerang.
-- Add two new recipes for Civi.
-- Rework the way Lunar Shadow switches state.
-- Fix a typo in recipes.
+- Make Bird Cage compatible with recent official update.
+- Temporaryily diable skins for Meatrack.
+- Moon Glass tools now become unlockable.
 ]])
 description = zheng("版本: ", "Version: ") .. version ..
 	zheng("\n\n本次更新:\n", "\n\nChanges:\n") .. changelog .. "\n" ..
