@@ -109,7 +109,8 @@ local function OnGetItem(inst, giver, item)
 
 		-- We have to do this logic instantly so the player doesn't feed too many shards before the task in time
 		if bird and bird:HasTag("bird_mutant_rift") and item.prefab == "moonglass_charged" then
-			bird._infused_eaten = bird._infused_eaten + 1
+			local stacksize = item and item.components.stackable and item.components.stackable.stacksize or 1
+			bird._infused_eaten = bird._infused_eaten + stacksize
 
 			if bird._infused_eaten >= TUNING.RIFT_BIRD_EAT_COUNT_FOR_BRILLIANCE then
 				bird:PutOnBrillianceCooldown(inst)
