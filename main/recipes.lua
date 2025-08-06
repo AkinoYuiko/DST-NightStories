@@ -169,10 +169,10 @@ AddRecipe("book_wetness", {Ingredient("book_rain", 1), Ingredient("book_temperat
 SortAfter("book_wetness", "book_rain")
 
 -- 月镐和月锤 --
-AddRecipe("moonglasspickaxe", {Ingredient("twigs", 2), Ingredient("moonglass", 3)}, TECH.CELESTIAL_THREE, {nomods = true, nounlock = true, description = "moonglassaxe"})
+AddRecipe("moonglasspickaxe", {Ingredient("twigs", 2), Ingredient("moonglass", 3)}, TECH.CELESTIAL_THREE, {nomods = true, description = "moonglassaxe"})
 SortAfter("moonglasspickaxe", "moonglassaxe")
 
-AddRecipe("moonglasshammer", {Ingredient("twigs", 3), Ingredient("cutgrass", 6), Ingredient("moonglass", 3)}, TECH.CELESTIAL_THREE, {nomods = true, nounlock = true, description = "moonglassaxe"})
+AddRecipe("moonglasshammer", {Ingredient("twigs", 3), Ingredient("cutgrass", 6), Ingredient("moonglass", 3)}, TECH.CELESTIAL_THREE, {nomods = true, description = "moonglassaxe"})
 SortAfter("moonglasshammer", "moonglasspickaxe")
 
 AddDeconstructRecipe("glassiccutter", {Ingredient("glasscutter", 1)})
