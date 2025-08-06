@@ -33,16 +33,32 @@ end
 local function DigestFood(inst, food)
 	-- COPIED FROM birdcage.lua --
 	local stacksize = food and food.components.stackable and food.components.stackable.stacksize or 1 -- changed part --
-	if food.components.edible.foodtype == FOODTYPE.MEAT then
+	--NOTE (Omar):
+	-- Reminder that food is not valid at this point.
+	-- So don't call any engine functions or any other functions that check for validity
+	local bird = GetBird(inst)
+
+	if bird and bird:HasTag("bird_mutant_rift") then
+		if food.components.edible.foodtype == FOODTYPE.LUNAR_SHARDS then
+			if food.prefab == "moonglass_charged" then --Can't be a tag check
+				if bird.do_drop_brilliance then
+					SpawnLootPrefab(inst, "purebrilliance", stacksize) -- changed part --
+					bird.do_drop_brilliance = nil
+				end
+			else
+				--inst.components.lootdropper:SpawnLootPrefab("")
+			end
+		end
+	elseif food.components.edible.foodtype == FOODTYPE.MEAT then
 		--If the food is meat:
 			--Spawn an egg.
-		if inst.components.occupiable and inst.components.occupiable:GetOccupant() and inst.components.occupiable:GetOccupant():HasTag("bird_mutant") then
+		if bird and bird:HasTag("bird_mutant") then
 			SpawnLootPrefab(inst, "rottenegg", stacksize) -- changed part --
 		else
 			SpawnLootPrefab(inst, "bird_egg", stacksize) -- changed part --
 		end
 	else
-		if inst.components.occupiable and inst.components.occupiable:GetOccupant() and inst.components.occupiable:GetOccupant():HasTag("bird_mutant") then
+		if bird and bird:HasTag("bird_mutant") then
 			SpawnLootPrefab(inst, "spoiled_food", stacksize) -- changed part --
 		else
 			local seed_name = string.lower(food.prefab .. "_seeds")
@@ -63,21 +79,21 @@ local function DigestFood(inst, food)
 	end
 
 	--Refill bird stomach.
-	local bird = GetBird(inst)
 	if bird and bird:IsValid() and bird.components.perishable then
 		bird.components.perishable:SetPercent(1)
 	end
 end
 
-
 local function OnGetItem(inst, giver, item)
+	local bird = GetBird(inst)
 	--If you're sleeping, wake up.
 	if inst.components.sleeper and inst.components.sleeper:IsAsleep() then
-		inst.components.sleeper:WakeUp()
+			inst.components.sleeper:WakeUp()
 	end
 
 	if item.components.edible ~= nil and
 		(   item.components.edible.foodtype == FOODTYPE.MEAT
+			or item.components.edible.foodtype == FOODTYPE.LUNAR_SHARDS
 			or item.prefab == "seeds"
 			or string.match(item.prefab, "_seeds")
 			or Prefabs[string.lower(item.prefab .. "_seeds")] ~= nil
@@ -90,6 +106,16 @@ local function OnGetItem(inst, giver, item)
 		inst.AnimState:PushAnimation("hop")
 		-- PushStateAnim(inst, "idle", true)
 		inst.AnimState:PushAnimation("idle" .. inst.CAGE_STATE, true) -- changed part
+
+		-- We have to do this logic instantly so the player doesn't feed too many shards before the task in time
+		if bird and bird:HasTag("bird_mutant_rift") and item.prefab == "moonglass_charged" then
+			bird._infused_eaten = bird._infused_eaten + 1
+
+			if bird._infused_eaten >= TUNING.RIFT_BIRD_EAT_COUNT_FOR_BRILLIANCE then
+				bird:PutOnBrillianceCooldown(inst)
+				bird.do_drop_brilliance = true
+			end
+		end
 		--Digest Food in 60 frames.
 		inst:DoTaskInTime(60 * FRAMES, DigestFood, item)
 	end
