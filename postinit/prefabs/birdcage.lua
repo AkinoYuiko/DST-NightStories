@@ -30,10 +30,11 @@ local function SpawnLootPrefab(inst, prefab, stacksize)
 	end
 end
 
-local function CountLoot(num)
+local function CalcLoot(num)
 	if type(num) == "number" and num > 0 then
 		return math.floor(num/3), num%3
 	end
+	return 0, 0
 end
 
 local function DigestFood(inst, food)
@@ -49,7 +50,7 @@ local function DigestFood(inst, food)
 			if food.prefab == "moonglass_charged" then --Can't be a tag check
 				if bird.do_drop_brilliance then
 					-- changed part begin --
-					local a, b = CountLoot(stacksize)
+					local a, b = CalcLoot(bird._infused_eaten)
 					if b > 0 then
 						SpawnLootPrefab(inst, "moonglass_charged", b)
 					end
