@@ -6,15 +6,21 @@ local function zheng(zh, en)
 	return LOC[locale] or en
 end
 
-version = "1.57"
+version = "1.57.1"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng([[
+- 修复一处计算逻辑错误。
+
+近期更新：
 - 鸟笼兼容官方更新。
 - 暂时禁用了本模组的晾肉架皮肤。
 - 玻璃工具变成可解锁制作了。
 ]], [[
+- Fix a logic issue with calc.
+
+Recent changes:
 - Make Bird Cage compatible with recent official update.
 - Temporaryily diable skins for Meatrack.
 - Moon Glass tools now become unlockable.
