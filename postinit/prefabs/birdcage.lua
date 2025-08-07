@@ -50,12 +50,13 @@ local function DigestFood(inst, food)
 			if food.prefab == "moonglass_charged" then --Can't be a tag check
 				if bird.do_drop_brilliance then
 					-- changed part begin --
-					local a, b = CalcLoot(bird._infused_eaten)
+					local a, b = CalcLoot(bird._stash_infused_eaten)
 					if b > 0 then
 						SpawnLootPrefab(inst, "moonglass_charged", b)
 					end
 					SpawnLootPrefab(inst, "purebrilliance", a)
 					bird.do_drop_brilliance = nil
+					bird._stash_infused_eaten = nil
 					-- changed part end --
 				end
 			end
@@ -124,6 +125,7 @@ local function OnGetItem(inst, giver, item)
 			bird._infused_eaten = bird._infused_eaten + stacksize
 
 			if bird._infused_eaten >= TUNING.RIFT_BIRD_EAT_COUNT_FOR_BRILLIANCE then
+				bird._stash_infused_eaten = bird._infused_eaten
 				bird:PutOnBrillianceCooldown(inst)
 				bird.do_drop_brilliance = true
 			end
