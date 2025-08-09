@@ -22,6 +22,7 @@ local postinit =
 	-- components
 	"components/bundler",
 	"components/combat",
+	"components/dryingrack",
 	"components/forgerepair",
 	-- "components/lptw",
 	"components/moisture",
@@ -39,6 +40,7 @@ local postinit =
 	"prefabs/foodbuffs",
 	"prefabs/gems",
 	"prefabs/gestalt",
+	"prefabs/meatrack",
 	"prefabs/multiplayer_portal_moonrock",
 	"prefabs/nightmarecreatures",
 	"prefabs/nightmarefuel",
