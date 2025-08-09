@@ -91,9 +91,12 @@ local book_defs =
 					end
 				end
 
-				if v.components.dryer and v.prefab == "meatrack" then
-					if v.components.dryer:Harvest(reader) then
-						success = true
+				if v.components.dryingrack and v.prefab == "meatrack" then
+					for _, item in pairs(v.components.dryingrack.container.slots) do
+						if item and item.components.dryable == nil then
+							reader.components.inventory:GiveItem(item, nil, v:GetPosition())
+							success = true
+						end
 					end
 				end
 			end
