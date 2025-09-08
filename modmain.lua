@@ -20,6 +20,7 @@ end
 local postinit =
 {
 	-- components
+	"components/brightmarespawner",
 	"components/bundler",
 	"components/combat",
 	"components/dryingrack",
