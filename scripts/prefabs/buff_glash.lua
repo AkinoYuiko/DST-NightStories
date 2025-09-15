@@ -9,20 +9,28 @@ local owner_testfn = Utils.OwnerTestFn
 local launching_projectile = Utils.LaunchingProjectile
 local do_glash_attack = Utils.DoGlashAttack
 
-local function onattackother(owner, data)
+local function base_onattackother(owner, data, glash_prefab)
 	local target = data and data.target
 	local weapon = data and data.weapon
 	local projectile = data and data.projectile
-	if weapon and weapon.prefab == "glash" then
+	if weapon and weapon:HasTag("glash") then
 		return
-	elseif projectile and projectile.prefab == "glash" then
+	elseif projectile and projectile:HasTag("glash") then
 		return
 	end
 	if owner_testfn(owner) and target and target ~= owner and target_testfn(target) then
 		-- In combat, this is when we're just launching a projectile, so don't spawn yet
 		if launching_projectile(data) then return end
-		do_glash_attack(owner, target)
+		do_glash_attack(owner, target, glash_prefab)
 	end
+end
+
+local function onattackother(owner, data)
+	base_onattackother(owner, data, "glash")
+end
+
+local function onattackother_shadow(owner, data)
+	base_onattackother(owner, data, "shadowglash")
 end
 
 local function attack_attach(inst, target)
@@ -33,6 +41,16 @@ end
 
 local function attack_detach(inst, target)
 	inst:RemoveEventCallback("onattackother", onattackother, target)
+end
+
+local function attack_attach_shadow(inst, target)
+	if target.components.combat then
+		inst:ListenForEvent("onattackother", onattackother_shadow, target)
+	end
+end
+
+local function attack_detach_shadow(inst, target)
+	inst:RemoveEventCallback("onattackother", onattackother_shadow, target)
 end
 
 -------------------------------------------------------------------------
@@ -112,4 +130,5 @@ local function MakeBuff(name, onattachedfn, onextendedfn, ondetachedfn, duration
 	return Prefab("buff_"..name, fn, nil, prefabs)
 end
 
-return MakeBuff("moonglass", attack_attach, nil, attack_detach, TUNING.BUFF_MOONGLASS_DURATION, 1)
+return MakeBuff("glash", attack_attach, nil, attack_detach, TUNING.BUFF_GLASH_DURATION, 1),
+	MakeBuff("shadowglash", attack_attach_shadow, nil, attack_detach_shadow, TUNING.BUFF_SHADOWGLASH_DURATION, 1)

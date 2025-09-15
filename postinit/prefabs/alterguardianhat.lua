@@ -28,7 +28,7 @@ AddPrefabPostInit("alterguardianhat", function(inst)
 			local prev_spawn_fn = inst.alterguardian_spawngestalt_fn
 
 			inst.alterguardian_spawngestalt_fn = function(__owner, __data)
-				if not (__owner.components.debuffable and __owner.components.debuffable:HasDebuff("buff_moonglass")) then
+				if not (__owner.components.debuffable and __owner.components.debuffable:HasDebuff("buff_glash")) then
 					prev_spawn_fn(__owner, __data)
 				end
 			end

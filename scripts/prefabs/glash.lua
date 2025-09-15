@@ -1,26 +1,52 @@
-local assets = {}
-
-local prefabs = {
-	"planar_hit_fx",
-}
-
-local function setup_fx(target)
-	local fx = SpawnPrefab("planar_hit_fx")
-	local scale = 0.7
-	fx.Transform:SetScale(scale, scale, scale)
-	fx.entity:SetParent(target.entity)
-end
-
-local function on_attack(inst, attacker, target)
-	if target and target:IsValid() then
-		setup_fx(target)
+local function setup_fx(attacker, target, is_shadow)
+	if is_shadow then
+		local spark = SpawnPrefab("hitsparks_fx")
+		spark:Setup(attacker, target, nil, {1, 0, 0})
+		spark.black:set(true)
+	else
+		local fx = SpawnPrefab("planar_hit_fx")
+		fx.Transform:SetScale(0.7, 0.7, 0.7)
+		fx.entity:SetParent(target.entity)
 	end
 end
 
-local function fn()
+local function on_attack(inst, attacker, target)
+	if attacker and target and target:IsValid() then
+		setup_fx(attacker, target)
+	end
+end
+
+local function on_attack_shadow(inst, attacker, target)
+	if attacker and target and target:IsValid() then
+		setup_fx(attacker, target, true)
+	end
+end
+
+local function common_fn()
 	local inst = CreateEntity()
 
 	inst.entity:AddTransform()
+
+	inst:AddTag("glash")
+	inst:AddTag("CLASSIFIED")
+
+	inst.persists = false
+	inst:DoTaskInTime(0, inst.Remove)
+
+	if not TheWorld.ismastersim then
+		return inst
+	end
+
+	inst:AddComponent("projectile")
+
+	inst:AddComponent("weapon")
+	inst.components.weapon:SetRange(TUNING.GLASH_HIT_RANGE)
+
+	return inst
+end
+
+local function fn()
+	local inst = common_fn()
 
 	inst:AddTag("ignore_planar_entity")
 
@@ -28,15 +54,54 @@ local function fn()
 		return inst
 	end
 
-	inst:AddComponent("weapon")
 	inst.components.weapon:SetDamage(TUNING.GLASH_BASE_DAMAGE)
-	inst.components.weapon:SetRange(TUNING.GLASH_HIT_RANGE)
 	inst.components.weapon:SetOnAttack(on_attack)
 
-	inst:AddComponent("projectile")
+	return inst
+end
 
+local function fn_shadow()
+	local inst = common_fn()
+
+	if not TheWorld.ismastersim then
+		return inst
+	end
+
+	inst.components.weapon:SetDamage(0)
+	inst.components.weapon:SetOnAttack(on_attack_shadow)
+
+	inst:AddComponent("planardamage")
+	inst.components.planardamage:SetBaseDamage(TUNING.SHADOWGLASH_PLANAR_DAMAGE)
+
+	return inst
+end
+
+------------------------- Glash Builder -------------------------
+local function builder_onbuilt(inst, builder)
+	if builder then
+		builder:AddDebuff("buff_shadowglash", "buff_shadowglash")
+	end
+end
+
+local function fn_builder()
+	local inst = CreateEntity()
+
+	inst.entity:AddTransform()
+
+	inst:AddTag("CLASSIFIED")
+
+	--[[Non-networked entity]]
 	inst.persists = false
+
+	--Auto-remove if not spawned by builder
 	inst:DoTaskInTime(0, inst.Remove)
+
+	if not TheWorld.ismastersim then
+		return inst
+	end
+
+	inst.pettype = "shadowglash"
+	inst.OnBuiltFn = builder_onbuilt
 
 	return inst
 end
@@ -133,6 +198,8 @@ local glash_big_fx =
 	fn = function(inst) inst.AnimState:SetFinalOffset(1) end,
 }
 
-return Prefab("glash", fn, assets, prefabs),
+return Prefab("glash", fn, nil, {"planar_hit_fx"}),
+	Prefab("shadowglash", fn_shadow, nil, {"hitsparks_fx"}),
+	Prefab("shadowglash_builder", fn_builder, nil, {"shadowglash"}),
 	MakeFx(glash_fx),
 	MakeFx(glash_big_fx)

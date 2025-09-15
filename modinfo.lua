@@ -6,32 +6,16 @@ local function zheng(zh, en)
 	return LOC[locale] or en
 end
 
-version = "1.57.4"
+version = "1.58"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng([[
-- 新增一个小彩蛋。
-
-近期更新：
-- 收获的季节兼容新版晾肉架。
-- 晾肉架格子接受堆叠。
-- 启迪之冠的精神回复速率受天体珠宝的数量加成。
-- 修复一处计算逻辑错误。
-- 鸟笼兼容官方更新。
-- 暂时禁用了本模组的晾肉架皮肤。
-- 玻璃工具变成可解锁制作了。
+- 移除了【暗影破碎枪】。
+- 新增【梦魇之力】。
 ]], [[
-- Add an easter egg.
-
-Recent changes:
-- The book "Season of Harvest" is now compatible with renewed Meatrack.
-- Meatrack accepts stacking.
-- Enlightened Crown gains a dapperness multiplier that depends on the amount of Celestial Jewel.
-- Fix a logic issue with calc.
-- Make Bird Cage compatible with recent official update.
-- Temporaryily diable skins for Meatrack.
-- Moon Glass tools now become unlockable.
+- Remove Nightmare Spear.
+- Add Power of Nightmare.
 ]])
 description = zheng("版本: ", "Version: ") .. version ..
 	zheng("\n\n本次更新:\n", "\n\nChanges:\n") .. changelog .. "\n" ..

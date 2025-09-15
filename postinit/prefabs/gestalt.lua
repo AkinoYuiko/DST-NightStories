@@ -14,7 +14,7 @@ local function postinit(inst)
 	local retarget = inst.components.combat.targetfn
 	inst.components.combat:SetRetargetFunction(1, function(_inst)
 		local target = retarget(inst)
-		if target and target.components.debuffable and target.components.debuffable:HasDebuff("buff_moonglass") then
+		if target and target.components.debuffable and target.components.debuffable:HasDebuff("buff_glash") then
 			return
 		end
 		return target
