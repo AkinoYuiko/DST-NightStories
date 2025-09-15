@@ -5,7 +5,7 @@ local NS_SPICES = {
 	SPICE_MOONGLASS =
 	{
 		oneatenfn = function(inst, eater)
-			eater:AddDebuff("buff_moonglass", "buff_moonglass")
+			eater:AddDebuff("buff_glash", "buff_glash")
 		end,
 	},
 }
