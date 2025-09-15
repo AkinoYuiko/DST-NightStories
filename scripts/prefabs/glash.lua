@@ -1,25 +1,24 @@
-local assets = {}
-
-local prefabs = {
-	"planar_hit_fx",
-}
-
-local function setup_fx(target, is_shadow)
-	local fx = SpawnPrefab( is_shadow and "nightsword_curve_fx" or "planar_hit_fx")
-	local scale = 0.7
-	fx.Transform:SetScale(scale, scale, scale)
-	fx.entity:SetParent(target.entity)
+local function setup_fx(attacker, target, is_shadow)
+	if is_shadow then
+		local spark = SpawnPrefab("hitsparks_fx")
+		spark:Setup(attacker, target, nil, {1, 0, 0})
+		spark.black:set(true)
+	else
+		local fx = SpawnPrefab("planar_hit_fx")
+		fx.Transform:SetScale(0.7, 0.7, 0.7)
+		fx.entity:SetParent(target.entity)
+	end
 end
 
 local function on_attack(inst, attacker, target)
-	if target and target:IsValid() then
-		setup_fx(target)
+	if attacker and target and target:IsValid() then
+		setup_fx(attacker, target)
 	end
 end
 
 local function on_attack_shadow(inst, attacker, target)
-	if target and target:IsValid() then
-		setup_fx(target, true)
+	if attacker and target and target:IsValid() then
+		setup_fx(attacker, target, true)
 	end
 end
 
@@ -200,8 +199,8 @@ local glash_big_fx =
 	fn = function(inst) inst.AnimState:SetFinalOffset(1) end,
 }
 
-return Prefab("glash", fn, assets, prefabs),
-	Prefab("shadowglash", fn_shadow, assets, prefabs),
+return Prefab("glash", fn, nil, {"planar_hit_fx"}),
+	Prefab("shadowglash", fn_shadow, nil, {"hitsparks_fx"}),
 	Prefab("shadowglash_builder", fn_builder, nil, {"shadowglash"}),
 	MakeFx(glash_fx),
 	MakeFx(glash_big_fx)
