@@ -78,7 +78,8 @@ local strings = {
 		BLACKHOLESTAFF = "Blackhole Staff",
 		BOOK_HARVEST = "Season of Harvest",
 		BOOK_TOGGLEDOWNFALL = "Love of Rain",
-		NIGHTMARE_SPEAR = "Nightmare Spear",
+		-- NIGHTMARE_SPEAR = "Nightmare Spear",
+		SHADOWGLASH_BUILDER = "Power of Nightmare",
 
 		BATTLERUINSHAT = "Battle Crown",
 
@@ -131,7 +132,8 @@ local strings = {
 		BOOK_HARVEST = "Should help you harvest!",
 		BOOK_TOGGLEDOWNFALL = "/toggledownfall",
 		BOOK_WETNESS = "The mystery of weather.",
-		NIGHTMARE_SPEAR = "Disappear in a moment.",
+		-- NIGHTMARE_SPEAR = "Disappear in a moment.",
+		SHADOWGLASH_BUILDER = "Disappear in a moment.",
 
 		BATTLERUINSHAT = "Complete with ancient force field!",
 		SKILLTREE_RESPEC_TOOL = "Quick way to reset insight.",
@@ -258,8 +260,10 @@ local strings = {
 	{
 		GENERIC =
 		{
-			ANNOUNCE_ATTACH_BUFF_MOONGLASS = "Secret power from the moon!",
-			ANNOUNCE_DETACH_BUFF_MOONGLASS = "The moon power has gone.",
+			ANNOUNCE_ATTACH_BUFF_GLASH = "Secret power from the moon!",
+			ANNOUNCE_ATTACH_BUFF_SHADOWGLASH = "Secret power from the nightmare!",
+			ANNOUNCE_DETACH_BUFF_GLASH = "The moon power has gone.",
+			ANNOUNCE_DETACH_BUFF_SHADOWGLASH = "The nightmare power has gone.",
 			DESCRIBE =
 			{
 				-- GLASSICCUTTER =
