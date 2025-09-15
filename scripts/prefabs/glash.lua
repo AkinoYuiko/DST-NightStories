@@ -79,7 +79,6 @@ end
 ------------------------- Glash Builder -------------------------
 local function builder_onbuilt(inst, builder)
 	if builder then
-		builder.components.talker:Say("ANGRY!!!")
 		builder:AddDebuff("buff_shadowglash", "buff_shadowglash")
 	end
 end
