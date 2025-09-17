@@ -24,6 +24,7 @@ local postinit =
 	"components/bundler",
 	"components/combat",
 	"components/dryingrack",
+	"components/equippable",
 	"components/forgerepair",
 	-- "components/lptw",
 	"components/moisture",
