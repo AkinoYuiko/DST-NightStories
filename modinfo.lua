@@ -6,20 +6,22 @@ local function zheng(zh, en)
 	return LOC[locale] or en
 end
 
-version = "1.58.1"
+version = "1.58.2"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng([[
-- 【注能光明图腾】也能作用于装备对精神的影响了。
+调整了入侵溯源表的动作。
 
 最近更新：
+- 【注能光明图腾】也能作用于装备对精神的影响了。
 - 移除了【暗影破碎枪】。
 - 新增【梦魇之力】。
 ]], [[
-- Infused Light Totem now buffs equipment dapperness.
+- Tweak action for hacking Backtrek Watch.
 
 Recent Changes:
+- Infused Light Totem now buffs equipment dapperness.
 - Remove Nightmare Spear.
 - Add Power of Nightmare.
 ]])
