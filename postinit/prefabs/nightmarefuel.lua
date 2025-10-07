@@ -39,6 +39,7 @@ local FUEL_PREFAB_MULT =
 
 for prefab, mult in pairs(FUEL_PREFAB_MULT) do
 	AddPrefabPostInit(prefab, function(inst)
+		inst:AddTag("fuelpocketwatch_fuel")
 		if not TheWorld.ismastersim then return end
 		inst:AddComponent("edible")
 		inst.components.edible.healthvalue = foodvalue.health * mult
@@ -47,7 +48,6 @@ for prefab, mult in pairs(FUEL_PREFAB_MULT) do
 		inst.components.edible.foodtype = FOODTYPE.NIGHTMAREFUEL
 		inst.components.edible:SetOnEatenFn(oneaten)
 
-		inst:AddComponent("fuelpocketwatch")
 		inst:AddComponent("nightfuel")
 	end)
 end

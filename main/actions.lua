@@ -273,20 +273,24 @@ end
 -- [[ Hack Pocket Watch ]] --
 
 local function fuel_pocket_watch(inst, caster)
-	-- print("FuelPocketWatch, GetActionPoint")
 	return inst.components.pocketwatch:CastSpell(caster)
 end
 NS_ACTIONS.FUELPOCKETWATCH.fn = function(act)
-	local fuel = act.doer.components.inventory:RemoveItem(act.invobject)
-	if fuel then
-		if fuel_pocket_watch(act.target, act.doer) then
-			if fuel.prefab ~= "horrorfuel" then
-				act.doer.components.health:DoDelta(TUNING.HEALTH_FUELPOCKETWATCH_COST, nil, "fuelpocketwatch", true, nil, true)
+	local caster = act.doer
+	local inventory = caster.components.inventory
+	if act.invobject ~= nil and caster ~= nil and caster:HasTag("nightmare_twins") then
+		if fuel_pocket_watch(act.invobject, act.doer) then
+			if inventory:Has("horrorfuel", 1) then
+				inventory:ConsumeByName("horrorfuel", 1)
+			elseif inventory:Has("nightmarefuel", 1) then
+				inventory:ConsumeByName("nightmarefuel", 1)
+	 			caster.components.health:DoDelta(TUNING.HEALTH_FUELPOCKETWATCH_COST, nil, "fuelpocketwatch", true, nil, true)
+			elseif caster.prefab == "dummy" then
+	 			caster.components.health:DoDelta((TUNING.HEALTH_FUELPOCKETWATCH_COST_MORE), nil, "fuelpocketwatch", true, nil, true)
+			else
+				return
 			end
-			fuel:Remove()
 			return true
-		else
-			act.doer.components.inventory:GiveItem(fuel)
 		end
 	end
 end
@@ -365,11 +369,11 @@ AddComponentAction("USEITEM", "nightfuel", function(inst, doer, target, actions)
 	end
 end)
 
-AddComponentAction("USEITEM", "fuelpocketwatch", function(inst, doer, target, actions, right)
-	if right and (inst.prefab == "nightmarefuel" or inst.prefab == "horrorfuel") and doer:HasTag("nightmare_twins")
-	and target.prefab == "pocketwatch_recall" and target:HasTag("pocketwatch_inactive") and not target:HasTag("recall_unmarked")
-	then
-		table.insert(actions, NS_ACTIONS.FUELPOCKETWATCH)
+AddComponentAction("INVENTORY", "fuelpocketwatch", function(inst, doer, actions)
+	if inst:HasTag("pocketwatch_inactive") and doer:HasTag("nightmare_twins") and inst:HasTag("pocketwatch_castfrominventory") then
+		if doer.prefab == "dummy" or (doer.replica.inventory and doer.replica.inventory:HasItemWithTag("fuelpocketwatch_fuel", 1)) then
+			table.insert(actions, NS_ACTIONS.FUELPOCKETWATCH)
+		end
 	end
 end)
 
