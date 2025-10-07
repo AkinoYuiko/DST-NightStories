@@ -126,8 +126,8 @@ AddRecipe("skilltree_respec_tool", {Ingredient("moonglass", 1), Ingredient("nigh
 SortBefore("skilltree_respec_tool", "transmute_log")
 
 -- 月影 --
-AddRecipe("lunarshadow", {Ingredient("security_pulse_cage_full", 1), Ingredient("sword_lunarplant", 1), Ingredient("voidcloth_scythe", 1)}, TECH.LUNARFORGING_TWO, {nounlock=true, station_tag="lunar_forge"})
-SortAfter("lunarshadow", "houndstooth_blowpipe")
+AddRecipe("lunarshadow", {Ingredient("security_pulse_cage_full", 1), Ingredient("sword_lunarplant", 1), Ingredient("voidcloth_scythe", 1)}, TECH.WAGPUNK_WORKSTATION_TWO, {nounlock=true})
+SortAfter("lunarshadow", "wagpunk_workstation_security_pulse_cage")
 
 -- 亮茄尖刺球棒 --
 -- AddRecipe("bat_lunarplant", {Ingredient("purebrilliance", 2), Ingredient("lunarplant_husk", 1), Ingredient("plantmeat", 2)}, TECH.LUNARFORGING_TWO, {nounlock=true, station_tag="lunar_forge"})
@@ -169,10 +169,10 @@ AddRecipe("book_wetness", {Ingredient("book_rain", 1), Ingredient("book_temperat
 SortAfter("book_wetness", "book_rain")
 
 -- 月镐和月锤 --
-AddRecipe("moonglasspickaxe", {Ingredient("twigs", 2), Ingredient("moonglass", 3)}, TECH.CELESTIAL_THREE, {nomods = true, description = "moonglassaxe"})
+AddRecipe("moonglasspickaxe", {Ingredient("twigs", 2), Ingredient("moonglass", 3)}, TECH.CELESTIAL_THREE, {nomods = true, description = "moonglassaxe", station_tag="celestial_station"})
 SortAfter("moonglasspickaxe", "moonglassaxe")
 
-AddRecipe("moonglasshammer", {Ingredient("twigs", 3), Ingredient("cutgrass", 6), Ingredient("moonglass", 3)}, TECH.CELESTIAL_THREE, {nomods = true, description = "moonglassaxe"})
+AddRecipe("moonglasshammer", {Ingredient("twigs", 3), Ingredient("cutgrass", 6), Ingredient("moonglass", 3)}, TECH.CELESTIAL_THREE, {nomods = true, description = "moonglassaxe", station_tag="celestial_station"})
 SortAfter("moonglasshammer", "moonglasspickaxe")
 
 AddDeconstructRecipe("glassiccutter", {Ingredient("glasscutter", 1)})
