@@ -36,6 +36,7 @@ local postinit =
 	-- prefabs
 	"prefabs/alterguardianhat",
 	"prefabs/antlion",
+	"prefabs/beargerfur_sack",
 	"prefabs/birdcage",
 	"prefabs/dragonflychest",
 	"prefabs/flower",
