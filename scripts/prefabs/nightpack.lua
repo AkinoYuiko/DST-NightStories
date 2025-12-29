@@ -6,7 +6,7 @@ local assets = {
 local prefabs = {
 	"lanternlight",
 	"shadow_puff",
-	"pandorachest_reset"
+	"pandorachest_reset",
 }
 
 local STATE_NAMES = {
@@ -17,8 +17,8 @@ local STATE_NAMES = {
 	"orange",
 	"green",
 	"opal",
-	"dark",	 -- Deprecated
-	"light",	-- Deprecated
+	"dark", -- Deprecated
+	"light", -- Deprecated
 	"nightmare",
 	"horror",
 }
@@ -41,31 +41,40 @@ end
 
 -- function RED --
 local function IsValidVictim(victim)
-	return not (victim:HasTag("veggie") or
-			victim:HasTag("structure") or
-			victim:HasTag("wall") or
-			victim:HasTag("balloon") or
-			victim:HasTag("soulless") or
-			victim:HasTag("groundspike") or
-			victim:HasTag("smashable"))
-	and (  (victim.components.combat ~= nil and victim.components.health ~= nil)
-		or victim.components.murderable ~= nil )
+	return not (
+			victim:HasTag("veggie")
+			or victim:HasTag("structure")
+			or victim:HasTag("wall")
+			or victim:HasTag("balloon")
+			or victim:HasTag("soulless")
+			or victim:HasTag("groundspike")
+			or victim:HasTag("smashable")
+		)
+		and (
+			(victim.components.combat ~= nil and victim.components.health ~= nil)
+			or victim.components.murderable ~= nil
+		)
 end
 
 local function OnHealing(inst, data)
 	local victim = data.inst
-	if victim ~= nil and
-		victim:IsValid() and
-		(   victim == inst or
-			(   not inst.components.health:IsDead() and
-				IsValidVictim(victim) and victim.components.health:IsDead() and
-				inst:IsNear(victim, 15)
+	if
+		victim ~= nil
+		and victim:IsValid()
+		and (
+			victim == inst
+			or (
+				not inst.components.health:IsDead()
+				and IsValidVictim(victim)
+				and victim.components.health:IsDead()
+				and inst:IsNear(victim, 15)
 			)
-		) then
-		local epicmult = victim:HasTag("dualsoul") and 2
-					or (victim:HasTag("epic") and math.random(7, 8))
-					or 1
-		if inst.components.health then inst.components.health:DoDelta(5 * epicmult) end
+		)
+	then
+		local epicmult = victim:HasTag("dualsoul") and 2 or (victim:HasTag("epic") and math.random(7, 8)) or 1
+		if inst.components.health then
+			inst.components.health:DoDelta(5 * epicmult)
+		end
 	end
 end
 
@@ -77,23 +86,19 @@ end
 
 local function OnStarvedTrapSouls(inst, data)
 	local trap = data.trap
-	if trap ~= nil and
-		(data.numsouls or 0) > 0 and
-		trap:IsValid() and
-		inst:IsNear(trap, 15) then
-		if inst.components.health then inst.components.health:DoDelta(5 * data.numsouls) end
+	if trap ~= nil and (data.numsouls or 0) > 0 and trap:IsValid() and inst:IsNear(trap, 15) then
+		if inst.components.health then
+			inst.components.health:DoDelta(5 * data.numsouls)
+		end
 	end
 end
 
 local function OnMurdered(inst, data)
 	local victim = data.victim
-	if victim ~= nil and
-		victim:IsValid() and
-		(   not inst.components.health:IsDead() and
-			IsValidVictim(victim)
-		) then
-		if inst.components.health then inst.components.health:DoDelta(5 * (data.stackmult or 1)) end
-
+	if victim ~= nil and victim:IsValid() and (not inst.components.health:IsDead() and IsValidVictim(victim)) then
+		if inst.components.health then
+			inst.components.health:DoDelta(5 * (data.stackmult or 1))
+		end
 	end
 end
 
@@ -118,19 +123,27 @@ end
 
 local function ActivateListen(inst, owner)
 	if inst._onentitydroplootfn == nil then
-		inst._onentitydroplootfn = function(src, data) OnHealing(owner, data) end
+		inst._onentitydroplootfn = function(src, data)
+			OnHealing(owner, data)
+		end
 		inst:ListenForEvent("entity_droploot", inst._onentitydroplootfn, TheWorld)
 	end
 	if inst._onentitydeathfn == nil then
-		inst._onentitydeathfn = function(src, data) OnEntityDeath(owner, data) end
+		inst._onentitydeathfn = function(src, data)
+			OnEntityDeath(owner, data)
+		end
 		inst:ListenForEvent("entity_death", inst._onentitydeathfn, TheWorld)
 	end
 	if inst._onstarvedtrapsoulsfn == nil then
-		inst._onstarvedtrapsoulsfn = function(src, data) OnStarvedTrapSouls(inst, data) end
+		inst._onstarvedtrapsoulsfn = function(src, data)
+			OnStarvedTrapSouls(inst, data)
+		end
 		inst:ListenForEvent("starvedtrapsouls", inst._onstarvedtrapsoulsfn, TheWorld)
 	end
 	if inst._onmurderedfn == nil then
-		inst._onmurderedfn = function(src, data) OnMurdered(owner, data) end
+		inst._onmurderedfn = function(src, data)
+			OnMurdered(owner, data)
+		end
 		inst:ListenForEvent("murdered", inst._onmurderedfn, owner)
 	end
 end
@@ -158,7 +171,6 @@ local function pickup(inst, owner)
 	--Amulet will only ever pick up items one at a time. Even from stacks.
 	SpawnPrefab("shadow_puff").Transform:SetPosition(item.Transform:GetWorldPosition())
 
-
 	if not didpickup then
 		local item_pos = item:GetPosition()
 		if item.components.stackable ~= nil then
@@ -178,7 +190,7 @@ local function onfuelupdate(inst)
 		local fuelpercent = inst.components.fueled:GetPercent()
 		inst._light.Light:SetIntensity(Lerp(0.3, 0.5, fuelpercent))
 		inst._light.Light:SetRadius(Lerp(1.75, 2.25, fuelpercent))
-		inst._light.Light:SetFalloff(.7)
+		inst._light.Light:SetFalloff(0.7)
 		inst._light.entity:SetParent((owner or inst).entity)
 	end
 end
@@ -236,7 +248,7 @@ local StateFns = {
 
 	green = function(inst, owner)
 		inst.components.container:WidgetSetup("krampus_sack")
-		if owner and not TheNet:IsDedicated() then  -- For client host
+		if owner and not TheNet:IsDedicated() then -- For client host
 			try_reopen(inst, owner)
 		end
 	end,
@@ -279,7 +291,10 @@ local StateFns = {
 			inst.components.fueled:SetPercent(0.5)
 			inst.components.fueled:SetDepletedFn(nofuel)
 			inst.components.fueled:SetUpdateFn(onfuelupdate)
-			inst.components.fueled:SetFirstPeriod(TUNING.TURNON_FUELED_CONSUMPTION, TUNING.TURNON_FULL_FUELED_CONSUMPTION)
+			inst.components.fueled:SetFirstPeriod(
+				TUNING.TURNON_FUELED_CONSUMPTION,
+				TUNING.TURNON_FULL_FUELED_CONSUMPTION
+			)
 			inst.components.fueled.accepting = true
 
 			inst.components.fueled:StartConsuming()
@@ -297,21 +312,26 @@ local StateFns = {
 			inst.components.fueled:SetPercent(1)
 			inst.components.fueled:SetDepletedFn(nofuel)
 			inst.components.fueled:SetUpdateFn(onfuelupdate)
-			inst.components.fueled:SetFirstPeriod(TUNING.TURNON_FUELED_CONSUMPTION, TUNING.TURNON_FULL_FUELED_CONSUMPTION)
+			inst.components.fueled:SetFirstPeriod(
+				TUNING.TURNON_FUELED_CONSUMPTION,
+				TUNING.TURNON_FULL_FUELED_CONSUMPTION
+			)
 			inst.components.fueled.accepting = true
 
 			inst.components.fueled:StartConsuming()
 		end
 	end,
-
 }
 
 local function ApplyState(inst, override_state)
 	local state = override_state or inst:GetState()
-	if not state then print("error: trying to apply nil state on", inst) return end
+	if not state then
+		print("error: trying to apply nil state on", inst)
+		return
+	end
 	local image_state = FUEL_STATES[state] and "fuel" or state
 	inst.components.inventoryitem:ChangeImageName("nightpack_" .. image_state)
-	inst.MiniMapEntity:SetIcon("nightpack_"..image_state..".tex")
+	inst.MiniMapEntity:SetIcon("nightpack_" .. image_state .. ".tex")
 	inst.AnimState:PlayAnimation(image_state)
 
 	local state_fn = StateFns[state]
@@ -319,13 +339,13 @@ local function ApplyState(inst, override_state)
 		state_fn(inst, inst.components.inventoryitem.owner)
 	end
 
-	inst.drawnameoverride = rawget(_G, "EncodeStrCode") and EncodeStrCode({content = state and "NAMES.NIGHTPACK_" .. image_state:upper() or "NAMES.NIGHTPACK" })
-
+	inst.drawnameoverride = rawget(_G, "EncodeStrCode")
+		and EncodeStrCode({ content = state and "NAMES.NIGHTPACK_" .. image_state:upper() or "NAMES.NIGHTPACK" })
 end
 
 local function DisplayNameFn(inst)
 	local state = inst:GetState()
-	return state and STRINGS.NAMES["NIGHTPACK_"..state:upper()] or STRINGS.NAMES.NIGHTPACK
+	return state and STRINGS.NAMES["NIGHTPACK_" .. state:upper()] or STRINGS.NAMES.NIGHTPACK
 end
 
 local function ImmortalDisplayNameFn(inst)
@@ -394,7 +414,6 @@ local function RenewState(inst, gemtype, isdummy)
 		newpack:setImmortal()
 		ImmortalDisplayNameFn(newpack)
 	end
-
 end
 
 local function OnChangeState(inst, state, duration)
@@ -408,15 +427,15 @@ end
 
 local days = TUNING.TOTAL_DAY_TIME
 local GEM_DURATIONS = {
-	red	 = 1.2 * days,
-	dark	= 1.2 * days,
-	purple  = 2.4 * days,
-	light   = 2.4 * days,
-	blue	= 4.8 * days,
-	yellow  = 3.6 * days,
-	orange  = 1.2 * days,
-	green   = 12  * days,
-	opal	= 12  * days,
+	red = 1.2 * days,
+	dark = 1.2 * days,
+	purple = 2.4 * days,
+	light = 2.4 * days,
+	blue = 4.8 * days,
+	yellow = 3.6 * days,
+	orange = 1.2 * days,
+	green = 12 * days,
+	opal = 12 * days,
 }
 
 local function OnGemTrade(inst, gemtype, isdummy, from_renew)
@@ -439,7 +458,7 @@ local function OnGemTrade(inst, gemtype, isdummy, from_renew)
 	else
 		inst.SoundEmitter:PlaySound("dontstarve/common/telebase_gemplace")
 	end
-	inst:OnChangeState(gemtype, GEM_DURATIONS[gemtype] and GEM_DURATIONS[gemtype] * ( isdummy and 1.5 or 1 ) )
+	inst:OnChangeState(gemtype, GEM_DURATIONS[gemtype] and GEM_DURATIONS[gemtype] * (isdummy and 1.5 or 1))
 end
 
 local function onequip(inst, owner)
@@ -472,7 +491,7 @@ local function onunequip(inst, owner)
 end
 
 local function OnPreLoad(inst, data)
-	if data and type(data._state) == "string" then  -- for old buggy codes...
+	if data and type(data._state) == "string" then -- for old buggy codes...
 		inst:SetState(data._state)
 		inst:ApplyState()
 	end
@@ -590,7 +609,7 @@ local function fn()
 		end
 	end)
 
-	inst.drawnameoverride = rawget(_G, "EncodeStrCode") and EncodeStrCode({content = "NAMES.NIGHTPACK"})
+	inst.drawnameoverride = rawget(_G, "EncodeStrCode") and EncodeStrCode({ content = "NAMES.NIGHTPACK" })
 
 	return inst
 end

@@ -10,11 +10,9 @@ AddComponentPostInit("shadowcreaturespawner", function(self, inst)
 			-- print("setting SpawnLandShadowCreature")
 			UpvalueUtil.SetUpvalue(fn, path, function(player, ...)
 				return SpawnPrefab(
-					player.spawnlandshadow_fn ~= nil and player.spawnlandshadow_fn(player, ...) or
-					player.components.sanity:GetPercent() < .1 and
-					math.random() < TUNING.TERRORBEAK_SPAWN_CHANCE and
-					"terrorbeak" or
-					"crawlinghorror"
+					player.spawnlandshadow_fn ~= nil and player.spawnlandshadow_fn(player, ...)
+						or player.components.sanity:GetPercent() < 0.1 and math.random() < TUNING.TERRORBEAK_SPAWN_CHANCE and "terrorbeak"
+						or "crawlinghorror"
 				)
 			end)
 			break
@@ -23,7 +21,9 @@ AddComponentPostInit("shadowcreaturespawner", function(self, inst)
 end)
 
 local function get_nearby_dummy(inst, disq)
-	if not inst or type(disq) ~= "number" then return end
+	if not inst or type(disq) ~= "number" then
+		return
+	end
 	for _, v in ipairs(AllPlayers) do
 		if inst:GetDistanceSqToInst(v) < (disq * disq) and v:HasTag("ns_builder_dummy") then
 			return true
@@ -55,9 +55,9 @@ local function on_work_finished(inst)
 	local fx = SpawnAt("collapse_small", inst)
 	fx:SetMaterial("rock")
 
-	if TheWorld.state.isnightmarewild and math.random() <= .3 then
+	if TheWorld.state.isnightmarewild and math.random() <= 0.3 then
 		-- Changed Part Start --
-		SpawnAt((get_nearby_dummy(inst, 30) or math.random() < .5) and "nightmarebeak" or "crawlingnightmare", inst)
+		SpawnAt((get_nearby_dummy(inst, 30) or math.random() < 0.5) and "nightmarebeak" or "crawlingnightmare", inst)
 		-- Changed Part End --
 	end
 
@@ -71,7 +71,9 @@ local STATUERUINS = {
 	"ruins_statue_mage_nogem",
 }
 local function statueruins_postinit(inst)
-	if not TheWorld.ismastersim then return end
+	if not TheWorld.ismastersim then
+		return
+	end
 	if inst.components.workable then
 		inst.components.workable:SetOnFinishCallback(on_work_finished)
 	end

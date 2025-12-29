@@ -1,7 +1,7 @@
 local function setup_fx(attacker, target, is_shadow)
 	if is_shadow then
 		local spark = SpawnPrefab("hitsparks_fx")
-		spark:Setup(attacker, target, nil, {1, 0, 0})
+		spark:Setup(attacker, target, nil, { 1, 0, 0 })
 		spark.black:set(true)
 	else
 		local fx = SpawnPrefab("planar_hit_fx")
@@ -113,9 +113,7 @@ local function play_sound(inst, sound)
 end
 
 local function MakeFx(t)
-
 	local function startfx(proxy, name)
-
 		local inst = CreateEntity(t.name)
 
 		inst.entity:AddTransform()
@@ -171,35 +169,40 @@ local function MakeFx(t)
 		inst:DoTaskInTime(1, inst.Remove)
 
 		return inst
-
 	end
 
 	return Prefab(t.name, fx_fn)
 end
 
-local glash_fx =
-{
+local glash_fx = {
 	name = "glash_fx",
 	bank = "glash_fx",
 	build = "glash_fx",
-	anim = function() return "idle_med_"..math.random(3) end,
+	anim = function()
+		return "idle_med_" .. math.random(3)
+	end,
 	sound = "wanda2/characters/wanda/watch/weapon/nightmare_FX",
-	fn = function(inst) inst.AnimState:SetFinalOffset(1) end,
+	fn = function(inst)
+		inst.AnimState:SetFinalOffset(1)
+	end,
 }
 
-local glash_big_fx =
-{
+local glash_big_fx = {
 	name = "glash_big_fx",
 	bank = "glash_fx",
 	build = "glash_fx",
-	anim = function() return "idle_big_"..math.random(3) end,
+	anim = function()
+		return "idle_big_" .. math.random(3)
+	end,
 	sound = "wanda2/characters/wanda/watch/weapon/shadow_hit_old",
 	-- sound = "dontstarve/common/gem_shatter",
-	fn = function(inst) inst.AnimState:SetFinalOffset(1) end,
+	fn = function(inst)
+		inst.AnimState:SetFinalOffset(1)
+	end,
 }
 
-return Prefab("glash", fn, nil, {"planar_hit_fx"}),
-	Prefab("shadowglash", fn_shadow, nil, {"hitsparks_fx"}),
-	Prefab("shadowglash_builder", fn_builder, nil, {"shadowglash"}),
+return Prefab("glash", fn, nil, { "planar_hit_fx" }),
+	Prefab("shadowglash", fn_shadow, nil, { "hitsparks_fx" }),
+	Prefab("shadowglash_builder", fn_builder, nil, { "shadowglash" }),
 	MakeFx(glash_fx),
 	MakeFx(glash_big_fx)

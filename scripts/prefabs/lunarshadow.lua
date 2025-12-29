@@ -1,14 +1,12 @@
-local Utils = require "ns_utils"
+local Utils = require("ns_utils")
 
-local assets =
-{
+local assets = {
 	Asset("ANIM", "anim/lunarshadow.zip"),
 	Asset("ANIM", "anim/lunarshadow_shadow.zip"),
 	Asset("ANIM", "anim/inventory_fx_lunar.zip"),
 }
 
-local prefabs =
-{
+local prefabs = {
 	"lunarshadow_blade_fx",
 	"hitsparks_fx",
 	"lunarplanttentacle",
@@ -57,7 +55,7 @@ local function set_bonus_owner(inst, owner)
 					end
 				end
 			end
-			inst._onownerunequip  = function(owner, data)
+			inst._onownerunequip = function(owner, data)
 				if data and data.eslot == EQUIPSLOTS.HEAD then
 					set_bonus_enabled(inst, false)
 				end
@@ -125,7 +123,13 @@ local function onequip(inst, owner)
 	local skin_build = inst:GetSkinBuild()
 	if skin_build ~= nil then
 		owner:PushEvent("equipskinneditem", inst:GetSkinName())
-		owner.AnimState:OverrideItemSkinSymbol("swap_object", skin_build, "swap_sword_lunarplant", inst.GUID, "sword_lunarplant")
+		owner.AnimState:OverrideItemSkinSymbol(
+			"swap_object",
+			skin_build,
+			"swap_sword_lunarplant",
+			inst.GUID,
+			"sword_lunarplant"
+		)
 	else
 		owner.AnimState:OverrideSymbol("swap_object", "sword_lunarplant", "swap_sword_lunarplant")
 	end
@@ -161,7 +165,7 @@ local function refresh_bonus(inst)
 		else
 			set_bonus_enabled(inst, false)
 		end
-		inst._owner:PushEvent("equip", { item = inst, eslot = EQUIPSLOTS.HANDS, no_animation = true})
+		inst._owner:PushEvent("equip", { item = inst, eslot = EQUIPSLOTS.HANDS, no_animation = true })
 	end
 end
 
@@ -171,7 +175,12 @@ local function set_lunar(inst)
 		inst.components.forgerepairable:SetRepairMaterial(FORGEMATERIALS.LUNARPLANT)
 		inst.components.planardamage:SetBaseDamage(TUNING.LUNARSHADOW.LUNAR_PLANAR_DAMAGE)
 		inst.components.damagetypebonus:RemoveBonus("lunar_aligned", inst, "lunarshadow")
-		inst.components.damagetypebonus:AddBonus("shadow_aligned", inst, TUNING.LUNARSHADOW.ALIGN_VS_MULT, "lunarshadow")
+		inst.components.damagetypebonus:AddBonus(
+			"shadow_aligned",
+			inst,
+			TUNING.LUNARSHADOW.ALIGN_VS_MULT,
+			"lunarshadow"
+		)
 		inst:AddComponent("lunarplant_tentacle_weapon")
 		inst:RemoveComponent("shadowlevel")
 		inst:RemoveTag("shadow_item")
@@ -238,7 +247,9 @@ local function auto_refill(inst, prev_item_prefab)
 	local container = inst.components.container
 	local hat = inv and inv:GetEquippedItem(EQUIPSLOTS.HEAD)
 	local hat_container = hat and hat.prefab == "alterguardianhat" and hat.components.container
-	local item_fn = function(item) return item.prefab == prev_item_prefab end
+	local item_fn = function(item)
+		return item.prefab == prev_item_prefab
+	end
 	local new_item = inv and inv:FindItem(item_fn)
 	if new_item then
 		inv:RemoveItem(new_item, true)
@@ -273,7 +284,9 @@ local function set_buffed_atks(inst, amount)
 		inst.base_damage = TUNING.LUNARSHADOW.BASE_DAMAGE
 		inst:RemoveTag("ignore_planar_entity")
 	end
-	inst.components.weapon:SetDamage(inst._bonusenabled and inst.base_damage * TUNING.LUNARSHADOW.SETBONUS_DAMAGE_MULT or inst.base_damage)
+	inst.components.weapon:SetDamage(
+		inst._bonusenabled and inst.base_damage * TUNING.LUNARSHADOW.SETBONUS_DAMAGE_MULT or inst.base_damage
+	)
 end
 
 local function try_consume_battery(inst)
@@ -318,11 +331,10 @@ local function onattack(inst, attacker, target)
 		if inst.state:value() then
 			spark:Setup(attacker, target)
 		else
-			local hitsparks_fx_colouroverride = {1, 0, 0}
+			local hitsparks_fx_colouroverride = { 1, 0, 0 }
 			spark:Setup(attacker, target, nil, hitsparks_fx_colouroverride)
 			spark.black:set(true)
 		end
-
 	end
 end
 
@@ -464,8 +476,8 @@ local function fn()
 	inst.AnimState:SetBuild("lunarshadow")
 	inst.AnimState:PlayAnimation("idle", true)
 	inst.AnimState:SetSymbolBloom("pb_energy_loop01")
-	inst.AnimState:SetSymbolLightOverride("pb_energy_loop01", .5)
-	inst.AnimState:SetLightOverride(.1)
+	inst.AnimState:SetSymbolLightOverride("pb_energy_loop01", 0.5)
+	inst.AnimState:SetLightOverride(0.1)
 
 	inst:SetPrefabName("lunarshadow")
 
@@ -527,7 +539,9 @@ local function fn()
 	inst:AddComponent("inventoryitem")
 
 	inst:AddComponent("weapon")
-	inst.components.weapon:SetDamage(inst._bonusenabled and inst.base_damage * TUNING.LUNARSHADOW.SETBONUS_DAMAGE_MULT or inst.base_damage)
+	inst.components.weapon:SetDamage(
+		inst._bonusenabled and inst.base_damage * TUNING.LUNARSHADOW.SETBONUS_DAMAGE_MULT or inst.base_damage
+	)
 	inst.components.weapon:SetOnAttack(onattack)
 
 	setup_equippable(inst)
@@ -545,7 +559,9 @@ local function fn()
 
 	inst.ChargeWithItem = charge_with_item
 
-	if rawget(_G, "EncodeDrawNameCode") then EncodeDrawNameCode(inst) end
+	if rawget(_G, "EncodeDrawNameCode") then
+		EncodeDrawNameCode(inst)
+	end
 
 	return inst
 end
@@ -564,8 +580,8 @@ local function fxfn()
 	inst.AnimState:SetBuild("lunarshadow")
 	inst.AnimState:PlayAnimation("swap_loop1", true)
 	inst.AnimState:SetSymbolBloom("pb_energy_loop01")
-	inst.AnimState:SetSymbolLightOverride("pb_energy_loop01", .5)
-	inst.AnimState:SetLightOverride(.1)
+	inst.AnimState:SetSymbolLightOverride("pb_energy_loop01", 0.5)
+	inst.AnimState:SetLightOverride(0.1)
 
 	inst:AddComponent("highlightchild")
 
@@ -582,5 +598,4 @@ local function fxfn()
 	return inst
 end
 
-return Prefab("lunarshadow", fn, assets, prefabs),
-		Prefab("lunarshadow_blade_fx", fxfn, assets)
+return Prefab("lunarshadow", fn, assets, prefabs), Prefab("lunarshadow_blade_fx", fxfn, assets)

@@ -2,20 +2,22 @@ GLOBAL.setfenv(1, GLOBAL)
 
 local NS_SPICES = {
 	SPICE_CACTUS = {},
-	SPICE_MOONGLASS =
-	{
+	SPICE_MOONGLASS = {
 		oneatenfn = function(inst, eater)
 			eater:AddDebuff("buff_glash", "buff_glash")
 		end,
 	},
 }
 
-require("cooking" )
+require("cooking")
 local spicedfoods = require("spicedfoods")
 local UpvalueUtil = GlassicAPI.UpvalueUtil
 
 local SPICES = UpvalueUtil.GetUpvalue(GenerateSpicedFoods, "SPICES")
-if not SPICES then print("U GOT NOPED SO HARD GAGAGA") return end  -- :angri:
+if not SPICES then
+	print("U GOT NOPED SO HARD GAGAGA")
+	return
+end -- :angri:
 shallowcopy(NS_SPICES, SPICES)
 
 GenerateSpicedFoods(require("preparedfoods"))

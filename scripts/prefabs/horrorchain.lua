@@ -1,5 +1,4 @@
-local assets =
-{
+local assets = {
 	Asset("ANIM", "anim/horrorchain.zip"),
 }
 
@@ -8,7 +7,9 @@ local function set_buff_enabled(inst, enabled)
 		if not inst._bonusenabled then
 			inst._bonusenabled = true
 			if inst.components.weapon then
-				inst.components.weapon:SetDamage(TUNING.HORRORCHAIN_DAMAGE * TUNING.WEAPONS_VOIDCLOTH_SETBONUS_DAMAGE_MULT)
+				inst.components.weapon:SetDamage(
+					TUNING.HORRORCHAIN_DAMAGE * TUNING.WEAPONS_VOIDCLOTH_SETBONUS_DAMAGE_MULT
+				)
 			end
 			inst.components.planardamage:AddBonus(inst, TUNING.WEAPONS_VOIDCLOTH_SETBONUS_PLANAR_DAMAGE, "setbonus")
 		end
@@ -41,7 +42,7 @@ local function set_buff_owner(inst, owner)
 					end
 				end
 			end
-			inst._onownerunequip  = function(owner, data)
+			inst._onownerunequip = function(owner, data)
 				if data and data.eslot == EQUIPSLOTS.HEAD then
 					set_buff_enabled(inst, false)
 				end
@@ -91,7 +92,7 @@ local function get_bonus_mult(inst)
 	return mult
 end
 
-local hitsparks_fx_colouroverride = {1, 0, 0}
+local hitsparks_fx_colouroverride = { 1, 0, 0 }
 local function onattack(inst, attacker, target)
 	if target and target:IsValid() then
 		-- Hit Sound
@@ -105,7 +106,6 @@ local function onattack(inst, attacker, target)
 		spark:Setup(attacker, target, nil, hitsparks_fx_colouroverride)
 		spark.black:set(true)
 	end
-
 end
 
 local function disable_components(inst)
@@ -121,7 +121,10 @@ local function setup_components(inst)
 	inst.components.equippable:SetOnUnequip(onunequip)
 
 	inst:AddComponent("weapon")
-	inst.components.weapon:SetDamage(inst._bonusenabled and TUNING.HORRORCHAIN_DAMAGE * TUNING.WEAPONS_VOIDCLOTH_SETBONUS_DAMAGE_MULT or TUNING.HORRORCHAIN_DAMAGE)
+	inst.components.weapon:SetDamage(
+		inst._bonusenabled and TUNING.HORRORCHAIN_DAMAGE * TUNING.WEAPONS_VOIDCLOTH_SETBONUS_DAMAGE_MULT
+			or TUNING.HORRORCHAIN_DAMAGE
+	)
 	inst.components.weapon:SetRange(TUNING.HORRORCHAIN_RANGE)
 	inst.components.weapon:SetOnAttack(onattack)
 end
@@ -206,8 +209,6 @@ local function fn()
 	return inst
 end
 
-local function fx_fn()
-
-end
+local function fx_fn() end
 
 return Prefab("horrorchain", fn, assets)

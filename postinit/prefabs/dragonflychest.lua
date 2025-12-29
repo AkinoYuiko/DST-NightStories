@@ -6,7 +6,9 @@ local function push_event(inst)
 end
 
 AddPrefabPostInit("dragonflychest", function(inst)
-	if not TheWorld.ismastersim then return end
+	if not TheWorld.ismastersim then
+		return
+	end
 
 	local upgradeable = inst.components.upgradeable
 	local _OnUpgrade = upgradeable.onupgradefn

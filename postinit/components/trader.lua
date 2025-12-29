@@ -1,11 +1,10 @@
 local AddPrefabPostInit = AddPrefabPostInit
 GLOBAL.setfenv(1, GLOBAL)
 
-local TRADERS_ACCEPTING_WHOLE_STACKS =
-{
-	["pigking"]	 = true,
-	["birdcage"]	= true,
-	["antlion"]	 = true,
+local TRADERS_ACCEPTING_WHOLE_STACKS = {
+	["pigking"] = true,
+	["birdcage"] = true,
+	["antlion"] = true,
 }
 
 local Trader = require("components/trader")

@@ -4,7 +4,7 @@ GLOBAL.setfenv(1, GLOBAL)
 
 local CRYSTAL_NAMES = {
 	"darkcrystal",
-	"lightcrystal"
+	"lightcrystal",
 }
 local CRYSTAL_IDS = table.invert(CRYSTAL_NAMES)
 
@@ -16,8 +16,10 @@ local function InitContainer(inst)
 end
 
 local function GetImageBG(base_name)
-	if not base_name then return end
-	local name = base_name.."_over.tex"
+	if not base_name then
+		return
+	end
+	local name = base_name .. "_over.tex"
 	return { image = name, atlas = GetInventoryItemAtlas(name) }
 end
 
@@ -139,28 +141,31 @@ AddPrefabPostInit("nightsword", function(inst)
 			local item = container:RemoveItemBySlot(1)
 			if item then
 				inst.components.finiteuses:SetPercent(1)
-				if inv and ( owner.prefab == "civi" or ( owner.prefab == "miotan" and owner.boosted_task ) ) then
-					local crystal = inv:FindItem(function(new_item) return new_item.prefab == item.prefab end)
+				if inv and (owner.prefab == "civi" or (owner.prefab == "miotan" and owner.boosted_task)) then
+					local crystal = inv:FindItem(function(new_item)
+						return new_item.prefab == item.prefab
+					end)
 					if crystal then
 						local slot_widget
 						local controls = owner.HUD and owner.HUD.controls
 						if controls then
 							local overflow = inv:GetOverflowContainer()
 							slot_widget = controls.inv.inv[inv:GetItemSlot(crystal)] -- check inventory first
-							or ( inv:GetActiveItem() == crystal and controls.inv.hovertile ) -- else, check active item
-							or ( overflow -- else, if backpack, check backpack
-								and (
-									controls.containers[overflow.inst] -- if backpack is side-display
-									and controls.containers[overflow.inst].inv[overflow:GetItemSlot(crystal)]
-									or controls.inv.backpackinv[overflow:GetItemSlot(crystal)]
+								or (inv:GetActiveItem() == crystal and controls.inv.hovertile) -- else, check active item
+								or (
+									overflow -- else, if backpack, check backpack
+									and (
+										controls.containers[overflow.inst] -- if backpack is side-display
+											and controls.containers[overflow.inst].inv[overflow:GetItemSlot(crystal)]
+										or controls.inv.backpackinv[overflow:GetItemSlot(crystal)]
+									)
 								)
-							)
 						end
 						local single_crystal = inv:RemoveItem(crystal)
 						if single_crystal then
 							local pos = slot_widget
-							   and Vector3(TheSim:ProjectScreenPos(slot_widget:GetWorldPosition():Get()))
-							   or inst:GetPosition()
+									and Vector3(TheSim:ProjectScreenPos(slot_widget:GetWorldPosition():Get()))
+								or inst:GetPosition()
 							container:GiveItem(single_crystal, nil, pos)
 						end
 					end
@@ -194,7 +199,6 @@ AddPrefabPostInit("nightsword", function(inst)
 		end
 		return on_preload(inst, data, ...)
 	end
-
 end)
 
 AddClassPostConstruct("widgets/itemtile", function(self)

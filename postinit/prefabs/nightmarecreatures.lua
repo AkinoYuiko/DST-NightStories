@@ -1,16 +1,17 @@
 local AddPrefabPostInit = AddPrefabPostInit
 GLOBAL.setfenv(1, GLOBAL)
 
-local nightmare_prefabs =
-{
+local nightmare_prefabs = {
 	"crawlinghorror",
 	"terrorbeak",
 	"oceanhorror",
-	"swimminghorror",   -- IA
+	"swimminghorror", -- IA
 }
 
 local function sanity_reward_postinit(inst)
-	if not TheWorld.ismastersim then return end
+	if not TheWorld.ismastersim then
+		return
+	end
 
 	local on_killed_by_other = inst.components.combat.onkilledbyother
 	inst.components.combat.onkilledbyother = function(inst, attacker)

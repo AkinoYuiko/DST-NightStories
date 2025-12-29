@@ -1,4 +1,4 @@
-local Utils = require "ns_utils"
+local Utils = require("ns_utils")
 
 -------------------------------------------------------------------------
 -------------------------- moonlight functions --------------------------
@@ -20,7 +20,9 @@ local function base_onattackother(owner, data, glash_prefab)
 	end
 	if owner_testfn(owner) and target and target ~= owner and target_testfn(target) then
 		-- In combat, this is when we're just launching a projectile, so don't spawn yet
-		if launching_projectile(data) then return end
+		if launching_projectile(data) then
+			return
+		end
 		do_glash_attack(owner, target, glash_prefab)
 	end
 end
@@ -71,7 +73,10 @@ local function MakeBuff(name, onattachedfn, onextendedfn, ondetachedfn, duration
 			inst.components.debuff:Stop()
 		end, target)
 
-		target:PushEvent("foodbuffattached", { buff = "ANNOUNCE_ATTACH_BUFF_"..string.upper(name), priority = priority })
+		target:PushEvent(
+			"foodbuffattached",
+			{ buff = "ANNOUNCE_ATTACH_BUFF_" .. string.upper(name), priority = priority }
+		)
 		if onattachedfn ~= nil then
 			onattachedfn(inst, target)
 		end
@@ -81,7 +86,10 @@ local function MakeBuff(name, onattachedfn, onextendedfn, ondetachedfn, duration
 		inst.components.timer:StopTimer("buffover")
 		inst.components.timer:StartTimer("buffover", duration)
 
-		target:PushEvent("foodbuffattached", { buff = "ANNOUNCE_ATTACH_BUFF_"..string.upper(name), priority = priority })
+		target:PushEvent(
+			"foodbuffattached",
+			{ buff = "ANNOUNCE_ATTACH_BUFF_" .. string.upper(name), priority = priority }
+		)
 		if onextendedfn ~= nil then
 			onextendedfn(inst, target)
 		end
@@ -92,7 +100,10 @@ local function MakeBuff(name, onattachedfn, onextendedfn, ondetachedfn, duration
 			ondetachedfn(inst, target)
 		end
 
-		target:PushEvent("foodbuffdetached", { buff = "ANNOUNCE_DETACH_BUFF_"..string.upper(name), priority = priority })
+		target:PushEvent(
+			"foodbuffdetached",
+			{ buff = "ANNOUNCE_DETACH_BUFF_" .. string.upper(name), priority = priority }
+		)
 		inst:Remove()
 	end
 
@@ -127,7 +138,7 @@ local function MakeBuff(name, onattachedfn, onextendedfn, ondetachedfn, duration
 		return inst
 	end
 
-	return Prefab("buff_"..name, fn, nil, prefabs)
+	return Prefab("buff_" .. name, fn, nil, prefabs)
 end
 
 return MakeBuff("glash", attack_attach, nil, attack_detach, TUNING.BUFF_GLASH_DURATION, 1),

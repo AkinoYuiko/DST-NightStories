@@ -1,6 +1,6 @@
-local MakePlayerCharacter = require "prefabs/player_common"
-local DummyBadge = require "widgets/dummybadge"
-local Utils = require "ns_utils"
+local MakePlayerCharacter = require("prefabs/player_common")
+local DummyBadge = require("widgets/dummybadge")
+local Utils = require("ns_utils")
 local BUILDER_TAG = "ns_builder_dummy"
 
 local assets = {
@@ -12,7 +12,7 @@ local assets = {
 }
 
 local prefabs = {
-	"nightmarefuel"
+	"nightmarefuel",
 }
 
 local start_inv = {}
@@ -26,8 +26,7 @@ local SHADOWCREATURE_MUST_TAGS = { "shadowcreature", "_combat", "locomotor" }
 local SHADOWCREATURE_CANT_TAGS = { "INLIMBO", "notaunt" }
 local function OnReadFn(inst, book)
 	if inst.components.sanity:IsInsane() then
-
-		local x,y,z = inst.Transform:GetWorldPosition()
+		local x, y, z = inst.Transform:GetWorldPosition()
 		local ents = TheSim:FindEntities(x, y, z, 16, SHADOWCREATURE_MUST_TAGS, SHADOWCREATURE_CANT_TAGS)
 
 		if #ents < TUNING.BOOK_MAX_SHADOWCREATURES then
@@ -56,7 +55,9 @@ end
 
 local function check_insanity(inst)
 	local sanity = inst.components.sanity
-	if not sanity then return end
+	if not sanity then
+		return
+	end
 
 	local percent_ignoresinduced = sanity.current / sanity.max
 	if sanity.mode == SANITY_MODE_INSANITY then
@@ -104,10 +105,13 @@ local function do_hunger_rate_change(inst)
 		return
 	end
 
-	local percent = math.max(0,(inst.components.sanity.current - (inst.components.sanity.max * 0.15)) / (inst.components.sanity.max * 0.85))
+	local percent = math.max(
+		0,
+		(inst.components.sanity.current - (inst.components.sanity.max * 0.15)) / (inst.components.sanity.max * 0.85)
+	)
 
 	if inst.components.sanity and not inst.components.sanity.inducedinsanity and inst.components.sanity.sane then
-		inst.components.hunger:SetRate( (1 + percent) * TUNING.WILSON_HUNGER_RATE)
+		inst.components.hunger:SetRate((1 + percent) * TUNING.WILSON_HUNGER_RATE)
 		inst:AddTag("playermonster")
 		inst:AddTag("monster")
 		if not inst.components.sanityaura then
@@ -117,8 +121,12 @@ local function do_hunger_rate_change(inst)
 		end
 	else
 		inst.components.hunger:SetRate(TUNING.WILSON_HUNGER_RATE)
-		if inst:HasTag("playermonster") then inst:RemoveTag("playermonster") end
-		if inst:HasTag("monster") then inst:RemoveTag("monster") end
+		if inst:HasTag("playermonster") then
+			inst:RemoveTag("playermonster")
+		end
+		if inst:HasTag("monster") then
+			inst:RemoveTag("monster")
+		end
 		if inst.components.sanityaura then
 			inst:RemoveComponent("sanityaura")
 		end
@@ -129,7 +137,15 @@ local function on_health_sanity_change(inst, data)
 	if inst.components.sanity and inst.components.health then
 		local sanity = inst.components.sanity
 		sanity.current = inst.components.health.currenthealth
-		sanity.inst:PushEvent("sanitydelta", { oldpercent = sanity._oldpercent, newpercent = sanity:GetPercent(), overtime = true, sanitymode = sanity.mode})
+		sanity.inst:PushEvent(
+			"sanitydelta",
+			{
+				oldpercent = sanity._oldpercent,
+				newpercent = sanity:GetPercent(),
+				overtime = true,
+				sanitymode = sanity.mode,
+			}
+		)
 		sanity._oldpercent = sanity:GetPercent()
 	end
 	do_hunger_rate_change(inst)
@@ -143,7 +159,9 @@ local function on_health_sanity_change(inst, data)
 end
 
 local function redirect_to_health(inst, amount, overtime, ...)
-	return inst.components.health and ( amount and amount < 0 or inst.components.health.currenthealth > 0 ) and inst.components.health:DoDelta(amount, overtime, "lose_sanity", true, nil, true)
+	return inst.components.health
+		and (amount and amount < 0 or inst.components.health.currenthealth > 0)
+		and inst.components.health:DoDelta(amount, overtime, "lose_sanity", true, nil, true)
 end
 
 local function on_haunt(inst, doer)
@@ -153,8 +171,8 @@ end
 local function on_respawn_from_ghost(inst, data)
 	if data and data.source then
 		local target = (data.source.prefab == "reviver" and data.user)
-						or (data.source.prefab == "pocketwatch_revive" and data.source.components.inventoryitem.owner)
-						or data.source
+			or (data.source.prefab == "pocketwatch_revive" and data.source.components.inventoryitem.owner)
+			or data.source
 		local reviver_sanity = target and target.components.sanity
 		if reviver_sanity then
 			local current = reviver_sanity.current
@@ -198,11 +216,14 @@ local common_postinit = function(inst)
 
 	inst._firedamage_rate = net_byte(inst.GUID, "_firedamage_rate", "_firedamage_rate")
 
-	if not (TheNet:GetServerGameMode() == "lavaarena" or
-			TheNet:GetServerGameMode() == "quagmire" or
-			TheNet:IsDedicated())
-		then
-			inst.CreateHealthBadge = DummyBadge
+	if
+		not (
+			TheNet:GetServerGameMode() == "lavaarena"
+			or TheNet:GetServerGameMode() == "quagmire"
+			or TheNet:IsDedicated()
+		)
+	then
+		inst.CreateHealthBadge = DummyBadge
 	end
 end
 
@@ -237,7 +258,9 @@ local master_postinit = function(inst)
 
 	inst.components.combat.damagemultiplier = TUNING.DUMMY_DAMAGE_MULT
 
-	inst.spawnlandshadow_fn = function(inst) return "terrorbeak" end
+	inst.spawnlandshadow_fn = function(inst)
+		return "terrorbeak"
+	end
 
 	if inst.components.eater then
 		inst.components.eater:SetAbsorptionModifiers(0.5, 1, 0) -- Health, Hunger, Sanity
@@ -257,7 +280,6 @@ local master_postinit = function(inst)
 
 	-- Hack Builder:RemoveIngredients so Dummy won't do anim when crafting costs Sanity-Health.
 	if inst.components.builder then
-
 		local remove_ingredients = inst.components.builder.RemoveIngredients
 		inst.components.builder.RemoveIngredients = function(self, ingredients, recname, ...)
 			local builder_tag = AllRecipes[recname] and AllRecipes[recname].builder_tag

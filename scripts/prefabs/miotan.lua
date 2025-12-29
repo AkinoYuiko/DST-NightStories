@@ -22,13 +22,11 @@ for k, v in pairs(TUNING.GAMEMODE_STARTING_ITEMS) do
 end
 prefabs = FlattenTree({ prefabs, start_inv }, true)
 
-
 local SHADOWCREATURE_MUST_TAGS = { "shadowcreature", "_combat", "locomotor" }
 local SHADOWCREATURE_CANT_TAGS = { "INLIMBO", "notaunt" }
 local function on_read_fn(inst, book)
 	if inst.components.sanity:IsInsane() then
-
-		local x,y,z = inst.Transform:GetWorldPosition()
+		local x, y, z = inst.Transform:GetWorldPosition()
 		local ents = TheSim:FindEntities(x, y, z, 16, SHADOWCREATURE_MUST_TAGS, SHADOWCREATURE_CANT_TAGS)
 
 		if #ents < TUNING.BOOK_MAX_SHADOWCREATURES then
@@ -37,15 +35,17 @@ local function on_read_fn(inst, book)
 	end
 end
 
-local FUELMULT =
-{
+local FUELMULT = {
 	nightmarefuel = 1,
 	horrorfuel = 2,
 }
 
 local function set_moisture(table)
 	for _, v in pairs(table) do
-		if (v.components.equippable and v.components.equippable:IsEquipped()) and (v.components.inventoryitem and v.components.inventoryitem:IsWet()) then
+		if
+			(v.components.equippable and v.components.equippable:IsEquipped())
+			and (v.components.inventoryitem and v.components.inventoryitem:IsWet())
+		then
 			v.components.inventoryitemmoisture:SetMoisture(0)
 		end
 	end
@@ -53,17 +53,25 @@ end
 
 local function dry_equipment(inst)
 	local inv = inst.components.inventory
-	if not inv then return end
+	if not inv then
+		return
+	end
 
 	local eslots = inv.equipslots
-	if eslots then set_moisture(eslots) end
+	if eslots then
+		set_moisture(eslots)
+	end
 
 	local boat = inst.components.sailor and inst.components.sailor:GetBoat()
 	if boat then
 		local boatinv = boat.components.container and boat.components.container.boatequipslots
 		local boatslots = boat.components.container and boat.components.container.slots
-		if boatinv then set_moisture(boatinv) end
-		if boatslots then set_moisture(boatslots) end
+		if boatinv then
+			set_moisture(boatinv)
+		end
+		if boatslots then
+			set_moisture(boatslots)
+		end
 	end
 end
 
@@ -74,7 +82,9 @@ end
 local function check_fuel(inst, data)
 	local num = data.count or 1
 	local inv = inst.components.inventory
-	local inv_boat = inst.components.sailor and inst.components.sailor:GetBoat() and inst.components.sailor:GetBoat().components.container
+	local inv_boat = inst.components.sailor
+		and inst.components.sailor:GetBoat()
+		and inst.components.sailor:GetBoat().components.container
 	local override_fuel = data.override_fuel
 	if override_fuel then
 		if check_has_fuel(inv, inv_boat, override_fuel, num) then
@@ -90,9 +100,13 @@ end
 
 local function consume_item(inst, item, mult)
 	local num = mult or 1
-	if item == nil then return end
+	if item == nil then
+		return
+	end
 	local inv = inst.components.inventory
-	local inv_boat = inst.components.sailor and inst.components.sailor:GetBoat() and inst.components.sailor:GetBoat().components.container
+	local inv_boat = inst.components.sailor
+		and inst.components.sailor:GetBoat()
+		and inst.components.sailor:GetBoat().components.container
 	if check_has_fuel(inv, nil, item, num) then
 		inv:ConsumeByName(item, num)
 	elseif check_has_fuel(nil, inv_boat, item, num) then
@@ -110,7 +124,7 @@ local function auto_refuel(inst)
 	local fueled_table = TUNING.MIOTAN_AUTO_REFUEL_TABLE.FUELED
 	local finiteuses_table = TUNING.MIOTAN_AUTO_REFUEL_TABLE.FINITEUSES
 
-	for source, eslots in pairs({player = player_eslots, boat = boatequipslots}) do
+	for source, eslots in pairs({ player = player_eslots, boat = boatequipslots }) do
 		for _, target in pairs(eslots) do
 			if fueled_table[source] and fueled_table[source][target.prefab] then
 				local data = fueled_table[source][target.prefab]
@@ -118,11 +132,18 @@ local function auto_refuel(inst)
 				local fueled = target.components.fueled
 				local fuel, fuelmult = check_fuel(inst, data)
 				if fuel and fuelmult then
-					if fueled and fueled:GetPercent() + TUNING.LARGE_FUEL / fueled.maxfuel * fuelmult * data.trigger * fueled.bonusmult <= 1 then
+					if
+						fueled
+						and fueled:GetPercent()
+								+ TUNING.LARGE_FUEL / fueled.maxfuel * fuelmult * data.trigger * fueled.bonusmult
+							<= 1
+					then
 						is_fx_true = true
-						fueled:DoDelta(TUNING.LARGE_FUEL * bonus * fueled.bonusmult * fuelmult )
+						fueled:DoDelta(TUNING.LARGE_FUEL * bonus * fueled.bonusmult * fuelmult)
 						consume_item(inst, fuel, data.cost)
-						if fueled.ontakefuelfn then fueled.ontakefuelfn(target) end
+						if fueled.ontakefuelfn then
+							fueled.ontakefuelfn(target)
+						end
 					end
 				end
 			elseif finiteuses_table[source] and finiteuses_table[source][target.prefab] then
@@ -133,7 +154,7 @@ local function auto_refuel(inst)
 				if fuel and fuelmult then
 					if finiteuses and finiteuses:GetUses() + data.trigger * fuelmult <= finiteuses.total then
 						is_fx_true = true
-						finiteuses:Use(- bonus * fuelmult)
+						finiteuses:Use(-bonus * fuelmult)
 						consume_item(inst, fuel, data.cost)
 					end
 				end
@@ -150,7 +171,11 @@ local function on_boost(inst)
 	inst.components.locomotor.runspeed = TUNING.MIOTAN_RUN_SPEED
 	inst.components.temperature.mintemp = TUNING.MIOTAN_BOOST_MINTEMP
 	if inst.components.eater then
-		inst.components.eater:SetAbsorptionModifiers(TUNING.MIOTAN_BOOST_ABSORPTION, TUNING.MIOTAN_BOOST_ABSORPTION, TUNING.MIOTAN_BOOST_ABSORPTION)
+		inst.components.eater:SetAbsorptionModifiers(
+			TUNING.MIOTAN_BOOST_ABSORPTION,
+			TUNING.MIOTAN_BOOST_ABSORPTION,
+			TUNING.MIOTAN_BOOST_ABSORPTION
+		)
 	end
 end
 
@@ -210,13 +235,17 @@ local function start_boost(inst, duration)
 	inst.boost_time = duration
 	if inst.boosted_task == nil then
 		inst.boosted_task = inst:DoPeriodicTask(1, on_update, nil, 1)
-		inst:DoTaskInTime(0, function(inst) on_update(inst, 0) end) -- Prevent autorefuel function consumes nightmarefuels before actually "eated"
+		inst:DoTaskInTime(0, function(inst)
+			on_update(inst, 0)
+		end) -- Prevent autorefuel function consumes nightmarefuels before actually "eated"
 		on_boost(inst)
 	end
 end
 
 local function on_load(inst, data)
-	if data and data.boost_time then start_boost(inst, data.boost_time) end
+	if data and data.boost_time then
+		start_boost(inst, data.boost_time)
+	end
 	set_sanity_dapperness(inst)
 end
 

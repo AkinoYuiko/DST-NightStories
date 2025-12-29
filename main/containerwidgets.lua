@@ -21,8 +21,7 @@ end
 
 params.cookpackage_container = deepcopy(params.cookpot)
 function params.cookpackage_container.itemtestfn(container, item, slot)
-	return cooking.IsCookingIngredient(item.prefab)
-		or container.finishing_bundling
+	return cooking.IsCookingIngredient(item.prefab) or container.finishing_bundling
 end
 function params.cookpackage_container.widget.buttoninfo.validfn(inst)
 	return inst.replica.container and inst.replica.container:IsFull()

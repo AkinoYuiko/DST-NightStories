@@ -10,9 +10,14 @@ AddComponentPostInit("brightmarespawner", function(self, inst)
 			print("Hacking:", get_gestalt_spawn_type)
 			debug.setupvalue(scope_fn, index, function(player, pt, ...)
 				local gestalt = get_gestalt_spawn_type(player, pt, ...)
-			if gestalt == "gestalt_guard_evolved" then
-					local _evolved_spawn_pool, index, scope_fn = UpvalueUtil.GetUpvalue(self.OnSave, "_evolved_spawn_pool")
-					if player and player.components.inventory and player.components.inventory:EquipHasTag("lunarseedmaxed") then
+				if gestalt == "gestalt_guard_evolved" then
+					local _evolved_spawn_pool, index, scope_fn =
+						UpvalueUtil.GetUpvalue(self.OnSave, "_evolved_spawn_pool")
+					if
+						player
+						and player.components.inventory
+						and player.components.inventory:EquipHasTag("lunarseedmaxed")
+					then
 						local crown = player.components.inventory.equipslots[EQUIPSLOTS.HEAD]
 						if crown and crown.components.container:Has("lunar_seed", 100) then
 							gestalt = "gestalt"

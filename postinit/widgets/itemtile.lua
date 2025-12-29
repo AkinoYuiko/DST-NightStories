@@ -1,6 +1,5 @@
-local UIAnim = require "widgets/uianim"
-local FX =
-{
+local UIAnim = require("widgets/uianim")
+local FX = {
 	LUNAR = "inventory_fx_lunar",
 	SHADOW = "inventory_fx_shadow",
 }
@@ -12,8 +11,10 @@ local function update_fx(self, var, bank_and_build)
 			self.itemtile_fx:GetAnimState():SetBank(bank_and_build)
 			self.itemtile_fx:GetAnimState():SetBuild(bank_and_build)
 			self.itemtile_fx:GetAnimState():PlayAnimation("idle", true)
-			self.itemtile_fx:GetAnimState():SetTime(math.random() * self.itemtile_fx:GetAnimState():GetCurrentAnimationTime())
-			self.itemtile_fx:SetScale(.25)
+			self.itemtile_fx
+				:GetAnimState()
+				:SetTime(math.random() * self.itemtile_fx:GetAnimState():GetCurrentAnimationTime())
+			self.itemtile_fx:SetScale(0.25)
 			self.itemtile_fx:GetAnimState():AnimateWhilePaused(false)
 			self.itemtile_fx:SetClickable(false)
 		else
@@ -37,12 +38,16 @@ local function is_empty(item)
 end
 
 local function percent_show(self)
-	if self.percent then self.percent:Show() end
+	if self.percent then
+		self.percent:Show()
+	end
 	self:Refresh()
 end
 
 local function percent_hide(self)
-	if self.percent then self.percent:Hide() end
+	if self.percent then
+		self.percent:Hide()
+	end
 end
 
 local function update_meter(self, force_show)
@@ -58,12 +63,12 @@ local function update_meter(self, force_show)
 end
 
 local function upadte_lunarshadow(self)
-	update_fx(self,"buffed", self.item.state:value() and FX.LUNAR or FX.SHADOW)
+	update_fx(self, "buffed", self.item.state:value() and FX.LUNAR or FX.SHADOW)
 	update_meter(self)
 end
 
 AddClassPostConstruct("widgets/itemtile", function(self)
-	if self.item.prefab == "lunarshadow"then
+	if self.item.prefab == "lunarshadow" then
 		upadte_lunarshadow(self)
 		self.inst:ListenForEvent("lunarshadow_buffdirty", function()
 			upadte_lunarshadow(self)
@@ -71,18 +76,21 @@ AddClassPostConstruct("widgets/itemtile", function(self)
 		self.inst:ListenForEvent("lunarshadow_statedirty", function()
 			upadte_lunarshadow(self)
 		end, self.item)
-		self.inst:ListenForEvent("itemget", function() update_meter(self) end, self.item)
-		self.inst:ListenForEvent("itemlose", function() update_meter(self, true) end, self.item)
-
-	elseif self.item.prefab == "friendshiptotem_dark" then
-		update_fx(self,"toggled",FX.SHADOW)
-		self.inst:ListenForEvent("friendshiptotem.toggledirty", function()
-			update_fx(self,"toggled",FX.SHADOW)
+		self.inst:ListenForEvent("itemget", function()
+			update_meter(self)
 		end, self.item)
-	elseif self.item.prefab == "friendshiptotem_light"then
-		update_fx(self,"toggled",FX.LUNAR)
+		self.inst:ListenForEvent("itemlose", function()
+			update_meter(self, true)
+		end, self.item)
+	elseif self.item.prefab == "friendshiptotem_dark" then
+		update_fx(self, "toggled", FX.SHADOW)
 		self.inst:ListenForEvent("friendshiptotem.toggledirty", function()
-			update_fx(self,"toggled",FX.LUNAR)
+			update_fx(self, "toggled", FX.SHADOW)
+		end, self.item)
+	elseif self.item.prefab == "friendshiptotem_light" then
+		update_fx(self, "toggled", FX.LUNAR)
+		self.inst:ListenForEvent("friendshiptotem.toggledirty", function()
+			update_fx(self, "toggled", FX.LUNAR)
 		end, self.item)
 	end
 end)

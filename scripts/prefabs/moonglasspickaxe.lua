@@ -1,12 +1,14 @@
-local assets =
-{
+local assets = {
 	Asset("ANIM", "anim/glasspickaxe.zip"),
 }
 
 local function onattack_moonglass(inst, attacker, target)
-	inst.components.weapon.attackwear = target and target:IsValid()
-		and (target:HasTag("shadow") or target:HasTag("shadowminion") or target:HasTag("shadowchesspiece") or target:HasTag("stalker") or target:HasTag("stalkerminion"))
-		and TUNING.MOONGLASSPICKAXE.SHADOW_WEAR
+	inst.components.weapon.attackwear = target
+			and target:IsValid()
+			and (target:HasTag("shadow") or target:HasTag("shadowminion") or target:HasTag("shadowchesspiece") or target:HasTag(
+				"stalker"
+			) or target:HasTag("stalkerminion"))
+			and TUNING.MOONGLASSPICKAXE.SHADOW_WEAR
 		or TUNING.MOONGLASSPICKAXE.ATTACKWEAR
 end
 
@@ -14,7 +16,13 @@ local function onequip(inst, owner)
 	local skin_build = inst:GetSkinBuild()
 	if skin_build then
 		owner:PushEvent("equipskinneditem", inst:GetSkinName())
-		owner.AnimState:OverrideItemSkinSymbol("swap_object", skin_build, "swap_glasspickaxe", inst.GUID, "swap_glasspickaxe")
+		owner.AnimState:OverrideItemSkinSymbol(
+			"swap_object",
+			skin_build,
+			"swap_glasspickaxe",
+			inst.GUID,
+			"swap_glasspickaxe"
+		)
 	else
 		owner.AnimState:OverrideSymbol("swap_object", "glasspickaxe", "swap_glasspickaxe")
 	end
@@ -49,7 +57,7 @@ local function fn()
 	--weapon (from weapon component) added to pristine state for optimization
 	inst:AddTag("weapon")
 
-	MakeInventoryFloatable(inst, "med", 0.05, {0.75, 0.4, 0.75})
+	MakeInventoryFloatable(inst, "med", 0.05, { 0.75, 0.4, 0.75 })
 
 	inst.entity:SetPristine()
 
@@ -82,12 +90,18 @@ local function fn()
 
 	MakeHauntableLaunch(inst)
 
-	inst.components.floater:SetBankSwapOnFloat(true, -11, {sym_build = "glasspickaxe", sym_name = "swap_glasspickaxe", bank = "glasspickaxe"})
+	inst.components.floater:SetBankSwapOnFloat(
+		true,
+		-11,
+		{ sym_build = "glasspickaxe", sym_name = "swap_glasspickaxe", bank = "glasspickaxe" }
+	)
 
 	-- inst:DoTaskInTime(0, function(inst)
 	--	 inst.drawnameoverride = rawget(_G, "EncodeStrCode") and EncodeStrCode({content = "NAMES." .. string.upper(inst.prefab)})
 	-- end)
-	if rawget(_G, "EncodeDrawNameCode") then EncodeDrawNameCode(inst) end
+	if rawget(_G, "EncodeDrawNameCode") then
+		EncodeDrawNameCode(inst)
+	end
 
 	return inst
 end

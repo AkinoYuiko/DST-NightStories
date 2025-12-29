@@ -14,7 +14,7 @@ function TEMPLATES.MakeUIStatusBadge(_status_name, c, ...)
 				self:Hide()
 				return
 			elseif _status_name == "health" then
-				self.status_icon:SetTexture("images/hud/dummy_status_health.xml", "status_".._status_name..".tex")
+				self.status_icon:SetTexture("images/hud/dummy_status_health.xml", "status_" .. _status_name .. ".tex")
 				return
 			end
 		end

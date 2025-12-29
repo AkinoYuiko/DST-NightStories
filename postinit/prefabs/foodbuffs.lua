@@ -31,7 +31,6 @@ end
 
 local function timer_fn(base_fn, buff_timer)
 	return function(inst, target, ...)
-
 		FunctionOrValue(base_fn, inst, target, ...)
 
 		local duration = inst.components.timer:GetTimeLeft(buff_timer)
@@ -48,11 +47,15 @@ local function timer_fn(base_fn, buff_timer)
 	end
 end
 
-local known_buff_timers = {"buffover", "regenover"}
+local known_buff_timers = { "buffover", "regenover" }
 
 AddPrefabPostInitAny(function(inst)
-	if TUNING.CIVI_EXCLUDE_DEBUFFS[inst.prefab] then return end
-	if not TheWorld.ismastersim then return end
+	if TUNING.CIVI_EXCLUDE_DEBUFFS[inst.prefab] then
+		return
+	end
+	if not TheWorld.ismastersim then
+		return
+	end
 
 	local debuff = inst.components.debuff
 	if debuff and inst.components.timer then

@@ -1,11 +1,8 @@
-local assets =
-{
+local assets = {
 	Asset("ANIM", "anim/book_wetness.zip"),
-
 }
 
-local prefabs =
-{
+local prefabs = {
 	"splash_ocean",
 	"book_fx",
 }
@@ -13,8 +10,7 @@ local prefabs =
 local BOOK_WETNESS_RANGE = 64 * 1.2 -- this is our "outer" sleep radius
 local MAX_WETNESS = 100 -- same as MAX_WETNESS in weather.lua :angri: :ducky_smile_dyn:
 
-local book_defs =
-{
+local book_defs = {
 	{
 		name = "book_wetness",
 		uses = TUNING.BOOK_USES_SMALL,
@@ -36,12 +32,18 @@ local book_defs =
 				if ent.components.moisture then
 					if should_dry then
 						ent.components.moisture:SetPercent(0)
-						local fx = SpawnPrefab(ent.components.rider and ent.components.rider:IsRiding() and "fx_book_temperature_mount" or "fx_book_temperature")
+						local fx = SpawnPrefab(
+							ent.components.rider and ent.components.rider:IsRiding() and "fx_book_temperature_mount"
+								or "fx_book_temperature"
+						)
 						fx.Transform:SetPosition(ent.Transform:GetWorldPosition())
 						fx.Transform:SetRotation(ent.Transform:GetRotation())
 					else
 						ent.components.moisture:SetPercent(1)
-						local fx = SpawnPrefab(ent.components.rider and ent.components.rider:IsRiding() and "fx_book_rain_mount" or "fx_book_rain")
+						local fx = SpawnPrefab(
+							ent.components.rider and ent.components.rider:IsRiding() and "fx_book_rain_mount"
+								or "fx_book_rain"
+						)
 						fx.Transform:SetPosition(ent.Transform:GetWorldPosition())
 						fx.Transform:SetRotation(ent.Transform:GetRotation())
 					end
@@ -55,11 +57,11 @@ local book_defs =
 			end
 			return true
 		end,
-		perusefn = function(inst,reader)
+		perusefn = function(inst, reader)
 			if reader.peruse_wetness then
 				reader.peruse_wetness(reader)
 			end
-			reader.components.talker:Say(GetString(reader, "ANNOUNCE_READ_BOOK","BOOK_WETNESS"))
+			reader.components.talker:Say(GetString(reader, "ANNOUNCE_READ_BOOK", "BOOK_WETNESS"))
 			return true
 		end,
 	},
@@ -83,15 +85,15 @@ local function MakeBook(def)
 	end
 	if def.fx_over ~= nil then
 		prefabs = prefabs or {}
-		local fx_over_prefab = "fx_"..def.fx_over.."_over_book"
+		local fx_over_prefab = "fx_" .. def.fx_over .. "_over_book"
 		table.insert(prefabs, fx_over_prefab)
-		table.insert(prefabs, fx_over_prefab.."_mount")
+		table.insert(prefabs, fx_over_prefab .. "_mount")
 	end
 	if def.fx_under ~= nil then
 		prefabs = prefabs or {}
-		local fx_under_prefab = "fx_"..def.fx_under.."_under_book"
+		local fx_under_prefab = "fx_" .. def.fx_under .. "_under_book"
 		table.insert(prefabs, fx_under_prefab)
-		table.insert(prefabs, fx_under_prefab.."_mount")
+		table.insert(prefabs, fx_under_prefab .. "_mount")
 	end
 
 	local function fn()
@@ -151,7 +153,9 @@ local function MakeBook(def)
 		-- inst:DoTaskInTime(0, function(inst)
 		--	 inst.drawnameoverride = rawget(_G, "EncodeStrCode") and EncodeStrCode({content = "NAMES." .. string.upper(inst.prefab)})
 		-- end)
-		if rawget(_G, "EncodeDrawNameCode") then EncodeDrawNameCode(inst) end
+		if rawget(_G, "EncodeDrawNameCode") then
+			EncodeDrawNameCode(inst)
+		end
 
 		return inst
 	end
@@ -163,10 +167,10 @@ local books = {}
 for i, v in ipairs(book_defs) do
 	table.insert(books, MakeBook(v))
 	if v.fx_over ~= nil then
-		v.fx_over_prefab = "fx_"..v.fx_over.."_over_book"
+		v.fx_over_prefab = "fx_" .. v.fx_over .. "_over_book"
 	end
 	if v.fx_under ~= nil then
-		v.fx_under_prefab = "fx_"..v.fx_under.."_under_book"
+		v.fx_under_prefab = "fx_" .. v.fx_under .. "_under_book"
 	end
 end
 book_defs = nil

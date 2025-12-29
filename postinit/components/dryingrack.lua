@@ -25,7 +25,7 @@ local function InstantDry(item, container)
 			if product.components.stackable then
 				product.components.stackable:SetStackSize(stacksize)
 			end
-			LaunchAt(product, container.inst, nil, .25, 1)
+			LaunchAt(product, container.inst, nil, 0.25, 1)
 		end
 		item:Remove()
 	end

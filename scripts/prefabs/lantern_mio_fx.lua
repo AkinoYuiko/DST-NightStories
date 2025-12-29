@@ -1,5 +1,4 @@
-local assets =
-{
+local assets = {
 	Asset("DYNAMIC_ANIM", "anim/dynamic/lantern_mio.zip"),
 	Asset("PKGREF", "anim/dynamic/lantern_mio.dyn"),
 }
@@ -50,7 +49,7 @@ local function CreateFirefly(fireflyemitter, variation, step)
 	inst.AnimState:SetFinalOffset(1)
 
 	inst.fireflyemitter = fireflyemitter
-	inst.anim = "fireflyfall"..tostring(variation)
+	inst.anim = "fireflyfall" .. tostring(variation)
 	inst.step = step
 	inst:ListenForEvent("animover", OnFireflyAnimOver)
 	OnFireflyAnimOver(inst)
@@ -151,5 +150,4 @@ local function groundfn()
 	return inst
 end
 
-return Prefab("lantern_mio_fx_held", heldfn, assets),
-	Prefab("lantern_mio_fx_ground", groundfn, assets)
+return Prefab("lantern_mio_fx_held", heldfn, assets), Prefab("lantern_mio_fx_ground", groundfn, assets)

@@ -2,11 +2,10 @@ local AddPrefabPostInit = AddPrefabPostInit
 GLOBAL.setfenv(1, GLOBAL)
 
 local function OnEntityReplicated(inst)
-    if inst.replica.container then
-        inst.replica.container.acceptsstacks = true
-    end
+	if inst.replica.container then
+		inst.replica.container.acceptsstacks = true
+	end
 end
-
 
 AddPrefabPostInit("meatrack", function(inst)
 	if not TheWorld.ismastersim then

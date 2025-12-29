@@ -1,24 +1,20 @@
-local wrap_assets =
-{
+local wrap_assets = {
 	Asset("ANIM", "anim/portable_wardrobe_wrap.zip"),
 }
 
 local wrap_prefabs = {}
 
-local wardrobe_assets =
-{
+local wardrobe_assets = {
 	Asset("ANIM", "anim/portable_wardrobe.zip"),
 }
 
-local wardrobe_prefabs =
-{
+local wardrobe_prefabs = {
 	"portable_wardrobe_item",
 	"statue_transition",
 	"statue_transition_2",
 }
 
-local wardrobe_prefabs_item =
-{
+local wardrobe_prefabs_item = {
 	"portable_wardrobe",
 }
 
@@ -223,7 +219,7 @@ end
 local function wardrobe_item_fn()
 	local inst = common_fn("portable_wardrobe")
 
-	inst.AnimState:PlayAnimation("closed",false)
+	inst.AnimState:PlayAnimation("closed", false)
 	inst.AnimState:SetScale(0.4, 0.4, 0.4)
 
 	inst:AddTag("portableitem")
@@ -251,7 +247,6 @@ local function OnBurnt(inst)
 	if inst.components.portablestructure ~= nil then
 		inst:RemoveComponent("portablestructure")
 	end
-
 end
 
 local function wardrobe_fn()
@@ -263,7 +258,7 @@ local function wardrobe_fn()
 	inst.entity:AddMiniMapEntity()
 	inst.entity:AddNetwork()
 
-	inst:SetPhysicsRadiusOverride(.8)
+	inst:SetPhysicsRadiusOverride(0.8)
 	MakeObstaclePhysics(inst, inst.physicsradiusoverride)
 
 	inst:AddTag("structure")
@@ -323,7 +318,7 @@ local function wardrobe_fn()
 end
 
 return Prefab("portable_wardrobe_wrap", wrap_fn, wrap_assets, wrap_prefabs),
-		--
-		Prefab("portable_wardrobe", wardrobe_fn, wardrobe_assets, wardrobe_prefabs),
-		MakePlacer("portable_wardrobe_item_placer", "portable_wardrobe", "portable_wardrobe", "closed"),
-		Prefab("portable_wardrobe_item", wardrobe_item_fn, wardrobe_assets, wardrobe_prefabs_item)
+	--
+	Prefab("portable_wardrobe", wardrobe_fn, wardrobe_assets, wardrobe_prefabs),
+	MakePlacer("portable_wardrobe_item_placer", "portable_wardrobe", "portable_wardrobe", "closed"),
+	Prefab("portable_wardrobe_item", wardrobe_item_fn, wardrobe_assets, wardrobe_prefabs_item)

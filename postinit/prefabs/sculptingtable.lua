@@ -10,7 +10,9 @@ local function q1(inst)
 end
 
 AddPrefabPostInit("sculptingtable", function(inst)
-	if not TheWorld.ismastersim then return end
+	if not TheWorld.ismastersim then
+		return
+	end
 
 	q1(inst)
 	inst:WatchWorldState("cycles", q1)

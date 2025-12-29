@@ -1,15 +1,16 @@
 local AddPrefabPostInit = AddPrefabPostInit
 GLOBAL.setfenv(1, GLOBAL)
 
-local GESTALT_PREFABS =
-{
+local GESTALT_PREFABS = {
 	"gestalt",
 	"gestalt_guard",
 	"gestalt_guard_evolved",
 }
 
 local function postinit(inst)
-	if not TheWorld.ismastersim then return end
+	if not TheWorld.ismastersim then
+		return
+	end
 
 	local retarget = inst.components.combat.targetfn
 	inst.components.combat:SetRetargetFunction(1, function(_inst)

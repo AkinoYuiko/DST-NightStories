@@ -6,7 +6,9 @@ local function chain(target, duration)
 end
 
 AddPrefabPostInit("voidcloth_boomerang_proj", function(inst)
-	if not TheWorld.ismastersim then return end
+	if not TheWorld.ismastersim then
+		return
+	end
 	local onprehit = inst.components.projectile.onprehit
 	inst.components.projectile:SetOnPreHitFn(function(_inst, attacker, target, ...)
 		FunctionOrValue(onprehit, _inst, attacker, target, ...)

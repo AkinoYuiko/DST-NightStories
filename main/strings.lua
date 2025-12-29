@@ -1,24 +1,21 @@
 local MODROOT = MODROOT
 GLOBAL.setfenv(1, GLOBAL)
 
-local SPEECHES =
-{
+local SPEECHES = {
 	civi = require("speech_civi"),
-	miotan = require("speech_miotan")
+	miotan = require("speech_miotan"),
 }
 
 local strings = {
 	ANNOUNCE_GLASSIC_BROKE = "WEAPON BREAK!",
-	ACTIONS =
-	{
+	ACTIONS = {
 		BLINK = {
 			FUEL = "Shadowpoof",
 		},
 		BLINK_MAP = {
 			FUEL = "Shadowpoof({uses})",
 		},
-		CHANGE_TACKLE =
-		{
+		CHANGE_TACKLE = {
 			CRYSTAL = "Boost Sword",
 			BATTERY = "Set Battery",
 		},
@@ -30,19 +27,16 @@ local strings = {
 		TOGGLETOTEM = {
 			ON = "Activate",
 			OFF = "Deactivate",
-		}
+		},
 	},
 	UI = {
-		CRAFTING =
-		{
-			RECIPEACTION =
-			{
-				SOULSPLIT = "Split"
-			}
-		}
+		CRAFTING = {
+			RECIPEACTION = {
+				SOULSPLIT = "Split",
+			},
+		},
 	},
-	NAMES =
-	{
+	NAMES = {
 		CIVI = "Civi",
 		LIGHTAMULET = "Light Amulet",
 		DARKAMULET = "Dark Amulet",
@@ -117,8 +111,7 @@ local strings = {
 		COOKPACKAGEWRAP = "Cooker's Bundling Wrap",
 		COOKGIFTWRAP = "Cooker's Gift Wrap",
 	},
-	RECIPE_DESC =
-	{
+	RECIPE_DESC = {
 		REDGEM = "Change ice into fire.",
 		BLUEGEM = "Change fire into ice.",
 		NIGHTPACK = "Dark away.",
@@ -150,8 +143,7 @@ local strings = {
 		SPICE_CACTUS = "Make sanity great again.",
 		SPICE_MOONGLASS = "Grant the power of the moon.",
 	},
-	SKIN_NAMES =
-	{
+	SKIN_NAMES = {
 		civi_none = "Civi",
 		armorskeleton_none = "Emperor's New Clothes",
 		skeletonhat_glass = "Crystal Skull",
@@ -194,8 +186,7 @@ local strings = {
 		-- lunar items
 		lunarplanthat_trans = "Phantomshade Helm",
 	},
-	SKIN_DESCRIPTIONS =
-	{
+	SKIN_DESCRIPTIONS = {
 		-- characters
 		civi_none = "Civi can control magic, turning lights into darks, or turning darks into lights.",
 		miotan_none = "Mio cames from another world, where nightmare is everywhere.",
@@ -242,30 +233,24 @@ local strings = {
 		-- lunar items
 		lunarplanthat_trans = "Transparent!",
 	},
-	SKIN_TAG_CATEGORIES =
-	{
-		COLLECTION =
-		{
+	SKIN_TAG_CATEGORIES = {
+		COLLECTION = {
 			PEGGY = "Peggy Collection",
-		}
+		},
 	},
-	CIVI_LEVELS =
-	{
+	CIVI_LEVELS = {
 		FEEL_DARK = "I felt the dark.",
 		ALREADY_DARK = "I've already in the dark.",
 		FEEL_LIGHT = "I felt the light.",
 		ALREADY_LIGHT = "I've already in the light.",
 	},
-	CHARACTERS =
-	{
-		GENERIC =
-		{
+	CHARACTERS = {
+		GENERIC = {
 			ANNOUNCE_ATTACH_BUFF_GLASH = "Secret power from the moon!",
 			ANNOUNCE_ATTACH_BUFF_SHADOWGLASH = "Secret power from the nightmare!",
 			ANNOUNCE_DETACH_BUFF_GLASH = "The moon power has gone.",
 			ANNOUNCE_DETACH_BUFF_SHADOWGLASH = "The nightmare power has gone.",
-			DESCRIBE =
-			{
+			DESCRIBE = {
 				-- GLASSICCUTTER =
 				-- {
 				--	 GENERIC = "Sharp but probably get broken.",
@@ -275,16 +260,14 @@ local strings = {
 				--	 FROST = "ao?",
 				-- },
 				MOONLIGHT_SHADOW = "Secret power comes from the moon.",
-				LUNARSHADOW =
-				{
+				LUNARSHADOW = {
 					LUNAR = "I can feel the secret power from the moon.",
 					SHADOW = "I can feel the secret power from the nightmare.",
 				},
 				MOONGLASSHAMMER = STRINGS.CHARACTERS.GENERIC.DESCRIBE.MOONGLASSAXE,
 				MOONGLASSPICKAXE = STRINGS.CHARACTERS.GENERIC.DESCRIBE.MOONGLASSAXE,
 
-				NIGHTPACK =
-				{
+				NIGHTPACK = {
 					GENERIC = "It seems to need some glowing materials.",
 					RED = "It shines red.",
 					BLUE = "It shines blue.",
@@ -332,7 +315,7 @@ local strings = {
 
 				COOKPACKAGEWRAP = "Wrapping things up and cook them together.",
 				COOKGIFTWRAP = "That's a cooker's wrap!",
-			}
+			},
 		},
 		CIVI = deepcopy(SPEECHES["civi"]),
 		MIOTAN = deepcopy(SPEECHES["miotan"]),
@@ -340,63 +323,64 @@ local strings = {
 			ACTIONFAIL = {
 				READ = {
 					NOHARVESTABLE = "Oh, I don't think there are things to harvest.",
-				}
-			}
+				},
+			},
 		},
 		WAXWELL = {
 			ACTIONFAIL = {
 				READ = {
 					NOHARVESTABLE = "Kidding? Nothing to harvest!",
-				}
-			}
+				},
+			},
 		},
 		WURT = {
 			ANNOUNCE_READ_BOOK = {
 				BOOK_HARVEST = "Oh, breaking crops is awful.",
 				BOOK_TOGGLEDOWNFALL = "I couldn't live without water!",
 				BOOK_WETNESS = "A lot of water... soggy!",
-			}
-		}
+			},
+		},
 	},
 	-- character
-	CHARACTER_NAMES =
-	{
+	CHARACTER_NAMES = {
 		civi = "Civi",
 		miotan = "Mio",
 		dummy = "Dummy",
 	},
-	CHARACTER_TITLES =
-	{
+	CHARACTER_TITLES = {
 		civi = "Mogician of Light and Dark",
 		miotan = "The Nightmare Eater",
 		dummy = "The Nightmare Breaker",
 	},
-	CHARACTER_ABOUTME =
-	{
+	CHARACTER_ABOUTME = {
 		civi = "Civi can control magic, turning lights into darks, or turning darks into lights.",
 		miotan = "Mio cames from another world, where nightmare is everywhere.",
 		dummy = "Dummy also comes from the nightmare world. She is Mio's sister.",
 	},
-	CHARACTER_DESCRIPTIONS =
-	{
+	CHARACTER_DESCRIPTIONS = {
 		civi = "*Travel between light and dark.\n*Can control nightmare.",
 		miotan = "*World treats her differently.\n*Friend of nightmare.",
 		dummy = "*Unfriendly to people.\n*Friend of nightmare.\n*Forgive.",
 	},
-	CHARACTER_QUOTES =
-	{
-		civi = "\"Get close to Nightmare!\"",
-		miotan = "\"If I could eat nightmare...\"",
-		dummy = "\"No one plays with me...\"",
+	CHARACTER_QUOTES = {
+		civi = '"Get close to Nightmare!"',
+		miotan = '"If I could eat nightmare..."',
+		dummy = '"No one plays with me..."',
 	},
-	CHARACTER_BIOS =
-	{
+	CHARACTER_BIOS = {
 		civi = {
 			{ title = "Birthday", desc = "Feb 25" },
-			{ title = "Favorite Food", desc = "Lv.0 - "..STRINGS.NAMES.BONESOUP.."\nLv.1 - "..STRINGS.NAMES.MEATBALLS.."\nLv.2 - "..STRINGS.NAMES.VOLTGOATJELLY },
+			{
+				title = "Favorite Food",
+				desc = "Lv.0 - "
+					.. STRINGS.NAMES.BONESOUP
+					.. "\nLv.1 - "
+					.. STRINGS.NAMES.MEATBALLS
+					.. "\nLv.2 - "
+					.. STRINGS.NAMES.VOLTGOATJELLY,
+			},
 		},
-		miotan =
-		{
+		miotan = {
 			{ title = "Birthday", desc = "July 17" },
 			{ title = "Favorite Food", desc = "None" },
 		},
@@ -405,19 +389,17 @@ local strings = {
 			{ title = "Favorite Food", desc = STRINGS.NAMES.NIGHTMAREPIE },
 		},
 	},
-	CHARACTER_SURVIVABILITY =
-	{
+	CHARACTER_SURVIVABILITY = {
 		civi = STRINGS.CHARACTER_SURVIVABILITY.wilson,
 		miotan = STRINGS.CHARACTER_SURVIVABILITY.wortox,
 		dummy = STRINGS.CHARACTER_SURVIVABILITY.wes,
 	},
 }
 
-
 GlassicAPI.MergeStringsToGLOBAL(strings)
 GlassicAPI.MergeStringsToGLOBAL(require("speech_wortox"), STRINGS.CHARACTERS.MIOTAN, true)
 STRINGS.CHARACTERS.DUMMY = STRINGS.CHARACTERS.MIOTAN -- Use mio's quote for now
-GlassicAPI.MergeTranslationFromPO(MODROOT.."languages")
+GlassicAPI.MergeTranslationFromPO(MODROOT .. "languages")
 
 -- Wait for DST Fixed
 scheduler:ExecuteInTime(0, function()
@@ -428,8 +410,11 @@ scheduler:ExecuteInTime(0, function()
 end)
 
 local function MergeCharacterSpeech(char, source)
-	local file, errormsg = io.open(MODROOT .. "scripts/speech_"..char..".lua", "w")
-	if not file then print("Can't update " .. MODROOT .. "scripts/speech_" .. char .. ".lua" .. "\n" .. tostring(errormsg)) return end
+	local file, errormsg = io.open(MODROOT .. "scripts/speech_" .. char .. ".lua", "w")
+	if not file then
+		print("Can't update " .. MODROOT .. "scripts/speech_" .. char .. ".lua" .. "\n" .. tostring(errormsg))
+		return
+	end
 	GlassicAPI.MergeSpeechFile(SPEECHES[char], file, source)
 end
 
@@ -440,6 +425,9 @@ function UpdateNsStrings(update_speech)
 		MergeCharacterSpeech("civi")
 	end
 	local file, errormsg = io.open(MODROOT .. "languages/strings.pot", "w")
-	if not file then print("Can't generate " .. MODROOT .. "languages/strings.pot" .. "\n" .. tostring(errormsg)) return end
+	if not file then
+		print("Can't generate " .. MODROOT .. "languages/strings.pot" .. "\n" .. tostring(errormsg))
+		return
+	end
 	GlassicAPI.MakePOTFromStrings(file, strings)
 end

@@ -1,20 +1,16 @@
-local assets =
-{
+local assets = {
 	Asset("ANIM", "anim/dummy_books.zip"),
 	Asset("ANIM", "anim/swap_dummy_books.zip"),
-
 }
 
-local prefabs =
-{
+local prefabs = {
 	"splash_ocean",
 	"book_fx",
 }
 
 local UpvalueUtil = GlassicAPI.UpvalueUtil
 
-local book_defs =
-{
+local book_defs = {
 	{
 		name = "book_toggledownfall",
 		uses = TUNING.BOOK_USES_SMALL,
@@ -23,11 +19,13 @@ local book_defs =
 		fx = "fx_book_rain",
 		fxmount = "fx_book_rain_mount",
 		fn = function(inst, reader)
-			local weather_cmp = TheWorld:HasTag("cave") and TheWorld.net.components.caveweather or TheWorld.net.components.weather
+			local weather_cmp = TheWorld:HasTag("cave") and TheWorld.net.components.caveweather
+				or TheWorld.net.components.weather
 			if TheWorld.state.precipitation ~= "none" or TheWorld.state.islandisraining then
 				-- TheWorld:PushEvent("ms_forceprecipitation_island", false)
 				TheWorld:PushEvent("ms_forceprecipitation", false)
-				local _moistureceil = UpvalueUtil.GetUpvalue(weather_cmp.OnUpdate, "_moistureceil") or UpvalueUtil.GetUpvalue(weather_cmp.OnUpdate, "_moistureceil_island")
+				local _moistureceil = UpvalueUtil.GetUpvalue(weather_cmp.OnUpdate, "_moistureceil")
+					or UpvalueUtil.GetUpvalue(weather_cmp.OnUpdate, "_moistureceil_island")
 				local old_val = _moistureceil:value()
 				weather_cmp:OnUpdate(0)
 				_moistureceil:set(old_val)
@@ -35,18 +33,20 @@ local book_defs =
 				-- TheWorld:PushEvent("ms_forceprecipitation_island", true)
 				TheWorld:PushEvent("ms_forceprecipitation", true)
 				weather_cmp:OnUpdate(0)
-				local _moisture = UpvalueUtil.GetUpvalue(weather_cmp.OnUpdate, "_moisture") or UpvalueUtil.GetUpvalue(weather_cmp.OnUpdate, "_moisture_island")
+				local _moisture = UpvalueUtil.GetUpvalue(weather_cmp.OnUpdate, "_moisture")
+					or UpvalueUtil.GetUpvalue(weather_cmp.OnUpdate, "_moisture_island")
 				local _moisturefloormultiplier = UpvalueUtil.GetUpvalue(weather_cmp.OnSave, "_moisturefloormultiplier")
-				local _moisturefloor = UpvalueUtil.GetUpvalue(weather_cmp.OnUpdate, "_moisturefloor") or UpvalueUtil.GetUpvalue(weather_cmp.OnUpdate, "_moisturefloor_island")
+				local _moisturefloor = UpvalueUtil.GetUpvalue(weather_cmp.OnUpdate, "_moisturefloor")
+					or UpvalueUtil.GetUpvalue(weather_cmp.OnUpdate, "_moisturefloor_island")
 				_moisturefloor:set(0.25 * _moisture:value() * _moisturefloormultiplier)
 			end
 			return true
 		end,
-		perusefn = function(inst,reader)
+		perusefn = function(inst, reader)
 			if reader.peruse_toggledownfall then
 				reader.peruse_toggledownfall(reader)
 			end
-			reader.components.talker:Say(GetString(reader, "ANNOUNCE_READ_BOOK","BOOK_TOGGLEDOWNFALL"))
+			reader.components.talker:Say(GetString(reader, "ANNOUNCE_READ_BOOK", "BOOK_TOGGLEDOWNFALL"))
 			return true
 		end,
 	},
@@ -60,7 +60,7 @@ local book_defs =
 		fn = function(inst, reader)
 			local success
 			local pos = Vector3(inst.Transform:GetWorldPosition())
-			local ents = TheSim:FindEntities(pos.x,pos.y,pos.z, 30)
+			local ents = TheSim:FindEntities(pos.x, pos.y, pos.z, 30)
 			local NO_PICK_DEFS = {
 				"flower",
 				"flower_evil",
@@ -71,8 +71,7 @@ local book_defs =
 				"waterplant_baby",
 				"waterplant",
 			}
-			for k,v in pairs(ents) do
-
+			for k, v in pairs(ents) do
 				if v.components.pickable and not table.contains(NO_PICK_DEFS, v.prefab) then
 					if v.components.pickable:Pick(reader) then
 						success = true
@@ -102,11 +101,11 @@ local book_defs =
 			end
 			return success, "NOHARVESTABLE"
 		end,
-		perusefn = function(inst,reader)
+		perusefn = function(inst, reader)
 			if reader.peruse_harvest then
 				reader.peruse_harvest(reader)
 			end
-			reader.components.talker:Say(GetString(reader, "ANNOUNCE_READ_BOOK","BOOK_HARVEST"))
+			reader.components.talker:Say(GetString(reader, "ANNOUNCE_READ_BOOK", "BOOK_HARVEST"))
 			return true
 		end,
 	},
@@ -130,15 +129,15 @@ local function MakeBook(def)
 	end
 	if def.fx_over ~= nil then
 		prefabs = prefabs or {}
-		local fx_over_prefab = "fx_"..def.fx_over.."_over_book"
+		local fx_over_prefab = "fx_" .. def.fx_over .. "_over_book"
 		table.insert(prefabs, fx_over_prefab)
-		table.insert(prefabs, fx_over_prefab.."_mount")
+		table.insert(prefabs, fx_over_prefab .. "_mount")
 	end
 	if def.fx_under ~= nil then
 		prefabs = prefabs or {}
-		local fx_under_prefab = "fx_"..def.fx_under.."_under_book"
+		local fx_under_prefab = "fx_" .. def.fx_under .. "_under_book"
 		table.insert(prefabs, fx_under_prefab)
-		table.insert(prefabs, fx_under_prefab.."_mount")
+		table.insert(prefabs, fx_under_prefab .. "_mount")
 	end
 
 	local function fn()
@@ -198,7 +197,9 @@ local function MakeBook(def)
 		-- inst:DoTaskInTime(0, function(inst)
 		--	 inst.drawnameoverride = rawget(_G, "EncodeStrCode") and EncodeStrCode({content = "NAMES." .. string.upper(inst.prefab)})
 		-- end)
-		if rawget(_G, "EncodeDrawNameCode") then EncodeDrawNameCode(inst) end
+		if rawget(_G, "EncodeDrawNameCode") then
+			EncodeDrawNameCode(inst)
+		end
 
 		return inst
 	end
@@ -210,10 +211,10 @@ local books = {}
 for i, v in ipairs(book_defs) do
 	table.insert(books, MakeBook(v))
 	if v.fx_over ~= nil then
-		v.fx_over_prefab = "fx_"..v.fx_over.."_over_book"
+		v.fx_over_prefab = "fx_" .. v.fx_over .. "_over_book"
 	end
 	if v.fx_under ~= nil then
-		v.fx_under_prefab = "fx_"..v.fx_under.."_under_book"
+		v.fx_under_prefab = "fx_" .. v.fx_under .. "_under_book"
 	end
 end
 book_defs = nil

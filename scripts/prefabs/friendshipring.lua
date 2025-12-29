@@ -1,17 +1,13 @@
-local assets =
-{
+local assets = {
 	Asset("ANIM", "anim/friendshipring.zip"),
 }
 
-local prefabs =
-{
-	ring =
-	{
+local prefabs = {
+	ring = {
 		"glash_fx",
 		"glash_big_fx",
 	},
-	totem =
-	{
+	totem = {
 		"statue_transition",
 		"statue_transition_2",
 	},
@@ -57,7 +53,7 @@ local function CreateWaveFX()
 	inst:AddComponent("updatelooper")
 	inst.components.updatelooper:AddOnUpdateFn(WaveFxOnUpdate)
 	inst.t = 0
-	inst.scalemult = .75
+	inst.scalemult = 0.75
 	WaveFxOnUpdate(inst, 0)
 
 	return inst
@@ -154,8 +150,7 @@ local function onupdate(inst)
 	end
 end
 
-local totemfn =
-{
+local totemfn = {
 	dark = function(inst)
 		local x, y, z = inst.Transform:GetWorldPosition()
 		local players = FindPlayersInRange(x, y, z, TUNING.TOTEM_BUFF_RANGE, true)
@@ -170,7 +165,7 @@ local totemfn =
 		for _, player in pairs(players) do
 			player:AddDebuff("buff_friendshiptotem_light", "buff_friendshiptotem_light")
 		end
-	end
+	end,
 }
 
 ---------------------------------------------------------------
@@ -178,12 +173,14 @@ local totemfn =
 ---------------------------------------------------------------
 local function get_aibo(player, tags)
 	local ppx, ppy, ppz = player.Transform:GetWorldPosition()
-	return TheSim:FindEntities(ppx, ppy, ppz, 30, {tags})
+	return TheSim:FindEntities(ppx, ppy, ppz, 30, { tags })
 end
 
 local function buff_friends(oneatenfn, food, player, buff_self)
 	local buff_entities = {}
-	if buff_self then buff_entities[player] = true end
+	if buff_self then
+		buff_entities[player] = true
+	end
 	local leader = player.components.leader
 	if leader and leader.numfollowers > 0 then
 		for follower in pairs(leader.followers) do
@@ -228,8 +225,9 @@ local function oneat(inst, owner, data)
 end
 
 local function onequip(inst, owner)
-
-	inst._oneat = function(_owner, _data) oneat(inst, _owner, _data) end
+	inst._oneat = function(_owner, _data)
+		oneat(inst, _owner, _data)
+	end
 	inst:ListenForEvent("oneat", inst._oneat, owner)
 
 	owner.AnimState:Hide("ARM_carry")
@@ -237,7 +235,6 @@ local function onequip(inst, owner)
 end
 
 local function onunequip(inst, owner)
-
 	inst:RemoveEventCallback("oneat", inst._oneat, owner)
 
 	owner.AnimState:Hide("ARM_carry")
@@ -342,14 +339,16 @@ local function common_fn()
 	-- inst:DoTaskInTime(0, function(inst)
 	--	 inst.drawnameoverride = rawget(_G, "EncodeStrCode") and EncodeStrCode({content = "NAMES." .. string.upper(inst.prefab)})
 	-- end)
-	if rawget(_G, "EncodeDrawNameCode") then EncodeDrawNameCode(inst) end
+	if rawget(_G, "EncodeDrawNameCode") then
+		EncodeDrawNameCode(inst)
+	end
 
 	return inst
 end
 
 local function base_fn()
 	local inst = common_fn()
-	MakeInventoryFloatable(inst, "small", 0.07, {0.7, 0.7, 0.7})
+	MakeInventoryFloatable(inst, "small", 0.07, { 0.7, 0.7, 0.7 })
 
 	if not TheWorld.ismastersim then
 		return inst
@@ -415,14 +414,13 @@ local function MakeTotem(color)
 		fueled:SetFirstPeriod(TUNING.TURNON_FUELED_CONSUMPTION, TUNING.TURNON_FULL_FUELED_CONSUMPTION)
 		fueled.period = FRAMES
 
-
 		local inventoryitem = inst.components.inventoryitem
 		inventoryitem:SetOnDroppedFn(on_out_inventory)
 		inventoryitem:SetOnPutInInventoryFn(on_in_inventory)
 
 		if color == "dark" then
 			local sanityaura = inst:AddComponent("sanityaura")
-			sanityaura.aura = - TUNING.SANITYAURA_SMALL
+			sanityaura.aura = -TUNING.SANITYAURA_SMALL
 		end
 
 		inst.totemfn = totemfn[color]
@@ -441,6 +439,6 @@ local function MakeTotem(color)
 end
 
 return Prefab("friendshipring", base_fn, assets.ring),
-		MakeTotem("dark"),
-		MakeTotem("light"),
-		Prefab("friendshiptotem_fx_proxy", fx_proxy_fn)
+	MakeTotem("dark"),
+	MakeTotem("light"),
+	Prefab("friendshiptotem_fx_proxy", fx_proxy_fn)

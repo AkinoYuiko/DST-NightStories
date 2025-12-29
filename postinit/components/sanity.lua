@@ -70,8 +70,12 @@ end
 
 -- Dummy restores sanity from others --
 local function sanity_aura_post_init(inst)
-	if not TheWorld.ismastersim then return end
-	if inst.prefab == "dummy" then return end
+	if not TheWorld.ismastersim then
+		return
+	end
+	if inst.prefab == "dummy" then
+		return
+	end
 
 	if not inst.components.sanityaura then
 		inst:AddComponent("sanityaura")

@@ -1,6 +1,6 @@
 local function MakeHat(name)
-	local fname = "hat_"..name
-	local symname = name.."hat"
+	local fname = "hat_" .. name
+	local symname = name .. "hat"
 	local prefabname = symname
 
 	--If you want to use generic_perish to do more, it's still
@@ -13,11 +13,16 @@ local function MakeHat(name)
 
 	-- do not pass this function to equippable:SetOnEquip as it has different a parameter listing
 	local function _onequip(inst, owner, symbol_override)
-
 		local skin_build = inst:GetSkinBuild()
 		if skin_build ~= nil then
 			owner:PushEvent("equipskinneditem", inst:GetSkinName())
-			owner.AnimState:OverrideItemSkinSymbol("swap_hat", skin_build, symbol_override or "swap_hat", inst.GUID, fname)
+			owner.AnimState:OverrideItemSkinSymbol(
+				"swap_hat",
+				skin_build,
+				symbol_override or "swap_hat",
+				inst.GUID,
+				fname
+			)
 		else
 			owner.AnimState:OverrideSymbol("swap_hat", fname, symbol_override or "swap_hat")
 		end
@@ -66,7 +71,6 @@ local function MakeHat(name)
 		_onunequip(inst, owner)
 	end
 	local function opentop_onequip(inst, owner)
-
 		local skin_build = inst:GetSkinBuild()
 		if skin_build ~= nil then
 			owner:PushEvent("equipskinneditem", inst:GetSkinName())
@@ -188,9 +192,7 @@ local function MakeHat(name)
 	end
 
 	local function tryproc(inst, owner, data)
-		if inst._task == nil and
-			not data.redirected and
-			math.random() < TUNING.ARMOR_RUINSHAT_PROC_CHANCE then
+		if inst._task == nil and not data.redirected and math.random() < TUNING.ARMOR_RUINSHAT_PROC_CHANCE then
 			ruinshat_proc(inst, owner)
 		end
 	end
@@ -249,7 +251,9 @@ local function MakeHat(name)
 		inst._fx = nil
 		inst._task = nil
 		inst._owner = nil
-		inst.procfn = function(owner, data) tryproc(inst, owner, data) end
+		inst.procfn = function(owner, data)
+			tryproc(inst, owner, data)
+		end
 		inst.onattach = function(owner)
 			if inst._owner ~= nil then
 				inst:RemoveEventCallback("attacked", inst.procfn, inst._owner)
@@ -274,7 +278,7 @@ local function MakeHat(name)
 	end
 
 	local fn = nil
-	local assets = { Asset("ANIM", "anim/"..fname..".zip") }
+	local assets = { Asset("ANIM", "anim/" .. fname .. ".zip") }
 	local prefabs = nil
 
 	if name == "battleruins" then

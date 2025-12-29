@@ -5,7 +5,7 @@ GLOBAL.setfenv(1, GLOBAL)
 local function get_reward(giver, item)
 	if giver.prefab == "miotan" then
 		return "nightmarefuel", 2
-	--[[ Removed due to new feature.
+		--[[ Removed due to new feature.
 	elseif TheWorld.state.isalterawake then
 		return TheWorld.state.islunarhailing and item and item.components.tradable.goldvalue > 1 and "moonglass_charged" or "moonglass", 1
 	]]
@@ -39,7 +39,8 @@ local function ontradeforitem(inst, item, giver, ...)
 	-- CHANGED PART --
 	local stacksize = item.components.stackable and item.components.stackable.stacksize or 1
 	local reward, max_num = get_reward(giver, item)
-	local amount = max_num and math.min(max_num, item.components.tradable.goldvalue) or item.components.tradable.goldvalue
+	local amount = max_num and math.min(max_num, item.components.tradable.goldvalue)
+		or item.components.tradable.goldvalue
 	for k = 1, amount * stacksize do
 		local nug = SpawnPrefab(reward)
 		nug.Transform:SetPosition(x, y, z)
@@ -61,7 +62,8 @@ local function ontradeforitem(inst, item, giver, ...)
 	if IsSpecialEventActive(SPECIAL_EVENTS.HALLOWED_NIGHTS) then
 		for k = 1, stacksize do
 			-- pick out up to 3 types of candies to throw out
-			local candytypes = { math.random(NUM_HALLOWEENCANDY), math.random(NUM_HALLOWEENCANDY), math.random(NUM_HALLOWEENCANDY) }
+			local candytypes =
+				{ math.random(NUM_HALLOWEENCANDY), math.random(NUM_HALLOWEENCANDY), math.random(NUM_HALLOWEENCANDY) }
 			local numcandies = (item.components.tradable.halloweencandyvalue or 1) + math.random(2) + 2
 
 			-- only people in costumes get a good amount of candy!
@@ -75,13 +77,13 @@ local function ontradeforitem(inst, item, giver, ...)
 			end
 
 			for k = 1, numcandies do
-				local candy = SpawnPrefab("halloweencandy_"..GetRandomItem(candytypes))
+				local candy = SpawnPrefab("halloweencandy_" .. GetRandomItem(candytypes))
 				candy.Transform:SetPosition(x, y, z)
 				launchitem(candy, angle)
 			end
 
 			if math.random() <= TUNING.HALLOWEEN_PUMPKINCARVER_PIGKING_TRADE_CHANCE then
-				local pumpkincarver = SpawnPrefab("pumpkincarver"..math.random(NUM_HALLOWEEN_PUMPKINCARVERS))
+				local pumpkincarver = SpawnPrefab("pumpkincarver" .. math.random(NUM_HALLOWEEN_PUMPKINCARVERS))
 				pumpkincarver.Transform:SetPosition(x, y, z)
 				launchitem(pumpkincarver, angle)
 			end
@@ -91,6 +93,8 @@ local function ontradeforitem(inst, item, giver, ...)
 end
 
 AddPrefabPostInit("pigking", function(inst)
-	if not TheWorld.ismastersim then return end
+	if not TheWorld.ismastersim then
+		return
+	end
 	UpvalueUtil.SetUpvalue(inst.components.trader.onaccept, "ontradeforgold", ontradeforitem)
 end)

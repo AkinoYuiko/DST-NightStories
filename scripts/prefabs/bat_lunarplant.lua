@@ -1,14 +1,11 @@
-
-local assets =
-{
+local assets = {
 	-- Asset("ANIM", "anim/ham_bat.zip"),
 	-- Asset("ANIM", "anim/swap_ham_bat.zip"),
 	Asset("ANIM", "anim/bat_lunarplant.zip"),
 	Asset("ANIM", "anim/bat_lunarplant.zip"),
 }
 
-local prefabs =
-{
+local prefabs = {
 	"lunarplanttentacle",
 	"hitsparks_fx",
 }
@@ -17,7 +14,9 @@ local function UpdateDamage(inst)
 	if inst.components.perishable and inst.components.weapon then
 		local dmg = inst.base_damage * inst.components.perishable:GetPercent()
 		dmg = Remap(dmg, 0, inst.base_damage, 0.5 * inst.base_damage, inst.base_damage)
-		inst.components.weapon:SetDamage(inst._bonusenabled and dmg * TUNING.WEAPONS_LUNARPLANT_SETBONUS_DAMAGE_MULT or dmg)
+		inst.components.weapon:SetDamage(
+			inst._bonusenabled and dmg * TUNING.WEAPONS_LUNARPLANT_SETBONUS_DAMAGE_MULT or dmg
+		)
 	end
 end
 
@@ -55,7 +54,7 @@ local function SetBuffOwner(inst, owner)
 					end
 				end
 			end
-			inst._onownerunequip  = function(owner, data)
+			inst._onownerunequip = function(owner, data)
 				if data ~= nil and data.eslot == EQUIPSLOTS.HEAD then
 					SetBuffEnabled(inst, false)
 				end
@@ -75,7 +74,13 @@ local function onequip(inst, owner)
 	local skin_build = inst:GetSkinBuild()
 	if skin_build ~= nil then
 		owner:PushEvent("equipskinneditem", inst:GetSkinName())
-		owner.AnimState:OverrideItemSkinSymbol("swap_object", skin_build, "swap_bat_lunarplant", inst.GUID, "bat_lunarplant")
+		owner.AnimState:OverrideItemSkinSymbol(
+			"swap_object",
+			skin_build,
+			"swap_bat_lunarplant",
+			inst.GUID,
+			"bat_lunarplant"
+		)
 	else
 		owner.AnimState:OverrideSymbol("swap_object", "bat_lunarplant", "swap_bat_lunarplant")
 	end
@@ -131,7 +136,12 @@ local function OnIsBrokenDirty(inst)
 	end
 end
 
-local SWAP_DATA_BROKEN = { sym_build = "bat_lunarplant", sym_name = "swap_bat_lunarplant_broken_float", bank = "bat_lunarplant", anim = "broken" }
+local SWAP_DATA_BROKEN = {
+	sym_build = "bat_lunarplant",
+	sym_name = "swap_bat_lunarplant_broken_float",
+	bank = "bat_lunarplant",
+	anim = "broken",
+}
 local SWAP_DATA = { sym_build = "bat_lunarplant", sym_name = "swap_bat_lunarplant" }
 
 local function SetIsBroken(inst, isbroken)
@@ -146,7 +156,6 @@ end
 
 local function OnBroken(inst)
 	if inst.components.equippable ~= nil then
-
 		if inst.components.equippable:IsEquipped() then
 			local owner = inst.components.inventoryitem.owner
 			if owner ~= nil and owner.components.inventory ~= nil then

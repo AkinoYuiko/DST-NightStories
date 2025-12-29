@@ -1,5 +1,4 @@
-local assets=
-{
+local assets = {
 	Asset("ANIM", "anim/civi_crystal.zip"),
 }
 local function MakeCrystal(colour)
@@ -25,7 +24,6 @@ local function MakeCrystal(colour)
 
 		MakeInventoryFloatable(inst, "small", 0.05)
 
-
 		inst.entity:SetPristine()
 
 		if not TheWorld.ismastersim then
@@ -44,13 +42,13 @@ local function MakeCrystal(colour)
 		-- inst:DoTaskInTime(0, function(inst)
 		--	 inst.drawnameoverride = rawget(_G, "EncodeStrCode") and EncodeStrCode({content = "NAMES." .. string.upper(inst.prefab)})
 		-- end)
-		if rawget(_G, "EncodeDrawNameCode") then EncodeDrawNameCode(inst) end
+		if rawget(_G, "EncodeDrawNameCode") then
+			EncodeDrawNameCode(inst)
+		end
 
 		return inst
 	end
 
-	return Prefab(colour.."crystal", fn, assets)
-
+	return Prefab(colour .. "crystal", fn, assets)
 end
-return MakeCrystal("dark"),
-		MakeCrystal("light")
+return MakeCrystal("dark"), MakeCrystal("light")

@@ -21,7 +21,7 @@ local function get_rate_from_table(t)
 end
 
 local function table_insert_rate(t, amount)
-	t[#t + 1] = {amount = amount, time = GetTime()}
+	t[#t + 1] = { amount = amount, time = GetTime() }
 end
 
 local function get_aura_rate(inst)
@@ -30,7 +30,14 @@ local function get_aura_rate(inst)
 	if sanity then
 		if not sanity.sanity_aura_immune then
 			local x, y, z = inst.Transform:GetWorldPosition()
-			local ents = TheSim:FindEntities(x, y, z, TUNING.SANITY_AURA_SEACH_RANGE, { "sanityaura" }, { "FX", "NOCLICK", "DECOR","INLIMBO" })
+			local ents = TheSim:FindEntities(
+				x,
+				y,
+				z,
+				TUNING.SANITY_AURA_SEACH_RANGE,
+				{ "sanityaura" },
+				{ "FX", "NOCLICK", "DECOR", "INLIMBO" }
+			)
 			for i, v in ipairs(ents) do
 				if v.components.sanityaura ~= nil and v ~= inst then
 					local is_aura_immune = false
@@ -45,7 +52,11 @@ local function get_aura_rate(inst)
 
 					if not is_aura_immune then
 						local aura_val = v.components.sanityaura:GetAura(inst)
-						aura_val = (aura_val < 0 and (sanity.neg_aura_absorb > 0 and sanity.neg_aura_absorb * -aura_val or aura_val) * sanity.neg_aura_mult or aura_val)
+						aura_val = (
+							aura_val < 0
+								and (sanity.neg_aura_absorb > 0 and sanity.neg_aura_absorb * -aura_val or aura_val) * sanity.neg_aura_mult
+							or aura_val
+						)
 						aura_delta = aura_delta + ((aura_val < 0 and sanity.neg_aura_immune) and 0 or aura_val)
 					end
 				end
@@ -55,7 +66,11 @@ local function get_aura_rate(inst)
 		local mount = inst.components.rider:IsRiding() and inst.components.rider:GetMount() or nil
 		if mount ~= nil and mount.components.sanityaura ~= nil then
 			local aura_val = mount.components.sanityaura:GetAura(inst)
-			aura_val = (aura_val < 0 and (sanity.neg_aura_absorb > 0 and sanity.neg_aura_absorb * -aura_val or aura_val) * sanity.neg_aura_mult or aura_val)
+			aura_val = (
+				aura_val < 0
+					and (sanity.neg_aura_absorb > 0 and sanity.neg_aura_absorb * -aura_val or aura_val) * sanity.neg_aura_mult
+				or aura_val
+			)
 			aura_delta = aura_delta + ((aura_val < 0 and sanity.neg_aura_immune) and 0 or aura_val)
 		end
 	end
@@ -67,11 +82,16 @@ local function owner_testfn(owner)
 end
 
 local function target_testfn(target)
-	if not target then return end
-	if (not TheNet:GetPVPEnabled()) and target:HasTag("player") then return end
-	return target:IsValid() and (target.components.health == nil or not target.components.health:IsDead()) and
-		(target:HasTag("spiderden") or target:HasTag("wooden") or not target:HasTag("structure")) and
-		not target:HasTag("wall")
+	if not target then
+		return
+	end
+	if (not TheNet:GetPVPEnabled()) and target:HasTag("player") then
+		return
+	end
+	return target:IsValid()
+		and (target.components.health == nil or not target.components.health:IsDead())
+		and (target:HasTag("spiderden") or target:HasTag("wooden") or not target:HasTag("structure"))
+		and not target:HasTag("wall")
 end
 
 local function do_glash_attack(attacker, target, glash_prefab)
@@ -84,10 +104,13 @@ local function do_glash_attack(attacker, target, glash_prefab)
 end
 
 local function launching_projectile(data)
-	return data.weapon ~= nil and data.projectile == nil and
-		(data.weapon.components.projectile ~= nil or
-			data.weapon.components.complexprojectile ~= nil or
-			data.weapon.components.weapon:CanRangedAttack())
+	return data.weapon ~= nil
+		and data.projectile == nil
+		and (
+			data.weapon.components.projectile ~= nil
+			or data.weapon.components.complexprojectile ~= nil
+			or data.weapon.components.weapon:CanRangedAttack()
+		)
 end
 
 return {

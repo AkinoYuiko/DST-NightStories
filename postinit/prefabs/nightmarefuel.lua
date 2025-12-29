@@ -1,8 +1,7 @@
 local AddPrefabPostInit = AddPrefabPostInit
 GLOBAL.setfenv(1, GLOBAL)
 
-local foodvalue =
-{
+local foodvalue = {
 	health = 10,
 	sanity = 10,
 	hunger = 15,
@@ -31,8 +30,7 @@ local function oneaten(food, eater)
 	end
 end
 
-local FUEL_PREFAB_MULT =
-{
+local FUEL_PREFAB_MULT = {
 	["nightmarefuel"] = 1,
 	["horrorfuel"] = 2,
 }
@@ -40,7 +38,9 @@ local FUEL_PREFAB_MULT =
 for prefab, mult in pairs(FUEL_PREFAB_MULT) do
 	AddPrefabPostInit(prefab, function(inst)
 		inst:AddTag("fuelpocketwatch_fuel")
-		if not TheWorld.ismastersim then return end
+		if not TheWorld.ismastersim then
+			return
+		end
 		inst:AddComponent("edible")
 		inst.components.edible.healthvalue = foodvalue.health * mult
 		inst.components.edible.sanityvalue = foodvalue.sanity * mult

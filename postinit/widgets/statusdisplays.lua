@@ -4,8 +4,12 @@ GLOBAL.setfenv(1, GLOBAL)
 local StatusDisplays = require("widgets/statusdisplays")
 function StatusDisplays:HideDummyBrain()
 	if self.owner and self.owner.prefab == "dummy" then
-		if self.brain then self.brain:Hide() end
-		if self.moisturemeter then self.moisturemeter:SetPosition(0, -40, 0) end
+		if self.brain then
+			self.brain:Hide()
+		end
+		if self.moisturemeter then
+			self.moisturemeter:SetPosition(0, -40, 0)
+		end
 	end
 end
 StatusDisplays:HideDummyBrain()

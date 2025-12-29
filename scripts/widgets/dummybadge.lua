@@ -2,7 +2,7 @@ local Badge = require("widgets/badge")
 local UIAnim = require("widgets/uianim")
 
 local SANITY_TINT = { 174 / 255, 21 / 255, 21 / 255, 1 }
-local INDUCEDINSANITY_TINT = { 123 / 255, 0 / 255, 177 / 255, 1}
+local INDUCEDINSANITY_TINT = { 123 / 255, 0 / 255, 177 / 255, 1 }
 local LUNACY_TINT = { 191 / 255, 232 / 255, 240, 255, 1 }
 
 local function OnGhostDeactivated(inst)
@@ -98,7 +98,7 @@ local DummyBadge = Class(Badge, function(self, owner)
 	self.bufficon:GetAnimState():PlayAnimation("buff_none")
 	self.bufficon:GetAnimState():AnimateWhilePaused(false)
 	self.bufficon:SetClickable(false)
-	self.bufficon:SetScale(-1,1,1)
+	self.bufficon:SetScale(-1, 1, 1)
 	self.buffsymbol = 0
 
 	self.poisonanim = self.underNumber:AddChild(UIAnim())
@@ -158,9 +158,9 @@ local DummyBadge = Class(Badge, function(self, owner)
 				self.acidsizzling:GetAnimState():SetBank("inventory_fx_acidsizzle")
 				self.acidsizzling:GetAnimState():SetBuild("inventory_fx_acidsizzle")
 				self.acidsizzling:GetAnimState():PlayAnimation("idle", true)
-				self.acidsizzling:GetAnimState():SetMultColour(.65, .62, .17, 0.8)
+				self.acidsizzling:GetAnimState():SetMultColour(0.65, 0.62, 0.17, 0.8)
 				self.acidsizzling:GetAnimState():SetTime(math.random())
-				self.acidsizzling:SetScale(.2)
+				self.acidsizzling:SetScale(0.2)
 				self.acidsizzling:GetAnimState():AnimateWhilePaused(false)
 				self.acidsizzling:SetClickable(false)
 			end
@@ -186,7 +186,9 @@ function DummyBadge:ShowBuff(symbol)
 			self.bufficon:GetAnimState():PushAnimation("buff_none", false)
 		end
 	elseif symbol ~= self.buffsymbol then
-		self.bufficon:GetAnimState():OverrideSymbol("buff_icon", self.OVERRIDE_SYMBOL_BUILD[symbol] or self.default_symbol_build, symbol)
+		self.bufficon
+			:GetAnimState()
+			:OverrideSymbol("buff_icon", self.OVERRIDE_SYMBOL_BUILD[symbol] or self.default_symbol_build, symbol)
 
 		self.bufficon:GetAnimState():PlayAnimation("buff_activate")
 		self.bufficon:GetAnimState():PushAnimation("buff_idle", false)
@@ -235,7 +237,8 @@ function DummyBadge:HideEffigy(effigy_type)
 		if self.gravestoneeffigyanim.inst.task ~= nil then
 			self.gravestoneeffigyanim.inst.task:Cancel()
 		end
-		self.gravestoneeffigyanim.inst.task = self.gravestoneeffigyanim.inst:DoTaskInTime(7 * FRAMES, PlayEffigyBreakSound, self)
+		self.gravestoneeffigyanim.inst.task =
+			self.gravestoneeffigyanim.inst:DoTaskInTime(7 * FRAMES, PlayEffigyBreakSound, self)
 	end
 end
 
@@ -257,7 +260,12 @@ function DummyBadge:DoTransition()
 	end
 
 	if self.transition_task then
-		self.anim:GetAnimState():SetMultColour(unpack(self.inducedinsanity and INDUCEDINSANITY_TINT or (self.sanitymode == SANITY_MODE_INSANITY and SANITY_TINT or LUNACY_TINT)))
+		self.anim:GetAnimState():SetMultColour(
+			unpack(
+				self.inducedinsanity and INDUCEDINSANITY_TINT
+					or (self.sanitymode == SANITY_MODE_INSANITY and SANITY_TINT or LUNACY_TINT)
+			)
+		)
 		Badge.SetPercent(self, self.val, self.max) -- refresh the animation
 	end
 
@@ -296,7 +304,9 @@ local function DoTransitionTask(self)
 			self:SpawnTransitionFX("transition_lunacy")
 		end
 		self.circleframe2:GetAnimState():PushAnimation("frame", false)
-		self.transition_task = self.owner:DoTaskInTime(6 * FRAMES, function() self:DoTransition() end)
+		self.transition_task = self.owner:DoTaskInTime(6 * FRAMES, function()
+			self:DoTransition()
+		end)
 	else
 		self:DoTransition()
 	end
@@ -327,13 +337,15 @@ function DummyBadge:PulseRed()
 	end
 end
 
-local hunger_rate = - TUNING.WILSON_HEALTH / TUNING.STARVE_KILL_TIME
-local temperature_rate = - TUNING.WILSON_HEALTH / TUNING.FREEZING_KILL_TIME
+local hunger_rate = -TUNING.WILSON_HEALTH / TUNING.STARVE_KILL_TIME
+local temperature_rate = -TUNING.WILSON_HEALTH / TUNING.FREEZING_KILL_TIME
 local healthregenbuff_rate = TUNING.JELLYBEAN_TICK_VALUE / TUNING.JELLYBEAN_TICK_RATE
 local halloweenpotionbuff_rate = 1 / 2
-local acidsizzling_rate = - TUNING.ACIDRAIN_DAMAGE_PER_SECOND
+local acidsizzling_rate = -TUNING.ACIDRAIN_DAMAGE_PER_SECOND
 function DummyBadge:OnUpdate(dt)
-	if TheNet:IsServerPaused() then return end
+	if TheNet:IsServerPaused() then
+		return
+	end
 
 	local sanity = self.owner.replica.sanity
 
@@ -350,27 +362,28 @@ function DummyBadge:OnUpdate(dt)
 	acidsizzling_rate = acidsizzling_rate * moisture_rate_assuming_rain
 
 	local sanity_rate = sanity and sanity:GetRate() or 0
-	local firedamage_rate = - self.owner._firedamage_rate:value()
-	local health_rate = sanity_rate +
-			((self.owner.replica.health ~= nil and self.owner.replica.health:IsTakingFireDamageFull()) and firedamage_rate or 0) +
-			((self.owner.IsFreezing ~= nil and self.owner:IsFreezing()) and temperature_rate or 0) +
-			((self.owner.replica.hunger ~= nil and self.owner.replica.hunger:IsStarving()) and hunger_rate or 0) +
-			((self.owner.IsOverheating ~= nil and self.owner:IsOverheating()) and temperature_rate or 0) +
-			(self.acidsizzling ~= nil and acidsizzling_rate or 0) +
-			(self.owner:HasTag("hasbuff_healthregenbuff") and healthregenbuff_rate or 0) +
-			(self.owner:HasTag("hasbuff_halloweenpotion_health_buff") and halloweenpotionbuff_rate or 0) +
-			(self.owner:HasTag("hasbuff_halloweenpotion_sanity_buff") and halloweenpotionbuff_rate or 0)
+	local firedamage_rate = -self.owner._firedamage_rate:value()
+	local health_rate = sanity_rate
+		+ ((self.owner.replica.health ~= nil and self.owner.replica.health:IsTakingFireDamageFull()) and firedamage_rate or 0)
+		+ ((self.owner.IsFreezing ~= nil and self.owner:IsFreezing()) and temperature_rate or 0)
+		+ ((self.owner.replica.hunger ~= nil and self.owner.replica.hunger:IsStarving()) and hunger_rate or 0)
+		+ ((self.owner.IsOverheating ~= nil and self.owner:IsOverheating()) and temperature_rate or 0)
+		+ (self.acidsizzling ~= nil and acidsizzling_rate or 0)
+		+ (self.owner:HasTag("hasbuff_healthregenbuff") and healthregenbuff_rate or 0)
+		+ (self.owner:HasTag("hasbuff_halloweenpotion_health_buff") and halloweenpotionbuff_rate or 0)
+		+ (self.owner:HasTag("hasbuff_halloweenpotion_sanity_buff") and halloweenpotionbuff_rate or 0)
 
+	local anim = (health_rate > 0.99 and "arrow_loop_increase_most")
+		or (health_rate > 0.49 and "arrow_loop_increase_more")
+		or (health_rate > 0.02 and "arrow_loop_increase")
+		or (health_rate < -0.99 and "arrow_loop_decrease_most")
+		or (health_rate < -0.49 and "arrow_loop_decrease_more")
+		or (health_rate < -0.02 and "arrow_loop_decrease")
+		or "neutral"
 
-	local anim = (health_rate > 0.99 and "arrow_loop_increase_most") or
-				(health_rate > 0.49 and "arrow_loop_increase_more") or
-				(health_rate > 0.02 and "arrow_loop_increase") or
-				(health_rate < -0.99 and "arrow_loop_decrease_most") or
-				(health_rate < -0.49 and "arrow_loop_decrease_more") or
-				(health_rate < -0.02 and "arrow_loop_decrease") or
-				"neutral"
-
-	if self.owner.replica.health:GetPercent() >= 1 then anim = "neutral" end
+	if self.owner.replica.health:GetPercent() >= 1 then
+		anim = "neutral"
+	end
 
 	if self.arrowdir ~= anim then
 		self.arrowdir = anim
@@ -389,7 +402,12 @@ function DummyBadge:OnUpdate(dt)
 		end
 	end
 
-	local poison = self.owner.ispoisoned or (self.owner.player_classified and self.owner.player_classified.ispoisoned and self.owner.player_classified.ispoisoned:value())
+	local poison = self.owner.ispoisoned
+		or (
+			self.owner.player_classified
+			and self.owner.player_classified.ispoisoned
+			and self.owner.player_classified.ispoisoned:value()
+		)
 	if self.poison ~= poison then
 		self.poison = poison
 		if poison then

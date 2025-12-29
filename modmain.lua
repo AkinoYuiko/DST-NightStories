@@ -14,11 +14,10 @@ local main = {
 }
 
 for i = 1, #main do
-	modimport("main/"..main[i])
+	modimport("main/" .. main[i])
 end
 
-local postinit =
-{
+local postinit = {
 	-- components
 	"components/brightmarespawner",
 	"components/bundler",
@@ -65,5 +64,5 @@ local postinit =
 	"tools_mutable",
 }
 for i = 1, #postinit do
-	modimport("postinit/"..postinit[i])
+	modimport("postinit/" .. postinit[i])
 end

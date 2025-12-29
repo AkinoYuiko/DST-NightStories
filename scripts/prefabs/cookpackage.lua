@@ -1,7 +1,6 @@
 local function MakeContainer(name, build, tag)
-	local assets =
-	{
-		Asset("ANIM", "anim/"..build..".zip"),
+	local assets = {
+		Asset("ANIM", "anim/" .. build .. ".zip"),
 	}
 
 	local function fn()
@@ -36,18 +35,16 @@ local function MakeContainer(name, build, tag)
 	return Prefab(name, fn, assets)
 end
 
-local function OnStartBundling(inst)--, doer)
+local function OnStartBundling(inst) --, doer)
 	inst.components.stackable:Get():Remove()
 end
 
 local function MakeWrap(name, containerprefab, tag, cheapfuel, wrapped_prefab_override, bank_override, build_override)
-	local assets =
-	{
-		Asset("ANIM", "anim/"..(build_override or name)..".zip"),
+	local assets = {
+		Asset("ANIM", "anim/" .. (build_override or name) .. ".zip"),
 	}
 
-	local prefabs =
-	{
+	local prefabs = {
 		name,
 		containerprefab,
 	}
@@ -99,7 +96,7 @@ local function MakeWrap(name, containerprefab, tag, cheapfuel, wrapped_prefab_ov
 		return inst
 	end
 
-	return Prefab(name.."wrap", fn, assets, prefabs)
+	return Prefab(name .. "wrap", fn, assets, prefabs)
 end
 
 -- local function onburnt(inst)
@@ -172,7 +169,6 @@ end
 --			 end
 --		 end
 --	 end
-
 
 --	 local function OnWrapped(inst, num, doer)
 --		 local suffix =

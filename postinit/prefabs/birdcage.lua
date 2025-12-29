@@ -32,7 +32,7 @@ end
 
 local function CalcLoot(num)
 	if type(num) == "number" and num > 0 then
-		return math.floor(num/3), num%3
+		return math.floor(num / 3), num % 3
 	end
 	return 0, 0
 end
@@ -63,7 +63,7 @@ local function DigestFood(inst, food)
 		end
 	elseif food.components.edible.foodtype == FOODTYPE.MEAT then
 		--If the food is meat:
-			--Spawn an egg.
+		--Spawn an egg.
 		if bird and bird:HasTag("bird_mutant") then
 			SpawnLootPrefab(inst, "rottenegg", stacksize) -- changed part --
 		else
@@ -78,11 +78,11 @@ local function DigestFood(inst, food)
 				SpawnLootPrefab(inst, seed_name, stacksize) -- changed part --
 			else
 				--Otherwise...
-					--Spawn a poop 1/3 times.
+				--Spawn a poop 1/3 times.
 				if math.random() < 0.33 then
 					for k = 1, stacksize do
 						local loot = inst.components.lootdropper:SpawnLootPrefab("guano")
-						loot.Transform:SetScale(.33, .33, .33)
+						loot.Transform:SetScale(0.33, 0.33, 0.33)
 						loot.components.stackable:SetStackSize(stacksize) -- changed part --
 					end
 				end
@@ -100,16 +100,19 @@ local function OnGetItem(inst, giver, item)
 	local bird = GetBird(inst)
 	--If you're sleeping, wake up.
 	if inst.components.sleeper and inst.components.sleeper:IsAsleep() then
-			inst.components.sleeper:WakeUp()
+		inst.components.sleeper:WakeUp()
 	end
 
-	if item.components.edible ~= nil and
-		(   item.components.edible.foodtype == FOODTYPE.MEAT
+	if
+		item.components.edible ~= nil
+		and (
+			item.components.edible.foodtype == FOODTYPE.MEAT
 			or item.components.edible.foodtype == FOODTYPE.LUNAR_SHARDS
 			or item.prefab == "seeds"
 			or string.match(item.prefab, "_seeds")
 			or Prefabs[string.lower(item.prefab .. "_seeds")] ~= nil
-		) then
+		)
+	then
 		--If the item is edible...
 		--Play some animations (peck, peck, peck, hop, idle)
 		inst.AnimState:PlayAnimation("peck")
@@ -136,7 +139,9 @@ local function OnGetItem(inst, giver, item)
 end
 
 AddPrefabPostInit("birdcage", function(inst)
-	if not TheWorld.ismastersim then return end
+	if not TheWorld.ismastersim then
+		return
+	end
 
 	inst.components.trader.onaccept = OnGetItem
 end)

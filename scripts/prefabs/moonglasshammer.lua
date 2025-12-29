@@ -1,12 +1,14 @@
-local assets =
-{
+local assets = {
 	Asset("ANIM", "anim/glasshammer.zip"),
 }
 
 local function onattack_moonglass(inst, attacker, target)
-	inst.components.weapon.attackwear = target and target:IsValid()
-		and (target:HasTag("shadow") or target:HasTag("shadowminion") or target:HasTag("shadowchesspiece") or target:HasTag("stalker") or target:HasTag("stalkerminion"))
-		and TUNING.MOONGLASSHAMMER.SHADOW_WEAR
+	inst.components.weapon.attackwear = target
+			and target:IsValid()
+			and (target:HasTag("shadow") or target:HasTag("shadowminion") or target:HasTag("shadowchesspiece") or target:HasTag(
+				"stalker"
+			) or target:HasTag("stalkerminion"))
+			and TUNING.MOONGLASSHAMMER.SHADOW_WEAR
 		or TUNING.MOONGLASSHAMMER.ATTACKWEAR
 end
 
@@ -14,7 +16,13 @@ local function onequip(inst, owner)
 	local skin_build = inst:GetSkinBuild()
 	if skin_build then
 		owner:PushEvent("equipskinneditem", inst:GetSkinName())
-		owner.AnimState:OverrideItemSkinSymbol("swap_object", skin_build, "swap_glasshammer", inst.GUID, "swap_glasshammer")
+		owner.AnimState:OverrideItemSkinSymbol(
+			"swap_object",
+			skin_build,
+			"swap_glasshammer",
+			inst.GUID,
+			"swap_glasshammer"
+		)
 	else
 		owner.AnimState:OverrideSymbol("swap_object", "glasshammer", "swap_glasshammer")
 	end
@@ -43,7 +51,15 @@ local function fn()
 
 	inst:AddTag("hammer")
 
-	MakeInventoryFloatable(inst, "med", 0.05, {0.7, 0.4, 0.7}, true, -13, {sym_build = "glasshammer", sym_name = "swap_glasshammer",bank = "glasshammer"})
+	MakeInventoryFloatable(
+		inst,
+		"med",
+		0.05,
+		{ 0.7, 0.4, 0.7 },
+		true,
+		-13,
+		{ sym_build = "glasshammer", sym_name = "swap_glasshammer", bank = "glasshammer" }
+	)
 
 	--tool (from tool component) added to pristine state for optimization
 	inst:AddTag("tool")
@@ -85,7 +101,9 @@ local function fn()
 	-- inst:DoTaskInTime(0, function(inst)
 	--	 inst.drawnameoverride = rawget(_G, "EncodeStrCode") and EncodeStrCode({content = "NAMES." .. string.upper(inst.prefab)})
 	-- end)
-	if rawget(_G, "EncodeDrawNameCode") then EncodeDrawNameCode(inst) end
+	if rawget(_G, "EncodeDrawNameCode") then
+		EncodeDrawNameCode(inst)
+	end
 
 	return inst
 end

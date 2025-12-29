@@ -1,40 +1,41 @@
 GLOBAL.setfenv(1, GLOBAL)
 
-local DISABLED_WEAPONS =
-{
+local DISABLED_WEAPONS = {
 	glash = true,
 	alterguardianhat = true,
 }
 
-local DISABLED_ENTITIES =
-{
-	alterguardianhat_projectile = true
+local DISABLED_ENTITIES = {
+	alterguardianhat_projectile = true,
 }
 
 local Combat = require("components/combat")
 local do_attack = Combat.DoAttack
 
 local function ranged_weapon_testfn(weapon, projectile)
-	return weapon ~= nil and projectile == nil
-		and (weapon.components.projectile ~= nil
+	return weapon ~= nil
+		and projectile == nil
+		and (
+			weapon.components.projectile ~= nil
 			or weapon.components.complexprojectile ~= nil
-			or weapon.components.weapon:CanRangedAttack())
+			or weapon.components.weapon:CanRangedAttack()
+		)
 end
 
 local function is_invalid_weapon(weapon)
 	return weapon and not weapon.components.weapon
 end
 
-local function do_attack_with_check(self, target, weapon, projectile,...)
+local function do_attack_with_check(self, target, weapon, projectile, ...)
 	if not is_invalid_weapon(weapon) then
 		if projectile and weapon and weapon.components.finiteuses then
 			local prev = weapon.components.finiteuses.ignorecombatdurabilityloss
 			weapon.components.finiteuses.ignorecombatdurabilityloss = true
-			local result = do_attack(self, target, weapon, projectile,...)
+			local result = do_attack(self, target, weapon, projectile, ...)
 			weapon.components.finiteuses.ignorecombatdurabilityloss = prev
 			return result
 		end
-		return do_attack(self, target, weapon, projectile,...)
+		return do_attack(self, target, weapon, projectile, ...)
 	end
 end
 

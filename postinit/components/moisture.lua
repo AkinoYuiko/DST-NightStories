@@ -26,5 +26,4 @@ function Moisture:OnUpdate(...)
 	if self.inst.player_classified then
 		self.inst.player_classified._moisture_rate:set(rate)
 	end
-
 end

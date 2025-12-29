@@ -3,7 +3,9 @@ GLOBAL.setfenv(1, GLOBAL)
 local ForgeRepair = require("components/forgerepair")
 local on_repair = ForgeRepair.OnRepair
 function ForgeRepair:OnRepair(target, doer)
-	if on_repair(self, target, doer) then return true end
+	if on_repair(self, target, doer) then
+		return true
+	end
 	local success
 	if target.components.perishable ~= nil then
 		if target.components.perishable:GetPercent() < 1 then

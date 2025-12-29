@@ -1,5 +1,4 @@
-local assets =
-{
+local assets = {
 	Asset("ANIM", "anim/ns_spices.zip"),
 }
 
@@ -36,7 +35,8 @@ local function MakeSpice(name)
 
 		MakeHauntableLaunch(inst)
 
-		inst.drawnameoverride = rawget(_G, "EncodeStrCode") and EncodeStrCode({content = "NAMES." .. string.upper(name)})
+		inst.drawnameoverride = rawget(_G, "EncodeStrCode")
+			and EncodeStrCode({ content = "NAMES." .. string.upper(name) })
 
 		return inst
 	end
@@ -44,5 +44,4 @@ local function MakeSpice(name)
 	return Prefab(name, fn, assets)
 end
 
-return MakeSpice("spice_cactus"),
-		MakeSpice("spice_moonglass")
+return MakeSpice("spice_cactus"), MakeSpice("spice_moonglass")

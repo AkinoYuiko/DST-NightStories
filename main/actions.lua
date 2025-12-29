@@ -8,16 +8,16 @@ GLOBAL.setfenv(1, GLOBAL)
 local UpvalueUtil = GlassicAPI.UpvalueUtil
 
 NS_ACTIONS = {
-	GEMTRADE = Action({priority = 3, mount_valid = true}),
-	LUNARSHADOWCHARGE = Action({mount_valid = true}),
-	LUNARSHADOWSTATE = Action({priority = 1, mount_valie = true, rmb = true}),
-	MIOFUEL = Action({priority = 3, mount_valid = true}),
-	MIOEATFUEL = Action({priority = 4, mount_valid = true}),
-	NIGHTSWITCH = Action({priority = 1, mount_valid = true}),
-	NIGHTSWORD = Action({priority = 2, mount_valid = true}),
-	FUELPOCKETWATCH = Action({priority = 3, rmb = true}),
-	MUTATETOTEM = Action({priority = 3, rmb = true}),
-	TOGGLETOTEM = Action({mount_valid = true}),
+	GEMTRADE = Action({ priority = 3, mount_valid = true }),
+	LUNARSHADOWCHARGE = Action({ mount_valid = true }),
+	LUNARSHADOWSTATE = Action({ priority = 1, mount_valie = true, rmb = true }),
+	MIOFUEL = Action({ priority = 3, mount_valid = true }),
+	MIOEATFUEL = Action({ priority = 4, mount_valid = true }),
+	NIGHTSWITCH = Action({ priority = 1, mount_valid = true }),
+	NIGHTSWORD = Action({ priority = 2, mount_valid = true }),
+	FUELPOCKETWATCH = Action({ priority = 3, rmb = true }),
+	MUTATETOTEM = Action({ priority = 3, rmb = true }),
+	TOGGLETOTEM = Action({ mount_valid = true }),
 }
 
 NS_ACTIONS.GEMTRADE.str = STRINGS.ACTIONS.GIVE.SOCKET
@@ -42,7 +42,9 @@ ACTIONS.BLINK.strfn = function(act)
 	local blinkstaff = act.invobject == nil or act.invobject.prefab == "orangestaff"
 	local doer = act.doer
 	if blinkstaff and doer and doer:HasTag("mio_boosted_task") then
-		if doer.replica.inventory:Has("nightmarefuel", 1) then return "FUEL" end
+		if doer.replica.inventory:Has("nightmarefuel", 1) then
+			return "FUEL"
+		end
 	end
 	return blink_strfn(act)
 end
@@ -157,7 +159,10 @@ local function use_fuel(item, target, doer)
 		end
 		return true
 	elseif target.components.perishable then
-		target.components.perishable:SetPercent( target.components.perishable:GetPercent() + item.components.fuel.fuelvalue / TUNING.LANTERN_LIGHTTIME * wetmult )
+		target.components.perishable:SetPercent(
+			target.components.perishable:GetPercent()
+				+ item.components.fuel.fuelvalue / TUNING.LANTERN_LIGHTTIME * wetmult
+		)
 		return true
 	end
 end
@@ -284,9 +289,23 @@ NS_ACTIONS.FUELPOCKETWATCH.fn = function(act)
 				inventory:ConsumeByName("horrorfuel", 1)
 			elseif inventory:Has("nightmarefuel", 1) then
 				inventory:ConsumeByName("nightmarefuel", 1)
-	 			caster.components.health:DoDelta(TUNING.HEALTH_FUELPOCKETWATCH_COST, nil, "fuelpocketwatch", true, nil, true)
+				caster.components.health:DoDelta(
+					TUNING.HEALTH_FUELPOCKETWATCH_COST,
+					nil,
+					"fuelpocketwatch",
+					true,
+					nil,
+					true
+				)
 			elseif caster.prefab == "dummy" then
-	 			caster.components.health:DoDelta((TUNING.HEALTH_FUELPOCKETWATCH_COST_MORE), nil, "fuelpocketwatch", true, nil, true)
+				caster.components.health:DoDelta(
+					TUNING.HEALTH_FUELPOCKETWATCH_COST_MORE,
+					nil,
+					"fuelpocketwatch",
+					true,
+					nil,
+					true
+				)
 			else
 				return
 			end
@@ -331,33 +350,40 @@ end
 ----------------------- COMPONENT ACTIONS ---------------------------
 ---------------------------------------------------------------------
 
-local MIO_FUEL_ACTION_TAGS = {"CAVE_fueled", "BURNABLE_fueled", "WORMLIGHT_fueled", "TAR_fueled"}
+local MIO_FUEL_ACTION_TAGS = { "CAVE_fueled", "BURNABLE_fueled", "WORMLIGHT_fueled", "TAR_fueled" }
 local function fuel_action_testfn(target)
 	return target:HasAnyTag(MIO_FUEL_ACTION_TAGS) or fuel_action_prefabs[target.prefab]
 end
 
 AddComponentAction("USEITEM", "fuel", function(inst, doer, target, actions, right)
 	if doer.prefab == "miotan" and (inst.prefab == "nightmarefuel" or inst.prefab == "horrorfuel") then
-		if fuel_action_testfn(target)
+		if
+			fuel_action_testfn(target)
 			and (
 				not (doer.replica.rider and doer.replica.rider:IsRiding())
 				or (target.replica.inventoryitem and target.replica.inventoryitem:IsGrandOwner(doer))
-			) then
-
+			)
+		then
 			table.insert(actions, NS_ACTIONS.MIOFUEL)
 		end
 	end
 end)
 
 AddComponentAction("INVENTORY", "nightfuel", function(inst, doer, actions, right)
-	if doer.replica.inventory and
-		not doer.components.playercontroller.isclientcontrollerattached and
-		(right or doer.components.playercontroller:IsControlPressed(CONTROL_FORCE_INSPECT))
+	if
+		doer.replica.inventory
+		and not doer.components.playercontroller.isclientcontrollerattached
+		and (right or doer.components.playercontroller:IsControlPressed(CONTROL_FORCE_INSPECT))
+	then
+		local hand_item = doer.replica.inventory:GetEquippedItem(EQUIPSLOTS.HANDS)
+		if
+			hand_item
+			and hand_item.replica.container
+			and hand_item.replica.container:IsOpenedBy(doer)
+			and hand_item.replica.container:CanTakeItemInSlot(inst)
 		then
-			local hand_item = doer.replica.inventory:GetEquippedItem(EQUIPSLOTS.HANDS)
-			if hand_item and hand_item.replica.container and hand_item.replica.container:IsOpenedBy(doer) and hand_item.replica.container:CanTakeItemInSlot(inst) then
-				table.insert(actions, ACTIONS.CHANGE_TACKLE)
-			end
+			table.insert(actions, ACTIONS.CHANGE_TACKLE)
+		end
 	elseif doer:HasTag("nightfueleater") then
 		table.insert(actions, NS_ACTIONS.MIOEATFUEL)
 	end
@@ -370,21 +396,31 @@ AddComponentAction("USEITEM", "nightfuel", function(inst, doer, target, actions)
 end)
 
 AddComponentAction("INVENTORY", "fuelpocketwatch", function(inst, doer, actions)
-	if inst:HasTag("pocketwatch_inactive") and doer:HasTag("nightmare_twins") and inst:HasTag("pocketwatch_castfrominventory") then
-		if doer.prefab == "dummy" or (doer.replica.inventory and doer.replica.inventory:HasItemWithTag("fuelpocketwatch_fuel", 1)) then
+	if
+		inst:HasTag("pocketwatch_inactive")
+		and doer:HasTag("nightmare_twins")
+		and inst:HasTag("pocketwatch_castfrominventory")
+	then
+		if
+			doer.prefab == "dummy"
+			or (doer.replica.inventory and doer.replica.inventory:HasItemWithTag("fuelpocketwatch_fuel", 1))
+		then
 			table.insert(actions, NS_ACTIONS.FUELPOCKETWATCH)
 		end
 	end
 end)
 
 AddComponentAction("USEITEM", "inventoryitem", function(inst, doer, target, actions, right)
-	if right and target.prefab == "nightpack" and inst:HasTag("nightpackgem") and not doer.replica.rider:IsRiding()
-	and not (target:HasTag("nofuelsocket") and (inst.prefab == "nightmarefuel" or inst.prefab == "horrorfuel"))
+	if
+		right
+		and target.prefab == "nightpack"
+		and inst:HasTag("nightpackgem")
+		and not doer.replica.rider:IsRiding()
+		and not (target:HasTag("nofuelsocket") and (inst.prefab == "nightmarefuel" or inst.prefab == "horrorfuel"))
 	then
 		table.insert(actions, NS_ACTIONS.GEMTRADE)
 	end
 end)
-
 
 AddComponentAction("USEITEM", "nightcrystal", function(inst, doer, target, actions, right)
 	if right then
@@ -392,9 +428,10 @@ AddComponentAction("USEITEM", "nightcrystal", function(inst, doer, target, actio
 			if not target:HasTag("crystal_socketed") then
 				table.insert(actions, NS_ACTIONS.NIGHTSWORD)
 			end
-		elseif target.prefab == "friendshipring"
-			and not (target.replica.equippable and target.replica.equippable:IsEquipped()) then
-
+		elseif
+			target.prefab == "friendshipring"
+			and not (target.replica.equippable and target.replica.equippable:IsEquipped())
+		then
 			table.insert(actions, NS_ACTIONS.MUTATETOTEM)
 		end
 	end
@@ -404,15 +441,18 @@ end)
 local change_tackle_strfn = ACTIONS.CHANGE_TACKLE.strfn
 ACTIONS.CHANGE_TACKLE.strfn = function(act)
 	local item = (act.invobject and act.invobject:IsValid()) and act.invobject
-	return change_tackle_strfn(act) or ((item and item:HasTag("civicrystal")) and ("CRYSTAL"))
+	return change_tackle_strfn(act) or ((item and item:HasTag("civicrystal")) and "CRYSTAL")
 end
 
 AddComponentAction("INVENTORY", "nightcrystal", function(inst, doer, actions, right)
 	if doer.replica.inventory and not doer.replica.inventory:IsHeavyLifting() then
 		local sword = doer.replica.inventory:GetEquippedItem(EQUIPSLOTS.HANDS)
-		if sword and sword.prefab == "nightsword" and
-			sword.replica.container and sword.replica.container:IsOpenedBy(doer) and
-			sword.replica.container:CanTakeItemInSlot(inst)
+		if
+			sword
+			and sword.prefab == "nightsword"
+			and sword.replica.container
+			and sword.replica.container:IsOpenedBy(doer)
+			and sword.replica.container:CanTakeItemInSlot(inst)
 		then
 			table.insert(actions, ACTIONS.CHANGE_TACKLE)
 		elseif doer.prefab == "civi" then
@@ -437,7 +477,7 @@ local SCENE = COMPONENT_ACTIONS.SCENE
 local scene_hauntable = SCENE.hauntable
 
 -- Hauntable for Dummy: only Dummy can haunt Mio and Dummy to revive herself
-local DUMMY_NOT_HAUNTABLE_TAGS = {"playerghost", "reviving", "haunted", "catchable"}
+local DUMMY_NOT_HAUNTABLE_TAGS = { "playerghost", "reviving", "haunted", "catchable" }
 function SCENE.hauntable(inst, doer, actions, ...)
 	if inst:HasTag("nightmare_twins") then
 		if doer.prefab == "dummy" and not inst:HasAnyTag(DUMMY_NOT_HAUNTABLE_TAGS) then
@@ -455,7 +495,8 @@ scheduler:ExecuteInTime(0, function()
 	local get_action_button_action = PlayerController.GetActionButtonAction
 	function PlayerController:GetActionButtonAction(force_target, ...)
 		local is_dummy = self.inst.prefab == "dummy"
-		local HAUNT_TARGET_EXCLUDE_TAGS, fn_i, scope_fn = UpvalueUtil.GetUpvalue(get_action_button_action, "HAUNT_TARGET_EXCLUDE_TAGS")
+		local HAUNT_TARGET_EXCLUDE_TAGS, fn_i, scope_fn =
+			UpvalueUtil.GetUpvalue(get_action_button_action, "HAUNT_TARGET_EXCLUDE_TAGS")
 		if HAUNT_TARGET_EXCLUDE_TAGS then
 			local haunt_exclude_tags = shallowcopy(HAUNT_TARGET_EXCLUDE_TAGS)
 			if is_dummy then
@@ -470,7 +511,12 @@ scheduler:ExecuteInTime(0, function()
 		if HAUNT_TARGET_EXCLUDE_TAGS then
 			debug.setupvalue(scope_fn, fn_i, HAUNT_TARGET_EXCLUDE_TAGS)
 		end
-		if bufferedaction and bufferedaction.action == ACTIONS.HAUNT and bufferedaction.target:HasTag("nightmare_twins") and bufferedaction.doer.prefab ~= "dummy" then
+		if
+			bufferedaction
+			and bufferedaction.action == ACTIONS.HAUNT
+			and bufferedaction.target:HasTag("nightmare_twins")
+			and bufferedaction.doer.prefab ~= "dummy"
+		then
 			return
 		end
 		return bufferedaction
@@ -493,11 +539,14 @@ end)
 AddComponentAction("INVENTORY", "lunarshadowstate", function(inst, doer, actions, right)
 	local force_state
 	local hat = doer.replica.inventory:GetEquippedItem(EQUIPSLOTS.HEAD)
-	if hat and ( hat.prefab == "lunarplanthat" or hat.prefab == "voidclothhat" ) then
+	if hat and (hat.prefab == "lunarplanthat" or hat.prefab == "voidclothhat") then
 		force_state = true
 	end
 	local equipped = inst.replica.equippable and inst.replica.equippable:IsEquipped()
-	if not doer.components.playercontroller.isclientcontrollerattached and (right or doer.components.playercontroller:IsControlPressed(CONTROL_FORCE_INSPECT)) then
+	if
+		not doer.components.playercontroller.isclientcontrollerattached
+		and (right or doer.components.playercontroller:IsControlPressed(CONTROL_FORCE_INSPECT))
+	then
 		if equipped then
 			if not force_state then
 				table.insert(actions, NS_ACTIONS.LUNARSHADOWSTATE)
@@ -517,10 +566,10 @@ local lunarshadow_state = State({
 
 	onenter = function(inst)
 		inst.sg:GoToState("dolongaction", 2)
-	end
+	end,
 })
 
-for _, sg in ipairs({"wilson", "wilson_client"}) do
+for _, sg in ipairs({ "wilson", "wilson_client" }) do
 	AddStategraphState(sg, lunarshadow_state)
 
 	AddStategraphActionHandler(sg, ActionHandler(NS_ACTIONS.MIOFUEL, "doshortaction"))
@@ -537,11 +586,12 @@ end
 
 --------------------------------------------------------------------------------
 
-
 -- right click to set battery --
 local function set_reloaditem_battery(inst)
 	inst:AddTag("reloaditem_lunarshadow")
-	if not TheWorld.ismastersim then return end
+	if not TheWorld.ismastersim then
+		return
+	end
 	inst:AddComponent("reloaditem")
 	inst:AddComponent("lunarshadowbattery")
 end

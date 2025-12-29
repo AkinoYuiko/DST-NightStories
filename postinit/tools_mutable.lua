@@ -2,9 +2,9 @@ local AddPrefabPostInit = AddPrefabPostInit
 GLOBAL.setfenv(1, GLOBAL)
 
 local MUTABLE_TARGETS = {
-	goldenaxe	   = "moonglassaxe",
-	goldenpickaxe   = "moonglasspickaxe",
-	hammer		  = "moonglasshammer",
+	goldenaxe = "moonglassaxe",
+	goldenpickaxe = "moonglasspickaxe",
+	hammer = "moonglasshammer",
 	-- goldenmachete   = "moonglassmachete",   -- IA Deluxe Addon
 }
 
@@ -23,7 +23,9 @@ end
 for base, target in pairs(MUTABLE_TARGETS) do
 	AddPrefabPostInit(base, function(inst)
 		inst:AddTag("halloweenmoonmutable")
-		if not TheWorld.ismastersim then return end
+		if not TheWorld.ismastersim then
+			return
+		end
 		inst:AddComponent("halloweenmoonmutable")
 		inst.components.halloweenmoonmutable:SetPrefabMutated(target)
 		inst.components.halloweenmoonmutable:SetOnMutateFn(onmutatefn)

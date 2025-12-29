@@ -1,5 +1,4 @@
-local WILSON_SKILL_TAGS =
-{
+local WILSON_SKILL_TAGS = {
 	"alchemist",
 	"gem_alchemistI",
 	"gem_alchemistII",
@@ -12,14 +11,12 @@ local WILSON_SKILL_TAGS =
 	"ore_alchemistIII",
 }
 
-local WILLOW_SKILL_TAGS =
-{
+local WILLOW_SKILL_TAGS = {
 	"controlled_burner",
 	"ember_master",
 }
 
-local ALIGN_TAGS =
-{
+local ALIGN_TAGS = {
 	"player_shadow_aligned",
 	"player_luanr_aligned",
 }
@@ -43,7 +40,6 @@ local function reset_skill_tree(player)
 			player:RemoveTag(tag)
 		end
 
-
 		if player.components.beard then -- for wilson
 			player.components.beard:UpdateBeardInventory()
 		end
@@ -63,7 +59,7 @@ local function reset_skill_tree(player)
 			player:updateembers()
 		end
 		if player.bigbernies then
-			for bern, val in pairs(player.bigbernies)do
+			for bern, val in pairs(player.bigbernies) do
 				bern:onLeaderChanged(player)
 			end
 		end
