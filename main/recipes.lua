@@ -52,23 +52,25 @@ AddRecipe(
 	"civi_redgem",
 	{ Ingredient("bluegem", 1), Ingredient("nightmarefuel", 1) },
 	CIVITECH_ONE,
-	{ nounlock = true, nochar = true, nomods = true, builder_tag = "ns_builder_civi", product = "redgem", hidden = true }
-)
-
--- 蓝宝石 --
-AddRecipe(
-	"civi_bluegem",
-	{ Ingredient("redgem", 1), Ingredient("nightmarefuel", 1) },
-	CIVITECH_ONE,
 	{
 		nounlock = true,
 		nochar = true,
 		nomods = true,
 		builder_tag = "ns_builder_civi",
-		product = "bluegem",
+		product = "redgem",
 		hidden = true,
 	}
 )
+
+-- 蓝宝石 --
+AddRecipe("civi_bluegem", { Ingredient("redgem", 1), Ingredient("nightmarefuel", 1) }, CIVITECH_ONE, {
+	nounlock = true,
+	nochar = true,
+	nomods = true,
+	builder_tag = "ns_builder_civi",
+	product = "bluegem",
+	hidden = true,
+})
 SortAfter("civi_bluegem", "civi_redgem")
 
 -- 黑水晶
@@ -90,19 +92,14 @@ AddRecipe(
 SortAfter("lightcrystal", "darkcrystal")
 
 -- 纯粹辉煌
-AddRecipe(
-	"civi_purebrilliance",
-	{ Ingredient("horrorfuel", 1), Ingredient("moonglass", 1) },
-	TECH.LUNARFORGING_TWO,
-	{
-		nounlock = true,
-		nochar = true,
-		nomods = true,
-		builder_tag = "ns_builder_civi",
-		product = "purebrilliance",
-		hidden = true,
-	}
-)
+AddRecipe("civi_purebrilliance", { Ingredient("horrorfuel", 1), Ingredient("moonglass", 1) }, TECH.LUNARFORGING_TWO, {
+	nounlock = true,
+	nochar = true,
+	nomods = true,
+	builder_tag = "ns_builder_civi",
+	product = "purebrilliance",
+	hidden = true,
+})
 SortAfter("civi_purebrilliance", "lunarplant_kit")
 
 -- 亮茄外壳
@@ -138,19 +135,14 @@ AddRecipe(
 SortAfter("civi_horrorfuel", "voidcloth_kit")
 
 -- 暗影碎布
-AddRecipe(
-	"civi_voidcloth",
-	{ Ingredient("lunarplant_husk", 1), Ingredient("horrorfuel", 1) },
-	TECH.SHADOWFORGING_TWO,
-	{
-		nounlock = true,
-		nochar = true,
-		nomods = true,
-		builder_tag = "ns_builder_civi",
-		product = "voidcloth",
-		hidden = true,
-	}
-)
+AddRecipe("civi_voidcloth", { Ingredient("lunarplant_husk", 1), Ingredient("horrorfuel", 1) }, TECH.SHADOWFORGING_TWO, {
+	nounlock = true,
+	nochar = true,
+	nomods = true,
+	builder_tag = "ns_builder_civi",
+	product = "voidcloth",
+	hidden = true,
+})
 SortAfter("civi_voidcloth", "civi_horrorfuel")
 
 -- 影背包 --

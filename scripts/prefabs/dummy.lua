@@ -137,15 +137,12 @@ local function on_health_sanity_change(inst, data)
 	if inst.components.sanity and inst.components.health then
 		local sanity = inst.components.sanity
 		sanity.current = inst.components.health.currenthealth
-		sanity.inst:PushEvent(
-			"sanitydelta",
-			{
-				oldpercent = sanity._oldpercent,
-				newpercent = sanity:GetPercent(),
-				overtime = true,
-				sanitymode = sanity.mode,
-			}
-		)
+		sanity.inst:PushEvent("sanitydelta", {
+			oldpercent = sanity._oldpercent,
+			newpercent = sanity:GetPercent(),
+			overtime = true,
+			sanitymode = sanity.mode,
+		})
 		sanity._oldpercent = sanity:GetPercent()
 	end
 	do_hunger_rate_change(inst)
