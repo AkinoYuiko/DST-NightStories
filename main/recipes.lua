@@ -48,19 +48,14 @@ STRINGS.NAMES.DUMMY_NIGHTMAREFUEL = STRINGS.NAMES.NIGHTMAREFUEL
 ------- Civi -------
 --------------------
 -- 红宝石 --
-AddRecipe(
-	"civi_redgem",
-	{ Ingredient("bluegem", 1), Ingredient("nightmarefuel", 1) },
-	CIVITECH_ONE,
-	{
-		nounlock = true,
-		nochar = true,
-		nomods = true,
-		builder_tag = "ns_builder_civi",
-		product = "redgem",
-		hidden = true,
-	}
-)
+AddRecipe("civi_redgem", { Ingredient("bluegem", 1), Ingredient("nightmarefuel", 1) }, CIVITECH_ONE, {
+	nounlock = true,
+	nochar = true,
+	nomods = true,
+	builder_tag = "ns_builder_civi",
+	product = "redgem",
+	hidden = true,
+})
 
 -- 蓝宝石 --
 AddRecipe("civi_bluegem", { Ingredient("redgem", 1), Ingredient("nightmarefuel", 1) }, CIVITECH_ONE, {
