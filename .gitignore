@@ -3,3 +3,4 @@
 nightstory.code-workspace
 .mo
 exported
+.luarc.json
