@@ -299,7 +299,7 @@ local master_postinit = function(inst)
 		inst.components.eater.stale_hunger = TUNING.MIOTAN_STALE_HUNGER_RATE
 		inst.components.eater.stale_health = TUNING.MIOTAN_STALE_HEALTH_RATE
 		inst.components.eater.spoiled_hunger = TUNING.MIOTAN_SPOILED_HUNGER_RATE
-		inst.components.eater.spoiled_health = TUNING.MIOTAN_SPOILED_HUNGER_RATE
+		inst.components.eater.spoiled_health = TUNING.MIOTAN_SPOILED_HEALTH_RATE
 	end
 
 	inst:ListenForEvent("ms_becameghost", on_becameghost)

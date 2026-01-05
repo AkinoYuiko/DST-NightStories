@@ -204,8 +204,8 @@ function lunarplanthat_init_fn(inst, build, ...)
 end
 
 local _lunarplanthat_clear_fn = lunarplanthat_clear_fn
-function lunarplanthat_clear_fn(inst, build, ...)
-	local ret = { _lunarplanthat_clear_fn(inst, build, ...) }
+function lunarplanthat_clear_fn(inst)
+	local ret = { _lunarplanthat_clear_fn(inst) }
 	inst:RemoveEventCallback("equipped", lunarplanthat_onequip)
 	return unpack(ret)
 end
