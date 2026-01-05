@@ -123,13 +123,7 @@ local function onequip(inst, owner)
 	local skin_build = inst:GetSkinBuild()
 	if skin_build ~= nil then
 		owner:PushEvent("equipskinneditem", inst:GetSkinName())
-		owner.AnimState:OverrideItemSkinSymbol(
-			"swap_object",
-			skin_build,
-			"swap_sword_lunarplant",
-			inst.GUID,
-			"sword_lunarplant"
-		)
+		owner.AnimState:OverrideItemSkinSymbol("swap_object", skin_build, "swap_sword_lunarplant", inst.GUID, "sword_lunarplant")
 	else
 		owner.AnimState:OverrideSymbol("swap_object", "sword_lunarplant", "swap_sword_lunarplant")
 	end
@@ -175,12 +169,7 @@ local function set_lunar(inst)
 		inst.components.forgerepairable:SetRepairMaterial(FORGEMATERIALS.LUNARPLANT)
 		inst.components.planardamage:SetBaseDamage(TUNING.LUNARSHADOW.LUNAR_PLANAR_DAMAGE)
 		inst.components.damagetypebonus:RemoveBonus("lunar_aligned", inst, "lunarshadow")
-		inst.components.damagetypebonus:AddBonus(
-			"shadow_aligned",
-			inst,
-			TUNING.LUNARSHADOW.ALIGN_VS_MULT,
-			"lunarshadow"
-		)
+		inst.components.damagetypebonus:AddBonus("shadow_aligned", inst, TUNING.LUNARSHADOW.ALIGN_VS_MULT, "lunarshadow")
 		inst:AddComponent("lunarplant_tentacle_weapon")
 		inst:RemoveComponent("shadowlevel")
 		inst:RemoveTag("shadow_item")
@@ -284,9 +273,7 @@ local function set_buffed_atks(inst, amount)
 		inst.base_damage = TUNING.LUNARSHADOW.BASE_DAMAGE
 		inst:RemoveTag("ignore_planar_entity")
 	end
-	inst.components.weapon:SetDamage(
-		inst._bonusenabled and inst.base_damage * TUNING.LUNARSHADOW.SETBONUS_DAMAGE_MULT or inst.base_damage
-	)
+	inst.components.weapon:SetDamage(inst._bonusenabled and inst.base_damage * TUNING.LUNARSHADOW.SETBONUS_DAMAGE_MULT or inst.base_damage)
 end
 
 local function try_consume_battery(inst)
@@ -539,9 +526,7 @@ local function fn()
 	inst:AddComponent("inventoryitem")
 
 	inst:AddComponent("weapon")
-	inst.components.weapon:SetDamage(
-		inst._bonusenabled and inst.base_damage * TUNING.LUNARSHADOW.SETBONUS_DAMAGE_MULT or inst.base_damage
-	)
+	inst.components.weapon:SetDamage(inst._bonusenabled and inst.base_damage * TUNING.LUNARSHADOW.SETBONUS_DAMAGE_MULT or inst.base_damage)
 	inst.components.weapon:SetOnAttack(onattack)
 
 	setup_equippable(inst)

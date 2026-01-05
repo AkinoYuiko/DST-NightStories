@@ -35,8 +35,7 @@ local function MakeSpice(name)
 
 		MakeHauntableLaunch(inst)
 
-		inst.drawnameoverride = rawget(_G, "EncodeStrCode")
-			and EncodeStrCode({ content = "NAMES." .. string.upper(name) })
+		inst.drawnameoverride = rawget(_G, "EncodeStrCode") and EncodeStrCode({ content = "NAMES." .. string.upper(name) })
 
 		return inst
 	end

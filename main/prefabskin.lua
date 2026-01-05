@@ -53,19 +53,10 @@ local function nightsword_update_image(inst, state)
 
 	if inst.components.equippable:IsEquipped() then
 		local owner = inst.components.inventoryitem.owner
-		owner.AnimState:OverrideItemSkinSymbol(
-			"swap_object",
-			skin_build,
-			"swap_nightmaresword" .. state,
-			inst.GUID,
-			"swap_nightmaresword" .. state
-		)
+		owner.AnimState:OverrideItemSkinSymbol("swap_object", skin_build, "swap_nightmaresword" .. state, inst.GUID, "swap_nightmaresword" .. state)
 	end
 
-	GlassicAPI.SetFloatData(
-		inst,
-		{ sym_build = skin_build, sym_name = "swap_nightmaresword" .. state, anim = "idle" .. state }
-	)
+	GlassicAPI.SetFloatData(inst, { sym_build = skin_build, sym_name = "swap_nightmaresword" .. state, anim = "idle" .. state })
 	GlassicAPI.UpdateFloaterAnim(inst)
 end
 

@@ -163,9 +163,7 @@ AddPrefabPostInit("nightsword", function(inst)
 						end
 						local single_crystal = inv:RemoveItem(crystal)
 						if single_crystal then
-							local pos = slot_widget
-									and Vector3(TheSim:ProjectScreenPos(slot_widget:GetWorldPosition():Get()))
-								or inst:GetPosition()
+							local pos = slot_widget and Vector3(TheSim:ProjectScreenPos(slot_widget:GetWorldPosition():Get())) or inst:GetPosition()
 							container:GiveItem(single_crystal, nil, pos)
 						end
 					end

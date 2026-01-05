@@ -159,10 +159,7 @@ local function use_fuel(item, target, doer)
 		end
 		return true
 	elseif target.components.perishable then
-		target.components.perishable:SetPercent(
-			target.components.perishable:GetPercent()
-				+ item.components.fuel.fuelvalue / TUNING.LANTERN_LIGHTTIME * wetmult
-		)
+		target.components.perishable:SetPercent(target.components.perishable:GetPercent() + item.components.fuel.fuelvalue / TUNING.LANTERN_LIGHTTIME * wetmult)
 		return true
 	end
 end
@@ -289,23 +286,9 @@ NS_ACTIONS.FUELPOCKETWATCH.fn = function(act)
 				inventory:ConsumeByName("horrorfuel", 1)
 			elseif inventory:Has("nightmarefuel", 1) then
 				inventory:ConsumeByName("nightmarefuel", 1)
-				caster.components.health:DoDelta(
-					TUNING.HEALTH_FUELPOCKETWATCH_COST,
-					nil,
-					"fuelpocketwatch",
-					true,
-					nil,
-					true
-				)
+				caster.components.health:DoDelta(TUNING.HEALTH_FUELPOCKETWATCH_COST, nil, "fuelpocketwatch", true, nil, true)
 			elseif caster.prefab == "dummy" then
-				caster.components.health:DoDelta(
-					TUNING.HEALTH_FUELPOCKETWATCH_COST_MORE,
-					nil,
-					"fuelpocketwatch",
-					true,
-					nil,
-					true
-				)
+				caster.components.health:DoDelta(TUNING.HEALTH_FUELPOCKETWATCH_COST_MORE, nil, "fuelpocketwatch", true, nil, true)
 			else
 				return
 			end
@@ -396,15 +379,8 @@ AddComponentAction("USEITEM", "nightfuel", function(inst, doer, target, actions)
 end)
 
 AddComponentAction("INVENTORY", "fuelpocketwatch", function(inst, doer, actions)
-	if
-		inst:HasTag("pocketwatch_inactive")
-		and doer:HasTag("nightmare_twins")
-		and inst:HasTag("pocketwatch_castfrominventory")
-	then
-		if
-			doer.prefab == "dummy"
-			or (doer.replica.inventory and doer.replica.inventory:HasItemWithTag("fuelpocketwatch_fuel", 1))
-		then
+	if inst:HasTag("pocketwatch_inactive") and doer:HasTag("nightmare_twins") and inst:HasTag("pocketwatch_castfrominventory") then
+		if doer.prefab == "dummy" or (doer.replica.inventory and doer.replica.inventory:HasItemWithTag("fuelpocketwatch_fuel", 1)) then
 			table.insert(actions, NS_ACTIONS.FUELPOCKETWATCH)
 		end
 	end
@@ -428,10 +404,7 @@ AddComponentAction("USEITEM", "nightcrystal", function(inst, doer, target, actio
 			if not target:HasTag("crystal_socketed") then
 				table.insert(actions, NS_ACTIONS.NIGHTSWORD)
 			end
-		elseif
-			target.prefab == "friendshipring"
-			and not (target.replica.equippable and target.replica.equippable:IsEquipped())
-		then
+		elseif target.prefab == "friendshipring" and not (target.replica.equippable and target.replica.equippable:IsEquipped()) then
 			table.insert(actions, NS_ACTIONS.MUTATETOTEM)
 		end
 	end
@@ -495,8 +468,7 @@ scheduler:ExecuteInTime(0, function()
 	local get_action_button_action = PlayerController.GetActionButtonAction
 	function PlayerController:GetActionButtonAction(force_target, ...)
 		local is_dummy = self.inst.prefab == "dummy"
-		local HAUNT_TARGET_EXCLUDE_TAGS, fn_i, scope_fn =
-			UpvalueUtil.GetUpvalue(get_action_button_action, "HAUNT_TARGET_EXCLUDE_TAGS")
+		local HAUNT_TARGET_EXCLUDE_TAGS, fn_i, scope_fn = UpvalueUtil.GetUpvalue(get_action_button_action, "HAUNT_TARGET_EXCLUDE_TAGS")
 		if HAUNT_TARGET_EXCLUDE_TAGS then
 			local haunt_exclude_tags = shallowcopy(HAUNT_TARGET_EXCLUDE_TAGS)
 			if is_dummy then

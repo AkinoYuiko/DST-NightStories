@@ -3,7 +3,7 @@ GLOBAL.setfenv(1, GLOBAL)
 local NS_SPICES = {
 	SPICE_CACTUS = {},
 	SPICE_MOONGLASS = {
-		oneatenfn = function(inst, eater)
+		oneatenfn = function(_inst, eater)
 			eater:AddDebuff("buff_glash", "buff_glash")
 		end,
 	},
@@ -24,7 +24,7 @@ GenerateSpicedFoods(require("preparedfoods"))
 GenerateSpicedFoods(require("preparedfoods_warly"))
 
 for _, recipe in pairs(spicedfoods) do
-	if NS_SPICES[recipe.spice] then
+	if NS_SPICES[recipe.spice] ~= nil then
 		AddCookerRecipe("portablespicer", recipe)
 		if recipe.basename == "voltgoatjelly" then -- WX78
 			TUNING.WX78_CHARGING_FOODS[recipe.name] = 1

@@ -372,12 +372,7 @@ local strings = {
 			{ title = "Birthday", desc = "Feb 25" },
 			{
 				title = "Favorite Food",
-				desc = "Lv.0 - "
-					.. STRINGS.NAMES.BONESOUP
-					.. "\nLv.1 - "
-					.. STRINGS.NAMES.MEATBALLS
-					.. "\nLv.2 - "
-					.. STRINGS.NAMES.VOLTGOATJELLY,
+				desc = "Lv.0 - " .. STRINGS.NAMES.BONESOUP .. "\nLv.1 - " .. STRINGS.NAMES.MEATBALLS .. "\nLv.2 - " .. STRINGS.NAMES.VOLTGOATJELLY,
 			},
 		},
 		miotan = {

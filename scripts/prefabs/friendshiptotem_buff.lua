@@ -15,17 +15,10 @@ local function totem_do_trail(target)
 	end
 	local mounted = target.components.rider ~= nil and target.components.rider:IsRiding()
 	local map = TheWorld.Map
-	local offset = FindValidPositionByFan(
-		math.random() * 2 * PI,
-		(mounted and 1 or 0.5) + math.random() * 0.5,
-		4,
-		function(offset)
-			local pt = Vector3(x + offset.x, 0, z + offset.z)
-			return map:IsPassableAtPoint(pt:Get())
-				and not map:IsPointNearHole(pt)
-				and #TheSim:FindEntities(pt.x, 0, pt.z, 0.7, TRAIL_FLAGS) <= 0
-		end
-	)
+	local offset = FindValidPositionByFan(math.random() * 2 * PI, (mounted and 1 or 0.5) + math.random() * 0.5, 4, function(offset)
+		local pt = Vector3(x + offset.x, 0, z + offset.z)
+		return map:IsPassableAtPoint(pt:Get()) and not map:IsPointNearHole(pt) and #TheSim:FindEntities(pt.x, 0, pt.z, 0.7, TRAIL_FLAGS) <= 0
+	end)
 
 	if offset ~= nil then
 		SpawnPrefab("cane_ancient_fx").Transform:SetPosition(x + offset.x, 0, z + offset.z)
@@ -38,11 +31,7 @@ end
 
 local function attack_attach(inst, target)
 	if target.components.combat then
-		target.components.combat.externaldamagemultipliers:SetModifier(
-			inst,
-			TUNING.BUFF_ATTACK_MULTIPLIER,
-			"friendshiptotem_dark"
-		)
+		target.components.combat.externaldamagemultipliers:SetModifier(inst, TUNING.BUFF_ATTACK_MULTIPLIER, "friendshiptotem_dark")
 	end
 	if target.totem_trail_task == nil then
 		target.totem_trail_task = target:DoPeriodicTask(6 * FRAMES, totem_do_trail, 2 * FRAMES)
@@ -64,11 +53,7 @@ end
 
 local function sanity_attach(inst, target)
 	if target.components.sanity then
-		target.components.sanity.neg_aura_modifiers:SetModifier(
-			inst,
-			Utils.GetAuraRate(target),
-			"friendshiptotem_light"
-		)
+		target.components.sanity.neg_aura_modifiers:SetModifier(inst, Utils.GetAuraRate(target), "friendshiptotem_light")
 	end
 end
 
@@ -155,5 +140,4 @@ local function MakeBuff(name, onattachedfn, onextendedfn, ondetachedfn, duration
 	return Prefab("buff_" .. name, fn, nil, prefabs)
 end
 
-return MakeBuff("friendshiptotem_dark", attack_attach, nil, attack_detach, 1, 1),
-	MakeBuff("friendshiptotem_light", sanity_attach, nil, sanity_detach, 1, 1)
+return MakeBuff("friendshiptotem_dark", attack_attach, nil, attack_detach, 1, 1), MakeBuff("friendshiptotem_light", sanity_attach, nil, sanity_detach, 1, 1)

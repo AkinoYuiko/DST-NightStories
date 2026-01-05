@@ -98,35 +98,25 @@ AddRecipe("civi_purebrilliance", { Ingredient("horrorfuel", 1), Ingredient("moon
 SortAfter("civi_purebrilliance", "lunarplant_kit")
 
 -- 亮茄外壳
-AddRecipe(
-	"civi_lunarplant_husk",
-	{ Ingredient("voidcloth", 1), Ingredient("purebrilliance", 1) },
-	TECH.LUNARFORGING_TWO,
-	{
-		nounlock = true,
-		nochar = true,
-		nomods = true,
-		builder_tag = "ns_builder_civi",
-		product = "lunarplant_husk",
-		hidden = true,
-	}
-)
+AddRecipe("civi_lunarplant_husk", { Ingredient("voidcloth", 1), Ingredient("purebrilliance", 1) }, TECH.LUNARFORGING_TWO, {
+	nounlock = true,
+	nochar = true,
+	nomods = true,
+	builder_tag = "ns_builder_civi",
+	product = "lunarplant_husk",
+	hidden = true,
+})
 SortAfter("civi_lunarplant_husk", "civi_purebrilliance")
 
 -- 纯粹恐惧
-AddRecipe(
-	"civi_horrorfuel",
-	{ Ingredient("purebrilliance", 1), Ingredient("nightmarefuel", 1) },
-	TECH.SHADOWFORGING_TWO,
-	{
-		nounlock = true,
-		nochar = true,
-		nomods = true,
-		builder_tag = "ns_builder_civi",
-		product = "horrorfuel",
-		hidden = true,
-	}
-)
+AddRecipe("civi_horrorfuel", { Ingredient("purebrilliance", 1), Ingredient("nightmarefuel", 1) }, TECH.SHADOWFORGING_TWO, {
+	nounlock = true,
+	nochar = true,
+	nomods = true,
+	builder_tag = "ns_builder_civi",
+	product = "horrorfuel",
+	hidden = true,
+})
 SortAfter("civi_horrorfuel", "voidcloth_kit")
 
 -- 暗影碎布
@@ -159,44 +149,27 @@ AddRecipe(
 SortAfter("friendshipring", "nightpack")
 
 -- 注能图腾
-AddDeconstructRecipe(
-	"friendshiptotem_dark",
-	{ Ingredient("moonrocknugget", 4), Ingredient("nightmarefuel", 4), Ingredient("darkcrystal", 1) }
-)
-AddDeconstructRecipe(
-	"friendshiptotem_light",
-	{ Ingredient("moonrocknugget", 4), Ingredient("nightmarefuel", 4), Ingredient("lightcrystal", 1) }
-)
+AddDeconstructRecipe("friendshiptotem_dark", { Ingredient("moonrocknugget", 4), Ingredient("nightmarefuel", 4), Ingredient("darkcrystal", 1) })
+AddDeconstructRecipe("friendshiptotem_light", { Ingredient("moonrocknugget", 4), Ingredient("nightmarefuel", 4), Ingredient("lightcrystal", 1) })
 
 AddDeconstructRecipe("darkgem", { Ingredient("darkcrystal", 1) })
 AddDeconstructRecipe("lightgem", { Ingredient("lightcrystal", 1) })
 AddDeconstructRecipe("darkmagatama", { Ingredient("darkcrystal", 1), Ingredient("nightmarefuel", 1) })
 AddDeconstructRecipe("lightmagatama", { Ingredient("lightcrystal", 1), Ingredient("nightmarefuel", 1) })
-AddDeconstructRecipe(
-	"darkamulet",
-	{ Ingredient("thulecite", 2), Ingredient("darkcrystal", 1), Ingredient("nightmarefuel", 4) }
-)
-AddDeconstructRecipe(
-	"lightamulet",
-	{ Ingredient("thulecite", 2), Ingredient("lightcrystal", 1), Ingredient("nightmarefuel", 4) }
-)
+AddDeconstructRecipe("darkamulet", { Ingredient("thulecite", 2), Ingredient("darkcrystal", 1), Ingredient("nightmarefuel", 4) })
+AddDeconstructRecipe("lightamulet", { Ingredient("thulecite", 2), Ingredient("lightcrystal", 1), Ingredient("nightmarefuel", 4) })
 ---------------------
 ------- Dummy -------
 ---------------------
 
 -- 灵魂剥离 --
-AddRecipe(
-	"dummy_nightmarefuel",
-	{ Ingredient(CHARACTER_INGREDIENT.HEALTH, 20, nil, nil, "decrease_sanity.tex") },
-	TECH.NONE,
-	{
-		nomods = true,
-		builder_tag = "ns_builder_dummy",
-		product = "nightmarefuel",
-		actionstr = "SOULSPLIT",
-		hidden = true,
-	}
-)
+AddRecipe("dummy_nightmarefuel", { Ingredient(CHARACTER_INGREDIENT.HEALTH, 20, nil, nil, "decrease_sanity.tex") }, TECH.NONE, {
+	nomods = true,
+	builder_tag = "ns_builder_dummy",
+	product = "nightmarefuel",
+	actionstr = "SOULSPLIT",
+	hidden = true,
+})
 -- 梦魇之力 --
 AddRecipe(
 	"shadowglash_builder",
@@ -256,12 +229,7 @@ SortAfter("lunarshadow", "wagpunk_workstation_security_pulse_cage")
 -- SortAfter("bat_lunarplant", "sword_lunarplant")
 
 -- 恐惧锁链 --
-AddRecipe(
-	"horrorchain",
-	{ Ingredient("horrorfuel", 4), Ingredient("voidcloth", 2) },
-	TECH.SHADOWFORGING_TWO,
-	{ nounlock = true, station_tag = "shadow_forge" }
-)
+AddRecipe("horrorchain", { Ingredient("horrorfuel", 4), Ingredient("voidcloth", 2) }, TECH.SHADOWFORGING_TWO, { nounlock = true, station_tag = "shadow_forge" })
 SortAfter("horrorchain", "voidcloth_scythe")
 
 -- 武神铥头 --
@@ -269,19 +237,9 @@ SortAfter("horrorchain", "voidcloth_scythe")
 -- SortAfter("battleruinshat", "wathgrithrhat")
 
 -- 厨师礼物包装 & 厨师包锅
-AddRecipe(
-	"cookpackagewrap",
-	{ Ingredient("portablecookpot_item", 1), Ingredient("bundlewrap", 4) },
-	TECH.NONE,
-	{ builder_tag = "masterchef", numtogive = 4 }
-)
+AddRecipe("cookpackagewrap", { Ingredient("portablecookpot_item", 1), Ingredient("bundlewrap", 4) }, TECH.NONE, { builder_tag = "masterchef", numtogive = 4 })
 SortAfter("cookpackagewrap", "portablespicer_item")
-AddRecipe(
-	"cookgiftwrap",
-	{ Ingredient("portablecookpot_item", 1), Ingredient("giftwrap", 4) },
-	TECH.NONE,
-	{ builder_tag = "masterchef", numtogive = 4 }
-)
+AddRecipe("cookgiftwrap", { Ingredient("portablecookpot_item", 1), Ingredient("giftwrap", 4) }, TECH.NONE, { builder_tag = "masterchef", numtogive = 4 })
 SortAfter("cookgiftwrap", "cookpackagewrap")
 
 -- 仙人掌粉 --

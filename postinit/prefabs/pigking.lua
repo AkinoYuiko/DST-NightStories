@@ -39,8 +39,7 @@ local function ontradeforitem(inst, item, giver, ...)
 	-- CHANGED PART --
 	local stacksize = item.components.stackable and item.components.stackable.stacksize or 1
 	local reward, max_num = get_reward(giver, item)
-	local amount = max_num and math.min(max_num, item.components.tradable.goldvalue)
-		or item.components.tradable.goldvalue
+	local amount = max_num and math.min(max_num, item.components.tradable.goldvalue) or item.components.tradable.goldvalue
 	for k = 1, amount * stacksize do
 		local nug = SpawnPrefab(reward)
 		nug.Transform:SetPosition(x, y, z)
@@ -62,8 +61,7 @@ local function ontradeforitem(inst, item, giver, ...)
 	if IsSpecialEventActive(SPECIAL_EVENTS.HALLOWED_NIGHTS) then
 		for k = 1, stacksize do
 			-- pick out up to 3 types of candies to throw out
-			local candytypes =
-				{ math.random(NUM_HALLOWEENCANDY), math.random(NUM_HALLOWEENCANDY), math.random(NUM_HALLOWEENCANDY) }
+			local candytypes = { math.random(NUM_HALLOWEENCANDY), math.random(NUM_HALLOWEENCANDY), math.random(NUM_HALLOWEENCANDY) }
 			local numcandies = (item.components.tradable.halloweencandyvalue or 1) + math.random(2) + 2
 
 			-- only people in costumes get a good amount of candy!

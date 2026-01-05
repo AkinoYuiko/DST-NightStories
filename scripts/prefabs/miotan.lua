@@ -42,10 +42,7 @@ local FUELMULT = {
 
 local function set_moisture(table)
 	for _, v in pairs(table) do
-		if
-			(v.components.equippable and v.components.equippable:IsEquipped())
-			and (v.components.inventoryitem and v.components.inventoryitem:IsWet())
-		then
+		if (v.components.equippable and v.components.equippable:IsEquipped()) and (v.components.inventoryitem and v.components.inventoryitem:IsWet()) then
 			v.components.inventoryitemmoisture:SetMoisture(0)
 		end
 	end
@@ -82,9 +79,7 @@ end
 local function check_fuel(inst, data)
 	local num = data.count or 1
 	local inv = inst.components.inventory
-	local inv_boat = inst.components.sailor
-		and inst.components.sailor:GetBoat()
-		and inst.components.sailor:GetBoat().components.container
+	local inv_boat = inst.components.sailor and inst.components.sailor:GetBoat() and inst.components.sailor:GetBoat().components.container
 	local override_fuel = data.override_fuel
 	if override_fuel then
 		if check_has_fuel(inv, inv_boat, override_fuel, num) then
@@ -104,9 +99,7 @@ local function consume_item(inst, item, mult)
 		return
 	end
 	local inv = inst.components.inventory
-	local inv_boat = inst.components.sailor
-		and inst.components.sailor:GetBoat()
-		and inst.components.sailor:GetBoat().components.container
+	local inv_boat = inst.components.sailor and inst.components.sailor:GetBoat() and inst.components.sailor:GetBoat().components.container
 	if check_has_fuel(inv, nil, item, num) then
 		inv:ConsumeByName(item, num)
 	elseif check_has_fuel(nil, inv_boat, item, num) then
@@ -132,12 +125,7 @@ local function auto_refuel(inst)
 				local fueled = target.components.fueled
 				local fuel, fuelmult = check_fuel(inst, data)
 				if fuel and fuelmult then
-					if
-						fueled
-						and fueled:GetPercent()
-								+ TUNING.LARGE_FUEL / fueled.maxfuel * fuelmult * data.trigger * fueled.bonusmult
-							<= 1
-					then
+					if fueled and fueled:GetPercent() + TUNING.LARGE_FUEL / fueled.maxfuel * fuelmult * data.trigger * fueled.bonusmult <= 1 then
 						is_fx_true = true
 						fueled:DoDelta(TUNING.LARGE_FUEL * bonus * fueled.bonusmult * fuelmult)
 						consume_item(inst, fuel, data.cost)
@@ -171,11 +159,7 @@ local function on_boost(inst)
 	inst.components.locomotor.runspeed = TUNING.MIOTAN_RUN_SPEED
 	inst.components.temperature.mintemp = TUNING.MIOTAN_BOOST_MINTEMP
 	if inst.components.eater then
-		inst.components.eater:SetAbsorptionModifiers(
-			TUNING.MIOTAN_BOOST_ABSORPTION,
-			TUNING.MIOTAN_BOOST_ABSORPTION,
-			TUNING.MIOTAN_BOOST_ABSORPTION
-		)
+		inst.components.eater:SetAbsorptionModifiers(TUNING.MIOTAN_BOOST_ABSORPTION, TUNING.MIOTAN_BOOST_ABSORPTION, TUNING.MIOTAN_BOOST_ABSORPTION)
 	end
 end
 

@@ -8,14 +8,7 @@ AddPrefabPostInit("antlion", function(inst)
 
 	local on_given_item = inst.components.trader.onaccept
 	inst.components.trader.onaccept = function(inst, giver, item)
-		if
-			item
-			and (
-				item.prefab == "antliontrinket"
-				or item.prefab == "cotl_trinket"
-				or item.components.tradable.goldvalue > 0
-			)
-		then
+		if item and (item.prefab == "antliontrinket" or item.prefab == "cotl_trinket" or item.components.tradable.goldvalue > 0) then
 			inst.itemstacksize = item and item.components.stackable and item.components.stackable.stacksize or 1
 		end
 		on_given_item(inst, giver, item)

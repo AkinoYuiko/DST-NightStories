@@ -30,14 +30,7 @@ local function get_aura_rate(inst)
 	if sanity then
 		if not sanity.sanity_aura_immune then
 			local x, y, z = inst.Transform:GetWorldPosition()
-			local ents = TheSim:FindEntities(
-				x,
-				y,
-				z,
-				TUNING.SANITY_AURA_SEACH_RANGE,
-				{ "sanityaura" },
-				{ "FX", "NOCLICK", "DECOR", "INLIMBO" }
-			)
+			local ents = TheSim:FindEntities(x, y, z, TUNING.SANITY_AURA_SEACH_RANGE, { "sanityaura" }, { "FX", "NOCLICK", "DECOR", "INLIMBO" })
 			for i, v in ipairs(ents) do
 				if v.components.sanityaura ~= nil and v ~= inst then
 					local is_aura_immune = false
@@ -53,8 +46,7 @@ local function get_aura_rate(inst)
 					if not is_aura_immune then
 						local aura_val = v.components.sanityaura:GetAura(inst)
 						aura_val = (
-							aura_val < 0
-								and (sanity.neg_aura_absorb > 0 and sanity.neg_aura_absorb * -aura_val or aura_val) * sanity.neg_aura_mult
+							aura_val < 0 and (sanity.neg_aura_absorb > 0 and sanity.neg_aura_absorb * -aura_val or aura_val) * sanity.neg_aura_mult
 							or aura_val
 						)
 						aura_delta = aura_delta + ((aura_val < 0 and sanity.neg_aura_immune) and 0 or aura_val)
@@ -66,11 +58,7 @@ local function get_aura_rate(inst)
 		local mount = inst.components.rider:IsRiding() and inst.components.rider:GetMount() or nil
 		if mount ~= nil and mount.components.sanityaura ~= nil then
 			local aura_val = mount.components.sanityaura:GetAura(inst)
-			aura_val = (
-				aura_val < 0
-					and (sanity.neg_aura_absorb > 0 and sanity.neg_aura_absorb * -aura_val or aura_val) * sanity.neg_aura_mult
-				or aura_val
-			)
+			aura_val = (aura_val < 0 and (sanity.neg_aura_absorb > 0 and sanity.neg_aura_absorb * -aura_val or aura_val) * sanity.neg_aura_mult or aura_val)
 			aura_delta = aura_delta + ((aura_val < 0 and sanity.neg_aura_immune) and 0 or aura_val)
 		end
 	end
@@ -106,11 +94,7 @@ end
 local function launching_projectile(data)
 	return data.weapon ~= nil
 		and data.projectile == nil
-		and (
-			data.weapon.components.projectile ~= nil
-			or data.weapon.components.complexprojectile ~= nil
-			or data.weapon.components.weapon:CanRangedAttack()
-		)
+		and (data.weapon.components.projectile ~= nil or data.weapon.components.complexprojectile ~= nil or data.weapon.components.weapon:CanRangedAttack())
 end
 
 return {

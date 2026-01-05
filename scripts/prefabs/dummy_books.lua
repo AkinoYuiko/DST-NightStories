@@ -19,8 +19,7 @@ local book_defs = {
 		fx = "fx_book_rain",
 		fxmount = "fx_book_rain_mount",
 		fn = function(inst, reader)
-			local weather_cmp = TheWorld:HasTag("cave") and TheWorld.net.components.caveweather
-				or TheWorld.net.components.weather
+			local weather_cmp = TheWorld:HasTag("cave") and TheWorld.net.components.caveweather or TheWorld.net.components.weather
 			if TheWorld.state.precipitation ~= "none" or TheWorld.state.islandisraining then
 				-- TheWorld:PushEvent("ms_forceprecipitation_island", false)
 				TheWorld:PushEvent("ms_forceprecipitation", false)
@@ -33,8 +32,7 @@ local book_defs = {
 				-- TheWorld:PushEvent("ms_forceprecipitation_island", true)
 				TheWorld:PushEvent("ms_forceprecipitation", true)
 				weather_cmp:OnUpdate(0)
-				local _moisture = UpvalueUtil.GetUpvalue(weather_cmp.OnUpdate, "_moisture")
-					or UpvalueUtil.GetUpvalue(weather_cmp.OnUpdate, "_moisture_island")
+				local _moisture = UpvalueUtil.GetUpvalue(weather_cmp.OnUpdate, "_moisture") or UpvalueUtil.GetUpvalue(weather_cmp.OnUpdate, "_moisture_island")
 				local _moisturefloormultiplier = UpvalueUtil.GetUpvalue(weather_cmp.OnSave, "_moisturefloormultiplier")
 				local _moisturefloor = UpvalueUtil.GetUpvalue(weather_cmp.OnUpdate, "_moisturefloor")
 					or UpvalueUtil.GetUpvalue(weather_cmp.OnUpdate, "_moisturefloor_island")

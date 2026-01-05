@@ -5,9 +5,9 @@ local assets = {
 local function onattack_moonglass(inst, attacker, target)
 	inst.components.weapon.attackwear = target
 			and target:IsValid()
-			and (target:HasTag("shadow") or target:HasTag("shadowminion") or target:HasTag("shadowchesspiece") or target:HasTag(
-				"stalker"
-			) or target:HasTag("stalkerminion"))
+			and (target:HasTag("shadow") or target:HasTag("shadowminion") or target:HasTag("shadowchesspiece") or target:HasTag("stalker") or target:HasTag(
+				"stalkerminion"
+			))
 			and TUNING.MOONGLASSPICKAXE.SHADOW_WEAR
 		or TUNING.MOONGLASSPICKAXE.ATTACKWEAR
 end
@@ -16,13 +16,7 @@ local function onequip(inst, owner)
 	local skin_build = inst:GetSkinBuild()
 	if skin_build then
 		owner:PushEvent("equipskinneditem", inst:GetSkinName())
-		owner.AnimState:OverrideItemSkinSymbol(
-			"swap_object",
-			skin_build,
-			"swap_glasspickaxe",
-			inst.GUID,
-			"swap_glasspickaxe"
-		)
+		owner.AnimState:OverrideItemSkinSymbol("swap_object", skin_build, "swap_glasspickaxe", inst.GUID, "swap_glasspickaxe")
 	else
 		owner.AnimState:OverrideSymbol("swap_object", "glasspickaxe", "swap_glasspickaxe")
 	end
@@ -90,11 +84,7 @@ local function fn()
 
 	MakeHauntableLaunch(inst)
 
-	inst.components.floater:SetBankSwapOnFloat(
-		true,
-		-11,
-		{ sym_build = "glasspickaxe", sym_name = "swap_glasspickaxe", bank = "glasspickaxe" }
-	)
+	inst.components.floater:SetBankSwapOnFloat(true, -11, { sym_build = "glasspickaxe", sym_name = "swap_glasspickaxe", bank = "glasspickaxe" })
 
 	-- inst:DoTaskInTime(0, function(inst)
 	--	 inst.drawnameoverride = rawget(_G, "EncodeStrCode") and EncodeStrCode({content = "NAMES." .. string.upper(inst.prefab)})

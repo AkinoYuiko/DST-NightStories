@@ -125,8 +125,7 @@ local function blackhole()
 	inst:AddTag("nopunch")
 	inst:AddTag("allow_action_on_impassable")
 
-	local swap_data =
-		{ sym_build = "blackholestaff", sym_name = "swap_blackholestaff", bank = "staffs", anim = "blackholestaff" }
+	local swap_data = { sym_build = "blackholestaff", sym_name = "swap_blackholestaff", bank = "staffs", anim = "blackholestaff" }
 	MakeInventoryFloatable(inst, "med", 0.1, { 0.9, 0.4, 0.9 }, true, -13, swap_data)
 
 	-- inst.drawatlasoverride = "images/inventoryimages/blackholestaff.xml"

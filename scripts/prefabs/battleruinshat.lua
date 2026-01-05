@@ -16,13 +16,7 @@ local function MakeHat(name)
 		local skin_build = inst:GetSkinBuild()
 		if skin_build ~= nil then
 			owner:PushEvent("equipskinneditem", inst:GetSkinName())
-			owner.AnimState:OverrideItemSkinSymbol(
-				"swap_hat",
-				skin_build,
-				symbol_override or "swap_hat",
-				inst.GUID,
-				fname
-			)
+			owner.AnimState:OverrideItemSkinSymbol("swap_hat", skin_build, symbol_override or "swap_hat", inst.GUID, fname)
 		else
 			owner.AnimState:OverrideSymbol("swap_hat", fname, symbol_override or "swap_hat")
 		end

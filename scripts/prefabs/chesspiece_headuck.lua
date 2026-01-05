@@ -60,11 +60,7 @@ local function DoStruggle(inst, count)
 		inst.AnimState:PlayAnimation("jiggle")
 		inst.SoundEmitter:PlaySound("dontstarve/common/together/sculptures/shake")
 		inst._task = count > 1 and inst:DoTaskInTime(inst.AnimState:GetCurrentAnimationLength(), DoStruggle, count - 1)
-			or inst:DoTaskInTime(
-				inst.AnimState:GetCurrentAnimationLength() + math.random() + 0.6,
-				DoStruggle,
-				math.max(1, math.random(3) - 1)
-			)
+			or inst:DoTaskInTime(inst.AnimState:GetCurrentAnimationLength() + math.random() + 0.6, DoStruggle, math.max(1, math.random(3) - 1))
 	end
 end
 
@@ -180,10 +176,7 @@ local function makepiece(pieceid, materialid)
 	if materialid then
 		table.insert(prefabs, MATERIALS[materialid].prefab)
 		table.insert(assets, Asset("ANIM", "anim/" .. build .. ".zip"))
-		table.insert(
-			assets,
-			Asset("INV_IMAGE", "chesspiece_" .. PIECES[pieceid].name .. MATERIALS[materialid].inv_suffix)
-		)
+		table.insert(assets, Asset("INV_IMAGE", "chesspiece_" .. PIECES[pieceid].name .. MATERIALS[materialid].inv_suffix))
 	else
 		for m = 1, #MATERIALS do
 			local p = "chesspiece_" .. PIECES[pieceid].name .. "_" .. MATERIALS[m].name
@@ -286,8 +279,7 @@ local function makepiece(pieceid, materialid)
 		return inst
 	end
 
-	local prefabname = materialid and ("chesspiece_" .. PIECES[pieceid].name .. "_" .. MATERIALS[materialid].name)
-		or ("chesspiece_" .. PIECES[pieceid].name)
+	local prefabname = materialid and ("chesspiece_" .. PIECES[pieceid].name .. "_" .. MATERIALS[materialid].name) or ("chesspiece_" .. PIECES[pieceid].name)
 	return Prefab(prefabname, fn, assets, prefabs)
 end
 
@@ -329,12 +321,7 @@ local function makebuilder(pieceid)
 		return inst
 	end
 
-	return Prefab(
-		"chesspiece_" .. PIECES[pieceid].name .. "_builder",
-		fn,
-		nil,
-		{ "chesspiece_" .. PIECES[pieceid].name }
-	)
+	return Prefab("chesspiece_" .. PIECES[pieceid].name .. "_builder", fn, nil, { "chesspiece_" .. PIECES[pieceid].name })
 end
 
 --------------------------------------------------------------------------

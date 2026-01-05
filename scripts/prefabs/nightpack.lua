@@ -49,11 +49,7 @@ local function IsValidVictim(victim)
 			or victim:HasTag("soulless")
 			or victim:HasTag("groundspike")
 			or victim:HasTag("smashable")
-		)
-		and (
-			(victim.components.combat ~= nil and victim.components.health ~= nil)
-			or victim.components.murderable ~= nil
-		)
+		) and ((victim.components.combat ~= nil and victim.components.health ~= nil) or victim.components.murderable ~= nil)
 end
 
 local function OnHealing(inst, data)
@@ -63,12 +59,7 @@ local function OnHealing(inst, data)
 		and victim:IsValid()
 		and (
 			victim == inst
-			or (
-				not inst.components.health:IsDead()
-				and IsValidVictim(victim)
-				and victim.components.health:IsDead()
-				and inst:IsNear(victim, 15)
-			)
+			or (not inst.components.health:IsDead() and IsValidVictim(victim) and victim.components.health:IsDead() and inst:IsNear(victim, 15))
 		)
 	then
 		local epicmult = victim:HasTag("dualsoul") and 2 or (victim:HasTag("epic") and math.random(7, 8)) or 1
@@ -291,10 +282,7 @@ local StateFns = {
 			inst.components.fueled:SetPercent(0.5)
 			inst.components.fueled:SetDepletedFn(nofuel)
 			inst.components.fueled:SetUpdateFn(onfuelupdate)
-			inst.components.fueled:SetFirstPeriod(
-				TUNING.TURNON_FUELED_CONSUMPTION,
-				TUNING.TURNON_FULL_FUELED_CONSUMPTION
-			)
+			inst.components.fueled:SetFirstPeriod(TUNING.TURNON_FUELED_CONSUMPTION, TUNING.TURNON_FULL_FUELED_CONSUMPTION)
 			inst.components.fueled.accepting = true
 
 			inst.components.fueled:StartConsuming()
@@ -312,10 +300,7 @@ local StateFns = {
 			inst.components.fueled:SetPercent(1)
 			inst.components.fueled:SetDepletedFn(nofuel)
 			inst.components.fueled:SetUpdateFn(onfuelupdate)
-			inst.components.fueled:SetFirstPeriod(
-				TUNING.TURNON_FUELED_CONSUMPTION,
-				TUNING.TURNON_FULL_FUELED_CONSUMPTION
-			)
+			inst.components.fueled:SetFirstPeriod(TUNING.TURNON_FUELED_CONSUMPTION, TUNING.TURNON_FULL_FUELED_CONSUMPTION)
 			inst.components.fueled.accepting = true
 
 			inst.components.fueled:StartConsuming()

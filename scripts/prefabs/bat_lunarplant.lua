@@ -14,9 +14,7 @@ local function UpdateDamage(inst)
 	if inst.components.perishable and inst.components.weapon then
 		local dmg = inst.base_damage * inst.components.perishable:GetPercent()
 		dmg = Remap(dmg, 0, inst.base_damage, 0.5 * inst.base_damage, inst.base_damage)
-		inst.components.weapon:SetDamage(
-			inst._bonusenabled and dmg * TUNING.WEAPONS_LUNARPLANT_SETBONUS_DAMAGE_MULT or dmg
-		)
+		inst.components.weapon:SetDamage(inst._bonusenabled and dmg * TUNING.WEAPONS_LUNARPLANT_SETBONUS_DAMAGE_MULT or dmg)
 	end
 end
 
@@ -74,13 +72,7 @@ local function onequip(inst, owner)
 	local skin_build = inst:GetSkinBuild()
 	if skin_build ~= nil then
 		owner:PushEvent("equipskinneditem", inst:GetSkinName())
-		owner.AnimState:OverrideItemSkinSymbol(
-			"swap_object",
-			skin_build,
-			"swap_bat_lunarplant",
-			inst.GUID,
-			"bat_lunarplant"
-		)
+		owner.AnimState:OverrideItemSkinSymbol("swap_object", skin_build, "swap_bat_lunarplant", inst.GUID, "bat_lunarplant")
 	else
 		owner.AnimState:OverrideSymbol("swap_object", "bat_lunarplant", "swap_bat_lunarplant")
 	end

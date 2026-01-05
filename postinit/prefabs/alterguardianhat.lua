@@ -2,10 +2,7 @@ local AddPrefabPostInit = AddPrefabPostInit
 GLOBAL.setfenv(1, GLOBAL)
 
 local function OnUpdateDapperness(owner)
-	local inst = owner
-		and owner.components.inventory
-		and owner.components.inventory.equipslots
-		and owner.components.inventory.equipslots[EQUIPSLOTS.HEAD]
+	local inst = owner and owner.components.inventory and owner.components.inventory.equipslots and owner.components.inventory.equipslots[EQUIPSLOTS.HEAD]
 	-- if inst.components.equippable == nil then return end
 	if inst then
 		if inst.lunarseedsmaxed then

@@ -7,9 +7,7 @@ local function set_buff_enabled(inst, enabled)
 		if not inst._bonusenabled then
 			inst._bonusenabled = true
 			if inst.components.weapon then
-				inst.components.weapon:SetDamage(
-					TUNING.HORRORCHAIN_DAMAGE * TUNING.WEAPONS_VOIDCLOTH_SETBONUS_DAMAGE_MULT
-				)
+				inst.components.weapon:SetDamage(TUNING.HORRORCHAIN_DAMAGE * TUNING.WEAPONS_VOIDCLOTH_SETBONUS_DAMAGE_MULT)
 			end
 			inst.components.planardamage:AddBonus(inst, TUNING.WEAPONS_VOIDCLOTH_SETBONUS_PLANAR_DAMAGE, "setbonus")
 		end
@@ -122,8 +120,7 @@ local function setup_components(inst)
 
 	inst:AddComponent("weapon")
 	inst.components.weapon:SetDamage(
-		inst._bonusenabled and TUNING.HORRORCHAIN_DAMAGE * TUNING.WEAPONS_VOIDCLOTH_SETBONUS_DAMAGE_MULT
-			or TUNING.HORRORCHAIN_DAMAGE
+		inst._bonusenabled and TUNING.HORRORCHAIN_DAMAGE * TUNING.WEAPONS_VOIDCLOTH_SETBONUS_DAMAGE_MULT or TUNING.HORRORCHAIN_DAMAGE
 	)
 	inst.components.weapon:SetRange(TUNING.HORRORCHAIN_RANGE)
 	inst.components.weapon:SetOnAttack(onattack)

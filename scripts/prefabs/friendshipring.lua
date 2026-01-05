@@ -438,7 +438,4 @@ local function MakeTotem(color)
 	return Prefab("friendshiptotem_" .. color, totem_fn, assets, prefabs.totem)
 end
 
-return Prefab("friendshipring", base_fn, assets.ring),
-	MakeTotem("dark"),
-	MakeTotem("light"),
-	Prefab("friendshiptotem_fx_proxy", fx_proxy_fn)
+return Prefab("friendshipring", base_fn, assets.ring), MakeTotem("dark"), MakeTotem("light"), Prefab("friendshiptotem_fx_proxy", fx_proxy_fn)

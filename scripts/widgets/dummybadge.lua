@@ -186,9 +186,7 @@ function DummyBadge:ShowBuff(symbol)
 			self.bufficon:GetAnimState():PushAnimation("buff_none", false)
 		end
 	elseif symbol ~= self.buffsymbol then
-		self.bufficon
-			:GetAnimState()
-			:OverrideSymbol("buff_icon", self.OVERRIDE_SYMBOL_BUILD[symbol] or self.default_symbol_build, symbol)
+		self.bufficon:GetAnimState():OverrideSymbol("buff_icon", self.OVERRIDE_SYMBOL_BUILD[symbol] or self.default_symbol_build, symbol)
 
 		self.bufficon:GetAnimState():PlayAnimation("buff_activate")
 		self.bufficon:GetAnimState():PushAnimation("buff_idle", false)
@@ -237,8 +235,7 @@ function DummyBadge:HideEffigy(effigy_type)
 		if self.gravestoneeffigyanim.inst.task ~= nil then
 			self.gravestoneeffigyanim.inst.task:Cancel()
 		end
-		self.gravestoneeffigyanim.inst.task =
-			self.gravestoneeffigyanim.inst:DoTaskInTime(7 * FRAMES, PlayEffigyBreakSound, self)
+		self.gravestoneeffigyanim.inst.task = self.gravestoneeffigyanim.inst:DoTaskInTime(7 * FRAMES, PlayEffigyBreakSound, self)
 	end
 end
 
@@ -260,12 +257,9 @@ function DummyBadge:DoTransition()
 	end
 
 	if self.transition_task then
-		self.anim:GetAnimState():SetMultColour(
-			unpack(
-				self.inducedinsanity and INDUCEDINSANITY_TINT
-					or (self.sanitymode == SANITY_MODE_INSANITY and SANITY_TINT or LUNACY_TINT)
-			)
-		)
+		self.anim
+			:GetAnimState()
+			:SetMultColour(unpack(self.inducedinsanity and INDUCEDINSANITY_TINT or (self.sanitymode == SANITY_MODE_INSANITY and SANITY_TINT or LUNACY_TINT)))
 		Badge.SetPercent(self, self.val, self.max) -- refresh the animation
 	end
 
@@ -403,11 +397,7 @@ function DummyBadge:OnUpdate(dt)
 	end
 
 	local poison = self.owner.ispoisoned
-		or (
-			self.owner.player_classified
-			and self.owner.player_classified.ispoisoned
-			and self.owner.player_classified.ispoisoned:value()
-		)
+		or (self.owner.player_classified and self.owner.player_classified.ispoisoned and self.owner.player_classified.ispoisoned:value())
 	if self.poison ~= poison then
 		self.poison = poison
 		if poison then

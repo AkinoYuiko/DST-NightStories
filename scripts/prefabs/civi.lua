@@ -67,11 +67,7 @@ local function on_level_change(inst)
 	inst.components.sanity.neg_aura_mult = (TUNING.CIVI_BASE_SANITY_MULT + inst.level * 0.25)
 
 	if inst.components.eater ~= nil then
-		inst.components.eater:SetAbsorptionModifiers(
-			(1 - 0.25 * inst.level),
-			(1 - 0.25 * inst.level),
-			(1 - 0.25 * inst.level)
-		)
+		inst.components.eater:SetAbsorptionModifiers((1 - 0.25 * inst.level), (1 - 0.25 * inst.level), (1 - 0.25 * inst.level))
 	end
 	inst.components.hunger:SetRate((1 - inst.level * 0.1) * TUNING.WILSON_HUNGER_RATE)
 	inst.components.hunger:SetPercent(hunger_percent)

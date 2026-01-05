@@ -29,8 +29,7 @@ function SpellCaster:CanCast(doer, target, pos, ...)
 
 			if self.canuseonpoint then
 				local px, py, pz = pos:Get()
-				return TheWorld.Map:IsAboveGroundAtPoint(px, py, pz, self.canuseonpoint_water)
-					and not TheWorld.Map:IsGroundTargetBlocked(pos)
+				return TheWorld.Map:IsAboveGroundAtPoint(px, py, pz, self.canuseonpoint_water) and not TheWorld.Map:IsGroundTargetBlocked(pos)
 			elseif self.canuseonpoint_water then
 				return TheWorld.Map:IsOceanAtPoint(pos:Get()) and not TheWorld.Map:IsGroundTargetBlocked(pos)
 			else
@@ -40,10 +39,7 @@ function SpellCaster:CanCast(doer, target, pos, ...)
 			target:IsInLimbo()
 			or not target.entity:IsVisible()
 			or (target.components.health ~= nil and target.components.health:IsDead() and not self.canuseondead)
-			or (
-				target.sg ~= nil
-				and (target.sg.currentstate.name == "death" or target.sg:HasAnyStateTag(TARGET_STATE_TAGS))
-			)
+			or (target.sg ~= nil and (target.sg.currentstate.name == "death" or target.sg:HasAnyStateTag(TARGET_STATE_TAGS)))
 		then
 			return false
 		else
