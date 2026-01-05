@@ -7,6 +7,7 @@ indent_style = tab
 trim_trailing_whitespace = true
 
 [*.lua]
+max_line_length = 160
 insert_final_newline = true
 
 [*.{xml,xsd}]
