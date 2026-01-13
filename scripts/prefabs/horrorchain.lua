@@ -119,9 +119,7 @@ local function setup_components(inst)
 	inst.components.equippable:SetOnUnequip(onunequip)
 
 	inst:AddComponent("weapon")
-	inst.components.weapon:SetDamage(
-		inst._bonusenabled and TUNING.HORRORCHAIN_DAMAGE * TUNING.WEAPONS_VOIDCLOTH_SETBONUS_DAMAGE_MULT or TUNING.HORRORCHAIN_DAMAGE
-	)
+	inst.components.weapon:SetDamage(inst._bonusenabled and TUNING.HORRORCHAIN_DAMAGE * TUNING.WEAPONS_VOIDCLOTH_SETBONUS_DAMAGE_MULT or TUNING.HORRORCHAIN_DAMAGE)
 	inst.components.weapon:SetRange(TUNING.HORRORCHAIN_RANGE)
 	inst.components.weapon:SetOnAttack(onattack)
 end

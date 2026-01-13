@@ -45,10 +45,7 @@ local function get_aura_rate(inst)
 
 					if not is_aura_immune then
 						local aura_val = v.components.sanityaura:GetAura(inst)
-						aura_val = (
-							aura_val < 0 and (sanity.neg_aura_absorb > 0 and sanity.neg_aura_absorb * -aura_val or aura_val) * sanity.neg_aura_mult
-							or aura_val
-						)
+						aura_val = (aura_val < 0 and (sanity.neg_aura_absorb > 0 and sanity.neg_aura_absorb * -aura_val or aura_val) * sanity.neg_aura_mult or aura_val)
 						aura_delta = aura_delta + ((aura_val < 0 and sanity.neg_aura_immune) and 0 or aura_val)
 					end
 				end

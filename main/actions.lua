@@ -342,10 +342,7 @@ AddComponentAction("USEITEM", "fuel", function(inst, doer, target, actions, righ
 	if doer.prefab == "miotan" and (inst.prefab == "nightmarefuel" or inst.prefab == "horrorfuel") then
 		if
 			fuel_action_testfn(target)
-			and (
-				not (doer.replica.rider and doer.replica.rider:IsRiding())
-				or (target.replica.inventoryitem and target.replica.inventoryitem:IsGrandOwner(doer))
-			)
+			and (not (doer.replica.rider and doer.replica.rider:IsRiding()) or (target.replica.inventoryitem and target.replica.inventoryitem:IsGrandOwner(doer)))
 		then
 			table.insert(actions, NS_ACTIONS.MIOFUEL)
 		end
@@ -359,12 +356,7 @@ AddComponentAction("INVENTORY", "nightfuel", function(inst, doer, actions, right
 		and (right or doer.components.playercontroller:IsControlPressed(CONTROL_FORCE_INSPECT))
 	then
 		local hand_item = doer.replica.inventory:GetEquippedItem(EQUIPSLOTS.HANDS)
-		if
-			hand_item
-			and hand_item.replica.container
-			and hand_item.replica.container:IsOpenedBy(doer)
-			and hand_item.replica.container:CanTakeItemInSlot(inst)
-		then
+		if hand_item and hand_item.replica.container and hand_item.replica.container:IsOpenedBy(doer) and hand_item.replica.container:CanTakeItemInSlot(inst) then
 			table.insert(actions, ACTIONS.CHANGE_TACKLE)
 		end
 	elseif doer:HasTag("nightfueleater") then
@@ -420,13 +412,7 @@ end
 AddComponentAction("INVENTORY", "nightcrystal", function(inst, doer, actions, right)
 	if doer.replica.inventory and not doer.replica.inventory:IsHeavyLifting() then
 		local sword = doer.replica.inventory:GetEquippedItem(EQUIPSLOTS.HANDS)
-		if
-			sword
-			and sword.prefab == "nightsword"
-			and sword.replica.container
-			and sword.replica.container:IsOpenedBy(doer)
-			and sword.replica.container:CanTakeItemInSlot(inst)
-		then
+		if sword and sword.prefab == "nightsword" and sword.replica.container and sword.replica.container:IsOpenedBy(doer) and sword.replica.container:CanTakeItemInSlot(inst) then
 			table.insert(actions, ACTIONS.CHANGE_TACKLE)
 		elseif doer.prefab == "civi" then
 			-- if doer.replica.inventory:GetActiveItem() == inst then return end
@@ -483,12 +469,7 @@ scheduler:ExecuteInTime(0, function()
 		if HAUNT_TARGET_EXCLUDE_TAGS then
 			debug.setupvalue(scope_fn, fn_i, HAUNT_TARGET_EXCLUDE_TAGS)
 		end
-		if
-			bufferedaction
-			and bufferedaction.action == ACTIONS.HAUNT
-			and bufferedaction.target:HasTag("nightmare_twins")
-			and bufferedaction.doer.prefab ~= "dummy"
-		then
+		if bufferedaction and bufferedaction.action == ACTIONS.HAUNT and bufferedaction.target:HasTag("nightmare_twins") and bufferedaction.doer.prefab ~= "dummy" then
 			return
 		end
 		return bufferedaction
@@ -515,10 +496,7 @@ AddComponentAction("INVENTORY", "lunarshadowstate", function(inst, doer, actions
 		force_state = true
 	end
 	local equipped = inst.replica.equippable and inst.replica.equippable:IsEquipped()
-	if
-		not doer.components.playercontroller.isclientcontrollerattached
-		and (right or doer.components.playercontroller:IsControlPressed(CONTROL_FORCE_INSPECT))
-	then
+	if not doer.components.playercontroller.isclientcontrollerattached and (right or doer.components.playercontroller:IsControlPressed(CONTROL_FORCE_INSPECT)) then
 		if equipped then
 			if not force_state then
 				table.insert(actions, NS_ACTIONS.LUNARSHADOWSTATE)

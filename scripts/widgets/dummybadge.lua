@@ -257,9 +257,7 @@ function DummyBadge:DoTransition()
 	end
 
 	if self.transition_task then
-		self.anim
-			:GetAnimState()
-			:SetMultColour(unpack(self.inducedinsanity and INDUCEDINSANITY_TINT or (self.sanitymode == SANITY_MODE_INSANITY and SANITY_TINT or LUNACY_TINT)))
+		self.anim:GetAnimState():SetMultColour(unpack(self.inducedinsanity and INDUCEDINSANITY_TINT or (self.sanitymode == SANITY_MODE_INSANITY and SANITY_TINT or LUNACY_TINT)))
 		Badge.SetPercent(self, self.val, self.max) -- refresh the animation
 	end
 
@@ -396,8 +394,7 @@ function DummyBadge:OnUpdate(dt)
 		end
 	end
 
-	local poison = self.owner.ispoisoned
-		or (self.owner.player_classified and self.owner.player_classified.ispoisoned and self.owner.player_classified.ispoisoned:value())
+	local poison = self.owner.ispoisoned or (self.owner.player_classified and self.owner.player_classified.ispoisoned and self.owner.player_classified.ispoisoned:value())
 	if self.poison ~= poison then
 		self.poison = poison
 		if poison then

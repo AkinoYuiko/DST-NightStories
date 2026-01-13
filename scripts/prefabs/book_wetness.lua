@@ -32,8 +32,7 @@ local book_defs = {
 				if ent.components.moisture then
 					if should_dry then
 						ent.components.moisture:SetPercent(0)
-						local fx =
-							SpawnPrefab(ent.components.rider and ent.components.rider:IsRiding() and "fx_book_temperature_mount" or "fx_book_temperature")
+						local fx = SpawnPrefab(ent.components.rider and ent.components.rider:IsRiding() and "fx_book_temperature_mount" or "fx_book_temperature")
 						fx.Transform:SetPosition(ent.Transform:GetWorldPosition())
 						fx.Transform:SetRotation(ent.Transform:GetRotation())
 					else

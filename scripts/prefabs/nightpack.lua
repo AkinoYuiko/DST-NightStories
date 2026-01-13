@@ -57,10 +57,7 @@ local function OnHealing(inst, data)
 	if
 		victim ~= nil
 		and victim:IsValid()
-		and (
-			victim == inst
-			or (not inst.components.health:IsDead() and IsValidVictim(victim) and victim.components.health:IsDead() and inst:IsNear(victim, 15))
-		)
+		and (victim == inst or (not inst.components.health:IsDead() and IsValidVictim(victim) and victim.components.health:IsDead() and inst:IsNear(victim, 15)))
 	then
 		local epicmult = victim:HasTag("dualsoul") and 2 or (victim:HasTag("epic") and math.random(7, 8)) or 1
 		if inst.components.health then
@@ -324,8 +321,7 @@ local function ApplyState(inst, override_state)
 		state_fn(inst, inst.components.inventoryitem.owner)
 	end
 
-	inst.drawnameoverride = rawget(_G, "EncodeStrCode")
-		and EncodeStrCode({ content = state and "NAMES.NIGHTPACK_" .. image_state:upper() or "NAMES.NIGHTPACK" })
+	inst.drawnameoverride = rawget(_G, "EncodeStrCode") and EncodeStrCode({ content = state and "NAMES.NIGHTPACK_" .. image_state:upper() or "NAMES.NIGHTPACK" })
 end
 
 local function DisplayNameFn(inst)

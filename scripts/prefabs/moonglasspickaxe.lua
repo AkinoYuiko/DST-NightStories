@@ -5,9 +5,7 @@ local assets = {
 local function onattack_moonglass(inst, attacker, target)
 	inst.components.weapon.attackwear = target
 			and target:IsValid()
-			and (target:HasTag("shadow") or target:HasTag("shadowminion") or target:HasTag("shadowchesspiece") or target:HasTag("stalker") or target:HasTag(
-				"stalkerminion"
-			))
+			and (target:HasTag("shadow") or target:HasTag("shadowminion") or target:HasTag("shadowchesspiece") or target:HasTag("stalker") or target:HasTag("stalkerminion"))
 			and TUNING.MOONGLASSPICKAXE.SHADOW_WEAR
 		or TUNING.MOONGLASSPICKAXE.ATTACKWEAR
 end

@@ -13,9 +13,7 @@ local Combat = require("components/combat")
 local do_attack = Combat.DoAttack
 
 local function ranged_weapon_testfn(weapon, projectile)
-	return weapon ~= nil
-		and projectile == nil
-		and (weapon.components.projectile ~= nil or weapon.components.complexprojectile ~= nil or weapon.components.weapon:CanRangedAttack())
+	return weapon ~= nil and projectile == nil and (weapon.components.projectile ~= nil or weapon.components.complexprojectile ~= nil or weapon.components.weapon:CanRangedAttack())
 end
 
 local function is_invalid_weapon(weapon)

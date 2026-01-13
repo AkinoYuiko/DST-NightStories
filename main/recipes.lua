@@ -69,21 +69,11 @@ AddRecipe("civi_bluegem", { Ingredient("redgem", 1), Ingredient("nightmarefuel",
 SortAfter("civi_bluegem", "civi_redgem")
 
 -- 黑水晶
-AddRecipe(
-	"darkcrystal",
-	{ Ingredient("purplegem", 1), Ingredient("nightmarefuel", 4) },
-	TECH.NONE,
-	{ nomods = true, builder_tag = "ns_builder_civi", no_deconstruction = true }
-)
+AddRecipe("darkcrystal", { Ingredient("purplegem", 1), Ingredient("nightmarefuel", 4) }, TECH.NONE, { nomods = true, builder_tag = "ns_builder_civi", no_deconstruction = true })
 SortAfter("darkcrystal", "purplegem")
 
 -- 白水晶
-AddRecipe(
-	"lightcrystal",
-	{ Ingredient("purplegem", 1), Ingredient("nightmarefuel", 4) },
-	TECH.NONE,
-	{ nomods = true, builder_tag = "ns_builder_civi", no_deconstruction = true }
-)
+AddRecipe("lightcrystal", { Ingredient("purplegem", 1), Ingredient("nightmarefuel", 4) }, TECH.NONE, { nomods = true, builder_tag = "ns_builder_civi", no_deconstruction = true })
 SortAfter("lightcrystal", "darkcrystal")
 
 -- 纯粹辉煌
@@ -140,12 +130,7 @@ AddRecipe(
 SortAfter("nightpack", "civi_bluegem")
 
 -- 友爱戒指
-AddRecipe(
-	"friendshipring",
-	{ Ingredient("moonrocknugget", 4), Ingredient("nightmarefuel", 4) },
-	CIVITECH_TWO,
-	{ nounlock = true, builder_tag = "ns_builder_civi" }
-)
+AddRecipe("friendshipring", { Ingredient("moonrocknugget", 4), Ingredient("nightmarefuel", 4) }, CIVITECH_TWO, { nounlock = true, builder_tag = "ns_builder_civi" })
 SortAfter("friendshipring", "nightpack")
 
 -- 注能图腾
@@ -171,12 +156,7 @@ AddRecipe("dummy_nightmarefuel", { Ingredient(CHARACTER_INGREDIENT.HEALTH, 20, n
 	hidden = true,
 })
 -- 梦魇之力 --
-AddRecipe(
-	"shadowglash_builder",
-	{ Ingredient("nightmarefuel", 1) },
-	TECH.NONE,
-	{ builder_tag = "ns_builder_dummy", no_deconstruction = true, sg_state = "domediumaction" }
-)
+AddRecipe("shadowglash_builder", { Ingredient("nightmarefuel", 1) }, TECH.NONE, { builder_tag = "ns_builder_dummy", no_deconstruction = true, sg_state = "domediumaction" })
 
 -- 收获的季节 --
 AddRecipe(
@@ -207,12 +187,7 @@ SortAfter("blackholestaff", "greenstaff")
 ---------------------
 
 -- Reset Skill Tree --
-AddRecipe(
-	"skilltree_respec_tool",
-	{ Ingredient("moonglass", 1), Ingredient("nightmarefuel", 1) },
-	TECH.NONE,
-	{ builder_tag = "skilltree_characters", nomods = true }
-)
+AddRecipe("skilltree_respec_tool", { Ingredient("moonglass", 1), Ingredient("nightmarefuel", 1) }, TECH.NONE, { builder_tag = "skilltree_characters", nomods = true })
 SortBefore("skilltree_respec_tool", "transmute_log")
 
 -- 月影 --
@@ -261,21 +236,9 @@ AddRecipe(
 SortAfter("spice_moonglass", "spice_cactus")
 
 -- 便携衣柜 & 魔法礼装 --
-AddRecipe(
-	"portable_wardrobe_wrap",
-	{ Ingredient("giftwrap", 1), Ingredient("nightmarefuel", 1) },
-	TECH.MAGIC_THREE,
-	{ no_deconstruction = true },
-	{ "MAGIC", "DECOR" }
-)
+AddRecipe("portable_wardrobe_wrap", { Ingredient("giftwrap", 1), Ingredient("nightmarefuel", 1) }, TECH.MAGIC_THREE, { no_deconstruction = true }, { "MAGIC", "DECOR" })
 SortAfter("portable_wardrobe_wrap", "wardrobe", "DECOR")
-AddRecipe(
-	"portable_wardrobe_item",
-	{ Ingredient("portable_wardrobe_wrap", 3), Ingredient("boards", 4) },
-	TECH.MAGIC_THREE,
-	{ no_deconstruction = true },
-	{ "MAGIC", "DECOR" }
-)
+AddRecipe("portable_wardrobe_item", { Ingredient("portable_wardrobe_wrap", 3), Ingredient("boards", 4) }, TECH.MAGIC_THREE, { no_deconstruction = true }, { "MAGIC", "DECOR" })
 SortAfter("portable_wardrobe_item", "portable_wardrobe_wrap")
 
 -- 鸭子雕像 --
