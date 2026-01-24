@@ -299,6 +299,7 @@ AddPlayerPostInit(function(inst)
 	end
 
 	local onload = inst.OnLoad
+	---@diagnostic disable-next-line
 	inst.OnLoad = function(inst, ...)
 		if onload then
 			onload(inst, ...)
