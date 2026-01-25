@@ -6,15 +6,16 @@ local function zheng(zh, en)
 	return LOC[locale] or en
 end
 
-version = "1.58.5"
+version = "1.58.6"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 changelog = zheng(
 	[[
-- 修复一处数据错误。
+- 修复月影配方未出现的问题。
 
 最近更新：
+- 修复一处数据错误。
 - 【极地熊獾桶】永鲜。
 - 调整了【月影】的配方要求。
 - 调整了入侵溯源表的动作。
@@ -23,9 +24,10 @@ changelog = zheng(
 - 新增【梦魇之力】。
 ]],
 	[[
-- Fix some data error
+- Fix issue that the recipe of Lunar Shadow disappears.
 
 Recent Changes:
+- Fix some data error
 - Polar Bearger Bin keeps freshness forerver.
 - Tweak requirement of the recipe of Lunar Shadow.
 - Tweak action for hacking Backtrek Watch.
