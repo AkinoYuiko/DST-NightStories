@@ -10,8 +10,8 @@ version = "1.58.6.1"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
-changelog = zheng(
-	[[
+-- stylua: ignore
+changelog = zheng([[
 - 修复月影配方未出现的问题。
 
 最近更新：
@@ -22,8 +22,7 @@ changelog = zheng(
 - 【注能光明图腾】也能作用于装备对精神的影响了。
 - 移除了【暗影破碎枪】。
 - 新增【梦魇之力】。
-]],
-	[[
+]], [[
 - Fix issue that the recipe of Lunar Shadow disappears.
 
 Recent Changes:
@@ -34,8 +33,7 @@ Recent Changes:
 - Infused Light Totem now buffs equipment dapperness.
 - Remove Nightmare Spear.
 - Add Power of Nightmare.
-]]
-)
+]])
 description = zheng("版本: ", "Version: ")
 	.. version
 	.. zheng("\n\n本次更新:\n", "\n\nChanges:\n")
