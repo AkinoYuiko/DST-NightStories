@@ -6,14 +6,22 @@ local function zheng(zh, en)
 	return LOC[locale] or en
 end
 
-version = "1.59.0"
+version = "1.59.1"
 -- basic info --
 name = zheng("暗夜故事集", "Night Stories")
 author = zheng("鸭子乐园", "Ducklantis")
 -- stylua: ignore
 changelog = zheng([[
+- 达米的梦魇之力命中附加3秒恐惧锁链
+- 澪可用噩梦燃料或纯粹恐惧修复达米的书籍
+
+最近更新：
 - 【启迪之冠】隐藏彩蛋移除虚影生成
 ]], [[
+- Dummy's Power of Nightmare now applies Horror Chain for 3 seconds on hit
+- Mio can repair Dummy's books with Nightmare Fuel or Pure Horror
+
+Recent Changes:
 - Enlightened Crown prevents new ambient Gestalts from spawning under certain conditions
 ]])
 description = zheng("版本: ", "Version: ")
