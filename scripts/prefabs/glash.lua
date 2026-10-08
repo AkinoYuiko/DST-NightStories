@@ -19,6 +19,7 @@ end
 local function on_attack_shadow(inst, attacker, target)
 	if attacker and target and target:IsValid() then
 		setup_fx(attacker, target, true)
+		TheWorld.components.horrorchainmanager:AddMember(target, TUNING.SHADOWGLASH_CHAIN_DURATION)
 	end
 end
 

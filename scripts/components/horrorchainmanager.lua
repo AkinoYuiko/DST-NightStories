@@ -87,10 +87,6 @@ function HorrorChainManager:OnSave()
 	return { members = members }, references
 end
 
--- function HorrorChainManager:OnLoad()
-
--- end
-
 function HorrorChainManager:LoadPostPass(newents, save_data)
 	if save_data and save_data.members then
 		for member, remaining_time in pairs(save_data.members) do
