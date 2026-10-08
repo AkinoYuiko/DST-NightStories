@@ -146,7 +146,24 @@ for i = 1, 8 do
 	fuel_action_prefabs["winter_ornament_light" .. tostring(i)] = true
 end
 
+local book_fuel_uses = {
+	book_harvest = { nightmarefuel = 1, horrorfuel = 2 },
+	book_toggledownfall = { nightmarefuel = 1, horrorfuel = 2 },
+	book_wetness = { horrorfuel = 1 },
+}
+
 local function use_fuel(item, target, doer)
+	local book_uses = book_fuel_uses[target.prefab]
+	if book_uses then
+		local uses = book_uses[item.prefab]
+		if uses and target.components.finiteuses then
+			target.components.finiteuses:Repair(uses)
+			doer.SoundEmitter:PlaySound("dontstarve/common/nightmareAddFuel")
+			return true
+		end
+		return false
+	end
+
 	local wetmult = item:GetIsWet() and TUNING.WET_FUEL_PENALTY or 1
 	local fueled = target.components.fueled
 	if fueled then
@@ -334,14 +351,18 @@ end
 ---------------------------------------------------------------------
 
 local MIO_FUEL_ACTION_TAGS = { "CAVE_fueled", "BURNABLE_fueled", "WORMLIGHT_fueled", "TAR_fueled" }
-local function fuel_action_testfn(target)
+local function fuel_action_testfn(target, item)
+	local book_uses = book_fuel_uses[target.prefab]
+	if book_uses then
+		return book_uses[item.prefab] ~= nil
+	end
 	return target:HasAnyTag(MIO_FUEL_ACTION_TAGS) or fuel_action_prefabs[target.prefab]
 end
 
 AddComponentAction("USEITEM", "fuel", function(inst, doer, target, actions, right)
 	if doer.prefab == "miotan" and (inst.prefab == "nightmarefuel" or inst.prefab == "horrorfuel") then
 		if
-			fuel_action_testfn(target)
+			fuel_action_testfn(target, inst)
 			and (not (doer.replica.rider and doer.replica.rider:IsRiding()) or (target.replica.inventoryitem and target.replica.inventoryitem:IsGrandOwner(doer)))
 		then
 			table.insert(actions, NS_ACTIONS.MIOFUEL)
