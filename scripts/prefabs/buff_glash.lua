@@ -9,7 +9,7 @@ local owner_testfn = Utils.OwnerTestFn
 local launching_projectile = Utils.LaunchingProjectile
 local do_glash_attack = Utils.DoGlashAttack
 
-local function base_onattackother(owner, data, glash_prefab)
+local function base_onattackother(owner, data, glash_prefab, enhanced)
 	local target = data and data.target
 	local weapon = data and data.weapon
 	local projectile = data and data.projectile
@@ -23,7 +23,7 @@ local function base_onattackother(owner, data, glash_prefab)
 		if launching_projectile(data) then
 			return
 		end
-		do_glash_attack(owner, target, glash_prefab)
+		do_glash_attack(owner, target, glash_prefab, enhanced)
 	end
 end
 
@@ -32,7 +32,8 @@ local function onattackother(owner, data)
 end
 
 local function onattackother_shadow(owner, data)
-	base_onattackother(owner, data, "shadowglash")
+	local buff = owner:GetDebuff("buff_shadowglash")
+	base_onattackother(owner, data, "shadowglash", buff ~= nil and buff.enhanced)
 end
 
 local function attack_attach(inst, target)
@@ -45,7 +46,14 @@ local function attack_detach(inst, target)
 	inst:RemoveEventCallback("onattackother", onattackother, target)
 end
 
-local function attack_attach_shadow(inst, target)
+local function extend_shadow(inst, target, data)
+	if data ~= nil then
+		inst.enhanced = data.enhanced == true
+	end
+end
+
+local function attack_attach_shadow(inst, target, data)
+	extend_shadow(inst, target, data)
 	if target.components.combat then
 		inst:ListenForEvent("onattackother", onattackother_shadow, target)
 	end
@@ -65,8 +73,8 @@ local function OnTimerDone(inst, data)
 	end
 end
 
-local function MakeBuff(name, onattachedfn, onextendedfn, ondetachedfn, duration, priority, prefabs)
-	local function OnAttached(inst, target)
+local function MakeBuff(name, onattachedfn, onextendedfn, ondetachedfn, duration, priority, prefabs, oninitfn)
+	local function OnAttached(inst, target, followsymbol, followoffset, data)
 		inst.entity:SetParent(target.entity)
 		inst.Transform:SetPosition(0, 0, 0) --in case of loading
 		inst:ListenForEvent("death", function()
@@ -75,17 +83,17 @@ local function MakeBuff(name, onattachedfn, onextendedfn, ondetachedfn, duration
 
 		target:PushEvent("foodbuffattached", { buff = "ANNOUNCE_ATTACH_BUFF_" .. string.upper(name), priority = priority })
 		if onattachedfn ~= nil then
-			onattachedfn(inst, target)
+			onattachedfn(inst, target, data)
 		end
 	end
 
-	local function OnExtended(inst, target)
+	local function OnExtended(inst, target, followsymbol, followoffset, data)
 		inst.components.timer:StopTimer("buffover")
 		inst.components.timer:StartTimer("buffover", duration)
 
 		target:PushEvent("foodbuffattached", { buff = "ANNOUNCE_ATTACH_BUFF_" .. string.upper(name), priority = priority })
 		if onextendedfn ~= nil then
-			onextendedfn(inst, target)
+			onextendedfn(inst, target, data)
 		end
 	end
 
@@ -126,11 +134,30 @@ local function MakeBuff(name, onattachedfn, onextendedfn, ondetachedfn, duration
 		inst.components.timer:StartTimer("buffover", duration)
 		inst:ListenForEvent("timerdone", OnTimerDone)
 
+		if oninitfn ~= nil then
+			oninitfn(inst)
+		end
+
 		return inst
 	end
 
 	return Prefab("buff_" .. name, fn, nil, prefabs)
 end
 
+local function shadow_onsave(inst, data)
+	data.enhanced = inst.enhanced
+end
+
+local function shadow_onload(inst, data)
+	inst.enhanced = data ~= nil and data.enhanced == true
+end
+
+local function shadow_init(inst)
+	inst.enhanced = false
+	-- Debuffable saves its children explicitly, even though they are non-persistent entities.
+	inst.OnSave = shadow_onsave
+	inst.OnLoad = shadow_onload
+end
+
 return MakeBuff("glash", attack_attach, nil, attack_detach, TUNING.BUFF_GLASH_DURATION, 1),
-	MakeBuff("shadowglash", attack_attach_shadow, nil, attack_detach_shadow, TUNING.BUFF_SHADOWGLASH_DURATION, 1)
+	MakeBuff("shadowglash", attack_attach_shadow, extend_shadow, attack_detach_shadow, TUNING.BUFF_SHADOWGLASH_DURATION, 1, nil, shadow_init)
