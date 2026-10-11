@@ -20,6 +20,8 @@ end
 local postinit = {
 	-- components
 	"components/brightmarespawner",
+	"components/builder",
+	"components/builder_replica",
 	"components/bundler",
 	"components/combat",
 	"components/dryingrack",
@@ -57,6 +59,7 @@ local postinit = {
 	"prefabs/world",
 	-- widgets
 	"widgets/itemtile",
+	"widgets/redux/craftingmenu_hud",
 	"widgets/statusdisplays",
 	"widgets/templates",
 	-- root

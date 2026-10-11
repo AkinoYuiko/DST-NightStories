@@ -89,8 +89,11 @@ local function target_testfn(target)
 		and not target:HasTag("wall")
 end
 
-local function do_glash_attack(attacker, target, glash_prefab)
+local function do_glash_attack(attacker, target, glash_prefab, enhanced)
 	local glash = SpawnPrefab(glash_prefab)
+	if glash.SetEnhanced ~= nil then
+		glash:SetEnhanced(enhanced)
+	end
 	glash.entity:SetParent(attacker.entity)
 	local damagemultiplier = attacker.components.combat.damagemultiplier
 	attacker.components.combat.damagemultiplier = math.max(1, (damagemultiplier or 1))

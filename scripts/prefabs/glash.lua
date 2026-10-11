@@ -19,7 +19,9 @@ end
 local function on_attack_shadow(inst, attacker, target)
 	if attacker and target and target:IsValid() then
 		setup_fx(attacker, target, true)
-		TheWorld.components.horrorchainmanager:AddMember(target, TUNING.SHADOWGLASH_CHAIN_DURATION)
+		if inst.enhanced then
+			TheWorld.components.horrorchainmanager:AddMember(target, TUNING.SHADOWGLASH_CHAIN_DURATION)
+		end
 	end
 end
 
@@ -61,6 +63,11 @@ local function fn()
 	return inst
 end
 
+local function set_enhanced(inst, enhanced)
+	inst.enhanced = enhanced == true
+	inst.components.planardamage:SetBaseDamage(inst.enhanced and TUNING.SHADOWGLASH_ENHANCED_PLANAR_DAMAGE or TUNING.SHADOWGLASH_PLANAR_DAMAGE)
+end
+
 local function fn_shadow()
 	local inst = common_fn()
 
@@ -72,7 +79,8 @@ local function fn_shadow()
 	inst.components.weapon:SetOnAttack(on_attack_shadow)
 
 	inst:AddComponent("planardamage")
-	inst.components.planardamage:SetBaseDamage(TUNING.SHADOWGLASH_PLANAR_DAMAGE)
+	inst.SetEnhanced = set_enhanced
+	inst:SetEnhanced(false)
 
 	return inst
 end
@@ -80,7 +88,9 @@ end
 ------------------------- Glash Builder -------------------------
 local function builder_onbuilt(inst, builder)
 	if builder then
-		builder:AddDebuff("buff_shadowglash", "buff_shadowglash")
+		local component = builder.components.builder
+		local build = component and component.shadowglash_build
+		builder:AddDebuff("buff_shadowglash", "buff_shadowglash", { enhanced = build ~= nil and build.fuel == "horrorfuel" })
 	end
 end
 
