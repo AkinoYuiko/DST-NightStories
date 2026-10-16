@@ -26,9 +26,6 @@ GenerateSpicedFoods(require("preparedfoods_warly"))
 for _, recipe in pairs(spicedfoods) do
 	if NS_SPICES[recipe.spice] ~= nil then
 		AddCookerRecipe("portablespicer", recipe)
-		if recipe.basename == "voltgoatjelly" then -- WX78
-			TUNING.WX78_CHARGING_FOODS[recipe.name] = 1
-		end
 	end
 end
 
